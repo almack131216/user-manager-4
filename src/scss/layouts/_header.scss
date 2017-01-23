@@ -1,0 +1,36 @@
+/* _header.scss */
+
+header {
+    padding:$offset-g1;
+
+    a {
+        img {
+            float:left;
+            display:inline-block;
+            max-height:70px;
+        }
+        h3 {
+            float:left;
+            display:inline-block;
+            margin:0;
+            padding:$offset-3 $offset-2;
+            padding-bottom:0px;
+            color:$bp_color-green-1 !important;
+            text-decoration:none;
+        }
+    }
+
+    div.user {
+        text-align:right;
+        padding-top:25px;
+
+        .btn-group.btn-edit-avatar {
+            > .btn-group {
+                button.btn {
+                    border:0px;
+                }
+            }
+        }
+
+    }    
+}

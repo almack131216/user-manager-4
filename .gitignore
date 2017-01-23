@@ -1,0 +1,14 @@
+node_modules
+.idea
+.DS_STORE
+bootstrap-config/excess-dev
+bootstrap-config/bootstrap/css
+bootstrap-config/bootstrap/js
+aurelia_project/environments
+aurelia_project/generators
+aurelia_project/tasks
+_excess
+fonts
+src/css/tagline.gif
+src/css/bp-responsive.svg
+src/resources/constants.ts

@@ -1,0 +1,19 @@
+<template>
+    <require from="bootstrap/css/bootstrap.css"></require>
+  <require from="font-awesome.css"></require>
+
+    <div class="container">
+    <div class="row">      
+      <div class="col-md-12 styleXXX" style="padding-top:100px;">
+          <h1>${title}</h1>
+        <form class="login-form" submit.delegate="login()">
+            <input type="text" placeholder="username" value.bind="username" />
+            <input type="password" placeholder="password" value.bind="password" />
+            <button type="submit">Login</button>
+            <span class="error">${error}</span>
+        </form>
+    </div>
+    </div>
+  </div>
+    
+</template>

@@ -1,0 +1,19 @@
+<template>
+  <require from="../widgets/user-list"></require>
+  <require from="../widgets/user-edit"></require>
+
+  <div class="col-md-12" if.bind="title">
+    <h1>${title}<span class="html-file-name">(user-selected.html)</span></h1>
+    <hr>
+  </div>
+
+  <user-list class="col-xs-12 col-md-8"></user-list>
+
+  <div bind.if="user" class="col-xs-12 col-md-4">
+    <user-edit user.bind="user"></user-edit>
+    <div class="button-bar col-md-12">
+      <button class="btn btn-success" click.delegate="save()" disabled.bind="!canSave">Save</button>
+    </div>
+  </div>
+
+</template>

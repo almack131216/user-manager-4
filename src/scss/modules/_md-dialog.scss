@@ -1,0 +1,133 @@
+﻿/* _md-dialog.scss */
+
+.md-dialog-container {
+    md-dialog {
+        width: 800px;
+        &.md-dialog-small {width:450px;}
+        @include border-radius($btn-border-radius);
+
+        &.wrap-confirm {
+            .md-dialog-content-body {
+                padding:$offset-2;
+            }
+        }
+
+        &.dialog-overflow-visible {
+            overflow: visible;
+
+            > form {
+                overflow: inherit;
+
+                md-dialog-content {
+                    overflow: visible;
+
+                    .footer-fixed-wrap {
+                        .footer-btn-wrap {
+                            width: calc(100% - 20px);
+                        }
+                    }
+                }
+            }
+        }
+
+        &[draggable] {
+            .md-toolbar-tools {
+                cursor: move;
+            }
+        }
+
+        &[fc-window] {
+            overflow: hidden;
+        }
+
+        md-toolbar {
+            min-height:50px;
+            background: $ci_color-green;
+
+            .md-toolbar-tools {
+                background: $ci_color-green;
+                height:50px;
+                max-height:50px;
+                padding:0 $offset-1-5;
+            }
+        }        
+
+        .md-dialog-content {
+            padding: $offset-2;
+
+            .footer-btn-wrap {
+                padding-top: $offset-2;
+                clear: both;
+                display: inline-block;
+                width: 100%;
+            }
+
+            .footer-fixed-wrap {
+                padding-bottom: 100px;
+
+                .footer-btn-wrap {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    padding: $offset-2;
+                    padding-right: 0;
+                    width: calc(100% - 40px);
+                    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.2+0,0.8+100 */
+                    background: -moz-linear-gradient(top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 100%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(top, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff', endColorstr='#ccffffff',GradientType=0 ); /* IE6-9 */
+                }
+            }
+        }
+
+        .md-actions,
+        md-dialog-actions {
+            display: block;
+            padding: $offset-2;
+        }
+
+        .fa-before {
+
+            &:before {
+                float: left;
+                margin-right: $offset-0-5;
+                family: FontAwesome;
+            }
+
+            &.upload:before {
+                content: "\f093";
+                color: $color-priority;
+            }
+        }
+
+        .fa-after {
+
+            &:after {
+                float: right;
+                margin-left: $offset-0-5;
+                font-family: FontAwesome;
+            }
+
+            &.pencil:after {
+                content: "\f040";
+                color: $color-priority;
+            }
+
+            &.check:after {
+                content: "\f00c";
+                color: $color-good;
+            }
+
+            &.plus:after {
+                content: "\f067";
+                color: $color-good;
+            }
+
+            &.minus:after {
+                content: "\f068";
+                color: $color-danger;
+            }
+        }
+    }
+}

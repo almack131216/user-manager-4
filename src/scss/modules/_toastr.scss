@@ -1,0 +1,30 @@
+/* _toastr.scss */
+#toast-container {
+    > div {
+        opacity: 1 !important;
+    }
+
+    &.toast-top-center,
+    &.toast-bottom-center {
+        left: 50%;
+        right: auto;
+        margin-left: -250px;
+        width: 500px;
+
+        > div {
+            width: 100%;
+
+            button.toast-close-button {
+                margin-right: $offset-0-5;
+            }
+        }
+    }
+
+    &.toast-top-center {
+        top: 20px;
+    }
+
+    &.toast-bottom-center {
+        bottom: 50px;
+    }
+}

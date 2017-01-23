@@ -1,0 +1,48 @@
+/* _mobile.scss */
+
+/* lg */
+@media (min-width: 1200px) {
+
+}
+
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+@media (max-width: 1199px) {
+    .fa-textAfter-md:after {font-family:$base-font-family;content:attr(fa-textAfter) !important;margin-left:$offset-0-5;}
+    .rtl .fa-textAfter-md:after {margin-left:0;margin-right:$offset-0-5;} 
+}
+
+/* sm */
+@media (max-width: 991px) and (min-width: 768px){
+      
+}
+
+/* xs */
+@media (max-width: 992px){
+    .md-dialog-container{
+        md-dialog {min-width:auto;max-width:auto;width:90% !important;}
+    }
+
+    .wrap-subsections {padding:$offset-2 5%;}
+    .rwd_sm_clear-both {clear:both;}
+}
+
+@media (max-width:768px){}
+
+/* md */
+@media (min-width: 992px) {}
+
+@media (min-width:481px) and (max-width:991px){}
+
+@media (min-width:320px) and (max-width:480px){}
+
+/* lg */
+@media (min-width: 1200px) {}
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {}
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {}
+/* xs */
+@media (max-width: 767px) {}

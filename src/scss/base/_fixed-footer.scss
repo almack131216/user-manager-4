@@ -1,0 +1,28 @@
+/* _fixed-footer.scss */
+//REF: http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page
+
+@media all and (min-width: 641px) {
+
+    html,
+    body {
+        margin:0;
+        padding:0;
+        height:100%;
+    }
+    #container-fixed-footer {
+        min-height:100%;
+        position:relative;
+    }
+    #header {
+
+    }
+    #body {
+        padding-bottom:70px;   /* Height of the footer */
+    }
+    #footer {
+        position:absolute;
+        bottom:0;
+        width:100%;
+        min-height:50px;   /* Height of the footer */
+    }
+}

@@ -1,0 +1,162 @@
+﻿/* _tables.scss */
+
+.table-legend-cell {
+    clear: both;
+    display: block;
+    width: auto;
+    float: right;
+    margin: $offset-2 0;
+
+    tr {
+        > td {
+            border: 1px solid $border-color;
+            padding: $offset-0-5;
+
+            &:first-child {
+                padding-right: $offset-g2;
+            }
+
+            &:last-child {
+                padding-left: $offset-g2;
+            }
+        }
+    }
+}
+
+.cd-bg-color-tender {    
+    background: $color-tender-bg;
+    color:$color-tender;
+}
+
+.cd-bg-color-tender-border {
+    background: $border-color;
+}
+
+.cd-bg-color-pending {
+    background: $color-pending-bg;
+}
+
+.cd-bg-color-pending-border {
+    background: #faebcc;
+}
+
+.cd-bg-color-declined {
+    background: $color-declined-bg;
+    color: $color-declined;
+}
+
+.cd-bg-color-obsolete {
+    background: $color-declined-bg;
+    color: $color-declined;
+}
+
+.cd-bg-color-approved {
+    background: $color-approved-bg;
+    color: $color-approved;
+}
+
+.cd-bg-color-approved {
+    background: $color-approved-bg;
+}
+
+.cd-bg-color-realised {
+    color: $color-realised;
+}
+
+.cd-bg-color-lost {
+    color: $color-lost;
+}
+
+.cell-txt {
+    display: block;
+    width: 100%;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 5px;
+    font-size: $table-font-size;
+}
+
+.table-row-border {
+    border: none;
+    border-bottom: 1px dotted $border-color;
+}
+
+.table > tbody + tbody {
+    border-top: 1px solid $border-color;
+}
+
+.table > thead > tr,
+.table > tbody > tr,
+.table > tfoot > tr {
+
+    &.event-details-open td {
+        background: $color-info-bg-hover !important;
+        border-bottom: none;
+    }
+
+    th, td {
+        padding: $offset-0-5;
+        vertical-align: middle;
+
+        > label {
+            margin-bottom: 0px;
+        }
+
+        &.col-hidden {
+            display: none;
+        }
+
+        &.col-actions,
+        &.col-actions-printable {
+            text-align: right;
+            min-width: 100px;
+
+            .row-checkboxes label:last-child,
+            .row-radios label:last-child {
+                margin-right: 0px;
+            }
+        }
+
+        &.col-hidden-header {
+            color: $bp_color-green;
+            font-size: 0px;
+            padding: 0px;
+            border-bottom: none !important;
+            height: 0px;
+        }
+    }
+
+    &:last-child th {
+        border-bottom: 1px solid $border-color;
+    }
+
+    &.tr-border-none td,
+    &:last-child td {
+        border-bottom: none;
+    }
+}
+
+table.half-n-half {
+    tr > th,
+    tr > td {
+        width: 50%;
+    }
+}
+
+table.fixed-layout {
+    table-layout: fixed;
+    /* This is used to squeeze large strings(with no spaces) into the table cell without exceeding table */
+    /* NOTE: requires 'table-layout: fixed' table class to work */
+    .squeeze-into-cell {
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+        display: block;
+    }
+}
+
+.wrap-longtext {
+    white-space: pre;
+}

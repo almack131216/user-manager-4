@@ -1,0 +1,57 @@
+/* _print-and-web.scss */
+
+.panel.panel-prompt-cust {
+    border:none;
+    background:$bp_color-lightgray;
+    border-left:$offset-0-5 solid $bp_color-green;
+
+    &.panel-page-error {
+        display:inline-block;
+        margin:$offset-3 auto;
+        text-align:center;
+        border:none;
+        background:transparent;
+        padding:$offset-1 $offset-2;
+        @include border-radius($offset-1);
+
+        .page-error-code {
+            display:block;
+            font-size:80px;
+            margin:0 0 $offset-1 0;
+        }
+    }
+
+    &.panel-border {
+        background: transparent;
+        border:$offset-0-5 solid $bp_color-lightgray;
+    }
+
+    &.panel-warning {
+        background:$color-warning-bg;
+        border-color:$color-warning-bg-dark;
+    }
+    &.panel-info {
+        background:$color-info-bg;
+        border-color:$color-info-bg-dark;
+    }
+    &.panel-success {
+        background:$color-good-bg;
+        border-color:$color-good;
+    }
+    &.panel-error,
+    &.panel-danger {
+        background:$color-input-error-bg;
+        border-color:$color-input-error-border;
+    }
+    > p,
+    > .panel-heading {
+        padding:$offset-2;
+        border:none;
+        height:auto;
+        line-height:normal;
+        background-image:none;
+        background-repeat:unset;
+        background:transparent;
+        color:black;
+    }
+}

@@ -1,0 +1,22 @@
+﻿/* _jquery-ui.scss */
+
+.ui-widget-content.ui-autocomplete {
+    min-width:200px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background:white;
+    border:1px solid $ci_color-gray;
+
+    li.ui-menu-item {
+        padding:$offset-0-5 $offset-1;
+        color:$hyperlink-color;
+
+        &.ui-state-focus {
+            background:$ci_color-lightgray;
+            border:none;
+            cursor:pointer;
+            color:black;
+        }
+    }
+}

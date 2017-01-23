@@ -1,0 +1,133 @@
+<template>
+  <require from="../widgets/form-input"></require>
+  <require from="../widgets/form-select"></require>
+
+  <div class="btn-group btn-edit-avatar pull-right" role="group" aria-label="user options">
+
+    <div class="btn-group" role="group">
+      <button class="btn btn-default dropdown-toggle btn-i" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="true">
+              <i class="fa fa-pencil"></i>
+              David Bowie
+              <span class="caret"></span>
+          </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#"><i class="fa fa-fw fa-pencil"></i> Change Username</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-photo"></i> Change Avatar</a></li>
+      </ul>
+    </div>
+
+    <a class="btn btn-default avatar">
+      <img src="/src/img/low.jpg" alt="tmp me">
+    </a>
+
+  </div>
+
+  <h1>${title}<span class="html-file-name">(user-add.html)</span></h1>
+
+
+  <form role="form" class="form-horizontal">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        User
+      </div>
+      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
+
+        <form-input name="first-name" value.two-way="user.first-name" is-mandatory="true"></form-input>
+        <form-input name="last-name" value.two-way="user.last-name" is-mandatory="true"></form-input>
+        <form-select name="selRegion" value.two-way="user.selRegion"></form-select>
+
+        <form-select name="selHub" value.two-way="user.selHub"></form-select>
+        <form-select name="selSegment" value.two-way="user.selSegment"></form-select>
+        <form-select name="selEntity" value.two-way="user.selEntity"></form-select>
+
+        <form-input name="function" value.two-way="user.function"></form-input>
+        <form-input name="location" value.two-way="user.location"></form-input>
+        <form-input name="email" value.two-way="user.email" is-mandatory="true"></form-input>
+
+        <div class="divider"></div>
+
+        <form-input name="home-number" value.two-way="user.home-number"></form-input>
+        <form-input name="cell-number-personal" value.two-way="user.cell-number-personal"></form-input>
+        <form-input name="office-number" value.two-way="user.office-number"></form-input>
+
+        <div class="divider"></div>
+
+        <form-select name="bp-office-address" value.two-way="user.bp-office-address" inp-label="BP Office Address"></form-select>
+        <form-input name="cell-number" value.two-way="user.cell-number" is-mandatory="true"></form-input>
+        <form-input name="lync-number" value.two-way="user.lync-number"></form-input>
+
+        <div class="divider"></div>
+
+        <form-input name="line-manager" value.two-way="user.line-manager"></form-input>
+        <form-input name="line-manager-email" value.two-way="user.line-manager-email"></form-input>
+        <form-input name="line-manager-ntid" value.two-way="user.line-manager-ntid" inp-label="Line Manager NTID"></form-input>
+
+        <div class="divider"></div>
+
+        <form-input name="emergency-contact-name" value.two-way="user.emergency-contact-name"></form-input>
+        <form-input name="emergency-contact-number" value.two-way="user.emergency-contact-number"></form-input>
+
+      </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">MRT Details</div>
+      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
+
+        <form-input name="member-status" value.two-way="user.member-status"></form-input>
+        <form-input name="date-joined" value.two-way="user.date-joined"></form-input>
+        <form-input name="vest-colour" value.two-way="user.vest-colour"></form-input>
+        <form-input name="coast-size" value.two-way="user.coast-size"></form-input>
+        <form-input name="language" value.two-way="user.language"></form-input>
+        <form-input name="language-level" value.two-way="user.language-level"></form-input>
+      
+      </div>
+    </div>
+
+     <div class="panel panel-default">
+      <div class="panel-heading">MRT Role Information</div>
+      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
+
+        <form-input name="primary-ics" value.two-way="user.primary-ics"></form-input>
+        <form-input name="secondary-ics" value.two-way="user.secondary-ics"></form-input>
+        <form-input name="previous-role" value.two-way="user.previous-role"></form-input>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Passport and Visa Information</div>
+      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-6">
+
+        <form-input name="passport-type" value.two-way="user.passport-type"></form-input>
+        <form-input name="passport-number" value.two-way="user.passport-number"></form-input>
+        <form-input name="passport-nationality" value.two-way="user.passport-nationality"></form-input>
+        <form-input name="passport-expiry-date" value.two-way="user.passport-expiry-date"></form-input>
+
+        <div class="divider"></div>
+
+        <form-input name="visa-country" value.two-way="user.visa-country"></form-input>
+        <form-input name="visa-expiry-date" value.two-way="user.visa-expiry-date"></form-input>
+        <form-input name="visa-type" value.two-way="user.visa-type"></form-input>
+        <form-input name="multiple-visas" value.two-way="user.multiple-visas"></form-input>
+
+      </div>
+    </div>
+
+    <div class="panel panel-primary display-none">
+
+      <div class="panel-body">
+
+        <!--<div repeat.for="elem of newUser">
+          <p>${elem.name} / ${elem.val} / ${elem.label}</p>
+          <form-input name="${elem.name}" model.bind="elem.val" inp-label="${elem.label}"></form-input>
+        </div>-->
+
+      </div>
+    </div>
+
+  </form>
+
+</template>

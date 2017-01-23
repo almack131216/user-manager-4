@@ -1,0 +1,44 @@
+/* main.scss */
+/* all changes are sent to 'main.css' */
+/*
+CIS CRS Sass Theme
+Author: Alex Mackenzie
+Version: 0.0.1
+*/
+@import 'bootstrap.min.css';
+
+/* BASE - base styles, variables, mixins etc */
+@import 'base/_base-reset.scss';
+@import 'base/_variables.scss';
+@import 'base/_mixins.scss';
+@import 'base/_normalize.scss';
+@import 'base/_base.scss';
+@import 'base/_recycled.scss';
+@import 'base/_print-and-web.scss';
+@import 'base/_fixed-footer.scss';
+
+/* MODULES - individual site components */
+@import 'modules/_typography.scss';
+@import 'modules/_buttons.scss';
+@import 'modules/_forms.scss';
+@import 'modules/_tables.scss';
+@import 'modules/_toastr.scss';
+@import 'modules/_hovercard.scss';
+/*@import 'modules/_md-dialog.scss';*/
+
+/* LAYOUTS - page layout styles */
+@import 'layouts/_bootstrap-overrule.scss';
+@import 'layouts/_header.scss';
+@import 'layouts/_nav-bar.scss';
+/*@import 'layouts/_header-responsive.scss';*/
+@import 'layouts/_footer.scss';
+/*@import 'layouts/_img.scss';*/
+@import 'layouts/_panels.scss';
+@import 'layouts/_offsets.scss';
+/*@import 'layouts/_search.scss';*/
+/*@import 'layouts/_nav-tree.scss';*/
+@import 'layouts/_ie-only.scss';
+@import 'layouts/_mobile.scss';
+@import 'layouts/_xxxs.scss';
+
+@import 'base/_print.scss';

@@ -1,0 +1,134 @@
+/* _variables.scss */
+
+/* BP Info colors */
+$bp_color-black: #2d2d2d;
+$bp_color-title: #303030;
+$bp_color-red: #C40F11;
+$bp_color-hover-tint: rgba(0, 0, 0, 0.25);
+$bp_color-red-highlight: #E28788;
+$bp_color-gray: #999999;
+$bp_color-lightgray: #f9f9f9;
+$bp_color-darkgray: #555;
+$bp_color-white: #FFFFFF;
+$bp_color-green: #239F40;
+
+
+$bp_color-green-dark:#067d00;
+$bp_color-green-1: #009900;
+$bp_color-green-2: #97CC00;
+$bp_color-yellow: #FFFF00;
+
+/* General Colors */
+/* status (span) color */
+$color-danger: #f00;
+$color-warning: #f90;
+$color-obsolete: #999999;
+$color-realised: $bp_color-green-1;
+$color-lost: $color-danger;
+
+//$color-good: #5cb85c;
+$color-good: #a6cf41;
+$color-good-strong: $bp_color-green;
+$color-good-bg: #dff0d8;
+$color-info: #5bc0de;
+$color-info-bg: #d9edf7;
+$color-info-bg-hover: #c4e3f3;
+$color-info-bg-dark: #5bc0de;
+$color-info-border: $color-info-bg-dark;
+$color-warning-bg: #fcf8e3;
+$color-warning-bg-dark: #FFCD04;
+$color-declined: #a94442;
+$color-declined-bg: #f2dede;
+$color-declined-bg-dark: #FFCD04;
+$color-tender: $color-obsolete;
+$color-tender-bg: #EAEAEA;
+$color-pending-bg: #FFFDD9;
+$color-approved: #090;
+$color-approved-bg: #dff0d8;
+$color-priority: #eb9316;
+$color-provisional-bg: #FDF3E4;
+$color-faint: #ccc;
+
+
+$banner-height: 50px;
+$table-heading-height: 30px;
+
+$table-cell-height:40px;
+$table-cell-height-with-border:41px;
+
+$border-color: #ddd;
+$table-row-border-bottom: 1px dotted $border-color;
+$table-cell-totals-bg: $bp_color-lightgray;
+$table-font-size: 11px;
+$table-font-size-small: 9px;
+$table-inner-border-width: 2px;
+
+/* font size and colors */
+$base-font-size: 13px;
+$base-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-color: #303030;
+$base-font-line-height: 1.4em;
+
+$font-h3-size: 20px;
+$font-h4-size: 16px;
+$font-panel-title-size: $base-font-size;
+
+$btn-font-size: $base-font-size;
+$btn-font-size-lg: 18px;
+$btn-line-height: 15px;
+$btn-line-height-lg: 1.333;
+$btn-disc-font-size: $base-font-size;
+$btn-disc-line-height: 15px;
+$btn-disc-diameter: 28px;
+$btn-disc-diameter-lg: 40px;
+$btn-border-color: #dbdbdb;
+$btn-border-radius: 4px;
+$btn-border-radius-lg: 6px;
+$btn-height: 28px;
+
+$badge-font-size: 11px;
+
+/* hyperlink */
+$hyperlink-color: $bp_color-green-1;
+$hyperlink-color-hover: $bp_color-green-dark;
+$hyperlink-color-hover-nav: $bp_color-black;
+$hyperlink-color-hover-bg: $bp_color-lightgray;
+$hyperlink-color-active: $bp_color-gray;
+$disabled-color: #c8c8c8;
+
+/* status (background) color */
+$color-input-default-bg: #fff;
+$color-input-default-border: #ccc;
+$color-input-focus-bg: #dbedfb;
+$color-input-focus-border: #51cbee;
+$color-input-readonly-bg: #eee;
+$color-input-readonly-border: #ccc;
+$color-input-error-bg: #F7C6BE;
+$color-input-error-border: $color-danger;
+$color-input-valid-bg: $color-good-bg;
+$color-input-valid-border: $bp_color-green;
+$color-input-required-bg: $color-warning-bg;
+$color-input-required-border: $color-warning-bg-dark;
+
+$color-panel-error-bg: $color-warning-bg;
+$color-panel-error-border: $color-warning-bg-dark;
+
+$csssp: '../images/csssp.png';
+
+/* debriefable - realised? */
+$border-color-realised-true: $bp_color-green-1;
+$border-color-realised-false: $color-danger;
+
+/* offset: margins & paddings */
+$offset-0: 0px;
+$offset-0-5: 5px;
+$offset-1: 10px;
+$offset-1-5: 15px;
+$offset-2: 20px;
+$offset-3: 30px;
+$offset-4: 40px;
+$offset-5: 50px;
+$offset-g1: 15px;
+$offset-g2: 30px;
+
+$header-dropdown-min-width: 220px;

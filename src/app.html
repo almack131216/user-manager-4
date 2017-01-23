@@ -1,0 +1,21 @@
+<template>
+  <require from="./views/ui/nav-bar"></require>
+  <require from="./views/ui/ui-footer"></require>
+  <require from="font-awesome.css"></require>
+  <link href="src/css/main.css" rel="stylesheet" />
+  <link href="src/css/bootstrap.min.css" rel="stylesheet" />
+
+  <div id="container-fixed-footer">
+    <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
+    <nav-bar router.bind="router" id="header"></nav-bar>
+
+    <div class="container" id="body">
+      <div class="row">      
+        <router-view></router-view>
+      </div>
+    </div>
+
+    <ui-footer id="footer"></ui-footer>
+  </div>
+
+</template>

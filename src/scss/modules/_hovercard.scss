@@ -1,0 +1,101 @@
+/* hovercard.scss */
+.angular-hovercard {
+    display: inline-block;
+    position: relative;
+}
+
+.angular-hovercard-label {
+    position: relative;
+}
+
+.angular-hovercard-label.angular-hovercard-active {
+    z-index: 99;
+}
+
+.angular-hovercard-detail {
+    @include drop-shadow();
+    background: white;
+    border: 1px solid $border-color;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    visibility: hidden;
+    width: auto;
+    min-width: 500px;
+    z-index: 98;
+}
+
+.angular-hovercard-detail.angular-hovercard-active {
+    min-height: 200px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.hoverCardDetailsWrap {
+    font-size: 11px;
+
+    .content-row {
+        display: block;
+        padding: $offset-0-5;
+        border-bottom: 1px solid $border-color;
+
+        &.wrap-overview {
+            padding: $offset-1;
+            font-size: 0.9em;
+            color:$base-font-color;
+
+            table {
+                width: 100%;
+
+                tr {
+                    td {
+                        border: none;
+                        padding: 3px;
+
+                        &.border-bottom {
+                            border-bottom: 1px solid $border-color;
+                        }
+
+                        &:last-child {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        &.wrap-actions {
+            padding: 0px;
+            max-height: 200px;
+            overflow-y: scroll;
+
+
+            table {
+                width: 100%;
+
+                tr {
+                    th {
+                        color: white;
+                    }
+
+                    td {
+                        border-bottom: 1px solid $border-color;
+                        font-weight: normal;
+                    }
+
+                    &:last-child td {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}

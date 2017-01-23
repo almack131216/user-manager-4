@@ -1,0 +1,8 @@
+/* _ie-only.scss */
+
+.panel-heading .panel-btn-wrap.ie-hide {display:none\9;}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+    .ie-hide {display:none !important;}
+}

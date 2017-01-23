@@ -1,0 +1,26 @@
+/* _footer.scss */
+
+footer {
+    overflow: hidden;
+    background: #eee;
+    border-top:1px solid #999;
+    padding-top:$offset-1;
+
+    ul.ul-inline-piped {
+        display:inline-block;
+        list-style:none;
+        text-align:center;
+
+        li {
+            display:inline-block;
+            &:after {
+                content:"|";
+                margin:0 $offset-1;
+            }
+
+            &:last-child:after {
+                display:none;
+            }
+        }
+    }
+}

@@ -1,0 +1,341 @@
+/* _forms.scss */
+
+.form-group {
+    &.is-mandatory {
+        label:after {
+            content:"*";
+            color:$color-danger;
+            font-size:1.2em;
+            margin-left:5px;
+        }
+    }
+}
+
+input[type=text]::-ms-clear,
+input.searchStr::-ms-clear {
+    display: none;
+     width : 0;
+  height: 0;
+}
+
+.changed-field:not(.ng-invalid) {
+  border-color: yellow !important;
+  background: yellow !important;
+}
+
+ul.help-list,
+ul.error-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+
+    li {
+        list-style-image: none;
+        list-style-type: none;
+        margin:0 0 $offset-1 0;
+        &:last-child {
+            margin-bottom:0px;
+        }
+
+        &:before {
+            @extend .fa-dummy;
+            content: "\f054";
+            font-size:10px;
+            margin-right: $offset-0-5;
+        }
+    }
+
+    &.error-list {
+        li {
+            color: $color-danger;
+
+            &:before {
+                content: "\f069";
+            }
+        }
+    }
+}
+
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: $offset-1-5;
+    height: $offset-1-5;
+}
+
+input[readonly],
+input.dummy-disabled {
+    background: $color-input-readonly-bg;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* search input */
+.inpUpperCase {
+    text-transform: uppercase;
+}
+
+.inpFeedback {
+    font-weight: normal;
+
+    > div {
+        display: inline-block;
+        padding: 0 $offset-1;
+    }
+
+    &.isError div {
+        color: $color-danger;
+    }
+
+    &.isGood div {
+        color: $color-good;
+    }
+}
+
+form {
+    .form-control {
+        border: 1px solid $border-color;
+        background: white;
+        @include box-shadow(false);
+        transition: all linear 0.5s;
+        width: 100%;
+        height: $btn-height;
+        font-size: $base-font-size;
+        line-height: $base-font-line-height;
+        padding: $offset-0-5 $offset-1;
+
+        &[type="text"] {
+            padding-left: $offset-1;
+            font-size: $base-font-size;
+        }
+
+        &.form-control-auto-width {
+            width: auto;
+        }
+    }    
+}
+
+form:not(.ignore-validation-styles) {
+
+    .form-control {
+        &[required].ng-pristine:not(.ng-touched):not(.ignore-style-ng-pristine) {
+            background-color: $color-input-required-bg;
+            border-color: $color-input-required-border;
+        }
+
+        &.ng-invalid.ng-touched,
+        &.ng-invalid-required.ng-touched {
+            border-color: $color-input-error-border;
+            background: $color-input-error-bg;
+        }
+
+        &.ng-valid.ng-dirty {
+            border-color: $color-input-valid-border;
+            background: $color-input-valid-bg;
+            @include box-shadow(false);
+        }
+    }
+}
+
+form[novalidate].ignore-validation-styles {
+    .form-control {
+        &.ng-dirty {
+            &.ng-valid {
+                border-color: $border-color;
+                background: white;
+            }
+
+            &.ng-invalid-important {
+                border-color: $color-input-error-border;
+                background: $color-input-error-bg;
+            }
+
+            &.ng-valid-important {
+                border-color: $color-input-valid-border;
+                background: $color-input-valid-bg;
+                @include box-shadow(false);
+            }
+        }
+    }
+}
+
+input[type="number"].inpHideSpinner::-webkit-outer-spin-button,
+input[type="number"].inpHideSpinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"].inpHideSpinner {
+    -moz-appearance: textfield;
+}
+
+
+.col-checkboxes {
+    label {
+        display: block;
+    }
+}
+
+.row-checkboxes,
+.row-radios {
+    label {
+        margin-right: $offset-2;
+    }
+}
+
+.col-checkboxes,
+.row-checkboxes {
+    label {
+        font-weight: normal;
+        cursor: pointer;
+        margin-bottom: $offset-1;
+        @extend .label-with-checkbox;
+
+        input {
+            margin-right: $offset-0-5;
+        }
+    }
+}
+
+label.submit-label-dummy {
+    display: block;
+    visibility: hidden;
+}
+
+.fa-dummy-tooltip {
+    @extend .fa-dummy;
+    content: " \f059";
+    color: $hyperlink-color;
+}
+
+span.trim-string-with-tooltip {
+    display: block;
+    @extend .trim-string;
+
+    &.is-FreeTextDescription {
+        max-width: 250px;
+    }
+
+    > span {
+        display: inline-block;
+        max-width: calc(100% - 20px);
+        @extend .trim-string;
+    }
+
+    &:after {
+        @extend .fa-dummy-tooltip;
+    }
+}
+
+/* bootstrap tooltip (black background) */
+.tooltip {
+    .tooltip-inner {
+        max-width: 400px;
+        white-space: pre-wrap; /* keep line returns */
+        display: inline-block;
+        word-wrap: break-word; /* force long word (maybe for code) to return instead of strecthing beyond box */
+    }
+}
+
+/* custom tooltip (for input validation) */
+.hasTooltips {
+    position: relative;
+    transition: all linear 0.5s;
+    min-height: $btn-height;
+
+    .tooltip_cust {
+        position: absolute;
+        z-index: 2;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 1px;
+        text-align: center;
+        padding: 0;
+        transition: all linear 0.5s;
+
+        span.detail {
+            cursor: pointer;
+            background: $color-danger;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 40px;
+            height: $btn-height;
+            line-height: $btn-height;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            @include border-radius(4px);
+            opacity: 1;
+            transition: all linear 0.5s;
+        }
+
+        div.message-wrap {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            padding: 8px 0;
+            width: 100%;
+            text-align: center;
+            background: transparent;
+
+            span {
+                background: $color-danger;
+                color: white;
+                font-size: 12px;
+                line-height: 12px;
+                font-weight: bold;
+                padding: 6px $offset-1;
+                @include border-radius(4px);
+                display: inline-block;
+            }
+        }
+
+        span.tooltip-arrow {
+            top: -8px;
+            left: 50%;
+            margin-left: -6px;
+            border-width: 6px 6px 0;
+            border-top-color: $color-danger;
+            background: transparent;
+        }
+    }
+
+    &.isSelectList .tooltip_cust {
+        display: none;
+    }
+}
+
+.hasTooltips.tooltip-below {
+
+    .tooltip_cust {
+        top: auto;
+        bottom: 0px;
+
+        span.detail {
+            top: auto;
+            bottom: 0px;
+        }
+
+        div.message-wrap {
+            top: 0px;
+
+            span {
+            }
+        }
+
+        span.tooltip-arrow {
+            top: auto;
+            bottom: -10px;
+            border-width: 0 6px 6px;
+            border-bottom-color: $color-danger;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+<template>
+
+    <div class="hdr-wrap">
+        <h1 class="hdr-inline">${title}<span class="html-file-name">(user-list.html)</span></h1>
+        <a class="btn btn-default btn-i pull-right" route-href="route: user-add">
+            <i class="fa fa-plus"></i>Add User
+        </a>
+    </div>
+
+
+    <!--<h2 if.bind="custDisableCells">custDisableCells: ${custDisableCells}</h2>-->
+
+    <table class="table table-striped" aurelia-table="data.bind: users; display-data.bind: $displayData">
+        <thead>
+            <tr>
+                <th if.bind="isNotDisabled('id')">id</th>
+                <th if.bind="isNotDisabled('fName')">First Name</th>
+                <th if.bind="isNotDisabled('lName')">Last Name</th>
+                <th if.bind="isNotDisabled('email')">E-mail</th>
+                <th if.bind="isNotDisabled('telephone')">Telephone</th>
+                <th if.bind="isNotDisabled('permission')">Permission</th>
+                <th if.bind="isNotDisabled('edit')">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr repeat.for="user of users" class="${user.id === $parent.selectedId ? 'active' : ''}">
+                <td if.bind="isNotDisabled('id')">${user.id}</td>
+                <td if.bind="isNotDisabled('fName')">${user.firstName}</td>
+                <td if.bind="isNotDisabled('lName')">${user.lastName}</td>
+                <td if.bind="isNotDisabled('email')"><a href="mailto:${user.email}">${user.email}</a></td>
+                <td if.bind="isNotDisabled('telephone')"><a href="tel:${user.phoneNumber}">${user.phoneNumber}</a></td>
+                <td if.bind="isNotDisabled('permission')">${user.permission}</td>
+                <td if.bind="isNotDisabled('edit')">
+                    <a route-href="route: users; params.bind: {id:user.id}" title="Quick edit">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a route-href="route: users; params.bind: {id:user.id}" title="Full edit" class="margin-left-1">
+                        <i class="fa fa-list"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</template>

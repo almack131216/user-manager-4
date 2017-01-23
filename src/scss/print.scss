@@ -1,0 +1,251 @@
+/* print.scss */
+/* all changes are sent to 'print.css' */
+/*
+CIS CRS Sass Theme
+Author: Alex Mackenzie
+Version: 0.0.1
+*/
+
+@import 'base/_variables.scss';
+@import 'base/_mixins.scss';
+@import 'base/_print-and-web.scss';
+
+/* BASE - base styles, variables, mixins etc */
+html, body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #000;
+    background: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    font-weight: normal;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+main {
+    min-height: auto !important;
+}
+
+.position-relative#printableArea {
+    position: unset;
+}
+
+.print-none,
+header,
+table tr .col-actions, table tr .col-hidden, table tr .col-checkbox,
+button, .panel-btn-wrap,
+.tab-content > .inactive,
+.tab-pane:not(.active) {
+    display: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.tab-content > .active {
+    display: block;
+}
+
+/* .breadcrumbWrap */
+.breadcrumbWrap {
+    display: block;
+    width: 100%;
+
+    ul {
+        display: block;
+        width: 100%;
+        list-style: none;
+        margin: 0 0 40px 0;
+        padding: 0;
+
+        li {
+            display: inline;
+            list-style: none;
+            margin: 0;
+
+            &:before {
+                content: ' > ';
+                margin: 0 10px;
+            }
+
+            &:first-child:before {
+                content: '' !important;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.panel-heading-strong {
+    display: block;
+    width: 100%;
+
+    h3 {
+        font-size: 16pt;
+        color: #c40f11;
+    }
+}
+
+/* .panel-heading */
+.panel-heading {
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+
+    &[aria-hidden="true"],
+    &.panel-collapse-trigger > .panel-collapse > .panel-heading {
+        display: none;
+    }
+
+    .panel-title {
+        display: inline-block;
+        font-size: 12pt;
+    }
+
+    .panel-title-date {
+        display: inline-block;
+        font-weight: normal;
+        font-style: italic;
+        margin: 0 10px;
+    }
+}
+
+/* .panel-collapse */
+.panel-collapse {
+    display: block !important;
+    height: auto !important;
+
+    .wrap-subsections {
+        padding: 40px 10%;
+
+        .is-subsection .panel-collapse-wrap {
+
+            > .panel-heading {
+                border-bottom: none;
+            }
+
+            > .panel-collapse {
+                border: 2px solid #ccc;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+
+/* table */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 40px;
+
+    &.half-n-half tr th,
+    &.half-n-half tr td {
+        width: 50%;
+    }
+
+    tr {
+        th,
+        td {
+            padding: 0 10px 0 0;
+            border: none;
+            text-align: auto;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        th {
+            border-bottom: 1px solid #000;
+
+            &.col-hidden-header {
+                display: none;
+            }
+        }
+
+        td {
+        }
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+}
+
+img {
+    page-break-inside: avoid;
+    page-break-after: avoid;
+}
+
+blockquote, pre, panel {
+    page-break-inside: avoid;
+}
+
+ul, ol, dl {
+    page-break-before: avoid;
+}
+
+ul {
+    page-break-inside: avoid;
+}
+
+article {
+    page-break-before: always;
+}
+
+/* span highlights */
+.span-no-data-available {
+    font-weight: bold;
+}
+
+.span-info {
+    color: #239f40;
+}
+
+.span-good {
+    color: #239f40;
+}
+
+.span-error {
+    color: red;
+}
+
+.span-warning {
+    color: #ff9900;
+}
+
+/* .footer */
+footer {
+    clear: both;
+    display: inline-block;
+    margin-top: 40px;
+    font-weight: bold;
+    text-align: right;
+    border: 1px solid #000;
+    padding: 20px;
+    float: right;
+
+    .container {
+    }
+}
+
+/* page layouts */
+@page {
+    margin: 2cm;
+}
+
+@media print {
+}

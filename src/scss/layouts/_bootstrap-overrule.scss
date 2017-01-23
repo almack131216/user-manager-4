@@ -1,0 +1,66 @@
+/* _bootstrap-overrule.scss */
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default:focus {
+    color:$hyperlink-color-hover !important;
+}
+
+.dropdown-menu {
+    > li.divider {margin:0;}
+  // Links within the dropdown menu
+  > li > a {
+    padding: 3px 10px;
+  }
+}
+
+.wrap-pagination {
+    > ul.pagination {
+        margin-top:0px !important;
+        margin-bottom:0px !important;
+    }
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    padding: 4px $offset-1;
+    color: $hyperlink-color;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid $border-color;
+}
+
+.pagination>.disabled>a,
+.pagination>.disabled>a:focus,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>span,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>span:hover {
+    color: $disabled-color;
+    background-color: #fff;
+    border-color: $border-color;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    color: #000;
+    background-color: $bp_color-lightgray;
+    border-color: $border-color;
+}
+
+.input-group-addon {
+    padding: 4px $offset-1;
+    color: #555;
+    background-color: $bp_color-lightgray;
+    border: 1px solid $border-color;
+}
+
+.btn-default {
+    color: $hyperlink-color;
+    background-color: #fff;
+    border-color: $border-color;
+}

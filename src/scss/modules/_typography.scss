@@ -1,0 +1,75 @@
+/* _typography.scss */
+
+h1 > i,
+h2 > i,
+h3 > i,
+h4 > i {
+    margin-right: $offset-1;
+}
+
+h1 {font-size:36px;margin:$offset-g2 0 $offset-g1 0;color:#007f00;}
+
+div.hdr-wrap {margin-bottom:$offset-1;}
+.hdr-inline {margin:0;display:inline-block;}
+
+strong,
+.strong {
+    font-weight: bold;
+}
+
+.faint-small {
+    color: $color-faint;
+    font-size: 0.8em;
+}
+
+.fa.text-after {
+    margin-right:$offset-0-5;
+}
+
+.no-wrap {
+    white-space:nowrap;
+}
+
+.old-value {
+    @include set-opacity('semi');
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-line-through {
+    text-decoration: line-through;
+}
+
+.strong-title-accent {
+    font-size: $font-h3-size;
+    color: $bp_color-red;
+    font-weight: bold;
+}
+
+.trim-string {
+    @include trimString;
+}
+
+.ngbindPlacholder:before {
+    background: transparent url(../images/ajax-loader.gif) no-repeat 0 0;
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+.fa-dummy {
+    vertical-align: top;
+    font-family: FontAwesome;
+    content: " \f059";
+}
