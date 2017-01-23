@@ -1,15 +1,23 @@
 <template>
+    <require from="../widgets/list-activity"></require>
     <require from="../widgets/user-list"></require>
 
-    <h1>${title}<span class="html-file-name">(welcome.html)</span></h1>
-    <hr>
+    <!--<div class="row">
+        <div class="col-md-12">
+            <h1>${title}<span class="html-file-name">(welcome.html)</span></h1>
+        </div>
+    </div>
 
+    <hr>-->
+
+    <div class="row">
     <div class="col-md-6">
-
+        <list-activity></list-activity>
     </div>
 
     <div class="col-md-6">
         <user-list cust-title="Users-lite" cust-disable-cells="['fName','telephone','permission']"></user-list>
+    </div>
     </div>
     
 </template>

@@ -40,6 +40,20 @@ let users = [
     lastName:'Green',
     email:'green@inklings.com',
     phoneNumber:'867-5309'
+  },
+  {
+    id:getId(),
+    firstName:'David',
+    lastName:'Bowie',
+    email:'david@bowie.com',
+    phoneNumber:'123-4567'
+  },
+  {
+    id:getId(),
+    firstName:'Dan',
+    lastName:'Pena',
+    email:'dan@pena.com',
+    phoneNumber:'891-3210'
   }
 ];
 
