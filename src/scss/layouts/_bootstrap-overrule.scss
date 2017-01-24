@@ -1,4 +1,11 @@
 /* _bootstrap-overrule.scss */
+.navbar-default .navbar-toggle {
+    border-color:transparent !important;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff !important;
+}
 
 .btn-default:hover,
 .btn-default:active,

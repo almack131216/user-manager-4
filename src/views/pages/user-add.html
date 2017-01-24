@@ -1,6 +1,7 @@
 <template>
   <require from="../widgets/form-input"></require>
   <require from="../widgets/form-select"></require>
+  <require from="../widgets/form-radio"></require>
 
   <div class="btn-group btn-edit-avatar pull-right" role="group" aria-label="user options">
 
@@ -23,15 +24,30 @@
 
   </div>
 
-  <h1>${title}<span class="html-file-name">(user-add.html)</span></h1>
+
+    <h1 class="display-inline-block">${title}</h1>
+    <a class="margin-x-1" click.trigger="xc_all('expand')">
+        Expand All
+    </a>
+    &#124;
+    <a class="margin-left-1" click.trigger="xc_all('collapse')">
+        Collapse All
+    </a>
+
 
 
   <form role="form" class="form-horizontal">
     <div class="panel panel-default">
       <div class="panel-heading">
         User
+        <button class="btn btn-xc_chevron btn-xs" type="button"
+          data-toggle="collapse"
+          data-target="#xc_user"
+          aria-expanded="true"
+          aria-controls="collapseExample">
+        </button>
       </div>
-      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
+      <div id="xc_user" class="collapse in panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
 
         <form-input name="first-name" value.two-way="user.first-name" is-mandatory="true"></form-input>
         <form-input name="last-name" value.two-way="user.last-name" is-mandatory="true"></form-input>
@@ -73,8 +89,16 @@
 
 
     <div class="panel panel-default">
-      <div class="panel-heading">MRT Details</div>
-      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
+      <div class="panel-heading">
+        MRT Details
+        <button class="btn btn-xc_chevron btn-xs collapsed" type="button"
+          data-toggle="collapse"
+          data-target="#xc_mrt"
+          aria-expanded="false"
+          aria-controls="collapseExample">
+        </button>  
+      </div>
+      <div id="xc_mrt" class="collapse panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
 
         <form-input name="member-status" value.two-way="user.member-status"></form-input>
         <form-input name="date-joined" value.two-way="user.date-joined"></form-input>
@@ -82,13 +106,21 @@
         <form-input name="coast-size" value.two-way="user.coast-size"></form-input>
         <form-input name="language" value.two-way="user.language"></form-input>
         <form-input name="language-level" value.two-way="user.language-level"></form-input>
-      
+
       </div>
     </div>
 
-     <div class="panel panel-default">
-      <div class="panel-heading">MRT Role Information</div>
-      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        MRT Role Information
+        <button class="btn btn-xc_chevron btn-xs collapsed" type="button"
+          data-toggle="collapse"
+          data-target="#xc_mrt_role"
+          aria-expanded="false"
+          aria-controls="collapseExample">
+        </button>  
+      </div>
+      <div id="xc_mrt_role" class="collapse panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-4">
 
         <form-input name="primary-ics" value.two-way="user.primary-ics"></form-input>
         <form-input name="secondary-ics" value.two-way="user.secondary-ics"></form-input>
@@ -98,8 +130,16 @@
     </div>
 
     <div class="panel panel-default">
-      <div class="panel-heading">Passport and Visa Information</div>
-      <div class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-6">
+      <div class="panel-heading">
+        Passport and Visa Information
+        <button class="btn btn-xc_chevron btn-xs collapsed" type="button"
+          data-toggle="collapse"
+          data-target="#xc_passport_visa"
+          aria-expanded="false"
+          aria-controls="collapseExample">
+        </button>   
+      </div>
+      <div id="xc_passport_visa" class="collapse panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-6">
 
         <form-input name="passport-type" value.two-way="user.passport-type"></form-input>
         <form-input name="passport-number" value.two-way="user.passport-number"></form-input>
@@ -115,6 +155,106 @@
 
       </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Training
+        <button class="btn btn-xc_chevron btn-xs collapsed" type="button"
+          data-toggle="collapse"
+          data-target="#xc_training"
+          aria-expanded="false"
+          aria-controls="collapseExample">
+        </button>   
+      </div>
+      <div id="xc_training" class="collapse panel-body">
+
+
+        <p>No training is mandatory or required. Roles that require specific training will be selected based on responses below.</p>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <h4>ICS Training</h4>
+          </div>
+
+          <div class="col-lg-4">
+            <h4>ICS Section Specific Training</h4>
+          </div>
+
+          <div class="col-lg-4">
+            <h4>ICS Others</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <form-radio name="training-ims" value.two-way="user.training-ims" inp-label="BP IMS fundamentals"></form-radio>
+            <form-radio name="training-ics-100" value.two-way="user.training-ics-100" inp-label="ICS 100"></form-radio>
+            <form-radio name="training-ics-200" value.two-way="user.training-ics-200" inp-label="ICS 200"></form-radio>
+            <form-radio name="training-ics-300" value.two-way="user.training-ics-300" inp-label="ICS 300"></form-radio>
+            <form-radio name="training-ics-400" value.two-way="user.training-ics-400" inp-label="ICS 400"></form-radio>
+            <form-radio name="training-ics-700" value.two-way="user.training-ics-700" inp-label="ICS 700"></form-radio>
+            <form-radio name="training-ics-800" value.two-way="user.training-ics-800" inp-label="ICS 800"></form-radio>
+          </div>
+
+          <div class="col-lg-4">
+            <form-radio name="training-ics-command" value.two-way="user.training-ics-command" inp-label="Command"></form-radio>
+            <form-radio name="training-ics-planning" value.two-way="user.training-ics-planning" inp-label="Planning"></form-radio>
+            <form-radio name="training-ics-operations" value.two-way="user.training-ics-operations" inp-label="Operations"></form-radio>
+            <form-radio name="training-ics-logistics" value.two-way="user.training-ics-logistics" inp-label="Logistics"></form-radio>
+            <form-radio name="training-ics-finance" value.two-way="user.training-ics-finance" inp-label="Finance"></form-radio>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="row-fluid">
+              <div class="col-lg-9 padding-x-0">
+                <form-radio name="training-halwooper" value.two-way="user.training-halwooper" inp-label="Halwooper"></form-radio>
+              </div>
+              <div class="col-lg-3">
+                Expiry Date
+              </div>
+            </div>
+
+            <div class="row-fluid">
+              <div class="col-lg-9 padding-x-0">
+                <form-radio name="training-offshore-medical" value.two-way="user.training-offshore-medical" inp-label="Offshore Medical"></form-radio>
+              </div>
+              <div class="col-lg-3">
+                Expiry Date
+              </div>
+            </div>
+
+            <div class="row-fluid">
+              <div class="col-lg-9 padding-x-0">
+                <form-radio name="training-huet" value.two-way="user.training-huet" inp-label="Huet"></form-radio>
+              </div>
+              <div class="col-lg-3">
+                Expiry Date
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        TWIC Information
+        <button class="btn btn-xc_chevron btn-xs collapsed" type="button"
+          data-toggle="collapse"
+          data-target="#xc_twic"
+          aria-expanded="false"
+          aria-controls="collapseExample">
+        </button>  
+      </div>
+      <div id="xc_twic" class="collapse panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 row-col-lg-6">
+
+        <form-select name="twic-card" value.two-way="user.twic-card" inp-label="Hold a TWIC Card"></form-select>
+        <form-input name="twic-expiry-date" value.two-way="user.twic-expiry-date" inp-label="TWIC Expiry Date"></form-input>
+
+      </div>
+    </div>
+
 
     <div class="panel panel-primary display-none">
 

@@ -1,5 +1,21 @@
 /* _buttons.scss */
 
+.btn.btn-xc_chevron {
+    float:right;
+    background:transparent;
+    
+    &:before {
+        color:$hyperlink-color;
+        font-size:14px;
+        line-height:14px;
+        @extend .fa-dummy;
+        content: "\f078";
+    }
+    &.collapsed:before {
+        content: "\f077";        
+    }
+}
+
 .btn-group.btn-edit-avatar {
     > .btn-group {
         button.btn {
@@ -241,76 +257,6 @@ label.label-with-checkbox {
                 position: absolute;
                 top: 12px;
                 right: 12px;
-            }
-        }
-    }
-}
-
-.ci-search-wrap.tab-wrap {
-    background: #eee;
-    border-bottom: 1px solid $btn-border-color;
-
-    .nav-tabs {
-        > li {
-            margin-bottom: -1px;
-
-            &.active {
-                border-left: 1px solid $btn-border-color;
-                border-right: 1px solid $btn-border-color;
-
-                a,
-                a:hover {
-                    background: white !important;
-                    color: black;
-
-                    &:after {
-                        display: none;
-                    }
-                }
-            }
-
-            a {
-                padding: $offset-1 $offset-1 5px $offset-1;
-
-                &.has-close-btn {
-                    padding-right: 30px !important;
-                }
-
-                > span {
-                    display: inline-block;
-                    max-width: 170px;
-                    @include trimString;
-                }
-            }
-
-            &.active > a {
-                padding-left: $offset-1-5;
-                padding-right: $offset-1-5;
-            }
-
-            &.active > a:not(.has-close-btn) {
-                padding-right: $offset-1-5;
-            }
-
-            &.tab_closeAll {
-                float: right;
-            }
-        }
-    }
-
-    &.btn-gradient {
-        @extend .btn-gradient;
-
-        .nav-tabs {
-            > li {
-                a {
-                    padding-bottom: 5px;
-                    color: black;
-
-                    &:hover {
-                        @extend .btn-gradient-hover;
-                    }
-                }
             }
         }
     }
