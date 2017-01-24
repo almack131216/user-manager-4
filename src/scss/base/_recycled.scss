@@ -1,5 +1,10 @@
 /* _recycled.scss */
 
+.panel-heading {
+    background:$bp_color-lightgray;
+    border:0px;
+}
+
 .border-none {border:0px;}
 
 select:active {
@@ -100,19 +105,19 @@ section {
 
 @media (min-width: 1200px) {
     .row.row-col-lg-6 {        
-        > .form-group {
+        > * > .form-group {
             width: 50%;
         }
     }
     .row.row-col-lg-4 {        
-        > .form-group {
+        > * > .form-group {
             width: 33.33333333%;
         }
     }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .row.row-col-md-6 {        
-        > .form-group {
+        > * > .form-group {
             width: 50%;
         }
     }
@@ -120,7 +125,7 @@ section {
 
 @media (min-width: 768px) and (max-width: 991px) {
     .row.row-col-sm-6 {        
-        > .form-group {
+        > * > .form-group {
             width: 50%;
         }
     }
@@ -128,14 +133,14 @@ section {
 
 @media (max-width: 767px) {
     .row.row-col-xs-6 {        
-        > .form-group {
+        > * > .form-group {
             width: 50%;
         }
     }
 }
 @media (min-width:481px) and (max-width: 640px){
     .row.row-col-xxs-12 {        
-        > .form-group {
+        > * > .form-group {
             width: 100%;
         }
     }

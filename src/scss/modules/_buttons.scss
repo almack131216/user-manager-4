@@ -3,16 +3,17 @@
 .btn.btn-xc_chevron {
     float:right;
     background:transparent;
-    
+
     &:before {
         color:$hyperlink-color;
         font-size:14px;
         line-height:14px;
         @extend .fa-dummy;
-        content: "\f078";
+        content: "\f077"; 
+        
     }
     &.collapsed:before {
-        content: "\f077";        
+              content: "\f078"; 
     }
 }
 

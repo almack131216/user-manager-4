@@ -1,0 +1,40 @@
+<template>
+    <require from="../form-input"></require>
+    <require from="../form-select"></require>
+
+    <form-input name="first-name" value.two-way="user.first-name" is-mandatory="true"></form-input>
+    <form-input name="last-name" value.two-way="user.last-name" is-mandatory="true"></form-input>
+    <form-select name="selRegion" value.two-way="user.selRegion"></form-select>
+
+    <form-select name="selHub" value.two-way="user.selHub"></form-select>
+    <form-select name="selSegment" value.two-way="user.selSegment"></form-select>
+    <form-select name="selEntity" value.two-way="user.selEntity"></form-select>
+
+    <form-input name="function" value.two-way="user.function"></form-input>
+    <form-input name="location" value.two-way="user.location"></form-input>
+    <form-input name="email" value.two-way="user.email" is-mandatory="true"></form-input>
+
+    <div class="divider"></div>
+
+    <form-input name="home-number" value.two-way="user.home-number"></form-input>
+    <form-input name="cell-number-personal" value.two-way="user.cell-number-personal"></form-input>
+    <form-input name="office-number" value.two-way="user.office-number"></form-input>
+
+    <div class="divider"></div>
+
+    <form-select name="bp-office-address" value.two-way="user.bp-office-address" inp-label="BP Office Address"></form-select>
+    <form-input name="cell-number" value.two-way="user.cell-number" is-mandatory="true"></form-input>
+    <form-input name="lync-number" value.two-way="user.lync-number"></form-input>
+
+    <div class="divider"></div>
+
+    <form-input name="line-manager" value.two-way="user.line-manager"></form-input>
+    <form-input name="line-manager-email" value.two-way="user.line-manager-email"></form-input>
+    <form-input name="line-manager-ntid" value.two-way="user.line-manager-ntid" inp-label="Line Manager NTID"></form-input>
+
+    <div class="divider"></div>
+
+    <form-input name="emergency-contact-name" value.two-way="user.emergency-contact-name"></form-input>
+    <form-input name="emergency-contact-number" value.two-way="user.emergency-contact-number"></form-input>
+
+</template>
