@@ -1,8 +1,7 @@
 /* _recycled.scss */
 
-.panel-heading {
-    background:$bp_color-lightgray;
-    border:0px;
+.panel-body.collapse {
+
 }
 
 .border-none {border:0px;}
@@ -15,6 +14,8 @@ select:focus {
 }
 
 .panel-heading {
+    background:$bp_color-lightgray;
+    border:0px;
 
     .btn-edit-photo {
 

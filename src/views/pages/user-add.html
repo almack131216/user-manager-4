@@ -2,18 +2,20 @@
   <require from="../widgets/form-input"></require>
   <require from="../widgets/form-select"></require>
   <require from="../widgets/form-radio"></require>
-  <require from="../widgets/form-user-full-heading"></require>
   <require from="../widgets/form-user-full-body"></require>
 
   <div class="btn-group btn-edit-avatar pull-right" role="group" aria-label="user options">
 
     <div class="btn-group" role="group">
-      <button class="btn btn-default dropdown-toggle btn-i" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+      <button class="btn btn-default dropdown-toggle btn-i" type="button"
+        id="dropdownMenu1"
+        data-toggle="dropdown"
+        aria-haspopup="true"
         aria-expanded="true">
-              <i class="fa fa-pencil"></i>
-              David Bowie
-              <span class="caret"></span>
-          </button>
+          <i class="fa fa-pencil"></i>
+          David Bowie
+          <span class="caret"></span>
+      </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li><a href="#"><i class="fa fa-fw fa-pencil"></i> Change Username</a></li>
         <li><a href="#"><i class="fa fa-fw fa-photo"></i> Change Avatar</a></li>
@@ -27,48 +29,30 @@
   </div>
 
 
-    <h1 class="display-inline-block">${title}</h1>
-    <a class="margin-x-1" click.trigger="xc_all('expand')">
-        Expand All
-    </a>
-    &#124;
-    <a class="margin-left-1" click.trigger="xc_all('collapse')">
-        Collapse All
-    </a>
+  <h1 class="display-inline-block">${title}</h1>
+  <a class="margin-x-1" click.trigger="xc_all('expand')">
+    Expand All
+  </a> &#124;
+  <a class="margin-left-1" click.trigger="xc_all('collapse')">
+    Collapse All
+  </a>
 
 
 
   <form role="form" class="form-horizontal">
-    
-    <div class="panel panel-default">
-      <form-user-full-heading cust-title="User" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-heading>
-      <form-user-full-body cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
-    </div>
 
-    <div class="panel panel-default">
-      <form-user-full-heading cust-title="MRT Details" cust-xc="true" cust-xc-id="xc_mrt"></form-user-full-heading>
-      <form-user-full-body cust-body="user-mrt" cust-xc="true" cust-xc-id="xc_mrt"></form-user-full-body>
-    </div>
+    <form-user-full-body cust-title="User" cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
 
-    <div class="panel panel-default">
-      <form-user-full-heading cust-title="MRT Role Information" cust-xc="true" cust-xc-id="xc_mrt-role"></form-user-full-heading>
-      <form-user-full-body cust-body="user-mrt-role" cust-xc="true" cust-xc-id="xc_mrt-role"></form-user-full-body>
-    </div>
+    <form-user-full-body cust-title="MRT Details" cust-body="user-mrt" cust-xc="true" cust-xc-id="xc_mrt"></form-user-full-body>
 
-    <div class="panel panel-default">
-      <form-user-full-heading cust-title="Passport and Visa Information" cust-xc="true" cust-xc-id="xc_passport-visa"></form-user-full-heading>
-      <form-user-full-body cust-body="user-passport-visa" cust-xc="true" cust-xc-id="xc_passport-visa" cust-xc-res-class="row-col-lg-6"></form-user-full-body>
-    </div>
+    <form-user-full-body cust-title="MRT Role Information" cust-body="user-mrt-role" cust-xc="true" cust-xc-id="xc_mrt-role"></form-user-full-body>
 
-    <div class="panel panel-default">
-      <form-user-full-heading cust-title="Training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-heading>
-      <form-user-full-body cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
-    </div>
+    <form-user-full-body cust-title="Passport and Visa Information" cust-body="user-passport-visa" cust-xc="true" cust-xc-id="xc_passport-visa"
+      cust-xc-res-class="row-col-lg-6"></form-user-full-body>
 
-    <div class="panel panel-default">
-      <form-user-full-heading cust-title="TWIC Information" cust-xc="true" cust-xc-id="xc_twic"></form-user-full-heading>
-      <form-user-full-body cust-body="user-twic" cust-xc="true" cust-xc-id="xc_twic" cust-xc-res-class="row-col-lg-6"></form-user-full-body>
-    </div>
+    <form-user-full-body cust-title="Training" cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
+
+    <form-user-full-body cust-title="TWIC Information" cust-body="user-twic" cust-xc="true" cust-xc-id="xc_twic" cust-xc-res-class="row-col-lg-6"></form-user-full-body>
 
 
     <div class="panel panel-primary display-none">
