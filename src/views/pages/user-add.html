@@ -3,6 +3,7 @@
   <require from="../widgets/form-select"></require>
   <require from="../widgets/form-radio"></require>
   <require from="../widgets/form-user-full-body"></require>
+  <require from="../widgets/btn-xc-all"></require>
 
   <div class="btn-group btn-edit-avatar pull-right" role="group" aria-label="user options">
 
@@ -30,13 +31,7 @@
 
 
   <h1 class="display-inline-block">${title}</h1>
-  <a class="margin-x-1" click.trigger="xc_all('expand')">
-    Expand All
-  </a> &#124;
-  <a class="margin-left-1" click.trigger="xc_all('collapse')">
-    Collapse All
-  </a>
-
+  <btn-xc-all></btn-xc-all>
 
 
   <form role="form" class="form-horizontal">
