@@ -8,7 +8,7 @@ interface User {
   first_name: string;
   last_name: string;
   email: string;
-  phone_number: string;
+  cell_number: string;
 }
 
 @inject(WebAPIUsers, EventAggregator)

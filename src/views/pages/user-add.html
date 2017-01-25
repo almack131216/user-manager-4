@@ -33,10 +33,9 @@
   <h1 class="display-inline-block">${title}</h1>
   <btn-xc-all wrapper-id="user-panels"></btn-xc-all>
 
-
   <form role="form" class="form-horizontal" id="user-panels">
 
-    <form-user-full-body cust-title="User" cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
+    <form-user-full-body user.bind="user" cust-title="User" cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
 
     <form-user-full-body cust-title="MRT Details" cust-body="user-mrt" cust-xc="true" cust-xc-id="xc_mrt"></form-user-full-body>
 
@@ -48,19 +47,6 @@
     <form-user-full-body cust-title="Training" cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
 
     <form-user-full-body cust-title="TWIC Information" cust-body="user-twic" cust-xc="true" cust-xc-id="xc_twic" cust-xc-res-class="row-col-lg-6"></form-user-full-body>
-
-
-    <div class="panel panel-primary display-none">
-
-      <div class="panel-body">
-
-        <!--<div repeat.for="elem of newUser">
-          <p>${elem.name} / ${elem.val} / ${elem.label}</p>
-          <form-input name="${elem.name}" model.bind="elem.val" inp-label="${elem.label}"></form-input>
-        </div>-->
-
-      </div>
-    </div>
 
   </form>
 

@@ -11,49 +11,49 @@ let users = [
     first_name:'John',
     last_name:'Tolkien',
     email:'tolkien@inklings.com',
-    phone_number:'867-5309'
+    cell_number:'867-5309'
   },
   {
     id:getId(),
     first_name:'Clive',
     last_name:'Lewis',
     email:'lewis@inklings.com',
-    phone_number:'867-5309'
+    cell_number:'867-5309'
   },
   {
     id:getId(),
     first_name:'Owen',
     last_name:'Barfield',
     email:'barfield@inklings.com',
-    phone_number:'867-5309'
+    cell_number:'867-5309'
   },
   {
     id:getId(),
     first_name:'Charles',
     last_name:'Williams',
     email:'williams@inklings.com',
-    phone_number:'867-5309'
+    cell_number:'867-5309'
   },
   {
     id:getId(),
     first_name:'Roger',
     last_name:'Green',
     email:'green@inklings.com',
-    phone_number:'867-5309'
+    cell_number:'867-5309'
   },
   {
     id:getId(),
     first_name:'David',
     last_name:'Bowie',
     email:'david@bowie.com',
-    phone_number:'123-4567'
+    cell_number:'123-4567'
   },
   {
     id:getId(),
     first_name:'Dan',
     last_name:'Pena',
     email:'dan@pena.com',
-    phone_number:'891-3210'
+    cell_number:'891-3210'
   }
 ];
 
@@ -69,7 +69,7 @@ export class WebAPIUsers {
           first_name:x.first_name,
           last_name:x.last_name,
           email:x.email,
-          phone_number:x.phone_number
+          cell_number:x.cell_number
         }});
         resolve(results);
         this.isRequesting = false;

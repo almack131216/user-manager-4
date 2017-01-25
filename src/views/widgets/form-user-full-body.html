@@ -20,7 +20,7 @@
 
         <div id="${custXcId}" class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}">
             <div class="wrap-fields">
-                <user-panel-details if.bind="custBody=='user-details'"></user-panel-details>
+                <user-panel-details if.bind="custBody=='user-details'" user.bind="user"></user-panel-details>
                 <user-panel-mrt if.bind="custBody=='user-mrt'"></user-panel-mrt>
                 <user-panel-mrt-role if.bind="custBody=='user-mrt-role'"></user-panel-mrt-role>
                 <user-panel-passport-visa if.bind="custBody=='user-passport-visa'"></user-panel-passport-visa>

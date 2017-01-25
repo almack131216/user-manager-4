@@ -2,39 +2,39 @@
     <require from="../form-input"></require>
     <require from="../form-select"></require>
 
-    <form-input name="first_name" value.two-way="user.first_name" is-mandatory="true"></form-input>
-    <form-input name="last_name" value.two-way="user.last_name" is-mandatory="true"></form-input>
-    <form-select name="selRegion" value.two-way="user.selRegion"></form-select>
+    <form-input name="first_name" model.two-way="user.first_name" is-mandatory="true"></form-input>
+    <form-input name="last_name" model.two-way="user.last_name" is-mandatory="true"></form-input>
+    <form-select name="selRegion" model.two-way="user.selRegion"></form-select>
 
-    <form-select name="selHub" value.two-way="user.selHub"></form-select>
-    <form-select name="selSegment" value.two-way="user.selSegment"></form-select>
-    <form-select name="selEntity" value.two-way="user.selEntity"></form-select>
+    <form-select name="selHub" model.two-way="user.selHub"></form-select>
+    <form-select name="selSegment" model.two-way="user.selSegment"></form-select>
+    <form-select name="selEntity" model.two-way="user.selEntity"></form-select>
 
-    <form-input name="function" value.two-way="user.function"></form-input>
-    <form-input name="location" value.two-way="user.location"></form-input>
-    <form-input name="email" value.two-way="user.email" is-mandatory="true"></form-input>
-
-    <div class="divider"></div>
-
-    <form-input name="home-number" value.two-way="user.home-number"></form-input>
-    <form-input name="cell-number-personal" value.two-way="user.cell-number-personal"></form-input>
-    <form-input name="office-number" value.two-way="user.office-number"></form-input>
+    <form-input name="function" model.two-way="user.function"></form-input>
+    <form-input name="location" model.two-way="user.location"></form-input>
+    <form-input name="email" model.two-way="user.email" is-mandatory="true"></form-input>
 
     <div class="divider"></div>
 
-    <form-select name="bp-office-address" value.two-way="user.bp-office-address" inp-label="BP Office Address"></form-select>
-    <form-input name="cell-number" value.two-way="user.cell-number" is-mandatory="true"></form-input>
-    <form-input name="lync-number" value.two-way="user.lync-number"></form-input>
+    <form-input name="home-number" model.two-way="user.home-number"></form-input>
+    <form-input name="cell_number" model.two-way="user.cell_number"></form-input>
+    <form-input name="office-number" model.two-way="user.office-number"></form-input>
 
     <div class="divider"></div>
 
-    <form-input name="line-manager" value.two-way="user.line-manager"></form-input>
-    <form-input name="line-manager-email" value.two-way="user.line-manager-email"></form-input>
-    <form-input name="line-manager-ntid" value.two-way="user.line-manager-ntid" inp-label="Line Manager NTID"></form-input>
+    <form-select name="bp-office-address" model.two-way="user.bp-office-address" inp-label="BP Office Address"></form-select>
+    <form-input name="cell-number" model.two-way="user.cell-number" is-mandatory="true"></form-input>
+    <form-input name="lync-number" model.two-way="user.lync-number"></form-input>
 
     <div class="divider"></div>
 
-    <form-input name="emergency-contact-name" value.two-way="user.emergency-contact-name"></form-input>
-    <form-input name="emergency-contact-number" value.two-way="user.emergency-contact-number"></form-input>
+    <form-input name="line-manager" model.two-way="user.line-manager"></form-input>
+    <form-input name="line-manager-email" model.two-way="user.line-manager-email"></form-input>
+    <form-input name="line-manager-ntid" model.two-way="user.line-manager-ntid" inp-label="Line Manager NTID"></form-input>
+
+    <div class="divider"></div>
+
+    <form-input name="emergency-contact-name" model.two-way="user.emergency-contact-name"></form-input>
+    <form-input name="emergency-contact-number" model.two-way="user.emergency-contact-number"></form-input>
 
 </template>
