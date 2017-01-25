@@ -1250,18 +1250,10 @@ define('views/widgets/btn-xc-all',["require", "exports", "bootstrap", "bootstrap
         BtnXcAll.prototype.xc_all = function (getState) {
             console.log(getState);
             if (getState == 'expand') {
-                $('.collapse').addClass('in');
-                $('.btn-xc_chevron').removeClass('collapsed');
-                $('.btn-xc_chevron').attr('aria-expanded', true);
-                $('.collapse').attr('aria-expanded', true);
-                $('.collapse').css('height', 'auto');
+                $('.panel-body.collapse:not(".in")').collapse('show');
             }
             if (getState == 'collapse') {
-                $('.collapse').removeClass('in');
-                $('.btn-xc_chevron').addClass('collapsed');
-                $('.btn-xc_chevron').attr('aria-expanded', false);
-                $('.collapse').attr('aria-expanded', true);
-                $('.collapse').css('height', '0px');
+                $('.panel-body.collapse.in').collapse('hide');
             }
         };
         return BtnXcAll;
