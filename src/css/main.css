@@ -2349,6 +2349,11 @@ footer ul.ul-inline-piped li:last-child:after {
   border-bottom: 3px solid #009900;
 }
 
+/* line 12, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_panels.scss */
+.panel.has-button-bar {
+  margin-bottom: 0px;
+}
+
 /* _offsets.scss */
 /* line 3, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .float-none {

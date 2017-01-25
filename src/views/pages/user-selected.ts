@@ -33,4 +33,17 @@ export class UserSelected {
     });
   }
 
+  canDeactivate() {
+    if (!areEqual(this.originalUser, this.user)) {
+      let result = confirm('You have unsaved changes. Are you sure you wish to leave?');
+
+      if (!result) {
+        this.ea.publish(new UserViewed(this.user));
+      }
+
+      return result;
+    }
+    return true;
+  }
+
 }
