@@ -5,14 +5,14 @@
     <h1 class="hdr-inline">${title}<span class="html-file-name">(user-edit.html)</span></h1>
   </div>
 
-  <div class="panel panel-primary bg-light margin-x-0">
+  <div class="panel panel-bp margin-x-0">
     <div class="panel-body row">
       <form role="form" class="form-horizontal">
 
-        <form-input name="firstName" model.bind="user.firstName"></form-input>
-        <form-input name="lastName" model.bind="user.lastName" inp-label="Last Name"></form-input>
+        <form-input name="first_name" model.bind="user.first_name"></form-input>
+        <form-input name="last_name" model.bind="user.last_name" inp-label="Last Name"></form-input>
         <form-input name="email" model.bind="user.email" inp-label="Email"></form-input>
-        <form-input name="phoneNumber" model.bind="user.phoneNumber" inp-label="Telephone"></form-input>
+        <form-input name="phone_number" model.bind="user.phone_number" inp-label="Telephone"></form-input>
 
         <!--<div repeat.for="elem of editUser">
           <p>${elem.name} / ${elem.val} / ${elem.label} / ${parent.editUser[$index].val}</p>
@@ -20,7 +20,14 @@
         </div>-->
 
       </form>
+
     </div>
   </div>
+
+<div bind.if="user">
+  <div class="button-bar col-md-12">
+    <button class="btn btn-success" click.delegate="save()" disabled.bind="!canSave">Save</button>
+  </div>
+</div>
 
 </template>

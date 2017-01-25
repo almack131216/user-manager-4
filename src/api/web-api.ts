@@ -8,38 +8,38 @@ function getId(){
 let contacts = [
   {
     id:getId(),
-    firstName:'John',
-    lastName:'Tolkien',
+    first_name:'John',
+    last_name:'Tolkien',
     email:'tolkien@inklings.com',
-    phoneNumber:'867-5309'
+    phone_number:'867-5309'
   },
   {
     id:getId(),
-    firstName:'Clive',
-    lastName:'Lewis',
+    first_name:'Clive',
+    last_name:'Lewis',
     email:'lewis@inklings.com',
-    phoneNumber:'867-5309'
+    phone_number:'867-5309'
   },
   {
     id:getId(),
-    firstName:'Owen',
-    lastName:'Barfield',
+    first_name:'Owen',
+    last_name:'Barfield',
     email:'barfield@inklings.com',
-    phoneNumber:'867-5309'
+    phone_number:'867-5309'
   },
   {
     id:getId(),
-    firstName:'Charles',
-    lastName:'Williams',
+    first_name:'Charles',
+    last_name:'Williams',
     email:'williams@inklings.com',
-    phoneNumber:'867-5309'
+    phone_number:'867-5309'
   },
   {
     id:getId(),
-    firstName:'Roger',
-    lastName:'Green',
+    first_name:'Roger',
+    last_name:'Green',
     email:'green@inklings.com',
-    phoneNumber:'867-5309'
+    phone_number:'867-5309'
   }
 ];
 
@@ -52,10 +52,10 @@ export class WebAPI {
       setTimeout(() => {
         let results = contacts.map(x =>  { return {
           id:x.id,
-          firstName:x.firstName,
-          lastName:x.lastName,
+          first_name:x.first_name,
+          last_name:x.last_name,
           email:x.email,
-          phoneNumber:x.phoneNumber
+          phone_number:x.phone_number
         }});
         resolve(results);
         this.isRequesting = false;

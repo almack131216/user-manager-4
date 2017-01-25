@@ -5,10 +5,10 @@ import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
 
 interface User {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  phoneNumber: string;
+  phone_number: string;
 }
 
 @inject(WebAPIUsers, EventAggregator)
@@ -27,36 +27,10 @@ export class UserSelected {
     console.log('activate: ' + params.id);
     return this.api.getUserDetails(params.id).then(user => {
       this.user = <User>user;
-      this.routeConfig.navModel.setTitle(this.user.firstName);
+      this.routeConfig.navModel.setTitle(this.user.first_name);
       this.originalUser = JSON.parse(JSON.stringify(this.user));
       this.ea.publish(new UserViewed(this.user));
     });
   }
 
-  get canSave() {
-    return this.user.firstName && this.user.lastName && !this.api.isRequesting;
-  }
-
-  save() {
-    this.api.saveUser(this.user).then(user => {
-      this.user = <User>user;
-      this.routeConfig.navModel.setTitle(this.user.firstName);
-      this.originalUser = JSON.parse(JSON.stringify(this.user));
-      this.ea.publish(new UserUpdated(this.user));
-    });
-  }
-
-  canDeactivate() {
-    if (!areEqual(this.originalUser, this.user)) {
-      let result = confirm('You have unsaved changes. Are you sure you wish to leave?');
-
-      if (!result) {
-        this.ea.publish(new UserViewed(this.user));
-      }
-
-      return result;
-    }
-
-    return true;
-  }
 }

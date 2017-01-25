@@ -2344,8 +2344,9 @@ footer ul.ul-inline-piped li:last-child:after {
 
 /* line 6, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_panels.scss */
 .panel.panel-bp {
-  border-color: #ddd;
-  background: #f9f9f9;
+  background: #eee;
+  border: 0px;
+  border-bottom: 3px solid #009900;
 }
 
 /* _offsets.scss */

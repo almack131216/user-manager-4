@@ -14,10 +14,10 @@
         <thead>
             <tr>
                 <th if.bind="isNotDisabled('id')">id</th>
-                <th if.bind="isNotDisabled('fName')">First Name</th>
-                <th if.bind="isNotDisabled('lName')">Last Name</th>
+                <th if.bind="isNotDisabled('first_name')">First Name</th>
+                <th if.bind="isNotDisabled('last_name')">Last Name</th>
                 <th if.bind="isNotDisabled('email')">E-mail</th>
-                <th if.bind="isNotDisabled('telephone')">Telephone</th>
+                <th if.bind="isNotDisabled('phone_number')">Telephone</th>
                 <th if.bind="isNotDisabled('permission')">Permission</th>
                 <th if.bind="isNotDisabled('edit')">Edit</th>
             </tr>
@@ -25,10 +25,10 @@
         <tbody>
             <tr repeat.for="user of users" class="${user.id === $parent.selectedId ? 'active' : ''}">
                 <td if.bind="isNotDisabled('id')">${user.id}</td>
-                <td if.bind="isNotDisabled('fName')">${user.firstName}</td>
-                <td if.bind="isNotDisabled('lName')">${user.lastName}</td>
+                <td if.bind="isNotDisabled('first_name')">${user.first_name}</td>
+                <td if.bind="isNotDisabled('last_name')">${user.last_name}</td>
                 <td if.bind="isNotDisabled('email')"><a href="mailto:${user.email}">${user.email}</a></td>
-                <td if.bind="isNotDisabled('telephone')"><a href="tel:${user.phoneNumber}">${user.phoneNumber}</a></td>
+                <td if.bind="isNotDisabled('phone_number')"><a href="tel:${user.phone_number}">${user.phone_number}</a></td>
                 <td if.bind="isNotDisabled('permission')">${user.permission}</td>
                 <td if.bind="isNotDisabled('edit')">
                     <a route-href="route: users; params.bind: {id:user.id}" title="Quick edit">
