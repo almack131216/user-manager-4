@@ -20,6 +20,7 @@ export class App {
       { route: ['','welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Welcome' },
       { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Users' },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'User' },
+      { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit User' },
       { route: 'users/add', moduleId: './views/pages/user-add', name: 'user-add', nav: true, title: 'Add User' }
     ]);
 

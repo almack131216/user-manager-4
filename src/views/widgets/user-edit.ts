@@ -30,11 +30,6 @@ export class UserEdit {
     console.log('created: ' + this.user);
     this.originalUser = JSON.parse(JSON.stringify(this.user));
   }
-  
-  activate(params, routeConfig) {
-    this.routeConfig = routeConfig;
-    console.log('activate: ' + params.id);
-  }
 
   get canSave() {
     return this.user.first_name && this.user.last_name && !this.api.isRequesting;

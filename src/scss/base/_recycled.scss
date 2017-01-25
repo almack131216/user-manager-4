@@ -1,10 +1,14 @@
 /* _recycled.scss */
 
 .panel.panel-xc {
-    margin-bottom:-1px;
+    margin-bottom:2px;
+    border:0px;
+    @include box-shadow(false);
     
     .panel-heading {
         border-bottom:0px;
+        background:$bp_color-lightgray-2;
+
     }
     .panel-body {
         padding-top:0px;

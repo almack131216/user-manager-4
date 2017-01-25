@@ -15,6 +15,7 @@ interface User {
 export class UserSelected {
   routeConfig;
   user: User;
+  editType = null;
   originalUser: User;
   title = ''
 
@@ -24,8 +25,9 @@ export class UserSelected {
 
   activate(params, routeConfig) {
     this.routeConfig = routeConfig;
-    console.log('activate: ' + params.id);
+    console.log('activate: ' + params.id + ' (' + params.editType + ')');
     return this.api.getUserDetails(params.id).then(user => {
+      if(params.editType) this.editType = params.editType;
       this.user = <User>user;
       this.routeConfig.navModel.setTitle(this.user.first_name);
       this.originalUser = JSON.parse(JSON.stringify(this.user));
