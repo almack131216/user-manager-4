@@ -27,16 +27,7 @@ export class WebAPIUsers {
     return new Promise(resolve => {
       setTimeout(() => {
         let users = this.http.fetch('src/views/widgets/user-panels/dummy-data.json')
-            .then(users => users.json());
-
-        // let results = users.map(x =>  { return {
-        //   id:x.id,
-        //   first_name:x.first_name,
-        //   last_name:x.last_name,
-        //   email:x.email,
-        //   cell_number:x.cell_number
-        // }});
-              
+            .then(users => users.json());   
 
         resolve(users);
         this.isRequesting = false;
@@ -45,17 +36,24 @@ export class WebAPIUsers {
   }
 
   getUserDetails(id){
+    console.log('getUserDetails: ' + id);
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
         console.log('usersArr:' + usersArr);
-        let found = usersArr.filter(x => x.id == id);
-        
-        resolve(JSON.parse(JSON.stringify(found)));
+        //let found = usersArr.filter(x => x.id == id);
+        let found = this.http.fetch('src/views/widgets/user-panels/dummy-user.json')
+            .then(found => found.json())
+            .then(found => found);
+            
+
+        console.log('getUserDetails ARR: ' + JSON.stringify(found) );
+        resolve(found);
         this.isRequesting = false;
       }, latency);
     });
   }
+
 
   saveUser(user){
     this.isRequesting = true;

@@ -13,8 +13,7 @@ export class UserList {
   public CV = CV
   users;
   selectedId = 0;
-  title = 'Users';
-  
+  title = 'Users';  
 
   isNotDisabled(getField){
     //if(CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);
