@@ -232,83 +232,36 @@ define('api/utility',["require", "exports"], function (require, exports) {
     ;
 });
 
-define('api/web-api-users',["require", "exports"], function (require, exports) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('api/web-api-users',["require", "exports", "aurelia-fetch-client", "aurelia-framework"], function (require, exports, aurelia_fetch_client_1, aurelia_framework_1) {
     "use strict";
     var latency = 200;
     var id = 0;
-    function getId() {
-        return ++id;
-    }
-    var users = [
-        {
-            id: getId(),
-            first_name: 'John',
-            last_name: 'Tolkien',
-            email: 'tolkien@inklings.com',
-            cell_number: '867-5309'
-        },
-        {
-            id: getId(),
-            first_name: 'Clive',
-            last_name: 'Lewis',
-            email: 'lewis@inklings.com',
-            cell_number: '867-5309'
-        },
-        {
-            id: getId(),
-            first_name: 'Owen',
-            last_name: 'Barfield',
-            email: 'barfield@inklings.com',
-            cell_number: '867-5309'
-        },
-        {
-            id: getId(),
-            first_name: 'Charles',
-            last_name: 'Williams',
-            email: 'williams@inklings.com',
-            cell_number: '867-5309'
-        },
-        {
-            id: getId(),
-            first_name: 'Roger',
-            last_name: 'Green',
-            email: 'green@inklings.com',
-            cell_number: '867-5309'
-        },
-        {
-            id: getId(),
-            first_name: 'David',
-            last_name: 'Bowie',
-            email: 'david@bowie.com',
-            cell_number: '123-4567'
-        },
-        {
-            id: getId(),
-            first_name: 'Dan',
-            last_name: 'Pena',
-            email: 'dan@pena.com',
-            cell_number: '891-3210'
-        }
-    ];
+    var users = null;
+    var usersArr = [];
+    var results = null;
     var WebAPIUsers = (function () {
-        function WebAPIUsers() {
+        function WebAPIUsers(http) {
             this.isRequesting = false;
+            this.usersArr = [];
+            this.http = http;
         }
         WebAPIUsers.prototype.getUserList = function () {
             var _this = this;
             this.isRequesting = true;
             return new Promise(function (resolve) {
                 setTimeout(function () {
-                    var results = users.map(function (x) {
-                        return {
-                            id: x.id,
-                            first_name: x.first_name,
-                            last_name: x.last_name,
-                            email: x.email,
-                            cell_number: x.cell_number
-                        };
-                    });
-                    resolve(results);
+                    var users = _this.http.fetch('src/views/widgets/user-panels/dummy-data.json')
+                        .then(function (users) { return users.json(); });
+                    resolve(users);
                     _this.isRequesting = false;
                 }, latency);
             });
@@ -318,7 +271,8 @@ define('api/web-api-users',["require", "exports"], function (require, exports) {
             this.isRequesting = true;
             return new Promise(function (resolve) {
                 setTimeout(function () {
-                    var found = users.filter(function (x) { return x.id == id; })[0];
+                    console.log('usersArr:' + usersArr);
+                    var found = usersArr.filter(function (x) { return x.id == id; });
                     resolve(JSON.parse(JSON.stringify(found)));
                     _this.isRequesting = false;
                 }, latency);
@@ -336,7 +290,6 @@ define('api/web-api-users',["require", "exports"], function (require, exports) {
                         users[index] = instance;
                     }
                     else {
-                        instance.id = getId();
                         users.push(instance);
                     }
                     _this.isRequesting = false;
@@ -346,6 +299,10 @@ define('api/web-api-users',["require", "exports"], function (require, exports) {
         };
         return WebAPIUsers;
     }());
+    WebAPIUsers = __decorate([
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [aurelia_fetch_client_1.HttpClient])
+    ], WebAPIUsers);
     exports.WebAPIUsers = WebAPIUsers;
 });
 
@@ -421,6 +378,56 @@ define('resources/elements/loading-indicator',["require", "exports", "nprogress"
         aurelia_framework_1.noView(['nprogress/nprogress.css'])
     ], LoadingIndicator);
     exports.LoadingIndicator = LoadingIndicator;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('views/ui/nav-bar',["require", "exports", "aurelia-framework", "../../resources/constants"], function (require, exports, aurelia_framework_1, Constants) {
+    "use strict";
+    var CV = Constants;
+    var NavBar = (function () {
+        function NavBar() {
+            this.router = null;
+            this.CV = CV;
+        }
+        return NavBar;
+    }());
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], NavBar.prototype, "router", void 0);
+    exports.NavBar = NavBar;
+});
+
+define('views/ui/ui-footer',["require", "exports", "../../resources/constants"], function (require, exports, Constants) {
+    "use strict";
+    var CV = Constants;
+    var UiFooter = (function () {
+        function UiFooter() {
+            this.CV = CV;
+        }
+        return UiFooter;
+    }());
+    exports.UiFooter = UiFooter;
+});
+
+define('views/ui/ui-header',["require", "exports", "../../resources/constants"], function (require, exports, Constants) {
+    "use strict";
+    var CV = Constants;
+    var UiHeader = (function () {
+        function UiHeader() {
+            this.CV = CV;
+        }
+        return UiHeader;
+    }());
+    exports.UiHeader = UiHeader;
 });
 
 define('views/pages/login',["require", "exports"], function (require, exports) {
@@ -557,56 +564,6 @@ define('views/pages/welcome',["require", "exports"], function (require, exports)
         return Welcome;
     }());
     exports.Welcome = Welcome;
-});
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('views/ui/nav-bar',["require", "exports", "aurelia-framework", "../../resources/constants"], function (require, exports, aurelia_framework_1, Constants) {
-    "use strict";
-    var CV = Constants;
-    var NavBar = (function () {
-        function NavBar() {
-            this.router = null;
-            this.CV = CV;
-        }
-        return NavBar;
-    }());
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], NavBar.prototype, "router", void 0);
-    exports.NavBar = NavBar;
-});
-
-define('views/ui/ui-footer',["require", "exports", "../../resources/constants"], function (require, exports, Constants) {
-    "use strict";
-    var CV = Constants;
-    var UiFooter = (function () {
-        function UiFooter() {
-            this.CV = CV;
-        }
-        return UiFooter;
-    }());
-    exports.UiFooter = UiFooter;
-});
-
-define('views/ui/ui-header',["require", "exports", "../../resources/constants"], function (require, exports, Constants) {
-    "use strict";
-    var CV = Constants;
-    var UiHeader = (function () {
-        function UiHeader() {
-            this.CV = CV;
-        }
-        return UiHeader;
-    }());
-    exports.UiHeader = UiHeader;
 });
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

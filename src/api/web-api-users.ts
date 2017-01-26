@@ -1,77 +1,44 @@
+import { HttpClient, json } from 'aurelia-fetch-client';
+import { autoinject } from 'aurelia-framework';
+
+
+
 let latency = 200;
 let id = 0;
+let users = null;
+let usersArr = [];
+let results = null;
 
-function getId(){
-  return ++id;
-}
-
-let users = [
-  {
-    id:getId(),
-    first_name:'John',
-    last_name:'Tolkien',
-    email:'tolkien@inklings.com',
-    cell_number:'867-5309'
-  },
-  {
-    id:getId(),
-    first_name:'Clive',
-    last_name:'Lewis',
-    email:'lewis@inklings.com',
-    cell_number:'867-5309'
-  },
-  {
-    id:getId(),
-    first_name:'Owen',
-    last_name:'Barfield',
-    email:'barfield@inklings.com',
-    cell_number:'867-5309'
-  },
-  {
-    id:getId(),
-    first_name:'Charles',
-    last_name:'Williams',
-    email:'williams@inklings.com',
-    cell_number:'867-5309'
-  },
-  {
-    id:getId(),
-    first_name:'Roger',
-    last_name:'Green',
-    email:'green@inklings.com',
-    cell_number:'867-5309'
-  },
-  {
-    id:getId(),
-    first_name:'David',
-    last_name:'Bowie',
-    email:'david@bowie.com',
-    cell_number:'123-4567'
-  },
-  {
-    id:getId(),
-    first_name:'Dan',
-    last_name:'Pena',
-    email:'dan@pena.com',
-    cell_number:'891-3210'
-  }
-];
-
+@autoinject
 export class WebAPIUsers {
   isRequesting = false;
+  usersArr = [];
+
+  http:HttpClient
+
+    constructor(http:HttpClient) {
+        this.http = http;          
+    }
+
   
   getUserList(){
     this.isRequesting = true;
+
     return new Promise(resolve => {
       setTimeout(() => {
-        let results = users.map(x =>  { return {
-          id:x.id,
-          first_name:x.first_name,
-          last_name:x.last_name,
-          email:x.email,
-          cell_number:x.cell_number
-        }});
-        resolve(results);
+        let users = this.http.fetch('src/views/widgets/user-panels/dummy-data.json')
+            .then(users => users.json());
+
+        // let results = users.map(x =>  { return {
+        //   id:x.id,
+        //   first_name:x.first_name,
+        //   last_name:x.last_name,
+        //   email:x.email,
+        //   cell_number:x.cell_number
+        // }});
+              
+
+        resolve(users);
         this.isRequesting = false;
       }, latency);
     });
@@ -81,7 +48,9 @@ export class WebAPIUsers {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let found = users.filter(x => x.id == id)[0];
+        console.log('usersArr:' + usersArr);
+        let found = usersArr.filter(x => x.id == id);
+        
         resolve(JSON.parse(JSON.stringify(found)));
         this.isRequesting = false;
       }, latency);
@@ -99,7 +68,7 @@ export class WebAPIUsers {
           let index = users.indexOf(found);
           users[index] = instance;
         }else{
-          instance.id = getId();
+          //instance.id = getId();
           users.push(instance);
         }
 
