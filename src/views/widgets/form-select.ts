@@ -18,7 +18,7 @@ export class FormSelect {
   }
 
     tmpCreateLabel(getStr){
-        return getStr.replace('-',' ').toLowerCase();
+        return getStr.replace(/_/g,' ').toLowerCase();
     }
 
     created(){

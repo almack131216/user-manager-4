@@ -25,7 +25,7 @@ export class FormInput {
     }
 
     tmpCreateLabel(getStr) {
-        return getStr.replace(/-/g, " ").toLowerCase();
+        return getStr.replace(/_/g, " ").toLowerCase();
     }
 
     created() {
