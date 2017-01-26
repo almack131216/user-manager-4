@@ -169,6 +169,11 @@
             "name": "font-awesome",
             "path": "../node_modules/font-awesome/css",
             "main": "font-awesome.css"
+          },
+          {
+            "name": "aurelia-mask",
+            "path": "../node_modules/aurelia-mask/dist",
+            "main": "masked-input"
           }
         ]
       }

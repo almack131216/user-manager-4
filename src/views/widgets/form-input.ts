@@ -1,9 +1,19 @@
 import { bindable, inject, autoinject, bindingMode } from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
+import {BindingEngine} from "aurelia-binding";
 
+inject(BindingEngine)
 inject(Element)
 export class FormInput {
+    myvalue = 999999;
+    maskPatternTelephone = '+***/******';
+
+  @bindable maskPattern = null;
+
+  //findSecondInput = _findSecondInput;
+
+
     @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
@@ -33,4 +43,8 @@ export class FormInput {
         if (!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name);
         if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
     }
+}
+
+function _findSecondInput(elt) {
+    return elt.getElementsByTagName('input')[1];
 }
