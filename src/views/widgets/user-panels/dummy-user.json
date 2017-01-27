@@ -12,7 +12,17 @@
       {"value":3, "label":"Region 3"}
     ],
     "sel_hub_selected": 0,
-    "sel_hub": [],
+    "sel_hub": [
+      {"value":1, "label":"Hub 1", "parentValue":1},
+      {"value":2, "label":"Hub 2", "parentValue":1},
+      {"value":3, "label":"Hub 3", "parentValue":1},
+      {"value":4, "label":"Hub 4", "parentValue":1},
+      {"value":5, "label":"Hub 5", "parentValue":2},
+      {"value":6, "label":"Hub 6", "parentValue":2},
+      {"value":7, "label":"Hub 7", "parentValue":2},
+      {"value":8, "label":"Hub 8", "parentValue":3},
+      {"value":9, "label":"Hub 9", "parentValue":3}
+    ],
     "bp_office_address": [
       {"value":1,"label":"Address 1"},
       {"value":2,"label":"Address 2"},

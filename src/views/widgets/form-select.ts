@@ -10,6 +10,8 @@ export class FormSelect {
 
     @bindable changed = null;
 
+    @bindable optionFilter = null;
+
     @bindable isEnabled = true;
 
     @bindable popNext = null;
@@ -50,22 +52,21 @@ export class FormSelect {
         console.log('selectedChanged: ' + newValue);
         this.changed = newValue;//(<HTMLInputElement>event.currentTarget).value;
         //this.newValue = newValue;
-        if(newValue) this.populateNextSelect();
+        //if(newValue) this.populateNextSelect();
     }
 
-    populateNextSelect(){
-        alert('populateNextSelect? ' + this.popNext);
+    // populateNextSelect(){
+    //     alert('populateNextSelect? ' + this.popNext);
 
-        if(this.popNext=='sel_hub'){
-            alert('populateNextSelect? > populate...' );
-            this.popNextArr = [
-                {"value":1,"label":"Hub 1"},
-                {"value":2,"label":"Hub 2"},
-                {"value":3,"label":"Hub 3"}
-            ];
-        }
-        
-    }
+    //     if(this.popNext=='sel_hub'){
+    //         alert('populateNextSelect? > populate...' );
+    //         this.popNextArr = [
+    //             {"value":1,"label":"Hub 1"},
+    //             {"value":2,"label":"Hub 2"},
+    //             {"value":3,"label":"Hub 3"}
+    //         ];
+    //     }        
+    // }
 
     // toView(newValue){
     //     console.log('newValue: ' + newValue);

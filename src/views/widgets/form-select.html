@@ -1,10 +1,11 @@
 <template class="form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
+    <require from="./filter"></require>
     <div class="row-fluid">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel}</label>
         <div class="col-sm-6">
             <select class="form-control" model.two-way="model" value.two-way="selected" disabled.bind="!isEnabled">
                 <option value="">${inpPlaceholder}</option>
-                <option repeat.for="option of options" value="${option.value}">${option.label}</option>
+                <option repeat.for="option of options | filter:'parentValue':optionFilter" value="${option.value}">${option.label}</option>
             </select>
         </div>
     </div>
