@@ -1,9 +1,10 @@
-<template class="form-group col-xs-12 ${inpClass} ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
+<template class="form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
     <div class="row-fluid">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel}</label>
         <div class="col-sm-6">
-            <select class="form-control">
-                <option>${inpPlaceholder}</option>
+            <select class="form-control" value.bind="model">
+                <option value="">${inpPlaceholder}</option>
+                <option repeat.for="opt of inpArr" model.bind="opt.value">${opt.label}</option>
             </select>
         </div>
     </div>

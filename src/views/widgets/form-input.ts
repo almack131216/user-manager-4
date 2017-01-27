@@ -7,12 +7,9 @@ inject(BindingEngine)
 inject(Element)
 export class FormInput {
     myvalue = 999999;
-    maskPatternTelephone = '+***/******';
+    maskPatternTelephone = '+999 / 999999';
 
-  @bindable maskPattern = null;
-
-  //findSecondInput = _findSecondInput;
-
+    @bindable maskPattern = null;
 
     @bindable inpClass = null;
     @bindable inpLabel = null;

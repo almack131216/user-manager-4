@@ -16,13 +16,13 @@
 
     <div class="divider"></div>
 
-    <form-input name="home-number" model.two-way="user.home-number"></form-input>
+    <form-input name="home_number" model.two-way="user.home_number"></form-input>
     <form-input name="cell_number" model.two-way="user.cell_number" mask-pattern="telephone"></form-input>
-    <form-input name="office-number" model.two-way="user.office-number"></form-input>
+    <form-input name="office_number" model.two-way="user.office_number"></form-input>
 
     <div class="divider"></div>
+    <form-select name="bp_office_address" model.two-way="user.bp_office_address_selected" inp-arr.bind="user.bp_office_address" inp-label="BP Office Address"></form-select>
 
-    <form-select name="bp-office-address" model.two-way="user.bp-office-address" inp-label="BP Office Address"></form-select>
     <form-input name="cell-number" model.two-way="user.cell-number" is-mandatory="true"></form-input>
     <form-input name="lync-number" model.two-way="user.lync-number"></form-input>
 

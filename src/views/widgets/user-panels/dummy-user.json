@@ -4,5 +4,10 @@
     "last_name":"Bowie",
     "email":"david@bowie.com",
     "cell_number":"123-4567",
-    "hub":"hub 123"
+    "hub":"hub 123",
+    "bp_office_address": [
+      {"value":"1","label":"Address 1"},
+      {"value":"2","label":"Address 2"},
+      {"value":"3","label":"Address 3"}
+      ]
   }
