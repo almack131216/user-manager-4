@@ -1,23 +1,25 @@
 import {bindable,inject,autoinject,bindingMode,customElement} from 'aurelia-framework';
-import {UserPanelDetails} from './user-panels/user-panel-details';
+//import {UserPanelDetails} from './user-panels/user-panel-details';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
-inject(UserPanelDetails)
+//inject(UserPanelDetails)
 inject(Element)
 @customElement('FormSelect')
 export class FormSelect {
-    //@bindable public newValue;
-    @bindable selectedd;
+
+    @bindable changed = null;
+
+    @bindable isEnabled = true;
+
+    @bindable popNext = null;
+    @bindable popNextArr = [];
 
     @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
 
     @bindable name = null;
-    @bindable selId = null;
-
-    @bindable isEnabled = false;
 
     @bindable public selectedValue = 2;
 
@@ -28,9 +30,9 @@ export class FormSelect {
     public options: {value: string, label: string}[] = [];
 
 
-    constructor(public userpaneldetails){
-      this.userpaneldetails = 999;
-    }
+    // constructor(public userpaneldetails){
+    //   //this.userpaneldetails = 999;
+    // }
 
     public attached(): void {
         //this.selected = 2;
@@ -46,14 +48,29 @@ export class FormSelect {
     //following method works as expected
     public selectedChanged(newValue: string): void {
         console.log('selectedChanged: ' + newValue);
-        this.selectedd = newValue;//(<HTMLInputElement>event.currentTarget).value;
+        this.changed = newValue;//(<HTMLInputElement>event.currentTarget).value;
         //this.newValue = newValue;
+        if(newValue) this.populateNextSelect();
     }
 
-    toView(newValue){
-        console.log('newValue: ' + newValue);
-        return newValue;
+    populateNextSelect(){
+        alert('populateNextSelect? ' + this.popNext);
+
+        if(this.popNext=='sel_hub'){
+            alert('populateNextSelect? > populate...' );
+            this.popNextArr = [
+                {"value":1,"label":"Hub 1"},
+                {"value":2,"label":"Hub 2"},
+                {"value":3,"label":"Hub 3"}
+            ];
+        }
+        
     }
+
+    // toView(newValue){
+    //     console.log('newValue: ' + newValue);
+    //     return newValue;
+    // }
 
     tmpCreateLabel(getStr){
         return getStr.replace(/_/g,' ').toLowerCase();

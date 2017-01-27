@@ -4,14 +4,17 @@
 
     <form-input name="first_name" model.two-way="user.first_name" is-mandatory="true"></form-input>
     <form-input name="last_name" model.two-way="user.last_name" is-mandatory="true"></form-input>
-    <form-select name="sel_region" sel-id="selRegion" model.two-way="user.sel_region_selected" options.bind="user.sel_region" selectedd.two-way="user.sel_region_selected"></form-select>
 
-    <p>user.sel_region_selected: ${user.sel_region} / ${user.sel_region_selected} / ${user.sel_region_selected.selectedd}</p>
+    <div class="divider"></div>
 
-    <form-select name="sel_hub" model.two-way="user.sel_hub" if.bind="user.sel_region_selected"></form-select>
-    <form-select name="sel_segment" model.two-way="user.sel_segment"></form-select>
+    <!--<p>user.sel_region_selected: ${user.sel_region} / ${user.sel_region_selected} / ${user.sel_region_selected.changed}</p>-->
+    ? ${user.sel_region_selected.popNext} / ${user.sel_region_selected.popNextArr} ?
+    <form-select name="sel_region" model.two-way="user.sel_region_selected" options.bind="user.sel_region" changed.two-way="user.sel_region_selected" pop-next.two-way="'sel_hub'"></form-select>
+    <form-select name="sel_hub" model.two-way="user.sel_hub_selected" options.bind="user.sel_hub" changed.two-way="user.sel_hub_selected" is-enabled.bind="user.sel_region_selected"></form-select>
+    <form-select name="sel_segment" model.two-way="user.sel_segment" is-enabled.bind="user.sel_region_selected && user.sel_hub_selected"></form-select>
     <form-select name="sel_entity" model.two-way="user.sel_entity_selected"></form-select>
     
+    <div class="divider"></div>
 
     <form-input name="function" model.two-way="user.function"></form-input>
     <form-input name="location" model.two-way="user.location"></form-input>

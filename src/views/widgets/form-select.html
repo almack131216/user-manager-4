@@ -1,8 +1,8 @@
 <template class="form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
     <div class="row-fluid">
-        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel} / ${selected} / ${selectedd}</label>
+        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel}</label>
         <div class="col-sm-6">
-            <select id="selId" class="form-control" model.two-way="model" value.two-way="selected" >
+            <select class="form-control" model.two-way="model" value.two-way="selected" disabled.bind="!isEnabled">
                 <option value="">${inpPlaceholder}</option>
                 <option repeat.for="option of options" value="${option.value}">${option.label}</option>
             </select>
