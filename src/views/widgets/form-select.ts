@@ -61,7 +61,7 @@ export class FormSelect {
 
     created(){
         if(CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.name );
-        if(!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
         if(!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name).substring(3);
+        if(!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;        
     }
 }

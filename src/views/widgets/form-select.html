@@ -3,6 +3,7 @@
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel} / ${selected} / ${selectedd}</label>
         <div class="col-sm-6">
             <select id="selId" class="form-control" model.two-way="model" value.two-way="selected" >
+                <option value="">${inpPlaceholder}</option>
                 <option repeat.for="option of options" value="${option.value}">${option.label}</option>
             </select>
         </div>
