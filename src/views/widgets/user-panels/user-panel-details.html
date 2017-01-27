@@ -4,11 +4,14 @@
 
     <form-input name="first_name" model.two-way="user.first_name" is-mandatory="true"></form-input>
     <form-input name="last_name" model.two-way="user.last_name" is-mandatory="true"></form-input>
-    <form-select name="sel_region" model.two-way="user.sel_region"></form-select>
+    <form-select name="sel_region" sel-id="selRegion" model.two-way="user.sel_region_selected" options.bind="user.sel_region" selectedd.two-way="user.sel_region_selected"></form-select>
 
-    <form-select name="sel_hub" model.two-way="user.sel_hub"></form-select>
+    <p>user.sel_region_selected: ${user.sel_region} / ${user.sel_region_selected} / ${user.sel_region_selected.selectedd}</p>
+
+    <form-select name="sel_hub" model.two-way="user.sel_hub" if.bind="user.sel_region_selected.selectedd"></form-select>
     <form-select name="sel_segment" model.two-way="user.sel_segment"></form-select>
-    <form-select name="sel_entity" model.two-way="user.sel_entity"></form-select>
+    <form-select name="sel_entity" model.two-way="user.sel_entity_selected"></form-select>
+    
 
     <form-input name="function" model.two-way="user.function"></form-input>
     <form-input name="location" model.two-way="user.location"></form-input>
@@ -21,7 +24,7 @@
     <form-input name="office_number" model.two-way="user.office_number"></form-input>
 
     <div class="divider"></div>
-    <form-select name="bp_office_address" model.two-way="user.bp_office_address_selected" inp-arr.bind="user.bp_office_address" inp-label="BP Office Address"></form-select>
+    <form-select name="bp_office_address" selected.two-way="user.bp_office_address_selected" options.bind="user.bp_office_address" inp-label="BP Office Address"></form-select>
 
     <form-input name="cell-number" model.two-way="user.cell-number" is-mandatory="true"></form-input>
     <form-input name="lync-number" model.two-way="user.lync-number"></form-input>

@@ -5,9 +5,15 @@
     "email":"david@bowie.com",
     "cell_number":"123-4567",
     "hub":"hub 123",
+    "sel_region_selected": 0,
+    "sel_region": [
+      {"value":1, "label":"Region 1"},
+      {"value":2, "label":"Region 2"},
+      {"value":3, "label":"Region 3"}
+    ],
     "bp_office_address": [
-      {"value":"1","label":"Address 1"},
-      {"value":"2","label":"Address 2"},
-      {"value":"3","label":"Address 3"}
+      {"value":1,"label":"Address 1"},
+      {"value":2,"label":"Address 2"},
+      {"value":3,"label":"Address 3"}
       ]
   }

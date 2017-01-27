@@ -1,10 +1,9 @@
 <template class="form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
     <div class="row-fluid">
-        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel}</label>
+        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel} / ${selected} / ${selectedd}</label>
         <div class="col-sm-6">
-            <select class="form-control" value.bind="model">
-                <option value="">${inpPlaceholder}</option>
-                <option repeat.for="opt of inpArr" model.bind="opt.value">${opt.label}</option>
+            <select id="selId" class="form-control" model.two-way="model" value.two-way="selected" >
+                <option repeat.for="option of options" value="${option.value}">${option.label}</option>
             </select>
         </div>
     </div>

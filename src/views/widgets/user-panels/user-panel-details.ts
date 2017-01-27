@@ -5,7 +5,7 @@ import { autoinject, bindable } from 'aurelia-framework';
 @autoinject
 export class UserPanelDetails {
     @bindable user;
-    http:HttpClient
+    http:HttpClient;
 
     constructor(http:HttpClient) {
         this.http = http;
