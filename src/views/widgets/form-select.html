@@ -13,7 +13,8 @@
             disabled.bind="!isEnabled"
             selected.two-way="selected"
             change.delegate="changeCallback($event)">
-                <option model.bind="0">${inpPlaceholder} | ${model} | ${selected} | ${changed} | ${initSelected}</option>
+                <option model.bind="0">${inpPlaceholder}</option>
+                 <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
                 <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">${option.label}</option>
             </select>
 

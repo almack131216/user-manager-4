@@ -9,60 +9,41 @@
     <form-input name="last_name" model.two-way="user.last_name" is-mandatory="true"></form-input>
 
     <div class="divider"></div>
-
-
-        <!--<select value.bind="user.sel_region_selected">
-          <option/>
-          <option repeat.for="option of user.sel_region" model.bind="option.value">${option.label}</option>
-        </select>
-
-        <select value.bind="user.sel_hub_selected">
-          <option/>
-          <option repeat.for="option of user.sel_hub | filter:'parentValue':user.sel_region_selected" model.bind="option.value">${option.label}</option>
-        </select>-->
-
-
-    <!--<div class="col-xs-12">
-        <select class="col-xs-6"
-         id="single-select2-select"
-         select2.bind="selectOptions"
-         value.bind="selectedValue"
-         change.delegate="changeCallback($event)">
-         <option value=""></option>
-        <option repeat.for="val of singleSelectValues" model.bind="val">
-          ${val}
-        </option>
-      </select>
-    
-
-      <select
-        id="multiple-select2-select"
-        select2
-        multiple
-        value.bind="selectedValues"
-        change.delegate="changeCallback($event)">
-        <option repeat.for="val of multipleSelectValues" model.bind="val">
-          ${val}
-        </option>
-      </select>
-    </div>-->
-
-
-    <!--<p>user.sel_region_selected: ${user.sel_region} / ${user.sel_region_selected} / ${user.sel_region_selected.changed}</p>-->
-    
+    <div class="col-xs-12">? DEV NOTE: SELECT [1,3,8,9] ... SELECTED: ${user.first_name}: ${user.sel_region_selected} > ${user.sel_hub_selected} > ${user.sel_segment_selected} > ${user.sel_entity_selected} ?</div>
     <div class="divider"></div>
-    <div class="col-xs-12">? ${user.first_name}: ${user.sel_region_selected} > ${user.sel_hub_selected} > ${user.sel_segment_selected} > ${user.sel_entity_selected} ?</div>
-    <div class="divider"></div>
+
     
     <form-select name="sel_region"
-    model.two-way="user.sel_region_selected"
-    options.bind="user.sel_region"
-    changed.two-way="selected"
-    init-selected.two-way="user.sel_region_selected"></form-select>
-    <!--changed.two-way="user.sel_region_selected"-->
-    <!--<form-select name="sel_hub" model.two-way="user.sel_hub_selected" options.bind="user.sel_hub" option-filter.bind="user.sel_region_selected" changed.two-way="user.sel_hub_selected" is-enabled.bind="user.sel_region_selected"></form-select>
-    <form-select name="sel_segment" model.two-way="user.sel_segment" is-enabled.bind="user.sel_region_selected && user.sel_hub_selected"></form-select>
-    <form-select name="sel_entity" model.two-way="user.sel_entity_selected"></form-select>-->
+        model.two-way="user.sel_region_selected"
+        options.bind="user.sel_region"
+        changed.two-way="user.sel_region_selected"
+        init-selected.two-way="user.sel_region_selected"></form-select>
+
+    <form-select name="sel_hub"
+        model.two-way="user.sel_hub_selected"
+        options.bind="user.sel_hub"
+        changed.two-way="user.sel_hub_selected"        
+        init-selected.two-way="user.sel_hub_selected"
+        option-filter.bind="user.sel_region_selected"
+        is-enabled.bind="user.sel_region_selected"></form-select>
+
+
+    <form-select name="sel_segment"
+        model.two-way="user.sel_segment_selected"
+        options.bind="user.sel_segment"
+        changed.two-way="user.sel_segment_selected"        
+        init-selected.two-way="user.sel_segment_selected"
+        option-filter.bind="user.sel_hub_selected"
+        is-enabled.bind="user.sel_region_selected && user.sel_hub_selected"></form-select>
+
+    <form-select name="sel_entity"
+        model.two-way="user.sel_entity_selected"
+        options.bind="user.sel_entity"
+        changed.two-way="user.sel_entity_selected"        
+        init-selected.two-way="user.sel_entity_selected"
+        option-filter.bind="user.sel_segment_selected"
+        is-enabled.bind="user.sel_region_selected && user.sel_hub_selected && user.sel_segment_selected"></form-select>
+
     
     <div class="divider"></div>
 
