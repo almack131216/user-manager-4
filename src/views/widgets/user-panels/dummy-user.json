@@ -5,7 +5,7 @@
     "email":"david@bowie.com",
     "cell_number":"123-4567",
     "hub":"hub 123",
-    "sel_region_selected": 2,
+    "sel_region_selected": 3,
     "sel_region": [
       {"value":1, "label":"Region 1"},
       {"value":2, "label":"Region 2"},

@@ -7,6 +7,7 @@ export class UserPanelDetails {
     @bindable user;
     defaultSelected;
     http: HttpClient;
+    sel_region_selected_root;
 
     constructor(http: HttpClient) {
         this.http = http;
@@ -36,15 +37,5 @@ export class UserPanelDetails {
             })
     }
 
-    selectOptions = { allowClear: true, placeholder: 'Select...' };
-    selectedValue: string = '';
-    singleSelectValues: string[] = ['a', 'b', 'c'];
-    selectedValues: string[] = [];
-    multipleSelectValues: string[] = ['z', 'y', 'x'];
-
-    /* Justification: this is a recommended fix for an issue with Select2 and Aurelia integration as documented here
-                 http://stackoverflow.com/questions/33452623/aurelia-trying-to-load-html-from-select2#answer-34121891 */
-    /* tslint:disable-next-line no-empty */
-    changeCallback(evt: Event): void {
-    }
+    
 }
