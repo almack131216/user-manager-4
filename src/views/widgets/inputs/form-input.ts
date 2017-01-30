@@ -1,5 +1,5 @@
 import { bindable, inject, autoinject, bindingMode } from 'aurelia-framework';
-import * as Constants from '../../resources/constants';
+import * as Constants from '../../../resources/constants';
 const CV = Constants
 import {BindingEngine} from "aurelia-binding";
 

@@ -1,6 +1,6 @@
 import {bindable,inject,autoinject,bindingMode,customElement} from 'aurelia-framework';
 //import {UserPanelDetails} from './user-panels/user-panel-details';
-import * as Constants from '../../resources/constants';
+import * as Constants from '../../../resources/constants';
 const CV = Constants
 
 //inject(UserPanelDetails)
