@@ -9,7 +9,7 @@
     
     <div class="panel panel-default panel-xc">
         <div class="panel-heading">
-            ${custTitle}
+            ${custTitle} | ${user.first_name} | ${user.sel_region_selected}
             <button if.bind="custXc" class="btn btn-xc_chevron btn-xs ${custXcExpanded ? '' : 'collapsed'}" type="button"
                 data-toggle="collapse"
                 data-target="#${custXcId}"

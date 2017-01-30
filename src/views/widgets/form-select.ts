@@ -8,6 +8,9 @@ inject(Element)
 @customElement('FormSelect')
 export class FormSelect {
 
+    @bindable
+    public initSelected: any;
+
     @bindable changed = null;
 
     @bindable optionFilter = null;
@@ -38,6 +41,9 @@ export class FormSelect {
 
     public attached(): void {
         //this.selected = 2;
+        console.log('attached -> initSelected: ' + this.initSelected + ' / ' + this.selected);
+        if(this.initSelected) this.selected = this.initSelected ? this.initSelected : 0; 
+        console.log('attached -> initSelected (2): ' + this.initSelected + ' / ' + this.selected);
         // $("#select").select2().on("change", event => {
         //     this.selected = (<HTMLInputElement>event.currentTarget).value;
         // });
@@ -49,29 +55,12 @@ export class FormSelect {
 
     //following method works as expected
     public selectedChanged(newValue: string): void {
-        console.log('selectedChanged: ' + newValue);
-        this.changed = newValue;//(<HTMLInputElement>event.currentTarget).value;
+        console.log('selectedChanged: ' + newValue + ' / ' + this.initSelected);
+        this.changed = newValue ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
+        //this.selected = this.initSelected;
         //this.newValue = newValue;
         //if(newValue) this.populateNextSelect();
     }
-
-    // populateNextSelect(){
-    //     alert('populateNextSelect? ' + this.popNext);
-
-    //     if(this.popNext=='sel_hub'){
-    //         alert('populateNextSelect? > populate...' );
-    //         this.popNextArr = [
-    //             {"value":1,"label":"Hub 1"},
-    //             {"value":2,"label":"Hub 2"},
-    //             {"value":3,"label":"Hub 3"}
-    //         ];
-    //     }        
-    // }
-
-    // toView(newValue){
-    //     console.log('newValue: ' + newValue);
-    //     return newValue;
-    // }
 
     tmpCreateLabel(getStr){
         return getStr.replace(/_/g,' ').toLowerCase();
@@ -80,6 +69,6 @@ export class FormSelect {
     created(){
         if(CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.name );
         if(!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name).substring(3);
-        if(!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;        
+        if(!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
     }
 }

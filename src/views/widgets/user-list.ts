@@ -16,7 +16,7 @@ export class UserList {
   title = 'Users';  
 
   isNotDisabled(getField){
-    //if(CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);
+    if(CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);
     if(!this.custDisableCells) return true;
     if(this.custDisableCells.indexOf(getField) == -1) return true;
     return false;

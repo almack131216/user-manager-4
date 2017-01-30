@@ -11,4 +11,6 @@ export class FormUserFullBody {
     @bindable custXcId = null;
     @bindable custXcExpanded = null;
     @bindable custXcResClass = null;
+
+    
 }

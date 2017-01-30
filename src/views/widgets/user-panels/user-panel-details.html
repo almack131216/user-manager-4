@@ -2,6 +2,8 @@
     <require from="../form-input"></require>
     <require from="../form-select"></require>
     <require from="../filter"></require>
+    <require from="../../../resources/select2"></require>
+    <require from="select2/css/select2.min.css"></require>
 
     <form-input name="first_name" model.two-way="user.first_name" is-mandatory="true"></form-input>
     <form-input name="last_name" model.two-way="user.last_name" is-mandatory="true"></form-input>
@@ -20,9 +22,21 @@
         </select>-->
 
 
+      <select style="width:100px"
+         id="single-select2-select"
+         select2.bind="selectOptions"
+         value.bind="selectedValue"
+         change.delegate="changeCallback($event)">
+         <option value=""></option>
+        <option repeat.for="val of singleSelectValues" model.bind="val">
+          ${val}
+        </option>
+      </select>
+    </label>
+
     <!--<p>user.sel_region_selected: ${user.sel_region} / ${user.sel_region_selected} / ${user.sel_region_selected.changed}</p>-->
-    ? ${user.sel_region_selected} / ${user.sel_hub_selected} ?
-    <form-select name="sel_region" model.two-way="user.sel_region_selected" options.bind="user.sel_region" changed.two-way="user.sel_region_selected"></form-select>
+    ? ${user.sel_region_selected} / ${user.sel_region_selected} / ${user.first_name} ?
+    <form-select name="sel_region" model.two-way="user.sel_region_selected" options.bind="user.sel_region" changed.two-way="user.sel_region_selected" init-selected.bind="user.sel_region_selected"></form-select>
     <form-select name="sel_hub" model.two-way="user.sel_hub_selected" options.bind="user.sel_hub" option-filter.bind="user.sel_region_selected" changed.two-way="user.sel_hub_selected" is-enabled.bind="user.sel_region_selected"></form-select>
     <form-select name="sel_segment" model.two-way="user.sel_segment" is-enabled.bind="user.sel_region_selected && user.sel_hub_selected"></form-select>
     <form-select name="sel_entity" model.two-way="user.sel_entity_selected"></form-select>
