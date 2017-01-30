@@ -9,8 +9,9 @@
         <div class="col-sm-6">
             <!--selected.two-way="selected" -->
             <select class="form-control" 
-            value.two-way="selected"            
+            value.bind="initSelected"            
             disabled.bind="!isEnabled"
+            selected.two-way="selected"
             change.delegate="changeCallback($event)">
                 <option model.bind="0">${inpPlaceholder} | ${model} | ${selected} | ${changed} | ${initSelected}</option>
                 <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">${option.label}</option>

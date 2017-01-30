@@ -5,13 +5,13 @@
     "email":"david@bowie.com",
     "cell_number":"123-4567",
     "hub":"hub 123",
-    "sel_region_selected": 3,
+    "sel_region_selected": 1,
     "sel_region": [
       {"value":1, "label":"Region 1"},
       {"value":2, "label":"Region 2"},
       {"value":3, "label":"Region 3"}
     ],
-    "sel_hub_selected": 6,
+    "sel_hub_selected": 2,
     "sel_hub": [
       {"value":1, "label":"Hub 1", "parentValue":1},
       {"value":2, "label":"Hub 2", "parentValue":1},

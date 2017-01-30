@@ -11,7 +11,8 @@ export class FormSelect {
     @bindable
     public initSelected: null;
 
-    @bindable changed = null;
+    @bindable
+    public changed: number;
 
     @bindable optionFilter = null;
 
@@ -55,7 +56,7 @@ export class FormSelect {
     public selectedChanged(newValue: number): void {
         console.log('selectedChanged: ' + newValue + ' / ' + this.initSelected);
         this.changed = newValue!=null ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
-        //this.selected = this.initSelected;
+        this.selected = this.changed;
         //this.newValue = newValue;
         //if(newValue) this.populateNextSelect();
     }
@@ -80,6 +81,7 @@ export class FormSelect {
                  http://stackoverflow.com/questions/33452623/aurelia-trying-to-load-html-from-select2#answer-34121891 */
     /* tslint:disable-next-line no-empty */
     changeCallback(evt: Event): void {
+        //this.changed = newValue!=null ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
     }
 
 }
