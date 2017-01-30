@@ -2,6 +2,31 @@
 
 .select2 {width:100% !important;}
 
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: $offset-g1;
+    padding-right: 25px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    padding:0 5px;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid $border-color;
+    @include border-radius(0px);
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
 .panel.panel-xc {
     margin-bottom:2px;
     border:0px;
