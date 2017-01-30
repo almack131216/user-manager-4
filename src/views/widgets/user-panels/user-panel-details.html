@@ -17,6 +17,7 @@
         model.two-way="user.sel_region_selected"
         options.bind="user.sel_region"
         changed.two-way="user.sel_region_selected"
+        autocomplete.bind="true"
         init-selected.two-way="user.sel_region_selected"></form-select>
 
     <form-select name="sel_hub"
@@ -25,6 +26,7 @@
         changed.two-way="user.sel_hub_selected"        
         init-selected.two-way="user.sel_hub_selected"
         option-filter.bind="user.sel_region_selected"
+        autocomplete.bind="true"
         is-enabled.bind="user.sel_region_selected"></form-select>
 
 
@@ -34,6 +36,7 @@
         changed.two-way="user.sel_segment_selected"        
         init-selected.two-way="user.sel_segment_selected"
         option-filter.bind="user.sel_hub_selected"
+        autocomplete.bind="true"
         is-enabled.bind="user.sel_region_selected && user.sel_hub_selected"></form-select>
 
     <form-select name="sel_entity"
@@ -42,6 +45,7 @@
         changed.two-way="user.sel_entity_selected"        
         init-selected.two-way="user.sel_entity_selected"
         option-filter.bind="user.sel_segment_selected"
+        autocomplete.bind="true"
         is-enabled.bind="user.sel_region_selected && user.sel_hub_selected && user.sel_segment_selected"></form-select>
 
     

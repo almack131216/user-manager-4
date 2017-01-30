@@ -7,6 +7,7 @@ const CV = Constants
 inject(Element)
 @customElement('FormSelect')
 export class FormSelect {
+    @bindable autocomplete = null;
 
     @bindable
     public initSelected: null;

@@ -9,7 +9,8 @@
         <div class="col-sm-6">
             <!--selected.two-way="selected" -->
             <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
-            <!--<select class="form-control" 
+            
+            <select if.bind="!autocomplete" class="form-control" 
             value.bind="initSelected"            
             disabled.bind="!isEnabled"
             selected.two-way="selected"
@@ -17,9 +18,9 @@
                 <option model.bind="0">${inpPlaceholder}</option>
                  
                 <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">${option.label}</option>
-            </select>-->
+            </select>
 
-            <select class="form-control"
+            <select if.bind="autocomplete" class="form-control"
                 id.bind="name"
                 select2.bind="selectOptions"
                 value.bind="initSelected"
