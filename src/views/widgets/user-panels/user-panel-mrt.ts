@@ -1,12 +1,9 @@
-import { autoinject, bindable } from 'aurelia-framework';
-import * as Constants from '../../../resources/constants';
-const CV = Constants
-import { UserPanelDetails } from './user-panel-details';
+import { bindable } from 'aurelia-framework';
 
 export class UserPanelMrt {
     @bindable user;
-    sel_languages;
-    sel_languageLevels;
+    public sel_languages;
+    public sel_languageLevels;
 
     constructor() {
         this.sel_languages = [
