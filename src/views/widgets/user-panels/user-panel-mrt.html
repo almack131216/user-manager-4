@@ -1,12 +1,28 @@
 <template>
-
     <require from="../inputs/form-input"></require>
+    <require from="../inputs/form-select"></require>
+    <!--<require from="../filter"></require>-->
+    <require from="../../../resources/constants"></require>
+    <require from="../../../resources/select2"></require>
+    <require from="select2/css/select2.min.css"></require>
+
+    <form-select name="sel_member_status"
+        model.two-way="user.sel_member_status_selected"
+        options.bind="user.sel_member_status"
+        changed.two-way="user.sel_member_status_selected"
+        autocomplete.bind="true"
+        init-selected.two-way="user.sel_member_status_selected"></form-select>
+
+    <form-input name="date_joined" model.two-way="user.date_joined"></form-input>
     
-    <form-input name="member-status" value.two-way="user.member-status"></form-input>
-    <form-input name="date-joined" value.two-way="user.date-joined"></form-input>
-    <form-input name="vest-colour" value.two-way="user.vest-colour"></form-input>
-    <form-input name="coast-size" value.two-way="user.coast-size"></form-input>
-    <form-input name="language" value.two-way="user.language"></form-input>
-    <form-input name="language-level" value.two-way="user.language-level"></form-input>
+    <div class="divider"></div>
+
+    <form-input name="vest_colour" model.two-way="user.vest_colour"></form-input>
+    <form-input name="coat_size" model.two-way="user.coat_size"></form-input>
+
+    <div class="divider"></div>
+
+    <form-input name="language" model.two-way="user.language"></form-input>
+    <form-input name="language_level" model.two-way="user.language_level"></form-input>
 
 </template>

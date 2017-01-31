@@ -10,7 +10,7 @@ export class FormInput {
     
     /* telephone formatting */
     @bindable maskPattern = null;
-    maskPatternTelephone = '+ 999999999999';
+    maskPatternTelephone = '+999999999999';
     maskPatternTelephoneCc = '+999 / 999999';    
 
     @bindable inpClass = null;

@@ -35,9 +35,9 @@
 
   <form role="form" class="form-horizontal" id="user-panels">
 
-    <form-user-full-body user.bind="user" cust-title="User" cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
+    <form-user-full-body user.bind="user" cust-title="User" cust-body="user-details" cust-xc="true" cust-xc-id="xc_user"></form-user-full-body>
 
-    <form-user-full-body cust-title="MRT Details" cust-body="user-mrt" cust-xc="true" cust-xc-id="xc_mrt"></form-user-full-body>
+    <form-user-full-body user.bind="user" cust-title="MRT Details" cust-body="user-mrt" cust-xc="true" cust-xc-id="xc_mrt" cust-xc-expanded="true"></form-user-full-body>
 
     <form-user-full-body cust-title="MRT Role Information" cust-body="user-mrt-role" cust-xc="true" cust-xc-id="xc_mrt-role"></form-user-full-body>
 

@@ -19,15 +19,11 @@ export class UserAdd {
   @bindable user = null;
   routeConfig;
   originalUser;
-
+  
   title = 'Add User'
-  newUser = [];
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
-    this.newUser.push({name:'first_name', val:'user.first_name', label: 'First Nameee'});
-    this.newUser.push({name:'last_name', val:'user.last_name', label: 'Las Nameee'});
-    this.newUser.push({name:'email', val:'user.email', label: 'Emaileee'});
-    this.newUser.push({name:'cell_number', val:'user.cell_number', label: 'Phoneee'});
+
   }
 
   get canSave() {
