@@ -1,10 +1,20 @@
 <template>
-
+    
     <require from="../inputs/form-input"></require>
     <require from="../inputs/form-select"></require>
-    
-    <form-input name="primary-ics" value.two-way="user.primary-ics"></form-input>
-    <form-input name="secondary-ics" value.two-way="user.secondary-ics"></form-input>
-    <form-input name="previous-role" value.two-way="user.previous-role"></form-input>
+
+    <form-select name="sel_mrt_1_ics"
+        model.two-way="user.sel_mrt_1_ics_selected"
+        options.bind="sel_mrt_1_ics"
+        changed.two-way="user.sel_mrt_1_ics_selected"
+        init-selected.two-way="user.sel_mrt_1_ics_selected"></form-select>
+
+    <form-select name="sel_mrt_2_ics"
+        model.two-way="user.sel_mrt_2_ics_selected"
+        options.bind="sel_mrt_2_ics"
+        changed.two-way="user.sel_mrt_2_ics_selected"
+        init-selected.two-way="user.sel_mrt_2_ics_selected"></form-select>
+
+    <form-input name="previous_role" model.two-way="user.previous_role"></form-input>
 
 </template>

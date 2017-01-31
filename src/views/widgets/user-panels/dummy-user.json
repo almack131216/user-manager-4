@@ -82,6 +82,9 @@
       {"languageId":1,"languageLevelId":2},
       {"languageId":3,"languageLevelId":3}
     ],
+    "sel_mrt_1_ics_selected": 2,
+    "sel_mrt_2_ics_selected": 3,
+    "mrt_previous_role": "My previous role",
     "sel_twic_card": "grrrr",
-    "twic_expiry_date": "2017-01-01T09:11:84Z"
+    "twic_expiry_date": "2017-01-01T09:11:84Z"    
   }
