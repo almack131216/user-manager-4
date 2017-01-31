@@ -47,11 +47,6 @@
       {"value":9, "label":"Entity 9", "parentValue":8}
     ],
     "sel_bp_office_address_selected": 2,
-    "sel_bp_office_address": [
-      {"value":1,"label":"Address 1"},
-      {"value":2,"label":"Address 2"},
-      {"value":3,"label":"Address 3"}
-    ],
     "function": "My Function",
     "location": "My location",
     "office_number": "+123 456789",
@@ -60,22 +55,9 @@
     "line_manager_email": "line@manager.com",
     "emergency_contact_name": "My emergency contact",
     "emergency_contact_number": "+999 123456",
-    "sel_member_status_selected": 2,
-    "sel_member_status": [
-      {"value":1,"label":"Status 1"},
-      {"value":2,"label":"Status 2"},
-      {"value":3,"label":"Status 3"}
-    ],
+    "sel_member_status_selected": 2,    
     "date_joined": "2017-01-01T09:11:84Z",
     "sel_vest_colour_selected": 3,
-    "sel_vest_colour": [
-      {"value":1,"label":"Red 1"},
-      {"value":2,"label":"Yellow 2"},
-      {"value":3,"label":"Green 3"},
-      {"value":4,"label":"Blue 4"},
-      {"value":5,"label":"Pink 5"},
-      {"value":6,"label":"Purple 6"}
-    ],
     "coat_size": 14,
     "sel_languages_selected_arr": [
       {"languageId":2,"languageLevelId":1},

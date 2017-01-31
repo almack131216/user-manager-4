@@ -14,14 +14,14 @@
     
     <form-select name="sel_region"
         model.two-way="user.sel_region_selected"
-        options.bind="user.sel_region"
+        options.bind="sel_region"
         changed.two-way="user.sel_region_selected"
         autocomplete.bind="true"
         init-selected.two-way="user.sel_region_selected"></form-select>
 
     <form-select name="sel_hub"
         model.two-way="user.sel_hub_selected"
-        options.bind="user.sel_hub"
+        options.bind="sel_hub"
         changed.two-way="user.sel_hub_selected"        
         init-selected.two-way="user.sel_hub_selected"
         option-filter.bind="user.sel_region_selected"
@@ -30,7 +30,7 @@
 
     <form-select name="sel_segment"
         model.two-way="user.sel_segment_selected"
-        options.bind="user.sel_segment"
+        options.bind="sel_segment"
         changed.two-way="user.sel_segment_selected"        
         init-selected.two-way="user.sel_segment_selected"
         option-filter.bind="user.sel_hub_selected"
@@ -39,7 +39,7 @@
 
     <form-select name="sel_entity"
         model.two-way="user.sel_entity_selected"
-        options.bind="user.sel_entity"
+        options.bind="sel_entity"
         changed.two-way="user.sel_entity_selected"        
         init-selected.two-way="user.sel_entity_selected"
         option-filter.bind="user.sel_segment_selected"
@@ -62,7 +62,7 @@
     <div class="divider"></div>
     <form-select name="sel_bp_office_address"
         model.two-way="user.sel_bp_office_address_selected"
-        options.bind="user.sel_bp_office_address"
+        options.bind="sel_bp_office_address"
         changed.two-way="user.sel_bp_office_address_selected"
         autocomplete.bind="true"
         init-selected.two-way="user.sel_bp_office_address_selected"></form-select>
