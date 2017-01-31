@@ -55,25 +55,29 @@
 
     <div class="divider"></div>
 
-    <form-input name="home_number" model.two-way="user.home_number"></form-input>
+    <form-input name="home_number" model.two-way="user.home_number" mask-pattern="telephone"></form-input>
     <form-input name="cell_number" model.two-way="user.cell_number" mask-pattern="telephone"></form-input>
-    <form-input name="office_number" model.two-way="user.office_number"></form-input>
+    <form-input name="office_number" model.two-way="user.office_number" mask-pattern="telephone"></form-input>
 
     <div class="divider"></div>
-    <form-select name="bp_office_address" selected.two-way="user.bp_office_address_selected" options.bind="user.bp_office_address" inp-label="BP Office Address"></form-select>
+    <form-select name="sel_bp_office_address"
+        model.two-way="user.sel_bp_office_address_selected"
+        options.bind="user.sel_bp_office_address"
+        changed.two-way="user.sel_bp_office_address_selected"
+        autocomplete.bind="true"
+        init-selected.two-way="user.sel_bp_office_address_selected"></form-select>
 
-    <form-input name="cell-number" model.two-way="user.cell-number" is-mandatory="true"></form-input>
-    <form-input name="lync-number" model.two-way="user.lync-number"></form-input>
+    <form-input name="cell_number" model.two-way="user.cell_number" is-mandatory="true" mask-pattern="telephone"></form-input>
+    <form-input name="office_number" model.two-way="user.office_number" mask-pattern="telephone"></form-input>
 
     <div class="divider"></div>
 
-    <form-input name="line-manager" model.two-way="user.line-manager"></form-input>
-    <form-input name="line-manager-email" model.two-way="user.line-manager-email"></form-input>
-    <form-input name="line-manager-ntid" model.two-way="user.line-manager-ntid" inp-label="Line Manager NTID"></form-input>
+    <form-input name="line_manager" model.two-way="user.line_manager"></form-input>
+    <form-input name="line_manager_email" model.two-way="user.line_manager_email"></form-input>
 
     <div class="divider"></div>
 
-    <form-input name="emergency-contact-name" model.two-way="user.emergency-contact-name"></form-input>
-    <form-input name="emergency-contact-number" model.two-way="user.emergency-contact-number"></form-input>
+    <form-input name="emergency_contact_name" model.two-way="user.emergency_contact_name"></form-input>
+    <form-input name="emergency_contact_number" model.two-way="user.emergency_contact_number" mask-pattern="telephone"></form-input>
 
 </template>

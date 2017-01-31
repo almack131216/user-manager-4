@@ -4,7 +4,6 @@
     "last_name":"Bowie",
     "email":"david@bowie.com",
     "cell_number":"123-4567",
-    "hub": "xxx",
     "sel_region_selected": 1,
     "sel_region": [
       {"value":1, "label":"Region 1"},
@@ -47,9 +46,18 @@
       {"value":8, "label":"Entity 8", "parentValue":8},
       {"value":9, "label":"Entity 9", "parentValue":8}
     ],
-    "bp_office_address": [
+    "sel_bp_office_address_selected": 2,
+    "sel_bp_office_address": [
       {"value":1,"label":"Address 1"},
       {"value":2,"label":"Address 2"},
       {"value":3,"label":"Address 3"}
-      ]
+    ],
+    "function": "My Function",
+    "location": "My location",
+    "office_number": "+123 456789",
+    "home_number": "+123 456789",
+    "line_manager": "My Line Manager",
+    "line_manager_email": "line@manager.com",
+    "emergency_contact_name": "My emergency contact",
+    "emergency_contact_number": "+999 123456"
   }
