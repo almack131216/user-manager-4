@@ -69,6 +69,13 @@ select:focus {
     }
 }
 
+.repeaters {
+    clear:both;
+    display:block;
+    width:100%;
+    height:auto;
+}
+
 .panel-body .divider {
     clear:both;
     float:left;
@@ -77,6 +84,10 @@ select:focus {
     height:1px;
     border-top:1px dotted $border-color;
     margin:0 0 $offset-g1 0;
+
+    &.invisible {
+
+    }
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -153,20 +164,23 @@ section {
 .col-dep-12 {width: 100%;}
 
 @media (min-width: 1200px) {
-    .row.row-col-lg-6 {        
-        > .wrap-fields > * > .form-group {
+    .row.row-col-lg-6 {
+        > .wrap-fields > * > .form-group,
+        > .wrap-fields > * > .repeaters > .form-group {
             width: 50%;
         }
     }
-    .row.row-col-lg-4 {        
-        > .wrap-fields > * > .form-group {
+    .row.row-col-lg-4 {  
+        > .wrap-fields > * > .form-group,
+        > .wrap-fields > * > .repeaters > .form-group {
             width: 33.33333333%;
         }
     }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .row.row-col-md-6 {        
-        > .wrap-fields > * > .form-group {
+        > .wrap-fields > * > .form-group,
+        > .wrap-fields > * > .repeaters > .form-group {
             width: 50%;
         }
     }
@@ -174,7 +188,8 @@ section {
 
 @media (min-width: 768px) and (max-width: 991px) {
     .row.row-col-sm-6 {        
-        > .wrap-fields > * > .form-group {
+        > .wrap-fields > * > .form-group,
+        > .wrap-fields > * > .repeaters > .form-group {
             width: 50%;
         }
     }
@@ -182,14 +197,16 @@ section {
 
 @media (max-width: 767px) {
     .row.row-col-xs-6 {        
-        > .wrap-fields > * > .form-group {
+        > .wrap-fields > * > .form-group,
+        > .wrap-fields > * > .repeaters > .form-group {
             width: 50%;
         }
     }
 }
 @media (min-width:481px) and (max-width: 640px){
     .row.row-col-xxs-12 {        
-        > .wrap-fields > * > .form-group {
+        > .wrap-fields > * > .form-group,
+        > .wrap-fields > * > .repeaters > .form-group {
             width: 100%;
         }
     }

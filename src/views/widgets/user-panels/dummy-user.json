@@ -77,7 +77,11 @@
       {"value":6,"label":"Purple 6"}
     ],
     "coat_size": 14,
-    "sel_languages_selected_arr": [{"languageId":2,"languageLevelId":1}],
+    "sel_languages_selected_arr": [
+      {"languageId":2,"languageLevelId":1},
+      {"languageId":1,"languageLevelId":2},
+      {"languageId":3,"languageLevelId":3}
+    ],
     "sel_twic_card": "grrrr",
     "twic_expiry_date": "2017-01-01T09:11:84Z"
   }

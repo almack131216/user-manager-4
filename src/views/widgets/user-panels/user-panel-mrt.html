@@ -1,7 +1,7 @@
 <template>
     <require from="../inputs/form-input"></require>
     <require from="../inputs/form-select"></require>
-    <!--<require from="../filter"></require>-->
+    <require from="../filter"></require>
     <require from="../../../resources/constants"></require>
     <require from="../../../resources/select2"></require>
     <require from="select2/css/select2.min.css"></require>
@@ -17,12 +17,34 @@
     
     <div class="divider"></div>
 
-    <form-input name="vest_colour" model.two-way="user.vest_colour"></form-input>
+    <form-select name="sel_vest_colour"
+        model.two-way="user.sel_vest_colour_selected"
+        options.bind="user.sel_vest_colour"
+        changed.two-way="user.sel_vest_colour_selected"
+        autocomplete.bind="true"
+        init-selected.two-way="user.sel_vest_colour_selected"></form-select>
+
     <form-input name="coat_size" model.two-way="user.coat_size"></form-input>
 
     <div class="divider"></div>
 
-    <form-input name="language" model.two-way="user.language"></form-input>
-    <form-input name="language_level" model.two-way="user.language_level"></form-input>
+    <div class="repeaters row-fluid" repeat.for="row of user.sel_languages_selected_arr">
+        <!--${user.sel_languages_selected_arr[$index].languageId} / ${user.sel_languages_selected_arr[$index].languageLevelId}-->
+        <form-select name="sel_language[$index]" inp-label="Language"
+            model.two-way="user.sel_languages_selected_arr[$index].languageId"
+            options.bind="sel_languages"
+            changed.two-way="user.sel_languages_selected_arr[$index].languageId"
+            autocomplete.bind="true"
+            init-selected.two-way="user.sel_languages_selected_arr[$index].languageId"></form-select>
+
+        <form-select name="sel_languageLevel[$index]" inp-label="Language Level"
+            model.two-way="user.sel_languages_selected_arr[$index].languageLevelId"
+            options.bind="sel_languageLevels"
+            changed.two-way="user.sel_languages_selected_arr[$index].languageLevelId"
+            autocomplete.bind="true"
+            init-selected.two-way="user.sel_languages_selected_arr[$index].languageLevelId"></form-select>
+
+        <!--<div class="divider invisible"></div>-->
+    </div>
 
 </template>
