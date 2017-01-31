@@ -13,6 +13,8 @@ export class FormInput {
     maskPatternTelephone = '+999999999999';
     maskPatternTelephoneCc = '+999 / 999999';    
 
+    @bindable inpType = "text";
+    @bindable formatDate = null;
     @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;

@@ -35,18 +35,10 @@ export class FormSelect {
     public options: {value: string, label: string}[] = [];
 
 
-    // constructor(public userpaneldetails){
-    //   //this.userpaneldetails = 999;
-    // }
-
     public attached(): void {
-        //this.selected = 2;
-        console.log('attached -> initSelected: ' + this.initSelected + ' / ' + this.selected);
+        if(CV.debugConsoleLog) console.log('attached -> initSelected: ' + this.initSelected + ' / ' + this.selected);
         this.selected = this.initSelected!=null ? this.initSelected : 0; 
-        console.log('attached -> initSelected (2): ' + this.initSelected + ' / ' + this.selected);
-        // $("#select").select2().on("change", event => {
-        //     this.selected = (<HTMLInputElement>event.currentTarget).value;
-        // });
+        if(CV.debugConsoleLog) console.log('attached -> initSelected (2): ' + this.initSelected + ' / ' + this.selected);
     }
 
     public detached(): void {
@@ -55,7 +47,7 @@ export class FormSelect {
 
     //following method works as expected
     public selectedChanged(newValue: number): void {
-        console.log('selectedChanged: ' + newValue + ' / ' + this.initSelected);
+        if(CV.debugConsoleLog) console.log('selectedChanged: ' + newValue + ' / ' + this.initSelected);
         this.changed = newValue!=null ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
         this.selected = this.changed;
         //this.newValue = newValue;

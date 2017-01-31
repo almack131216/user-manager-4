@@ -176,13 +176,15 @@
             "main": "masked-input"
           },
           {
-  "name": "select2",
-  "path": "../node_modules/select2/dist",
-  "main": "js/select2.min",
-  "resources": [
-    "css/select2.min.css"
-  ]
-}
+            "name": "select2",
+            "path": "../node_modules/select2/dist",
+            "main": "js/select2.min",
+            "resources": [
+              "css/select2.min.css"
+            ]
+          },
+          "moment",
+          "numeral"
         ]
       }
     ]

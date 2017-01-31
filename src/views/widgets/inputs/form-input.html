@@ -1,14 +1,16 @@
 <template class="form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
     <require from="aurelia-mask/masked-input"></require>
+    <require from="../../../resources/format/format-date"></require>
 
     <div class="row-fluid">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
-            ${inpLabel}
+            ${inpLabel} / ${inpType}
         </label>
         <div class="col-sm-6">
-            <input if.bind="maskPattern=='telephone'" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control"/>
-            <input if.bind="maskPattern=='telephone-cc'" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control"/>
-            <input if.bind="!maskPattern" type="text" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder">
+            <input if.bind="maskPattern=='telephone'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephone" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder"/>
+            <input if.bind="maskPattern=='telephone-cc'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder"/>
+            <input if.bind="inpType=='date'" type="inpType" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder">
+            <input if.bind="!maskPattern && !inpType" type="inpType" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder">
         </div>
     </div>
 </template>
