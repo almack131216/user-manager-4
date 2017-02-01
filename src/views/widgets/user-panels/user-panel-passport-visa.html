@@ -40,9 +40,34 @@
 
     <div class="divider"></div>
 
-    <form-input name="visa-country" value.two-way="user.visa-country"></form-input>
-    <form-input name="visa-expiry-date" value.two-way="user.visa-expiry-date"></form-input>
-    <form-input name="visa-type" value.two-way="user.visa-type"></form-input>
-    <form-input name="multiple-visas" value.two-way="user.multiple-visas"></form-input>
+    <div class="repeaters row-fluid" repeat.for="row of user.sel_passports_selected_arr">
+
+        <div if.bind="$index>0" class="divider dotted"></div>
+
+        <form-select name="sel_visa_country[$index]" inp-label="Visa Country"
+            model.two-way="user.sel_visas_selected_arr[$index].countryId"
+            options.bind="sel_visa_countries"
+            changed.two-way="user.sel_visas_selected_arr[$index].countryId"
+            autocomplete.bind="true"
+            init-selected.two-way="user.sel_visas_selected_arr[$index].countryId"></form-select>
+
+        <form-input name="visa_expiry_date" model.two-way="user.sel_visas_selected_arr[$index].expiryDate"></form-input>
+
+        <form-select name="sel_visa_type[$index]" inp-label="Visa Type"
+            model.two-way="user.sel_visas_selected_arr[$index].typeId"
+            options.bind="sel_passport_nationalities"
+            changed.two-way="user.sel_visas_selected_arr[$index].typeId"
+            autocomplete.bind="true"
+            init-selected.two-way="user.sel_visas_selected_arr[$index].typeId"></form-select>        
+
+        <div class="col-xs-12 margin-bottom-g1">
+            <button class="btn btn-default btn-sm btn-i" if.bind="$index+1 == user.sel_visas_selected_arr.length">
+                <i class="fa fa-plus"></i>
+                Add Visa
+            </button>
+        </div>
+
+    </div>
+
 
 </template>

@@ -30,8 +30,12 @@
     "sel_mrt_2_ics_selected": 3,
     "mrt_previous_role": "My previous role",
     "sel_passports_selected_arr": [
-      {"typeId":2,"number":123456789,"nationalityId":1,"expiryDate":"2017-01-01T09:11:84Z"},
+      {"typeId":1,"number":123456789,"nationalityId":2,"expiryDate":"2017-01-01T09:11:84Z"},
       {"typeId":2,"number":123456789,"nationalityId":1,"expiryDate":"2017-01-01T09:11:84Z"}
+    ],
+    "sel_visas_selected_arr": [
+      {"typeId":1,"countryId":2,"expiryDate":"2017-01-01T09:11:84Z"},
+      {"typeId":2,"countryId":1,"expiryDate":"2017-01-01T09:11:84Z"}
     ],
     "sel_twic_card": "grrrr",
     "twic_expiry_date": "2017-01-01T09:11:84Z"    
