@@ -1,17 +1,17 @@
 <template>
     <div class="row">
-        <span class="${expiryDate ? 'col-xs-6' : 'col-xs-8'}">
+        <span class="${expiryDate ? 'col-xs-5 col-md-8' : 'col-xs-8'} col-debug">
             <label for.bind="inpName" title.bind="inpLabel">
                 ${inpLabel}
             </label>
         </span>
-        <span class="col-xs-2">
+        <span class="col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug">
             <input type="radio" name.bind="inpName" model.bind="1" checked.bind="model"> Yes
         </span>
-        <span class="col-xs-2">
+        <span class="col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug">
             <input type="radio" name.bind="inpName" model.bind="0" checked.bind="model"> No
         </span>
-        <span class="col-xs-2" if.bind="expiryDate">
+        <span class="col-xs-3 ${expiryDate ? 'col-md-2' : ''} text-align-right col-debug" if.bind="expiryDate">
             ${expiryDate}
         </span>
     </div>
