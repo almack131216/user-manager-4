@@ -23,11 +23,13 @@ export class FormRadio {
     @bindable
     public initSelected: null;
 
-    @bindable
-    public changed: number;
+    @bindable expiryDate = null;
 
-    @bindable
-    public checked: number;
+    // @bindable
+    // public changed: number;
+
+    // @bindable
+    // public checked: number;
 
     @bindable model;
     activate(model) {

@@ -1,15 +1,18 @@
 <template>
     <div class="row">
-        <span class="col-xs-8 col-lg-6">
+        <span class="${expiryDate ? 'col-xs-6' : 'col-xs-8'}">
             <label for.bind="inpName" title.bind="inpLabel">
                 ${inpLabel}
             </label>
         </span>
-        <span class="col-xs-2 col-lg-3">
-            <input type="radio" name.bind="inpName" model.bind="1" checked.bind="model">Yes
+        <span class="col-xs-2">
+            <input type="radio" name.bind="inpName" model.bind="1" checked.bind="model"> Yes
         </span>
-        <span class="col-xs-2 col-lg-3">
-            <input type="radio" name.bind="inpName" model.bind="0" checked.bind="model">No
+        <span class="col-xs-2">
+            <input type="radio" name.bind="inpName" model.bind="0" checked.bind="model"> No
+        </span>
+        <span class="col-xs-2" if.bind="expiryDate">
+            ${expiryDate}
         </span>
     </div>
 </template>
