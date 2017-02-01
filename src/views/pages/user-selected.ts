@@ -9,7 +9,7 @@ interface User {
   last_name: string;
   email: string;
   cell_number: string;
-  sel_region_selected: number;
+  lkp_region_selected: number;
 }
 
 @inject(WebAPIUsers, EventAggregator)

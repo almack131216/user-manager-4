@@ -1,5 +1,13 @@
 /* _recycled.scss */
 
+.btn-row {
+    clear:both;display:block;width:100%;padding:$offset-g1;text-align:center;
+
+    .btn {
+        display:inline-block;
+    }
+}
+
 .col-debug {}
 
 .select2 {width:100% !important;}

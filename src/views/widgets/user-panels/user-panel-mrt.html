@@ -3,48 +3,48 @@
     <require from="../inputs/form-select"></require>
     <require from="../../../resources/format/format-date"></require>
 
-    <form-select name="sel_member_status"
-        model.two-way="user.sel_member_status_selected"
-        options.bind="sel_member_status"
-        changed.two-way="user.sel_member_status_selected"
+    <form-select name="lkp_member_status"
+        model.two-way="user.lkp_member_status_selected"
+        options.bind="lkp_member_status"
+        changed.two-way="user.lkp_member_status_selected"
         autocomplete.bind="true"
-        init-selected.two-way="user.sel_member_status_selected"></form-select>
+        init-selected.two-way="user.lkp_member_status_selected"></form-select>
 
     <form-input name="date_joined" model.two-way="user.date_joined" inp-type="date"></form-input>
     
     <div class="divider"></div>
 
-    <form-select name="sel_vest_colour"
-        model.two-way="user.sel_vest_colour_selected"
-        options.bind="sel_vest_colour"
-        changed.two-way="user.sel_vest_colour_selected"
+    <form-select name="lkp_vest_colour"
+        model.two-way="user.lkp_vest_colour_selected"
+        options.bind="lkp_vest_colour"
+        changed.two-way="user.lkp_vest_colour_selected"
         autocomplete.bind="true"
-        init-selected.two-way="user.sel_vest_colour_selected"></form-select>
+        init-selected.two-way="user.lkp_vest_colour_selected"></form-select>
 
     <form-input name="coat_size" model.two-way="user.coat_size"></form-input>
 
     <div class="divider"></div>
 
-    <div class="repeaters row-fluid" repeat.for="row of user.sel_languages_selected_arr">
+    <div class="repeaters row-fluid" repeat.for="row of user.lkp_languages_selected_arr">
         
         <div if.bind="$index>0" class="divider dotted"></div>
 
-        <form-select name="sel_language[$index]" inp-label="Language"
-            model.two-way="user.sel_languages_selected_arr[$index].languageId"
-            options.bind="sel_languages"
-            changed.two-way="user.sel_languages_selected_arr[$index].languageId"
+        <form-select name="lkp_language[$index]" inp-label="Language"
+            model.two-way="user.lkp_languages_selected_arr[$index].languageId"
+            options.bind="lkp_languages"
+            changed.two-way="user.lkp_languages_selected_arr[$index].languageId"
             autocomplete.bind="true"
-            init-selected.two-way="user.sel_languages_selected_arr[$index].languageId"></form-select>
+            init-selected.two-way="user.lkp_languages_selected_arr[$index].languageId"></form-select>
 
-        <form-select name="sel_languageLevel[$index]" inp-label="Language Level"
-            model.two-way="user.sel_languages_selected_arr[$index].languageLevelId"
-            options.bind="sel_languageLevels"
-            changed.two-way="user.sel_languages_selected_arr[$index].languageLevelId"
+        <form-select name="lkp_languageLevel[$index]" inp-label="Language Level"
+            model.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"
+            options.bind="lkp_languageLevels"
+            changed.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"
             autocomplete.bind="false"
-            init-selected.two-way="user.sel_languages_selected_arr[$index].languageLevelId"></form-select>
+            init-selected.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"></form-select>
 
         <div class="col-xs-12 margin-bottom-g1">
-            <button class="btn btn-default btn-sm" if.bind="$index+1 == user.sel_languages_selected_arr.length && $index+1<sel_languages_limitTo">
+            <button class="btn btn-default btn-sm" if.bind="$index+1 == user.lkp_languages_selected_arr.length && $index+1<lkp_languages_limitTo">
                 <i class="fa fa-plus"></i>
                 Add Language
             </button>

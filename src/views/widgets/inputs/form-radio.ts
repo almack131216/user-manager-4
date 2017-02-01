@@ -7,6 +7,7 @@ inject(BindingEngine)
 inject(Element)
 export class FormRadio {  
 
+    @bindable model;
     @bindable inpType = "radio";
     @bindable name = null;
     @bindable inpClass = null;
@@ -15,30 +16,15 @@ export class FormRadio {
     @bindable inpName = null;
     @bindable inpValue = null;
     @bindable isMandatory = null;
-    @bindable inpSelected = 1;
-
-    public constructor(model) {
-
-    }
-
-    @bindable
-    public initSelected: null;
-
     @bindable expiryDate = null;
 
-    // @bindable
-    // public changed: number;
+    public initSelected: null;
 
-    // @bindable
-    // public checked: number;
-
-    @bindable model;
     activate(model) {
         // model is the passed through object
     }
 
     changeCallback(evt: Event): void {
-        //this.changed = newValue!=null ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
     }
 
     tmpCreateLabel(getStr) {

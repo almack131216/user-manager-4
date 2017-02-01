@@ -1,5 +1,4 @@
 import {bindable,inject,autoinject,bindingMode,customElement} from 'aurelia-framework';
-//import {UserPanelDetails} from './user-panels/user-panel-details';
 import * as Constants from '../../../resources/constants';
 const CV = Constants
 
@@ -7,20 +6,11 @@ const CV = Constants
 inject(Element)
 @customElement('FormSelect')
 export class FormSelect {
-    @bindable autocomplete = null;
-
-    @bindable
-    public initSelected: null;
-
-    @bindable
-    public changed: number;
+    @bindable autocomplete = null;    
 
     @bindable optionFilter = null;
 
     @bindable isEnabled = true;
-
-    @bindable popNext = null;
-    @bindable popNextArr = [];
 
     @bindable inpClass = null;
     @bindable inpLabel = null;
@@ -28,10 +18,10 @@ export class FormSelect {
 
     @bindable name = null;
 
-    @bindable
+    //@bindable
+    public initSelected: null;
+    public changed: number;
     public selected: number;
-
-    @bindable
     public options: {value: string, label: string}[] = [];
 
 
@@ -41,17 +31,11 @@ export class FormSelect {
         if(CV.debugConsoleLog) console.log('attached -> initSelected (2): ' + this.initSelected + ' / ' + this.selected);
     }
 
-    public detached(): void {
-        // $("#select").select2('destroy');
-    }
-
     //following method works as expected
     public selectedChanged(newValue: number): void {
         if(CV.debugConsoleLog) console.log('selectedChanged: ' + newValue + ' / ' + this.initSelected);
         this.changed = newValue!=null ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
         this.selected = this.changed;
-        //this.newValue = newValue;
-        //if(newValue) this.populateNextSelect();
     }
 
     tmpCreateLabel(getStr){
@@ -65,8 +49,6 @@ export class FormSelect {
     }
 
     selectOptions = { allowClear: true, placeholder: 'Select...' };
-    //selectedValue: string = '';
-    //singleSelectValues: string[] = ['a', 'b', 'c'];
     selectedValues: string[] = [];
     multipleSelectValues: string[] = ['z', 'y', 'x'];
 

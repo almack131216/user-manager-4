@@ -6,20 +6,20 @@ export class UserPanelDetails {
     @bindable user;
     public CV = CV;
 
-    public sel_region;
-    public sel_hub;
-    public sel_segment;
-    public sel_entity;
-    public sel_bp_office_address;
+    public lkp_region;
+    public lkp_hub;
+    public lkp_segment;
+    public lkp_entity;
+    public lkp_bp_office_address;
 
     constructor() {
-        this.sel_region = [
+        this.lkp_region = [
             { "value": 1, "label": "Region 1" },
             { "value": 2, "label": "Region 2" },
             { "value": 3, "label": "Region 3" }
         ]
 
-        this.sel_hub = [
+        this.lkp_hub = [
             { "value": 1, "label": "Hub 1", "parentValue": 1 },
             { "value": 2, "label": "Hub 2", "parentValue": 1 },
             { "value": 3, "label": "Hub 3", "parentValue": 1 },
@@ -31,7 +31,7 @@ export class UserPanelDetails {
             { "value": 9, "label": "Hub 9", "parentValue": 3 }
         ]
 
-        this.sel_segment = [
+        this.lkp_segment = [
             { "value": 1, "label": "Segment 1", "parentValue": 1 },
             { "value": 2, "label": "Segment 2", "parentValue": 1 },
             { "value": 3, "label": "Segment 3", "parentValue": 1 },
@@ -43,7 +43,7 @@ export class UserPanelDetails {
             { "value": 9, "label": "Segment 9", "parentValue": 3 }
         ]
 
-        this.sel_entity = [
+        this.lkp_entity = [
             { "value": 1, "label": "Entity 1", "parentValue": 1 },
             { "value": 2, "label": "Entity 2", "parentValue": 1 },
             { "value": 3, "label": "Entity 3", "parentValue": 1 },
@@ -55,7 +55,7 @@ export class UserPanelDetails {
             { "value": 9, "label": "Entity 9", "parentValue": 8 }
         ]
 
-        this.sel_bp_office_address = [
+        this.lkp_bp_office_address = [
             { "value": 1, "label": "Address 1" },
             { "value": 2, "label": "Address 2" },
             { "value": 3, "label": "Address 3" }

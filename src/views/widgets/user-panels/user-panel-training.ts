@@ -1,29 +1,13 @@
 import { bindable } from 'aurelia-framework';
+import * as Constants from '../../../resources/constants';
+const CV = Constants
 
 export class UserPanelTraining {
     @bindable user;
-    public sel_training_ics_types;
-    public sel_training_ics_ss_types;
+    public CV = CV;
+    message = CV.MSG_TRAINING;
 
     constructor() {
-
-        this.sel_training_ics_types = [
-            { "label": "" },
-            { "label": "BP IMS fundamentals" },
-            { "label": "ICS 100" },
-            { "label": "ICS 200" },
-            { "label": "ICS 300" }
-        ]
-
-        this.sel_training_ics_ss_types = [
-            { "label": "" },
-            { "label": "Command" },
-            { "label": "Planning" },
-            { "label": "Operations" },
-            { "label": "Logistics" },
-            { "label": "Finance" }
-        ]        
-
     }
 
 }

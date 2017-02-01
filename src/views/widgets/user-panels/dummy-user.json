@@ -4,11 +4,11 @@
     "last_name":"Bowie",
     "email":"david@bowie.com",
     "cell_number":"123-4567",
-    "sel_region_selected": 1,
-    "sel_hub_selected": 3,
-    "sel_segment_selected": 8,
-    "sel_entity_selected": 9,
-    "sel_bp_office_address_selected": 2,
+    "lkp_region_selected": 1,
+    "lkp_hub_selected": 3,
+    "lkp_segment_selected": 8,
+    "lkp_entity_selected": 9,
+    "lkp_bp_office_address_selected": 2,
     "function": "My Function",
     "location": "My location",
     "office_number": "+123 456789",
@@ -17,23 +17,23 @@
     "line_manager_email": "line@manager.com",
     "emergency_contact_name": "My emergency contact",
     "emergency_contact_number": "+999 123456",
-    "sel_member_status_selected": 2,    
+    "lkp_member_status_selected": 2,    
     "date_joined": "2017-01-01T09:11:84Z",
-    "sel_vest_colour_selected": 3,
+    "lkp_vest_colour_selected": 3,
     "coat_size": 14,
-    "sel_languages_selected_arr": [
+    "lkp_languages_selected_arr": [
       {"languageId":2,"languageLevelId":1},
       {"languageId":1,"languageLevelId":2},
       {"languageId":3,"languageLevelId":3}
     ],
-    "sel_mrt_1_ics_selected": 2,
-    "sel_mrt_2_ics_selected": 3,
+    "lkp_mrt_1_ics_selected": 2,
+    "lkp_mrt_2_ics_selected": 3,
     "mrt_previous_role": "My previous role",
-    "sel_passports_selected_arr": [
+    "lkp_passports_selected_arr": [
       {"typeId":1,"number":123456789,"nationalityId":2,"expiryDate":"2017-01-01T09:11:84Z"},
       {"typeId":2,"number":123456789,"nationalityId":1,"expiryDate":"2017-01-01T09:11:84Z"}
     ],
-    "sel_visas_selected_arr": [
+    "lkp_visas_selected_arr": [
       {"typeId":1,"countryId":2,"expiryDate":"2017-01-01T09:11:84Z"},
       {"typeId":2,"countryId":1,"expiryDate":"2017-01-01T09:11:84Z"}
     ],

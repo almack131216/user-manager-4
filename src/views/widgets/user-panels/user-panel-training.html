@@ -4,10 +4,12 @@
     <require from="../inputs/form-radio"></require>
 
     <div class="row-fluid">
-        <div class="col-xs-12">
-            <p>No training is mandatory or required. Roles that require specific training will be selected based on responses below.</p>
+        <div class="col-xs-12" innerhtml.bind="message">
+
         </div>
     </div>
+
+    <div class="divider"></div>
 
     <div class="row-fluid">
         <div class="col-md-6 padding-bottom-g1">
@@ -30,6 +32,8 @@
             </div>
         </div>
 
+        <div class="divider"></div>
+
         <div class="col-md-12 padding-bottom-g1">
             <h4>ICS Others</h4>
             <div class="repeaters row-fluid" repeat.for="row of user.training_others_arr">                
@@ -39,32 +43,7 @@
                     expiry-date.two-way="user.training_others_arr[$index].expiryDate"
                     init-selected.two-way="user.training_others_arr[$index].value"></form-radio>
             </div>
-            <!--<div class="row-fluid">
-                <div class="col-xs-9 padding-x-0">
-                    <form-radio name="training-halwooper" value.two-way="user.training-halwooper" inp-label="Halwooper"></form-radio>
-                </div>
-                <div class="col-xs-3">
-                    Expiry Date
-                </div>
-            </div>
 
-            <div class="row-fluid">
-                <div class="col-xs-9 padding-x-0">
-                    <form-radio name="training-offshore-medical" value.two-way="user.training-offshore-medical" inp-label="Offshore Medical"></form-radio>
-                </div>
-                <div class="col-xs-3">
-                    Expiry Date
-                </div>
-            </div>
-
-            <div class="row-fluid">
-                <div class="col-xs-9 padding-x-0">
-                    <form-radio name="training-huet" value.two-way="user.training-huet" inp-label="Huet"></form-radio>
-                </div>
-                <div class="col-xs-3">
-                    Expiry Date
-                </div>
-            </div>-->
         </div>
     </div>
 
