@@ -6,6 +6,7 @@ export class UserPanelMrt {
     public sel_vest_colour;
     public sel_languages;
     public sel_languageLevels;
+    public sel_languages_limitTo = 5;
 
 
     constructor() {

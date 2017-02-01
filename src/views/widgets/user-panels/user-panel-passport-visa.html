@@ -1,11 +1,42 @@
 <template>
 
     <require from="../inputs/form-input"></require>
+    <require from="../inputs/form-select"></require>
+
     
-    <form-input name="passport-type" value.two-way="user.passport-type"></form-input>
-    <form-input name="passport-number" value.two-way="user.passport-number"></form-input>
-    <form-input name="passport-nationality" value.two-way="user.passport-nationality"></form-input>
-    <form-input name="passport-expiry-date" value.two-way="user.passport-expiry-date"></form-input>
+
+    <div class="divider"></div>
+
+    <div class="repeaters row-fluid" repeat.for="row of user.sel_passports_selected_arr">
+
+        <div if.bind="$index>0" class="divider dotted"></div>
+
+        <form-select name="sel_passport_types[$index]" inp-label="Passport Type"
+            model.two-way="user.sel_passports_selected_arr[$index].typeId"
+            options.bind="sel_passport_types"
+            changed.two-way="user.sel_passports_selected_arr[$index].typeId"
+            autocomplete.bind="true"
+            init-selected.two-way="user.sel_passports_selected_arr[$index].typeId"></form-select>
+
+        <form-input name="passport_number" model.two-way="user.sel_passports_selected_arr[$index].number"></form-input>
+
+        <form-select name="sel_passport_nationalities[$index]" inp-label="Nationality"
+            model.two-way="user.sel_passports_selected_arr[$index].nationalityId"
+            options.bind="sel_passport_nationalities"
+            changed.two-way="user.sel_passports_selected_arr[$index].nationalityId"
+            autocomplete.bind="true"
+            init-selected.two-way="user.sel_passports_selected_arr[$index].nationalityId"></form-select>
+
+        <form-input name="passport_expiry_date" model.two-way="user.sel_passports_selected_arr[$index].expiryDate"></form-input>
+
+        <div class="col-xs-12 margin-bottom-g1">
+            <button class="btn btn-default btn-sm btn-i" if.bind="$index+1 == user.sel_passports_selected_arr.length">
+                <i class="fa fa-plus"></i>
+                Add Passport
+            </button>
+        </div>
+
+    </div>
 
     <div class="divider"></div>
 

@@ -4,13 +4,13 @@
 
     <div class="row-fluid">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
-            ${inpLabel} / ${inpType}
+            ${inpLabel}
         </label>
         <div class="col-sm-6">
             <input if.bind="maskPattern=='telephone'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephone" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder"/>
             <input if.bind="maskPattern=='telephone-cc'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder"/>
             <input if.bind="inpType=='date'" type="inpType" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder">
-            <input if.bind="!maskPattern && !inpType" type="inpType" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder">
+            <input if.bind="!maskPattern && inpType=='text'" type="inpType" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder">
         </div>
     </div>
 </template>
