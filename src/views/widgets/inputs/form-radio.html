@@ -1,15 +1,15 @@
 <template>
     <div class="row">
         <span class="col-xs-8 col-lg-6">
-            <label for.bind="name" title.bind="inpLabel">
+            <label for.bind="inpName" title.bind="inpLabel">
                 ${inpLabel}
             </label>
         </span>
         <span class="col-xs-2 col-lg-3">
-            <input type="radio" name="name" value="1">Yes
+            <input type="radio" name.bind="inpName" model.bind="1" checked.bind="model">Yes
         </span>
         <span class="col-xs-2 col-lg-3">
-            <input type="radio" name="name" value="0">No
+            <input type="radio" name.bind="inpName" model.bind="0" checked.bind="model">No
         </span>
     </div>
 </template>

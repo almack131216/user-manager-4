@@ -49,15 +49,13 @@
     
     <div class="divider"></div>
 
-    <form-input name="function" model.two-way="user.function"></form-input>
+    <form-input name="function" model.two-way="user.function" inp-name="testMe"></form-input>
     <form-input name="location" model.two-way="user.location"></form-input>
     <form-input name="email" model.two-way="user.email" is-mandatory="true"></form-input>
 
-    <div class="divider"></div>
-
-    <form-input name="home_number" model.two-way="user.home_number" mask-pattern="telephone"></form-input>
-    <form-input name="cell_number" model.two-way="user.cell_number" mask-pattern="telephone"></form-input>
-    <form-input name="office_number" model.two-way="user.office_number" mask-pattern="telephone"></form-input>
+    
+    <!--<form-input name="cell_number" model.two-way="user.cell_number" mask-pattern="telephone"></form-input>
+    <form-input name="office_number" model.two-way="user.office_number" mask-pattern="telephone"></form-input>-->
 
     <div class="divider"></div>
     <form-select name="sel_bp_office_address"
@@ -69,6 +67,7 @@
 
     <form-input name="cell_number" model.two-way="user.cell_number" is-mandatory="true" mask-pattern="telephone"></form-input>
     <form-input name="office_number" model.two-way="user.office_number" mask-pattern="telephone"></form-input>
+    <form-input name="home_number" model.two-way="user.home_number" mask-pattern="telephone"></form-input>
 
     <div class="divider"></div>
 

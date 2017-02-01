@@ -5,29 +5,26 @@ import {BindingEngine} from "aurelia-binding";
 
 inject(BindingEngine)
 inject(Element)
-export class FormInput {
-    myvalue = 999999;
-    
+export class FormInput {    
     /* telephone formatting */
     @bindable maskPattern = null;
-    maskPatternTelephone = '+999999999999';
-    maskPatternTelephoneCc = '+999 / 999999';    
+    maskPatternTelephone = '+ 999 / 999999';
+    maskPatternTelephoneCc = '+ 999 / 999999';    
 
     @bindable inpType = "text";
     @bindable formatDate = null;
     @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
+    @bindable inpName = null;
     @bindable inpValue = null;
     @bindable inpValueTwoWay = null;
     @bindable isMandatory = null;
 
     @bindable name = null;
     @bindable value = null;
-    @bindable valTwoWay = null;
 
     public constructor(model) {
-
     }
 
     @bindable model;
@@ -46,6 +43,6 @@ export class FormInput {
     }
 }
 
-function _findSecondInput(elt) {
-    return elt.getElementsByTagName('input')[1];
-}
+// function _findSecondInput(elt) {
+//     return elt.getElementsByTagName('input')[1];
+// }

@@ -12,27 +12,27 @@
     <div class="row-fluid">
         <div class="col-md-6 col-lg-4 padding-bottom-g1">
             <h4>ICS Training</h4>
-            <form-radio name="training-ims" value.two-way="user.training-ims" inp-label="BP IMS fundamentals"></form-radio>
-            <form-radio name="training-ics-100" value.two-way="user.training-ics-100" inp-label="ICS 100"></form-radio>
-            <form-radio name="training-ics-200" value.two-way="user.training-ics-200" inp-label="ICS 200"></form-radio>
-            <form-radio name="training-ics-300" value.two-way="user.training-ics-300" inp-label="ICS 300"></form-radio>
-            <form-radio name="training-ics-400" value.two-way="user.training-ics-400" inp-label="ICS 400"></form-radio>
-            <form-radio name="training-ics-700" value.two-way="user.training-ics-700" inp-label="ICS 700"></form-radio>
-            <form-radio name="training-ics-800" value.two-way="user.training-ics-800" inp-label="ICS 800"></form-radio>
+            <div class="repeaters row-fluid" repeat.for="row of user.training_ics_arr">                
+                <form-radio inp-name.bind="'training_ics_' + $index"
+                    model.two-way="user.training_ics_arr[$index].value"
+                    inp-label.bind="user.training_ics_arr[$index].label"
+                    init-selected.two-way="user.training_ics_arr[$index].value"></form-radio>
+            </div>
         </div>
 
         <div class="col-md-6 col-lg-4 padding-bottom-g1">
             <h4>ICS Section Specific Training</h4>
-            <form-radio name="training-ics-command" value.two-way="user.training-ics-command" inp-label="Command"></form-radio>
-            <form-radio name="training-ics-planning" value.two-way="user.training-ics-planning" inp-label="Planning"></form-radio>
-            <form-radio name="training-ics-operations" value.two-way="user.training-ics-operations" inp-label="Operations"></form-radio>
-            <form-radio name="training-ics-logistics" value.two-way="user.training-ics-logistics" inp-label="Logistics"></form-radio>
-            <form-radio name="training-ics-finance" value.two-way="user.training-ics-finance" inp-label="Finance"></form-radio>
+            <div class="repeaters row-fluid" repeat.for="row of user.training_ics_ss_arr">                
+                <form-radio inp-name.bind="'training_ics_ss_' + $index"
+                    model.two-way="user.training_ics_ss_arr[$index].value"
+                    inp-label.bind="user.training_ics_ss_arr[$index].label"
+                    init-selected.two-way="user.training_ics_ss_arr[$index].value"></form-radio>
+            </div>
         </div>
 
         <div class="col-md-12 col-lg-4 padding-bottom-g1">
             <h4>ICS Others</h4>
-            <div class="row-fluid">
+            <!--<div class="row-fluid">
                 <div class="col-xs-9 padding-x-0">
                     <form-radio name="training-halwooper" value.two-way="user.training-halwooper" inp-label="Halwooper"></form-radio>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="col-xs-3">
                     Expiry Date
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 

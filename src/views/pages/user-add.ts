@@ -20,7 +20,7 @@ export class UserAdd {
   routeConfig;
   originalUser;
   
-  title = 'Add User'
+  title = 'Edit User'
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
 

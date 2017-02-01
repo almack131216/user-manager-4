@@ -37,6 +37,19 @@
       {"typeId":1,"countryId":2,"expiryDate":"2017-01-01T09:11:84Z"},
       {"typeId":2,"countryId":1,"expiryDate":"2017-01-01T09:11:84Z"}
     ],
+    "training_ics_arr": [
+      {"typeId":1,"label":"BP IMS fundamentals","value":0},
+      {"typeId":2,"label":"ICS 100","value":1},
+      {"typeId":3,"label":"ICS 200","value":0},
+      {"typeId":4,"label":"ICS 300","value":null}
+    ],
+    "training_ics_ss_arr": [
+      {"typeId":1,"label":"Command","value":0},
+      {"typeId":2,"label":"Planning","value":1},
+      {"typeId":3,"label":"Operations","value":1},
+      {"typeId":4,"label":"Logistics","value":0},
+      {"typeId":4,"label":"Finance","value":null}
+    ],
     "sel_twic_card": "grrrr",
     "twic_expiry_date": "2017-01-01T09:11:84Z"    
-  }
+  }  
