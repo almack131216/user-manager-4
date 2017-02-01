@@ -55,6 +55,5 @@
       {"typeId":2,"label":"Offshore Medical","value":1,"expiryDate":"2017-01-01T09:11:84Z"},
       {"typeId":3,"label":"HUET / Offshore certificates","value":0,"expiryDate":"2017-01-01T09:11:84Z"}
     ],
-    "sel_twic_card": "grrrr",
-    "twic_expiry_date": "2017-01-01T09:11:84Z"    
+    "twic_card": {"value":1,"expiryDate":"2017-01-01T09:11:84Z"}
   }  

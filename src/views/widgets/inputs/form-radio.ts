@@ -8,6 +8,7 @@ inject(Element)
 export class FormRadio {  
 
     @bindable inpType = "radio";
+    @bindable name = null;
     @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
@@ -38,6 +39,16 @@ export class FormRadio {
 
     changeCallback(evt: Event): void {
         //this.changed = newValue!=null ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
+    }
+
+    tmpCreateLabel(getStr) {
+        return getStr.replace(/_/g, " ").toLowerCase();
+    }
+
+    created() {
+        if (CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.model);
+        if (!this.inpLabel && this.name) this.inpLabel = this.tmpCreateLabel(this.name);
+        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
     }
 
 }
