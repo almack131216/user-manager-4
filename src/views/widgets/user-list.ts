@@ -6,8 +6,12 @@ import {bindable} from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
-@inject(WebAPIUsers, EventAggregator)
+import {DialogService} from 'aurelia-dialog';
+import {Prompt} from './prompt';
+
+@inject(WebAPIUsers, EventAggregator, DialogService)
 export class UserList {
+  dialogService;
   @bindable custTitle = null;
   @bindable custDisableCells = null;
   public CV = CV
@@ -22,7 +26,8 @@ export class UserList {
     return false;
   }
 
-  constructor(private api: WebAPIUsers, ea: EventAggregator){
+  constructor(private api: WebAPIUsers, ea: EventAggregator, dialogService: DialogService){
+    this.dialogService = dialogService;
     ea.subscribe(UserViewed, msg => this.select(msg.user));
     ea.subscribe(UserUpdated, msg => {
       let id = msg.user.id;
@@ -40,5 +45,16 @@ export class UserList {
   select(user){
     this.selectedId = user.id;
     return true;
+  }
+
+  submit(){
+    this.dialogService.open({ viewModel: Prompt, model: 'Good or Bad?'}).then(response => {
+      if (!response.wasCancelled) {
+        console.log('good');
+      } else {
+        console.log('bad');
+      }
+      console.log(response.output);
+    });
   }
 }

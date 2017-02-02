@@ -15,7 +15,8 @@ export function configure(aurelia: Aurelia) {
     .developmentLogging()
     .feature('resources')
     .plugin('aurelia-table')
-    .globalResources("aurelia-mask/masked-input");
+    .globalResources("aurelia-mask/masked-input")
+    .plugin('aurelia-dialog');
 
   if (environment.debug) {
     aurelia.use.developmentLogging();

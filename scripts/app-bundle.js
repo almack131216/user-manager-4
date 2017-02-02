@@ -214,7 +214,8 @@ define('main',["require", "exports", "./environment"], function (require, export
             .developmentLogging()
             .feature('resources')
             .plugin('aurelia-table')
-            .globalResources("aurelia-mask/masked-input");
+            .globalResources("aurelia-mask/masked-input")
+            .plugin('aurelia-dialog');
         if (environment_1.default.debug) {
             aurelia.use.developmentLogging();
         }
@@ -319,6 +320,21 @@ define('resources/functions',["require", "exports"], function (require, exports)
     exports.toUpperCase = toUpperCase;
     function toLowerCase(str) { return str.toLowerCase(); }
     exports.toLowerCase = toLowerCase;
+});
+
+define('resources/globals',["require", "exports"], function (require, exports) {
+    "use strict";
+    var Configuration = (function () {
+        function Configuration() {
+            this.gDelay = 2000;
+            this.gDelay2 = 1100;
+            this.gCurrency = '£';
+            this.gCurrencyFormat = '(0,0.00)';
+            this.gDateFormat = 'MMMM Mo YYYY';
+        }
+        return Configuration;
+    }());
+    exports.Configuration = Configuration;
 });
 
 define('resources/index',["require", "exports"], function (require, exports) {
@@ -430,6 +446,34 @@ define('resources/elements/loading-indicator',["require", "exports", "nprogress"
         aurelia_framework_1.noView(['nprogress/nprogress.css'])
     ], LoadingIndicator);
     exports.LoadingIndicator = LoadingIndicator;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('resources/format/format-date',["require", "exports", "moment", "aurelia-framework", "../globals"], function (require, exports, moment, aurelia_framework_1, globals_1) {
+    "use strict";
+    var DateFormatValueConverter = (function () {
+        function DateFormatValueConverter(config) {
+            console.log('DateFormatValueConverter: ' + this.gDateFormat + ' / ' + config.gDateFormat);
+            this.gDateFormat = config.gDateFormat;
+        }
+        DateFormatValueConverter.prototype.toView = function (value, format) {
+            return moment(value).format(format ? format : this.gDateFormat);
+        };
+        return DateFormatValueConverter;
+    }());
+    DateFormatValueConverter = __decorate([
+        aurelia_framework_1.autoinject(),
+        __metadata("design:paramtypes", [globals_1.Configuration])
+    ], DateFormatValueConverter);
+    exports.DateFormatValueConverter = DateFormatValueConverter;
 });
 
 define('views/pages/login',["require", "exports"], function (require, exports) {
@@ -734,6 +778,16 @@ define('views/widgets/list-activity',["require", "exports"], function (require, 
     exports.listActivity = listActivity;
 });
 
+define('views/widgets/prompt',["require", "exports"], function (require, exports) {
+    "use strict";
+    var Prompt = (function () {
+        function Prompt() {
+        }
+        return Prompt;
+    }());
+    exports.Prompt = Prompt;
+});
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -797,11 +851,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregator", "../../api/web-api-users", "../../resources/messages", "aurelia-framework", "aurelia-framework", "../../resources/constants"], function (require, exports, aurelia_event_aggregator_1, web_api_users_1, messages_1, aurelia_framework_1, aurelia_framework_2, Constants) {
+define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregator", "../../api/web-api-users", "../../resources/messages", "aurelia-framework", "aurelia-framework", "../../resources/constants", "aurelia-dialog", "./prompt"], function (require, exports, aurelia_event_aggregator_1, web_api_users_1, messages_1, aurelia_framework_1, aurelia_framework_2, Constants, aurelia_dialog_1, prompt_1) {
     "use strict";
     var CV = Constants;
     var UserList = (function () {
-        function UserList(api, ea) {
+        function UserList(api, ea, dialogService) {
             var _this = this;
             this.api = api;
             this.custTitle = null;
@@ -809,6 +863,7 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
             this.CV = CV;
             this.selectedId = 0;
             this.title = 'Users';
+            this.dialogService = dialogService;
             ea.subscribe(messages_1.UserViewed, function (msg) { return _this.select(msg.user); });
             ea.subscribe(messages_1.UserUpdated, function (msg) {
                 var id = msg.user.id;
@@ -837,6 +892,17 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
             this.selectedId = user.id;
             return true;
         };
+        UserList.prototype.submit = function () {
+            this.dialogService.open({ viewModel: prompt_1.Prompt, model: 'Good or Bad?' }).then(function (response) {
+                if (!response.wasCancelled) {
+                    console.log('good');
+                }
+                else {
+                    console.log('bad');
+                }
+                console.log(response.output);
+            });
+        };
         return UserList;
     }());
     __decorate([
@@ -848,8 +914,8 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
         __metadata("design:type", Object)
     ], UserList.prototype, "custDisableCells", void 0);
     UserList = __decorate([
-        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator),
-        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator])
+        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator, aurelia_dialog_1.DialogService),
+        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator, aurelia_dialog_1.DialogService])
     ], UserList);
     exports.UserList = UserList;
 });
@@ -1377,143 +1443,722 @@ define('views/widgets/user-panels/user-panel-twic',["require", "exports", "aurel
     exports.UserPanelTwic = UserPanelTwic;
 });
 
-define('resources/globals',["require", "exports"], function (require, exports) {
-    "use strict";
-    var Configuration = (function () {
-        function Configuration() {
-            this.gDelay = 2000;
-            this.gDelay2 = 1100;
-            this.gCurrency = '£';
-            this.gCurrencyFormat = '(0,0.00)';
-            this.gDateFormat = 'MMMM Mo YYYY';
-        }
-        return Configuration;
-    }());
-    exports.Configuration = Configuration;
-});
+define('aurelia-dialog/ai-dialog',['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
+  'use strict';
 
-define('resources/format/format-number',["require", "exports", "numeral"], function (require, exports, numeral_1) {
-    "use strict";
-    var NumberFormatValueConverter = (function () {
-        function NumberFormatValueConverter() {
-        }
-        NumberFormatValueConverter.prototype.toView = function (value, format) {
-            return numeral_1.default(value).format(format ? format : '');
-        };
-        return NumberFormatValueConverter;
-    }());
-    exports.NumberFormatValueConverter = NumberFormatValueConverter;
-    var RoundDownValueConverter = (function () {
-        function RoundDownValueConverter() {
-        }
-        RoundDownValueConverter.prototype.toView = function (number, decimals) {
-            decimals = decimals || 0;
-            return (Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals));
-        };
-        return RoundDownValueConverter;
-    }());
-    exports.RoundDownValueConverter = RoundDownValueConverter;
-});
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.AiDialog = undefined;
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('resources/format/format-date',["require", "exports", "moment", "aurelia-framework", "../globals"], function (require, exports, moment, aurelia_framework_1, globals_1) {
-    "use strict";
-    var DateFormatValueConverter = (function () {
-        function DateFormatValueConverter(config) {
-            console.log('DateFormatValueConverter: ' + this.gDateFormat + ' / ' + config.gDateFormat);
-            this.gDateFormat = config.gDateFormat;
-        }
-        DateFormatValueConverter.prototype.toView = function (value, format) {
-            return moment(value).format(format ? format : this.gDateFormat);
-        };
-        return DateFormatValueConverter;
-    }());
-    DateFormatValueConverter = __decorate([
-        aurelia_framework_1.autoinject(),
-        __metadata("design:paramtypes", [globals_1.Configuration])
-    ], DateFormatValueConverter);
-    exports.DateFormatValueConverter = DateFormatValueConverter;
-});
+  
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('resources/format/format-cust',["require", "exports", "aurelia-framework", "numeral"], function (require, exports, aurelia_framework_1, numeral_1) {
-    "use strict";
-    function htmlEncode(html) {
-        return document.createElement('a').appendChild(document.createTextNode(html)).parentNode.innerHTML;
+  var _dec, _dec2, _class;
+
+  var AiDialog = exports.AiDialog = (_dec = (0, _aureliaTemplating.customElement)('ai-dialog'), _dec2 = (0, _aureliaTemplating.inlineView)('\n  <template>\n    <slot></slot>\n  </template>\n'), _dec(_class = _dec2(_class = function AiDialog() {
+    
+  }) || _class) || _class);
+});
+define('aurelia-dialog/ai-dialog-header',['exports', 'aurelia-templating', './dialog-controller'], function (exports, _aureliaTemplating, _dialogController) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.AiDialogHeader = undefined;
+
+  
+
+  var _dec, _dec2, _class, _class2, _temp;
+
+  var AiDialogHeader = exports.AiDialogHeader = (_dec = (0, _aureliaTemplating.customElement)('ai-dialog-header'), _dec2 = (0, _aureliaTemplating.inlineView)('\n  <template>\n    <button type="button" class="dialog-close" aria-label="Close" if.bind="!controller.settings.lock" click.trigger="controller.cancel()">\n      <span aria-hidden="true">&times;</span>\n    </button>\n\n    <div class="dialog-header-content">\n      <slot></slot>\n    </div>\n  </template>\n'), _dec(_class = _dec2(_class = (_temp = _class2 = function AiDialogHeader(controller) {
+    
+
+    this.controller = controller;
+  }, _class2.inject = [_dialogController.DialogController], _temp)) || _class) || _class);
+});
+define('aurelia-dialog/dialog-controller',['exports', './lifecycle', './dialog-result'], function (exports, _lifecycle, _dialogResult) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.DialogController = undefined;
+
+  
+
+  var DialogController = exports.DialogController = function () {
+    function DialogController(renderer, settings, resolve, reject) {
+      
+
+      this.renderer = renderer;
+      this.settings = settings;
+      this._resolve = resolve;
+      this._reject = reject;
     }
-    var PreserveBreaksCustomAttribute = (function () {
-        function PreserveBreaksCustomAttribute(element) {
-            this.element = element;
-        }
-        PreserveBreaksCustomAttribute.prototype.valueChanged = function () {
-            var html = htmlEncode(this.value);
-            html = html.replace(/\r/g, '').replace(/\n/g, '<br/>');
-            this.element.innerHTML = html;
-        };
-        return PreserveBreaksCustomAttribute;
-    }());
-    PreserveBreaksCustomAttribute = __decorate([
-        aurelia_framework_1.inject(Element),
-        __metadata("design:paramtypes", [Object])
-    ], PreserveBreaksCustomAttribute);
-    exports.PreserveBreaksCustomAttribute = PreserveBreaksCustomAttribute;
-    var ConvertTicksValueConverter = (function () {
-        function ConvertTicksValueConverter() {
-        }
-        ConvertTicksValueConverter.prototype.toView = function (value) {
-            return numeral_1.default(value / 1000).format('0[.][0]');
-        };
-        return ConvertTicksValueConverter;
-    }());
-    exports.ConvertTicksValueConverter = ConvertTicksValueConverter;
-});
 
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('resources/format/format-currency',["require", "exports", "numeral", "aurelia-framework", "../globals"], function (require, exports, numeral_1, aurelia_framework_1, globals_1) {
-    "use strict";
-    var CurrencyFormatValueConverter = (function () {
-        function CurrencyFormatValueConverter(config) {
-            this.gCurrencyFormat = config.gCurrencyFormat;
-            this.gCurrency = config.gCurrency;
-        }
-        CurrencyFormatValueConverter.prototype.toView = function (value, format, currency) {
-            if (format === void 0) { format = format ? format : this.gCurrencyFormat; }
-            if (currency === void 0) { currency = currency ? currency : this.gCurrency; }
-            return currency + numeral_1.default(value).format(format);
-        };
-        return CurrencyFormatValueConverter;
-    }());
-    CurrencyFormatValueConverter = __decorate([
-        aurelia_framework_1.inject(globals_1.Configuration),
-        __metadata("design:paramtypes", [Object])
-    ], CurrencyFormatValueConverter);
-    exports.CurrencyFormatValueConverter = CurrencyFormatValueConverter;
-});
+    DialogController.prototype.ok = function ok(output) {
+      return this.close(true, output);
+    };
 
+    DialogController.prototype.cancel = function cancel(output) {
+      return this.close(false, output);
+    };
+
+    DialogController.prototype.error = function error(message) {
+      var _this = this;
+
+      return (0, _lifecycle.invokeLifecycle)(this.viewModel, 'deactivate').then(function () {
+        return _this.renderer.hideDialog(_this);
+      }).then(function () {
+        _this.controller.unbind();
+        _this._reject(message);
+      });
+    };
+
+    DialogController.prototype.close = function close(ok, output) {
+      var _this2 = this;
+
+      if (this._closePromise) {
+        return this._closePromise;
+      }
+
+      this._closePromise = (0, _lifecycle.invokeLifecycle)(this.viewModel, 'canDeactivate').then(function (canDeactivate) {
+        if (canDeactivate) {
+          return (0, _lifecycle.invokeLifecycle)(_this2.viewModel, 'deactivate').then(function () {
+            return _this2.renderer.hideDialog(_this2);
+          }).then(function () {
+            var result = new _dialogResult.DialogResult(!ok, output);
+            _this2.controller.unbind();
+            _this2._resolve(result);
+            return result;
+          });
+        }
+
+        _this2._closePromise = undefined;
+      }, function (e) {
+        _this2._closePromise = undefined;
+        return Promise.reject(e);
+      });
+
+      return this._closePromise;
+    };
+
+    return DialogController;
+  }();
+});
+define('aurelia-dialog/lifecycle',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.invokeLifecycle = invokeLifecycle;
+  function invokeLifecycle(instance, name, model) {
+    if (typeof instance[name] === 'function') {
+      var result = instance[name](model);
+
+      if (result instanceof Promise) {
+        return result;
+      }
+
+      if (result !== null && result !== undefined) {
+        return Promise.resolve(result);
+      }
+
+      return Promise.resolve(true);
+    }
+
+    return Promise.resolve(true);
+  }
+});
+define('aurelia-dialog/dialog-result',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  
+
+  var DialogResult = exports.DialogResult = function DialogResult(cancelled, output) {
+    
+
+    this.wasCancelled = false;
+
+    this.wasCancelled = cancelled;
+    this.output = output;
+  };
+});
+define('aurelia-dialog/ai-dialog-body',['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.AiDialogBody = undefined;
+
+  
+
+  var _dec, _dec2, _class;
+
+  var AiDialogBody = exports.AiDialogBody = (_dec = (0, _aureliaTemplating.customElement)('ai-dialog-body'), _dec2 = (0, _aureliaTemplating.inlineView)('\n  <template>\n    <slot></slot>\n  </template>\n'), _dec(_class = _dec2(_class = function AiDialogBody() {
+    
+  }) || _class) || _class);
+});
+define('aurelia-dialog/ai-dialog-footer',['exports', 'aurelia-templating', './dialog-controller'], function (exports, _aureliaTemplating, _dialogController) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.AiDialogFooter = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _class3, _temp;
+
+  var AiDialogFooter = exports.AiDialogFooter = (_dec = (0, _aureliaTemplating.customElement)('ai-dialog-footer'), _dec2 = (0, _aureliaTemplating.inlineView)('\n  <template>\n    <slot></slot>\n\n    <template if.bind="buttons.length > 0">\n      <button type="button" class="btn btn-default" repeat.for="button of buttons" click.trigger="close(button)">${button}</button>\n    </template>\n  </template>\n'), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    function AiDialogFooter(controller) {
+      
+
+      _initDefineProp(this, 'buttons', _descriptor, this);
+
+      _initDefineProp(this, 'useDefaultButtons', _descriptor2, this);
+
+      this.controller = controller;
+    }
+
+    AiDialogFooter.prototype.close = function close(buttonValue) {
+      if (AiDialogFooter.isCancelButton(buttonValue)) {
+        this.controller.cancel(buttonValue);
+      } else {
+        this.controller.ok(buttonValue);
+      }
+    };
+
+    AiDialogFooter.prototype.useDefaultButtonsChanged = function useDefaultButtonsChanged(newValue) {
+      if (newValue) {
+        this.buttons = ['Cancel', 'Ok'];
+      }
+    };
+
+    AiDialogFooter.isCancelButton = function isCancelButton(value) {
+      return value === 'Cancel';
+    };
+
+    return AiDialogFooter;
+  }(), _class3.inject = [_dialogController.DialogController], _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'buttons', [_aureliaTemplating.bindable], {
+    enumerable: true,
+    initializer: function initializer() {
+      return [];
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'useDefaultButtons', [_aureliaTemplating.bindable], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-dialog/attach-focus',['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.AttachFocus = undefined;
+
+  
+
+  var _dec, _class, _class2, _temp;
+
+  var AttachFocus = exports.AttachFocus = (_dec = (0, _aureliaTemplating.customAttribute)('attach-focus'), _dec(_class = (_temp = _class2 = function () {
+    function AttachFocus(element) {
+      
+
+      this.value = true;
+
+      this.element = element;
+    }
+
+    AttachFocus.prototype.attached = function attached() {
+      if (this.value && this.value !== 'false') {
+        this.element.focus();
+      }
+    };
+
+    AttachFocus.prototype.valueChanged = function valueChanged(newValue) {
+      this.value = newValue;
+    };
+
+    return AttachFocus;
+  }(), _class2.inject = [Element], _temp)) || _class);
+});
+define('aurelia-dialog/dialog-configuration',['exports', './renderer', './dialog-renderer', './dialog-options', 'aurelia-pal'], function (exports, _renderer, _dialogRenderer, _dialogOptions, _aureliaPal) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.DialogConfiguration = undefined;
+
+  
+
+  var defaultRenderer = _dialogRenderer.DialogRenderer;
+
+  var resources = {
+    'ai-dialog': './ai-dialog',
+    'ai-dialog-header': './ai-dialog-header',
+    'ai-dialog-body': './ai-dialog-body',
+    'ai-dialog-footer': './ai-dialog-footer',
+    'attach-focus': './attach-focus'
+  };
+
+  var defaultCSSText = 'ai-dialog-container,ai-dialog-overlay{position:fixed;top:0;right:0;bottom:0;left:0}ai-dialog-overlay{opacity:0}ai-dialog-overlay.active{opacity:1}ai-dialog-container{display:block;transition:opacity .2s linear;opacity:0;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}ai-dialog-container.active{opacity:1}ai-dialog-container>div{padding:30px}ai-dialog-container>div>div{display:block;min-width:300px;width:-moz-fit-content;width:-webkit-fit-content;width:fit-content;height:-moz-fit-content;height:-webkit-fit-content;height:fit-content;margin:auto}ai-dialog-container,ai-dialog-container>div,ai-dialog-container>div>div{outline:0}ai-dialog{display:table;box-shadow:0 5px 15px rgba(0,0,0,.5);border:1px solid rgba(0,0,0,.2);border-radius:5px;padding:3;min-width:300px;width:-moz-fit-content;width:-webkit-fit-content;width:fit-content;height:-moz-fit-content;height:-webkit-fit-content;height:fit-content;margin:auto;border-image-source:initial;border-image-slice:initial;border-image-width:initial;border-image-outset:initial;border-image-repeat:initial;background:#fff}ai-dialog>ai-dialog-header{display:block;padding:16px;border-bottom:1px solid #e5e5e5}ai-dialog>ai-dialog-header>button{float:right;border:none;display:block;width:32px;height:32px;background:0 0;font-size:22px;line-height:16px;margin:-14px -16px 0 0;padding:0;cursor:pointer}ai-dialog>ai-dialog-body{display:block;padding:16px}ai-dialog>ai-dialog-footer{display:block;padding:6px;border-top:1px solid #e5e5e5;text-align:right}ai-dialog>ai-dialog-footer button{color:#333;background-color:#fff;padding:6px 12px;font-size:14px;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid #ccc;border-radius:4px;margin:5px 0 5px 5px}ai-dialog>ai-dialog-footer button:disabled{cursor:default;opacity:.45}ai-dialog>ai-dialog-footer button:hover:enabled{color:#333;background-color:#e6e6e6;border-color:#adadad}.ai-dialog-open{overflow:hidden}';
+
+  var DialogConfiguration = exports.DialogConfiguration = function () {
+    function DialogConfiguration(aurelia) {
+      
+
+      this.aurelia = aurelia;
+      this.settings = _dialogOptions.dialogOptions;
+      this.resources = [];
+      this.cssText = defaultCSSText;
+      this.renderer = defaultRenderer;
+    }
+
+    DialogConfiguration.prototype.useDefaults = function useDefaults() {
+      return this.useRenderer(defaultRenderer).useCSS(defaultCSSText).useStandardResources();
+    };
+
+    DialogConfiguration.prototype.useStandardResources = function useStandardResources() {
+      return this.useResource('ai-dialog').useResource('ai-dialog-header').useResource('ai-dialog-body').useResource('ai-dialog-footer').useResource('attach-focus');
+    };
+
+    DialogConfiguration.prototype.useResource = function useResource(resourceName) {
+      this.resources.push(resourceName);
+      return this;
+    };
+
+    DialogConfiguration.prototype.useRenderer = function useRenderer(renderer, settings) {
+      this.renderer = renderer;
+      this.settings = Object.assign(this.settings, settings || {});
+      return this;
+    };
+
+    DialogConfiguration.prototype.useCSS = function useCSS(cssText) {
+      this.cssText = cssText;
+      return this;
+    };
+
+    DialogConfiguration.prototype._apply = function _apply() {
+      var _this = this;
+
+      this.aurelia.transient(_renderer.Renderer, this.renderer);
+      this.resources.forEach(function (resourceName) {
+        return _this.aurelia.globalResources(resources[resourceName]);
+      });
+
+      if (this.cssText) {
+        _aureliaPal.DOM.injectStyles(this.cssText);
+      }
+    };
+
+    return DialogConfiguration;
+  }();
+});
+define('aurelia-dialog/renderer',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  
+
+  var Renderer = exports.Renderer = function () {
+    function Renderer() {
+      
+    }
+
+    Renderer.prototype.getDialogContainer = function getDialogContainer() {
+      throw new Error('DialogRenderer must implement getDialogContainer().');
+    };
+
+    Renderer.prototype.showDialog = function showDialog(dialogController) {
+      throw new Error('DialogRenderer must implement showDialog().');
+    };
+
+    Renderer.prototype.hideDialog = function hideDialog(dialogController) {
+      throw new Error('DialogRenderer must implement hideDialog().');
+    };
+
+    return Renderer;
+  }();
+});
+define('aurelia-dialog/dialog-renderer',['exports', 'aurelia-pal', 'aurelia-dependency-injection'], function (exports, _aureliaPal, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.DialogRenderer = undefined;
+
+  
+
+  var _dec, _class;
+
+  var containerTagName = 'ai-dialog-container';
+  var overlayTagName = 'ai-dialog-overlay';
+  var transitionEvent = function () {
+    var transition = null;
+
+    return function () {
+      if (transition) return transition;
+
+      var t = void 0;
+      var el = _aureliaPal.DOM.createElement('fakeelement');
+      var transitions = {
+        'transition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
+        'MozTransition': 'transitionend',
+        'WebkitTransition': 'webkitTransitionEnd'
+      };
+      for (t in transitions) {
+        if (el.style[t] !== undefined) {
+          transition = transitions[t];
+          return transition;
+        }
+      }
+    };
+  }();
+
+  var DialogRenderer = exports.DialogRenderer = (_dec = (0, _aureliaDependencyInjection.transient)(), _dec(_class = function () {
+    function DialogRenderer() {
+      var _this = this;
+
+      
+
+      this._escapeKeyEventHandler = function (e) {
+        if (e.keyCode === 27) {
+          var top = _this._dialogControllers[_this._dialogControllers.length - 1];
+          if (top && top.settings.lock !== true) {
+            top.cancel();
+          }
+        }
+      };
+    }
+
+    DialogRenderer.prototype.getDialogContainer = function getDialogContainer() {
+      return _aureliaPal.DOM.createElement('div');
+    };
+
+    DialogRenderer.prototype.showDialog = function showDialog(dialogController) {
+      var _this2 = this;
+
+      var settings = dialogController.settings;
+      var body = _aureliaPal.DOM.querySelectorAll('body')[0];
+      var wrapper = document.createElement('div');
+
+      this.modalOverlay = _aureliaPal.DOM.createElement(overlayTagName);
+      this.modalContainer = _aureliaPal.DOM.createElement(containerTagName);
+      this.anchor = dialogController.slot.anchor;
+      wrapper.appendChild(this.anchor);
+      this.modalContainer.appendChild(wrapper);
+
+      this.stopPropagation = function (e) {
+        e._aureliaDialogHostClicked = true;
+      };
+      this.closeModalClick = function (e) {
+        if (!settings.lock && !e._aureliaDialogHostClicked) {
+          dialogController.cancel();
+        } else {
+          return false;
+        }
+      };
+
+      dialogController.centerDialog = function () {
+        if (settings.centerHorizontalOnly) return;
+        centerDialog(_this2.modalContainer);
+      };
+
+      this.modalOverlay.style.zIndex = settings.startingZIndex;
+      this.modalContainer.style.zIndex = settings.startingZIndex;
+
+      var lastContainer = Array.from(body.querySelectorAll(containerTagName)).pop();
+
+      if (lastContainer) {
+        lastContainer.parentNode.insertBefore(this.modalContainer, lastContainer.nextSibling);
+        lastContainer.parentNode.insertBefore(this.modalOverlay, lastContainer.nextSibling);
+      } else {
+        body.insertBefore(this.modalContainer, body.firstChild);
+        body.insertBefore(this.modalOverlay, body.firstChild);
+      }
+
+      if (!this._dialogControllers.length) {
+        _aureliaPal.DOM.addEventListener('keyup', this._escapeKeyEventHandler);
+      }
+
+      this._dialogControllers.push(dialogController);
+
+      dialogController.slot.attached();
+
+      if (typeof settings.position === 'function') {
+        settings.position(this.modalContainer, this.modalOverlay);
+      } else {
+        dialogController.centerDialog();
+      }
+
+      this.modalContainer.addEventListener('click', this.closeModalClick);
+      this.anchor.addEventListener('click', this.stopPropagation);
+
+      return new Promise(function (resolve) {
+        var renderer = _this2;
+        if (settings.ignoreTransitions) {
+          resolve();
+        } else {
+          _this2.modalContainer.addEventListener(transitionEvent(), onTransitionEnd);
+        }
+
+        _this2.modalOverlay.classList.add('active');
+        _this2.modalContainer.classList.add('active');
+        body.classList.add('ai-dialog-open');
+
+        function onTransitionEnd(e) {
+          if (e.target !== renderer.modalContainer) {
+            return;
+          }
+          renderer.modalContainer.removeEventListener(transitionEvent(), onTransitionEnd);
+          resolve();
+        }
+      });
+    };
+
+    DialogRenderer.prototype.hideDialog = function hideDialog(dialogController) {
+      var _this3 = this;
+
+      var settings = dialogController.settings;
+      var body = _aureliaPal.DOM.querySelectorAll('body')[0];
+
+      this.modalContainer.removeEventListener('click', this.closeModalClick);
+      this.anchor.removeEventListener('click', this.stopPropagation);
+
+      var i = this._dialogControllers.indexOf(dialogController);
+      if (i !== -1) {
+        this._dialogControllers.splice(i, 1);
+      }
+
+      if (!this._dialogControllers.length) {
+        _aureliaPal.DOM.removeEventListener('keyup', this._escapeKeyEventHandler);
+      }
+
+      return new Promise(function (resolve) {
+        var renderer = _this3;
+        if (settings.ignoreTransitions) {
+          resolve();
+        } else {
+          _this3.modalContainer.addEventListener(transitionEvent(), onTransitionEnd);
+        }
+
+        _this3.modalOverlay.classList.remove('active');
+        _this3.modalContainer.classList.remove('active');
+
+        function onTransitionEnd() {
+          renderer.modalContainer.removeEventListener(transitionEvent(), onTransitionEnd);
+          resolve();
+        }
+      }).then(function () {
+        body.removeChild(_this3.modalOverlay);
+        body.removeChild(_this3.modalContainer);
+        dialogController.slot.detached();
+
+        if (!_this3._dialogControllers.length) {
+          body.classList.remove('ai-dialog-open');
+        }
+
+        return Promise.resolve();
+      });
+    };
+
+    return DialogRenderer;
+  }()) || _class);
+
+
+  DialogRenderer.prototype._dialogControllers = [];
+
+  function centerDialog(modalContainer) {
+    var child = modalContainer.children[0];
+    var vh = Math.max(_aureliaPal.DOM.querySelectorAll('html')[0].clientHeight, window.innerHeight || 0);
+
+    child.style.marginTop = Math.max((vh - child.offsetHeight) / 2, 30) + 'px';
+    child.style.marginBottom = Math.max((vh - child.offsetHeight) / 2, 30) + 'px';
+  }
+});
+define('aurelia-dialog/dialog-options',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  var dialogOptions = exports.dialogOptions = {
+    lock: true,
+    centerHorizontalOnly: false,
+    startingZIndex: 1000,
+    ignoreTransitions: false
+  };
+});
+define('aurelia-dialog/dialog-service',['exports', 'aurelia-metadata', 'aurelia-dependency-injection', 'aurelia-templating', './dialog-controller', './renderer', './lifecycle', './dialog-result', './dialog-options'], function (exports, _aureliaMetadata, _aureliaDependencyInjection, _aureliaTemplating, _dialogController, _renderer, _lifecycle, _dialogResult, _dialogOptions) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.DialogService = undefined;
+
+  
+
+  var _class, _temp;
+
+  var DialogService = exports.DialogService = (_temp = _class = function () {
+    function DialogService(container, compositionEngine) {
+      
+
+      this.container = container;
+      this.compositionEngine = compositionEngine;
+      this.controllers = [];
+      this.hasActiveDialog = false;
+    }
+
+    DialogService.prototype.open = function open(settings) {
+      return this.openAndYieldController(settings).then(function (controller) {
+        return controller.result;
+      });
+    };
+
+    DialogService.prototype.openAndYieldController = function openAndYieldController(settings) {
+      var _this = this;
+
+      var childContainer = this.container.createChild();
+      var dialogController = void 0;
+      var promise = new Promise(function (resolve, reject) {
+        dialogController = new _dialogController.DialogController(childContainer.get(_renderer.Renderer), _createSettings(settings), resolve, reject);
+      });
+      childContainer.registerInstance(_dialogController.DialogController, dialogController);
+      dialogController.result = promise;
+      dialogController.result.then(function () {
+        _removeController(_this, dialogController);
+      }, function () {
+        _removeController(_this, dialogController);
+      });
+      return _openDialog(this, childContainer, dialogController).then(function () {
+        return dialogController;
+      });
+    };
+
+    return DialogService;
+  }(), _class.inject = [_aureliaDependencyInjection.Container, _aureliaTemplating.CompositionEngine], _temp);
+
+
+  function _createSettings(settings) {
+    settings = Object.assign({}, _dialogOptions.dialogOptions, settings);
+    settings.startingZIndex = _dialogOptions.dialogOptions.startingZIndex;
+    return settings;
+  }
+
+  function _openDialog(service, childContainer, dialogController) {
+    var host = dialogController.renderer.getDialogContainer();
+    var instruction = {
+      container: service.container,
+      childContainer: childContainer,
+      model: dialogController.settings.model,
+      view: dialogController.settings.view,
+      viewModel: dialogController.settings.viewModel,
+      viewSlot: new _aureliaTemplating.ViewSlot(host, true),
+      host: host
+    };
+
+    return _getViewModel(instruction, service.compositionEngine).then(function (returnedInstruction) {
+      dialogController.viewModel = returnedInstruction.viewModel;
+      dialogController.slot = returnedInstruction.viewSlot;
+
+      return (0, _lifecycle.invokeLifecycle)(dialogController.viewModel, 'canActivate', dialogController.settings.model).then(function (canActivate) {
+        if (canActivate) {
+          return service.compositionEngine.compose(returnedInstruction).then(function (controller) {
+            service.controllers.push(dialogController);
+            service.hasActiveDialog = !!service.controllers.length;
+            dialogController.controller = controller;
+            dialogController.view = controller.view;
+
+            return dialogController.renderer.showDialog(dialogController);
+          });
+        }
+      });
+    });
+  }
+
+  function _getViewModel(instruction, compositionEngine) {
+    if (typeof instruction.viewModel === 'function') {
+      instruction.viewModel = _aureliaMetadata.Origin.get(instruction.viewModel).moduleId;
+    }
+
+    if (typeof instruction.viewModel === 'string') {
+      return compositionEngine.ensureViewModel(instruction);
+    }
+
+    return Promise.resolve(instruction);
+  }
+
+  function _removeController(service, controller) {
+    var i = service.controllers.indexOf(controller);
+    if (i !== -1) {
+      service.controllers.splice(i, 1);
+      service.hasActiveDialog = !!service.controllers.length;
+    }
+  }
+});
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./views/ui/nav-bar\"></require>\r\n  <require from=\"./views/ui/ui-footer\"></require>\r\n  <require from=\"font-awesome.css\"></require>\r\n  <link href=\"src/css/main.css\" rel=\"stylesheet\" />\r\n  <link href=\"src/css/bootstrap.min.css\" rel=\"stylesheet\" />\r\n\r\n  <div id=\"container-fixed-footer\">\r\n    <loading-indicator loading.bind=\"router.isNavigating || api.isRequesting\"></loading-indicator>\r\n    <nav-bar router.bind=\"router\" id=\"header\"></nav-bar>\r\n\r\n    <div class=\"container\" id=\"body\">\r\n      <div class=\"row\">      \r\n        <router-view></router-view>\r\n      </div>\r\n    </div>\r\n\r\n    <ui-footer id=\"footer\"></ui-footer>\r\n  </div>\r\n\r\n</template>"; });
 define('text!styles.css', ['module'], function(module) { module.exports = "body { }\n\n/* forms */\n.form-group label {background:yellow;}\n\n/* offsets */\n.padding-x-0 {padding-left:0px !important;padding-right:0px !important;}\n.margin-x-0 {margin-left:0px !important;margin-right:0px !important;}\n\n.html-file-name {margin-left:10px;color:red;font-size:0.5em;}\n\n.display-none {display:none !important}\n.display-block {display:block !important}\n.display-inline-block {display:inline-block !important}\n\n.btn-i i.fa {margin-right:10px;}\n\nsection {\n  margin: 0 20px;\n}\n\na:focus {\n  outline: none;\n}\n\n.navbar-nav li.loader {\n    margin: 12px 24px 0 6px;\n}\n\n.no-selection {\n  margin: 20px;\n}\n\n.contact-list {\n  overflow-y: auto;\n  border: 1px solid #ddd;\n  padding: 10px;\n}\n\n.panel {\n  margin: 20px;\n}\n\n.button-bar {\n  right: 0;\n  left: 0;\n  bottom: 0;\n  border-top: 1px solid #ddd;\n  background: white;\n}\n\n.button-bar > button {\n  float: right;\n  margin: 20px;\n}\n\nli.list-group-item {\n  list-style: none;\n}\n\nli.list-group-item > a {\n  text-decoration: none;\n}\n\nli.list-group-item.active > a {\n  color: white;\n}\n"; });
 define('text!login.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"bootstrap/css/bootstrap.css\"></require>\r\n  <require from=\"font-awesome.css\"></require>\r\n\r\n    <div class=\"container\">\r\n    <div class=\"row\">      \r\n      <div class=\"col-md-12 styleXXX\" style=\"padding-top:100px;\">\r\n          <h1>${title}</h1>\r\n        <form class=\"login-form\" submit.delegate=\"login()\">\r\n            <input type=\"text\" placeholder=\"username\" value.bind=\"username\" />\r\n            <input type=\"password\" placeholder=\"password\" value.bind=\"password\" />\r\n            <button type=\"submit\">Login</button>\r\n            <span class=\"error\">${error}</span>\r\n        </form>\r\n    </div>\r\n    </div>\r\n  </div>\r\n    \r\n</template>"; });
@@ -1527,14 +2172,15 @@ define('text!scss/bootstrap.min.css', ['module'], function(module) { module.expo
 define('text!views/pages/user-no-selection.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/user-list\"></require>\r\n\r\n  <div class=\"col-md-12\" if.bind=\"title\">\r\n    <h1>${title}<span class=\"html-file-name\">(user-no-selection.html)</span></h1>\r\n    <hr>\r\n  </div>\r\n\r\n  <user-list class=\"col-md-12\"></user-list>\r\n\r\n</template>"; });
 define('text!views/pages/user-selected.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/user-list\"></require>\r\n  <require from=\"../widgets/user-edit\"></require>\r\n  <require from=\"./user-add\"></require>\r\n\r\n  <!--<div class=\"col-md-12\">\r\n    <h1>${title}<span class=\"html-file-name\">(user-selected.html)</span></h1>\r\n    <hr>\r\n  </div>-->\r\n\r\n  <div if.bind=\"!editType\">\r\n    <user-list class=\"col-xs-12 col-md-8\"></user-list>\r\n\r\n    <div class=\"col-xs-12 col-md-4\">\r\n      <user-edit user.bind=\"user\"></user-edit>\r\n    </div>\r\n  </div>\r\n\r\n  <div if.bind=\"user && editType=='edit'\" class=\"col-xs-12\">\r\n    <user-add user.bind=\"user\"></user-add>\r\n  </div>\r\n\r\n</template>"; });
 define('text!views/pages/welcome.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../widgets/list-activity\"></require>\r\n    <require from=\"../widgets/user-list\"></require>\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <h1>${title}<span class=\"html-file-name\">(welcome.html)</span></h1>\r\n        </div>\r\n    </div>\r\n\r\n    <hr>-->\r\n\r\n    <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n        <list-activity></list-activity>\r\n    </div>\r\n\r\n    <div class=\"col-md-6\">\r\n        <user-list cust-title=\"Users-lite\" cust-disable-cells=\"['first_name','cell_number','permission']\"></user-list>\r\n    </div>\r\n    </div>\r\n    \r\n</template>"; });
-define('text!views/ui/nav-bar.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"./ui-header\"></require>\r\n    \r\n    <ui-header></ui-header>\r\n    \r\n    <nav id=\"header\" class=\"navbar navbar-default navbar-static-topXXX\" role=\"navigation\">\r\n    <div class=\"container\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\r\n                <span class=\"sr-only\">Toggle Navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n            </button>\r\n            <a class=\"navbar-brand\" href=\"/#/\">\r\n                <i class=\"fa fa-home\"></i>\r\n                <span>${router.title}</span>\r\n            </a>\r\n        </div>\r\n\r\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n            <ul class=\"nav navbar-nav\">\r\n                <li repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\">\r\n                    <a href.bind=\"row.href\">${row.title}</a>\r\n                </li>\r\n            </ul>\r\n\r\n            <ul class=\"nav navbar-nav navbar-right\">\r\n                <li class=\"loader\" if.bind=\"router.isNavigating\">\r\n                    <i class=\"fa fa-spinner fa-spin fa-2x\"></i>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n\r\n        </div>\r\n\r\n        </nav>\r\n\r\n\r\n\r\n</template>"; });
-define('text!views/ui/ui-footer.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <footer>        \r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-6\">\r\n                    <ul class=\"ul-inline-piped\">\r\n                        <li>${CV.SITE_OWNER_ABBR} ${CV.SITE_NAME}</li>\r\n                    </ul>\r\n                </div>\r\n                 <div class=\"col-xs-6 text-align-right\">\r\n                    <span>${CV.COPYRIGHT}</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
-define('text!views/ui/ui-header.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <header class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-8 logo-wrap\">\r\n                <a class=\"logo\" href=\"#\" title=\"${CV.SITE_NAME}\">\r\n                    <img src=\"/src/css/bp-responsive.svg\" alt=\"${CV.SITE_NAME_ABBR}\">\r\n                    <h3>${CV.SITE_NAME}</h3>\r\n                </a>\r\n            </div>\r\n            <div class=\"col-xs-4 user\">\r\n                <div class=\"btn-group btn-edit-avatar\" role=\"group\" aria-label=\"user options\">\r\n\r\n                    <div class=\"btn-group\" role=\"group\">\r\n                        <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" \r\n                            data-toggle=\"dropdown\"\r\n                            aria-haspopup=\"true\"\r\n                            aria-expanded=\"true\">\r\n                            Alex Mack\r\n                            <span class=\"caret\"></span>\r\n                        </button>\r\n                        <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-cog\"></i> Profile Settings</a></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-bell\"></i> Notifications</a></li>\r\n                            <li role=\"separator\" class=\"divider\"></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-sign-out\"></i> Log out</a></li>\r\n                        </ul>\r\n                    </div>\r\n\r\n                    <a class=\"btn btn-default avatar\">\r\n                        <img src=\"/src/img/tmp-avatar-me.jpg\" alt=\"tmp me\">\r\n                    </a>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
 define('text!views/widgets/btn-xc-all.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"wrap_xc_btns_all\">\r\n    <a click.trigger=\"xc_all('expand')\">${CV.BTN_XC_Expand}</a>\r\n    <div class=\"divider\"></div>\r\n    <a click.trigger=\"xc_all('collapse')\">${CV.BTN_XC_Collapse}</a>\r\n  </div>\r\n</template>"; });
 define('text!views/widgets/form-user-full-body.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"./user-panels/user-panel-details\"></require>\r\n    <require from=\"./user-panels/user-panel-mrt\"></require>\r\n    <require from=\"./user-panels/user-panel-mrt-role\"></require>\r\n    <require from=\"./user-panels/user-panel-passport-visa\"></require>\r\n    <require from=\"./user-panels/user-panel-training\"></require>\r\n    <require from=\"./user-panels/user-panel-twic\"></require>\r\n    \r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading\">\r\n            ${custTitle}\r\n             <!--| ${user.first_name} | ${user.lkp_region_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected}-->\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs ${custXcExpanded ? '' : 'collapsed'}\" type=\"button\"\r\n                data-toggle=\"collapse\"\r\n                data-target=\"#${custXcId}\"\r\n                aria-expanded=\"${custXcExpanded}\"\r\n                aria-controls=\"collapseExample\">\r\n            </button>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}\">\r\n            <div class=\"wrap-fields\">\r\n                <user-panel-details if.bind=\"custBody=='user-details'\" user.bind=\"user\"></user-panel-details>\r\n                <user-panel-mrt if.bind=\"custBody=='user-mrt'\" user.bind=\"user\"></user-panel-mrt>\r\n                <user-panel-mrt-role if.bind=\"custBody=='user-mrt-role'\" user.bind=\"user\"></user-panel-mrt-role>\r\n                <user-panel-passport-visa if.bind=\"custBody=='user-passport-visa'\" user.bind=\"user\"></user-panel-passport-visa>\r\n                <user-panel-training if.bind=\"custBody=='user-training'\" user.bind=\"user\"></user-panel-training>\r\n                <user-panel-twic if.bind=\"custBody=='user-twic'\" user.bind=\"user\"></user-panel-twic>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/list-activity.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <div class=\"hdr-wrap\">\r\n        <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(list-activity.html)</span></h1>\r\n    </div>\r\n\r\n    <div class=\"panel panel-default\">\r\n        <div class=\"panel-heading\">Future Events<i class=\"fa fa-bell pull-right\"></i></div>\r\n        <div class=\"panel-body\">\r\n            <table class=\"table table-striped\">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Date</th>\r\n                        <th>Activity</th>\r\n                        <th>Status</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>08/04/2017</td>\r\n                        <td>My profile status will need updating</td>\r\n                        <td><i class=\"fa fa-pencil\"></i></td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>03/04/2017</td>\r\n                        <td>My password will need updating</td>\r\n                        <td><i class=\"fa fa-lock\"></i></td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"panel panel-default\">\r\n        <div class=\"panel-heading\">${title2}<i class=\"fa fa-history pull-right\"></i></div>\r\n        <div class=\"panel-body\">\r\n            <table class=\"table table-striped\">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Date</th>\r\n                        <th>Activity</th>\r\n                        <th>Status</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>23/01/2017 17:31pm</td>\r\n                        <td><a href=\"#\">David Bowie</a> updated profile</td>\r\n                        <td><i class=\"fa fa-pencil\"></i></td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>22/01/2017 09:44pm</td>\r\n                        <td><a href=\"#\">David Bowie</a> added to MRT</td>\r\n                        <td><i class=\"fa fa-plus\"></i></td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>18/01/2017 11:57pm</td>\r\n                        <td><a href=\"#\">Charles Carter</a> deleted from MRT</td>\r\n                        <td><i class=\"fa fa-minus\"></i></td>\r\n                    </tr>\r\n                </tbody>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/widgets/prompt.html', ['module'], function(module) { module.exports = "<template>\r\n  <ai-dialog>\r\n    <ai-dialog-body>\r\n      <h2>Dialog</h2>\r\n    </ai-dialog-body>\r\n  </ai-dialog>\r\n</template>"; });
 define('text!views/widgets/user-edit.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/inputs/form-input\"></require>\r\n\r\n  <div class=\"hdr-wrap\">\r\n    <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-edit.html)</span></h1>\r\n  </div>\r\n\r\n  <!--<p>id: ${user.id}</p>\r\n  <p>originalUser.first_name: ${originalUser.first_name}</p>\r\n  <p>user.first_name: ${user.first_name}</p>-->\r\n\r\n  <div class=\"panel panel-bp margin-x-0 has-button-bar\">\r\n    <div class=\"panel-body row\">\r\n      \r\n      <form role=\"form\" class=\"form-horizontal\">\r\n\r\n        <form-input name=\"first_name\" model.two-way=\"user.first_name\"></form-input>\r\n        <form-input name=\"last_name\" model.two-way=\"user.last_name\" inp-label=\"Last Name\"></form-input>\r\n        <form-input name=\"email\" model.two-way=\"user.email\" inp-label=\"Email\"></form-input>\r\n        <form-input name=\"cell_number\" model.two-way=\"user.cell_number\" inp-label=\"Telephone\"></form-input>\r\n\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <div bind.if=\"user\">\r\n    <div class=\"button-bar col-md-12 padding-x-0 text-align-right\">\r\n      <button class=\"btn btn-success\" click.delegate=\"save()\" disabled.bind=\"!canSave\">Save</button>\r\n    </div>\r\n  </div>\r\n\r\n</template>"; });
-define('text!views/widgets/user-list.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <div class=\"hdr-wrap\">\r\n        <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-list.html)</span></h1>\r\n        <a class=\"btn btn-default btn-i pull-right\" route-href=\"route: user-add\">\r\n            <i class=\"fa fa-plus\"></i>Add User\r\n        </a>\r\n    </div>\r\n\r\n    <p>found: ${found} / ${selectedId}</p>\r\n\r\n    <!--<h2 if.bind=\"custDisableCells\">custDisableCells: ${custDisableCells}</h2>-->\r\n\r\n    <table class=\"table table-striped\" aurelia-table=\"data.bind: users; display-data.bind: $displayData\">\r\n        <thead>\r\n            <tr>\r\n                <th if.bind=\"isNotDisabled('id')\">id</th>\r\n                <th if.bind=\"isNotDisabled('first_name')\">First Name</th>\r\n                <th if.bind=\"isNotDisabled('last_name')\">Last Name</th>\r\n                <th if.bind=\"isNotDisabled('email')\">E-mail</th>\r\n                <th if.bind=\"isNotDisabled('cell_number')\">Telephone</th>\r\n                <th if.bind=\"isNotDisabled('permission')\">Permission</th>\r\n                <th if.bind=\"isNotDisabled('edit')\">Edit</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr repeat.for=\"user of users\" class=\"${user.id === $parent.selectedId ? 'active' : ''}\">\r\n                <td if.bind=\"isNotDisabled('id')\">${user.id}</td>\r\n                <td if.bind=\"isNotDisabled('first_name')\">${user.first_name}</td>\r\n                <td if.bind=\"isNotDisabled('last_name')\">${user.last_name}</td>\r\n                <td if.bind=\"isNotDisabled('email')\"><a href=\"mailto:${user.email}\">${user.email}</a></td>\r\n                <td if.bind=\"isNotDisabled('cell_number')\"><a href=\"tel:${user.cell_number}\">${user.cell_number}</a></td>\r\n                <td if.bind=\"isNotDisabled('permission')\">${user.permission}</td>\r\n                <td if.bind=\"isNotDisabled('edit')\">\r\n                    <a route-href=\"route: users; params.bind: {id:user.id}\" title=\"Quick edit\">\r\n                        <i class=\"fa fa-pencil\"></i>\r\n                    </a>\r\n                    <a route-href=\"route: user-edit; params.bind: {id:user.id, editType:'edit'}\" title=\"Full edit\" class=\"margin-left-1\">\r\n                        <i class=\"fa fa-list\"></i>\r\n                    </a>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</template>"; });
+define('text!views/widgets/user-list.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <div class=\"hdr-wrap\">\r\n        <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-list.html)</span></h1>\r\n        <a class=\"btn btn-default btn-i pull-right\" route-href=\"route: user-add\">\r\n            <i class=\"fa fa-plus\"></i>Add User\r\n        </a>\r\n        <button click.delegate=\"submit()\">dialog</button>\r\n    </div>\r\n\r\n    <p>found: ${found} / ${selectedId}</p>\r\n\r\n    <!--<h2 if.bind=\"custDisableCells\">custDisableCells: ${custDisableCells}</h2>-->\r\n\r\n    <table class=\"table table-striped\" aurelia-table=\"data.bind: users; display-data.bind: $displayData\">\r\n        <thead>\r\n            <tr>\r\n                <th if.bind=\"isNotDisabled('id')\">id</th>\r\n                <th if.bind=\"isNotDisabled('first_name')\">First Name</th>\r\n                <th if.bind=\"isNotDisabled('last_name')\">Last Name</th>\r\n                <th if.bind=\"isNotDisabled('email')\">E-mail</th>\r\n                <th if.bind=\"isNotDisabled('cell_number')\">Telephone</th>\r\n                <th if.bind=\"isNotDisabled('permission')\">Permission</th>\r\n                <th if.bind=\"isNotDisabled('edit')\">Edit</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr repeat.for=\"user of users\" class=\"${user.id === $parent.selectedId ? 'active' : ''}\">\r\n                <td if.bind=\"isNotDisabled('id')\">${user.id}</td>\r\n                <td if.bind=\"isNotDisabled('first_name')\">${user.first_name}</td>\r\n                <td if.bind=\"isNotDisabled('last_name')\">${user.last_name}</td>\r\n                <td if.bind=\"isNotDisabled('email')\"><a href=\"mailto:${user.email}\">${user.email}</a></td>\r\n                <td if.bind=\"isNotDisabled('cell_number')\"><a href=\"tel:${user.cell_number}\">${user.cell_number}</a></td>\r\n                <td if.bind=\"isNotDisabled('permission')\">${user.permission}</td>\r\n                <td if.bind=\"isNotDisabled('edit')\">\r\n                    <a route-href=\"route: users; params.bind: {id:user.id}\" title=\"Quick edit\">\r\n                        <i class=\"fa fa-pencil\"></i>\r\n                    </a>\r\n                    <a route-href=\"route: user-edit; params.bind: {id:user.id, editType:'edit'}\" title=\"Full edit\" class=\"margin-left-1\">\r\n                        <i class=\"fa fa-list\"></i>\r\n                    </a>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</template>"; });
+define('text!views/ui/nav-bar.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"./ui-header\"></require>\r\n    \r\n    <ui-header></ui-header>\r\n    \r\n    <nav id=\"header\" class=\"navbar navbar-default navbar-static-topXXX\" role=\"navigation\">\r\n    <div class=\"container\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\r\n                <span class=\"sr-only\">Toggle Navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n            </button>\r\n            <a class=\"navbar-brand\" href=\"/#/\">\r\n                <i class=\"fa fa-home\"></i>\r\n                <span>${router.title}</span>\r\n            </a>\r\n        </div>\r\n\r\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n            <ul class=\"nav navbar-nav\">\r\n                <li repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\">\r\n                    <a href.bind=\"row.href\">${row.title}</a>\r\n                </li>\r\n            </ul>\r\n\r\n            <ul class=\"nav navbar-nav navbar-right\">\r\n                <li class=\"loader\" if.bind=\"router.isNavigating\">\r\n                    <i class=\"fa fa-spinner fa-spin fa-2x\"></i>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n\r\n        </div>\r\n\r\n        </nav>\r\n\r\n\r\n\r\n</template>"; });
+define('text!views/ui/ui-footer.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <footer>        \r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-6\">\r\n                    <ul class=\"ul-inline-piped\">\r\n                        <li>${CV.SITE_OWNER_ABBR} ${CV.SITE_NAME}</li>\r\n                    </ul>\r\n                </div>\r\n                 <div class=\"col-xs-6 text-align-right\">\r\n                    <span>${CV.COPYRIGHT}</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
+define('text!views/ui/ui-header.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <header class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-8 logo-wrap\">\r\n                <a class=\"logo\" href=\"#\" title=\"${CV.SITE_NAME}\">\r\n                    <img src=\"/src/css/bp-responsive.svg\" alt=\"${CV.SITE_NAME_ABBR}\">\r\n                    <h3>${CV.SITE_NAME}</h3>\r\n                </a>\r\n            </div>\r\n            <div class=\"col-xs-4 user\">\r\n                <div class=\"btn-group btn-edit-avatar\" role=\"group\" aria-label=\"user options\">\r\n\r\n                    <div class=\"btn-group\" role=\"group\">\r\n                        <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" \r\n                            data-toggle=\"dropdown\"\r\n                            aria-haspopup=\"true\"\r\n                            aria-expanded=\"true\">\r\n                            Alex Mack\r\n                            <span class=\"caret\"></span>\r\n                        </button>\r\n                        <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-cog\"></i> Profile Settings</a></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-bell\"></i> Notifications</a></li>\r\n                            <li role=\"separator\" class=\"divider\"></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-sign-out\"></i> Log out</a></li>\r\n                        </ul>\r\n                    </div>\r\n\r\n                    <a class=\"btn btn-default avatar\">\r\n                        <img src=\"/src/img/tmp-avatar-me.jpg\" alt=\"tmp me\">\r\n                    </a>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
 define('text!views/widgets/inputs/form-input.html', ['module'], function(module) { module.exports = "<template class=\"form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}\">\r\n    <require from=\"aurelia-mask/masked-input\"></require>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <label class=\"col-sm-6\" for.bind=\"name\" title.bind=\"inpLabel\">\r\n            ${inpLabel}\r\n        </label>\r\n        <div class=\"col-sm-6\">\r\n            <input if.bind=\"maskPattern=='telephone'\" type=\"inpType\" masked=\"value.bind: model; mask.bind: maskPatternTelephone\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\"/>\r\n            <input if.bind=\"maskPattern=='telephone-cc'\" type=\"inpType\" masked=\"value.bind: model; mask.bind: maskPatternTelephoneCc\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\"/>\r\n            <input if.bind=\"inpType=='date'\" type=\"inpType\" value.bind=\"model\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\">\r\n            <input if.bind=\"!maskPattern && inpType=='text'\" type=\"inpType\" value.bind=\"model\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\">\r\n        </div>\r\n    </div>\r\n</template>"; });
 define('text!views/widgets/inputs/form-radio.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"row\">\r\n        <span class=\"${expiryDate ? 'col-xs-5 col-md-8' : 'col-xs-8'} col-debug\">\r\n            <label for.bind=\"inpName\" title.bind=\"inpLabel\">\r\n                ${inpLabel}\r\n            </label>\r\n        </span>\r\n        <span class=\"col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug\">\r\n            <input type=\"radio\" name.bind=\"inpName\" model.bind=\"1\" checked.bind=\"model\"> Yes\r\n        </span>\r\n        <span class=\"col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug\">\r\n            <input type=\"radio\" name.bind=\"inpName\" model.bind=\"0\" checked.bind=\"model\"> No\r\n        </span>\r\n        <span class=\"col-xs-3 ${expiryDate ? 'col-md-2' : ''} text-align-right col-debug\" if.bind=\"expiryDate\">\r\n            ${expiryDate}\r\n        </span>\r\n    </div>\r\n</template>"; });
 define('text!views/widgets/inputs/form-select.html', ['module'], function(module) { module.exports = "<template class=\"form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}\">\r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"select2/css/select2.min.css\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <label class=\"col-sm-6\" for.bind=\"name\" title.bind=\"inpLabel\">${inpLabel}</label>\r\n        <!--/ ${changed} / ${initSelected} / ${selected}-->\r\n        <div class=\"col-sm-6\">\r\n            <!--selected.two-way=\"selected\" -->\r\n            <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->\r\n            \r\n            <select if.bind=\"!autocomplete\" class=\"form-control\" \r\n            value.bind=\"initSelected\"            \r\n            disabled.bind=\"!isEnabled\"\r\n            selected.two-way=\"selected\"\r\n            change.delegate=\"changeCallback($event)\">\r\n                <option model.bind=\"0\">${inpPlaceholder}</option>\r\n                 \r\n                <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">${option.label}</option>\r\n            </select>\r\n\r\n            <select if.bind=\"autocomplete\" class=\"form-control\"\r\n                id.bind=\"name\"\r\n                select2.bind=\"selectOptions\"\r\n                value.bind=\"initSelected\"\r\n                disabled.bind=\"!isEnabled\"\r\n                change.delegate=\"changeCallback($event)\">\r\n                \r\n                <option model.bind=\"0\">${inpPlaceholder}</option>\r\n                <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">\r\n                    ${option.label}\r\n                </option>\r\n            </select>\r\n\r\n        </div>\r\n    </div>\r\n</template>"; });
