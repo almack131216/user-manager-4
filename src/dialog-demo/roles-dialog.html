@@ -1,4 +1,7 @@
 <template>
+
+    <require from="../views/widgets/inputs/form-select"></require>
+
     <ai-dialog>
         <ai-dialog-header>
             <h2>${title}</h2>
@@ -16,14 +19,20 @@
                     <strong>MRT Member: </strong> ${userRole.mrt_member}
                 </div>
                 <div class="row">
-                    <strong>System Role: </strong> ${userRole.mrt_system_role}
+                    
+                    <form-select name="lkp_mrt_system_role"
+                        model.two-way="userRole.mrt_system_role"
+                        options.bind="lkp_mrt_system_role"
+                        changed.two-way="userRole.mrt_system_role"
+                        init-selected.two-way="userRole.mrt_system_role"></form-select>
+
                 </div>
             </div>
         </ai-dialog-body>
 
         <ai-dialog-footer>
             <button class="btn btn-primary" click.trigger="yes()">Yes</button>
-            <button class="btn btn-default pull-left" click.trigger="no()">No</button>
+            <button class="btn btn-default pull-left" click.trigger="cancel()">Cancel</button>
         </ai-dialog-footer>
     </ai-dialog>
 </template>

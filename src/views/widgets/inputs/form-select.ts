@@ -18,17 +18,27 @@ export class FormSelect {
 
     @bindable name = null;
 
-    //@bindable
+    @bindable
     public initSelected: null;
     public changed: number;
     public selected: number;
+    
+    @bindable
     public options: {value: string, label: string}[] = [];
 
+    public constructor(model) {
+    }
+
+    @bindable model;
+    activate(model) {
+        // model is the passed through object
+    }
 
     public attached(): void {
         if(CV.debugConsoleLog) console.log('attached -> initSelected: ' + this.initSelected + ' / ' + this.selected);
         this.selected = this.initSelected!=null ? this.initSelected : 0; 
         if(CV.debugConsoleLog) console.log('attached -> initSelected (2): ' + this.initSelected + ' / ' + this.selected);
+        //alert('options: ' + this.options);
     }
 
     //following method works as expected

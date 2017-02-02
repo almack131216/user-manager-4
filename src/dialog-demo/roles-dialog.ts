@@ -14,18 +14,32 @@ interface User {
 
 @inject(DialogController, WebAPIUsers, EventAggregator)
 export class RolesDialog {
+    //@bindable user;
     title = 'Change User Roles';
     userRole = null;
     originalUser = null;
+    lkp_mrt_system_role;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator) {
+        
         this.api.getUserRole(6).then(user => {
             this.userRole = <User>user;
         });
+
     }
+
     //All of the parameters that we passed to the dialog are available through the model
     activate(model) {
+
         this.userRole = model;
+
+        this.lkp_mrt_system_role = [
+            { "value": 1, "label": "Role 1" },
+            { "value": 2, "label": "Role 2" },
+            { "value": 3, "label": "Role 3" }
+        ];
+
+        console.log('model: ' + JSON.stringify(model) + ' > ' + this.lkp_mrt_system_role);
     }
 
     //When the user clicks on the 'Yes' button the controller closes the dialog 
@@ -37,7 +51,7 @@ export class RolesDialog {
 
     //When the user clicks on the 'No' button the controller closes the dialog box
     //and sets the response's .wasCancelled property to true
-    no(): void {
+    cancel(): void {
         this.controller.cancel();
     }
 
