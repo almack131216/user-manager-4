@@ -5,23 +5,23 @@ import {UserInfo} from './user-info';
 export class SetInfo{
     
     constructor(private userInfo: UserInfo){
-        this.firstName = this.userInfo.firstName;
-        this.lastName = this.userInfo.lastName;
+        this.first_name = this.userInfo.first_name;
+        this.last_name = this.userInfo.last_name;
         this.email = this.userInfo.email;
         this.country = this.userInfo.country;
         this.city = this.userInfo.city;
     }    
     
     save(): void{
-        this.userInfo.firstName = this.firstName;
-        this.userInfo.lastName = this.lastName;
+        this.userInfo.first_name = this.first_name;
+        this.userInfo.last_name = this.last_name;
         this.userInfo.email = this.email;
         this.userInfo.city = this.city;
         this.userInfo.country = this.country;
     }
     
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     email: string;
     city: string;
     country: string;

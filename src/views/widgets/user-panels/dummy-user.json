@@ -2,7 +2,7 @@
     "id":6,
     "first_name":"David",
     "last_name":"Bowie",
-    "email":"david@bowie.com",
+    "email":"david@bowie.com",    
     "cell_number":"123-4567",
     "lkp_region_selected": 1,
     "lkp_hub_selected": 3,
@@ -27,7 +27,7 @@
       {"languageId":3,"languageLevelId":3}
     ],
     "lkp_mrt_1_ics_selected": 2,
-    "lkp_mrt_2_ics_selected": 3,
+    "lkp_mrt_2_ics_selected": 3,    
     "mrt_previous_role": "My previous role",
     "lkp_passports_selected_arr": [
       {"typeId":1,"number":123456789,"nationalityId":2,"expiryDate":"2017-01-01T09:11:84Z"},

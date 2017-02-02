@@ -12,6 +12,7 @@ export class InfoDialog{
     //All of the parameters that we passed to the dialog are available through the model
     activate(model){
         this.info = model;
+        //this.user = model;
     }
     
     //When the user clicks on the 'Yes' button the controller closes the dialog 
@@ -28,4 +29,5 @@ export class InfoDialog{
     }
     
     info: UserInfo;
+    //user: UserInfo;
 }

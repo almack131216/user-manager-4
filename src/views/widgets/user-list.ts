@@ -1,17 +1,20 @@
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {WebAPIUsers} from '../../api/web-api-users';
 import {UserUpdated, UserViewed} from '../../resources/messages';
-import {inject} from 'aurelia-framework';
+import {inject, autoinject} from 'aurelia-framework';
 import {bindable} from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
-import {DialogService} from 'aurelia-dialog';
-import {Prompt} from './prompt';
+import { DialogService } from 'aurelia-dialog';
+import { UserInfo } from '../../user-info/user-info';
+import { InfoDialog } from '../../dialog-demo/info-dialog';
+import { RolesDialog } from '../../dialog-demo/roles-dialog';
+
+@autoinject
 
 @inject(WebAPIUsers, EventAggregator, DialogService)
 export class UserList {
-  dialogService;
   @bindable custTitle = null;
   @bindable custDisableCells = null;
   public CV = CV
@@ -26,8 +29,7 @@ export class UserList {
     return false;
   }
 
-  constructor(private api: WebAPIUsers, ea: EventAggregator, dialogService: DialogService){
-    this.dialogService = dialogService;
+  constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService){
     ea.subscribe(UserViewed, msg => this.select(msg.user));
     ea.subscribe(UserUpdated, msg => {
       let id = msg.user.id;
@@ -47,14 +49,40 @@ export class UserList {
     return true;
   }
 
-  submit(){
-    this.dialogService.open({ viewModel: Prompt, model: 'Good or Bad?'}).then(response => {
-      if (!response.wasCancelled) {
-        console.log('good');
-      } else {
-        console.log('bad');
-      }
-      console.log(response.output);
-    });
-  }
+  addUser(): void {
+        this.dialogService.open({
+            viewModel: InfoDialog,
+            model: this.userInfo
+        }).then(response => {
+            if (response.wasCancelled) {
+                console.log("The information is invalid");
+            } else {
+                console.log("The information is valid");
+            }
+        });
+    }
+
+    changeUserRoles(): void {
+        this.dialogService.open({
+            viewModel: RolesDialog,
+            model: this.userInfo
+        }).then(response => {
+            if (response.wasCancelled) {
+                console.log("The information is invalid");
+            } else {
+                console.log("The information is valid");
+            }
+        });
+    }
+
+  // submit(){
+  //   this.dialogService.open({ viewModel: Prompt, model: 'Good or Bad?'}).then(response => {
+  //     if (!response.wasCancelled) {
+  //       console.log('good');
+  //     } else {
+  //       console.log('bad');
+  //     }
+  //     console.log(response.output);
+  //   });
+  // }
 }

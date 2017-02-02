@@ -54,6 +54,24 @@ export class WebAPIUsers {
     });
   }
 
+  getUserRole(id){
+    console.log('getUserRole: ' + id);
+    this.isRequesting = true;
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log('usersArr:' + usersArr);
+        //let found = usersArr.filter(x => x.id == id);
+        let found = this.http.fetch('src/views/widgets/user-panels/dummy-user-role.json')
+            .then(found => found.json())
+            .then(found => found);            
+
+        console.log('getUserRole ARR: ' + JSON.stringify(found) );
+        resolve(found);
+        this.isRequesting = false;
+      }, latency);
+    });
+  }
+
 
   saveUser(user){
     this.isRequesting = true;

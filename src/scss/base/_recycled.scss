@@ -1,5 +1,15 @@
 /* _recycled.scss */
 
+ai-dialog {
+    width:600px;
+
+    ai-dialog-header {
+        h2 {
+            margin:0;
+        }
+    }
+}
+
 .btn-row {
     clear:both;display:block;width:100%;padding:$offset-g1;text-align:center;
 

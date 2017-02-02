@@ -1,6 +1,4 @@
-import { noView } from 'aurelia-framework';
-
-import { inject } from 'aurelia-framework';
+import { noView, inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../api/web-api-users';
 import { UserUpdated, UserViewed } from '../resources/messages';
@@ -16,8 +14,8 @@ interface User {
 @inject(WebAPIUsers, EventAggregator)
 
 @noView
-export class UserInfo {
-
+export class UserInfoRole {
+    userArr = null;
     first_name: string = "";
     last_name: string = "";
     email: string = "";
@@ -36,13 +34,10 @@ export class UserInfo {
         this.api.getUserRole(6).then(user => {
             //alert('? 2' + JSON.stringify(user));
             this.info = <User>user;
+            this.userArr = user;
             //this.first_name = this.info.first_name;
             this.first_name = this.info.first_name;
         });
     }
-
-    created(params, routeConfig) {
-    console.log('activateeeeeeeeeee: ' + params.id + ' (' + params.editType + ')');
-  }
 
 }

@@ -1,0 +1,29 @@
+<template>
+    <ai-dialog>
+        <ai-dialog-header>
+            <h2>${title}</h2>
+        </ai-dialog-header>
+
+        <ai-dialog-body>
+            <div class="text-center">
+                <div class="row">
+                    <strong>ID: </strong> ${userRole.id}
+                </div>
+                <div class="row">
+                    <strong>Name: </strong>${userRole.first_name} ${userRole.last_name}
+                </div>
+                <div class="row">
+                    <strong>MRT Member: </strong> ${userRole.mrt_member}
+                </div>
+                <div class="row">
+                    <strong>System Role: </strong> ${userRole.mrt_system_role}
+                </div>
+            </div>
+        </ai-dialog-body>
+
+        <ai-dialog-footer>
+            <button class="btn btn-primary" click.trigger="yes()">Yes</button>
+            <button class="btn btn-default pull-left" click.trigger="no()">No</button>
+        </ai-dialog-footer>
+    </ai-dialog>
+</template>

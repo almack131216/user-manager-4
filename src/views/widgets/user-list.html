@@ -2,10 +2,12 @@
 
     <div class="hdr-wrap">
         <h1 class="hdr-inline">${title}<span class="html-file-name">(user-list.html)</span></h1>
-        <a class="btn btn-default btn-i pull-right" route-href="route: user-add">
+        <a class="btn btn-default btn-i pull-right" click.delegate="addUser()">
             <i class="fa fa-plus"></i>Add User
         </a>
-        <button click.delegate="submit()">dialog</button>
+        <a class="btn btn-default btn-i pull-right" click.delegate="changeUserRoles()">
+            <i class="fa fa-plus"></i>Change User Roles
+        </a>
     </div>
 
     <p>found: ${found} / ${selectedId}</p>
