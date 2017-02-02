@@ -1,0 +1,27 @@
+<template>
+    
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form action="" submit.trigger="save()">
+            <div class="form-group">
+                <input type="text" class="form-control" value.bind="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" value.bind="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" value.bind="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" value.bind="city" placeholder="City">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" value.bind="country" placeholder="Country">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+    
+</template>

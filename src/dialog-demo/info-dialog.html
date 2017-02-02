@@ -1,0 +1,31 @@
+<template>
+    <ai-dialog>
+        <ai-dialog-body>
+            <div class="text-center">
+                <div class="row">
+                    <strong>First Name: </strong> ${info.firstName}
+                </div>
+                <div class="row">
+                    <strong>Last Name: </strong> ${info.lastName}
+                </div>
+                <div class="row">
+                    <strong>Email: </strong> ${info.email}
+                </div>
+                <div class="row">
+                    <strong>City: </strong> ${info.city}
+                </div>
+                <div class="row">
+                    <strong>Country: </strong> ${info.country}
+                </div>
+                <div class="row">
+                    <h4>Is this information correct?</h4>
+                </div>
+            </div>        
+        </ai-dialog-body>
+        
+        <ai-dialog-footer>
+                <button class="btn btn-primary" click.trigger="yes()">Yes</button>
+                <button class="btn btn-primary" click.trigger="no()">No</button>
+        </ai-dialog-footer>    
+    </ai-dialog>
+</template>
