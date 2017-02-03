@@ -11,6 +11,7 @@
             <!--selected.two-way="selected" -->
             <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
 
+
             <select if.bind="!autocomplete" class="form-control" value.bind="initSelected" disabled.bind="!isEnabled" selected.two-way="selected"
                 change.delegate="changeCallback($event)">
                 <option model.bind="0">${inpPlaceholder}</option>

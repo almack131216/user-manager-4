@@ -13,6 +13,7 @@ export class FormSelect {
     @bindable isEnabled = true;
 
     @bindable inpClass = null;
+    @bindable inpPlacement = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
 
@@ -54,12 +55,12 @@ export class FormSelect {
     }
 
     tmpCreateLabel(getStr){
-        return getStr.replace(/_/g,' ').toLowerCase();
+        return getStr;// getStr.replace(/_/g,' ').toLowerCase();
     }
 
     created(){
         if(CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.name );
-        if(!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name).substring(3);
+        if(!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name);//.substring(3)
         if(!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
     }
 

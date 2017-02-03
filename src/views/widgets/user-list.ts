@@ -10,6 +10,7 @@ import { DialogService } from 'aurelia-dialog';
 import { UserInfo } from '../../user-info/user-info';
 import { InfoDialog } from '../../dialog-demo/info-dialog';
 import { RolesDialog } from '../../dialog-demo/roles-dialog';
+import { AddUserDialog } from '../../dialog-demo/add-user-dialog';
 
 @autoinject
 
@@ -51,7 +52,7 @@ export class UserList {
 
   addUser(): void {
         this.dialogService.open({
-            viewModel: InfoDialog,
+            viewModel: AddUserDialog,
             model: this.userInfo
         }).then(response => {
             if (response.wasCancelled) {
