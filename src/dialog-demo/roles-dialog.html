@@ -9,30 +9,28 @@
         </ai-dialog-header>
 
         <ai-dialog-body>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="info-row">
-                        <label>ID:</label> ${userRole.id}
-                    </div>
-                    <div class="display-block">
-                        <label>Name:</label> ${userRole.first_name} ${userRole.last_name}
-                    </div>
-                </div>
-
-                <div class="col-xs-6">
-                    <div class="display-block">
+            <table class="table border-none half-n-half">
+                <tbody>
+                <tr>
+                    <td><label>ID:</label> ${userRole.id}</td>
+                    <td><label>Name:</label> ${userRole.first_name} ${userRole.last_name}</td>
+                </tr>
+                <tr>
+                    <td>
                         <form-checkbox inp-name="userRole_mrt_member_boolean"
                             inp-label="MRT Member"                            
                             model.two-way="userRole.mrt_member_boolean"
                             init-selected.two-way="userRole.mrt_member_boolean"
                             input-only="true"></form-checkbox>
-                    </div>
-                    <div class="display-block">
+                    </td>
+                    <td>
                         <form-select name="userRole_system_role" input-only="true" model.two-way="userRole.mrt_system_role" options.bind="lkp_mrt_system_role"
                             changed.two-way="userRole.mrt_system_role" init-selected.two-way="userRole.mrt_system_role"></form-select>
-                    </div>
-                </div>
-            </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
         </ai-dialog-body>
 
         <ai-dialog-footer>

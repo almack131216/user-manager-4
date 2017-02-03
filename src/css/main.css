@@ -1966,7 +1966,14 @@ span.trim-string-with-tooltip > span {
   border-top: 1px solid #ddd;
 }
 
-/* line 92, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 91, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table.border-none > thead > tr td,
+.table.border-none > tbody > tr td,
+.table.border-none > tfoot > tr td {
+  border: 0px;
+}
+
+/* line 98, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr.event-details-open td,
 .table > tbody > tr.event-details-open td,
 .table > tfoot > tr.event-details-open td {
@@ -1974,7 +1981,7 @@ span.trim-string-with-tooltip > span {
   border-bottom: none;
 }
 
-/* line 97, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 103, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr th, .table > thead > tr td,
 .table > tbody > tr th,
 .table > tbody > tr td,
@@ -1984,7 +1991,7 @@ span.trim-string-with-tooltip > span {
   vertical-align: middle;
 }
 
-/* line 101, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 107, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr th > label, .table > thead > tr td > label,
 .table > tbody > tr th > label,
 .table > tbody > tr td > label,
@@ -1993,7 +2000,7 @@ span.trim-string-with-tooltip > span {
   margin-bottom: 0px;
 }
 
-/* line 105, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 111, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr th.col-hidden, .table > thead > tr td.col-hidden,
 .table > tbody > tr th.col-hidden,
 .table > tbody > tr td.col-hidden,
@@ -2002,7 +2009,7 @@ span.trim-string-with-tooltip > span {
   display: none;
 }
 
-/* line 109, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 115, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr th.col-actions, .table > thead > tr th.col-actions-printable, .table > thead > tr td.col-actions, .table > thead > tr td.col-actions-printable,
 .table > tbody > tr th.col-actions,
 .table > tbody > tr th.col-actions-printable,
@@ -2016,7 +2023,7 @@ span.trim-string-with-tooltip > span {
   min-width: 100px;
 }
 
-/* line 114, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 120, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr th.col-actions .row-checkboxes label:last-child,
 .table > thead > tr th.col-actions .row-radios label:last-child, .table > thead > tr th.col-actions-printable .row-checkboxes label:last-child,
 .table > thead > tr th.col-actions-printable .row-radios label:last-child, .table > thead > tr td.col-actions .row-checkboxes label:last-child,
@@ -2041,7 +2048,7 @@ span.trim-string-with-tooltip > span {
   margin-right: 0px;
 }
 
-/* line 120, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 126, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr th.col-hidden-header, .table > thead > tr td.col-hidden-header,
 .table > tbody > tr th.col-hidden-header,
 .table > tbody > tr td.col-hidden-header,
@@ -2054,37 +2061,34 @@ span.trim-string-with-tooltip > span {
   height: 0px;
 }
 
-/* line 129, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 135, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr:last-child th,
 .table > tbody > tr:last-child th,
 .table > tfoot > tr:last-child th {
   border-bottom: 1px solid #ddd;
 }
 
-/* line 133, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr.tr-border-none td,
+/* line 139, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .table > thead > tr:last-child td,
-.table > tbody > tr.tr-border-none td,
 .table > tbody > tr:last-child td,
-.table > tfoot > tr.tr-border-none td,
 .table > tfoot > tr:last-child td {
   border-bottom: none;
 }
 
-/* line 140, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 145, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.half-n-half tr > th,
 table.half-n-half tr > td {
   width: 50%;
 }
 
-/* line 146, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 151, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.fixed-layout {
   table-layout: fixed;
   /* This is used to squeeze large strings(with no spaces) into the table cell without exceeding table */
   /* NOTE: requires 'table-layout: fixed' table class to work */
 }
 
-/* line 150, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 155, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.fixed-layout .squeeze-into-cell {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -2094,7 +2098,7 @@ table.fixed-layout .squeeze-into-cell {
   display: block;
 }
 
-/* line 160, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 165, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .wrap-longtext {
   white-space: pre;
 }

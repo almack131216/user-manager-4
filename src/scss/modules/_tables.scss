@@ -85,6 +85,12 @@
     border-top: 1px solid $border-color;
 }
 
+.table.border-none > thead > tr,
+.table.border-none > tbody > tr,
+.table.border-none > tfoot > tr {
+    td {border:0px;}
+}
+
 .table > thead > tr,
 .table > tbody > tr,
 .table > tfoot > tr {
@@ -130,7 +136,6 @@
         border-bottom: 1px solid $border-color;
     }
 
-    &.tr-border-none td,
     &:last-child td {
         border-bottom: none;
     }
