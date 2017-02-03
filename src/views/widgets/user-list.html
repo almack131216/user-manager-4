@@ -19,17 +19,17 @@
     <table class="table table-striped" aurelia-table="data.bind: users; display-data.bind: $displayData">
         <thead>
             <tr>
-                <th if.bind="isNotDisabled('id')">id</th>
-                <th if.bind="isNotDisabled('first_name')">First Name</th>
-                <th if.bind="isNotDisabled('last_name')">Last Name</th>
-                <th if.bind="isNotDisabled('email')">E-mail</th>
-                <th if.bind="isNotDisabled('cell_number')">Telephone</th>
-                <th if.bind="isNotDisabled('permission')">Permission</th>
+                <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
+                <th aut-sort="key: first_name" if.bind="isNotDisabled('first_name')">First Name</th>
+                <th aut-sort="key: last_name" if.bind="isNotDisabled('last_name')">Last Name</th>
+                <th aut-sort="key: email" if.bind="isNotDisabled('email')">E-mail</th>
+                <th aut-sort="key: cell_number" if.bind="isNotDisabled('cell_number')">Telephone</th>
+                <th aut-sort="key: permission" if.bind="isNotDisabled('permission')">Permission</th>
                 <th if.bind="isNotDisabled('edit')">Edit</th>
             </tr>
         </thead>
         <tbody>
-            <tr repeat.for="user of users" class="${user.id === $parent.selectedId ? 'active' : ''}">
+            <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
                 <td if.bind="isNotDisabled('id')">${user.id}</td>
                 <td if.bind="isNotDisabled('first_name')">${user.first_name}</td>
                 <td if.bind="isNotDisabled('last_name')">${user.last_name}</td>

@@ -10,21 +10,21 @@
 
         <ai-dialog-body>
             <div class="wrap_table-add-user-from-list">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" aurelia-table="data.bind: users; display-data.bind: $displayData">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Member</th>
+                            <th aut-sort="key: id; default: desc">ID</th>
+                            <th aut-sort="key: first_name">First Name</th>
+                            <th aut-sort="key: last_name">Last Name</th>
+                            <th aut-sort="key: mrt_member">Member</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr repeat.for="user of users" click.delegate="select(user.id)">
+                        <tr repeat.for="user of $displayData" click.delegate="select(user.id)">
                             <td>${user.id}</td>
                             <td>${user.first_name}</td>
                             <td>${user.last_name}</td>
-                            <td>${user.last_name}</td>
+                            <td>${user.mrt_member}</td>
                         </tr>
                     </tbody>
                 </table>

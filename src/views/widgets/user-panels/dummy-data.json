@@ -4,48 +4,62 @@
     "first_name": "John",
     "last_name":"Tolkien",
     "email":"tolkien@inklings.com",
-    "cell_number":"867-5309"
+    "cell_number":"867-5309",
+    "mrt_member":true,
+    "mrt_system_role": 2
   },
   {
     "id":2,
     "first_name":"Clive",
     "last_name":"Lewis",
     "email":"lewis@inklings.com",
-    "cell_number":"867-5309"
+    "cell_number":"867-5309",
+    "mrt_member":true,
+    "mrt_system_role": 1
   },
   {
     "id":3,
     "first_name":"Owen",
     "last_name":"Barfield",
     "email":"barfield@inklings.com",
-    "cell_number":"867-5309"
+    "cell_number":"867-5309",
+    "mrt_member":false,
+    "mrt_system_role": 3
   },
   {
     "id":4,
     "first_name":"Charles",
     "last_name":"Williams",
     "email":"william@inklings.com",
-    "cell_number":"867-5309"
+    "cell_number":"867-5309",
+    "mrt_member":true,
+    "mrt_system_role": 2
   },
   {
     "id":5,
     "first_name":"Roger",
     "last_name":"Green",
     "email":"green@inklings.com",
-    "cell_number":"867-5309"
+    "cell_number":"867-5309",
+    "mrt_member":false,
+    "mrt_system_role": null
   },
   {
     "id":6,
     "first_name":"David",
     "last_name":"Bowie",
     "email":"david@bowie.com",
-    "cell_number":"123-4567"
+    "cell_number":"123-4567",
+    "mrt_member":true,
+    "mrt_system_role": 2
   },
   {
     "id":7,
     "first_name":"Dan",
     "last_name":"Pena",
     "email":"dan@pena.com",
-    "cell_number":"891-3210"
+    "cell_number":"891-3210",
+    "mrt_member":false,
+    "mrt_system_role": 1
   }
 ]
