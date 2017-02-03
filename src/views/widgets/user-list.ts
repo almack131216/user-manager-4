@@ -42,7 +42,8 @@ export class UserList {
   created(){
     if(CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
     if(this.custTitle) this.title = this.custTitle;
-    this.api.getUserList().then(users => this.users = users);
+    this.api.getUserList().then(users => this.users = users)
+    .then( () => this.populateRoleFilter() );
   }
 
   select(user){
@@ -75,6 +76,27 @@ export class UserList {
             }
         });
     }
+
+    rolesArr = [];
+
+    filters = [
+        {value: '', keys: ['first_name', 'last_name', 'email', 'cell_number']},
+        {value: '', keys: ['mrt_system_role']},
+    ];
+
+    populateRoleFilter(){
+        alert('populateRoleFilter' + this.users);
+        this.rolesArr.push('');
+        for(let next of this.users){
+            let nextRole = next.mrt_system_role;
+
+            if(this.rolesArr.indexOf(nextRole) === -1){
+                this.rolesArr.push(nextRole);
+            }
+        }
+    }
+
+    
 
   // submit(){
   //   this.dialogService.open({ viewModel: Prompt, model: 'Good or Bad?'}).then(response => {

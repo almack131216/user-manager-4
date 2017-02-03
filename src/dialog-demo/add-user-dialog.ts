@@ -64,19 +64,4 @@ export class AddUserDialog {
         });
     }
 
-    dateSort(a, b, sortOrder) {
-        let date1 = new Date(a.registered);
-        let date2 = new Date(b.registered);
-
-        if (date1 === date2) {
-            return 0;
-        }
-
-        if (date1 > date2) {
-            return 1 * sortOrder;
-        }
-
-        return -1 * sortOrder;
-    }
-    //info: UserInfoRole;
 }
