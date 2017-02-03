@@ -2110,6 +2110,25 @@ table.fixed-layout .squeeze-into-cell {
   white-space: pre;
 }
 
+/* line 169, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.aut-sort:before {
+  font-family: FontAwesome;
+  padding-right: 0.5em;
+  width: 1.28571429em;
+  display: inline-block;
+  text-align: center;
+}
+
+/* line 181, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.aut-asc:before {
+  content: "\f160";
+}
+
+/* line 185, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.aut-desc:before {
+  content: "\f161";
+}
+
 /* _toastr.scss */
 /* line 3, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_toastr.scss */
 #toast-container > div {
