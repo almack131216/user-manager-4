@@ -1,6 +1,7 @@
   {
     "id":6,
-    "mrt_member":true,
+    "mrt_member_boolean":false,
+    "mrt_member":1,
     "mrt_system_role": 1,
     "first_name":"David",
     "last_name":"Bowie",

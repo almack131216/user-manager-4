@@ -138,6 +138,15 @@ label.label-with-checkbox {
         float: left;
     }
 
+    &.checkbox-right {
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 0;
+            margin-left: $offset-0-5;
+            float: right;
+        }        
+    }
+
     input[type="radio"]:checked.ng-dirty ~ * {
         font-weight: bold;
         color: $color-good !important;
