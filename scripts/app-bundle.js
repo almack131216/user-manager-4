@@ -1145,7 +1145,7 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
             this.rolesArr = [];
             this.filters = [
                 { value: '', keys: ['first_name', 'last_name', 'email', 'cell_number'] },
-                { value: '', keys: ['mrt_system_role'] },
+                { value: '', keys: ['mrt_system_role'] }
             ];
             ea.subscribe(messages_1.UserViewed, function (msg) { return _this.select(msg.user); });
             ea.subscribe(messages_1.UserUpdated, function (msg) {
@@ -1203,7 +1203,6 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
             });
         };
         UserList.prototype.populateRoleFilter = function () {
-            alert('populateRoleFilter' + this.users);
             this.rolesArr.push('');
             for (var _i = 0, _a = this.users; _i < _a.length; _i++) {
                 var next = _a[_i];
@@ -1229,6 +1228,91 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
         __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator, user_info_1.UserInfo, aurelia_dialog_1.DialogService])
     ], UserList);
     exports.UserList = UserList;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('views/widgets/inputs/form-checkbox',["require", "exports", "aurelia-framework", "../../../resources/constants", "aurelia-binding"], function (require, exports, aurelia_framework_1, Constants, aurelia_binding_1) {
+    "use strict";
+    var CV = Constants;
+    aurelia_framework_1.inject(aurelia_binding_1.BindingEngine);
+    aurelia_framework_1.inject(Element);
+    var FormCheckbox = (function () {
+        function FormCheckbox() {
+            this.name = null;
+            this.inpPlacement = null;
+            this.inpClass = null;
+            this.inpLabel = null;
+            this.inpPlaceholder = null;
+            this.inpName = null;
+            this.inpValue = null;
+            this.isMandatory = null;
+        }
+        FormCheckbox.prototype.activate = function (model) {
+        };
+        FormCheckbox.prototype.changeCallback = function (evt) {
+        };
+        FormCheckbox.prototype.tmpCreateLabel = function (getStr) {
+            return getStr.replace(/_/g, " ").toLowerCase();
+        };
+        FormCheckbox.prototype.created = function () {
+            if (CV.debugConsoleLog)
+                console.log('[form-checkbox] created: ' + this.model);
+            if (!this.inpLabel && this.name)
+                this.inpLabel = this.tmpCreateLabel(this.name);
+            if (!this.inpPlaceholder)
+                this.inpPlaceholder = "Enter " + this.inpLabel;
+        };
+        return FormCheckbox;
+    }());
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "model", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "name", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "inpPlacement", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "inpClass", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "inpLabel", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "inpPlaceholder", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "inpName", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "inpValue", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], FormCheckbox.prototype, "isMandatory", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Boolean)
+    ], FormCheckbox.prototype, "inputOnly", void 0);
+    exports.FormCheckbox = FormCheckbox;
 });
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2504,177 +2588,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('views/widgets/inputs/form-radio.1',["require", "exports", "aurelia-framework", "../../../resources/constants", "aurelia-binding"], function (require, exports, aurelia_framework_1, Constants, aurelia_binding_1) {
-    "use strict";
-    var CV = Constants;
-    aurelia_framework_1.inject(aurelia_binding_1.BindingEngine);
-    aurelia_framework_1.inject(Element);
-    var FormRadio = (function () {
-        function FormRadio() {
-            this.inpType = "radio";
-            this.name = null;
-            this.inpClass = null;
-            this.inpLabel = null;
-            this.inpPlaceholder = null;
-            this.inpName = null;
-            this.inpValue = null;
-            this.isMandatory = null;
-            this.expiryDate = null;
-        }
-        FormRadio.prototype.activate = function (model) {
-        };
-        FormRadio.prototype.changeCallback = function (evt) {
-        };
-        FormRadio.prototype.tmpCreateLabel = function (getStr) {
-            return getStr.replace(/_/g, " ").toLowerCase();
-        };
-        FormRadio.prototype.created = function () {
-            if (CV.debugConsoleLog)
-                console.log('[form-inputs] created: ' + this.model);
-            if (!this.inpLabel && this.name)
-                this.inpLabel = this.tmpCreateLabel(this.name);
-            if (!this.inpPlaceholder)
-                this.inpPlaceholder = "Enter " + this.inpLabel;
-        };
-        return FormRadio;
-    }());
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "model", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "inpType", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "name", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "inpClass", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "inpLabel", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "inpPlaceholder", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "inpName", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "inpValue", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "isMandatory", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormRadio.prototype, "expiryDate", void 0);
-    exports.FormRadio = FormRadio;
-});
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('views/widgets/inputs/form-checkbox',["require", "exports", "aurelia-framework", "../../../resources/constants", "aurelia-binding"], function (require, exports, aurelia_framework_1, Constants, aurelia_binding_1) {
-    "use strict";
-    var CV = Constants;
-    aurelia_framework_1.inject(aurelia_binding_1.BindingEngine);
-    aurelia_framework_1.inject(Element);
-    var FormCheckbox = (function () {
-        function FormCheckbox() {
-            this.name = null;
-            this.inpPlacement = null;
-            this.inpClass = null;
-            this.inpLabel = null;
-            this.inpPlaceholder = null;
-            this.inpName = null;
-            this.inpValue = null;
-            this.isMandatory = null;
-        }
-        FormCheckbox.prototype.activate = function (model) {
-        };
-        FormCheckbox.prototype.changeCallback = function (evt) {
-        };
-        FormCheckbox.prototype.tmpCreateLabel = function (getStr) {
-            return getStr.replace(/_/g, " ").toLowerCase();
-        };
-        FormCheckbox.prototype.created = function () {
-            if (CV.debugConsoleLog)
-                console.log('[form-checkbox] created: ' + this.model);
-            if (!this.inpLabel && this.name)
-                this.inpLabel = this.tmpCreateLabel(this.name);
-            if (!this.inpPlaceholder)
-                this.inpPlaceholder = "Enter " + this.inpLabel;
-        };
-        return FormCheckbox;
-    }());
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "model", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "name", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "inpPlacement", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "inpClass", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "inpLabel", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "inpPlaceholder", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "inpName", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "inpValue", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "isMandatory", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Boolean)
-    ], FormCheckbox.prototype, "inputOnly", void 0);
-    exports.FormCheckbox = FormCheckbox;
-});
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 define('dialog-demo/roles-dialog.1',["require", "exports", "aurelia-framework", "aurelia-dialog", "aurelia-event-aggregator", "../api/web-api-users"], function (require, exports, aurelia_framework_1, aurelia_dialog_1, aurelia_event_aggregator_1, web_api_users_1) {
     "use strict";
     var RolesDialog = (function () {
@@ -2795,6 +2708,7 @@ define('text!views/widgets/list-activity.html', ['module'], function(module) { m
 define('text!views/widgets/prompt.html', ['module'], function(module) { module.exports = "<template>\r\n  <ai-dialog>\r\n    <ai-dialog-body>\r\n      <h2>Dialog</h2>\r\n    </ai-dialog-body>\r\n  </ai-dialog>\r\n</template>"; });
 define('text!views/widgets/user-edit.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/inputs/form-input\"></require>\r\n\r\n  <div class=\"hdr-wrap\">\r\n    <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-edit.html)</span></h1>\r\n  </div>\r\n\r\n  <!--<p>id: ${user.id}</p>\r\n  <p>originalUser.first_name: ${originalUser.first_name}</p>\r\n  <p>user.first_name: ${user.first_name}</p>-->\r\n\r\n  <div class=\"panel panel-bp margin-x-0 has-button-bar\">\r\n    <div class=\"panel-body row\">\r\n      \r\n      <form role=\"form\" class=\"form-horizontal\">\r\n\r\n        <form-input name=\"first_name\" model.two-way=\"user.first_name\"></form-input>\r\n        <form-input name=\"last_name\" model.two-way=\"user.last_name\" inp-label=\"Last Name\"></form-input>\r\n        <form-input name=\"email\" model.two-way=\"user.email\" inp-label=\"Email\"></form-input>\r\n        <form-input name=\"cell_number\" model.two-way=\"user.cell_number\" inp-label=\"Telephone\"></form-input>\r\n\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <div bind.if=\"user\">\r\n    <div class=\"button-bar col-md-12 padding-x-0 text-align-right\">\r\n      <button class=\"btn btn-success\" click.delegate=\"save()\" disabled.bind=\"!canSave\">Save</button>\r\n    </div>\r\n  </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-list.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <!--<require from=\"../widgets/inputs/form-select\"></require>-->\r\n\r\n    <div class=\"hdr-wrap\">\r\n        <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-list.html)</span></h1>\r\n        <a class=\"btn btn-default btn-i pull-right\" click.delegate=\"addUser()\">\r\n            <i class=\"fa fa-plus\"></i>Add User\r\n        </a>\r\n        <a class=\"btn btn-default btn-i pull-right\" click.delegate=\"changeUserRoles()\">\r\n            <i class=\"fa fa-plus\"></i>Change User Roles\r\n        </a>\r\n    </div>\r\n\r\n    <p>found: ${found} / ${selectedId} / filter: ${filters} : ${rolesArr}</p>\r\n\r\n    <div class=\"form-group\">\r\n        <input type=\"text\" value.bind=\"filters[0].value\" placeholder=\"Enter filter text\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n        <label for=\"mrt_system_role\">Roles</label>\r\n        <select id=\"rolesFilter\" class=\"form-control\" value.bind=\"filters[1].value\">\r\n            <option repeat.for=\"role of rolesArr\" model.bind=\"role\">${role}</option>\r\n        </select>\r\n    </div>\r\n\r\n    <!--<h2 if.bind=\"custDisableCells\">custDisableCells: ${custDisableCells}</h2>-->\r\n\r\n    <table class=\"table table-striped\" aurelia-table=\"data.bind: users; display-data.bind: $displayData; filters.bind: filters\">\r\n        <thead>\r\n            <tr>\r\n                <th aut-sort=\"key: id; default: desc\" if.bind=\"isNotDisabled('id')\">id</th>\r\n                <th aut-sort=\"key: first_name\" if.bind=\"isNotDisabled('first_name')\">First Name</th>\r\n                <th aut-sort=\"key: last_name\" if.bind=\"isNotDisabled('last_name')\">Last Name</th>\r\n                <th aut-sort=\"key: email\" if.bind=\"isNotDisabled('email')\">E-mail</th>\r\n                <th aut-sort=\"key: cell_number\" if.bind=\"isNotDisabled('cell_number')\">Telephone</th>\r\n                <th aut-sort=\"key: permission\" if.bind=\"isNotDisabled('permission')\">Permission</th>\r\n                <th if.bind=\"isNotDisabled('edit')\">Edit</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr repeat.for=\"user of $displayData\" class=\"${user.id === $parent.selectedId ? 'active' : ''}\">\r\n                <td if.bind=\"isNotDisabled('id')\">${user.id}</td>\r\n                <td if.bind=\"isNotDisabled('first_name')\">${user.first_name}</td>\r\n                <td if.bind=\"isNotDisabled('last_name')\">${user.last_name}</td>\r\n                <td if.bind=\"isNotDisabled('email')\"><a href=\"mailto:${user.email}\">${user.email}</a></td>\r\n                <td if.bind=\"isNotDisabled('cell_number')\"><a href=\"tel:${user.cell_number}\">${user.cell_number}</a></td>\r\n                <td if.bind=\"isNotDisabled('permission')\">${user.permission}</td>\r\n                <td if.bind=\"isNotDisabled('edit')\">\r\n                    <a route-href=\"route: users; params.bind: {id:user.id}\" title=\"Quick edit\">\r\n                        <i class=\"fa fa-pencil\"></i>\r\n                    </a>\r\n                    <a route-href=\"route: user-edit; params.bind: {id:user.id, editType:'edit'}\" title=\"Full edit\" class=\"margin-left-1\">\r\n                        <i class=\"fa fa-list\"></i>\r\n                    </a>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</template>"; });
+define('text!views/widgets/inputs/form-checkbox.html', ['module'], function(module) { module.exports = "<template class=\"${inputOnly ? '' : 'row'}\">\r\n    <span if.bind=\"!inputOnly\" class=\"col-xs-8 col-debug\">\r\n        <label for.bind=\"inpName\" title.bind=\"inpLabel\">\r\n            ${inpLabel} / ${model}\r\n        </label>\r\n    </span>\r\n    <span class=\"${inputOnly ? '' : 'col-xs-4'} col-debug\">\r\n        <label if.bind=\"inputOnly\" class=\"label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}\">\r\n            <input type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">${inpLabel}\r\n        </label>\r\n        <input if.bind=\"!inputOnly\" type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">\r\n    </span>\r\n</template>"; });
 define('text!views/widgets/inputs/form-input.html', ['module'], function(module) { module.exports = "<template class=\"form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}\">\r\n    <require from=\"aurelia-mask/masked-input\"></require>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <label class=\"col-sm-6\" for.bind=\"name\" title.bind=\"inpLabel\">\r\n            ${inpLabel}\r\n        </label>\r\n        <div class=\"col-sm-6\">\r\n            <input if.bind=\"maskPattern=='telephone'\" type=\"inpType\" masked=\"value.bind: model; mask.bind: maskPatternTelephone\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\"/>\r\n            <input if.bind=\"maskPattern=='telephone-cc'\" type=\"inpType\" masked=\"value.bind: model; mask.bind: maskPatternTelephoneCc\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\"/>\r\n            <input if.bind=\"inpType=='date'\" type=\"inpType\" value.bind=\"model\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\">\r\n            <input if.bind=\"!maskPattern && inpType=='text'\" type=\"inpType\" value.bind=\"model\" class=\"form-control\" id.one-way=\"name\" placeholder.bind=\"inpPlaceholder\">\r\n        </div>\r\n    </div>\r\n</template>"; });
 define('text!views/widgets/inputs/form-radio.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"row\">\r\n        <span class=\"${expiryDate ? 'col-xs-5 col-md-8' : 'col-xs-8'} col-debug\">\r\n            <label for.bind=\"inpName\" title.bind=\"inpLabel\">\r\n                ${inpLabel}\r\n            </label>\r\n        </span>\r\n        <span class=\"col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug\">\r\n            <input type=\"radio\" name.bind=\"inpName\" model.bind=\"1\" checked.bind=\"model\"> Yes\r\n        </span>\r\n        <span class=\"col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug\">\r\n            <input type=\"radio\" name.bind=\"inpName\" model.bind=\"0\" checked.bind=\"model\"> No\r\n        </span>\r\n        <span class=\"col-xs-3 ${expiryDate ? 'col-md-2' : ''} text-align-right col-debug\" if.bind=\"expiryDate\">\r\n            ${expiryDate}\r\n        </span>\r\n    </div>\r\n</template>"; });
 define('text!views/widgets/inputs/form-select.html', ['module'], function(module) { module.exports = "<template class=\"form-group ${inputOnly ? '' : 'col-xs-12'} ${inpClass} ${isMandatory ? 'is-mandatory' : ''}\">\r\n    \r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"select2/css/select2.min.css\"></require>\r\n\r\n    <div class=\"${inputOnly ? '' : 'row-fluid'}\">\r\n        <label if.bind=\"!inputOnly\" class=\"col-sm-6\" for.bind=\"name\" title.bind=\"inpLabel\">${inpLabel}</label>\r\n        <!--/ ${changed} / ${initSelected} / ${selected}-->\r\n        <div class=\"${inputOnly ? '' : 'col-sm-6'}\">\r\n            <!--selected.two-way=\"selected\" -->\r\n            <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->\r\n\r\n\r\n            <select if.bind=\"!autocomplete\" class=\"form-control\" value.bind=\"initSelected\" disabled.bind=\"!isEnabled\" selected.two-way=\"selected\"\r\n                change.delegate=\"changeCallback($event)\">\r\n                <option model.bind=\"0\">${inpPlaceholder}</option>\r\n                 \r\n                <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">${option.label}</option>\r\n            </select>\r\n\r\n            <select if.bind=\"autocomplete\" class=\"form-control\" id.bind=\"name\" select2.bind=\"selectOptions\" value.bind=\"initSelected\"\r\n                disabled.bind=\"!isEnabled\" change.delegate=\"changeCallback($event)\">\r\n                \r\n                <option model.bind=\"0\">${inpPlaceholder}</option>\r\n                <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">\r\n                    ${option.label}\r\n                </option>\r\n            </select>\r\n\r\n        </div>\r\n    </div>\r\n</template>"; });
@@ -2804,8 +2718,6 @@ define('text!views/widgets/user-panels/user-panel-mrt.html', ['module'], functio
 define('text!views/widgets/user-panels/user-panel-passport-visa.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n\r\n\r\n    <div class=\"repeaters row-fluid\" repeat.for=\"row of user.lkp_passports_selected_arr\">\r\n\r\n        <div if.bind=\"$index>0\" class=\"divider dotted\"></div>\r\n\r\n        <form-select name=\"lkp_passport_types[$index]\" inp-label=\"Passport Type\"\r\n            model.two-way=\"user.lkp_passports_selected_arr[$index].typeId\"\r\n            options.bind=\"lkp_passport_types\"\r\n            changed.two-way=\"user.lkp_passports_selected_arr[$index].typeId\"\r\n            autocomplete.bind=\"true\"\r\n            init-selected.two-way=\"user.lkp_passports_selected_arr[$index].typeId\"></form-select>\r\n\r\n        <form-input name=\"passport_number\" model.two-way=\"user.lkp_passports_selected_arr[$index].number\"></form-input>\r\n\r\n        <form-select name=\"lkp_passport_nationalities[$index]\" inp-label=\"Nationality\"\r\n            model.two-way=\"user.lkp_passports_selected_arr[$index].nationalityId\"\r\n            options.bind=\"lkp_passport_nationalities\"\r\n            changed.two-way=\"user.lkp_passports_selected_arr[$index].nationalityId\"\r\n            autocomplete.bind=\"true\"\r\n            init-selected.two-way=\"user.lkp_passports_selected_arr[$index].nationalityId\"></form-select>\r\n\r\n        <form-input name=\"passport_expiry_date\" model.two-way=\"user.lkp_passports_selected_arr[$index].expiryDate\"></form-input>\r\n\r\n        <div class=\"btn-row text-align-left\">\r\n            <button class=\"btn btn-default btn-sm btn-i\" if.bind=\"$index+1 == user.lkp_passports_selected_arr.length\">\r\n                <i class=\"fa fa-plus\"></i>\r\n                Add Passport\r\n            </button>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"repeaters row-fluid\" repeat.for=\"row of user.lkp_passports_selected_arr\">\r\n\r\n        <div if.bind=\"$index>0\" class=\"divider dotted\"></div>\r\n\r\n        <form-select name=\"lkp_visa_country[$index]\" inp-label=\"Visa Country\"\r\n            model.two-way=\"user.lkp_visas_selected_arr[$index].countryId\"\r\n            options.bind=\"lkp_visa_countries\"\r\n            changed.two-way=\"user.lkp_visas_selected_arr[$index].countryId\"\r\n            autocomplete.bind=\"true\"\r\n            init-selected.two-way=\"user.lkp_visas_selected_arr[$index].countryId\"></form-select>\r\n\r\n        <form-input name=\"visa_expiry_date\" model.two-way=\"user.lkp_visas_selected_arr[$index].expiryDate\"></form-input>\r\n\r\n        <form-select name=\"lkp_visa_type[$index]\" inp-label=\"Visa Type\"\r\n            model.two-way=\"user.lkp_visas_selected_arr[$index].typeId\"\r\n            options.bind=\"lkp_passport_nationalities\"\r\n            changed.two-way=\"user.lkp_visas_selected_arr[$index].typeId\"\r\n            autocomplete.bind=\"true\"\r\n            init-selected.two-way=\"user.lkp_visas_selected_arr[$index].typeId\"></form-select>        \r\n\r\n        <div class=\"btn-row text-align-left\">\r\n            <button class=\"btn btn-default btn-sm btn-i\" if.bind=\"$index+1 == user.lkp_visas_selected_arr.length\">\r\n                <i class=\"fa fa-plus\"></i>\r\n                Add Visa\r\n            </button>\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-training.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-radio\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <div class=\"col-xs-12\" innerhtml.bind=\"message\">\r\n\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"row-fluid\">\r\n        <div class=\"col-md-6 padding-bottom-g1\">\r\n            <h4>ICS Training</h4>\r\n            <div class=\"repeaters row-fluid\" repeat.for=\"row of user.training_ics_arr\">                \r\n                <form-radio inp-name.bind=\"'training_ics_' + $index\"\r\n                    model.two-way=\"user.training_ics_arr[$index].value\"\r\n                    inp-label.bind=\"user.training_ics_arr[$index].label\"\r\n                    init-selected.two-way=\"user.training_ics_arr[$index].value\"></form-radio>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-6 padding-bottom-g1\">\r\n            <h4>ICS Section Specific Training</h4>\r\n            <div class=\"repeaters row-fluid\" repeat.for=\"row of user.training_ics_ss_arr\">                \r\n                <form-radio inp-name.bind=\"'training_ics_ss_' + $index\"\r\n                    model.two-way=\"user.training_ics_ss_arr[$index].value\"\r\n                    inp-label.bind=\"user.training_ics_ss_arr[$index].label\"\r\n                    init-selected.two-way=\"user.training_ics_ss_arr[$index].value\"></form-radio>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"divider\"></div>\r\n\r\n        <div class=\"col-md-12 padding-bottom-g1\">\r\n            <h4>ICS Others</h4>\r\n            <div class=\"repeaters row-fluid\" repeat.for=\"row of user.training_others_arr\">                \r\n                <form-radio inp-name.bind=\"'training_others_' + $index\"\r\n                    model.two-way=\"user.training_others_arr[$index].value\"\r\n                    inp-label.bind=\"user.training_others_arr[$index].label\"\r\n                    expiry-date.two-way=\"user.training_others_arr[$index].expiryDate\"\r\n                    init-selected.two-way=\"user.training_others_arr[$index].value\"></form-radio>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-twic.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-radio\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <form-radio inp-name.bind=\"twic_card\"\r\n            inp-label=\"Hold a TWIC Card\"\r\n            model.two-way=\"user.twic_card.value\"\r\n            expiry-date.two-way=\"user.twic_card.expiryDate\"\r\n            init-selected.two-way=\"user.twic_card.value\"></form-radio>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/inputs/form-radio.1.html', ['module'], function(module) { module.exports = "<template>\r\n    <div class=\"row\">\r\n        <span class=\"${expiryDate ? 'col-xs-5 col-md-8' : 'col-xs-8'} col-debug\">\r\n            <label for.bind=\"inpName\" title.bind=\"inpLabel\">\r\n                ${inpLabel}\r\n            </label>\r\n        </span>\r\n        <span class=\"col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug\">\r\n            <input type=\"radio\" name.bind=\"inpName\" model.bind=\"1\" checked.bind=\"model\"> Yes\r\n        </span>\r\n        <span class=\"col-xs-2 ${expiryDate ? 'col-md-1' : ''} col-debug\">\r\n            <input type=\"radio\" name.bind=\"inpName\" model.bind=\"0\" checked.bind=\"model\"> No\r\n        </span>\r\n        <span class=\"col-xs-3 ${expiryDate ? 'col-md-2' : ''} text-align-right col-debug\" if.bind=\"expiryDate\">\r\n            ${expiryDate}\r\n        </span>\r\n    </div>\r\n</template>"; });
-define('text!views/widgets/inputs/form-checkbox.html', ['module'], function(module) { module.exports = "<template class=\"${inputOnly ? '' : 'row'}\">\r\n    <span if.bind=\"!inputOnly\" class=\"col-xs-8 col-debug\">\r\n        <label for.bind=\"inpName\" title.bind=\"inpLabel\">\r\n            ${inpLabel} / ${model}\r\n        </label>\r\n    </span>\r\n    <span class=\"${inputOnly ? '' : 'col-xs-4'} col-debug\">\r\n        <label if.bind=\"inputOnly\" class=\"label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}\">\r\n            <input type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">${inpLabel}\r\n        </label>\r\n        <input if.bind=\"!inputOnly\" type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">\r\n    </span>\r\n</template>"; });
 define('text!dialog-demo/roles-dialog.1.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../views/widgets/inputs/form-checkbox\"></require>\r\n    <require from=\"../views/widgets/inputs/form-select\"></require>\r\n\r\n    <ai-dialog>\r\n        <ai-dialog-header>\r\n            <h2>${title}</h2>\r\n        </ai-dialog-header>\r\n\r\n        <ai-dialog-body>\r\n            <table class=\"table border-none half-n-half\">\r\n                <tbody>\r\n                <tr>\r\n                    <td><label>ID:</label> ${userRole.id}</td>\r\n                    <td><label>Name:</label> ${userRole.first_name} ${userRole.last_name}</td>\r\n                </tr>\r\n                <tr>\r\n                    <td>\r\n                        <form-checkbox inp-name=\"userRole_mrt_member_boolean\"\r\n                            inp-label=\"MRT Member\"                            \r\n                            model.two-way=\"userRole.mrt_member_boolean\"\r\n                            init-selected.two-way=\"userRole.mrt_member_boolean\"\r\n                            input-only=\"true\"></form-checkbox>\r\n                    </td>\r\n                    <td>\r\n                        <form-select name=\"userRole_system_role\" input-only=\"true\" model.two-way=\"userRole.mrt_system_role\" options.bind=\"lkp_mrt_system_role\"\r\n                            changed.two-way=\"userRole.mrt_system_role\" init-selected.two-way=\"userRole.mrt_system_role\"></form-select>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n\r\n        </ai-dialog-body>\r\n\r\n        <ai-dialog-footer>\r\n            <button class=\"btn btn-primary\" click.trigger=\"yes()\">Yes</button>\r\n            <button class=\"btn btn-default pull-left\" click.trigger=\"cancel()\">Cancel</button>\r\n        </ai-dialog-footer>\r\n    </ai-dialog>\r\n</template>"; });
 define('text!dialog-demo/add-user-dialog.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../views/widgets/inputs/form-checkbox\"></require>\r\n    <require from=\"../views/widgets/inputs/form-select\"></require>\r\n\r\n    <ai-dialog>\r\n        <ai-dialog-header>\r\n            <h2>${title}</h2>\r\n        </ai-dialog-header>\r\n\r\n        <ai-dialog-body>\r\n            <div class=\"wrap_table-add-user-from-list\">\r\n                <table class=\"table table-striped table-hover\" aurelia-table=\"data.bind: users; display-data.bind: $displayData\">\r\n                    <thead>\r\n                        <tr>\r\n                            <th aut-sort=\"key: id; default: desc\">ID</th>\r\n                            <th aut-sort=\"key: first_name\">First Name</th>\r\n                            <th aut-sort=\"key: last_name\">Last Name</th>\r\n                            <th aut-sort=\"key: mrt_member\">Member</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr repeat.for=\"user of $displayData\" click.delegate=\"select(user.id)\">\r\n                            <td>${user.id}</td>\r\n                            <td>${user.first_name}</td>\r\n                            <td>${user.last_name}</td>\r\n                            <td>${user.mrt_member}</td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n            \r\n            <table if.bind=\"userRole\" class=\"table border-none half-n-half\">\r\n                <tbody>\r\n                <tr>\r\n                    <td><label>ID:</label> ${userRole.id}</td>\r\n                    <td><label>Name:</label> ${userRole.first_name} ${userRole.last_name}</td>\r\n                </tr>\r\n                <tr>\r\n                    <td>\r\n                        <form-checkbox inp-name=\"userRole_mrt_member_boolean\"\r\n                            inp-label=\"MRT Member\"                            \r\n                            model.two-way=\"userRole.mrt_member_boolean\"\r\n                            init-selected.two-way=\"userRole.mrt_member_boolean\"\r\n                            input-only=\"true\"></form-checkbox>\r\n                    </td>\r\n                    <td>\r\n                        <form-select name=\"userRole_system_role\" input-only=\"true\" model.two-way=\"userRole.mrt_system_role\" options.bind=\"lkp_mrt_system_role\"\r\n                            changed.two-way=\"userRole.mrt_system_role\" init-selected.two-way=\"userRole.mrt_system_role\"></form-select>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n            \r\n        </ai-dialog-body>\r\n\r\n        <ai-dialog-footer>\r\n            <button class=\"btn btn-primary\" click.trigger=\"yes()\">Yes</button>\r\n            <button class=\"btn btn-default pull-left\" click.trigger=\"cancel()\">Cancel</button>\r\n        </ai-dialog-footer>\r\n    </ai-dialog>\r\n</template>"; });
 //# sourceMappingURL=app-bundle.js.map
