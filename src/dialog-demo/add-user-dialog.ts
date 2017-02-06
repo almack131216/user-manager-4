@@ -13,6 +13,7 @@ interface User {
     mrt_member: boolean;
 }
 
+
 @autoinject
 @inject(DialogController, WebAPIUsers, EventAggregator)
 export class AddUserDialog {
@@ -22,10 +23,24 @@ export class AddUserDialog {
     originalUser = null;
     lkp_role;
     users;
-    selectedId = null;
+    private selectedId;
+    selectUserToAdd;
+    //selectedId = null;
+    //@bindable custClickableRowFunction;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
         this.lkp_role = lookups.lkp_role;
+
+        this.selectUserToAdd = (getUser) => {   
+            this.selectedId = getUser.id;     
+            console.log('add-user-dialog: select: ' + this.selectedId + ' / ' + getUser.id);
+            this.api.getUserRole(6).then(user => {            
+                this.userRole = <User>user;
+                //this.selectedId = this.userRole.id;
+                console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole) );
+            });
+        }
+
     }
 
     created(){
@@ -50,13 +65,14 @@ export class AddUserDialog {
         this.controller.cancel();
     }
 
-    select(getId){
-        
-        //alert('select: ' + getId);
-        this.api.getUserDetails(getId).then(user => {
-            this.userRole = <User>user;
-            this.selectedId = this.userRole.id;
-        });
-    }
+    // selectUserToAdd(getUser){   
+    //     this.selectedId = getUser.id;     
+    //     console.log('add-user-dialog: select: ' + this.selectedId + ' / ' + getUser.id);
+    //     this.api.getUserRole(6).then(user => {            
+    //         this.userRole = <User>user;
+    //         //this.selectedId = this.userRole.id;
+    //         console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole) );
+    //     });
+    // }
 
 }

@@ -2,15 +2,16 @@
 
     <require from="../views/widgets/inputs/form-checkbox"></require>
     <require from="../views/widgets/inputs/form-select"></require>
+    <require from="../views/widgets/user-list"></require>
 
     <ai-dialog>
         <ai-dialog-header>
-            <h2>${title}</h2>
+            <h2>${title} / ${selectedId}</h2>
         </ai-dialog-header>
 
         <ai-dialog-body>
             <div class="wrap_table-add-user-from-list">
-                <table class="table table-striped table-hover" aurelia-table="data.bind: users; display-data.bind: $displayData">
+                <!--<table class="table table-striped table-hover" aurelia-table="data.bind: users; display-data.bind: $displayData">
                     <thead>
                         <tr>
                             <th aut-sort="key: id; default: desc">ID</th>
@@ -20,17 +21,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr repeat.for="user of $displayData" click.delegate="select(user.id)">
+                        <tr repeat.for="user of $displayData" click.delegate="selectUserToAdd(user)">
                             <td>${user.id}</td>
                             <td>${user.first_name}</td>
                             <td>${user.last_name}</td>
                             <td>${user.mrt_member}</td>
                         </tr>
                     </tbody>
-                </table>
+                </table>-->
+                <user-list cust-title="Add User" cust-disable-cells="['email','cell_number','edit']" cust-hide-title-bar="true" cust-clickable-row="true" cust-clickable-row-function.two-way="selectUserToAdd"></user-list>
             </div>
             
-            <table if.bind="userRole" class="table border-none half-n-half">
+            <table if.bind="selectedId" class="table border-none half-n-half">
                 <tbody>
                 <tr>
                     <td><label>ID:</label> ${userRole.id}</td>

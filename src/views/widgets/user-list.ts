@@ -11,15 +11,17 @@ import { UserInfo } from '../../user-info/user-info';
 import { InfoDialog } from '../../dialog-demo/info-dialog';
 import { RolesDialog } from '../../dialog-demo/roles-dialog';
 import { AddUserDialog } from '../../dialog-demo/add-user-dialog';
-
 import {Lookups} from '../../resources/lookups';
 
-@autoinject
 
+@autoinject
 @inject(WebAPIUsers, EventAggregator, DialogService, Lookups)
 export class UserList {
-    @bindable custTitle = null;
-    @bindable custDisableCells = null;
+    @bindable custTitle;
+    @bindable custDisableCells;
+    @bindable custHideTitleBar = false;    
+    @bindable custClickableRowFunction;
+    @bindable custClickableRow = false;
     public CV = CV
     users;
     selectedId = 0;
@@ -37,6 +39,10 @@ export class UserList {
     }
 
     constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups) {
+
+        //this.custClickableRow = !this.custClickableRowFunction ? false : true;
+        console.log('user-list.ts: constructor: ' + this.custClickableRow + ' / ' + this.custClickableRowFunction);
+
         ea.subscribe(UserViewed, msg => this.select(msg.user));
         ea.subscribe(UserUpdated, msg => {
             let id = msg.user.id;
@@ -59,7 +65,8 @@ export class UserList {
     }
 
     select(user) {
-        this.selectedId = user.id;
+        this.selectedId = user.id;        
+        //alert('select: ' + this.selectedId);
         return true;
     }
 
@@ -114,7 +121,7 @@ export class UserList {
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
                 tmp_rolesArrValues.push(nextRole);
                 let nextLabel = this.rolesArr.filter(x => x.value == nextRole)[0].label;
-                console.log('???' + nextRole + ' | ' + nextLabel);
+                //console.log('???' + nextRole + ' | ' + nextLabel);
                 //this.rolesArrLabels.push(nextLabel);
                 this.rolesArrDynamic.push({"value":nextRole, "label":nextLabel});
             }

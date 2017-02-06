@@ -44,8 +44,7 @@ export class WebAPIUsers {
         //let found = usersArr.filter(x => x.id == id);
         let found = this.http.fetch('src/views/widgets/user-panels/dummy-user.json')
             .then(found => found.json())
-            .then(found => found);
-            
+            .then(found => found);            
 
         console.log('getUserDetails ARR: ' + JSON.stringify(found) );
         resolve(found);

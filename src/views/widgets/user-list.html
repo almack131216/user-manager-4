@@ -3,7 +3,7 @@
     <require from="../widgets/inputs/form-input"></require>
     <require from="../widgets/inputs/form-select"></require>
 
-    <div class="hdr-wrap">
+    <div class="hdr-wrap" if.bind="!custHideTitleBar">
         <h1 class="hdr-inline">${title}<span class="html-file-name">(user-list.html)</span></h1>
         <a class="btn btn-default btn-i pull-right" click.delegate="addUser()">
             <i class="fa fa-plus"></i>Add User
@@ -35,7 +35,7 @@
 
     <!--<h2 if.bind="custDisableCells">custDisableCells: ${custDisableCells}</h2>-->
 
-    <table class="table table-striped" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters">
+    <table class="table table-striped ${custClickableRow ? 'table-hover' : ''}" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters">
         <thead>
             <tr>
                 <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
@@ -48,7 +48,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
+            <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}" click.delegate="custClickableRow && $parent.custClickableRowFunction(user)">
                 <td if.bind="isNotDisabled('id')">${user.id}</td>
                 <td if.bind="isNotDisabled('first_name')">${user.first_name}</td>
                 <td if.bind="isNotDisabled('last_name')">${user.last_name}</td>
