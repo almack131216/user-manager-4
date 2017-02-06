@@ -14,15 +14,14 @@
 
             <select if.bind="!autocomplete" class="form-control" value.bind="initSelected" disabled.bind="!isEnabled" selected.two-way="selected"
                 change.delegate="changeCallback($event)">
-                <option model.bind="0">${inpPlaceholder}</option>
-                 
+                <option value="">${inpPlaceholder}</option>                 
                 <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">${option.label}</option>
             </select>
 
             <select if.bind="autocomplete" class="form-control" id.bind="name" select2.bind="selectOptions" value.bind="initSelected"
                 disabled.bind="!isEnabled" change.delegate="changeCallback($event)">
                 
-                <option model.bind="0">${inpPlaceholder}</option>
+                <option value="">${inpPlaceholder}</option>
                 <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">
                     ${option.label}
                 </option>

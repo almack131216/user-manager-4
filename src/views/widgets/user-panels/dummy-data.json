@@ -15,7 +15,7 @@
     "email":"lewis@inklings.com",
     "cell_number":"867-5309",
     "mrt_member":true,
-    "mrt_system_role": 1
+    "mrt_system_role": 0
   },
   {
     "id":3,
@@ -42,7 +42,7 @@
     "email":"green@inklings.com",
     "cell_number":"867-5309",
     "mrt_member":false,
-    "mrt_system_role": null
+    "mrt_system_role": 0
   },
   {
     "id":6,

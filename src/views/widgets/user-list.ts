@@ -12,9 +12,11 @@ import { InfoDialog } from '../../dialog-demo/info-dialog';
 import { RolesDialog } from '../../dialog-demo/roles-dialog';
 import { AddUserDialog } from '../../dialog-demo/add-user-dialog';
 
+import {Lookups} from '../../resources/lookups';
+
 @autoinject
 
-@inject(WebAPIUsers, EventAggregator, DialogService)
+@inject(WebAPIUsers, EventAggregator, DialogService, Lookups)
 export class UserList {
     @bindable custTitle = null;
     @bindable custDisableCells = null;
@@ -22,7 +24,12 @@ export class UserList {
     users;
     selectedId = 0;
     title = 'Users';
-    rolesArr = [];
+    //tmp_rolesArrValues = [];
+    //rolesArrLabels = [];
+    rolesArr;
+    rolesArrDynamic = [];
+    lkp_Roles = [];
+    
 
     isNotDisabled(getField) {
         if (CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);
@@ -31,20 +38,26 @@ export class UserList {
         return false;
     }
 
-    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService) {
+    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups) {
         ea.subscribe(UserViewed, msg => this.select(msg.user));
         ea.subscribe(UserUpdated, msg => {
             let id = msg.user.id;
             let found = this.users.find(x => x.id == id);
             Object.assign(found, msg.user);
         });
+
+        this.lkp_Roles = lookups.lkp_Roles;
+        this.rolesArr = this.lkp_Roles.map(x =>  { return {
+          value:x.id,
+          label:x.label
+        }});
     }
 
     created() {
         if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
         if (this.custTitle) this.title = this.custTitle;
         this.api.getUserList().then(users => this.users = users)
-            .then(() => this.populateRoleFilter());
+            .then(() => this.populateRoleFilterFromList());
     }
 
     select(user) {
@@ -82,19 +95,25 @@ export class UserList {
 
     filters = [
         { value: '', keys: ['first_name', 'last_name', 'email', 'cell_number'] },
-        { value: '', keys: ['mrt_system_role'] }
+        { value: '1', keys: ['mrt_system_role'] }
     ];
 
-    populateRoleFilter() {
-        //alert('populateRoleFilter' + this.users);
-        this.rolesArr.push('');
+    populateRoleFilterFromList() {        
+        let tmp_rolesArrValues=[];
+        //this.rolesArrLabels=[];
+        this.rolesArrDynamic=[];
+
         for (let next of this.users) {
             let nextRole = next.mrt_system_role;
 
-            if (this.rolesArr.indexOf(nextRole) === -1) {
-                this.rolesArr.push(nextRole);
+            if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
+                tmp_rolesArrValues.push(nextRole);
+                let nextLabel = this.rolesArr.filter(x => x.value == nextRole)[0].label;
+                console.log('???' + nextRole + ' | ' + nextLabel);
+                //this.rolesArrLabels.push(nextLabel);
+                this.rolesArrDynamic.push({"value":nextRole, "label":nextLabel});
             }
-        }
+        }        
     }
 
 
