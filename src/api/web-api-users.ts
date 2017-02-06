@@ -59,7 +59,7 @@ export class WebAPIUsers {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        console.log('usersArr:' + usersArr);
+        //console.log('usersArr:' + usersArr);
         //let found = usersArr.filter(x => x.id == id);
         let found = this.http.fetch('src/views/widgets/user-panels/dummy-user-role.json')
             .then(found => found.json())

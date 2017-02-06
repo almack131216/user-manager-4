@@ -1,0 +1,54 @@
+/* constructor: */
+{
+    "renderer": {},
+    "settings": {
+        "lock": true,
+        "centerHorizontalOnly": false,
+        "startingZIndex": 5,
+        "ignoreTransitions": false,
+        "centerVerticalOnly": false,
+        "enableEscClose": true,
+        "userId": 2,
+        "model": {
+            "api": {
+                "isRequesting": false,
+                "usersArr": [],
+                "http": {
+                    "activeRequestCount": 0,
+                    "isRequesting": false,
+                    "isConfigured": false,
+                    "baseUrl": "",
+                    "defaults": null,
+                    "interceptors": []
+                }
+            },
+            "ea": {
+                "eventLookup": {},
+                "messageHandlers": [
+                    {},
+                    {}
+                ]
+            },
+            "first_name": "David",
+            "last_name": "",
+            "email": "",
+            "city": "",
+            "country": "",
+            "user": null,
+            "info": {
+                "id": 6,
+                "mrt_member": false,
+                "mrt_system_role": 1,
+                "first_name": "David",
+                "last_name": "Bowie",
+                "email": "david@bowie.com"
+            },
+            "editType": null,
+            "originalUser": null
+        }
+    },
+    "result": {
+        "isFulfilled": false,
+        "isRejected": false
+    }
+}

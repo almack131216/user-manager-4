@@ -19,10 +19,13 @@ export class RolesDialog {
     userRole = null;
     originalUser = null;
     lkp_mrt_system_role;
+    userSelectedId = null;
 
-    constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator) {
-        
-        this.api.getUserRole(6).then(user => {
+    constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private model) {
+        //REF: output_controller_settings_roles-dialog.json
+        this.userSelectedId = controller.settings.userId;        
+
+        this.api.getUserRole(this.userSelectedId).then(user => {
             this.userRole = <User>user;
         });
 
@@ -32,6 +35,7 @@ export class RolesDialog {
     activate(model) {
 
         this.userRole = model;
+        //alert('activate: ' + JSON.stringify(this.userRole.info.id) );
 
         this.lkp_mrt_system_role = [
             { "value": 1, "label": "Role 1" },

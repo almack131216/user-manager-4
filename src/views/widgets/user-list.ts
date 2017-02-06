@@ -78,8 +78,10 @@ export class UserList {
         });
     }
 
-    changeUserRoles(): void {
+    changeUserRoles(id): void {
+        //alert('changeUserRoles: ' + id);
         this.dialogService.open({
+            userId: id,
             viewModel: RolesDialog,
             model: this.userInfo
         }).then(response => {
