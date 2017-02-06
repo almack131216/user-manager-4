@@ -24,11 +24,9 @@ export class UserList {
     users;
     selectedId = 0;
     title = 'Users';
-    //tmp_rolesArrValues = [];
-    //rolesArrLabels = [];
     rolesArr;
     rolesArrDynamic = [];
-    lkp_roles = [];
+    lkp_roles;
     
 
     isNotDisabled(getField) {

@@ -24,9 +24,9 @@ export class Lookups {
   constructor() {
     this.lkp_roles = [
       { "value": 0, "label": "Select" },
-      { "value": 3, "label": "Role 3" },
-      { "value": 1, "label": "Role 1" },
-      { "value": 2, "label": "Role 2" }
+      { "value": 3, "label": "a Role 3" },
+      { "value": 1, "label": "b Role 1" },
+      { "value": 2, "label": "c Role 2" }
     ]
 
     /* User Details */

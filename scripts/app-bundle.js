@@ -536,9 +536,9 @@ define('resources/lookups',["require", "exports"], function (require, exports) {
         function Lookups() {
             this.lkp_roles = [
                 { "value": 0, "label": "Select" },
-                { "value": 3, "label": "Role 3" },
-                { "value": 1, "label": "Role 1" },
-                { "value": 2, "label": "Role 2" }
+                { "value": 3, "label": "a Role 3" },
+                { "value": 1, "label": "b Role 1" },
+                { "value": 2, "label": "c Role 2" }
             ];
             this.lkp_region = [
                 { "value": 1, "label": "Region 1" },
@@ -1312,7 +1312,6 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
             this.selectedId = 0;
             this.title = 'Users';
             this.rolesArrDynamic = [];
-            this.lkp_roles = [];
             this.filters = [
                 { value: '', keys: ['first_name', 'last_name', 'email', 'cell_number'] },
                 { value: '1', keys: ['mrt_system_role'] }
