@@ -4,7 +4,7 @@ put all global variables here, as camel-case prefixed with a small 'g'
 */
 
 export class Lookups {
-  lkp_roles;
+  lkp_role;
   lkp_region
   lkp_hub
   lkp_segment
@@ -19,10 +19,10 @@ export class Lookups {
   lkp_passport_type;
   lkp_passport_nationality;
   lkp_visa_country;
-  lkp_visa_type;
+  lkp_visa_type;  
 
   constructor() {
-    this.lkp_roles = [
+    this.lkp_role = [
       { "value": 0, "label": "Select" },
       { "value": 3, "label": "a Role 3" },
       { "value": 1, "label": "b Role 1" },
