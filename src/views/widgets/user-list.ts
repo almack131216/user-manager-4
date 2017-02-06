@@ -28,7 +28,7 @@ export class UserList {
     //rolesArrLabels = [];
     rolesArr;
     rolesArrDynamic = [];
-    lkp_Roles = [];
+    lkp_roles = [];
     
 
     isNotDisabled(getField) {
@@ -46,9 +46,9 @@ export class UserList {
             Object.assign(found, msg.user);
         });
 
-        this.lkp_Roles = lookups.lkp_Roles;
-        this.rolesArr = this.lkp_Roles.map(x =>  { return {
-          value:x.id,
+        this.lkp_roles = lookups.lkp_roles;
+        this.rolesArr = this.lkp_roles.map(x =>  { return {
+          value:x.value,
           label:x.label
         }});
     }

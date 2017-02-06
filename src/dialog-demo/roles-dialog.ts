@@ -21,7 +21,7 @@ export class RolesDialog {
     userRole = null;
     originalUser = null;
     userSelectedId = null;
-    lkp_Roles = [];
+    lkp_roles;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private model, private lookups: Lookups) {
         //REF: output_controller_settings_roles-dialog.json
@@ -31,7 +31,7 @@ export class RolesDialog {
             this.userRole = <User>user;
         });
 
-        this.lkp_Roles = lookups.lkp_Roles;
+        this.lkp_roles = lookups.lkp_roles;
     }
 
     //All of the parameters that we passed to the dialog are available through the model
@@ -40,9 +40,7 @@ export class RolesDialog {
         this.userRole = model;
         //alert('activate: ' + JSON.stringify(this.userRole.info.id) );
 
-
-
-        console.log('model: ' + JSON.stringify(model) + ' > ' + this.lkp_Roles);
+        console.log('model: ' + JSON.stringify(model) + ' > ' + this.lkp_roles);
     }
 
     //When the user clicks on the 'Yes' button the controller closes the dialog 

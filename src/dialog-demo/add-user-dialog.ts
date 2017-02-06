@@ -20,12 +20,12 @@ export class AddUserDialog {
     title = 'Add User';
     userRole = null;
     originalUser = null;
-    lkp_Roles = [];
+    lkp_roles;
     users;
     selectedId = null;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
-        this.lkp_Roles = lookups.lkp_Roles;
+        this.lkp_roles = lookups.lkp_roles;
     }
 
     created(){

@@ -1,42 +1,26 @@
 
-import { bindable } from 'aurelia-framework';
+import { autoinject, bindable } from 'aurelia-framework';
+import { Lookups } from '../../../resources/lookups';
+
+@autoinject
 
 export class UserPanelPassportVisa {
     @bindable user;
-    public lkp_passport_types;
-    public lkp_passport_nationalities;
-    public lkp_visa_countries;
-    public lkp_visa_types;
+    lkp_passport_types;
+    lkp_passport_nationalities;
+    lkp_visa_countries;
+    lkp_visa_types;
 
-    constructor() {
+    constructor(private lookups: Lookups) {
 
-        this.lkp_passport_types = [
-            { "value": 1, "label": "Regular 1" },
-            { "value": 2, "label": "Diplomatic 2" },
-            { "value": 3, "label": "Special 3" },
-            { "value": 4, "label": "Temporary 4" }
-        ]
+        this.lkp_passport_types = lookups.lkp_passport_types;
 
-        this.lkp_passport_nationalities = [
-            { "value": 1, "label": "European 1" },
-            { "value": 2, "label": "British 2" },
-            { "value": 3, "label": "American 3" },
-            { "value": 4, "label": "Canadian 4" }
-        ]
+        this.lkp_passport_nationalities = lookups.lkp_passport_nationalities
 
-        this.lkp_visa_countries = [
-            { "value": 1, "label": "Country 1" },
-            { "value": 2, "label": "Country 2" },
-            { "value": 3, "label": "Country 3" },
-            { "value": 4, "label": "Country 4" }
-        ]
+        this.lkp_visa_countries = lookups.lkp_visa_countries
 
-        this.lkp_visa_types = [
-            { "value": 1, "label": "Visa Type 1" },
-            { "value": 2, "label": "Visa Type 2" },
-            { "value": 3, "label": "Visa Type 3" },
-            { "value": 4, "label": "Visa Type 4" }
-        ]
+        this.lkp_visa_types = lookups.lkp_visa_types
+
     }
 
 }
