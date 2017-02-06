@@ -100,6 +100,11 @@ export class UserList {
         { value: '1', keys: ['mrt_system_role'] }
     ];
 
+    returnLabelFromValue(getId){
+        if(getId) return this.rolesArr.filter(x => x.value == getId)[0].label;
+        return '';
+    }
+
     populateRoleFilterFromList() {        
         let tmp_rolesArrValues=[];
         //this.rolesArrLabels=[];

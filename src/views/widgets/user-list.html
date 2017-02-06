@@ -43,7 +43,7 @@
                 <th aut-sort="key: last_name" if.bind="isNotDisabled('last_name')">Last Name</th>
                 <th aut-sort="key: email" if.bind="isNotDisabled('email')">E-mail</th>
                 <th aut-sort="key: cell_number" if.bind="isNotDisabled('cell_number')">Telephone</th>
-                <th aut-sort="key: mrt_system_role" if.bind="isNotDisabled('permission')">Permission</th>
+                <th aut-sort="key: mrt_system_role" if.bind="isNotDisabled('mrt_system_role')">Role</th>
                 <th if.bind="isNotDisabled('edit')">Edit</th>
             </tr>
         </thead>
@@ -54,7 +54,7 @@
                 <td if.bind="isNotDisabled('last_name')">${user.last_name}</td>
                 <td if.bind="isNotDisabled('email')"><a href="mailto:${user.email}">${user.email}</a></td>
                 <td if.bind="isNotDisabled('cell_number')"><a href="tel:${user.cell_number}">${user.cell_number}</a></td>
-                <td if.bind="isNotDisabled('mrt_system_role')">${user.mrt_system_role}</td>
+                <td if.bind="isNotDisabled('mrt_system_role')">${ returnLabelFromValue(user.mrt_system_role) }</td>
                 <td if.bind="isNotDisabled('edit')">
                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
                         <a class="btn btn-default" route-href="route: users; params.bind: {id:user.id}" title="Quick edit">
