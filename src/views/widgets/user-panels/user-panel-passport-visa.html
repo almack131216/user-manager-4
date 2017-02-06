@@ -8,18 +8,18 @@
 
         <div if.bind="$index>0" class="divider dotted"></div>
 
-        <form-select name="lkp_passport_types[$index]" inp-label="Passport Type"
+        <form-select name="lkp_passport_type[$index]" inp-label="Passport Type"
             model.two-way="user.lkp_passports_selected_arr[$index].typeId"
-            options.bind="lkp_passport_types"
+            options.bind="lkp_passport_type"
             changed.two-way="user.lkp_passports_selected_arr[$index].typeId"
             autocomplete.bind="true"
             init-selected.two-way="user.lkp_passports_selected_arr[$index].typeId"></form-select>
 
         <form-input name="passport_number" model.two-way="user.lkp_passports_selected_arr[$index].number"></form-input>
 
-        <form-select name="lkp_passport_nationalities[$index]" inp-label="Nationality"
+        <form-select name="lkp_passport_nationality[$index]" inp-label="Nationality"
             model.two-way="user.lkp_passports_selected_arr[$index].nationalityId"
-            options.bind="lkp_passport_nationalities"
+            options.bind="lkp_passport_nationality"
             changed.two-way="user.lkp_passports_selected_arr[$index].nationalityId"
             autocomplete.bind="true"
             init-selected.two-way="user.lkp_passports_selected_arr[$index].nationalityId"></form-select>
@@ -43,7 +43,7 @@
 
         <form-select name="lkp_visa_country[$index]" inp-label="Visa Country"
             model.two-way="user.lkp_visas_selected_arr[$index].countryId"
-            options.bind="lkp_visa_countries"
+            options.bind="lkp_visa_country"
             changed.two-way="user.lkp_visas_selected_arr[$index].countryId"
             autocomplete.bind="true"
             init-selected.two-way="user.lkp_visas_selected_arr[$index].countryId"></form-select>
@@ -52,7 +52,7 @@
 
         <form-select name="lkp_visa_type[$index]" inp-label="Visa Type"
             model.two-way="user.lkp_visas_selected_arr[$index].typeId"
-            options.bind="lkp_passport_nationalities"
+            options.bind="lkp_passport_nationality"
             changed.two-way="user.lkp_visas_selected_arr[$index].typeId"
             autocomplete.bind="true"
             init-selected.two-way="user.lkp_visas_selected_arr[$index].typeId"></form-select>        

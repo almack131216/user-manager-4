@@ -13,13 +13,13 @@ export class Lookups {
   lkp_member_status
   lkp_vest_colour
   lkp_languages
-  lkp_languageLevels
+  lkp_languageLevel
   lkp_mrt_1_ics;
   lkp_mrt_2_ics;
-  lkp_passport_types;
-  lkp_passport_nationalities;
-  lkp_visa_countries;
-  lkp_visa_types;
+  lkp_passport_type;
+  lkp_passport_nationality;
+  lkp_visa_country;
+  lkp_visa_type;
 
   constructor() {
     this.lkp_roles = [
@@ -101,7 +101,7 @@ export class Lookups {
       { "value": 4, "label": "French" }
     ];
 
-    this.lkp_languageLevels = [
+    this.lkp_languageLevel = [
       { "value": 1, "label": "No proficiency" },
       { "value": 2, "label": "Elementary" },
       { "value": 3, "label": "Good" },
@@ -123,28 +123,28 @@ export class Lookups {
     ]
 
     /* Passport and Visa */
-    this.lkp_passport_types = [
+    this.lkp_passport_type = [
       { "value": 1, "label": "Regular 1" },
       { "value": 2, "label": "Diplomatic 2" },
       { "value": 3, "label": "Special 3" },
       { "value": 4, "label": "Temporary 4" }
     ]
 
-    this.lkp_passport_nationalities = [
+    this.lkp_passport_nationality = [
       { "value": 1, "label": "European 1" },
       { "value": 2, "label": "British 2" },
       { "value": 3, "label": "American 3" },
       { "value": 4, "label": "Canadian 4" }
     ]
 
-    this.lkp_visa_countries = [
+    this.lkp_visa_country = [
       { "value": 1, "label": "Country 1" },
       { "value": 2, "label": "Country 2" },
       { "value": 3, "label": "Country 3" },
       { "value": 4, "label": "Country 4" }
     ]
 
-    this.lkp_visa_types = [
+    this.lkp_visa_type = [
       { "value": 1, "label": "Visa Type 1" },
       { "value": 2, "label": "Visa Type 2" },
       { "value": 3, "label": "Visa Type 3" },

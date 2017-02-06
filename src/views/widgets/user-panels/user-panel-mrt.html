@@ -38,7 +38,7 @@
 
         <form-select name="lkp_languageLevel[$index]" inp-label="Language Level"
             model.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"
-            options.bind="lkp_languageLevels"
+            options.bind="lkp_languageLevel"
             changed.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"
             autocomplete.bind="false"
             init-selected.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"></form-select>

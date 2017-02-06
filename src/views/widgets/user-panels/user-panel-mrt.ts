@@ -7,7 +7,7 @@ export class UserPanelMrt {
     public lkp_member_status;
     public lkp_vest_colour;
     public lkp_languages;
-    public lkp_languageLevels;
+    public lkp_languageLevel;
     public lkp_languages_limitTo = 5;
 
 
@@ -18,7 +18,7 @@ export class UserPanelMrt {
 
         this.lkp_languages = lookups.lkp_languages
 
-        this.lkp_languageLevels = lookups.lkp_languageLevels
+        this.lkp_languageLevel = lookups.lkp_languageLevel
     }
 
 }
