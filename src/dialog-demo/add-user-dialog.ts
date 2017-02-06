@@ -1,8 +1,9 @@
-import { inject, bindable } from 'aurelia-framework';
+import { inject, autoinject, bindable } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../api/web-api-users';
 import { UserUpdated, UserViewed } from '../resources/messages';
+import { Lookups } from '../resources/lookups';
 
 interface User {
     id: number;
@@ -12,18 +13,19 @@ interface User {
     mrt_member: boolean;
 }
 
+@autoinject
 @inject(DialogController, WebAPIUsers, EventAggregator)
 export class AddUserDialog {
     //@bindable user;
     title = 'Add User';
     userRole = null;
     originalUser = null;
-    lkp_mrt_system_role;
+    lkp_Roles = [];
     users;
     selectedId = null;
 
-    constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator) {
-
+    constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
+        this.lkp_Roles = lookups.lkp_Roles;
     }
 
     created(){
@@ -54,13 +56,6 @@ export class AddUserDialog {
         this.api.getUserDetails(getId).then(user => {
             this.userRole = <User>user;
             this.selectedId = this.userRole.id;
-
-            this.lkp_mrt_system_role = [
-                { "value": 1, "label": "Role 1" },
-                { "value": 2, "label": "Role 2" },
-                { "value": 3, "label": "Role 3" }
-            ];
-
         });
     }
 

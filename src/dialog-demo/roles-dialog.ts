@@ -1,8 +1,9 @@
-import { inject, bindable } from 'aurelia-framework';
+import { inject, autoinject, bindable } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../api/web-api-users';
 import { UserUpdated, UserViewed } from '../resources/messages';
+import { Lookups } from '../resources/lookups';
 
 interface User {
     id: number;
@@ -12,23 +13,25 @@ interface User {
     mrt_member: boolean;
 }
 
-@inject(DialogController, WebAPIUsers, EventAggregator)
+@autoinject
+@inject(DialogController, WebAPIUsers, EventAggregator, Lookups)
 export class RolesDialog {
     //@bindable user;
     title = 'Change User Roles';
     userRole = null;
     originalUser = null;
-    lkp_mrt_system_role;
     userSelectedId = null;
+    lkp_Roles = [];
 
-    constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private model) {
+    constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private model, private lookups: Lookups) {
         //REF: output_controller_settings_roles-dialog.json
-        this.userSelectedId = controller.settings.userId;        
+        this.userSelectedId = controller.settings.userId;
 
         this.api.getUserRole(this.userSelectedId).then(user => {
             this.userRole = <User>user;
         });
 
+        this.lkp_Roles = lookups.lkp_Roles;
     }
 
     //All of the parameters that we passed to the dialog are available through the model
@@ -37,13 +40,9 @@ export class RolesDialog {
         this.userRole = model;
         //alert('activate: ' + JSON.stringify(this.userRole.info.id) );
 
-        this.lkp_mrt_system_role = [
-            { "value": 1, "label": "Role 1" },
-            { "value": 2, "label": "Role 2" },
-            { "value": 3, "label": "Role 3" }
-        ];
 
-        console.log('model: ' + JSON.stringify(model) + ' > ' + this.lkp_mrt_system_role);
+
+        console.log('model: ' + JSON.stringify(model) + ' > ' + this.lkp_Roles);
     }
 
     //When the user clicks on the 'Yes' button the controller closes the dialog 
