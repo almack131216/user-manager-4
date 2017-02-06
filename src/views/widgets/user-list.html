@@ -29,12 +29,7 @@
         </div>
     </div>
 
-
-
-
-
-    <!--<h2 if.bind="custDisableCells">custDisableCells: ${custDisableCells}</h2>-->
-    <table class="table table-striped ${custClickableRow ? 'table-hover' : ''}" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters">
+    <table class="table table-striped ${custClickableRow ? 'table-hover' : ''}" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
         <thead>
             <tr>
                 <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
@@ -49,7 +44,7 @@
         <tbody>
             <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
                 <td if.bind="isNotDisabled('id') && !custClickableRow">${user.id}</td>
-                <td if.bind="isNotDisabled('id') && custClickableRow"><a click.delegate="custClickableRow && $parent.custClickableRowFunction(user)">#${user.id}</a></td>
+                <td if.bind="isNotDisabled('id') && custClickableRow"><a click.delegate="custClickableRow && $parent.custClickableRowFunction(user)"> ${user.id} </a></td>
                 <td if.bind="isNotDisabled('first_name')">${user.first_name}</td>
                 <td if.bind="isNotDisabled('last_name')">${user.last_name}</td>
                 <td if.bind="isNotDisabled('email')"><a href="mailto:${user.email}">${user.email}</a></td>
@@ -71,4 +66,25 @@
             </tr>
         </tbody>
     </table>
+    <div class="row" if.bind="custTablePagination">
+        <div class="col-md-7">
+            <aut-pagination current-page.bind="currentPage" page-size.bind="custTablePageSize" total-items.bind="totalItems"
+                                   pagination-size.bind="5" boundary-links.bind="true"> </aut-pagination>
+        </div>
+
+        <div class="col-md-5">
+            <div class="form-inline">
+                <div class="form-group pull-right">
+                    <label for="custTablePageSize">Page Size: </label>
+                    <select value.bind="custTablePageSize" id="custTablePageSize" class="form-control">
+                        <option model.bind="5">5</option>
+                        <option model.bind="10">10</option>
+                        <option model.bind="20">20</option>
+                        <option model.bind="50">50</option>
+                        <option model.bind="100">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

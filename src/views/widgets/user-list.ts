@@ -20,10 +20,12 @@ import {Lookups} from '../../resources/lookups';
 export class UserList {
     @bindable custTitle;
     @bindable custDisableCells;
-    @bindable custHideTitleBar = false;   
-    
+    @bindable custHideTitleBar = false;    
     @bindable custClickableRow = false;
     @bindable custClickableRowFunction;
+    @bindable custTablePagination = false;
+    @bindable custTablePageSize = 100;
+
     public CV = CV
     users;
     selectedId = 0;
