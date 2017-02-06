@@ -29,7 +29,7 @@
                         </tr>
                     </tbody>
                 </table>-->
-                <user-list cust-title="Add User" cust-disable-cells="['email','cell_number','edit']" cust-hide-title-bar="true" cust-clickable-row="true" cust-clickable-row-function.two-way="selectUserToAdd"></user-list>
+                <user-list cust-title="Add User" cust-disable-cells="['email','cell_number','edit']" cust-hide-title-bar="true" cust-clickable-row="true" cust-clickable-row-function.bind="selectUserToAdd"></user-list>
             </div>
             
             <table if.bind="selectedId" class="table border-none half-n-half">

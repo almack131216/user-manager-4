@@ -23,7 +23,6 @@ export class Lookups {
 
   constructor() {
     this.lkp_role = [
-      { "value": 0, "label": "Select" },
       { "value": 3, "label": "a Role 3" },
       { "value": 1, "label": "b Role 1" },
       { "value": 2, "label": "c Role 2" }

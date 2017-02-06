@@ -1,4 +1,5 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { Router } from 'aurelia-router';
 import { WebAPIUsers } from '../../api/web-api-users';
 import { UserUpdated, UserViewed } from '../../resources/messages';
 import { inject, autoinject } from 'aurelia-framework';
@@ -15,13 +16,14 @@ import {Lookups} from '../../resources/lookups';
 
 
 @autoinject
-@inject(WebAPIUsers, EventAggregator, DialogService, Lookups)
+@inject(WebAPIUsers, EventAggregator, DialogService, Lookups, Router)
 export class UserList {
     @bindable custTitle;
     @bindable custDisableCells;
-    @bindable custHideTitleBar = false;    
-    @bindable custClickableRowFunction;
+    @bindable custHideTitleBar = false;   
+    
     @bindable custClickableRow = false;
+    @bindable custClickableRowFunction;
     public CV = CV
     users;
     selectedId = 0;
@@ -29,6 +31,7 @@ export class UserList {
     rolesArr;
     rolesArrDynamic = [];
     lkp_role;
+    router;
     
 
     isNotDisabled(getField) {
@@ -38,11 +41,7 @@ export class UserList {
         return false;
     }
 
-    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups) {
-
-        //this.custClickableRow = !this.custClickableRowFunction ? false : true;
-        console.log('user-list.ts: constructor: ' + this.custClickableRow + ' / ' + this.custClickableRowFunction);
-
+    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups, router: Router) {
         ea.subscribe(UserViewed, msg => this.select(msg.user));
         ea.subscribe(UserUpdated, msg => {
             let id = msg.user.id;
@@ -55,9 +54,13 @@ export class UserList {
           value:x.value,
           label:x.label
         }});
+
+        this.router = router;
     }
 
     created() {
+        // this.custClickableRow = !this.custClickableRowFunction ? false : true;
+        // alert('user-list.ts: constructor: ' + this.custClickableRow + ' / ' + this.custClickableRowFunction);
         if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
         if (this.custTitle) this.title = this.custTitle;
         this.api.getUserList().then(users => this.users = users)
@@ -97,8 +100,6 @@ export class UserList {
             }
         });
     }
-
-
 
     filters = [
         { value: '', keys: ['first_name', 'last_name', 'email', 'cell_number'] },

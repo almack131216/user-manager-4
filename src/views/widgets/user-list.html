@@ -34,7 +34,6 @@
 
 
     <!--<h2 if.bind="custDisableCells">custDisableCells: ${custDisableCells}</h2>-->
-
     <table class="table table-striped ${custClickableRow ? 'table-hover' : ''}" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters">
         <thead>
             <tr>
@@ -48,8 +47,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}" click.delegate="custClickableRow && $parent.custClickableRowFunction(user)">
-                <td if.bind="isNotDisabled('id')">${user.id}</td>
+            <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
+                <td if.bind="isNotDisabled('id') && !custClickableRow">${user.id}</td>
+                <td if.bind="isNotDisabled('id') && custClickableRow"><a click.delegate="custClickableRow && custClickableRowFunction(user)">${user.id}</a></td>
                 <td if.bind="isNotDisabled('first_name')">${user.first_name}</td>
                 <td if.bind="isNotDisabled('last_name')">${user.last_name}</td>
                 <td if.bind="isNotDisabled('email')"><a href="mailto:${user.email}">${user.email}</a></td>
