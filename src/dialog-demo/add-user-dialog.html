@@ -2,7 +2,9 @@
 
     <require from="../views/widgets/inputs/form-checkbox"></require>
     <require from="../views/widgets/inputs/form-select"></require>
-    <require from="../views/widgets/user-list"></require>
+    <require from="../views/widgets/inputs/form-filter-text"></require>
+    <require from="../views/widgets/inputs/form-filter-role"></require>
+    <!--<require from="../views/widgets/user-list"></require>-->
 
     <ai-dialog>
         <ai-dialog-header>
@@ -10,8 +12,19 @@
         </ai-dialog-header>
 
         <ai-dialog-body>
+            <div class="row margin-y-g2">
+                <div class="col-md-6">
+                    <form-filter-text model.two-way="filters[0].value"></form-filter-text>
+                </div>
+
+                <div class="col-md-6">
+                    <form-filter-role model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
+                        init-selected.two-way="filters[1].value"></form-filter-role>
+                </div>
+            </div>
+
             <div class="wrap_table-add-user-from-list">
-                <table class="table table-striped table-hover" aurelia-table="data.bind: users; display-data.bind: $displayData">
+                <table class="table table-striped table-hover" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters;">
                     <thead>
                         <tr>
                             <th aut-sort="key: id; default: desc">ID</th>

@@ -25,7 +25,6 @@
             <form-filter-role model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
                 init-selected.two-way="filters[1].value"></form-filter-role>
         </div>
-
     </div>
 
     <table class="table table-striped" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">

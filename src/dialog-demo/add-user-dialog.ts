@@ -15,16 +15,19 @@ interface User {
 
 
 @autoinject
-@inject(DialogController, WebAPIUsers, EventAggregator)
+@inject(DialogController, WebAPIUsers, EventAggregator, Lookups)
 export class AddUserDialog {
     //@bindable user;
     title = 'Add User';
     userRole = null;
     originalUser = null;
-    lkp_role;
     users;
     private selectedId;
     selectUserToAdd;
+    rolesArr;
+    rolesArrDynamic = [];
+    lkp_role;
+    router;
     //selectedId = null;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
@@ -40,10 +43,17 @@ export class AddUserDialog {
             });
         }
 
+        this.lkp_role = lookups.lkp_role;
+        this.rolesArr = this.lkp_role.map(x =>  { return {
+          value:x.value,
+          label:x.label
+        }});
+
     }
 
     created(){
-        this.api.getUserList().then(users => this.users = users);
+        this.api.getUserList().then(users => this.users = users)
+            .then(() => this.populateRoleFilterFromList());
     }
 
     //All of the parameters that we passed to the dialog are available through the model
@@ -73,5 +83,33 @@ export class AddUserDialog {
     //         console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole) );
     //     });
     // }
+
+    filters = [
+        { value: '', keys: ['first_name', 'last_name', 'email', 'cell_number'] },
+        { value: '1', keys: ['mrt_system_role'] }
+    ];
+
+    returnLabelFromValue(getId){
+        if(getId) return this.rolesArr.filter(x => x.value == getId)[0].label;
+        return '';
+    }
+
+    populateRoleFilterFromList() {        
+        let tmp_rolesArrValues=[];
+        //this.rolesArrLabels=[];
+        this.rolesArrDynamic=[];
+
+        for (let next of this.users) {
+            let nextRole = next.mrt_system_role;
+
+            if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
+                tmp_rolesArrValues.push(nextRole);
+                let nextLabel = this.rolesArr.filter(x => x.value == nextRole)[0].label;
+                //console.log('???' + nextRole + ' | ' + nextLabel);
+                //this.rolesArrLabels.push(nextLabel);
+                this.rolesArrDynamic.push({"value":nextRole, "label":nextLabel});
+            }
+        }        
+    }
 
 }
