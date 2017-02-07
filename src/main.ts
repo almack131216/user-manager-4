@@ -1,5 +1,6 @@
 import {Aurelia} from 'aurelia-framework'
 import environment from './environment';
+import config from './auth-config';
 
 //Configure Bluebird Promises.
 (<any>Promise).config({
@@ -23,7 +24,11 @@ export function configure(aurelia: Aurelia) {
       config.settings.centerVerticalOnly = false;
       config.settings.startingZIndex = 5;
       config.settings.enableEscClose = true;
-    });
+    })
+    .plugin('aurelia-auth', (baseConfig)=>{
+         baseConfig.configure(config);
+    })
+    ;
 
   if (environment.debug) {
     aurelia.use.developmentLogging();

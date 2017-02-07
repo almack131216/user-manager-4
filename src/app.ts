@@ -4,14 +4,23 @@ import { WebAPI } from './api/web-api';
 import * as Constants from './resources/constants';
 const CV = Constants
 
-@inject(WebAPI)
+import {FetchConfig} from 'aurelia-auth';
+
+@inject(WebAPI,Router,FetchConfig)
 
 export class App {
-  router: Router;
+  api: WebAPI
+  router: Router
+  fetchConfig: FetchConfig
   public CV = CV  
 
-  constructor(public api: WebAPI) {
+  constructor() {
+    // this.router = router;
+    // this.fetchConfig = fetchConfig;
+  }
 
+  activate(){
+    //this.fetchConfig.configure();
   }
 
   configureRouter(config: RouterConfiguration, router: Router): void {
