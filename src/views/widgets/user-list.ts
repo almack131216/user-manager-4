@@ -12,6 +12,7 @@ import { UserInfo } from '../../user-info/user-info';
 import { InfoDialog } from '../../dialog-demo/info-dialog';
 import { RolesDialog } from '../../dialog-demo/roles-dialog';
 import { AddUserDialog } from '../../dialog-demo/add-user-dialog';
+import { DeleteDialog } from '../../dialog-demo/delete-user-dialog';
 import {Lookups} from '../../resources/lookups';
 
 
@@ -21,8 +22,6 @@ export class UserList {
     @bindable custTitle;
     @bindable custDisableCells;
     @bindable custHideTitleBar = false;    
-    @bindable custClickableRow = false;
-    @bindable custClickableRowFunction;
     @bindable custTablePagination = false;
     @bindable custTablePageSize = 100;
 
@@ -61,8 +60,6 @@ export class UserList {
     }
 
     created() {
-        // this.custClickableRow = !this.custClickableRowFunction ? false : true;
-        // alert('user-list.ts: constructor: ' + this.custClickableRow + ' / ' + this.custClickableRowFunction);
         if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
         if (this.custTitle) this.title = this.custTitle;
         this.api.getUserList().then(users => this.users = users)
@@ -93,6 +90,21 @@ export class UserList {
         this.dialogService.open({
             userId: id,
             viewModel: RolesDialog,
+            model: this.userInfo
+        }).then(response => {
+            if (response.wasCancelled) {
+                console.log("The information is invalid");
+            } else {
+                console.log("The information is valid");
+            }
+        });
+    }
+
+    deleteUser(id): void {
+        //alert('changeUserRoles: ' + id);
+        this.dialogService.open({
+            userId: id,
+            viewModel: DeleteDialog,
             model: this.userInfo
         }).then(response => {
             if (response.wasCancelled) {

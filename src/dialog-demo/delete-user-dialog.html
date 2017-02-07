@@ -1,0 +1,29 @@
+<template>
+
+    <require from="../views/widgets/inputs/form-checkbox"></require>
+    <require from="../views/widgets/inputs/form-select"></require>
+
+    <ai-dialog>
+        <ai-dialog-header>
+            <h2>${title}</h2>
+        </ai-dialog-header>
+
+        <ai-dialog-body>
+            
+            <table class="table border-none half-n-half">
+                <tbody>
+                <tr>
+                    <td><label>ID:</label> ${userRole.id}</td>
+                    <td><label>Name:</label> ${userRole.first_name} ${userRole.last_name}</td>
+                </tr>                
+                </tbody>
+            </table>
+
+        </ai-dialog-body>
+
+        <ai-dialog-footer>
+            <button class="btn btn-primary" click.trigger="yes()">Yes</button>
+            <button class="btn btn-default pull-left" click.trigger="cancel()">Cancel</button>
+        </ai-dialog-footer>
+    </ai-dialog>
+</template>

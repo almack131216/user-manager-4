@@ -12,24 +12,39 @@
 
     <p if.bind="debugShowOutput">found: ${found} / ${selectedId} / filter: ${filters}</p>
     <p if.bind="debugShowOutput">rolesArrDynamic: ${rolesArrDynamic}</p>
+    <p if.bind="debugShowOutput">filters[1].value: ${filters[1].value} / ${rolesArrDynamic}</p>
 
-    <div class="row">
-        <div class="col-md-6 form-group">
-            <form-input name="filter" model.two-way="filters[0].value"></form-input>
+    <div class="row margin-y-g2">
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">
+                    <i class="fa fa-filter text-after"></i>
+                    Filter
+                </span>
+                <!--<input name="filter" type="text" value.bind="filters[0].value" class="form-control" placeholder="Filter users table">-->
+                <input type="text" value.bind="filters[0].value" placeholder="Enter filter text" class="form-control"/>
+            </div>
         </div>
 
-        <div class="col-md-6 form-group">
-            <!--<select id="rolesFilter" class="form-control" value.bind="filters[1].value">
-                        <option value="">Please Select</option>
-                        <option repeat.for="role of rolesArrValues" model.bind="role">${rolesArrLabels[$index]}</option>
-                    </select>-->
-            <p if.bind="debugShowOutput">filters[1].value: ${filters[1].value} / ${rolesArrDynamic}</p>
-            <form-select name="filter role" model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
-                init-selected.two-way="filters[1].value"></form-select>
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">
+                    <i class="fa fa-user text-after"></i>
+                    Role
+                </span>
+                
+                <select id="rolesFilter" class="form-control" value.bind="filters[1].value">
+                    <option value="">Please Select</option>
+                    <option repeat.for="role of rolesArrDynamic" model.bind="role.value">${role.label}</option>
+                </select>
+                <!--<form-select name="filter role" model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
+                init-selected.two-way="filters[1].value"></form-select>-->
+            </div>
         </div>
+
     </div>
 
-    <table class="table table-striped ${custClickableRow ? 'table-hover' : ''}" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
+    <table class="table table-striped" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
         <thead>
             <tr>
                 <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
@@ -43,8 +58,7 @@
         </thead>
         <tbody>
             <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
-                <td if.bind="isNotDisabled('id') && !custClickableRow">${user.id}</td>
-                <td if.bind="isNotDisabled('id') && custClickableRow"><a click.delegate="custClickableRow && $parent.custClickableRowFunction(user)"> ${user.id} </a></td>
+                <td if.bind="isNotDisabled('id')">${user.id}</td>
                 <td if.bind="isNotDisabled('first_name')">${user.first_name}</td>
                 <td if.bind="isNotDisabled('last_name')">${user.last_name}</td>
                 <td if.bind="isNotDisabled('email')"><a href="mailto:${user.email}">${user.email}</a></td>
@@ -61,15 +75,18 @@
                         <a class="btn btn-default" click.delegate="changeUserRoles(user.id)">
                             <i class="fa fa-cog"></i>
                         </a>
-                    </div>                    
+                        <a class="btn btn-default" click.delegate="deleteUser(user.id)">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
                 </td>
             </tr>
         </tbody>
     </table>
     <div class="row" if.bind="custTablePagination">
         <div class="col-md-7">
-            <aut-pagination current-page.bind="currentPage" page-size.bind="custTablePageSize" total-items.bind="totalItems"
-                                   pagination-size.bind="5" boundary-links.bind="true"> </aut-pagination>
+            <aut-pagination current-page.bind="currentPage" page-size.bind="custTablePageSize" total-items.bind="totalItems" pagination-size.bind="5"
+                boundary-links.bind="true"> </aut-pagination>
         </div>
 
         <div class="col-md-5">

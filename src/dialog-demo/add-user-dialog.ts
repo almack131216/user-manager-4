@@ -26,7 +26,6 @@ export class AddUserDialog {
     private selectedId;
     selectUserToAdd;
     //selectedId = null;
-    //@bindable custClickableRowFunction;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
         this.lkp_role = lookups.lkp_role;
