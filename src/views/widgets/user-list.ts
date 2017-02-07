@@ -116,8 +116,8 @@ export class UserList {
     }
 
     filters = [
-        { value: '', keys: ['first_name', 'last_name', 'email', 'cell_number'] },
-        { value: '1', keys: ['mrt_system_role'] }
+        { value: '', keys: ['firstName', 'lastName', 'emailAddress', 'personalNumber'] },
+        { value: '1', keys: ['systemRoles'] }
     ];
 
     returnLabelFromValue(getId){
@@ -131,7 +131,7 @@ export class UserList {
         this.rolesArrDynamic=[];
 
         for (let next of this.users) {
-            let nextRole = next.mrt_system_role;
+            let nextRole = next.systemRoles;
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
                 tmp_rolesArrValues.push(nextRole);

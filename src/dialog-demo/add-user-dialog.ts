@@ -7,9 +7,9 @@ import { Lookups } from '../resources/lookups';
 
 interface User {
     id: number;
-    first_name: string;
-    last_name: string;
-    mrt_system_role: number;
+    firstName: string;
+    lastName: string;
+    systemRoles: number;
     mrt_member: boolean;
 }
 
@@ -94,8 +94,8 @@ export class AddUserDialog {
     // }
 
     filters = [
-        { value: '', keys: ['first_name', 'last_name', 'email', 'cell_number'] },
-        { value: '1', keys: ['mrt_system_role'] }
+        { value: '', keys: ['firstName', 'lastName', 'emailAddress', 'personalNumber'] },
+        { value: '1', keys: ['systemRoles'] }
     ];
 
     returnLabelFromValue(getId) {
@@ -109,7 +109,7 @@ export class AddUserDialog {
         this.rolesArrDynamic = [];
 
         for (let next of this.users) {
-            let nextRole = next.mrt_system_role;
+            let nextRole = next.systemRoles;
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
                 tmp_rolesArrValues.push(nextRole);

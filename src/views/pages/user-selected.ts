@@ -5,10 +5,10 @@ import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
 
 interface User {
-  first_name: string;
-  last_name: string;
-  email: string;
-  cell_number: string;
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  personalNumber: string;
   lkp_region_selected: number;
 }
 
@@ -30,7 +30,7 @@ export class UserSelected {
     return this.api.getUserDetails(params.id).then(user => {
       if(params.editType) this.editType = params.editType;
       this.user = <User>user;
-      this.routeConfig.navModel.setTitle(this.user.first_name);
+      this.routeConfig.navModel.setTitle(this.user.firstName);
       this.originalUser = JSON.parse(JSON.stringify(this.user));
       this.ea.publish(new UserViewed(this.user));
     });

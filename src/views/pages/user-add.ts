@@ -6,10 +6,10 @@ import { areEqual } from '../../api/utility';
 import {bindable,autoinject} from 'aurelia-framework';
 
 interface User {
-  first_name: string;
-  last_name: string;
-  email: string;
-  cell_number: string;
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  personalNumber: string;
   lkp_region_selected: number;
 }
 
@@ -27,7 +27,7 @@ export class UserAdd {
   }
 
   get canSave() {
-    return this.user.first_name && this.user.last_name && !this.api.isRequesting;
+    return this.user.firstName && this.user.lastName && !this.api.isRequesting;
   }
 
   save() {
@@ -35,7 +35,7 @@ export class UserAdd {
       console.log('save this.user: ' + JSON.stringify(this.originalUser));
       console.log('save user: ' + JSON.stringify(user));
       this.user = <User>user;
-      //this.routeConfig.navModel.setTitle(this.user.first_name);
+      //this.routeConfig.navModel.setTitle(this.user.firstName);
       this.originalUser = JSON.parse(JSON.stringify(this.user));
       this.ea.publish(new UserUpdated(this.user));
     });

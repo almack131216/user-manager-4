@@ -7,9 +7,9 @@ import { Lookups } from '../resources/lookups';
 
 interface User {
     id: number;
-    first_name: string;
-    last_name: string;
-    mrt_system_role: number;
+    firstName: string;
+    lastName: string;
+    systemRoles: number;
     mrt_member: boolean;
 }
 

@@ -1,32 +1,33 @@
-<template class="form-group ${inputOnly ? '' : 'col-xs-12'} ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
-    
+<template class="form-group col-xs-12 ${inpClass} ${isMandatory ? 'is-mandatory' : ''}">
+
     <require from="../filter"></require>
     <require from="../../../resources/select2"></require>
     <require from="select2/css/select2.min.css"></require>
 
-    <div class="${inputOnly ? '' : 'rowXXX'}">
-        <label if.bind="!inputOnly" class="col-sm-6" for.bind="name" title.bind="inpLabel">${inpLabel}</label>
+    <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
+        ${inpLabel}
+    </label>
+    <div class="col-sm-6">
         <!--/ ${changed} / ${initSelected} / ${selected}-->
-        <div class="${inputOnly ? '' : 'col-sm-6'}">
-            <!--selected.two-way="selected" -->
-            <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
+        <!--selected.two-way="selected" -->
+        <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
 
+        <select if.bind="!autocomplete" class="form-control" value.bind="initSelected" disabled.bind="!isEnabled" selected.two-way="selected"
+            change.delegate="changeCallback($event)">
+            <option value="">${inpPlaceholder}</option>
+            <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.id">
+                ${option.name}
+            </option>
+        </select>
 
-            <select if.bind="!autocomplete" class="form-control" value.bind="initSelected" disabled.bind="!isEnabled" selected.two-way="selected"
-                change.delegate="changeCallback($event)">
-                <option value="">${inpPlaceholder}</option>                 
-                <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">${option.label}</option>
-            </select>
+        <select if.bind="autocomplete" class="form-control" id.bind="name" select2.bind="selectOptions" value.bind="initSelected"
+            disabled.bind="!isEnabled" change.delegate="changeCallback($event)">
 
-            <select if.bind="autocomplete" class="form-control" id.bind="name" select2.bind="selectOptions" value.bind="initSelected"
-                disabled.bind="!isEnabled" change.delegate="changeCallback($event)">
-                
-                <option value="">${inpPlaceholder}</option>
-                <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">
-                    ${option.label}
-                </option>
-            </select>
+            <option value="">${inpPlaceholder}</option>
+            <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.id">
+                ${option.name}
+            </option>
+        </select>
 
-        </div>
     </div>
 </template>

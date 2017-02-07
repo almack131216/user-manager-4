@@ -29,8 +29,8 @@
                     <thead>
                         <tr>
                             <th aut-sort="key: id; default: desc">ID</th>
-                            <th aut-sort="key: first_name">First Name</th>
-                            <th aut-sort="key: last_name">Last Name</th>
+                            <th aut-sort="key: firstName">First Name</th>
+                            <th aut-sort="key: lastName">Last Name</th>
                             <th aut-sort="key: mrt_member">Role</th>
                             <th aut-sort="key: profile_viewed">Profile Viewed</th>
                         </tr>
@@ -38,9 +38,9 @@
                     <tbody>
                         <tr repeat.for="user of $displayData" click.delegate="selectUserToAdd(user)">
                             <td>${user.id}</td>
-                            <td>${user.first_name}</td>
-                            <td>${user.last_name}</td>
-                            <td>${ returnLabelFromValue(user.mrt_system_role) }</td>
+                            <td>${user.firstName}</td>
+                            <td>${user.lastName}</td>
+                            <td>${ returnLabelFromValue(user.systemRoles) }</td>
                             <td>${ user.profile_viewed | formatDate }</td>
                         </tr>
                     </tbody>
@@ -52,7 +52,7 @@
                     <button type="button" class="close" aria-label="Close" click.delegate="deselectUser()">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <strong>Selected:</strong> ${userRole.first_name} ${userRole.last_name} ( ${userRole.id} )    
+                    <strong>Selected:</strong> ${userRole.firstName} ${userRole.lastName} ( ${userRole.id} )    
                 </div>
                 <div class="panel-body">
                     <table class="table border-none half-n-half margin-bottom-0">
@@ -66,8 +66,8 @@
                                     input-only="true"></form-checkbox>
                             </td>
                             <td>
-                                <form-select name="userRole_system_role" input-only="true" model.two-way="userRole.mrt_system_role" options.bind="lkp_role"
-                                    changed.two-way="userRole.mrt_system_role" init-selected.two-way="userRole.mrt_system_role"></form-select>
+                                <form-select name="userRole_system_role" input-only="true" model.two-way="userRole.systemRoles" options.bind="lkp_role"
+                                    changed.two-way="userRole.systemRoles" init-selected.two-way="userRole.systemRoles"></form-select>
                             </td>
                         </tr>
                         </tbody>

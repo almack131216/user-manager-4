@@ -94,10 +94,18 @@ export class Lookups {
     ]
 
     this.lkp_languages = [
-      { "value": 1, "label": "Czech" },
-      { "value": 2, "label": "German" },
-      { "value": 3, "label": "English" },
-      { "value": 4, "label": "French" }
+      {
+        "id": 1,
+        "name": "English"
+      },
+      {
+        "id": 2,
+        "name": "Czech"
+      },
+      {
+        "id": 3,
+        "name": "Spanish"
+      }
     ];
 
     this.lkp_languageLevel = [

@@ -42,7 +42,7 @@ export class WebAPIUsers {
       setTimeout(() => {
         console.log('usersArr:' + usersArr);
         //let found = usersArr.filter(x => x.id == id);
-        let found = this.http.fetch('src/views/widgets/user-panels/dummy-user.json')
+        let found = this.http.fetch('src/views/widgets/user-panels/dummy-user-all.json')
             .then(found => found.json())
             .then(found => found);
             

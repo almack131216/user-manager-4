@@ -29,19 +29,19 @@
                     {}
                 ]
             },
-            "first_name": "David",
-            "last_name": "",
-            "email": "",
+            "firstName": "David",
+            "lastName": "",
+            "emailAddress": "",
             "city": "",
             "country": "",
             "user": null,
             "info": {
                 "id": 6,
                 "mrt_member": false,
-                "mrt_system_role": 1,
-                "first_name": "David",
-                "last_name": "Bowie",
-                "email": "david@bowie.com"
+                "systemRoles": 1,
+                "firstName": "David",
+                "lastName": "Bowie",
+                "emailAddress": "david@bowie.com"
             },
             "editType": null,
             "originalUser": null

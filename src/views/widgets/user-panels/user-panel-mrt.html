@@ -25,26 +25,26 @@
 
     <div class="divider"></div>
 
-    <div class="repeaters row-fluid" repeat.for="row of user.lkp_languages_selected_arr">
+    <div class="repeaters row-fluid" repeat.for="row of user.profile.languages">
         
         <div if.bind="$index>0" class="divider dotted"></div>
 
         <form-select name="lkp_language[$index]" inp-label="Language"
-            model.two-way="user.lkp_languages_selected_arr[$index].languageId"
+            model.two-way="user.profile.languages[$index].language.id"
             options.bind="lkp_languages"
-            changed.two-way="user.lkp_languages_selected_arr[$index].languageId"
+            changed.two-way="user.profile.languages[$index].language.id"
             autocomplete.bind="true"
-            init-selected.two-way="user.lkp_languages_selected_arr[$index].languageId"></form-select>
+            init-selected.two-way="user.profile.languages[$index].language.id"></form-select>
 
         <form-select name="lkp_languageLevel[$index]" inp-label="Language Level"
-            model.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"
+            model.two-way="user.profile.languages[$index].proficiency"
             options.bind="lkp_languageLevel"
-            changed.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"
+            changed.two-way="user.profile.languages[$index].proficiency"
             autocomplete.bind="false"
-            init-selected.two-way="user.lkp_languages_selected_arr[$index].languageLevelId"></form-select>
+            init-selected.two-way="user.profile.languages[$index].proficiency"></form-select>
 
         <div class="col-xs-12 margin-bottom-g1">
-            <button class="btn btn-default btn-sm" if.bind="$index+1 == user.lkp_languages_selected_arr.length && $index+1<lkp_languages_limitTo">
+            <button class="btn btn-default btn-sm" if.bind="$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo">
                 <i class="fa fa-plus"></i>
                 Add Language
             </button>

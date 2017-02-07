@@ -4,30 +4,30 @@
     <require from="../inputs/form-select"></require>
 
 
-    <div class="repeaters row-fluid" repeat.for="row of user.lkp_passports_selected_arr">
+    <div class="repeaters row-fluid" repeat.for="row of user.user.profile.passports">
 
         <div if.bind="$index>0" class="divider dotted"></div>
 
         <form-select name="lkp_passport_type[$index]" inp-label="Passport Type"
-            model.two-way="user.lkp_passports_selected_arr[$index].typeId"
+            model.two-way="user.profile.passports[$index].type"
             options.bind="lkp_passport_type"
-            changed.two-way="user.lkp_passports_selected_arr[$index].typeId"
+            changed.two-way="user.profile.passports[$index].type"
             autocomplete.bind="true"
-            init-selected.two-way="user.lkp_passports_selected_arr[$index].typeId"></form-select>
+            init-selected.two-way="user.profile.passports[$index].type"></form-select>
 
-        <form-input name="passport_number" model.two-way="user.lkp_passports_selected_arr[$index].number"></form-input>
+        <form-input name="passport_number" model.two-way="user.profile.passports[$index].number"></form-input>
 
         <form-select name="lkp_passport_nationality[$index]" inp-label="Nationality"
-            model.two-way="user.lkp_passports_selected_arr[$index].nationalityId"
+            model.two-way="user.profile.passports[$index].country.id"
             options.bind="lkp_passport_nationality"
-            changed.two-way="user.lkp_passports_selected_arr[$index].nationalityId"
+            changed.two-way="user.profile.passports[$index].country.id"
             autocomplete.bind="true"
-            init-selected.two-way="user.lkp_passports_selected_arr[$index].nationalityId"></form-select>
+            init-selected.two-way="user.profile.passports[$index].country.id"></form-select>
 
-        <form-input name="passport_expiry_date" model.two-way="user.lkp_passports_selected_arr[$index].expiryDate"></form-input>
+        <form-input name="passport_expiry_date" model.two-way="user.profile.passports[$index].expiresOn"></form-input>
 
-        <div class="btn-row text-align-left">
-            <button class="btn btn-default btn-sm btn-i" if.bind="$index+1 == user.lkp_passports_selected_arr.length">
+        <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.passports.length">
+            <button class="btn btn-default btn-sm btn-i">
                 <i class="fa fa-plus"></i>
                 Add Passport
             </button>
@@ -37,28 +37,28 @@
 
     <div class="divider"></div>
 
-    <div class="repeaters row-fluid" repeat.for="row of user.lkp_passports_selected_arr">
+    <div class="repeaters row-fluid" repeat.for="row of user.profile.visas">
 
         <div if.bind="$index>0" class="divider dotted"></div>
 
         <form-select name="lkp_visa_country[$index]" inp-label="Visa Country"
-            model.two-way="user.lkp_visas_selected_arr[$index].countryId"
+            model.two-way="user.profile.passports[$index].country.id"
             options.bind="lkp_visa_country"
-            changed.two-way="user.lkp_visas_selected_arr[$index].countryId"
+            changed.two-way="user.profile.passports[$index].country.id"
             autocomplete.bind="true"
-            init-selected.two-way="user.lkp_visas_selected_arr[$index].countryId"></form-select>
+            init-selected.two-way="user.profile.passports[$index].country.id"></form-select>
 
-        <form-input name="visa_expiry_date" model.two-way="user.lkp_visas_selected_arr[$index].expiryDate"></form-input>
+        <form-input name="visa_expiry_date" model.two-way="user.profile.passports[$index].expiresOn" inp-type="date"></form-input>
 
         <form-select name="lkp_visa_type[$index]" inp-label="Visa Type"
-            model.two-way="user.lkp_visas_selected_arr[$index].typeId"
+            model.two-way="user.profile.passports[$index].type.id"
             options.bind="lkp_passport_nationality"
-            changed.two-way="user.lkp_visas_selected_arr[$index].typeId"
+            changed.two-way="user.profile.passports[$index].type.id"
             autocomplete.bind="true"
-            init-selected.two-way="user.lkp_visas_selected_arr[$index].typeId"></form-select>        
+            init-selected.two-way="user.profile.passports[$index].type.id"></form-select>        
 
-        <div class="btn-row text-align-left">
-            <button class="btn btn-default btn-sm btn-i" if.bind="$index+1 == user.lkp_visas_selected_arr.length">
+        <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.passports.length">
+            <button class="btn btn-default btn-sm btn-i">
                 <i class="fa fa-plus"></i>
                 Add Visa
             </button>

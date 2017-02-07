@@ -8,38 +8,38 @@ function getId(){
 let contacts = [
   {
     id:getId(),
-    first_name:'John',
-    last_name:'Tolkien',
-    email:'tolkien@inklings.com',
-    cell_number:'867-5309'
+    firstName:'John',
+    lastName:'Tolkien',
+    emailAddress:'tolkien@inklings.com',
+    personalNumber:'867-5309'
   },
   {
     id:getId(),
-    first_name:'Clive',
-    last_name:'Lewis',
-    email:'lewis@inklings.com',
-    cell_number:'867-5309'
+    firstName:'Clive',
+    lastName:'Lewis',
+    emailAddress:'lewis@inklings.com',
+    personalNumber:'867-5309'
   },
   {
     id:getId(),
-    first_name:'Owen',
-    last_name:'Barfield',
-    email:'barfield@inklings.com',
-    cell_number:'867-5309'
+    firstName:'Owen',
+    lastName:'Barfield',
+    emailAddress:'barfield@inklings.com',
+    personalNumber:'867-5309'
   },
   {
     id:getId(),
-    first_name:'Charles',
-    last_name:'Williams',
-    email:'williams@inklings.com',
-    cell_number:'867-5309'
+    firstName:'Charles',
+    lastName:'Williams',
+    emailAddress:'williams@inklings.com',
+    personalNumber:'867-5309'
   },
   {
     id:getId(),
-    first_name:'Roger',
-    last_name:'Green',
-    email:'green@inklings.com',
-    cell_number:'867-5309'
+    firstName:'Roger',
+    lastName:'Green',
+    emailAddress:'green@inklings.com',
+    personalNumber:'867-5309'
   }
 ];
 
@@ -52,10 +52,10 @@ export class WebAPI {
       setTimeout(() => {
         let results = contacts.map(x =>  { return {
           id:x.id,
-          first_name:x.first_name,
-          last_name:x.last_name,
-          email:x.email,
-          cell_number:x.cell_number
+          firstName:x.firstName,
+          lastName:x.lastName,
+          emailAddress:x.emailAddress,
+          personalNumber:x.personalNumber
         }});
         resolve(results);
         this.isRequesting = false;

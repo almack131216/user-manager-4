@@ -6,10 +6,10 @@ import { WebAPIUsers } from '../api/web-api-users';
 import { UserUpdated, UserViewed } from '../resources/messages';
 
 interface User {
-    first_name: string;
-    last_name: string;
-    email: string;
-    cell_number: string;
+    firstName: string;
+    lastName: string;
+    emailAddress: string;
+    personalNumber: string;
     lkp_region_selected: number;
 }
 
@@ -18,9 +18,9 @@ interface User {
 @noView
 export class UserInfo {
 
-    first_name: string = "";
-    last_name: string = "";
-    email: string = "";
+    firstName: string = "";
+    lastName: string = "";
+    emailAddress: string = "";
     city: string = "";
     country: string = "";
 
@@ -36,8 +36,8 @@ export class UserInfo {
         this.api.getUserRole(6).then(user => {
             //alert('? 2' + JSON.stringify(user));
             this.info = <User>user;
-            //this.first_name = this.info.first_name;
-            this.first_name = this.info.first_name;
+            //this.firstName = this.info.firstName;
+            this.firstName = this.info.firstName;
         });
     }
 
