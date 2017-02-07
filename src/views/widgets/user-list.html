@@ -1,6 +1,8 @@
 <template>
 
     <require from="../widgets/inputs/form-input"></require>
+    <require from="../widgets/inputs/form-filter-text"></require>
+    <require from="../widgets/inputs/form-filter-role"></require>
     <require from="../widgets/inputs/form-select"></require>
 
     <div class="hdr-wrap" if.bind="!custHideTitleBar">
@@ -16,30 +18,12 @@
 
     <div class="row margin-y-g2">
         <div class="col-md-6">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">
-                    <i class="fa fa-filter text-after"></i>
-                    Filter
-                </span>
-                <!--<input name="filter" type="text" value.bind="filters[0].value" class="form-control" placeholder="Filter users table">-->
-                <input type="text" value.bind="filters[0].value" placeholder="Enter filter text" class="form-control"/>
-            </div>
+            <form-filter-text model.two-way="filters[0].value"></form-filter-text>
         </div>
 
         <div class="col-md-6">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">
-                    <i class="fa fa-user text-after"></i>
-                    Role
-                </span>
-                
-                <select id="rolesFilter" class="form-control" value.bind="filters[1].value">
-                    <option value="">Please Select</option>
-                    <option repeat.for="role of rolesArrDynamic" model.bind="role.value">${role.label}</option>
-                </select>
-                <!--<form-select name="filter role" model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
-                init-selected.two-way="filters[1].value"></form-select>-->
-            </div>
+            <form-filter-role model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
+                init-selected.two-way="filters[1].value"></form-filter-role>
         </div>
 
     </div>
