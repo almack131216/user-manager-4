@@ -109,11 +109,18 @@ export class Lookups {
     ];
 
     this.lkp_languageLevel = [
-      { "value": 1, "label": "No proficiency" },
-      { "value": 2, "label": "Elementary" },
-      { "value": 3, "label": "Good" },
-      { "value": 4, "label": "Strong" },
-      { "value": 5, "label": "Fluent / Native" }
+      {
+        "value": 1,
+        "name": "Basic"
+      },
+      {
+        "value": 2,
+        "name": "Proficient"
+      },
+      {
+        "value": 3,
+        "name": "Fluent"
+      }
     ];
 
     /* MRT Role Information */

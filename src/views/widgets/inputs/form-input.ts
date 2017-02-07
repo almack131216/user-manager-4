@@ -13,7 +13,6 @@ export class FormInput {
 
     @bindable inpType = "text";
     @bindable formatDate = null;
-    @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
     @bindable inpName = null;

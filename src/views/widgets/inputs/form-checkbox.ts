@@ -10,7 +10,6 @@ export class FormCheckbox {
     @bindable model;
     @bindable name = null;
     @bindable inpPlacement = null;
-    @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
     @bindable inpName = null;

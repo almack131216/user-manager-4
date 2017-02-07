@@ -10,7 +10,6 @@ export class FormRadio {
     @bindable model;
     @bindable inpType = "radio";
     @bindable name = null;
-    @bindable inpClass = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
     @bindable inpName = null;

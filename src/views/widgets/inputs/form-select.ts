@@ -6,14 +6,10 @@ const CV = Constants
 inject(Element)
 @customElement('FormSelect')
 export class FormSelect {
-    @bindable autocomplete = null;    
-
+    @bindable autocomplete = null;
     @bindable optionFilter = null;
 
     @bindable isEnabled = true;
-
-    @bindable inpClass = null;
-    @bindable inpPlacement = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
 
@@ -23,12 +19,14 @@ export class FormSelect {
     public initSelected: null;
     public changed: number;
     public selected: number;
+    @bindable propArr = ['id','name'];//send custom props (prop-arr="['value','name']")
 
     @bindable
     public options: {value: string, label: string}[] = [];
 
     @bindable model;
-    
+
+
     public constructor(model) {
     }
 

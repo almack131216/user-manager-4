@@ -37,11 +37,12 @@
             init-selected.two-way="user.profile.languages[$index].language.id"></form-select>
 
         <form-select name="lkp_languageLevel[$index]" inp-label="Language Level"
-            model.two-way="user.profile.languages[$index].proficiency"
+            prop-arr.bind="['value','name']"
+            model.two-way="user.profile.languages[$index].proficiency.value"
             options.bind="lkp_languageLevel"
-            changed.two-way="user.profile.languages[$index].proficiency"
+            changed.two-way="user.profile.languages[$index].proficiency.value"
             autocomplete.bind="false"
-            init-selected.two-way="user.profile.languages[$index].proficiency"></form-select>
+            init-selected.two-way="user.profile.languages[$index].proficiency.value"></form-select>
 
         <div class="col-xs-12 margin-bottom-g1">
             <button class="btn btn-default btn-sm" if.bind="$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo">
