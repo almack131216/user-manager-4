@@ -7,9 +7,5 @@ bootstrap-config/bootstrap/js
 _excess
 fonts
 src/css/tagline.gif
-<<<<<<< HEAD
 src/css/bp-responsive.svg
-=======
 src/css/bp-responsive.svg
-src/resources/constants.ts
->>>>>>> b68b8b6d8c5b67e131318450fe3e1eaa5790bc9e
