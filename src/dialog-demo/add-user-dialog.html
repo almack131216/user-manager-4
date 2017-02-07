@@ -4,6 +4,7 @@
     <require from="../views/widgets/inputs/form-select"></require>
     <require from="../views/widgets/inputs/form-filter-text"></require>
     <require from="../views/widgets/inputs/form-filter-role"></require>
+    <require from="../resources/format/format-date"></require>
     <!--<require from="../views/widgets/user-list"></require>-->
 
     <ai-dialog>
@@ -30,7 +31,8 @@
                             <th aut-sort="key: id; default: desc">ID</th>
                             <th aut-sort="key: first_name">First Name</th>
                             <th aut-sort="key: last_name">Last Name</th>
-                            <th aut-sort="key: mrt_member">Member</th>
+                            <th aut-sort="key: mrt_member">Role</th>
+                            <th aut-sort="key: profile_viewed">Profile Viewed</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +40,8 @@
                             <td>${user.id}</td>
                             <td>${user.first_name}</td>
                             <td>${user.last_name}</td>
-                            <td>${user.mrt_member}</td>
+                            <td>${ returnLabelFromValue(user.mrt_system_role) }</td>
+                            <td>${user.profile_viewed} | ${ user.profile_viewed | formatDate:'YYYY' }</td>
                         </tr>
                     </tbody>
                 </table>

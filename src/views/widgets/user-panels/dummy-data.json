@@ -6,7 +6,8 @@
     "email":"tolkien@inklings.com",
     "cell_number":"867-5309",
     "mrt_member":true,
-    "mrt_system_role": 2
+    "mrt_system_role": 2,
+    "profile_viewed": "2017-01-01T09:11:84Z"
   },
   {
     "id":2,
@@ -15,7 +16,8 @@
     "email":"lewis@inklings.com",
     "cell_number":"867-5309",
     "mrt_member":true,
-    "mrt_system_role": 0
+    "mrt_system_role": 0,
+    "profile_viewed": "2017-01-22T09:11:84Z"
   },
   {
     "id":3,
@@ -24,7 +26,8 @@
     "email":"barfield@inklings.com",
     "cell_number":"867-5309",
     "mrt_member":false,
-    "mrt_system_role": 3
+    "mrt_system_role": 3,
+    "profile_viewed": "2017-08-01T09:11:84Z"
   },
   {
     "id":4,
@@ -33,7 +36,8 @@
     "email":"william@inklings.com",
     "cell_number":"867-5309",
     "mrt_member":true,
-    "mrt_system_role": 2
+    "mrt_system_role": 2,
+    "profile_viewed": "2017-11-01T09:11:84Z"
   },
   {
     "id":5,
@@ -42,7 +46,8 @@
     "email":"green@inklings.com",
     "cell_number":"867-5309",
     "mrt_member":false,
-    "mrt_system_role": 0
+    "mrt_system_role": 0,
+    "profile_viewed": "2017-01-03T09:11:84Z"
   },
   {
     "id":6,
@@ -51,7 +56,8 @@
     "email":"david@bowie.com",
     "cell_number":"123-4567",
     "mrt_member":true,
-    "mrt_system_role": 2
+    "mrt_system_role": 2,
+    "profile_viewed": "2016-01-03"
   },
   {
     "id":7,
@@ -60,6 +66,7 @@
     "email":"dan@pena.com",
     "cell_number":"891-3210",
     "mrt_member":false,
-    "mrt_system_role": 1
+    "mrt_system_role": 1,
+    "profile_viewed": "2017-01-01T09:11:84Z"
   }
 ]

@@ -1,17 +1,26 @@
 import * as moment from 'moment';
-import {autoinject} from 'aurelia-framework';
-import {Configuration} from '../globals'; 
 
-@autoinject()
-export class DateFormatValueConverter {
-    gDateFormat;
+import {autoinject,inject} from 'aurelia-framework';
+import * as Constants from '../constants';
+const CV = Constants 
 
-    constructor(config: Configuration) {
-        console.log('DateFormatValueConverter: ' + this.gDateFormat + ' / ' + config.gDateFormat);        
-        this.gDateFormat = config.gDateFormat;
+//@autoinject()
+export class FormatDateValueConverter {
+    public CV = CV
+    gDateFormat = CV.FORMAT_DATE;
+    message: string;
+
+    constructor(){
+        //this.moment = moment;             
+        //this.gDateFormat = CV.FORMAT_DATE;
+        //this.message = moment.tz("2014-06-01 12:00", "Europe/Amsterdam").format();
+        console.log('moment: ' + this.message);
     }
     
-   toView(value, format) {
-      return moment(value).format(format ? format : this.gDateFormat);
+   toView(value,format) {
+        console.log('DateFormatValueConverter: ' + value + ' / ' + this.gDateFormat + ' / ' + format);
+      //return moment.tz("2014-06-01 12:00", "Europe/Amsterdam").format();//moment(value).format('YYYY-MM-DD HH:mm');//(format ? format : this.gDateFormat);
+      //return (moment as any).default(value).format('YYYY-MM-DD HH:mm'); 
+      return 'x' + moment(new Date(value)).format(format);
    }
 }

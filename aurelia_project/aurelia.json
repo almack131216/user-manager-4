@@ -183,7 +183,6 @@
               "css/select2.min.css"
             ]
           },
-          "moment",
           "numeral",
           {
             "name": "aurelia-dialog",
@@ -199,8 +198,20 @@
             "name": "aurelia-http-client",
             "path": "../node_modules/aurelia-http-client/dist/amd",
             "main": "aurelia-http-client"
+          },
+          {
+            "name": "moment",
+            "path": "../node_modules/moment",
+            "main": "moment"
+          },
+          {
+            "name": "moment-timezone",
+            "path": "../node_modules/moment-timezone",
+            "main": "moment-timezone",
+            "deps": [
+              "moment"
+            ]
           }
-          
         ]
       }
     ]

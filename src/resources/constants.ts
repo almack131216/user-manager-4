@@ -10,3 +10,6 @@ export const AYS_DELETE = "Are you sure you want to delete";
 export const BTN_XC_Expand = "Expand All";
 export const BTN_XC_Collapse = "Collapse All";
 export const MSG_TRAINING = "<p>No training is mandatory or required. Roles that require specific training will be selected based on responses below.</p>";
+
+/* formatters */
+export const FORMAT_DATE = "MMMM Mo YYYY";

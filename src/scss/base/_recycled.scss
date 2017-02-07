@@ -1,10 +1,16 @@
 /* _recycled.scss */
+ai-dialog-overlay {
+    background:white;
+    filter: alpha(opacity=50) !important;
+    opacity: 0.5 !important;
 
-ai-dialog {
-    >ai-dialog-footer {
-        padding:$offset-g1;
+    ai-dialog {
+        >ai-dialog-footer {
+            padding:$offset-g1;
+        }
     }
 }
+
 
 table.table-hover {
     tr:hover {
@@ -14,7 +20,8 @@ table.table-hover {
 
 div.wrap_table-add-user-from-list {
     display:block;
-    max-height:200px;
+    min-height:100px;
+    max-height:250px;
     overflow-y:scroll;
     overflow-x:hidden;
 }
