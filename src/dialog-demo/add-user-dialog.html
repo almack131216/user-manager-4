@@ -8,11 +8,11 @@
 
     <ai-dialog>
         <ai-dialog-header>
-            <h2>${title} / ${selectedId}</h2>
+            <h2>${title}</h2>
         </ai-dialog-header>
 
         <ai-dialog-body>
-            <div class="row margin-y-g2">
+            <div class="row margin-bottom-g1">
                 <div class="col-md-6">
                     <form-filter-text model.two-way="filters[0].value"></form-filter-text>
                 </div>
@@ -44,32 +44,39 @@
                 </table>
             </div>
             
-            <table if.bind="selectedId" class="table border-none half-n-half">
-                <tbody>
-                <tr>
-                    <td><label>ID:</label> ${userRole.id}</td>
-                    <td><label>Name:</label> ${userRole.first_name} ${userRole.last_name}</td>
-                </tr>
-                <tr>
-                    <td>
-                        <form-checkbox inp-name="userRole_mrt_member_boolean"
-                            inp-label="MRT Member"                            
-                            model.two-way="userRole.mrt_member_boolean"
-                            init-selected.two-way="userRole.mrt_member_boolean"
-                            input-only="true"></form-checkbox>
-                    </td>
-                    <td>
-                        <form-select name="userRole_system_role" input-only="true" model.two-way="userRole.mrt_system_role" options.bind="lkp_role"
-                            changed.two-way="userRole.mrt_system_role" init-selected.two-way="userRole.mrt_system_role"></form-select>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div if.bind="selectedId" class="panel panel-info">
+                <div class="panel-heading">
+                    <button type="button" class="close" aria-label="Close" click.delegate="deselectUser()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Selected:</strong> ${userRole.first_name} ${userRole.last_name} ( ${userRole.id} )    
+                </div>
+                <div class="panel-body">
+                    <table class="table border-none half-n-half margin-bottom-0">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <form-checkbox inp-name="userRole_mrt_member_boolean"
+                                    inp-label="MRT Member"                            
+                                    model.two-way="userRole.mrt_member_boolean"
+                                    init-selected.two-way="userRole.mrt_member_boolean"
+                                    input-only="true"></form-checkbox>
+                            </td>
+                            <td>
+                                <form-select name="userRole_system_role" input-only="true" model.two-way="userRole.mrt_system_role" options.bind="lkp_role"
+                                    changed.two-way="userRole.mrt_system_role" init-selected.two-way="userRole.mrt_system_role"></form-select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
             
         </ai-dialog-body>
 
-        <ai-dialog-footer>
-            <button class="btn btn-primary" click.trigger="yes()">Yes</button>
+        <ai-dialog-footer>            
+            <button disabled.bind="!selectedId" class="btn ${selectedId ? 'btn-primary' : 'btn-default'}" click.trigger="yes()">Add</button>
             <button class="btn btn-default pull-left" click.trigger="cancel()">Cancel</button>
         </ai-dialog-footer>
     </ai-dialog>

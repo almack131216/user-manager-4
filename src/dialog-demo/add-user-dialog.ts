@@ -33,25 +33,34 @@ export class AddUserDialog {
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
         this.lkp_role = lookups.lkp_role;
 
-        this.selectUserToAdd = (getUser) => {   
-            this.selectedId = getUser.id;     
+        this.selectUserToAdd = (getUser) => {
+            this.selectedId = getUser.id;
             console.log('add-user-dialog: select: ' + this.selectedId + ' / ' + getUser.id);
-            this.api.getUserRole(6).then(user => {            
+            this.api.getUserRole(6).then(user => {
                 this.userRole = <User>user;
                 //this.selectedId = this.userRole.id;
-                console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole) );
+                console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole));
             });
         }
 
+
+
         this.lkp_role = lookups.lkp_role;
-        this.rolesArr = this.lkp_role.map(x =>  { return {
-          value:x.value,
-          label:x.label
-        }});
+        this.rolesArr = this.lkp_role.map(x => {
+            return {
+                value: x.value,
+                label: x.label
+            }
+        });
 
     }
 
-    created(){
+    deselectUser() {
+        this.selectedId = null;
+    }
+
+
+    created() {
         this.api.getUserList().then(users => this.users = users)
             .then(() => this.populateRoleFilterFromList());
     }
@@ -89,15 +98,15 @@ export class AddUserDialog {
         { value: '1', keys: ['mrt_system_role'] }
     ];
 
-    returnLabelFromValue(getId){
-        if(getId) return this.rolesArr.filter(x => x.value == getId)[0].label;
+    returnLabelFromValue(getId) {
+        if (getId) return this.rolesArr.filter(x => x.value == getId)[0].label;
         return '';
     }
 
-    populateRoleFilterFromList() {        
-        let tmp_rolesArrValues=[];
+    populateRoleFilterFromList() {
+        let tmp_rolesArrValues = [];
         //this.rolesArrLabels=[];
-        this.rolesArrDynamic=[];
+        this.rolesArrDynamic = [];
 
         for (let next of this.users) {
             let nextRole = next.mrt_system_role;
@@ -107,9 +116,9 @@ export class AddUserDialog {
                 let nextLabel = this.rolesArr.filter(x => x.value == nextRole)[0].label;
                 //console.log('???' + nextRole + ' | ' + nextLabel);
                 //this.rolesArrLabels.push(nextLabel);
-                this.rolesArrDynamic.push({"value":nextRole, "label":nextLabel});
+                this.rolesArrDynamic.push({ "value": nextRole, "label": nextLabel });
             }
-        }        
+        }
     }
 
 }
