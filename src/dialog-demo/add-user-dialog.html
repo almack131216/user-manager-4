@@ -41,7 +41,7 @@
                             <td>${user.first_name}</td>
                             <td>${user.last_name}</td>
                             <td>${ returnLabelFromValue(user.mrt_system_role) }</td>
-                            <td>${user.profile_viewed} | ${ user.profile_viewed | formatDate:'YYYY' }</td>
+                            <td>${ user.profile_viewed | formatDate }</td>
                         </tr>
                     </tbody>
                 </table>

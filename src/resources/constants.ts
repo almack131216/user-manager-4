@@ -12,4 +12,4 @@ export const BTN_XC_Collapse = "Collapse All";
 export const MSG_TRAINING = "<p>No training is mandatory or required. Roles that require specific training will be selected based on responses below.</p>";
 
 /* formatters */
-export const FORMAT_DATE = "MMMM Mo YYYY";
+export const FORMAT_DATE = "MMMM Do YYYY";//February 7th 2017
