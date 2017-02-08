@@ -31,7 +31,7 @@ export class AddUserDialog {
     //selectedId = null;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
-        this.lkp_role = lookups.lkp_role;
+        //this.lkp_role = lookups.lkp_role;
 
         this.selectUserToAdd = (getUser) => {
             this.selectedId = getUser.id;
@@ -49,7 +49,7 @@ export class AddUserDialog {
         this.rolesArr = this.lkp_role.map(x => {
             return {
                 value: x.value,
-                label: x.label
+                name: x.name
             }
         });
 
@@ -95,11 +95,11 @@ export class AddUserDialog {
 
     filters = [
         { value: '', keys: ['firstName', 'lastName', 'emailAddress', 'personalNumber'] },
-        { value: '1', keys: ['systemRoles'] }
+        { value: '1', keys: ['systemRoles.value'] }
     ];
 
     returnLabelFromValue(getId) {
-        if (getId) return this.rolesArr.filter(x => x.value == getId)[0].label;
+        if (getId) return this.rolesArr.filter(x => x.value == getId)[0].name;
         return '';
     }
 
@@ -113,10 +113,10 @@ export class AddUserDialog {
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
                 tmp_rolesArrValues.push(nextRole);
-                let nextLabel = this.rolesArr.filter(x => x.value == nextRole)[0].label;
+                let nextLabel = this.rolesArr.filter(x => x.value == nextRole).name;
                 //console.log('???' + nextRole + ' | ' + nextLabel);
                 //this.rolesArrLabels.push(nextLabel);
-                this.rolesArrDynamic.push({ "value": nextRole, "label": nextLabel });
+                this.rolesArrDynamic.push({ "value": nextRole, "name": nextLabel });
             }
         }
     }

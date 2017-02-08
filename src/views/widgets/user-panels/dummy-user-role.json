@@ -1,8 +1,17 @@
   {
     "id":6,
     "mrt_member":false,
-    "systemRoles": 1,
     "firstName":"David",
     "lastName":"Bowie",
-    "emailAddress":"david@bowie.com"
+    "emailAddress":"david@bowie.com",
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 1,
+          "name": "Viewer"
+        }
+      ],
+      "value": 1,
+      "name": "Viewer"
+    }
   }

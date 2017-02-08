@@ -2,6 +2,8 @@ import {bindable,inject,autoinject,bindingMode,customElement} from 'aurelia-fram
 import * as Constants from '../../../resources/constants';
 const CV = Constants
 
+//changed.two-way="filters[1].value"
+                //init-selected.two-way="filters[1].value"
 //inject(UserPanelDetails)
 inject(Element)
 @customElement('FormFilterRole')
@@ -12,7 +14,7 @@ export class FormFilterRole {
 
     @bindable isEnabled = true;
 
-    inpPlaceholder = 'Filter Role';
+    inpPlaceholder = 'All roles';
 
     @bindable name = null;
 
@@ -24,11 +26,11 @@ export class FormFilterRole {
     @bindable
     public options: {value: string, label: string}[] = [];
 
-
+    @bindable model;
     public constructor(model) {
     }
 
-    @bindable model;
+    
     activate(model) {
         // model is the passed through object
     }
@@ -51,7 +53,7 @@ export class FormFilterRole {
     }
 
     created(){
-        if(CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.name );
+        if(CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.name );        
     }
 
     selectOptions = { allowClear: true, placeholder: 'Select...' };

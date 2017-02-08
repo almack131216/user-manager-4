@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <form-filter-role model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
+                    <form-filter-role model.two-way="filters[1].value" options.bind="lkp_role" changed.two-way="filters[1].value"
                         init-selected.two-way="filters[1].value"></form-filter-role>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                             <th aut-sort="key: id; default: desc">ID</th>
                             <th aut-sort="key: firstName">First Name</th>
                             <th aut-sort="key: lastName">Last Name</th>
-                            <th aut-sort="key: mrt_member">Role</th>
+                            <th aut-sort="key: systemRoles.value">Role</th>
                             <th aut-sort="key: profile_viewed">Profile Viewed</th>
                         </tr>
                     </thead>
@@ -40,7 +40,7 @@
                             <td>${user.id}</td>
                             <td>${user.firstName}</td>
                             <td>${user.lastName}</td>
-                            <td>${ returnLabelFromValue(user.systemRoles) }</td>
+                            <td>${ user.systemRoles.name }</td>
                             <td>${ user.profile_viewed | formatDate }</td>
                         </tr>
                     </tbody>
@@ -66,8 +66,8 @@
                                     input-only="true"></form-checkbox>
                             </td>
                             <td>
-                                <form-select name="userRole_system_role" input-only="true" model.two-way="userRole.systemRoles" options.bind="lkp_role"
-                                    changed.two-way="userRole.systemRoles" init-selected.two-way="userRole.systemRoles"></form-select>
+                                <form-select prop-arr.bind="['value','name']" name="userRole_system_role" input-only="true" model.two-way="userRole.systemRoles.value" options.bind="lkp_role"
+                                    changed.two-way="userRole.systemRoles.value" init-selected.two-way="userRole.systemRoles.value"></form-select>
                             </td>
                         </tr>
                         </tbody>
