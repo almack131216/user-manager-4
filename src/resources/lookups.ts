@@ -29,45 +29,45 @@ export class Lookups {
 
     /* User Details */
     this.lkp_region = [
-      { "value": 1, "label": "Region 1" },
-      { "value": 2, "label": "Region 2" },
-      { "value": 3, "label": "Region 3" }
+      { "id": 1, "name": "Region 1" },
+      { "id": 2, "name": "Region 2" },
+      { "id": 3, "name": "Region 3" }
     ]
 
     this.lkp_hub = [
-      { "value": 1, "label": "Hub 1", "parentValue": 1 },
-      { "value": 2, "label": "Hub 2", "parentValue": 1 },
-      { "value": 3, "label": "Hub 3", "parentValue": 1 },
-      { "value": 4, "label": "Hub 4", "parentValue": 1 },
-      { "value": 5, "label": "Hub 5", "parentValue": 2 },
-      { "value": 6, "label": "Hub 6", "parentValue": 2 },
-      { "value": 7, "label": "Hub 7", "parentValue": 2 },
-      { "value": 8, "label": "Hub 8", "parentValue": 3 },
-      { "value": 9, "label": "Hub 9", "parentValue": 3 }
+      { "id": 1, "name": "Hub 1", "regionId": 1 },
+      { "id": 2, "name": "Hub 2", "regionId": 1 },
+      { "id": 3, "name": "Hub 3", "regionId": 1 },
+      { "id": 4, "name": "Hub 4", "regionId": 1 },
+      { "id": 5, "name": "Hub 5", "regionId": 2 },
+      { "id": 6, "name": "Hub 6", "regionId": 2 },
+      { "id": 7, "name": "Hub 7", "regionId": 2 },
+      { "id": 8, "name": "Hub 8", "regionId": 3 },
+      { "id": 9, "name": "Hub 9", "regionId": 3 }
     ]
 
     this.lkp_segment = [
-      { "value": 1, "label": "Segment 1", "parentValue": 1 },
-      { "value": 2, "label": "Segment 2", "parentValue": 1 },
-      { "value": 3, "label": "Segment 3", "parentValue": 1 },
-      { "value": 4, "label": "Segment 4", "parentValue": 1 },
-      { "value": 5, "label": "Segment 5", "parentValue": 2 },
-      { "value": 6, "label": "Segment 6", "parentValue": 2 },
-      { "value": 7, "label": "Segment 7", "parentValue": 2 },
-      { "value": 8, "label": "Segment 8", "parentValue": 3 },
-      { "value": 9, "label": "Segment 9", "parentValue": 3 }
+      { "id": 1, "name": "Segment 1" },
+      { "id": 2, "name": "Segment 2" },
+      { "id": 3, "name": "Segment 3" },
+      { "id": 4, "name": "Segment 4" },
+      { "id": 5, "name": "Segment 5" },
+      { "id": 6, "name": "Segment 6" },
+      { "id": 7, "name": "Segment 7" },
+      { "id": 8, "name": "Segment 8" },
+      { "id": 9, "name": "Segment 9" }
     ]
 
     this.lkp_entity = [
-      { "value": 1, "label": "Entity 1", "parentValue": 1 },
-      { "value": 2, "label": "Entity 2", "parentValue": 1 },
-      { "value": 3, "label": "Entity 3", "parentValue": 1 },
-      { "value": 4, "label": "Entity 4", "parentValue": 1 },
-      { "value": 5, "label": "Entity 5", "parentValue": 2 },
-      { "value": 6, "label": "Entity 6", "parentValue": 2 },
-      { "value": 7, "label": "Entity 7", "parentValue": 2 },
-      { "value": 8, "label": "Entity 8", "parentValue": 8 },
-      { "value": 9, "label": "Entity 9", "parentValue": 8 }
+      { "id": 1, "name": "Entity 1", "segmentId": 1 },
+      { "id": 2, "name": "Entity 2", "segmentId": 1 },
+      { "id": 3, "name": "Entity 3", "segmentId": 1 },
+      { "id": 4, "name": "Entity 4", "segmentId": 1 },
+      { "id": 5, "name": "Entity 5", "segmentId": 2 },
+      { "id": 6, "name": "Entity 6", "segmentId": 2 },
+      { "id": 7, "name": "Entity 7", "segmentId": 2 },
+      { "id": 8, "name": "Entity 8", "segmentId": 8 },
+      { "id": 9, "name": "Entity 9", "segmentId": 8 }
     ]
 
     this.lkp_bp_office_address = [

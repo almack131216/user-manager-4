@@ -11,6 +11,10 @@
     <div class="divider"></div>
     <div class="col-xs-12" if.bind="CV.debugShowOutput">? DEV NOTE: SELECT [1,3,8,9] ... SELECTED: ${user.firstName}: ${user.lkp_region_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected} ?</div>
     
+     <!--<div class="divider"></div>
+    ? ${user.profile.region.id} > ${user.profile.hub.id} !
+     <div class="divider"></div>-->
+
     <form-select name="region"
         model.two-way="user.profile.region.id"
         options.bind="lkp_region"
@@ -18,32 +22,58 @@
         autocomplete.bind="true"
         init-selected.two-way="user.profile.region.id"></form-select>
 
-    <form-select name="lkp_hub"
-        model.two-way="user.profile.hub.id"
-        options.bind="lkp_hub"
-        changed.two-way="user.profile.hub.id"        
-        init-selected.two-way="user.profile.hub.id"
-        option-filter.bind="user.profile.region.id"
-        autocomplete.bind="true"
-        is-enabled.bind="user.profile.hub.id"></form-select>
-
-    <form-select name="lkp_segment"
-        model.two-way="user.lkp_segment_selected"
+    <div class="form-group col-xs-12">
+        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
+            Hub
+        </label>
+        <div class="col-sm-6">
+            <select class="form-control"
+                model.bind="user.profile.hub.id"
+                disabled.bind="!user.profile.region.id"        
+                >        
+                <option value="">Select...</option>
+                <option repeat.for="option of lkp_hub | filter:'regionId':user.profile.region.id" value="option.id" selected.bind="option.id==user.profile.hub.id">
+                    ${option.name}
+                </option>
+            </select>
+        </div>
+    </div>
+  
+     <div class="divider"></div>
+     
+    <form-select name="segment"
+        model.two-way="user.profile.segment.id"
         options.bind="lkp_segment"
-        changed.two-way="user.lkp_segment_selected"        
-        init-selected.two-way="user.lkp_segment_selected"
-        option-filter.bind="user.lkp_hub_selected"
+        changed.two-way="user.profile.segment.id"        
+        init-selected.two-way="user.profile.segment.id"
         autocomplete.bind="true"
-        is-enabled.bind="user.lkp_region_selected && user.lkp_hub_selected"></form-select>
+        ></form-select>
 
-    <form-select name="lkp_entity"
+    <div class="form-group col-xs-12">
+        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
+            Entity
+        </label>
+        <div class="col-sm-6">
+            <select class="form-control"
+                model.bind="user.profile.entity.id"
+                disabled.bind="!user.profile.segment.id"        
+                >        
+                <option value="">Select...</option>
+                <option repeat.for="option of lkp_entity | filter:'segmentId':user.profile.segment.id" value="option.id" selected.bind="option.id==user.profile.entity.id">
+                    ${option.name}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <!--<form-select name="lkp_entity"
         model.two-way="user.lkp_entity_selected"
         options.bind="lkp_entity"
         changed.two-way="user.lkp_entity_selected"        
         init-selected.two-way="user.lkp_entity_selected"
         option-filter.bind="user.lkp_segment_selected"
         autocomplete.bind="true"
-        is-enabled.bind="user.lkp_region_selected && user.lkp_hub_selected && user.lkp_segment_selected"></form-select>
+        is-enabled.bind="user.lkp_region_selected && user.lkp_hub_selected && user.lkp_segment_selected"></form-select>-->
 
     
     <div class="divider"></div>

@@ -19,6 +19,7 @@
             change.delegate="changeCallback($event)">
 
             <option value="">${inpPlaceholder}</option>
+            <!--<option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">-->
             <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">
                 ${option[propArr[1]]}
             </option>

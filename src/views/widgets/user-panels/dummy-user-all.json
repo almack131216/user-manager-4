@@ -65,7 +65,10 @@
       "id": 1,
       "name": "Northern Hemispere"
     },
-    "hub": null,
+    "hub": {
+      "id": 3,
+      "name": "Hub 3"
+    },
     "segment": {
       "id": 1,
       "name": "R&M"

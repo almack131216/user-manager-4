@@ -26,6 +26,10 @@ export class FormSelect {
 
     @bindable model;
 
+    @bindable filterr;
+
+    @bindable optionFilterParentBind;
+    public optionFilterParentBind2: string;
 
     public constructor(model) {
     }
@@ -39,6 +43,8 @@ export class FormSelect {
         if(CV.debugConsoleLog) console.log('attached -> initSelected: ' + this.initSelected + ' / ' + this.selected);
         this.selected = this.initSelected!=null ? this.initSelected : 0;
         if(CV.debugConsoleLog) console.log('attached -> initSelected (2): ' + this.initSelected + ' / ' + this.selected);
+        this.optionFilterParentBind = 'regionId';
+        this.optionFilterParentBind2 = this.optionFilterParentBind;
     }
 
     //following method works as expected
