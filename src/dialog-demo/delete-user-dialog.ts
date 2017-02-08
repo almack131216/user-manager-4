@@ -17,7 +17,7 @@ interface User {
 @inject(DialogController, WebAPIUsers, EventAggregator, Lookups)
 export class DeleteDialog {
     //@bindable user;
-    title = 'Delete User';
+    title = 'Delete User?';
     userRole = null;
     originalUser = null;
     userSelectedId = null;
