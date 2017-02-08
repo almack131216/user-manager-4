@@ -19,17 +19,16 @@ export class FormSelect {
     public initSelected: null;
     public changed: number;
     public selected: number;
-    @bindable propArr = ['id','name'];//send custom props (prop-arr="['value','name']")
+    @bindable propArr = ['id','name','parentValue'];//send custom props (prop-arr="['value','name']")
 
     @bindable
     public options: {value: string, label: string}[] = [];
 
     @bindable model;
 
-    @bindable filterr;
 
-    @bindable optionFilterParentBind;
-    public optionFilterParentBind2: string;
+    @bindable optionFilterParentBind:string;
+    @bindable optionFilterParentBind2:string;
 
     public constructor(model) {
     }

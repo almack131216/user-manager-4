@@ -5,7 +5,7 @@
     <require from="select2/css/select2.min.css"></require>
 
     <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
-        ${inpLabel}
+        ${inpLabel} | ${optionFilter}
     </label>
     <div class="col-sm-6">
         <!--/ ${changed} / ${initSelected} / ${selected}-->
@@ -20,7 +20,7 @@
 
             <option value="">${inpPlaceholder}</option>
             <!--<option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">-->
-            <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">
+            <option repeat.for="option of options | filter:propArr[2]:optionFilter" model.bind="option[propArr[0]]">
                 ${option[propArr[1]]}
             </option>
         </select>
@@ -33,7 +33,7 @@
             change.delegate="changeCallback($event)">
 
             <option value="">${inpPlaceholder}</option>
-            <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">
+            <option repeat.for="option of options | filter:propArr[2]:optionFilter" model.bind="option[propArr[0]]">
                 ${option[propArr[1]]}
             </option>
         </select>

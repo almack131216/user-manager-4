@@ -14,8 +14,6 @@ export class UserPanelDetails {
     public lkp_entity;
     public lkp_bp_office_address;
 
-    public regionId;
-
     constructor(lookups:Lookups) {
         this.lkp_region = lookups.lkp_region
 
@@ -26,7 +24,5 @@ export class UserPanelDetails {
         this.lkp_entity = lookups.lkp_entity
 
         this.lkp_bp_office_address = lookups.lkp_bp_office_address
-
-        this.regionId = 'regionId'
     }
 }

@@ -22,6 +22,15 @@
         autocomplete.bind="true"
         init-selected.two-way="user.profile.region.id"></form-select>
 
+    <form-select inp-label="hub"
+        prop-arr.bind="['id','name','regionId']"
+        model.two-way="user.profile.hub.id"
+        options.bind="lkp_hub"
+        changed.two-way="user.profile.hub.id"        
+        init-selected.two-way="user.profile.hub.id"
+        option-filter.two-way="user.profile.region.id"
+        is-enabled.bind="user.profile.region.id"></form-select>
+
     <div class="form-group col-xs-12">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
             Hub

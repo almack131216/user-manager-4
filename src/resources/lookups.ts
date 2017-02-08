@@ -35,15 +35,15 @@ export class Lookups {
     ]
 
     this.lkp_hub = [
-      { "id": 1, "name": "Hub 1", "regionId": 1 },
-      { "id": 2, "name": "Hub 2", "regionId": 1 },
-      { "id": 3, "name": "Hub 3", "regionId": 1 },
-      { "id": 4, "name": "Hub 4", "regionId": 1 },
-      { "id": 5, "name": "Hub 5", "regionId": 2 },
-      { "id": 6, "name": "Hub 6", "regionId": 2 },
-      { "id": 7, "name": "Hub 7", "regionId": 2 },
-      { "id": 8, "name": "Hub 8", "regionId": 3 },
-      { "id": 9, "name": "Hub 9", "regionId": 3 }
+      { "id": 1, "name": "Hub 1.1", "regionId": 1 },
+      { "id": 2, "name": "Hub 1.2", "regionId": 1 },
+      { "id": 3, "name": "Hub 1.3", "regionId": 1 },
+      { "id": 4, "name": "Hub 1.4", "regionId": 1 },
+      { "id": 5, "name": "Hub 2.5", "regionId": 2 },
+      { "id": 6, "name": "Hub 2.6", "regionId": 2 },
+      { "id": 7, "name": "Hub 2.7", "regionId": 2 },
+      { "id": 8, "name": "Hub 3.8", "regionId": 3 },
+      { "id": 9, "name": "Hub 3.9", "regionId": 3 }
     ]
 
     this.lkp_segment = [
