@@ -28,10 +28,10 @@
         options.bind="lkp_hub"
         changed.two-way="user.profile.hub.id"        
         init-selected.two-way="user.profile.hub.id"
-        option-filter.two-way="user.profile.region.id"
+        option-filter.bind="['regionId',user.profile.region.id]"
         is-enabled.bind="user.profile.region.id"></form-select>
 
-    <div class="form-group col-xs-12">
+    <!--<div class="form-group col-xs-12">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
             Hub
         </label>
@@ -46,7 +46,7 @@
                 </option>
             </select>
         </div>
-    </div>
+    </div>-->
   
      <div class="divider"></div>
      

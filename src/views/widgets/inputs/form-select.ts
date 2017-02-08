@@ -19,16 +19,12 @@ export class FormSelect {
     public initSelected: null;
     public changed: number;
     public selected: number;
-    @bindable propArr = ['id','name','parentValue'];//send custom props (prop-arr="['value','name']")
+    @bindable propArr = ['id','name'];//send custom props (prop-arr="['value','name']")
 
     @bindable
     public options: {value: string, label: string}[] = [];
 
     @bindable model;
-
-
-    @bindable optionFilterParentBind:string;
-    @bindable optionFilterParentBind2:string;
 
     public constructor(model) {
     }
@@ -42,8 +38,6 @@ export class FormSelect {
         if(CV.debugConsoleLog) console.log('attached -> initSelected: ' + this.initSelected + ' / ' + this.selected);
         this.selected = this.initSelected!=null ? this.initSelected : 0;
         if(CV.debugConsoleLog) console.log('attached -> initSelected (2): ' + this.initSelected + ' / ' + this.selected);
-        this.optionFilterParentBind = 'regionId';
-        this.optionFilterParentBind2 = this.optionFilterParentBind;
     }
 
     //following method works as expected
