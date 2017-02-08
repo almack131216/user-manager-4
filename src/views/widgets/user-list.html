@@ -47,12 +47,12 @@
                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
                 <td if.bind="isNotDisabled('emailAddress')"><a href="mailto:${user.emailAddress}">${user.emailAddress}</a></td>
                 <td if.bind="isNotDisabled('personalNumber')"><a href="tel:${user.personalNumber}">${user.personalNumber}</a></td>
-                <td if.bind="isNotDisabled('systemRoles')">${user.systemRoles.value}</td>
+                <td if.bind="isNotDisabled('systemRoles')">${user.systemRoles.name}</td>
                 <td if.bind="isNotDisabled('edit')">
                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                        <a class="btn btn-default" route-href="route: users; params.bind: {id:user.id}" title="Quick edit">
+                        <!--<a class="btn btn-default" route-href="route: users; params.bind: {id:user.id}" title="Quick edit">
                             <i class="fa fa-pencil"></i>
-                        </a>
+                        </a>-->
                         <a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
                             <i class="fa fa-list"></i>
                         </a>

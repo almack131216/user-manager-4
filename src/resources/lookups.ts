@@ -23,8 +23,8 @@ export class Lookups {
 
   constructor() {
     this.lkp_role = [
-      { "value": 3, "name": "a Role 3" },
-      { "value": 1, "name": "b Role 1" }
+      { "value": 1, "name": "Viewer" },
+      { "value": 3, "name": "Admin" }      
     ]
 
     /* User Details */

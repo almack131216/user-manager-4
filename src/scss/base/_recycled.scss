@@ -1,4 +1,18 @@
 /* _recycled.scss */
+
+.xxx_wrap-role {
+    .input-group {
+        .input-group-addon {            
+            background:transparent;
+            padding-left:0px;
+            font-weight:bold;
+            border:0px;
+
+            i.fa {display:none;}
+        }
+    }
+}
+
 ai-dialog-overlay {
     background:white;
     filter: alpha(opacity=50) !important;

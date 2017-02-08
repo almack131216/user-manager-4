@@ -59,15 +59,18 @@
                         <tbody>
                         <tr>
                             <td>
-                                <form-checkbox inp-name="userRole_mrt_member_boolean"
+                                <form-checkbox inp-name="userRole_isMember"
                                     inp-label="MRT Member"                            
-                                    model.two-way="userRole.mrt_member_boolean"
-                                    init-selected.two-way="userRole.mrt_member_boolean"
+                                    model.two-way="userRole.isMember"
+                                    init-selected.two-way="userRole.isMember"
                                     input-only="true"></form-checkbox>
                             </td>
-                            <td>
-                                <form-select prop-arr.bind="['value','name']" name="userRole_system_role" input-only="true" model.two-way="userRole.systemRoles.value" options.bind="lkp_role"
-                                    changed.two-way="userRole.systemRoles.value" init-selected.two-way="userRole.systemRoles.value"></form-select>
+                            <td class="xxx_wrap-role">
+                                <!--<form-select prop-arr.bind="['value','name']" name="userRole_system_role" input-only="true" model.two-way="userRole.systemRoles.value" options.bind="lkp_role"
+                                    changed.two-way="userRole.systemRoles.value" init-selected.two-way="userRole.systemRoles.value"></form-select>-->
+
+                                <form-filter-role model.two-way="userRole.systemRoles.value" options.bind="lkp_role" changed.two-way="userRole.systemRoles.value"
+                                    init-selected.two-way="userRole.systemRoles.value"></form-filter-role>
                             </td>
                         </tr>
                         </tbody>

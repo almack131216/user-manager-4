@@ -37,7 +37,7 @@
             "user": null,
             "info": {
                 "id": 6,
-                "mrt_member": false,
+                "isMember": false,
                 "systemRoles": 1,
                 "firstName": "David",
                 "lastName": "Bowie",

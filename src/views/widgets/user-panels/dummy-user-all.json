@@ -12,12 +12,12 @@
     "systemRoles": {
       "flags": [
         {
-          "value": 1,
-          "name": "Viewer"
+          "value": 3,
+          "name": "Admin"
         }
       ],
-      "value": 1,
-      "name": "Viewer"
+      "value": 3,
+      "name": "Admin"
     },
     "isMember": true,
     "lineManager": {
@@ -25,7 +25,7 @@
       "initials": "DS",
       "loginName": "AGILY\\DSousek",
       "displayName": "David Soušek",
-      "emailAddress": null
+      "emailAddress": "david.soušek@mailinator.com"
     },
     "reviewStatus": {
       "reviewedBy": null,

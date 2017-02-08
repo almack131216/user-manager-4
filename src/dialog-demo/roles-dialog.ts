@@ -10,7 +10,7 @@ interface User {
     firstName: string;
     lastName: string;
     systemRoles: number;
-    mrt_member: boolean;
+    isMember: boolean;
 }
 
 @autoinject
