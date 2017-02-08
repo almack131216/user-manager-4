@@ -53,7 +53,7 @@ export class UserList {
         this.lkp_role = lookups.lkp_role;
         this.rolesArr = this.lkp_role.map(x =>  { return {
           value:x.value,
-          label:x.label
+          name:x.name
         }});
 
         this.router = router;
@@ -117,11 +117,11 @@ export class UserList {
 
     filters = [
         { value: '', keys: ['firstName', 'lastName', 'emailAddress', 'personalNumber'] },
-        { value: '1', keys: ['systemRoles'] }
+        { value: '1', keys: ['systemRoles.value'] }
     ];
 
     returnLabelFromValue(getId){
-        if(getId) return this.rolesArr.filter(x => x.value == getId)[0].label;
+        if(getId) return this.rolesArr.filter(x => x.value == getId)[0].name;
         return '';
     }
 
@@ -135,10 +135,10 @@ export class UserList {
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
                 tmp_rolesArrValues.push(nextRole);
-                let nextLabel = this.rolesArr.filter(x => x.value == nextRole)[0].label;
+                let nextLabel = nextRole;// this.rolesArr.filter(x => x.value == nextRole)[0].name;
                 //console.log('???' + nextRole + ' | ' + nextLabel);
                 //this.rolesArrLabels.push(nextLabel);
-                this.rolesArrDynamic.push({"value":nextRole, "label":nextLabel});
+                this.rolesArrDynamic.push({"value":nextRole, "name":nextLabel});
             }
         }        
     }

@@ -5,14 +5,16 @@
     <require from="select2/css/select2.min.css"></require>
 
     <span class="input-group-addon" id="basic-addon3">
-        <i class="fa fa-user text-after"></i>
+        <i class="fa fa-cog text-after"></i>
         Role
     </span>
 
     <select if.bind="!autocomplete" class="form-control" value.bind="initSelected" disabled.bind="!isEnabled" selected.two-way="selected"
         change.delegate="changeCallback($event)">
         <option value="">${inpPlaceholder}</option>                 
-        <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">${option.label}</option>
+        <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">
+            ${option.name}
+        </option>
     </select>
 
     <select if.bind="autocomplete" class="form-control" id.bind="name" select2.bind="selectOptions" value.bind="initSelected"
@@ -20,7 +22,7 @@
         
         <option value="">${inpPlaceholder}</option>
         <option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option.value">
-            ${option.label}
+            ${option.name}
         </option>
     </select>
 

@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-md-6">
-            <form-filter-role model.two-way="filters[1].value" options.bind="rolesArrDynamic" changed.two-way="filters[1].value"
+            <form-filter-role model.two-way="filters[1].value" options.bind="lkp_role" changed.two-way="filters[1].value"
                 init-selected.two-way="filters[1].value"></form-filter-role>
         </div>
     </div>
@@ -36,7 +36,7 @@
                 <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Last Name</th>
                 <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">E-mail</th>
                 <th aut-sort="key: personalNumber" if.bind="isNotDisabled('personalNumber')">Telephone</th>
-                <th aut-sort="key: systemRoles" if.bind="isNotDisabled('systemRoles')">Role</th>
+                <th aut-sort="key: systemRoles.value" if.bind="isNotDisabled('systemRoles')">Role</th>
                 <th if.bind="isNotDisabled('edit')">Edit</th>
             </tr>
         </thead>
@@ -47,7 +47,7 @@
                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
                 <td if.bind="isNotDisabled('emailAddress')"><a href="mailto:${user.emailAddress}">${user.emailAddress}</a></td>
                 <td if.bind="isNotDisabled('personalNumber')"><a href="tel:${user.personalNumber}">${user.personalNumber}</a></td>
-                <td if.bind="isNotDisabled('systemRoles')">${ returnLabelFromValue(user.systemRoles) }</td>
+                <td if.bind="isNotDisabled('systemRoles')">${user.systemRoles.value}</td>
                 <td if.bind="isNotDisabled('edit')">
                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
                         <a class="btn btn-default" route-href="route: users; params.bind: {id:user.id}" title="Quick edit">
@@ -56,10 +56,10 @@
                         <a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
                             <i class="fa fa-list"></i>
                         </a>
-                        <a class="btn btn-default" click.delegate="changeUserRoles(user.id)">
+                        <a class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">
                             <i class="fa fa-cog"></i>
                         </a>
-                        <a class="btn btn-default" click.delegate="deleteUser(user.id)">
+                        <a class="btn btn-default" click.delegate="deleteUser(user.id)" title="Delete User">
                             <i class="fa fa-trash"></i>
                         </a>
                     </div>

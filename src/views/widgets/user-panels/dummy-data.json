@@ -6,7 +6,16 @@
     "emailAddress":"tolkien@inklings.com",
     "personalNumber":"867-5309",
     "mrt_member":true,
-    "systemRoles": 2,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
     "profile_viewed": "2017-01-01T09:11:84Z"
   },
   {
@@ -16,7 +25,16 @@
     "emailAddress":"lewis@inklings.com",
     "personalNumber":"867-5309",
     "mrt_member":true,
-    "systemRoles": 0,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 1,
+          "name": "Viewer"
+        }
+      ],
+      "value": 1,
+      "name": "Viewer"
+    },
     "profile_viewed": "2017-01-02T09:11:84Z"
   },
   {
@@ -26,7 +44,16 @@
     "emailAddress":"barfield@inklings.com",
     "personalNumber":"867-5309",
     "mrt_member":false,
-    "systemRoles": 3,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
     "profile_viewed": "2017-02-01T09:11:84Z"
   },
   {
@@ -36,7 +63,16 @@
     "emailAddress":"william@inklings.com",
     "personalNumber":"867-5309",
     "mrt_member":true,
-    "systemRoles": 2,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 1,
+          "name": "Viewer"
+        }
+      ],
+      "value": 1,
+      "name": "Viewer"
+    },
     "profile_viewed": "2017-02-02T09:11:84Z"
   },
   {
@@ -46,7 +82,16 @@
     "emailAddress":"green@inklings.com",
     "personalNumber":"867-5309",
     "mrt_member":false,
-    "systemRoles": 0,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
     "profile_viewed": "2017-02-03T09:11:84Z"
   },
   {
@@ -56,7 +101,16 @@
     "emailAddress":"david@bowie.com",
     "personalNumber":"123-4567",
     "mrt_member":true,
-    "systemRoles": 2,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 1,
+          "name": "Viewer"
+        }
+      ],
+      "value": 1,
+      "name": "Viewer"
+    },
     "profile_viewed": "2017-03-03T09:11:84Z"
   },
   {
@@ -66,7 +120,16 @@
     "emailAddress":"dan@pena.com",
     "personalNumber":"891-3210",
     "mrt_member":false,
-    "systemRoles": 1,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
     "profile_viewed": "2017-04-01T09:11:84Z"
   }
 ]
