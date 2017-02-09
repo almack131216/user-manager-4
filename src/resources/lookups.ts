@@ -16,15 +16,15 @@ export class Lookups {
   lkp_languageLevel
   lkp_primaryPositions;
   lkp_secondaryPositions;
-  lkp_passport_type;
-  lkp_passport_nationality;
-  lkp_visa_country;
-  lkp_visa_type;  
+  lkp_passportTypes;
+  lkp_passportNationality;
+  lkp_visaTypes;
+  lkp_visaCountry;
 
   constructor() {
     this.lkp_role = [
       { "value": 1, "name": "Viewer" },
-      { "value": 3, "name": "Admin" }      
+      { "value": 3, "name": "Admin" }
     ]
 
     /* User Details */
@@ -128,7 +128,6 @@ export class Lookups {
     ];
 
     /* MRT Role Information */
-
     this.lkp_primaryPositions = [
       {
         "id": 1,
@@ -168,32 +167,68 @@ export class Lookups {
     ]
 
     /* Passport and Visa */
-    this.lkp_passport_type = [
-      { "value": 1, "label": "Regular 1" },
-      { "value": 2, "label": "Diplomatic 2" },
-      { "value": 3, "label": "Special 3" },
-      { "value": 4, "label": "Temporary 4" }
+    this.lkp_passportTypes = [
+      {
+        "value": 1,
+        "name": "Regular"
+      },
+      {
+        "value": 2,
+        "name": "Diplomatic"
+      },
+      {
+        "value": 3,
+        "name": "Special"
+      },
+      {
+        "value": 4,
+        "name": "Temporary"
+      }
     ]
 
-    this.lkp_passport_nationality = [
-      { "value": 1, "label": "European 1" },
-      { "value": 2, "label": "British 2" },
-      { "value": 3, "label": "American 3" },
-      { "value": 4, "label": "Canadian 4" }
+    this.lkp_passportNationality = [
+      {
+        "id": 1,
+        "name": "Afghanistan"
+      },
+      {
+        "id": 2,
+        "name": "Albania"
+      },
+      {
+        "id": 3,
+        "name": "Algeria"
+      }
     ]
 
-    this.lkp_visa_country = [
-      { "value": 1, "label": "Country 1" },
-      { "value": 2, "label": "Country 2" },
-      { "value": 3, "label": "Country 3" },
-      { "value": 4, "label": "Country 4" }
+    this.lkp_visaTypes = [
+      {
+        "value": 1,
+        "name": "Business visitor"
+      },
+      {
+        "value": 2,
+        "name": "Foreign national"
+      },
+      {
+        "value": 3,
+        "name": "Medical"
+      }
     ]
 
-    this.lkp_visa_type = [
-      { "value": 1, "label": "Visa Type 1" },
-      { "value": 2, "label": "Visa Type 2" },
-      { "value": 3, "label": "Visa Type 3" },
-      { "value": 4, "label": "Visa Type 4" }
+    this.lkp_visaCountry = [
+      {
+        "id": 1,
+        "name": "Afghanistan"
+      },
+      {
+        "id": 2,
+        "name": "Albania"
+      },
+      {
+        "id": 3,
+        "name": "Algeria"
+      }
     ]
 
   }

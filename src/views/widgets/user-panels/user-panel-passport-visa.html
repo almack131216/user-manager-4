@@ -4,27 +4,28 @@
     <require from="../inputs/form-select"></require>
 
 
-    <div class="repeaters row-fluid" repeat.for="row of user.user.profile.passports">
+    <div class="repeaters row-fluid" repeat.for="row of user.profile.passports">
 
         <div if.bind="$index>0" class="divider dotted"></div>
 
-        <form-select name="lkp_passport_type[$index]" inp-label="Passport Type"
-            model.two-way="user.profile.passports[$index].type"
-            options.bind="lkp_passport_type"
-            changed.two-way="user.profile.passports[$index].type"
+        <form-select inp-label="Passport Type"
+            prop-arr.bind="['value','name']"
+            model.two-way="user.profile.passports[$index].type.value"
+            options.bind="lkp_passportTypes"
+            changed.two-way="user.profile.passports[$index].type.value"
             autocomplete.bind="true"
-            init-selected.two-way="user.profile.passports[$index].type"></form-select>
+            init-selected.two-way="user.profile.passports[$index].type.value"></form-select>
 
-        <form-input name="passport_number" model.two-way="user.profile.passports[$index].number"></form-input>
+        <form-input model.two-way="user.profile.passports[$index].number" inp-label="Passport Number"></form-input>
 
-        <form-select name="lkp_passport_nationality[$index]" inp-label="Nationality"
+        <form-select inp-label="Passport Nationality"
             model.two-way="user.profile.passports[$index].country.id"
-            options.bind="lkp_passport_nationality"
+            options.bind="lkp_passportNationality"
             changed.two-way="user.profile.passports[$index].country.id"
             autocomplete.bind="true"
             init-selected.two-way="user.profile.passports[$index].country.id"></form-select>
 
-        <form-input name="passport_expiry_date" model.two-way="user.profile.passports[$index].expiresOn"></form-input>
+        <form-input model.two-way="user.profile.passports[$index].expiresOn" inp-label="Passport Expiry Date"></form-input>
 
         <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.passports.length">
             <button class="btn btn-default btn-sm btn-i">
@@ -41,23 +42,24 @@
 
         <div if.bind="$index>0" class="divider dotted"></div>
 
-        <form-select name="lkp_visa_country[$index]" inp-label="Visa Country"
-            model.two-way="user.profile.passports[$index].country.id"
-            options.bind="lkp_visa_country"
-            changed.two-way="user.profile.passports[$index].country.id"
+        <form-select inp-label="Visa Country"
+            model.two-way="user.profile.visas[$index].country.id"
+            options.bind="lkp_passportNationality"
+            changed.two-way="user.profile.visas[$index].country.id"
             autocomplete.bind="true"
-            init-selected.two-way="user.profile.passports[$index].country.id"></form-select>
+            init-selected.two-way="user.profile.visas[$index].country.id"></form-select>
 
-        <form-input name="visa_expiry_date" model.two-way="user.profile.passports[$index].expiresOn" inp-type="date"></form-input>
+        <form-input model.two-way="user.profile.visas[$index].expiresOn" inp-label="Visa Expiry Date"></form-input>
 
-        <form-select name="lkp_visa_type[$index]" inp-label="Visa Type"
-            model.two-way="user.profile.passports[$index].type.id"
-            options.bind="lkp_passport_nationality"
-            changed.two-way="user.profile.passports[$index].type.id"
+        <form-select inp-label="Visa Type"
+            prop-arr.bind="['value','name']"
+            model.two-way="user.profile.visas[$index].type.value"
+            options.bind="lkp_visaTypes"
+            changed.two-way="user.profile.visas[$index].type.value"
             autocomplete.bind="true"
-            init-selected.two-way="user.profile.passports[$index].type.id"></form-select>        
+            init-selected.two-way="user.profile.visas[$index].type.value"></form-select>
 
-        <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.passports.length">
+        <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.visas.length">
             <button class="btn btn-default btn-sm btn-i">
                 <i class="fa fa-plus"></i>
                 Add Visa
