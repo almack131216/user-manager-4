@@ -10,16 +10,36 @@
 
     <hr>-->
 
+    <!--<div class="row">
+        <div class="col-md-12">
+            <div id="exTab2" class="containerXXX">
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a href="#home" data-toggle="tab">Home</a>
+                    </li>
+                    <li><a href="#team" data-toggle="tab">Team</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content clearfix">
+                    <div class="tab-pane active" id="home">
+                        <h3>Home</h3>
+                    </div>
+                    <div class="tab-pane" id="team">
+                        <h3>Team</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
     <div class="row">
         <div class="col-md-6">
             <list-activity></list-activity>
         </div>
 
         <div class="col-md-6">
-            <user-list
-                cust-title="Users-lite"
-                cust-disable-cells="['firstName','personalNumber','systemRoles']"
-                cust-table-pagination.bind="true"
+            <user-list cust-title="Users-lite" cust-disable-cells="['firstName','personalNumber','systemRoles']" cust-table-pagination.bind="true"
                 cust-table-page-size.bind="10"></user-list>
         </div>
     </div>

@@ -947,6 +947,40 @@ section {
 }
 
 /* MODULES - individual site components */
+/* _tabs.scss */
+/* line 3, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tabs.scss */
+#exTab1 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+/* line 9, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tabs.scss */
+#exTab2 h3 {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+/* remove border radius for the tab */
+/* line 17, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tabs.scss */
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+/* line 23, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tabs.scss */
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0;
+}
+
+/* line 27, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tabs.scss */
+#exTab3 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
 /* _typography.scss */
 /* line 3, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_typography.scss */
 h1 > i,
