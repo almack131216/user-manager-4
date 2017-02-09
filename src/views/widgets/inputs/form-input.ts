@@ -19,6 +19,7 @@ export class FormInput {
     @bindable inpValue = null;
     @bindable inpValueTwoWay = null;
     @bindable isMandatory = null;
+    @bindable isMemberOnly = null;
 
     @bindable isEnabled = true;
     @bindable isReadonly = false;

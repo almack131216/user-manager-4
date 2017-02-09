@@ -3,8 +3,8 @@
     <require from="../inputs/form-select"></require>
     <require from="../../../resources/format/format-date"></require>
 
-    <form-input model.two-way="user.profile.memberStatus" inp-label="Member Status" is-mandatory.bind="true"></form-input>
-    <form-input inp-type="date" model.two-way="user.profile.entityStatus.createdOn" inp-label="Date Joined" is-mandatory.bind="true"></form-input>
+    <form-input model.two-way="user.profile.memberStatus" inp-label="Member Status" is-mandatory.bind="true" is-member-only.bind="true"></form-input>
+    <form-input inp-type="date" model.two-way="user.profile.entityStatus.createdOn" inp-label="Date Joined" is-mandatory.bind="true" is-member-only.bind="true"></form-input>
     
     <div class="divider"></div>
 

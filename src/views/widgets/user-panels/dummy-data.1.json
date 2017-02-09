@@ -1,0 +1,135 @@
+[
+ {
+    "id":1,
+    "firstName": "John",
+    "lastName":"Tolkien",
+    "emailAddress":"tolkien@inklings.com",
+    "personalNumber":"867-5309",
+    "isMember":true,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
+    "profile_viewed": "2017-01-01T09:11:84Z"
+  },
+  {
+    "id":2,
+    "firstName":"Clive",
+    "lastName":"Lewis",
+    "emailAddress":"lewis@inklings.com",
+    "personalNumber":"867-5309",
+    "isMember":true,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 1,
+          "name": "Viewer"
+        }
+      ],
+      "value": 1,
+      "name": "Viewer"
+    },
+    "profile_viewed": "2017-01-02T09:11:84Z"
+  },
+  {
+    "id":3,
+    "firstName":"Owen",
+    "lastName":"Barfield",
+    "emailAddress":"barfield@inklings.com",
+    "personalNumber":"867-5309",
+    "isMember":false,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
+    "profile_viewed": "2017-02-01T09:11:84Z"
+  },
+  {
+    "id":4,
+    "firstName":"Charles",
+    "lastName":"Williams",
+    "emailAddress":"william@inklings.com",
+    "personalNumber":"867-5309",
+    "isMember":true,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 1,
+          "name": "Viewer"
+        }
+      ],
+      "value": 1,
+      "name": "Viewer"
+    },
+    "profile_viewed": "2017-02-02T09:11:84Z"
+  },
+  {
+    "id":5,
+    "firstName":"Roger",
+    "lastName":"Green",
+    "emailAddress":"green@inklings.com",
+    "personalNumber":"867-5309",
+    "isMember":false,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
+    "profile_viewed": "2017-02-03T09:11:84Z"
+  },
+  {
+    "id":6,
+    "firstName":"David",
+    "lastName":"Bowie",
+    "emailAddress":"david@bowie.com",
+    "personalNumber":"123-4567",
+    "isMember":true,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
+    "profile_viewed": "2017-03-03T09:11:84Z"
+  },
+  {
+    "id":7,
+    "firstName":"Dan",
+    "lastName":"Pena",
+    "emailAddress":"dan@pena.com",
+    "personalNumber":"891-3210",
+    "isMember":false,
+    "systemRoles": {
+      "flags": [
+        {
+          "value": 3,
+          "name": "Admin"
+        }
+      ],
+      "value": 3,
+      "name": "Admin"
+    },
+    "profile_viewed": "2017-04-01T09:11:84Z"
+  }
+]
