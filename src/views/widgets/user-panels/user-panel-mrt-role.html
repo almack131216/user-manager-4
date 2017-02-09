@@ -8,7 +8,8 @@
         options.bind="lkp_primaryPositions"
         changed.two-way="user.profile.primaryPosition.id"
         autocomplete.bind="true"
-        init-selected.two-way="user.profile.primaryPosition.id"></form-select>
+        init-selected.two-way="user.profile.primaryPosition.id"
+        is-mandatory.bind="true"></form-select>
 
     <form-select inp-label="Secondary ICS"
         model.two-way="user.profile.secondaryPosition.id"
@@ -16,7 +17,8 @@
         changed.two-way="user.profile.secondaryPosition.id"        
         init-selected.two-way="user.profile.secondaryPosition.id"
         option-filter.bind="['primaryPositionId',user.profile.primaryPosition.id]"
-        is-enabled.bind="user.profile.primaryPosition.id"></form-select>
+        is-enabled.bind="user.profile.primaryPosition.id"
+        is-mandatory.bind="true"></form-select>
 
     <form-input name="previous_role" model.two-way="user.previous_role"></form-input>
 

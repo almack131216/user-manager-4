@@ -3,14 +3,8 @@
     <require from="../inputs/form-select"></require>
     <require from="../../../resources/format/format-date"></require>
 
-    <form-select name="lkp_member_status"
-        model.two-way="user.lkp_member_status_selected"
-        options.bind="lkp_member_status"
-        changed.two-way="user.lkp_member_status_selected"
-        autocomplete.bind="true"
-        init-selected.two-way="user.lkp_member_status_selected"></form-select>
-
-    <form-input name="date_joined" model.two-way="user.date_joined" inp-type="date"></form-input>
+    <form-input name="memberStatus" model.two-way="user.profile.memberStatus" inp-label="Member Status" is-mandatory.bind="true"></form-input>
+    <form-input name="dateJoined" model.two-way="user.profile.dateJoined" inp-label="Date Joined" is-mandatory.bind="true"></form-input>
     
     <div class="divider"></div>
 
@@ -18,7 +12,8 @@
         model.two-way="user.profile.coatSize.id"
         options.bind="lkp_coat_size"
         changed.two-way="user.profile.coatSize.id"
-        init-selected.two-way="user.profile.coatSize.id"></form-select>
+        init-selected.two-way="user.profile.coatSize.id"
+        is-mandatory.bind="true"></form-select>
 
     <div class="divider"></div>
 

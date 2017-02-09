@@ -22,7 +22,8 @@
         options.bind="lkp_region"
         changed.two-way="user.profile.region.id"
         autocomplete.bind="true"
-        init-selected.two-way="user.profile.region.id"></form-select>
+        init-selected.two-way="user.profile.region.id"
+        is-mandatory.bind="true"></form-select>
 
     <form-select inp-label="hub"
         model.two-way="user.profile.hub.id"
@@ -30,7 +31,8 @@
         changed.two-way="user.profile.hub.id"        
         init-selected.two-way="user.profile.hub.id"
         option-filter.bind="['regionId',user.profile.region.id]"
-        is-enabled.bind="user.profile.region.id"></form-select>
+        is-enabled.bind="user.profile.region.id"
+        is-mandatory.bind="true"></form-select>
 
     <!--<div class="form-group col-xs-12">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
@@ -57,9 +59,17 @@
         changed.two-way="user.profile.segment.id"        
         init-selected.two-way="user.profile.segment.id"
         autocomplete.bind="true"
-        ></form-select>
+        is-mandatory.bind="true"></form-select>
 
-    <div class="form-group col-xs-12">
+    <form-select inp-label="Entity"
+        model.two-way="user.profile.entity.id"
+        options.bind="lkp_entity"
+        changed.two-way="user.profile.entity.id"        
+        init-selected.two-way="user.profile.entity.id"
+        option-filter.bind="['segmentId',user.profile.segment.id]"
+        is-enabled.bind="user.profile.segment.id"
+        is-mandatory.bind="true"></form-select>
+    <!--<div class="form-group col-xs-12">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
             Entity
         </label>
@@ -74,7 +84,7 @@
                 </option>
             </select>
         </div>
-    </div>
+    </div>-->
 
     <!--<form-select name="lkp_entity"
         model.two-way="user.lkp_entity_selected"
@@ -88,8 +98,8 @@
     
     <div class="divider"></div>
 
-    <form-input name="function" model.two-way="user.profile.function"></form-input>
-    <form-input name="location" model.two-way="user.profile.location"></form-input>
+    <form-input inp-label="Function" model.two-way="user.profile.function" is-mandatory.bind="true"></form-input>
+    <form-input inp-label="Location" model.two-way="user.profile.location" is-mandatory.bind="true"></form-input>
 
     <div class="divider"></div>
     
@@ -98,9 +108,10 @@
         options.bind="lkp_bp_office_address"
         changed.two-way="user.profile.office.id"
         autocomplete.bind="true"
-        init-selected.two-way="user.profile.office.id"></form-select>
+        init-selected.two-way="user.profile.office.id"
+        is-mandatory.bind="true"></form-select>
 
-    <form-input name="businessNumber" model.two-way="user.profile.businessNumber" mask-pattern="telephone" inp-label="Business Cell Number"></form-input>
+    <form-input name="businessNumber" model.two-way="user.profile.businessNumber" mask-pattern="telephone" inp-label="Business Cell Number" is-mandatory.bind="true"></form-input>
     <form-input name="personalNumber" model.two-way="user.profile.personalNumber" mask-pattern="telephone" inp-label="Personal Cell Number"></form-input>
     <form-input name="officeNumber" model.two-way="user.profile.officeNumber" mask-pattern="telephone" inp-label="Office Number"></form-input>
     <form-input name="lyncNumber" model.two-way="user.profile.lyncNumber" mask-pattern="telephone" inp-label="Lync Number"></form-input>
@@ -114,7 +125,7 @@
 
     <div class="divider"></div>
 
-    <form-input name="emergencyContactName" model.two-way="user.profile.emergencyContactName" inp-label="Emergency Contact Name"></form-input>
-    <form-input name="emergencyContactNumber" model.two-way="user.profile.emergencyContactNumber" mask-pattern="telephone" inp-label="Emergency Contact Number"></form-input>
+    <form-input name="emergencyContactName" model.two-way="user.profile.emergencyContactName" inp-label="Emergency Contact Name" is-mandatory.bind="true"></form-input>
+    <form-input name="emergencyContactNumber" model.two-way="user.profile.emergencyContactNumber" mask-pattern="telephone" inp-label="Emergency Contact Number" is-mandatory.bind="true"></form-input>
 
 </template>

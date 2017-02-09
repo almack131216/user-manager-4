@@ -14,18 +14,20 @@
             options.bind="lkp_passportTypes"
             changed.two-way="user.profile.passports[$index].type.value"
             autocomplete.bind="true"
-            init-selected.two-way="user.profile.passports[$index].type.value"></form-select>
+            init-selected.two-way="user.profile.passports[$index].type.value"
+            is-mandatory.bind="true"></form-select>
 
-        <form-input model.two-way="user.profile.passports[$index].number" inp-label="Passport Number"></form-input>
+        <form-input model.two-way="user.profile.passports[$index].number" inp-label="Passport Number" is-mandatory.bind="true"></form-input>
 
         <form-select inp-label="Passport Nationality"
             model.two-way="user.profile.passports[$index].country.id"
             options.bind="lkp_passportNationality"
             changed.two-way="user.profile.passports[$index].country.id"
             autocomplete.bind="true"
-            init-selected.two-way="user.profile.passports[$index].country.id"></form-select>
+            init-selected.two-way="user.profile.passports[$index].country.id"
+            is-mandatory.bind="true"></form-select>
 
-        <form-input model.two-way="user.profile.passports[$index].expiresOn" inp-label="Passport Expiry Date"></form-input>
+        <form-input model.two-way="user.profile.passports[$index].expiresOn" inp-label="Passport Expiry Date" is-mandatory.bind="true"></form-input>
 
         <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.passports.length">
             <button class="btn btn-default btn-sm btn-i">
@@ -47,9 +49,10 @@
             options.bind="lkp_passportNationality"
             changed.two-way="user.profile.visas[$index].country.id"
             autocomplete.bind="true"
-            init-selected.two-way="user.profile.visas[$index].country.id"></form-select>
+            init-selected.two-way="user.profile.visas[$index].country.id"
+            is-mandatory.bind="true"></form-select>
 
-        <form-input model.two-way="user.profile.visas[$index].expiresOn" inp-label="Visa Expiry Date"></form-input>
+        <form-input model.two-way="user.profile.visas[$index].expiresOn" inp-label="Visa Expiry Date" is-mandatory.bind="true"></form-input>
 
         <form-select inp-label="Visa Type"
             prop-arr.bind="['value','name']"
@@ -57,7 +60,8 @@
             options.bind="lkp_visaTypes"
             changed.two-way="user.profile.visas[$index].type.value"
             autocomplete.bind="true"
-            init-selected.two-way="user.profile.visas[$index].type.value"></form-select>
+            init-selected.two-way="user.profile.visas[$index].type.value"
+            is-mandatory.bind="true"></form-select>
 
 
         <form-checkbox
@@ -65,7 +69,8 @@
             inp-label="Multiple Visas"                            
             model.two-way="user.profile.visas[$index].multipleEntry"
             init-selected.two-way="user.profile.visas[$index].multipleEntry"
-            input-only="true"></form-checkbox>
+            input-only="true"
+            is-mandatory.bind="true"></form-checkbox>
 
         <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.visas.length">
             <button class="btn btn-default btn-sm btn-i">

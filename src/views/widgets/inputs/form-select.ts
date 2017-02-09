@@ -13,6 +13,7 @@ export class FormSelect {
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
 
+    @bindable isMandatory = null;
     @bindable name = null;
 
     @bindable
