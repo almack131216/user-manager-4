@@ -1,10 +1,11 @@
 <template class="form-group col-xs-12 ${isMandatory ? 'is-mandatory' : ''}">
+    
     <require from="aurelia-mask/masked-input"></require>
     <require from="../../../resources/format/format-date"></require>
 
     <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
-        <i if.bind="isReadonly" class="fa fa-eye text-after" title="Read Only"></i>
-        <i if.bind="isMemberOnly" class="fa fa-exclamation-triangle text-after" title="Members Only"></i>
+        <!--<i if.bind="isReadonly" class="fa fa-eye text-after" title="Read Only"></i>
+        <i if.bind="isMemberOnly" class="fa fa-exclamation-triangle text-after" title="Members Only"></i>-->
         ${inpLabel}
     </label>
     <div class="col-sm-6">

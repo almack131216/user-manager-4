@@ -11,40 +11,16 @@
 
     <div class="divider"></div>
 
-    <div class="row-fluid">
-        <div class="col-md-6 padding-bottom-g1">
-            <h4>ICS Training</h4>
-            <div class="repeaters row-fluid" repeat.for="row of user.training_ics_arr">                
-                <form-radio inp-name.bind="'training_ics_' + $index"
-                    model.two-way="user.training_ics_arr[$index].value"
-                    inp-label.bind="user.training_ics_arr[$index].label"
-                    init-selected.two-way="user.training_ics_arr[$index].value"></form-radio>
-            </div>
+    <div class="repeaters row-fluid" repeat.for="row of user.profile.trainings">
+
+        <div if.bind="$index>0" class="divider dotted"></div>
+
+        <div class="col-xs-12">
+            <form-radio name="trainings[$index]" inp-label.bind="user.profile.trainings[$index].training.name" model.two-way="user.profile.trainings[$index].training.id"
+                expiry-date.two-way="user.profile.trainings[$index].expiresOn ? user.profile.trainings[$index].expiresOn : '--'"
+                init-selected.two-way="user.profile.trainings[$index].training.id"></form-radio>
         </div>
 
-        <div class="col-md-6 padding-bottom-g1">
-            <h4>ICS Section Specific Training</h4>
-            <div class="repeaters row-fluid" repeat.for="row of user.training_ics_ss_arr">                
-                <form-radio inp-name.bind="'training_ics_ss_' + $index"
-                    model.two-way="user.training_ics_ss_arr[$index].value"
-                    inp-label.bind="user.training_ics_ss_arr[$index].label"
-                    init-selected.two-way="user.training_ics_ss_arr[$index].value"></form-radio>
-            </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="col-md-12 padding-bottom-g1">
-            <h4>ICS Others</h4>
-            <div class="repeaters row-fluid" repeat.for="row of user.training_others_arr">                
-                <form-radio inp-name.bind="'training_others_' + $index"
-                    model.two-way="user.training_others_arr[$index].value"
-                    inp-label.bind="user.training_others_arr[$index].label"
-                    expiry-date.two-way="user.training_others_arr[$index].expiryDate"
-                    init-selected.two-way="user.training_others_arr[$index].value"></form-radio>
-            </div>
-
-        </div>
     </div>
 
 </template>
