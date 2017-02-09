@@ -2,7 +2,7 @@ import { autoinject,bindable } from 'aurelia-framework';
 import { Lookups } from '../../../resources/lookups';
 @autoinject
 
-export class UserPanelMrt {
+export class UserPanelLanguages {
     @bindable user;
     public lkp_member_status;
     public lkp_languages;
