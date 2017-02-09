@@ -4,6 +4,7 @@ const CV = Constants
 
 export class FormUserFullBody {
     @bindable user = null;
+    @bindable custIcon = null;
     @bindable custBody = null;
     @bindable custClass = null;
     @bindable custTitle = null;
