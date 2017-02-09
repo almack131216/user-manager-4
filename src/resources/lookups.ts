@@ -14,8 +14,8 @@ export class Lookups {
   lkp_coat_size
   lkp_languages
   lkp_languageLevel
-  lkp_mrt_1_ics;
-  lkp_mrt_2_ics;
+  lkp_primaryPositions;
+  lkp_secondaryPositions;
   lkp_passport_type;
   lkp_passport_nationality;
   lkp_visa_country;
@@ -71,9 +71,14 @@ export class Lookups {
     ]
 
     this.lkp_bp_office_address = [
-      { "id": 1, "name": "Address 1" },
-      { "id": 2, "name": "Address 2" },
-      { "id": 3, "name": "Address 3" }
+      {
+        "id": 1,
+        "name": "Office 1"
+      },
+      {
+        "id": 2,
+        "name": "Office 2"
+      }
     ]
 
     /* MRT Details */
@@ -123,16 +128,43 @@ export class Lookups {
     ];
 
     /* MRT Role Information */
-    this.lkp_mrt_1_ics = [
-      { "value": 1, "label": "Primary 1" },
-      { "value": 2, "label": "Primary 2" },
-      { "value": 3, "label": "Primary 3" }
+
+    this.lkp_primaryPositions = [
+      {
+        "id": 1,
+        "name": "Command Staff"
+      },
+      {
+        "id": 2,
+        "name": "Operations Section"
+      },
+      {
+        "id": 3,
+        "name": "Planning Section"
+      }
     ]
 
-    this.lkp_mrt_2_ics = [
-      { "value": 1, "label": "Secondary 1" },
-      { "value": 2, "label": "Secondary 2" },
-      { "value": 3, "label": "Secondary 3" }
+    this.lkp_secondaryPositions = [
+      {
+        "id": 1,
+        "name": "Deputy Incident Commanders",
+        "primaryPositionId": 1
+      },
+      {
+        "id": 2,
+        "name": "Safety OfficerHealth Specialist",
+        "primaryPositionId": 1
+      },
+      {
+        "id": 3,
+        "name": "Safety Officer Industrial Hygienist Specialists",
+        "primaryPositionId": 1
+      },
+      {
+        "id": 4,
+        "name": "Section Chief",
+        "primaryPositionId": 2
+      }
     ]
 
     /* Passport and Visa */
