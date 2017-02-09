@@ -2723,138 +2723,144 @@ footer ul.ul-inline-piped li:last-child:after {
 }
 
 /* line 39, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
-.margin-y-0 {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-/* line 40, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-x-1 {
   margin-left: 10px !important;
   margin-right: 10px !important;
 }
 
+/* line 40, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+.margin-x-g1 {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+
 /* line 41, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+.margin-y-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* line 42, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-y-1 {
   margin-top: 10px !important;
   margin-bottom: 10px !important;
 }
 
-/* line 42, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 43, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-y-g1 {
   margin-top: 15px !important;
   margin-bottom: 15px !important;
 }
 
-/* line 43, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 44, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-y-g2 {
   margin-top: 30px !important;
   margin-bottom: 30px !important;
 }
 
-/* line 44, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 45, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-top-0 {
   margin-top: 0 !important;
 }
 
-/* line 45, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 46, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-top-1 {
   margin-top: 10px !important;
 }
 
-/* line 46, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 47, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-top-1-5 {
   margin-top: 15px !important;
 }
 
-/* line 47, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 48, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-top-2 {
   margin-top: 20px !important;
 }
 
-/* line 48, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 49, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-top-3 {
   margin-top: 30px !important;
 }
 
-/* line 49, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 50, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-top-4 {
   margin-top: 40px !important;
 }
 
-/* line 50, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 51, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-top-massive {
   margin-top: 100px !important;
 }
 
-/* line 51, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 52, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-bottom-0 {
   margin-bottom: 0 !important;
 }
 
-/* line 52, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 53, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-bottom-1 {
   margin-bottom: 10px !important;
 }
 
-/* line 53, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 54, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-bottom-g1 {
   margin-bottom: 15px !important;
 }
 
-/* line 54, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 55, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-bottom-2 {
   margin-bottom: 20px !important;
 }
 
-/* line 55, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 56, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-left-1 {
   margin-left: 10px !important;
 }
 
-/* line 56, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 57, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-right-1 {
   margin-right: 10px !important;
 }
 
-/* line 57, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 58, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .margin-0-auto {
   margin: 0 auto;
 }
 
 /* Border */
-/* line 60, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 61, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .border-0 {
   border: 0px !important;
 }
 
-/* line 61, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 62, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .border-top-0 {
   border-top: 0px !important;
 }
 
-/* line 62, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 63, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .border-bottom-0 {
   border-bottom: 0px !important;
 }
 
-/* line 63, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 64, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .border-left-0 {
   border-left: 0px !important;
 }
 
-/* line 64, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 65, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .border-right-0 {
   border-right: 0px !important;
 }
 
 /* Widths */
-/* line 67, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 68, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .min-width-100 {
   min-width: 100px !important;
 }
 
-/* line 68, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
+/* line 69, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_offsets.scss */
 .min-width-150 {
   min-width: 150px !important;
 }
