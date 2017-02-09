@@ -8,6 +8,8 @@ export class UserPanelConfidential {
     lkp_memberStatus;
     lkp_userProfiles;
     lkp_credentialLevels;
+    tmpField2;
+    tmpField3;
 
     constructor(private lookups: Lookups) {
 
