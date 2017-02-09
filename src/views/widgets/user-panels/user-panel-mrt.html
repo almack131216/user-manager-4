@@ -14,14 +14,11 @@
     
     <div class="divider"></div>
 
-    <form-select name="lkp_vest_colour"
-        model.two-way="user.lkp_vest_colour_selected"
-        options.bind="lkp_vest_colour"
-        changed.two-way="user.lkp_vest_colour_selected"
-        autocomplete.bind="true"
-        init-selected.two-way="user.lkp_vest_colour_selected"></form-select>
-
-    <form-input name="coat_size" model.two-way="user.coat_size"></form-input>
+    <form-select name="lkp_member_status" inp-label="Coat Size"
+        model.two-way="user.profile.coatSize.id"
+        options.bind="lkp_coat_size"
+        changed.two-way="user.profile.coatSize.id"
+        init-selected.two-way="user.profile.coatSize.id"></form-select>
 
     <div class="divider"></div>
 
@@ -41,8 +38,8 @@
             model.two-way="user.profile.languages[$index].proficiency.value"
             options.bind="lkp_languageLevel"
             changed.two-way="user.profile.languages[$index].proficiency.value"
-            autocomplete.bind="false"
-            init-selected.two-way="user.profile.languages[$index].proficiency.value"></form-select>
+            init-selected.two-way="user.profile.languages[$index].proficiency.value"
+            is-enabled.bind="user.profile.languages[$index].language.id"></form-select>
 
         <div class="col-xs-12 margin-bottom-g1">
             <button class="btn btn-default btn-sm" if.bind="$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo">
@@ -50,8 +47,6 @@
                 Add Language
             </button>
         </div>
-
-               
 
     </div>
 

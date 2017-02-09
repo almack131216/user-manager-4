@@ -818,7 +818,7 @@ section {
   /* line 247, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
   .row.row-col-lg-4 > .wrap-fields > * > .form-group,
   .row.row-col-lg-4 > .wrap-fields > * > .repeaters > .form-group {
-    width: 33.33333333%;
+    width: 50%;
   }
 }
 

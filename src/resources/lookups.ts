@@ -11,7 +11,7 @@ export class Lookups {
   lkp_entity
   lkp_bp_office_address
   lkp_member_status
-  lkp_vest_colour
+  lkp_coat_size
   lkp_languages
   lkp_languageLevel
   lkp_mrt_1_ics;
@@ -83,13 +83,13 @@ export class Lookups {
       { "value": 3, "label": "Status 3" }
     ]
 
-    this.lkp_vest_colour = [
-      { "value": 1, "label": "Redd 1" },
-      { "value": 2, "label": "Yellow 2" },
-      { "value": 3, "label": "Green 3" },
-      { "value": 4, "label": "Blue 4" },
-      { "value": 5, "label": "Pink 5" },
-      { "value": 6, "label": "Purple 6" }
+    this.lkp_coat_size = [
+      { "id": 1, "name": "XXXS" },
+      { "id": 2, "label": "XS" },
+      { "id": 3, "label": "S" },
+      { "id": 4, "label": "M" },
+      { "id": 5, "label": "L" },
+      { "id": 6, "label": "XL" }
     ]
 
     this.lkp_languages = [
