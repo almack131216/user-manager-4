@@ -20,6 +20,9 @@ export class FormInput {
     @bindable inpValueTwoWay = null;
     @bindable isMandatory = null;
 
+    @bindable isEnabled = true;
+    @bindable isReadonly = false;
+
     @bindable name = null;
     @bindable value = null;
 

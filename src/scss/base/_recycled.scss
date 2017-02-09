@@ -1,5 +1,12 @@
 /* _recycled.scss */
 
+.form-control[readonly] {
+    background-color:transparent !important;
+    border-color:transparent !important;
+    outline:none !important;
+    opacity: 1;
+}
+
 .xxx_wrap-role {
     .input-group {
         .input-group-addon {            

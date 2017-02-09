@@ -71,9 +71,9 @@ export class Lookups {
     ]
 
     this.lkp_bp_office_address = [
-      { "value": 1, "label": "Address 1" },
-      { "value": 2, "label": "Address 2" },
-      { "value": 3, "label": "Address 3" }
+      { "id": 1, "name": "Address 1" },
+      { "id": 2, "name": "Address 2" },
+      { "id": 3, "name": "Address 3" }
     ]
 
     /* MRT Details */
