@@ -26,12 +26,15 @@
             input-only="true"
             is-mandatory.bind="true"></form-checkbox>-->
 
-        <span class="form-group col-xs-6 col-debug is-mandatory">            
+        <div class="col-xs-6">
+            <span class="form-group col-xs-6 col-debug is-mandatory">            
             <label class="label-with-checkbox">
                 <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">
                 Multiple Visas
             </label>        
         </span>
+        </div>
+        
 
         <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.visas.length">
             <button class="btn btn-default btn-sm btn-i">

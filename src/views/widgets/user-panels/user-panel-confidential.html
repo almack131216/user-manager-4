@@ -6,6 +6,9 @@
     <require from="../../../resources/constants"></require>
     <require from="../../../resources/select2"></require>
 
+    <form-input model.two-way="user.profile.memberStatus" inp-label="Member Status" is-mandatory.bind="true"></form-input>
+    <form-input inp-type="date" model.two-way="user.profile.entityStatus.createdOn" inp-label="Date Joined" is-mandatory.bind="true"></form-input>
+
     <form-select inp-label="Username/NTID"
         prop-arr.bind="['value','loginName']"
         model.two-way="user.user.id"

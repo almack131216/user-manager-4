@@ -11,16 +11,32 @@
 
     <div class="divider"></div>
 
-    <div class="repeaters row-fluid" repeat.for="row of user.profile.trainings">
+    <!--<div class="repeaters row-fluid" repeat.for="row of user.profile.trainings">
 
-        <div if.bind="$index>0" class="divider dotted"></div>
+        <div if.bind="$index>0" class="divider dotted"></div>-->
 
         <div class="col-xs-12">
-            <form-radio name="trainings[$index]" inp-label.bind="user.profile.trainings[$index].training.name" model.two-way="user.profile.trainings[$index].training.id"
-                expiry-date.two-way="user.profile.trainings[$index].expiresOn ? user.profile.trainings[$index].expiresOn : '--'"
-                init-selected.two-way="user.profile.trainings[$index].training.id"></form-radio>
+            <form-radio inp-name.bind.bind="'training_ics''" inp-label.bind="user.profile.trainings[0].training.name" model.two-way="user.profile.trainings[0].training.id"
+                expiry-date.two-way="user.profile.trainings[0].expiresOn ? user.profile.trainings[0].expiresOn : '--'"
+                init-selected.two-way="user.profile.trainings[0].training.id"></form-radio>
         </div>
 
-    </div>
+        <div class="divider dotted"></div>
+
+        <div class="col-xs-12">
+            <form-radio inp-name.bind="'training_haz'" inp-label.bind="user.profile.trainings[1].training.name" model.two-way="user.profile.trainings[1].training.id"
+                expiry-date.two-way="user.profile.trainings[1].expiresOn ? user.profile.trainings[1].expiresOn : '--'"
+                init-selected.two-way="user.profile.trainings[1].training.id"></form-radio>
+        </div>
+
+        <div class="divider dotted"></div>
+
+        <div class="col-xs-12 margin-bottom-2">
+            <form-radio inp-name.bind="'training_offs'" inp-label.bind="user.profile.trainings[2].training.name" model.two-way="user.profile.trainings[2].training.id"
+                expiry-date.two-way="user.profile.trainings[2].expiresOn ? user.profile.trainings[2].expiresOn : '--'"
+                init-selected.two-way="user.profile.trainings[2].training.id"></form-radio>
+        </div>
+
+    <!--</div>-->
 
 </template>

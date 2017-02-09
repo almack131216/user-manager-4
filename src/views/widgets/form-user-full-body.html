@@ -10,14 +10,14 @@
     <require from="./user-panels/user-panel-confidential"></require>
     
     <div class="panel panel-default panel-xc">
-        <div class="panel-heading">
+        <div class="panel-heading cursor-hover" data-toggle="collapse"
+                data-target="#${custXcId}">
             <i if.bind="custIcon" class="fa ${custIcon} text-after"></i>
 
             ${custTitle}
              <!--| ${user.firstName} | ${user.lkp_regions_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected}-->
             <button if.bind="custXc" class="btn btn-xc_chevron btn-xs ${custXcExpanded ? '' : 'collapsed'}" type="button"
-                data-toggle="collapse"
-                data-target="#${custXcId}"
+                
                 aria-expanded="${custXcExpanded}"
                 aria-controls="collapseExample">
             </button>
