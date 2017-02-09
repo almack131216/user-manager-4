@@ -13,7 +13,7 @@
         <!--selected.two-way="selected" -->
         <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
         <!--propArr: ${propArr[0]} | ${propArr[1]}-->
-        <select if.bind="!autocomplete" class="form-control"
+        <select class="form-control"
             value.bind="initSelected"
             disabled.bind="!isEnabled"
             selected.two-way="selected"
@@ -26,7 +26,7 @@
             </option>
         </select>
 
-        <select if.bind="autocomplete" class="form-control"
+        <!--<select if.bind="autocomplete" class="form-control"
             id.bind="name"
             select2.bind="selectOptions"
             value.bind="initSelected"
@@ -37,7 +37,7 @@
             <option repeat.for="option of options | filter:optionFilter[0]:optionFilter[1]" model.bind="option[propArr[0]]">
                 ${option[propArr[1]]}
             </option>
-        </select>
+        </select>-->
 
     </div>
 </template>
