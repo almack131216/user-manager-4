@@ -6,8 +6,6 @@
     <require from="../../../resources/constants"></require>
     <require from="../../../resources/select2"></require>
 
-    <form-input model.two-way="user.user.loginName" inp-label="Username/NTID" is-mandatory.bind="true"></form-input>
-
     <form-select inp-label="Username/NTID"
         prop-arr.bind="['value','loginName']"
         model.two-way="user.user.id"

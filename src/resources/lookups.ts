@@ -237,7 +237,7 @@ export class Lookups {
       {
         "value": 5,
         "name": "Alex Mackenzie",
-        "loginName": "AGILY\AMackenzie",
+        "loginName": "AGILY\\AMackenzie",
       },
       {
         "value": 2,
