@@ -41,14 +41,15 @@
 
     <form-user-full-body user.bind="user" cust-title="MRT Role Information" cust-body="user-mrt-role" cust-xc="true" cust-xc-id="xc_mrt-role"></form-user-full-body>
 
-    <form-user-full-body user.bind="user" cust-title="Passport and Visa Information" cust-body="user-passport-visa" cust-xc="true" cust-xc-id="xc_passport-visa"
-      cust-xc-res-class="row-col-lg-6"></form-user-full-body>
+    <form-user-full-body user.bind="user" cust-title="Passport Information" cust-body="user-passport" cust-xc="true" cust-xc-id="xc_passport"></form-user-full-body>
 
-    <form-user-full-body user.bind="user" cust-title="Training" cust-body="user-training" cust-xc="true" cust-xc-id="xc_training" cust-xc-res-class="row-col-lg-6"></form-user-full-body>
+    <form-user-full-body user.bind="user" cust-title="Visa Information" cust-body="user-visa" cust-xc="true" cust-xc-id="xc_visa"></form-user-full-body>
 
-    <form-user-full-body user.bind="user" cust-title="TWIC Information" cust-body="user-twic" cust-xc="true" cust-xc-id="xc_twic" cust-xc-res-class="row-col-lg-6"></form-user-full-body>
+    <form-user-full-body user.bind="user" cust-title="Training" cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
 
-    <form-user-full-body if.bind="user.permissions.accessConfidentialFields" cust-icon="fa-exclamation-triangle" user.bind="user" cust-title="Confidential Information" cust-body="user-confidential" cust-xc="true" cust-xc-id="xc_confidential" cust-xc-res-class="row-col-lg-6"></form-user-full-body>
+    <form-user-full-body user.bind="user" cust-title="TWIC Information" cust-body="user-twic" cust-xc="true" cust-xc-id="xc_twic"></form-user-full-body>
+
+    <form-user-full-body if.bind="user.permissions.accessConfidentialFields" cust-icon="fa-exclamation-triangle" user.bind="user" cust-title="Confidential Information" cust-body="user-confidential" cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
 
   </form>
 

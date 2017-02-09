@@ -1,0 +1,41 @@
+<template>
+
+    <require from="../inputs/form-input"></require>
+    <require from="../inputs/form-select"></require>
+    <require from="../inputs/form-checkbox"></require>
+
+    <div class="repeaters row-fluid" repeat.for="row of user.profile.passports">
+
+        <div if.bind="$index>0" class="divider dotted"></div>
+
+        <form-select inp-label="Passport Type"
+            prop-arr.bind="['value','name']"
+            model.two-way="user.profile.passports[$index].type.value"
+            options.bind="lkp_passportTypes"
+            changed.two-way="user.profile.passports[$index].type.value"
+            autocomplete.bind="true"
+            init-selected.two-way="user.profile.passports[$index].type.value"
+            is-mandatory.bind="true"></form-select>
+
+        <form-input model.two-way="user.profile.passports[$index].number" inp-label="Passport Number" is-mandatory.bind="true"></form-input>
+
+        <form-select inp-label="Passport Nationality"
+            model.two-way="user.profile.passports[$index].country.id"
+            options.bind="lkp_passportNationality"
+            changed.two-way="user.profile.passports[$index].country.id"
+            autocomplete.bind="true"
+            init-selected.two-way="user.profile.passports[$index].country.id"
+            is-mandatory.bind="true"></form-select>
+
+        <form-input inp-type="date" model.two-way="user.profile.passports[$index].expiresOn" inp-label="Passport Expiry Date" is-mandatory.bind="true"></form-input>
+
+        <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.passports.length">
+            <button class="btn btn-default btn-sm btn-i">
+                <i class="fa fa-plus"></i>
+                Add Passport
+            </button>
+        </div>
+
+    </div>
+
+</template>
