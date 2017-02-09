@@ -1,4 +1,4 @@
-<template class="${inputOnly ? '' : 'row'}">
+<template class="form-group ${inputOnly ? '' : 'row'} ${isMandatory ? 'is-mandatory' : ''}">
     <span if.bind="!inputOnly" class="col-xs-8 col-debug">
         <label for.bind="inpName" title.bind="inpLabel">
             ${inpLabel} / ${model}
