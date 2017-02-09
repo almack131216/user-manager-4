@@ -10,7 +10,7 @@ interface User {
     lastName: string;
     emailAddress: string;
     personalNumber: string;
-    lkp_region_selected: number;
+    lkp_regions_selected: number;
 }
 
 @inject(WebAPIUsers, EventAggregator)

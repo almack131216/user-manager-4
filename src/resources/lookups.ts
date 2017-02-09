@@ -5,7 +5,7 @@ put all global variables here, as camel-case prefixed with a small 'g'
 
 export class Lookups {
   lkp_role;
-  lkp_region
+  lkp_regions
   lkp_hub
   lkp_segment
   lkp_entity
@@ -30,10 +30,15 @@ export class Lookups {
     ]
 
     /* User Details */
-    this.lkp_region = [
-      { "id": 1, "name": "Region 1" },
-      { "id": 2, "name": "Region 2" },
-      { "id": 3, "name": "Region 3" }
+    this.lkp_regions = [
+      {
+        "id": 1,
+        "name": "Northern Hemispere"
+      },
+      {
+        "id": 2,
+        "name": "Southern Hemisphere"
+      }
     ]
 
     this.lkp_hub = [

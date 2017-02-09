@@ -4,7 +4,7 @@
     "lastName":"Bowie",
     "emailAddress":"david@bowie.com",    
     "personalNumber":"123-4567",
-    "lkp_region_selected": 1,
+    "lkp_regions_selected": 1,
     "lkp_hub_selected": 3,
     "lkp_segment_selected": 8,
     "lkp_entity_selected": 9,

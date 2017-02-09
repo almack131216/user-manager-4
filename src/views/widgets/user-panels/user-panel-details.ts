@@ -8,14 +8,14 @@ export class UserPanelDetails {
     @bindable user;
     public CV = CV;
 
-    public lkp_region;
+    public lkp_regions;
     public lkp_hub;
     public lkp_segment;
     public lkp_entity;
     public lkp_bp_office_address;
 
     constructor(lookups:Lookups) {
-        this.lkp_region = lookups.lkp_region
+        this.lkp_regions = lookups.lkp_regions
 
         this.lkp_hub = lookups.lkp_hub
 
