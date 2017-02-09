@@ -11,7 +11,7 @@ export class Lookups {
   lkp_entity
   lkp_bp_office_address
   lkp_member_status
-  lkp_coat_size
+  lkp_coatSizes
   lkp_languages
   lkp_languageLevel
   lkp_primaryPositions;
@@ -90,13 +90,13 @@ export class Lookups {
       { "value": 3, "label": "Status 3" }
     ]
 
-    this.lkp_coat_size = [
+    this.lkp_coatSizes = [
       { "id": 1, "name": "XXXS" },
-      { "id": 2, "label": "XS" },
-      { "id": 3, "label": "S" },
-      { "id": 4, "label": "M" },
-      { "id": 5, "label": "L" },
-      { "id": 6, "label": "XL" }
+      { "id": 2, "name": "XS" },
+      { "id": 3, "name": "S" },
+      { "id": 4, "name": "M" },
+      { "id": 5, "name": "L" },
+      { "id": 6, "name": "XL" }
     ]
 
     this.lkp_languages = [

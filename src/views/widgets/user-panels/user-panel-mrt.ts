@@ -5,7 +5,7 @@ import { Lookups } from '../../../resources/lookups';
 export class UserPanelMrt {
     @bindable user;
     public lkp_member_status;
-    public lkp_coat_size;
+    public lkp_coatSizes;
     public lkp_languages;
     public lkp_languageLevel;
     public lkp_languages_limitTo = 5;
@@ -14,7 +14,7 @@ export class UserPanelMrt {
     constructor(lookups:Lookups) {
         this.lkp_member_status = lookups.lkp_member_status
 
-        this.lkp_coat_size = lookups.lkp_coat_size
+        this.lkp_coatSizes = lookups.lkp_coatSizes
 
         this.lkp_languages = lookups.lkp_languages
 

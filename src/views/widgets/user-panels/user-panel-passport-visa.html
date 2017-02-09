@@ -27,7 +27,7 @@
             init-selected.two-way="user.profile.passports[$index].country.id"
             is-mandatory.bind="true"></form-select>
 
-        <form-input model.two-way="user.profile.passports[$index].expiresOn" inp-label="Passport Expiry Date" is-mandatory.bind="true"></form-input>
+        <form-input inp-type="date" model.two-way="user.profile.passports[$index].expiresOn" inp-label="Passport Expiry Date" is-mandatory.bind="true"></form-input>
 
         <div class="btn-row text-align-left" if.bind="$index+1 == user.profile.passports.length">
             <button class="btn btn-default btn-sm btn-i">
@@ -52,7 +52,7 @@
             init-selected.two-way="user.profile.visas[$index].country.id"
             is-mandatory.bind="true"></form-select>
 
-        <form-input model.two-way="user.profile.visas[$index].expiresOn" inp-label="Visa Expiry Date" is-mandatory.bind="true"></form-input>
+        <form-input inp-type="date" model.two-way="user.profile.visas[$index].expiresOn" inp-label="Visa Expiry Date" is-mandatory.bind="true"></form-input>
 
         <form-select inp-label="Visa Type"
             prop-arr.bind="['value','name']"
@@ -62,7 +62,6 @@
             autocomplete.bind="true"
             init-selected.two-way="user.profile.visas[$index].type.value"
             is-mandatory.bind="true"></form-select>
-
 
         <form-checkbox
             class="margin-x-g1"
