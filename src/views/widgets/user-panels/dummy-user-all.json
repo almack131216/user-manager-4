@@ -1,7 +1,7 @@
 {
   "permissions": {
     "update": true,
-    "accessConfidentialFields": false
+    "accessConfidentialFields": true
   },
   "user": {
     "id": 5,

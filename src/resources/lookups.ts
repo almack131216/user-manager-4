@@ -20,6 +20,8 @@ export class Lookups {
   lkp_passportNationality;
   lkp_visaTypes;
   lkp_visaCountry;
+  lkp_userProfiles;
+  lkp_credentialLevels;
 
   constructor() {
     this.lkp_role = [
@@ -228,6 +230,34 @@ export class Lookups {
       {
         "id": 3,
         "name": "Algeria"
+      }
+    ]
+
+    this.lkp_userProfiles = [
+      {
+        "value": 5,
+        "name": "Alex Mackenzie",
+        "loginName": "AGILY\AMackenzie",
+      },
+      {
+        "value": 2,
+        "name": "David Sousek",
+        "loginName": "AGILY\\DSousek",
+      }
+    ]
+
+    this.lkp_credentialLevels = [
+      {
+        "value": 1,
+        "name": "1"
+      },
+      {
+        "value": 2,
+        "name": "2"
+      },
+      {
+        "value": 3,
+        "name": "3"
       }
     ]
 
