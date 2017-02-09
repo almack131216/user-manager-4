@@ -5,11 +5,13 @@ import { Lookups } from '../../../resources/lookups';
 
 export class UserPanelConfidential {
     @bindable user;
+    lkp_memberStatus;
     lkp_userProfiles;
     lkp_credentialLevels;
 
     constructor(private lookups: Lookups) {
 
+        this.lkp_memberStatus = lookups.lkp_memberStatus;
         this.lkp_userProfiles = lookups.lkp_userProfiles;
         this.lkp_credentialLevels = lookups.lkp_credentialLevels;
 

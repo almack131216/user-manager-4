@@ -119,9 +119,9 @@
 
     <div class="divider"></div>
 
-    <form-input name="lineManager" model.two-way="user.user.lineManager.displayName" inp-label="Line Manager"></form-input>
-    <form-input name="lineManager_emailAddress" model.two-way="user.user.lineManager.emailAddress" inp-label="Line Manager Email"></form-input>
-    <form-input name="loginName" model.two-way="user.user.lineManager.loginName" inp-label="Line Manager NTID"></form-input>
+    <form-input name="lineManager" model.two-way="user.user.lineManager.displayName" inp-label="Line Manager" is-readonly.bind="true"></form-input>
+    <form-input name="lineManager_emailAddress" model.two-way="user.user.lineManager.emailAddress" inp-label="Line Manager Email" is-readonly.bind="true"></form-input>
+    <form-input name="loginName" model.two-way="user.user.lineManager.loginName" inp-label="Line Manager NTID" is-readonly.bind="true"></form-input>
 
     <div class="divider"></div>
 

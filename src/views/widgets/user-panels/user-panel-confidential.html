@@ -6,17 +6,26 @@
     <require from="../../../resources/constants"></require>
     <require from="../../../resources/select2"></require>
 
-    <form-input model.two-way="user.profile.memberStatus" inp-label="Member Status" is-mandatory.bind="true"></form-input>
+    <form-select inp-label="Member Status"
+        model.two-way="1"
+        options.bind="lkp_memberStatus"
+        changed.two-way="1"
+        autocomplete.bind="true"
+        init-selected.two-way="1"
+        is-mandatory.bind="true"></form-select>
+
     <form-input inp-type="date" model.two-way="user.profile.entityStatus.createdOn" inp-label="Date Joined" is-mandatory.bind="true"></form-input>
 
-    <form-select inp-label="Username/NTID"
+    <div class="divider dotted"></div>
+
+    <!--<form-select inp-label="Username/NTID"
         prop-arr.bind="['value','loginName']"
         model.two-way="user.user.id"
         options.bind="lkp_userProfiles"
         changed.two-way="user.user.id"
         autocomplete.bind="true"
         init-selected.two-way="user.user.id"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"></form-select>-->
 
     <form-select inp-label="Credentials Level"
         prop-arr.bind="['value','name']"
@@ -26,5 +35,12 @@
         autocomplete.bind="true"
         init-selected.two-way="user.user.systemRoles.value"
         is-mandatory.bind="true"></form-select>
+
+        <div class="divider dotted"></div>
+        
+    <form-input model.two-way="2" inp-label="Confidential Field 2"></form-input>
+     <form-input model.two-way="3" inp-label="Confidential Field 3"></form-input>
+
+    <div class="divider dotted"></div>
 
 </template>

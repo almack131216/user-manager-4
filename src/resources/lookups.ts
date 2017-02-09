@@ -22,6 +22,7 @@ export class Lookups {
   lkp_visaCountry;
   lkp_userProfiles;
   lkp_credentialLevels;
+  lkp_memberStatus;
 
   constructor() {
     this.lkp_role = [
@@ -263,6 +264,17 @@ export class Lookups {
       {
         "value": 3,
         "name": "3"
+      }
+    ]
+
+    this.lkp_memberStatus = [
+      {
+        "value": 1,
+        "name": "Employed"
+      },
+      {
+        "value": 2,
+        "name": "Retired"
       }
     ]
 
