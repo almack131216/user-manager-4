@@ -1,5 +1,6 @@
 <template>
     <require from="../../../resources/format/format-date"></require>
+    <require from="./form-input"></require>
 
     <div class="row">
         <span class="${expiryDate ? 'col-xs-5 col-md-8' : 'col-xs-8'} col-debug">
@@ -14,8 +15,8 @@
             <input type="radio" name.bind="inpName" model.bind="0" checked.bind="model"> No
         </span>
         <span class="col-xs-3 ${expiryDate ? 'col-md-2' : ''} text-align-right col-debug" if.bind="expiryDate">
-            <span if.bind="expiryDate=='--'"></span>
-            <span if.bind="expiryDate!='--'">${expiryDate | formatDate }</span>
+            <input if.bind="expiryDate=='--'" type="text" value="--" class="form-control">
+            <input if.bind="expiryDate!='--'" type="text" value.bind="expiryDate | formatDate" class="form-control">
         </span>
     </div>
 </template>
