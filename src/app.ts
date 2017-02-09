@@ -5,7 +5,6 @@ import * as Constants from './resources/constants';
 const CV = Constants
 
 import {FetchConfig} from 'aurelia-auth';
-
 @inject(WebAPI,Router,FetchConfig)
 
 export class App {
