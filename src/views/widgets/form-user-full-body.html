@@ -1,7 +1,7 @@
 <template>
 
     <require from="./user-panels/user-panel-details"></require>
-    <require from="./user-panels/user-panel-mrt-role"></require>
+    <!--<require from="./user-panels/user-panel-mrt-role"></require>-->
     <require from="./user-panels/user-panel-languages"></require>    
     <require from="./user-panels/user-panel-passport"></require>
     <require from="./user-panels/user-panel-visa"></require>
@@ -25,7 +25,7 @@
         <div id="${custXcId}" class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}">
             <div class="wrap-fields">
                 <user-panel-details if.bind="custBody=='user-details'" user.bind="user"></user-panel-details>                
-                <user-panel-mrt-role if.bind="custBody=='user-mrt-role'" user.bind="user"></user-panel-mrt-role>
+                <!--<user-panel-mrt-role if.bind="custBody=='user-mrt-role'" user.bind="user"></user-panel-mrt-role>-->
                 <user-panel-languages if.bind="custBody=='user-languages'" user.bind="user"></user-panel-languages>
                 <user-panel-passport if.bind="custBody=='user-passport'" user.bind="user"></user-panel-passport>
                 <user-panel-visa if.bind="custBody=='user-visa'" user.bind="user"></user-panel-visa>
