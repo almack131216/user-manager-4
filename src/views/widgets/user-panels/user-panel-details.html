@@ -131,6 +131,15 @@
         is-mandatory.bind="true"></form-select>
 
     <div class="divider"></div>
+
+    <form-select name="lkp_member_status" inp-label="Coat Size"
+        model.two-way="user.profile.coatSize.id"
+        options.bind="lkp_coatSizes"
+        changed.two-way="user.profile.coatSize.id"
+        init-selected.two-way="user.profile.coatSize.id"
+        is-mandatory.bind="true"></form-select>
+        
+    <div class="divider"></div>
     
     <div class="col-xs-12">
         <table class="table cols-2 user-panel-table">
@@ -163,14 +172,7 @@
 
     
 
-    <div class="divider"></div>
-
-    <form-select name="lkp_member_status" inp-label="Coat Size"
-        model.two-way="user.profile.coatSize.id"
-        options.bind="lkp_coatSizes"
-        changed.two-way="user.profile.coatSize.id"
-        init-selected.two-way="user.profile.coatSize.id"
-        is-mandatory.bind="true"></form-select>
+    
     
 
 </template>
