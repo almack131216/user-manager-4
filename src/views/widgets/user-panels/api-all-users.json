@@ -1,0 +1,111 @@
+{
+  "totalCount": 8,
+  "offset": 0,
+  "limit": 25,
+  "data": [
+    {
+      "id": 1,
+      "loginName": "SYSTEM",
+      "firstName": null,
+      "lastName": null,
+      "emailAddress": null,
+      "isMember": false,
+      "profileDate": null,
+      "profilePending": false,
+      "reviewResult": null,
+      "reviewPending": false,
+      "isActive": false
+    },
+    {
+      "id": 2,
+      "loginName": "TEST",
+      "firstName": null,
+      "lastName": null,
+      "emailAddress": null,
+      "isMember": false,
+      "profileDate": null,
+      "profilePending": false,
+      "reviewResult": null,
+      "reviewPending": false,
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "loginName": "EXAMPLE",
+      "firstName": null,
+      "lastName": null,
+      "emailAddress": null,
+      "isMember": true,
+      "profileDate": "2017-02-10T17:20:32Z",
+      "profilePending": false,
+      "reviewResult": true,
+      "reviewPending": false,
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "loginName": "AGILY\\DSousek",
+      "firstName": "David",
+      "lastName": "Soušek",
+      "emailAddress": "david.sousek@agily.cz",
+      "isMember": false,
+      "profileDate": null,
+      "profilePending": false,
+      "reviewResult": null,
+      "reviewPending": false,
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "loginName": "AGILY\\AMackenzie",
+      "firstName": "Alex",
+      "lastName": "Mackenzie",
+      "emailAddress": "alex.mackenzie@agily.cz",
+      "isMember": true,
+      "profileDate": "2017-02-08T21:41:34Z",
+      "profilePending": true,
+      "reviewResult": null,
+      "reviewPending": true,
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "loginName": "AGILY\\JBohm",
+      "firstName": "Jakub",
+      "lastName": "Böhm",
+      "emailAddress": "jakub.bohm@agily.cz",
+      "isMember": false,
+      "profileDate": null,
+      "profilePending": false,
+      "reviewResult": null,
+      "reviewPending": false,
+      "isActive": true
+    },
+    {
+      "id": 7,
+      "loginName": "AGILY\\IAshworth",
+      "firstName": "Iain",
+      "lastName": "Ashworth",
+      "emailAddress": "IAshworth@agily.cz",
+      "isMember": false,
+      "profileDate": null,
+      "profilePending": false,
+      "reviewResult": null,
+      "reviewPending": false,
+      "isActive": false
+    },
+    {
+      "id": 8,
+      "loginName": "AGILY\\FPasek",
+      "firstName": "František",
+      "lastName": "Pašek",
+      "emailAddress": "frantisek.pasek@agily.cz",
+      "isMember": false,
+      "profileDate": null,
+      "profilePending": false,
+      "reviewResult": null,
+      "reviewPending": false,
+      "isActive": true
+    }
+  ]
+}

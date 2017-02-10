@@ -1,0 +1,9 @@
+{
+  "currentUser": {
+    "id": 5,
+    "displayName": "Alex Mackenzie",
+    "isMember": true,
+    "isReader": true,
+    "isEditor": true
+  }
+}

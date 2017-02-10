@@ -1,0 +1,55 @@
+{
+  "memberPreview": {
+    "displayName": "Alex Mackenzie",
+    "emailAddress": "alex.mackenzie@agily.cz",
+    "profilePending": false,
+    "reviewPending": true,
+    "manager": {
+      "displayName": "David Soušek",
+      "emailAddress": "david.sousek@agily.cz"
+    },
+    "profile": {
+      "hub": null,
+      "entity": "Rhine FVC",
+      "position": "Deputy Incident Commanders",
+      "function": "Brand new function",
+      "location": "Brand new location",
+      "office": "Office 1",
+      "businessNumber": "+000 000000000",
+      "personalNumber": "+000 000000000",
+      "submittedOn": "2017-02-10T17:39:03Z"
+    }
+  },
+  "recentSubmits": [
+    {
+      "id": 5,
+      "displayName": "Alex Mackenzie",
+      "emailAddress": "alex.mackenzie@agily.cz",
+      "submittedOn": "2017-02-10T17:39:03Z",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "displayName": "EXAMPLE",
+      "emailAddress": null,
+      "submittedOn": "2017-02-10T17:20:32Z",
+      "isActive": true
+    }
+  ],
+  "recentReviews": [
+    {
+      "id": 3,
+      "displayName": "EXAMPLE",
+      "emailAddress": null,
+      "reviewedByDisplayName": "TEST",
+      "reviewedByEmailAddress": null,
+      "reviewedOn": "2017-02-10T17:20:32Z",
+      "reviewResult": {
+        "value": 1,
+        "name": "Approved"
+      },
+      "profileExists": true,
+      "isActive": true
+    }
+  ]
+}
