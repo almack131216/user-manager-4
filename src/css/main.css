@@ -2175,7 +2175,7 @@ table.fixed-layout .squeeze-into-cell {
 
 /* line 191, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.table.user-panel-table {
-  margin-bottom: 10px !important;
+  margin: 15px 0 !important;
   border: 1px solid #ddd;
 }
 

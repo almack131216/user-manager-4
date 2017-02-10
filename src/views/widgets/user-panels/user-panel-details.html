@@ -102,6 +102,25 @@
     <form-input inp-label="Location" model.two-way="user.profile.location" is-mandatory.bind="true"></form-input>
 
     <div class="divider"></div>
+
+    <form-select name="Primary ICS"
+        model.two-way="user.profile.primaryPosition.id"
+        options.bind="lkp_primaryPositions"
+        changed.two-way="user.profile.primaryPosition.id"
+        autocomplete.bind="true"
+        init-selected.two-way="user.profile.primaryPosition.id"
+        is-mandatory.bind="true"></form-select>
+
+    <form-select inp-label="Secondary ICS"
+        model.two-way="user.profile.secondaryPosition.id"
+        options.bind="lkp_secondaryPositions"
+        changed.two-way="user.profile.secondaryPosition.id"        
+        init-selected.two-way="user.profile.secondaryPosition.id"
+        option-filter.bind="['primaryPositionId',user.profile.primaryPosition.id]"
+        is-enabled.bind="user.profile.primaryPosition.id"
+        is-mandatory.bind="true"></form-select>
+        
+    <div class="divider"></div>
     
     <form-select inp-label="BP Office"
         model.two-way="user.profile.office.id"

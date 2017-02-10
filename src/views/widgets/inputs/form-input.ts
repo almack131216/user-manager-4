@@ -27,6 +27,8 @@ export class FormInput {
     @bindable name = null;
     @bindable value = null;
 
+    @bindable inputOnly = false;
+
     public constructor(model) {
     }
 

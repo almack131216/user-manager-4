@@ -14,7 +14,17 @@ export class UserPanelDetails {
     public lkp_entity;
     public lkp_bp_office_address;
 
+    lkp_coatSizes;
+    lkp_primaryPositions;
+    lkp_secondaryPositions;
+
     constructor(lookups:Lookups) {
+        this.lkp_coatSizes = lookups.lkp_coatSizes
+
+        this.lkp_primaryPositions = lookups.lkp_primaryPositions
+
+        this.lkp_secondaryPositions = lookups.lkp_secondaryPositions;
+
         this.lkp_regions = lookups.lkp_regions
 
         this.lkp_hub = lookups.lkp_hub
