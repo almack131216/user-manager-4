@@ -16,14 +16,14 @@ Version: 0.0.1
 /* offset: margins & paddings */
 /* _mixins.scss */
 /* _print-and-web.scss */
-/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 3, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust {
   border: none;
   background: #f9f9f9;
   border-left: 5px solid #239F40;
 }
 
-/* line 8, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 8, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust.panel-page-error {
   display: inline-block;
   margin: 30px auto;
@@ -36,44 +36,44 @@ Version: 0.0.1
   border-radius: 10px;
 }
 
-/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 17, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust.panel-page-error .page-error-code {
   display: block;
   font-size: 80px;
   margin: 0 0 10px 0;
 }
 
-/* line 24, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 24, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust.panel-border {
   background: transparent;
   border: 5px solid #f9f9f9;
 }
 
-/* line 29, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 29, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust.panel-warning {
   background: #fcf8e3;
   border-color: #FFCD04;
 }
 
-/* line 33, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 33, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust.panel-info {
   background: #d9edf7;
   border-color: #5bc0de;
 }
 
-/* line 37, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 37, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust.panel-success {
   background: #dff0d8;
   border-color: #a6cf41;
 }
 
-/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 41, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust.panel-error, .panel.panel-prompt-cust.panel-danger {
   background: #F7C6BE;
   border-color: #f00;
 }
 
-/* line 46, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+/* line 46, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_print-and-web.scss */
 .panel.panel-prompt-cust > p,
 .panel.panel-prompt-cust > .panel-heading {
   padding: 20px;
@@ -87,14 +87,14 @@ Version: 0.0.1
 }
 
 /* BASE - base styles, variables, mixins etc */
-/* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 14, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 html, body {
   height: auto;
   margin: 0;
   padding: 0;
 }
 
-/* line 20, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 20, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 body {
   color: #000;
   background: #fff;
@@ -108,17 +108,17 @@ body {
   text-align: left;
 }
 
-/* line 33, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 33, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 main {
   min-height: auto !important;
 }
 
-/* line 37, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 37, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .position-relative#printableArea {
   position: unset;
 }
 
-/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 41, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .print-none,
 header,
 table tr .col-actions, table tr .col-hidden, table tr .col-checkbox,
@@ -128,29 +128,29 @@ button, .panel-btn-wrap,
   display: none;
 }
 
-/* line 50, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 50, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
   display: none !important;
 }
 
-/* line 54, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 54, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .text-align-center {
   text-align: center;
 }
 
-/* line 58, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 58, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .tab-content > .active {
   display: block;
 }
 
 /* .breadcrumbWrap */
-/* line 63, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 63, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .breadcrumbWrap {
   display: block;
   width: 100%;
 }
 
-/* line 67, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 67, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .breadcrumbWrap ul {
   display: block;
   width: 100%;
@@ -159,57 +159,57 @@ button, .panel-btn-wrap,
   padding: 0;
 }
 
-/* line 74, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 74, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .breadcrumbWrap ul li {
   display: inline;
   list-style: none;
   margin: 0;
 }
 
-/* line 79, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 79, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .breadcrumbWrap ul li:before {
   content: ' > ';
   margin: 0 10px;
 }
 
-/* line 84, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 84, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .breadcrumbWrap ul li:first-child:before {
   content: '' !important;
   margin: 0;
 }
 
-/* line 92, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 92, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-heading-strong {
   display: block;
   width: 100%;
 }
 
-/* line 96, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 96, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-heading-strong h3 {
   font-size: 16pt;
   color: #c40f11;
 }
 
 /* .panel-heading */
-/* line 103, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 103, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-heading {
   font-weight: bold;
   border-bottom: 1px solid #000;
 }
 
-/* line 107, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 107, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-heading[aria-hidden="true"],
 .panel-heading.panel-collapse-trigger > .panel-collapse > .panel-heading {
   display: none;
 }
 
-/* line 112, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 112, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-heading .panel-title {
   display: inline-block;
   font-size: 12pt;
 }
 
-/* line 117, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 117, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-heading .panel-title-date {
   display: inline-block;
   font-weight: normal;
@@ -218,23 +218,23 @@ button, .panel-btn-wrap,
 }
 
 /* .panel-collapse */
-/* line 126, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 126, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-collapse {
   display: block !important;
   height: auto !important;
 }
 
-/* line 130, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 130, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-collapse .wrap-subsections {
   padding: 40px 10%;
 }
 
-/* line 135, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 135, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-collapse .wrap-subsections .is-subsection .panel-collapse-wrap > .panel-heading {
   border-bottom: none;
 }
 
-/* line 139, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 139, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .panel-collapse .wrap-subsections .is-subsection .panel-collapse-wrap > .panel-collapse {
   border: 2px solid #ccc;
   padding: 20px;
@@ -242,7 +242,7 @@ button, .panel-btn-wrap,
 }
 
 /* table */
-/* line 150, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 150, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -250,13 +250,13 @@ table {
   margin-bottom: 40px;
 }
 
-/* line 156, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 156, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 table.half-n-half tr th,
 table.half-n-half tr td {
   width: 50%;
 }
 
-/* line 162, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 162, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 table tr th,
 table tr td {
   padding: 0 10px 0 0;
@@ -265,76 +265,76 @@ table tr td {
   border-bottom: 1px dotted #ccc;
 }
 
-/* line 170, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 170, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 table tr th {
   border-bottom: 1px solid #000;
 }
 
-/* line 173, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 173, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 table tr th.col-hidden-header {
   display: none;
 }
 
-/* line 183, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 183, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 h1, h2, h3, h4, h5, h6 {
   page-break-after: avoid;
   page-break-inside: avoid;
 }
 
-/* line 188, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 188, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 img {
   page-break-inside: avoid;
   page-break-after: avoid;
 }
 
-/* line 193, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 193, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 blockquote, pre, panel {
   page-break-inside: avoid;
 }
 
-/* line 197, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 197, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 ul, ol, dl {
   page-break-before: avoid;
 }
 
-/* line 201, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 201, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 ul {
   page-break-inside: avoid;
 }
 
-/* line 205, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 205, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 article {
   page-break-before: always;
 }
 
 /* span highlights */
-/* line 210, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 210, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .span-no-data-available {
   font-weight: bold;
 }
 
-/* line 214, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 214, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .span-info {
   color: #239f40;
 }
 
-/* line 218, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 218, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .span-good {
   color: #239f40;
 }
 
-/* line 222, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 222, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .span-error {
   color: red;
 }
 
-/* line 226, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 226, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 .span-warning {
   color: #ff9900;
 }
 
 /* .footer */
-/* line 231, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/print.scss */
+/* line 231, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/print.scss */
 footer {
   clear: both;
   display: inline-block;
