@@ -15,9 +15,11 @@ export class FormRadio {
     @bindable inpName = null;
     @bindable inpValue = null;
     @bindable isMandatory = null;
-    @bindable expiryDate = null;
+    //@bindable expiryDate = null;
 
     public initSelected: null;
+
+    @bindable inputOnly = false;
 
     activate(model) {
         // model is the passed through object

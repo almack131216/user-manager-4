@@ -4,28 +4,40 @@
     <require from="../inputs/form-radio"></require>
 
     <div class="row-fluid">
-        <div class="col-xs-12" innerhtml.bind="message">
-
-        </div>
+        <div class="col-xs-12" innerhtml.bind="message"></div>
     </div>
 
-    <div class="divider"></div>
-
-    <div class="repeaters row-fluid margin-bottom-g1" repeat.for="row of user.profile.trainings">
-
-        <div if.bind="$index>0" class="divider dotted"></div>
-
-        <div class="col-xs-12">
-            <form-radio inp-name.bind="['training_' + $index]"
-                inp-label.bind="user.profile.trainings[$index].training.name"
-                model.two-way="user.profile.trainings[$index].training.id"
-                expiry-date.two-way="user.profile.trainings[$index].expiresOn ? user.profile.trainings[$index].expiresOn : '--'"
-                init-selected.two-way="user.profile.trainings[$index].training.id"></form-radio>
-        </div>
-
+    <div class="col-xs-12">
+        <table class="table cols-3 user-panel-table padded-cells">
+            <thead>
+                <tr>
+                    <th>Training</th>
+                    <th>Attended</th>
+                    <th>Expiry Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr repeat.for="row of user.profile.trainings">
+                    <td>
+                        <label>${user.profile.trainings[$index].training.name}</label>
+                    </td>
+                    <td>
+                        <form-radio inp-name.bind="['training_' + $index]"
+                            inp-label.bind="user.profile.trainings[$index].training.name"
+                            model.two-way="user.profile.trainings[$index].training.id"                            
+                            init-selected.two-way="user.profile.trainings[$index].training.id"
+                            input-only="true"></form-radio>
+                    </td>
+                    <td>
+                        <form-input inp-type="date" model.two-way="user.profile.trainings[$index].expiresOn" inp-label="Expiry Date" is-mandatory.bind="true"
+                            input-only="true"></form-input>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-        <!--<div class="col-xs-12">
+    <!--<div class="col-xs-12">
             <form-radio inp-name.bind.bind="'training_ics" inp-label.bind="user.profile.trainings[0].training.name" model.two-way="user.profile.trainings[0].training.id"
                 expiry-date.two-way="user.profile.trainings[0].expiresOn ? user.profile.trainings[0].expiresOn : '--'"
                 init-selected.two-way="user.profile.trainings[0].training.id"></form-radio>
