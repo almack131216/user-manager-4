@@ -520,18 +520,24 @@ input, textarea, button {
 
 /* _recycled.scss */
 /* line 3, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+img.fit-col {
+  width: 100%;
+  height: auto;
+}
+
+/* line 5, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .cursor-hover {
   cursor: pointer;
 }
 
-/* line 5, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 7, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .strapline {
   float: left;
   height: 35px;
   margin: 40px 0 0 50px;
 }
 
-/* line 7, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 9, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .form-control[readonly] {
   background-color: transparent !important;
   border-color: transparent !important;
@@ -539,7 +545,7 @@ input, textarea, button {
   opacity: 1;
 }
 
-/* line 16, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 18, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .xxx_wrap-role .input-group .input-group-addon {
   background: transparent;
   padding-left: 0px;
@@ -547,29 +553,29 @@ input, textarea, button {
   border: 0px;
 }
 
-/* line 22, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 24, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .xxx_wrap-role .input-group .input-group-addon i.fa {
   display: none;
 }
 
-/* line 27, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 29, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 ai-dialog-overlay {
   background: white;
   filter: alpha(opacity=50) !important;
   opacity: 0.5 !important;
 }
 
-/* line 34, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 36, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 ai-dialog > ai-dialog-footer {
   padding: 15px;
 }
 
-/* line 41, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 43, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 table.table-hover tr:hover {
   cursor: pointer;
 }
 
-/* line 46, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 48, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 div.wrap_table-add-user-from-list {
   display: block;
   min-height: 100px;
@@ -578,17 +584,17 @@ div.wrap_table-add-user-from-list {
   overflow-x: hidden;
 }
 
-/* line 54, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 56, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 ai-dialog {
   width: 600px;
 }
 
-/* line 58, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 60, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 ai-dialog ai-dialog-header h2 {
   margin: 0;
 }
 
-/* line 64, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 66, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .btn-row {
   clear: both;
   display: block;
@@ -597,28 +603,28 @@ ai-dialog ai-dialog-header h2 {
   text-align: center;
 }
 
-/* line 67, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 69, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .btn-row .btn, .btn-row .str-inline-with-btns, .btn-row .pagination-controls .page-number, .pagination-controls .btn-row .page-number {
   display: inline-block;
 }
 
-/* line 74, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 76, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .select2 {
   width: 100% !important;
 }
 
-/* line 76, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 78, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .select2-container .select2-selection--single .select2-selection__rendered {
   padding-left: 15px;
   padding-right: 25px;
 }
 
-/* line 81, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 83, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .select2-container--default .select2-selection--single .select2-selection__clear {
   padding: 0 5px;
 }
 
-/* line 85, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 87, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .select2-container--default .select2-selection--single {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -627,7 +633,7 @@ ai-dialog ai-dialog-header h2 {
   border-radius: 0px;
 }
 
-/* line 91, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 93, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .select2-container .select2-selection--single {
   box-sizing: border-box;
   cursor: pointer;
@@ -637,7 +643,7 @@ ai-dialog ai-dialog-header h2 {
   -webkit-user-select: none;
 }
 
-/* line 101, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 103, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc {
   margin-bottom: 15px;
   border: 1px solid #009900;
@@ -645,7 +651,7 @@ ai-dialog ai-dialog-header h2 {
   box-shadow: none;
 }
 
-/* line 106, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 108, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading {
   border-bottom: 0px;
   background: #009900;
@@ -653,18 +659,18 @@ ai-dialog ai-dialog-header h2 {
   font-weight: bold;
 }
 
-/* line 112, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 114, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading .btn-text {
   color: #FFFF00;
 }
 
-/* line 116, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 118, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading .btn.btn-xc_chevron, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number {
   float: right;
   background: transparent;
 }
 
-/* line 120, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 122, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before {
   color: #FFFF00;
   font-size: 14px;
@@ -672,18 +678,18 @@ ai-dialog ai-dialog-header h2 {
   content: "\f077";
 }
 
-/* line 130, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 132, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading.collapsed .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.page-number:before {
   content: "\f078";
 }
 
-/* line 136, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 138, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-body {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
-/* line 140, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 142, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-body .wrap-fields {
   background: #f9f9f9;
   padding: 15px 0 0 0;
@@ -693,7 +699,7 @@ ai-dialog ai-dialog-header h2 {
   height: auto;
 }
 
-/* line 150, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 152, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-body .wrap-fields .form-group label {
   text-align: right;
   font-size: 13px;
@@ -701,18 +707,18 @@ ai-dialog ai-dialog-header h2 {
   padding-top: 5px;
 }
 
-/* line 160, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 162, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .border-none {
   border: 0px;
 }
 
-/* line 169, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 171, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel-heading {
   background: #f9f9f9;
   border: 0px;
 }
 
-/* line 178, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 180, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .repeaters {
   clear: both;
   display: block;
@@ -720,7 +726,7 @@ ai-dialog ai-dialog-header h2 {
   height: auto;
 }
 
-/* line 185, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 187, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel-body .divider {
   clear: both;
   float: left;
@@ -731,50 +737,50 @@ ai-dialog ai-dialog-header h2 {
   margin: 0px;
 }
 
-/* line 194, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 196, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .panel-body .divider.dotted {
   border-top: 1px dotted #ddd;
   margin-bottom: 15px;
 }
 
-/* line 200, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 202, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-/* line 204, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 206, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .highlighted {
   background: yellow;
 }
 
-/* line 208, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 210, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .hide-border-top {
   border-top: none;
 }
 
-/* line 210, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 212, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .hide-border-top label {
   display: none;
 }
 
-/* line 213, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 215, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .color-amber {
   color: #FFA500;
 }
 
-/* line 217, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 219, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .color-good {
   color: #1fbb1f;
 }
 
-/* line 221, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 223, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .color-danger {
   color: #FF0000;
 }
 
 /* tmp */
 /* forms */
-/* line 231, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 233, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .form-group label {
   white-space: nowrap;
   overflow: hidden;
@@ -783,92 +789,92 @@ ai-dialog ai-dialog-header h2 {
 }
 
 /* offsets */
-/* line 234, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 236, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .padding-x-0 {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
-/* line 235, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 237, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .margin-x-0 {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
 
-/* line 237, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 239, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .html-file-name {
   margin-left: 10px;
   font-size: 0.5em;
   color: #aaa;
 }
 
-/* line 242, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 244, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .display-none {
   display: none !important;
 }
 
-/* line 243, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 245, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .display-block {
   display: block !important;
 }
 
-/* line 244, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 246, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .display-inline-block {
   display: inline-block !important;
 }
 
-/* line 246, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 248, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 section {
   margin: 0 20px;
 }
 
-/* line 250, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 252, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep {
   float: left;
 }
 
-/* line 253, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 255, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep-3 {
   width: 25%;
 }
 
-/* line 256, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 258, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep-4 {
   width: 33.33333333%;
 }
 
-/* line 259, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 261, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep-5 {
   width: 41.66666667%;
 }
 
-/* line 262, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 264, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep-6 {
   width: 50%;
 }
 
-/* line 265, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 267, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep-7 {
   width: 58.33333333%;
 }
 
-/* line 268, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 270, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep-8 {
   width: 66.66666667%;
 }
 
-/* line 271, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+/* line 273, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
 .col-dep-12 {
   width: 100%;
 }
 
 @media (min-width: 1200px) {
-  /* line 275, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+  /* line 277, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
   .row.row-col-lg-6 > .wrap-fields > * > .form-group,
   .row.row-col-lg-6 > .wrap-fields > * > .repeaters > .form-group {
     width: 50%;
   }
-  /* line 281, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+  /* line 283, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
   .row.row-col-lg-4 > .wrap-fields > * > .form-group,
   .row.row-col-lg-4 > .wrap-fields > * > .repeaters > .form-group {
     width: 50%;
@@ -876,7 +882,7 @@ section {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  /* line 289, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+  /* line 291, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
   .row.row-col-md-6 > .wrap-fields > * > .form-group,
   .row.row-col-md-6 > .wrap-fields > * > .repeaters > .form-group {
     width: 50%;
@@ -884,7 +890,7 @@ section {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 298, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+  /* line 300, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
   .row.row-col-sm-6 > .wrap-fields > * > .form-group,
   .row.row-col-sm-6 > .wrap-fields > * > .repeaters > .form-group {
     width: 50%;
@@ -892,7 +898,7 @@ section {
 }
 
 @media (max-width: 767px) {
-  /* line 307, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+  /* line 309, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
   .row.row-col-xs-6 > .wrap-fields > * > .form-group,
   .row.row-col-xs-6 > .wrap-fields > * > .repeaters > .form-group {
     width: 50%;
@@ -900,7 +906,7 @@ section {
 }
 
 @media (min-width: 481px) and (max-width: 640px) {
-  /* line 315, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
+  /* line 317, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/base/_recycled.scss */
   .row.row-col-xxs-12 > .wrap-fields > * > .form-group,
   .row.row-col-xxs-12 > .wrap-fields > * > .repeaters > .form-group {
     width: 100%;
@@ -2398,40 +2404,48 @@ table.table.user-panel-table.padded-cells tr td {
 /*@import 'modules/_md-dialog.scss';*/
 /* LAYOUTS - page layout styles */
 /* _bootstrap-overrule.scss */
-/* line 2, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* update config */
+/* line 5, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #009900 !important;
+}
+
+/* (END) update config */
+/* line 11, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .navbar-default .navbar-toggle {
   border-color: transparent !important;
 }
 
-/* line 6, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 15, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #fff !important;
 }
 
-/* line 10, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 19, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .btn-default:hover,
 .btn-default:active,
 .btn-default:focus {
   color: #067d00 !important;
 }
 
-/* line 17, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 26, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .dropdown-menu > li.divider {
   margin: 0;
 }
 
-/* line 19, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 28, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .dropdown-menu > li > a {
   padding: 3px 10px;
 }
 
-/* line 25, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 34, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .wrap-pagination > ul.pagination {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
 }
 
-/* line 31, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 40, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .pagination > li > a,
 .pagination > li > span {
   padding: 4px 10px;
@@ -2441,7 +2455,7 @@ table.table.user-panel-table.padded-cells tr td {
   border: 1px solid #ddd;
 }
 
-/* line 40, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 49, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .pagination > .disabled > a,
 .pagination > .disabled > a:focus,
 .pagination > .disabled > a:hover,
@@ -2453,7 +2467,7 @@ table.table.user-panel-table.padded-cells tr td {
   border-color: #ddd;
 }
 
-/* line 51, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 60, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .pagination > .active > a,
 .pagination > .active > a:focus,
 .pagination > .active > a:hover,
@@ -2465,7 +2479,7 @@ table.table.user-panel-table.padded-cells tr td {
   border-color: #ddd;
 }
 
-/* line 62, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 71, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .input-group-addon {
   padding: 4px 10px;
   color: #555;
@@ -2473,7 +2487,7 @@ table.table.user-panel-table.padded-cells tr td {
   border: 1px solid #ddd;
 }
 
-/* line 69, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
+/* line 78, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/layouts/_bootstrap-overrule.scss */
 .btn-default {
   color: #009900;
   background-color: #fff;

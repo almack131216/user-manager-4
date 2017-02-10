@@ -24,7 +24,70 @@ export class Lookups {
   lkp_credentialLevels;
   lkp_memberStatus;
 
+  /* welcome */
+  lkp_memberPreview
+  lkp_recentSubmits
+  lkp_recentReviews
+
   constructor() {
+    /* Welcome (MEMBER) */
+    this.lkp_memberPreview = {
+      "displayName": "Alex Mackenzie",
+      "emailAddress": "alex.mackenzie@agily.cz",
+      "profilePending": true,
+      "reviewPending": true,
+      "manager": {
+        "displayName": "David Soušek",
+        "emailAddress": "david.sousek@agily.cz"
+      },
+      "profile": {
+        "hub": null,
+        "entity": null,
+        "position": null,
+        "function": null,
+        "location": null,
+        "office": null,
+        "businessNumber": null,
+        "personalNumber": null,
+        "submittedOn": "2017-02-08T21:41:34Z"
+      }
+    }
+
+    this.lkp_recentSubmits = [
+      {
+        "id": 3,
+        "displayName": "EXAMPLE",
+        "emailAddress": null,
+        "submittedOn": "2017-02-10T14:04:17Z",
+        "isActive": true
+      },
+      {
+        "id": 5,
+        "displayName": "Alex Mackenzie",
+        "emailAddress": "alex.mackenzie@agily.cz",
+        "submittedOn": "2017-02-08T21:41:34Z",
+        "isActive": true
+      }
+    ]
+
+    this.lkp_recentReviews = [
+      {
+        "id": 3,
+        "displayName": "EXAMPLE",
+        "emailAddress": null,
+        "reviewedByDisplayName": "TEST",
+        "reviewedByEmailAddress": null,
+        "reviewedOn": "2017-02-10T14:04:16Z",
+        "reviewResult": {
+          "value": 1,
+          "name": "Approved"
+        },
+        "profileExists": true,
+        "isActive": true
+      }
+    ]
+
+    /* ROLES */
     this.lkp_role = [
       { "value": 1, "name": "Viewer" },
       { "value": 3, "name": "Admin" }

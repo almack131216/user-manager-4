@@ -1,4 +1,13 @@
 /* _bootstrap-overrule.scss */
+
+
+/* update config */
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: #009900 !important;
+}
+/* (END) update config */
+
 .navbar-default .navbar-toggle {
     border-color:transparent !important;
 }
