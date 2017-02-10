@@ -189,13 +189,13 @@ table.fixed-layout {
 }
 
 table.table.user-panel-table {
-    margin:$offset-g1 0 !important;
+    margin:0 0 $offset-g1 0;
     border:1px solid $border-color;
 
     tr {
 
         th {
-            padding:$offset-g1;
+            padding:$offset-1 $offset-g1;
             background:$bp_color-green-faint;
             border:0px;
             border-bottom:1px solid $border-color;
