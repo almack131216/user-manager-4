@@ -13,20 +13,25 @@
     }
 }
 
-.btn.btn-xc_chevron {
-    float:right;
-    background:transparent;
 
-    &:before {
-        color:$hyperlink-color;
-        font-size:14px;
-        line-height:14px;
-        @extend .fa-dummy;
-        content: "\f077"; 
-        
+.panel-heading {
+    .btn.btn-xc_chevron {
+        float:right;
+        background:transparent;
+
+        &:before {
+            color:$hyperlink-color;
+            font-size:14px;
+            line-height:14px;
+            @extend .fa-dummy;
+            content: "\f077";            
+        }
     }
-    &.collapsed:before {
-              content: "\f078"; 
+
+    &.collapsed {
+        .btn.btn-xc_chevron:before {
+            content: "\f078"; 
+        }
     }
 }
 

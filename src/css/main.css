@@ -1110,7 +1110,7 @@ strong,
 }
 
 /* line 76, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_typography.scss */
-.fa-dummy, .btn.btn-xc_chevron:before, .btn-xc_chevron.str-inline-with-btns:before, .pagination-controls .btn-xc_chevron.page-number:before, ul.help-list li:before,
+.fa-dummy, .panel-heading .btn.btn-xc_chevron:before, .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel-heading .btn-xc_chevron.page-number:before, ul.help-list li:before,
 ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after {
   vertical-align: top;
   font-family: FontAwesome;
@@ -1136,44 +1136,44 @@ ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after 
   border-right: 2px solid #ddd;
 }
 
-/* line 16, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
-.btn.btn-xc_chevron, .btn-xc_chevron.str-inline-with-btns, .pagination-controls .btn-xc_chevron.page-number {
+/* line 18, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+.panel-heading .btn.btn-xc_chevron, .panel-heading .btn-xc_chevron.str-inline-with-btns, .panel-heading .pagination-controls .btn-xc_chevron.page-number, .pagination-controls .panel-heading .btn-xc_chevron.page-number {
   float: right;
   background: transparent;
 }
 
-/* line 20, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
-.btn.btn-xc_chevron:before, .btn-xc_chevron.str-inline-with-btns:before, .pagination-controls .btn-xc_chevron.page-number:before {
+/* line 22, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+.panel-heading .btn.btn-xc_chevron:before, .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel-heading .btn-xc_chevron.page-number:before {
   color: #009900;
   font-size: 14px;
   line-height: 14px;
   content: "\f077";
 }
 
-/* line 28, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
-.btn.btn-xc_chevron.collapsed:before, .btn-xc_chevron.collapsed.str-inline-with-btns:before, .pagination-controls .btn-xc_chevron.collapsed.page-number:before {
+/* line 32, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+.panel-heading.collapsed .btn.btn-xc_chevron:before, .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before, .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel-heading.collapsed .btn-xc_chevron.page-number:before {
   content: "\f078";
 }
 
-/* line 35, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 40, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-group.btn-edit-avatar > .btn-group button.btn, .btn-group.btn-edit-avatar > .btn-group button.str-inline-with-btns, .btn-group.btn-edit-avatar > .btn-group .pagination-controls button.page-number, .pagination-controls .btn-group.btn-edit-avatar > .btn-group button.page-number {
   line-height: 50px;
   padding: 0 10px;
 }
 
-/* line 41, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 46, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-group.btn-edit-avatar a.btn.avatar, .btn-group.btn-edit-avatar a.avatar.str-inline-with-btns, .btn-group.btn-edit-avatar .pagination-controls a.avatar.page-number, .pagination-controls .btn-group.btn-edit-avatar a.avatar.page-number {
   padding: 0;
   border: 1px solid #f1f1f1;
 }
 
-/* line 45, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 50, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-group.btn-edit-avatar a.btn.avatar img, .btn-group.btn-edit-avatar a.avatar.str-inline-with-btns img, .btn-group.btn-edit-avatar .pagination-controls a.avatar.page-number img, .pagination-controls .btn-group.btn-edit-avatar a.avatar.page-number img {
   width: auto;
   max-height: 50px;
 }
 
-/* line 52, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 57, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-debrief, .btn-debrief.str-inline-with-btns, .pagination-controls .btn-debrief.page-number {
   display: block;
   text-align: center;
@@ -1185,36 +1185,36 @@ ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after 
   border-radius: 0px;
 }
 
-/* line 60, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 65, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-debrief.cross, .btn-debrief.cross.str-inline-with-btns, .pagination-controls .btn-debrief.cross.page-number {
   color: #f00;
 }
 
-/* line 63, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 68, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-debrief.cross.selected, .btn-debrief.cross.selected.str-inline-with-btns, .pagination-controls .btn-debrief.cross.selected.page-number {
   border-color: #f00;
   background: #f00;
   color: white;
 }
 
-/* line 70, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 75, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-debrief.tick, .btn-debrief.tick.str-inline-with-btns, .pagination-controls .btn-debrief.tick.page-number {
   color: #009900;
 }
 
-/* line 73, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 78, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-debrief.tick.selected, .btn-debrief.tick.selected.str-inline-with-btns, .pagination-controls .btn-debrief.tick.selected.page-number {
   border-color: #009900;
   background: #009900;
   color: white;
 }
 
-/* line 81, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 86, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.disabled, .disabled.str-inline-with-btns, .pagination-controls .disabled.page-number, .btn[disabled], [disabled].str-inline-with-btns, .pagination-controls [disabled].page-number, fieldset[disabled] .btn, fieldset[disabled] .str-inline-with-btns, fieldset[disabled] .pagination-controls .page-number, .pagination-controls fieldset[disabled] .page-number {
   color: #c8c8c8;
 }
 
-/* line 85, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 90, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-gradient {
   background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
   background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
@@ -1225,12 +1225,12 @@ ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after 
   background-repeat: repeat-x;
 }
 
-/* line 95, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 100, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-gradient-hover {
   background: #e0e0e0 !important;
 }
 
-/* line 99, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 104, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn, .str-inline-with-btns, .pagination-controls .page-number {
   text-align: left;
   font-size: 13px;
@@ -1238,14 +1238,14 @@ ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after 
   padding: 5px 10px;
 }
 
-/* line 106, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 111, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .str-inline-with-btns {
   display: inline-block;
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 113, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 118, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-lg, .btn-lg.str-inline-with-btns, .pagination-controls .btn-lg.page-number {
   font-size: 18px;
   line-height: 1.333;
@@ -1257,7 +1257,7 @@ ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after 
   height: auto;
 }
 
-/* line 122, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 127, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 label.label-with-radio,
 label.label-with-checkbox,
 .col-checkboxes label,
@@ -1267,7 +1267,7 @@ label.label-with-checkbox,
   font-weight: normal;
 }
 
-/* line 128, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 133, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 label.label-with-radio.strong,
 label.label-with-checkbox.strong,
 .col-checkboxes label.strong,
@@ -1275,7 +1275,7 @@ label.label-with-checkbox.strong,
   font-weight: bold;
 }
 
-/* line 132, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 137, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 label.label-with-radio input[type="radio"],
 label.label-with-radio input[type="checkbox"],
 label.label-with-checkbox input[type="radio"], .col-checkboxes label input[type="radio"],
@@ -1289,7 +1289,7 @@ label.label-with-checkbox input[type="checkbox"], .col-checkboxes label input[ty
   float: left;
 }
 
-/* line 142, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 147, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 label.label-with-radio.checkbox-right input[type="radio"],
 label.label-with-radio.checkbox-right input[type="checkbox"],
 label.label-with-checkbox.checkbox-right input[type="radio"], .col-checkboxes label.checkbox-right input[type="radio"],
@@ -1301,7 +1301,7 @@ label.label-with-checkbox.checkbox-right input[type="checkbox"], .col-checkboxes
   float: right;
 }
 
-/* line 150, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 155, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 label.label-with-radio input[type="radio"]:checked.ng-dirty ~ *,
 label.label-with-checkbox input[type="radio"]:checked.ng-dirty ~ *, .col-checkboxes label input[type="radio"]:checked.ng-dirty ~ *,
 .row-checkboxes label input[type="radio"]:checked.ng-dirty ~ * {
@@ -1309,7 +1309,7 @@ label.label-with-checkbox input[type="radio"]:checked.ng-dirty ~ *, .col-checkbo
   color: #a6cf41 !important;
 }
 
-/* line 155, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 160, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 label.label-with-radio input[type="radio"]:checked.ng-untouched ~ *,
 label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-checkboxes label input[type="radio"]:checked.ng-untouched ~ *,
 .row-checkboxes label input[type="radio"]:checked.ng-untouched ~ * {
@@ -1317,54 +1317,54 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
   color: black;
 }
 
-/* line 161, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 166, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .md-icon-button {
   background: transparent;
   color: white !important;
 }
 
-/* line 165, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 170, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .md-icon-button:hover {
   background: rgba(0, 0, 0, 0.25);
 }
 
-/* line 170, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 175, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .split-with-search-btn {
   display: inline-block;
   width: auto;
   width: calc(100% - 60px);
 }
 
-/* line 177, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 182, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .form-control-fill > .multi-select-filter > .btn, .form-control-fill > .multi-select-filter > .str-inline-with-btns, .pagination-controls .form-control-fill > .multi-select-filter > .page-number {
   width: 100%;
 }
 
-/* line 182, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 187, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-a {
   box-shadow: none !important;
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 188, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 193, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-add {
   background: white;
 }
 
-/* line 193, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 198, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-i .fa, .btn-i.str-inline-with-btns .fa, .pagination-controls .btn-i.page-number .fa {
   margin-right: 5px;
   width: 1.28571429em;
   text-align: center;
 }
 
-/* line 199, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 204, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn.btn-i.btn-a .fa, .btn-i.btn-a.str-inline-with-btns .fa, .pagination-controls .btn-i.btn-a.page-number .fa {
   margin-right: 3px;
 }
 
-/* line 204, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 209, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-disc-i {
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
@@ -1378,20 +1378,20 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
   height: 28px;
 }
 
-/* line 214, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 219, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-disc-i.lg {
   width: 40px;
   height: 40px;
 }
 
-/* line 220, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 225, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-disc-i:before {
   display: block;
   padding-top: 100%;
   content: '';
 }
 
-/* line 226, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 231, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-disc-i i.fa {
   position: absolute;
   top: 50%;
@@ -1399,33 +1399,33 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
   margin: -7px 0 0 -7px;
 }
 
-/* line 231, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 236, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-disc-i i.fa.fa-user {
   margin-left: -5px;
 }
 
-/* line 235, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 240, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-disc-i i.fa.fa-download, .btn-disc-i i.fa.fa-pencil, .btn-disc-i i.fa.fa-search, .btn-disc-i i.fa.fa-cog {
   margin-left: -6px;
 }
 
-/* line 242, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 247, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-disc-i i.fa.fa-chevron-left, .btn-disc-i i.fa.fa-chevron-right {
   margin-left: -5px;
 }
 
-/* line 249, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 254, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .nav-tabs {
   border-bottom: none;
 }
 
-/* line 252, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 257, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .nav-tabs > li {
   margin-bottom: 0;
   /*margin-bottom:-1;*/
 }
 
-/* line 255, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 260, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
@@ -1436,7 +1436,7 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
   text-decoration: none;
 }
 
-/* line 265, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 270, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .nav-tabs > li > a {
   color: #009900;
   background: transparent !important;
@@ -1448,13 +1448,13 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
   border-radius: 0px;
 }
 
-/* line 273, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 278, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .nav-tabs > li > a:hover {
   text-decoration: underline;
   border: none;
 }
 
-/* line 278, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 283, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .nav-tabs > li > a > i {
   margin-left: 10px;
   position: absolute;
@@ -1471,19 +1471,19 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
     content: "";
     @include triangle(10px,top,$bp_color-white);
 }*/
-/* line 302, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 307, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-add {
   border-color: #a6cf41;
   background: white;
   box-shadow: none;
 }
 
-/* line 307, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 312, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-add:hover, .btn-add:focus {
   background: #dff0d8;
 }
 
-/* line 315, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 320, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-priority {
   background-image: -webkit-linear-gradient(top, #f0ad4e 0, #eb9316 100%);
   background-image: -o-linear-gradient(top, #f0ad4e 0, #eb9316 100%);
@@ -1499,50 +1499,50 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
   border-color: #eea236;
 }
 
-/* line 329, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 334, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-priority:hover, .btn-priority:focus {
   background-color: #eb9316;
   background-position: 0 -15px;
   color: #fff;
 }
 
-/* line 335, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 340, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-priority:hover {
   color: #fff;
   background-color: #ec971f;
   border-color: #d58512;
 }
 
-/* line 342, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 347, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .pagination-status {
   font-weight: bold;
   color: #C40F11;
 }
 
-/* line 347, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 352, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .pagination-controls {
   width: 110px;
 }
 
-/* line 350, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 355, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .pagination-controls .page-number {
   text-align: center !important;
   box-shadow: none;
 }
 
-/* line 356, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 361, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .pagination-controls > a {
   cursor: pointer;
 }
 
-/* line 362, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 367, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-group ul.dropdown-menu {
   z-index: 49;
   /* because md-dialog starts at 50 dropdown-toggle */
   padding: 0px;
 }
 
-/* line 367, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 372, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-group ul.dropdown-menu li a,
 .btn-group ul.dropdown-menu li button {
   padding: 10px;
@@ -1556,26 +1556,26 @@ label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-che
   line-height: 15px;
 }
 
-/* line 379, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 384, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-group ul.dropdown-menu li a:hover,
 .btn-group ul.dropdown-menu li button:hover {
   background: #f9f9f9;
 }
 
-/* line 383, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 388, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-group ul.dropdown-menu li a i.fa,
 .btn-group ul.dropdown-menu li button i.fa {
   margin-right: 5px;
 }
 
 /* fa */
-/* line 393, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 398, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .fa.fa-ban, .fa.fa-user-times {
   color: #f00;
 }
 
 /* overrule bootstrap btn active styles */
-/* line 400, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 405, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 btn.active, .btn:active, .str-inline-with-btns:active, .pagination-controls .page-number:active {
   background-image: none;
   outline: 0;
@@ -1583,7 +1583,7 @@ btn.active, .btn:active, .str-inline-with-btns:active, .pagination-controls .pag
   box-shadow: none;
 }
 
-/* line 406, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 411, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover,
 .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
   color: white;
@@ -1591,22 +1591,23 @@ btn.active, .btn:active, .str-inline-with-btns:active, .pagination-controls .pag
   border-color: #009900;
 }
 
-/* line 413, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
+/* line 418, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_buttons.scss */
 .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
   background-image: none;
 }
 
 /* (END) overrule bootstrap btn active styles */
 /* _forms.scss */
-/* line 5, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
-.form-group.is-mandatory label:after {
+/* line 6, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+.form-group.is-mandatory label:after,
+.form-group-input-only.is-mandatory label:after {
   content: "*";
   color: #f00;
   font-size: 1.2em;
   margin-left: 5px;
 }
 
-/* line 14, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 15, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 input[type=text]::-ms-clear,
 input.searchStr::-ms-clear {
   display: none;
@@ -1614,13 +1615,13 @@ input.searchStr::-ms-clear {
   height: 0;
 }
 
-/* line 21, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 22, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .changed-field:not(.ng-invalid) {
   border-color: yellow !important;
   background: yellow !important;
 }
 
-/* line 26, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 27, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 ul.help-list,
 ul.error-list {
   list-style: none;
@@ -1629,7 +1630,7 @@ ul.error-list {
   text-indent: -1em;
 }
 
-/* line 33, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 34, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 ul.help-list li,
 ul.error-list li {
   list-style-image: none;
@@ -1637,13 +1638,13 @@ ul.error-list li {
   margin: 0 0 10px 0;
 }
 
-/* line 37, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 38, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 ul.help-list li:last-child,
 ul.error-list li:last-child {
   margin-bottom: 0px;
 }
 
-/* line 41, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 42, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 ul.help-list li:before,
 ul.error-list li:before {
   content: "\f054";
@@ -1651,32 +1652,32 @@ ul.error-list li:before {
   margin-right: 5px;
 }
 
-/* line 50, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 51, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 ul.help-list.error-list li,
 ul.error-list.error-list li {
   color: #f00;
 }
 
-/* line 53, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 54, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 ul.help-list.error-list li:before,
 ul.error-list.error-list li:before {
   content: "\f069";
 }
 
-/* line 61, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 62, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 input[type="checkbox"],
 input[type="radio"] {
   width: 15px;
   height: 15px;
 }
 
-/* line 67, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 68, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 input[readonly],
 input.dummy-disabled {
   background: #eee;
 }
 
-/* line 72, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 73, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 textarea {
   width: 100%;
   min-height: 150px;
@@ -1684,33 +1685,33 @@ textarea {
 }
 
 /* search input */
-/* line 79, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 80, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .inpUpperCase {
   text-transform: uppercase;
 }
 
-/* line 83, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 84, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .inpFeedback {
   font-weight: normal;
 }
 
-/* line 86, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 87, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .inpFeedback > div {
   display: inline-block;
   padding: 0 10px;
 }
 
-/* line 91, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 92, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .inpFeedback.isError div {
   color: #f00;
 }
 
-/* line 95, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 96, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .inpFeedback.isGood div {
   color: #a6cf41;
 }
 
-/* line 101, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 102, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form .form-control {
   border: 1px solid #ddd;
   background: white;
@@ -1724,30 +1725,30 @@ form .form-control {
   padding: 5px 10px;
 }
 
-/* line 112, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 113, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form .form-control[type="text"] {
   padding-left: 10px;
   font-size: 13px;
 }
 
-/* line 117, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 118, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form .form-control.form-control-auto-width {
   width: auto;
 }
 
-/* line 126, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 127, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form:not(.ignore-validation-styles) .form-control[required].ng-pristine:not(.ng-touched):not(.ignore-style-ng-pristine) {
   background-color: #fcf8e3;
   border-color: #FFCD04;
 }
 
-/* line 131, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 132, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form:not(.ignore-validation-styles) .form-control.ng-invalid.ng-touched, form:not(.ignore-validation-styles) .form-control.ng-invalid-required.ng-touched {
   border-color: #f00;
   background: #F7C6BE;
 }
 
-/* line 137, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 138, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form:not(.ignore-validation-styles) .form-control.ng-valid.ng-dirty {
   border-color: #239F40;
   background: #dff0d8;
@@ -1755,19 +1756,19 @@ form:not(.ignore-validation-styles) .form-control.ng-valid.ng-dirty {
   box-shadow: none;
 }
 
-/* line 148, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 149, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid {
   border-color: #ddd;
   background: white;
 }
 
-/* line 153, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 154, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-invalid-important {
   border-color: #f00;
   background: #F7C6BE;
 }
 
-/* line 158, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 159, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid-important {
   border-color: #239F40;
   background: #dff0d8;
@@ -1775,30 +1776,30 @@ form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid-import
   box-shadow: none;
 }
 
-/* line 167, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 168, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 input[type="number"].inpHideSpinner::-webkit-outer-spin-button,
 input[type="number"].inpHideSpinner::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* line 173, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 174, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 input[type="number"].inpHideSpinner {
   -moz-appearance: textfield;
 }
 
-/* line 179, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 180, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .col-checkboxes label {
   display: block;
 }
 
-/* line 186, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 187, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .row-checkboxes label,
 .row-radios label {
   margin-right: 20px;
 }
 
-/* line 193, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 194, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .col-checkboxes label,
 .row-checkboxes label {
   font-weight: normal;
@@ -1806,42 +1807,42 @@ input[type="number"].inpHideSpinner {
   margin-bottom: 10px;
 }
 
-/* line 199, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 200, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .col-checkboxes label input,
 .row-checkboxes label input {
   margin-right: 5px;
 }
 
-/* line 205, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 206, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 label.submit-label-dummy {
   display: block;
   visibility: hidden;
 }
 
-/* line 210, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 211, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .fa-dummy-tooltip, span.trim-string-with-tooltip:after {
   content: " \f059";
   color: #009900;
 }
 
-/* line 216, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 217, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 span.trim-string-with-tooltip {
   display: block;
 }
 
-/* line 220, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 221, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 span.trim-string-with-tooltip.is-FreeTextDescription {
   max-width: 250px;
 }
 
-/* line 224, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 225, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 span.trim-string-with-tooltip > span {
   display: inline-block;
   max-width: calc(100% - 20px);
 }
 
 /* bootstrap tooltip (black background) */
-/* line 237, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 238, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .tooltip .tooltip-inner {
   max-width: 400px;
   white-space: pre-wrap;
@@ -1852,14 +1853,14 @@ span.trim-string-with-tooltip > span {
 }
 
 /* custom tooltip (for input validation) */
-/* line 246, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 247, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips {
   position: relative;
   transition: all linear 0.5s;
   min-height: 28px;
 }
 
-/* line 251, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 252, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust {
   position: absolute;
   z-index: 2;
@@ -1872,7 +1873,7 @@ span.trim-string-with-tooltip > span {
   transition: all linear 0.5s;
 }
 
-/* line 262, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 263, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust span.detail {
   cursor: pointer;
   background: #f00;
@@ -1893,7 +1894,7 @@ span.trim-string-with-tooltip > span {
   transition: all linear 0.5s;
 }
 
-/* line 280, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 281, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust div.message-wrap {
   position: absolute;
   bottom: 0px;
@@ -1904,7 +1905,7 @@ span.trim-string-with-tooltip > span {
   background: transparent;
 }
 
-/* line 289, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 290, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust div.message-wrap span {
   background: #f00;
   color: white;
@@ -1918,7 +1919,7 @@ span.trim-string-with-tooltip > span {
   display: inline-block;
 }
 
-/* line 301, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 302, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust span.tooltip-arrow {
   top: -8px;
   left: 50%;
@@ -1928,29 +1929,29 @@ span.trim-string-with-tooltip > span {
   background: transparent;
 }
 
-/* line 311, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 312, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips.isSelectList .tooltip_cust {
   display: none;
 }
 
-/* line 318, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 319, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust {
   top: auto;
   bottom: 0px;
 }
 
-/* line 322, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 323, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust span.detail {
   top: auto;
   bottom: 0px;
 }
 
-/* line 327, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 328, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust div.message-wrap {
   top: 0px;
 }
 
-/* line 334, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
+/* line 335, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust span.tooltip-arrow {
   top: auto;
   bottom: -10px;

@@ -8,6 +8,7 @@ export class UserPanelConfidential {
     lkp_memberStatus;
     lkp_userProfiles;
     lkp_credentialLevels;
+    tmpMemberStatus = 1;
     tmpField2;
     tmpField3;
 

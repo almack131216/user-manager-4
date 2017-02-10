@@ -4,11 +4,11 @@
     <require from="../../../resources/select2"></require>
     <require from="select2/css/select2.min.css"></require>
 
-    <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
+    <label class="col-xs-6" for.bind="name" title.bind="inpLabel">
         ${inpLabel}
         <!--${optionFilter ? ' > [' + optionFilter + ']' : ''}-->
     </label>
-    <div class="col-sm-6">
+    <div class="col-xs-6">
         <!--/ ${changed} / ${initSelected} / ${selected}-->
         <!--selected.two-way="selected" -->
         <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
@@ -21,7 +21,10 @@
 
             <option value="">${inpPlaceholder}</option>
             <!--<option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">-->
-            <option repeat.for="option of options | filter:optionFilter[0]:optionFilter[1]" model.bind="option[propArr[0]]">
+            <option repeat.for="option of options | filter:optionFilter[0]:optionFilter[1]"
+                model.bind="option[propArr[0]]"
+                css="background-color:red"
+                >
                 ${option[propArr[1]]}
             </option>
         </select>
