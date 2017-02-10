@@ -101,25 +101,50 @@ ai-dialog {
 
 
 .panel.panel-xc {
-    margin-bottom:2px;
-    border:0px;
+    margin-bottom:$offset-g1;
+    border:1px solid $bp_color-green-1;
     @include box-shadow(false);
     
     .panel-heading {
         border-bottom:0px;
-        background:$bp_color-lightgray-2;
+        background:$bp_color-green-1;
+        color:white;
+
+        .btn.btn-xc_chevron {
+            float:right;
+            background:transparent;
+
+            &:before {
+                color:white;
+                font-size:14px;
+                line-height:14px;
+                @extend .fa-dummy;
+                content: "\f077";            
+            }
+        }
+
+        &.collapsed {
+            .btn.btn-xc_chevron:before {
+                content: "\f078"; 
+            }
+        }
 
     }
-    .panel-body {
+    .panel-body {        
         padding-top:0px;
         padding-bottom:0px;//set to 0 to avoid jumping on animation
 
         .wrap-fields {
+            background:$bp_color-lightgray;
             padding:$offset-g1 0 0 0;
             display:block;
             float:left;
             width:100%;
             height:auto;
+
+            .form-group label {
+                text-align:right;
+            }
         }
     }
 }
