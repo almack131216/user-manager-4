@@ -1,14 +1,14 @@
-<template class="form-group col-xs-12 ${isMandatory ? 'is-mandatory' : ''}">
+<template class="${!inputOnly ? 'form-group col-xs-12' : ''} ${isMandatory ? 'is-mandatory' : ''}">
 
     <require from="../filter"></require>
     <require from="../../../resources/select2"></require>
     <require from="select2/css/select2.min.css"></require>
 
-    <label class="col-xs-6" for.bind="name" title.bind="inpLabel">
+    <label if.bind="!inputOnly" class="col-xs-6" for.bind="name" title.bind="inpLabel">
         ${inpLabel}
         <!--${optionFilter ? ' > [' + optionFilter + ']' : ''}-->
     </label>
-    <div class="col-xs-6">
+    <div class="${!inputOnly ? 'col-xs-6' : ''}">
         <!--/ ${changed} / ${initSelected} / ${selected}-->
         <!--selected.two-way="selected" -->
         <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->

@@ -88,12 +88,16 @@
 .table.border-none > thead > tr,
 .table.border-none > tbody > tr,
 .table.border-none > tfoot > tr {
-    td {border:0px;}
+    th, td {border:0px !important;}
 }
 
 .table > thead > tr,
 .table > tbody > tr,
 .table > tfoot > tr {
+
+    th {
+        font-weight:bold;
+    }
 
     &.event-details-open td {
         background: $color-info-bg-hover !important;
@@ -184,4 +188,16 @@ table.fixed-layout {
 
 .aut-desc:before{
     content: "\f161";
+}
+
+.user-panel-table {
+    margin-bottom:$offset-1 !important;
+
+    tr {
+        th, td {
+            &:first-child {
+                padding-left:0px;
+            }
+        }
+    }
 }

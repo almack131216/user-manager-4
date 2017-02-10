@@ -27,6 +27,8 @@ export class FormSelect {
 
     @bindable model;
 
+    @bindable inputOnly = false;
+
     public constructor(model) {
     }
 
@@ -55,7 +57,7 @@ export class FormSelect {
     created(){
         if(CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.name );
         if(!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name);//.substring(3)
-        if(!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
+        if(!this.inpPlaceholder) this.inpPlaceholder = "Please Select";// "Enter " + this.inpLabel;
     }
 
     selectOptions = { allowClear: true, placeholder: 'Select...' };
