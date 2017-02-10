@@ -203,13 +203,13 @@ table.table.user-panel-table {
 
         td {
             background:white;
-            border:0px;
+            border-bottom:1px dotted $border-color;
             padding:0px;
             padding-top:$offset-g1;
 
             &.padded-cell {
                 padding:$offset-g1;
-                padding-bottom:0px;
+                //padding-bottom:0px;
             }
 
             > .form-group {
@@ -220,6 +220,31 @@ table.table.user-panel-table {
 
         &:last-child td {
             padding-bottom:$offset-g1;
+            border-bottom:0px;
+        }
+    }
+
+    &.cols-2 {
+        tr {
+            td {
+                width:50%;
+            }
+        }
+    }
+
+    &.cols-4 {
+        tr {
+            td {
+                width:25%;
+            }
+        }
+    }
+
+    &.padded-cells {
+        tr {
+            td {
+                padding:$offset-g1;
+            }
         }
     }
 }

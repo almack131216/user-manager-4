@@ -5,18 +5,18 @@
     <require from="../inputs/form-checkbox"></require>
 
     <div class="col-xs-12">
-        <table class="table user-panel-table">
+        <table class="table user-panel-table padded-cells cols-4">
             <thead>
                 <tr>
-                    <th>Country</th>
-                    <th>Type</th>
+                    <th>Visa Country</th>
+                    <th>Visa Type</th>
                     <th>Expiry Date</th>
                     <th>Multiple Visa</th>
                 </tr>
             </thead>
             <tbody>
                 <tr repeat.for="row of user.profile.visas">
-                    <td class="padded-cell">
+                    <td>
                         <form-select inp-label="Visa Country"
                             model.two-way="user.profile.visas[$index].country.id"
                             options.bind="lkp_passportNationality"
@@ -26,7 +26,7 @@
                             is-mandatory.bind="true"
                             input-only="true"></form-select>
                     </td>
-                    <td class="padded-cell">
+                    <td>
                         <form-select inp-label="Visa Type"
                             prop-arr.bind="['value','name']"
                             model.two-way="user.profile.visas[$index].type.value"
@@ -37,14 +37,14 @@
                             is-mandatory.bind="true"
                             input-only="true"></form-select>
                     </td>
-                    <td class="padded-cell">
+                    <td>
                         <form-input inp-type="date"
                             model.two-way="user.profile.visas[$index].expiresOn"
                             inp-label="Visa Expiry Date"
                             is-mandatory.bind="true"
                             input-only="true"></form-input>
                     </td>
-                    <td class="padded-cell">
+                    <td>
                         <form-checkbox inp-name.bind="['multipleEntry_' + $index]"
                             inp-label="Multiple Visas"
                             model.two-way="user.profile.visas[$index].multipleEntry"

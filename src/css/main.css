@@ -2190,7 +2190,7 @@ table.table.user-panel-table tr th {
 /* line 204, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.table.user-panel-table tr td {
   background: white;
-  border: 0px;
+  border-bottom: 1px dotted #ddd;
   padding: 0px;
   padding-top: 15px;
 }
@@ -2198,12 +2198,27 @@ table.table.user-panel-table tr td {
 /* line 210, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.table.user-panel-table tr td.padded-cell {
   padding: 15px;
-  padding-bottom: 0px;
 }
 
 /* line 221, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.table.user-panel-table tr:last-child td {
   padding-bottom: 15px;
+  border-bottom: 0px;
+}
+
+/* line 229, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table.cols-2 tr td {
+  width: 50%;
+}
+
+/* line 237, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table.cols-4 tr td {
+  width: 25%;
+}
+
+/* line 245, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table.padded-cells tr td {
+  padding: 15px;
 }
 
 /* _toastr.scss */
