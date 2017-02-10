@@ -25,13 +25,13 @@ export class Lookups {
   lkp_memberStatus;
 
   /* welcome */
-  lkp_memberPreview
-  lkp_recentSubmits
-  lkp_recentReviews
+  memberPreview
+  recentSubmits
+  recentReviews
 
   constructor() {
     /* Welcome (MEMBER) */
-    this.lkp_memberPreview = {
+    this.memberPreview = {
       "displayName": "Alex Mackenzie",
       "emailAddress": "alex.mackenzie@agily.cz",
       "profilePending": true,
@@ -53,7 +53,7 @@ export class Lookups {
       }
     }
 
-    this.lkp_recentSubmits = [
+    this.recentSubmits = [
       {
         "id": 3,
         "displayName": "EXAMPLE",
@@ -70,7 +70,7 @@ export class Lookups {
       }
     ]
 
-    this.lkp_recentReviews = [
+    this.recentReviews = [
       {
         "id": 3,
         "displayName": "EXAMPLE",

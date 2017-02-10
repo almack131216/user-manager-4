@@ -9,9 +9,9 @@
         ${inpLabel}
     </label>
     <div class="${!inputOnly ? 'col-xs-6' : ''}">
-        <input if.bind="maskPattern=='telephone'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder"/>
-        <input if.bind="maskPattern=='telephone-cc'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder"/>
-        <input if.bind="inpType=='date'" type="inpType" value.bind="model | formatDate" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder">
+        <input if.bind="maskPattern=='telephone'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly">
+        <input if.bind="maskPattern=='telephone-cc'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly">
+        <input if.bind="inpType=='date'" type="inpType" value.bind="model | formatDate" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly">
         <input if.bind="!maskPattern && inpType=='text'" type="inpType" value.bind="model" class="form-control" id.one-way="name" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly">
     </div>
 

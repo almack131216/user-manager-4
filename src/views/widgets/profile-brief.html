@@ -1,0 +1,40 @@
+<template>
+
+    <require from="./inputs/form-input"></require>
+
+    <form role="form" class="form-horizontal" id="user-panel-brief">
+        <div class="panel panel-default panel-xc">
+            <div class="panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
+                <!--<i class="fa fa-bell text-after"></i>-->
+                ${title}
+                <button if.bind="custXc" class="btn btn-xc_chevron btn-xs" type="button" aria-expanded="${custXcExpanded}" aria-controls="collapseExample">
+                </button>
+
+                <a class="btn btn-xs btn-i btn-text margin-left-1">
+                    <i class="fa fa-pencil"></i>Update
+                </a>
+            </div>
+
+            <div id="${custXcId}" class="panel-body bg-lightgray ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
+
+                <div class="padding-top-g1">
+                    <div class="row">
+                        <form-input inp-label="Name" model.two-way="memberArr.displayName" is-readonly.bind="true"></form-input>
+                        <form-input inp-label="Manager" model.two-way="memberArr.manager.displayName" is-readonly.bind="true"></form-input>
+                        <form-input inp-type="date" inp-label="Updated" model.two-way="memberArr.profile.submittedOn" is-readonly.bind="true"></form-input>
+                    </div>
+
+                    <!--<div class="row">
+                        <div class="button-bar col-md-12 text-align-right">
+                            <button class="btn btn-success" click.delegate="save()">Update</button>
+                        </div>
+                    </div>-->
+                </div>
+
+            </div>
+        </div>
+
+
+    </form>
+
+</template>

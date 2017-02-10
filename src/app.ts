@@ -25,7 +25,7 @@ export class App {
   configureRouter(config: RouterConfiguration, router: Router): void {
     config.title = CV.SITE_NAME_ABBR;
     config.map([
-      { route: ['','welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Welcome' },
+      { route: ['','welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Home' },
       { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team' },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'Team' },
       { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' }
