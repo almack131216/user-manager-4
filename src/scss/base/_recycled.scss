@@ -112,7 +112,7 @@ ai-dialog {
     }
     .panel-body {
         padding-top:0px;
-        padding-bottom:$offset-g1;
+        padding-bottom:0px;//set to 0 to avoid jumping on animation
 
         .wrap-fields {
             padding:$offset-g1 0 0 0;

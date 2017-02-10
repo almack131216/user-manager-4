@@ -654,7 +654,7 @@ ai-dialog ai-dialog-header h2 {
 /* line 113, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-body {
   padding-top: 0px;
-  padding-bottom: 15px;
+  padding-bottom: 0px;
 }
 
 /* line 117, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
@@ -1598,15 +1598,16 @@ btn.active, .btn:active, .str-inline-with-btns:active, .pagination-controls .pag
 
 /* (END) overrule bootstrap btn active styles */
 /* _forms.scss */
-/* line 5, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
-.form-group.is-mandatory label:after {
+/* line 6, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.form-group.is-mandatory label:after,
+.form-group-input-only.is-mandatory label:after {
   content: "*";
   color: #f00;
   font-size: 1.2em;
   margin-left: 5px;
 }
 
-/* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 15, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 input[type=text]::-ms-clear,
 input.searchStr::-ms-clear {
   display: none;
@@ -1614,13 +1615,13 @@ input.searchStr::-ms-clear {
   height: 0;
 }
 
-/* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 22, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .changed-field:not(.ng-invalid) {
   border-color: yellow !important;
   background: yellow !important;
 }
 
-/* line 26, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 ul.help-list,
 ul.error-list {
   list-style: none;
@@ -1629,7 +1630,7 @@ ul.error-list {
   text-indent: -1em;
 }
 
-/* line 33, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 34, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 ul.help-list li,
 ul.error-list li {
   list-style-image: none;
@@ -1637,13 +1638,13 @@ ul.error-list li {
   margin: 0 0 10px 0;
 }
 
-/* line 37, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 38, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 ul.help-list li:last-child,
 ul.error-list li:last-child {
   margin-bottom: 0px;
 }
 
-/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 42, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 ul.help-list li:before,
 ul.error-list li:before {
   content: "\f054";
@@ -1651,32 +1652,32 @@ ul.error-list li:before {
   margin-right: 5px;
 }
 
-/* line 50, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 51, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 ul.help-list.error-list li,
 ul.error-list.error-list li {
   color: #f00;
 }
 
-/* line 53, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 54, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 ul.help-list.error-list li:before,
 ul.error-list.error-list li:before {
   content: "\f069";
 }
 
-/* line 61, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 62, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 input[type="checkbox"],
 input[type="radio"] {
   width: 15px;
   height: 15px;
 }
 
-/* line 67, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 68, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 input[readonly],
 input.dummy-disabled {
   background: #eee;
 }
 
-/* line 72, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 73, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 textarea {
   width: 100%;
   min-height: 150px;
@@ -1684,33 +1685,33 @@ textarea {
 }
 
 /* search input */
-/* line 79, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 80, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .inpUpperCase {
   text-transform: uppercase;
 }
 
-/* line 83, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 84, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .inpFeedback {
   font-weight: normal;
 }
 
-/* line 86, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 87, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .inpFeedback > div {
   display: inline-block;
   padding: 0 10px;
 }
 
-/* line 91, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 92, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .inpFeedback.isError div {
   color: #f00;
 }
 
-/* line 95, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 96, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .inpFeedback.isGood div {
   color: #a6cf41;
 }
 
-/* line 101, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 102, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form .form-control {
   border: 1px solid #ddd;
   background: white;
@@ -1724,30 +1725,30 @@ form .form-control {
   padding: 5px 10px;
 }
 
-/* line 112, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 113, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form .form-control[type="text"] {
   padding-left: 10px;
   font-size: 13px;
 }
 
-/* line 117, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 118, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form .form-control.form-control-auto-width {
   width: auto;
 }
 
-/* line 126, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 127, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form:not(.ignore-validation-styles) .form-control[required].ng-pristine:not(.ng-touched):not(.ignore-style-ng-pristine) {
   background-color: #fcf8e3;
   border-color: #FFCD04;
 }
 
-/* line 131, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 132, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form:not(.ignore-validation-styles) .form-control.ng-invalid.ng-touched, form:not(.ignore-validation-styles) .form-control.ng-invalid-required.ng-touched {
   border-color: #f00;
   background: #F7C6BE;
 }
 
-/* line 137, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 138, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form:not(.ignore-validation-styles) .form-control.ng-valid.ng-dirty {
   border-color: #239F40;
   background: #dff0d8;
@@ -1755,19 +1756,19 @@ form:not(.ignore-validation-styles) .form-control.ng-valid.ng-dirty {
   box-shadow: none;
 }
 
-/* line 148, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 149, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid {
   border-color: #ddd;
   background: white;
 }
 
-/* line 153, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 154, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-invalid-important {
   border-color: #f00;
   background: #F7C6BE;
 }
 
-/* line 158, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 159, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid-important {
   border-color: #239F40;
   background: #dff0d8;
@@ -1775,30 +1776,30 @@ form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid-import
   box-shadow: none;
 }
 
-/* line 167, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 168, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 input[type="number"].inpHideSpinner::-webkit-outer-spin-button,
 input[type="number"].inpHideSpinner::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* line 173, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 174, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 input[type="number"].inpHideSpinner {
   -moz-appearance: textfield;
 }
 
-/* line 179, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 180, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .col-checkboxes label {
   display: block;
 }
 
-/* line 186, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 187, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .row-checkboxes label,
 .row-radios label {
   margin-right: 20px;
 }
 
-/* line 193, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 194, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .col-checkboxes label,
 .row-checkboxes label {
   font-weight: normal;
@@ -1806,42 +1807,42 @@ input[type="number"].inpHideSpinner {
   margin-bottom: 10px;
 }
 
-/* line 199, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 200, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .col-checkboxes label input,
 .row-checkboxes label input {
   margin-right: 5px;
 }
 
-/* line 205, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 206, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 label.submit-label-dummy {
   display: block;
   visibility: hidden;
 }
 
-/* line 210, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 211, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .fa-dummy-tooltip, span.trim-string-with-tooltip:after {
   content: " \f059";
   color: #009900;
 }
 
-/* line 216, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 217, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 span.trim-string-with-tooltip {
   display: block;
 }
 
-/* line 220, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 221, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 span.trim-string-with-tooltip.is-FreeTextDescription {
   max-width: 250px;
 }
 
-/* line 224, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 225, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 span.trim-string-with-tooltip > span {
   display: inline-block;
   max-width: calc(100% - 20px);
 }
 
 /* bootstrap tooltip (black background) */
-/* line 237, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 238, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .tooltip .tooltip-inner {
   max-width: 400px;
   white-space: pre-wrap;
@@ -1852,14 +1853,14 @@ span.trim-string-with-tooltip > span {
 }
 
 /* custom tooltip (for input validation) */
-/* line 246, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 247, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips {
   position: relative;
   transition: all linear 0.5s;
   min-height: 28px;
 }
 
-/* line 251, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 252, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust {
   position: absolute;
   z-index: 2;
@@ -1872,7 +1873,7 @@ span.trim-string-with-tooltip > span {
   transition: all linear 0.5s;
 }
 
-/* line 262, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 263, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust span.detail {
   cursor: pointer;
   background: #f00;
@@ -1893,7 +1894,7 @@ span.trim-string-with-tooltip > span {
   transition: all linear 0.5s;
 }
 
-/* line 280, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 281, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust div.message-wrap {
   position: absolute;
   bottom: 0px;
@@ -1904,7 +1905,7 @@ span.trim-string-with-tooltip > span {
   background: transparent;
 }
 
-/* line 289, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 290, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust div.message-wrap span {
   background: #f00;
   color: white;
@@ -1918,7 +1919,7 @@ span.trim-string-with-tooltip > span {
   display: inline-block;
 }
 
-/* line 301, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 302, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips .tooltip_cust span.tooltip-arrow {
   top: -8px;
   left: 50%;
@@ -1928,29 +1929,29 @@ span.trim-string-with-tooltip > span {
   background: transparent;
 }
 
-/* line 311, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 312, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips.isSelectList .tooltip_cust {
   display: none;
 }
 
-/* line 318, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 319, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust {
   top: auto;
   bottom: 0px;
 }
 
-/* line 322, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 323, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust span.detail {
   top: auto;
   bottom: 0px;
 }
 
-/* line 327, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 328, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust div.message-wrap {
   top: 0px;
 }
 
-/* line 334, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+/* line 335, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
 .hasTooltips.tooltip-below .tooltip_cust span.tooltip-arrow {
   top: auto;
   bottom: -10px;

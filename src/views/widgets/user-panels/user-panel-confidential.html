@@ -7,11 +7,11 @@
     <require from="../../../resources/select2"></require>
 
     <form-select inp-label="Member Status"
-        model.two-way="1"
+        model.two-way="tmpMemberStatus"
         options.bind="lkp_memberStatus"
-        changed.two-way="1"
+        changed.two-way="tmpMemberStatus"
         autocomplete.bind="true"
-        init-selected.two-way="1"
+        init-selected.two-way="tmpMemberStatus"
         is-mandatory.bind="true"></form-select>
 
     <form-input inp-type="date" model.two-way="user.profile.entityStatus.createdOn" inp-label="Date Joined" is-mandatory.bind="true"></form-input>

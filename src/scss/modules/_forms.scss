@@ -1,6 +1,7 @@
 /* _forms.scss */
 
-.form-group {
+.form-group,
+.form-group-input-only {
     &.is-mandatory {
         label:after {
             content:"*";
