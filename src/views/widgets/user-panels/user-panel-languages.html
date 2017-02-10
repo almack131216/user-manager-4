@@ -4,7 +4,7 @@
     <require from="../../../resources/format/format-date"></require>
 
     <div class="col-xs-12">
-        <table class="table half-n-half border-none user-panel-table">
+        <table class="table half-n-half user-panel-table">
             <thead>
                 <tr>
                     <th>Language</th>
@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr repeat.for="row of user.profile.languages">
-                    <td>
+                    <td class="padded-cell">
                         <form-select name="lkp_language[$index]"
                             input-only="true"
                             model.two-way="user.profile.languages[$index].language.id"
@@ -23,7 +23,7 @@
                             init-selected.two-way="user.profile.languages[$index].language.id"></form-select>
 
                     </td>
-                    <td>
+                    <td class="padded-cell">
                         <form-select name="lkp_languageLevel[$index]"
                             input-only="true"
                             prop-arr.bind="['value','name']"

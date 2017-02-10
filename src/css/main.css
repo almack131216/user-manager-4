@@ -2060,103 +2060,55 @@ span.trim-string-with-tooltip > span {
   border-top: 1px solid #ddd;
 }
 
-/* line 91, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table.border-none > thead > tr th, .table.border-none > thead > tr td,
-.table.border-none > tbody > tr th,
-.table.border-none > tbody > tr td,
-.table.border-none > tfoot > tr th,
-.table.border-none > tfoot > tr td {
+/* line 90, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table.border-none > tr th, .table.border-none > tr td {
   border: 0px !important;
 }
 
-/* line 98, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr th,
-.table > tbody > tr th,
-.table > tfoot > tr th {
+/* line 96, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr th {
   font-weight: bold;
 }
 
-/* line 102, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr.event-details-open td,
-.table > tbody > tr.event-details-open td,
-.table > tfoot > tr.event-details-open td {
+/* line 100, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr.event-details-open td {
   background: #c4e3f3 !important;
   border-bottom: none;
 }
 
-/* line 107, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr th, .table > thead > tr td,
-.table > tbody > tr th,
-.table > tbody > tr td,
-.table > tfoot > tr th,
-.table > tfoot > tr td {
+/* line 105, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr th, .table tr td {
   padding: 5px;
   vertical-align: middle;
 }
 
-/* line 111, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr th > label, .table > thead > tr td > label,
-.table > tbody > tr th > label,
-.table > tbody > tr td > label,
-.table > tfoot > tr th > label,
-.table > tfoot > tr td > label {
+/* line 109, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr th > label, .table tr td > label {
   margin-bottom: 0px;
 }
 
-/* line 115, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr th.col-hidden, .table > thead > tr td.col-hidden,
-.table > tbody > tr th.col-hidden,
-.table > tbody > tr td.col-hidden,
-.table > tfoot > tr th.col-hidden,
-.table > tfoot > tr td.col-hidden {
+/* line 113, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr th.col-hidden, .table tr td.col-hidden {
   display: none;
 }
 
-/* line 119, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr th.col-actions, .table > thead > tr th.col-actions-printable, .table > thead > tr td.col-actions, .table > thead > tr td.col-actions-printable,
-.table > tbody > tr th.col-actions,
-.table > tbody > tr th.col-actions-printable,
-.table > tbody > tr td.col-actions,
-.table > tbody > tr td.col-actions-printable,
-.table > tfoot > tr th.col-actions,
-.table > tfoot > tr th.col-actions-printable,
-.table > tfoot > tr td.col-actions,
-.table > tfoot > tr td.col-actions-printable {
+/* line 117, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr th.col-actions, .table tr th.col-actions-printable, .table tr td.col-actions, .table tr td.col-actions-printable {
   text-align: right;
   min-width: 100px;
 }
 
-/* line 124, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr th.col-actions .row-checkboxes label:last-child,
-.table > thead > tr th.col-actions .row-radios label:last-child, .table > thead > tr th.col-actions-printable .row-checkboxes label:last-child,
-.table > thead > tr th.col-actions-printable .row-radios label:last-child, .table > thead > tr td.col-actions .row-checkboxes label:last-child,
-.table > thead > tr td.col-actions .row-radios label:last-child, .table > thead > tr td.col-actions-printable .row-checkboxes label:last-child,
-.table > thead > tr td.col-actions-printable .row-radios label:last-child,
-.table > tbody > tr th.col-actions .row-checkboxes label:last-child,
-.table > tbody > tr th.col-actions .row-radios label:last-child,
-.table > tbody > tr th.col-actions-printable .row-checkboxes label:last-child,
-.table > tbody > tr th.col-actions-printable .row-radios label:last-child,
-.table > tbody > tr td.col-actions .row-checkboxes label:last-child,
-.table > tbody > tr td.col-actions .row-radios label:last-child,
-.table > tbody > tr td.col-actions-printable .row-checkboxes label:last-child,
-.table > tbody > tr td.col-actions-printable .row-radios label:last-child,
-.table > tfoot > tr th.col-actions .row-checkboxes label:last-child,
-.table > tfoot > tr th.col-actions .row-radios label:last-child,
-.table > tfoot > tr th.col-actions-printable .row-checkboxes label:last-child,
-.table > tfoot > tr th.col-actions-printable .row-radios label:last-child,
-.table > tfoot > tr td.col-actions .row-checkboxes label:last-child,
-.table > tfoot > tr td.col-actions .row-radios label:last-child,
-.table > tfoot > tr td.col-actions-printable .row-checkboxes label:last-child,
-.table > tfoot > tr td.col-actions-printable .row-radios label:last-child {
+/* line 122, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr th.col-actions .row-checkboxes label:last-child,
+.table tr th.col-actions .row-radios label:last-child, .table tr th.col-actions-printable .row-checkboxes label:last-child,
+.table tr th.col-actions-printable .row-radios label:last-child, .table tr td.col-actions .row-checkboxes label:last-child,
+.table tr td.col-actions .row-radios label:last-child, .table tr td.col-actions-printable .row-checkboxes label:last-child,
+.table tr td.col-actions-printable .row-radios label:last-child {
   margin-right: 0px;
 }
 
-/* line 130, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr th.col-hidden-header, .table > thead > tr td.col-hidden-header,
-.table > tbody > tr th.col-hidden-header,
-.table > tbody > tr td.col-hidden-header,
-.table > tfoot > tr th.col-hidden-header,
-.table > tfoot > tr td.col-hidden-header {
+/* line 128, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr th.col-hidden-header, .table tr td.col-hidden-header {
   color: #239F40;
   font-size: 0px;
   padding: 0px;
@@ -2164,34 +2116,30 @@ span.trim-string-with-tooltip > span {
   height: 0px;
 }
 
-/* line 139, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr:last-child th,
-.table > tbody > tr:last-child th,
-.table > tfoot > tr:last-child th {
+/* line 137, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr:last-child th {
   border-bottom: 1px solid #ddd;
 }
 
-/* line 143, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.table > thead > tr:last-child td,
-.table > tbody > tr:last-child td,
-.table > tfoot > tr:last-child td {
+/* line 141, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+.table tr:last-child td {
   border-bottom: none;
 }
 
-/* line 149, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 147, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.half-n-half tr > th,
 table.half-n-half tr > td {
   width: 50%;
 }
 
-/* line 155, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 153, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.fixed-layout {
   table-layout: fixed;
   /* This is used to squeeze large strings(with no spaces) into the table cell without exceeding table */
   /* NOTE: requires 'table-layout: fixed' table class to work */
 }
 
-/* line 159, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 157, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 table.fixed-layout .squeeze-into-cell {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -2201,12 +2149,12 @@ table.fixed-layout .squeeze-into-cell {
   display: block;
 }
 
-/* line 169, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 167, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .wrap-longtext {
   white-space: pre;
 }
 
-/* line 173, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 171, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .aut-sort:before {
   font-family: FontAwesome;
   padding-right: 0.5em;
@@ -2215,24 +2163,47 @@ table.fixed-layout .squeeze-into-cell {
   text-align: center;
 }
 
-/* line 185, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 183, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .aut-asc:before {
   content: "\f160";
 }
 
-/* line 189, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+/* line 187, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
 .aut-desc:before {
   content: "\f161";
 }
 
-/* line 193, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.user-panel-table {
+/* line 191, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table {
   margin-bottom: 10px !important;
+  border: 1px solid #ddd;
 }
 
-/* line 198, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
-.user-panel-table tr th:first-child, .user-panel-table tr td:first-child {
-  padding-left: 0px;
+/* line 197, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr th {
+  padding: 15px;
+  background: #f9f9f9;
+  border: 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 204, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr td {
+  background: white;
+  border: 0px;
+  padding: 0px;
+  padding-top: 15px;
+}
+
+/* line 210, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr td.padded-cell {
+  padding: 15px;
+  padding-bottom: 0px;
+}
+
+/* line 221, C:/Users/AMackenzie/Documents/WORK/MRT/site3/user manager 3/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr:last-child td {
+  padding-bottom: 15px;
 }
 
 /* _toastr.scss */

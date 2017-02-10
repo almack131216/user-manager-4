@@ -113,21 +113,39 @@
 
     <div class="divider"></div>
     
-    <form-input name="businessNumber" model.two-way="user.profile.businessNumber" mask-pattern="telephone" inp-label="Business Cell Number" is-mandatory.bind="true"></form-input>
-    <form-input name="personalNumber" model.two-way="user.profile.personalNumber" mask-pattern="telephone" inp-label="Personal Cell Number"></form-input>
-    <form-input name="officeNumber" model.two-way="user.profile.officeNumber" mask-pattern="telephone" inp-label="Office Number"></form-input>
-    <form-input name="lyncNumber" model.two-way="user.profile.lyncNumber" mask-pattern="telephone" inp-label="Lync Number"></form-input>
-    <form-input name="homeNumber" model.two-way="user.profile.homeNumber" mask-pattern="telephone" inp-label="Home Number"></form-input>
+    <div class="col-xs-12">
+        <table class="table half-n-half user-panel-table">
+            <thead>
+                <tr>
+                    <th>Contact</th>
+                    <th>Contact (other)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="padding-bottom-0">
+                        <form-input name="businessNumber" model.two-way="user.profile.businessNumber" mask-pattern="telephone" inp-label="Business Cell No." is-mandatory.bind="true"></form-input>
+                        <form-input name="personalNumber" model.two-way="user.profile.personalNumber" mask-pattern="telephone" inp-label="Personal Cell No."></form-input>
+                        <form-input name="officeNumber" model.two-way="user.profile.officeNumber" mask-pattern="telephone" inp-label="Office Number"></form-input>
+                        <form-input name="lyncNumber" model.two-way="user.profile.lyncNumber" mask-pattern="telephone" inp-label="Lync Number"></form-input>
+                        <form-input name="homeNumber" model.two-way="user.profile.homeNumber" mask-pattern="telephone" inp-label="Home Number"></form-input>
+                    </td>
+                    <td class="padding-bottom-0">
+                        <form-input name="lineManager" model.two-way="user.user.lineManager.displayName" inp-label="Line Manager" is-readonly.bind="true"></form-input>
+                        <form-input name="lineManager_emailAddress" model.two-way="user.user.lineManager.emailAddress" inp-label="Line Manager Email" is-readonly.bind="true"></form-input>
+                        <form-input name="loginName" model.two-way="user.user.lineManager.loginName" inp-label="Line Manager NTID" is-readonly.bind="true"></form-input>
+                        <form-input name="emergencyContactName" model.two-way="user.profile.emergencyContactName" inp-label="Emergency Contact Name" is-mandatory.bind="true"></form-input>
+                        <form-input name="emergencyContactNumber" model.two-way="user.profile.emergencyContactNumber" mask-pattern="telephone" inp-label="Emergency Contact No." is-mandatory.bind="true"></form-input>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
 
     <div class="divider"></div>
 
-    <form-input name="lineManager" model.two-way="user.user.lineManager.displayName" inp-label="Line Manager" is-readonly.bind="true"></form-input>
-    <form-input name="lineManager_emailAddress" model.two-way="user.user.lineManager.emailAddress" inp-label="Line Manager Email" is-readonly.bind="true"></form-input>
-    <form-input name="loginName" model.two-way="user.user.lineManager.loginName" inp-label="Line Manager NTID" is-readonly.bind="true"></form-input>
-
-    <div class="divider"></div>
-
-    <form-input name="emergencyContactName" model.two-way="user.profile.emergencyContactName" inp-label="Emergency Contact Name" is-mandatory.bind="true"></form-input>
-    <form-input name="emergencyContactNumber" model.two-way="user.profile.emergencyContactNumber" mask-pattern="telephone" inp-label="Emergency Contact Number" is-mandatory.bind="true"></form-input>
+    
 
 </template>

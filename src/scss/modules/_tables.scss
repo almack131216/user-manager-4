@@ -85,15 +85,13 @@
     border-top: 1px solid $border-color;
 }
 
-.table.border-none > thead > tr,
-.table.border-none > tbody > tr,
-.table.border-none > tfoot > tr {
+
+.table.border-none > tr {
     th, td {border:0px !important;}
 }
 
-.table > thead > tr,
-.table > tbody > tr,
-.table > tfoot > tr {
+
+.table tr {
 
     th {
         font-weight:bold;
@@ -190,14 +188,38 @@ table.fixed-layout {
     content: "\f161";
 }
 
-.user-panel-table {
+table.table.user-panel-table {
     margin-bottom:$offset-1 !important;
+    border:1px solid $border-color;
 
     tr {
-        th, td {
-            &:first-child {
-                padding-left:0px;
+
+        th {
+            padding:$offset-g1;
+            background:$bp_color-lightgray;
+            border:0px;
+            border-bottom:1px solid $border-color;
+        }
+
+        td {
+            background:white;
+            border:0px;
+            padding:0px;
+            padding-top:$offset-g1;
+
+            &.padded-cell {
+                padding:$offset-g1;
+                padding-bottom:0px;
             }
+
+            > .form-group {
+                // padding-left:0px;
+                // padding-right:0px;
+            }
+        }
+
+        &:last-child td {
+            padding-bottom:$offset-g1;
         }
     }
 }
