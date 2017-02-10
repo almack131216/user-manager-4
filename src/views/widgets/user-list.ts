@@ -25,6 +25,10 @@ export class UserList {
     @bindable custTablePagination = false;
     @bindable custTablePageSize = 100;
 
+    @bindable custXc = true;
+    @bindable custXcId = 'userList';
+    @bindable custXcExpanded = true;
+
     public CV = CV
     users;
     selectedId = 0;

@@ -27,16 +27,14 @@
 ai-dialog-overlay {
     background:white;
     filter: alpha(opacity=50) !important;
-    opacity: 0.5 !important;
-
-    
+    opacity: 0.5 !important;    
 }
 
 ai-dialog {
-        >ai-dialog-footer {
-            padding:$offset-g1;
-        }
+    >ai-dialog-footer {
+        padding:$offset-g1;
     }
+}
 
 
 table.table-hover {
@@ -111,12 +109,16 @@ ai-dialog {
         color:white;
         font-weight:bold;
 
+        .btn-text {
+            color:$bp_color-yellow;
+        }
+
         .btn.btn-xc_chevron {
             float:right;
             background:transparent;
 
             &:before {
-                color:white;
+                color:$bp_color-yellow;
                 font-size:14px;
                 line-height:14px;
                 @extend .fa-dummy;
