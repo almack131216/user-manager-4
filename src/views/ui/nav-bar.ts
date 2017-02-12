@@ -24,9 +24,11 @@ export class NavBar {
   attached(){
     console.log('nav-bar.ts | attached: ' + this.router.navigation[0].isMemberOnly );
   }
-
+//.settings.data.isMemberOnly
   hasAccess(getUser,getPage){
-    console.log('hasAccess: ' + getUser + ' / ' + getPage.isMemberOnly + ' (' + getPage.isMemberOnly + ')');
+    console.log('hasAccess: ' + JSON.stringify(getUser) + ' / ' + getPage + ' (' + getPage.settings.data.isMemberOnly + ')');
+    if(getUser && getPage.settings.data.isMemberOnly==true) return true;
+    return false;
   }
   
   get isLoggedIn(){
