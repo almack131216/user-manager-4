@@ -5,17 +5,32 @@ import * as Constants from './resources/constants';
 const CV = Constants
 
 import {FetchConfig} from 'aurelia-auth';
-@inject(WebAPI,Router,FetchConfig)
+
+import {ApplicationState} from './application-state';
+import { WebAPIUsers } from './api/web-api-users';
+
+@inject(WebAPI,Router,FetchConfig,ApplicationState)
 
 export class App {
   api: WebAPI
   router: Router
   fetchConfig: FetchConfig
+  isMember;
   public CV = CV  
 
-  constructor() {
+  constructor(private appState: ApplicationState) {
+    this.appState = appState;
+    //this.isMember = this.appState.isMember;
+    //this.isMember = this.appState.myProfile.currentUser.isMember;
+    alert('app.ts | const: ' + JSON.stringify(this.appState) );
     // this.router = router;
     // this.fetchConfig = fetchConfig;
+  }
+
+   created(appState){
+    alert('app.ts | created -> appState: ' + JSON.stringify(this.appState) );
+    //this.isMember = this.appState.myProfile.currentUser.isMember;
+    //alert('isMember: ' + this.isMember );
   }
 
   activate(){

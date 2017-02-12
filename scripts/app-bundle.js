@@ -127,13 +127,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./api/web-api", "./resources/constants", "aurelia-auth"], function (require, exports, aurelia_router_1, aurelia_framework_1, web_api_1, Constants, aurelia_auth_1) {
+define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./api/web-api", "./resources/constants", "aurelia-auth", "./application-state"], function (require, exports, aurelia_router_1, aurelia_framework_1, web_api_1, Constants, aurelia_auth_1, application_state_1) {
     "use strict";
     var CV = Constants;
     var App = (function () {
-        function App() {
+        function App(appState) {
+            this.appState = appState;
             this.CV = CV;
+            this.appState = appState;
+            alert('app.ts | const: ' + JSON.stringify(this.appState));
         }
+        App.prototype.created = function (appState) {
+            alert('app.ts | created -> appState: ' + JSON.stringify(this.appState));
+        };
         App.prototype.activate = function () {
         };
         App.prototype.configureRouter = function (config, router) {
@@ -149,8 +155,8 @@ define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./ap
         return App;
     }());
     App = __decorate([
-        aurelia_framework_1.inject(web_api_1.WebAPI, aurelia_router_1.Router, aurelia_auth_1.FetchConfig),
-        __metadata("design:paramtypes", [])
+        aurelia_framework_1.inject(web_api_1.WebAPI, aurelia_router_1.Router, aurelia_auth_1.FetchConfig, application_state_1.ApplicationState),
+        __metadata("design:paramtypes", [application_state_1.ApplicationState])
     ], App);
     exports.App = App;
 });
@@ -352,12 +358,25 @@ define('api/web-api-users',["require", "exports", "aurelia-fetch-client", "aurel
     var users = null;
     var usersArr = [];
     var results = null;
+    var myProfile = null;
     var WebAPIUsers = (function () {
         function WebAPIUsers(http) {
             this.isRequesting = false;
             this.usersArr = [];
             this.http = http;
         }
+        WebAPIUsers.prototype.getGlobal = function () {
+            var _this = this;
+            this.isRequesting = true;
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var myProfile = _this.http.fetch('src/api/api-global.json')
+                        .then(function (myProfile) { return myProfile.json(); });
+                    resolve(myProfile);
+                    _this.isRequesting = false;
+                }, latency);
+            });
+        };
         WebAPIUsers.prototype.getUserList = function () {
             var _this = this;
             this.isRequesting = true;
@@ -1396,26 +1415,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('views/pages/welcome',["require", "exports", "aurelia-framework", "../../resources/constants", "../../resources/lookups"], function (require, exports, aurelia_framework_1, Constants, lookups_1) {
+define('views/pages/welcome',["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "../../resources/constants", "../../application-state", "../../api/web-api-users"], function (require, exports, aurelia_framework_1, aurelia_event_aggregator_1, Constants, application_state_1, web_api_users_1) {
     "use strict";
     var CV = Constants;
     var Welcome = (function () {
-        function Welcome(lookups) {
-            this.title = 'Welcome';
-            this.CV = CV;
-            this.isMember = false;
-            this.lkp_coatSizes = lookups.lkp_coatSizes;
-            this.memberPreview = lookups.memberPreview;
+        function Welcome(api, ea, appState) {
+            this.api = api;
+            this.ea = ea;
+            this.appState = appState;
+            this.title = '';
+            this.appState = appState;
+            alert('welcome.ts | const ' + JSON.stringify(appState));
         }
+        Welcome.prototype.created = function (appState) {
+            alert('welcome.ts | created: ' + JSON.stringify(this.appState));
+            this.isMember = this.appState.myProfile.currentUser.isMember;
+        };
         return Welcome;
     }());
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], Welcome.prototype, "user", void 0);
     Welcome = __decorate([
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [lookups_1.Lookups])
+        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator, application_state_1.ApplicationState),
+        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator, application_state_1.ApplicationState])
     ], Welcome);
     exports.Welcome = Welcome;
 });
@@ -4698,6 +4718,42 @@ define('aurelia-dialog/dialog-service',['exports', 'aurelia-metadata', 'aurelia-
     }
   }
 });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('application-state',["require", "exports", "aurelia-router", "aurelia-framework", "./api/web-api-users"], function (require, exports, aurelia_router_1, aurelia_framework_1, web_api_users_1) {
+    "use strict";
+    var ApplicationState = (function () {
+        function ApplicationState(api, router) {
+            var _this = this;
+            this.api = api;
+            this.loggedInUser = null;
+            this.api.getGlobal().then(function (myProfile) {
+                _this.myProfile = myProfile;
+                alert('application-status: ' + myProfile);
+                if (_this.isMember) {
+                    alert('yup!');
+                }
+                else {
+                    alert('naaaaaaah!');
+                }
+            });
+        }
+        return ApplicationState;
+    }());
+    ApplicationState = __decorate([
+        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers),
+        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_router_1.Router])
+    ], ApplicationState);
+    exports.ApplicationState = ApplicationState;
+});
+
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./views/ui/nav-bar\"></require>\r\n  <require from=\"./views/ui/ui-footer\"></require>\r\n  <require from=\"./font-awesome.css\"></require>\r\n  <link href=\"src/css/main.css\" rel=\"stylesheet\" />\r\n  <link href=\"src/css/bootstrap.min.css\" rel=\"stylesheet\" />\r\n\r\n  <div id=\"container-fixed-footer\">\r\n    <loading-indicator loading.bind=\"router.isNavigating || api.isRequesting\"></loading-indicator>\r\n    <nav-bar router.bind=\"router\" id=\"header\"></nav-bar>\r\n\r\n    <div class=\"container\" id=\"body\">\r\n      <div class=\"row\">      \r\n        <router-view></router-view>\r\n      </div>\r\n    </div>\r\n\r\n    <ui-footer id=\"footer\"></ui-footer>\r\n  </div>\r\n\r\n</template>"; });
 define('text!styles.css', ['module'], function(module) { module.exports = "body { }\r\n\r\n/* forms */\r\n.form-group label {background:yellow;}\r\n\r\n/* offsets */\r\n.padding-x-0 {padding-left:0px !important;padding-right:0px !important;}\r\n.margin-x-0 {margin-left:0px !important;margin-right:0px !important;}\r\n\r\n.html-file-name {margin-left:10px;color:red;font-size:0.5em;}\r\n\r\n.display-none {display:none !important}\r\n.display-block {display:block !important}\r\n.display-inline-block {display:inline-block !important}\r\n\r\n.btn-i i.fa {margin-right:10px;}\r\n\r\nsection {\r\n  margin: 0 20px;\r\n}\r\n\r\na:focus {\r\n  outline: none;\r\n}\r\n\r\n.navbar-nav li.loader {\r\n    margin: 12px 24px 0 6px;\r\n}\r\n\r\n.no-selection {\r\n  margin: 20px;\r\n}\r\n\r\n.contact-list {\r\n  overflow-y: auto;\r\n  border: 1px solid #ddd;\r\n  padding: 10px;\r\n}\r\n\r\n.panel {\r\n  margin: 20px;\r\n}\r\n\r\n.button-bar {\r\n  right: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  border-top: 1px solid #ddd;\r\n  background: white;\r\n}\r\n\r\n.button-bar > button {\r\n  float: right;\r\n  margin: 20px;\r\n}\r\n\r\nli.list-group-item {\r\n  list-style: none;\r\n}\r\n\r\nli.list-group-item > a {\r\n  text-decoration: none;\r\n}\r\n\r\nli.list-group-item.active > a {\r\n  color: white;\r\n}\r\n"; });
 define('text!login.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"bootstrap/css/bootstrap.css\"></require>\r\n  <require from=\"font-awesome.css\"></require>\r\n\r\n    <div class=\"container\">\r\n    <div class=\"row\">      \r\n      <div class=\"col-md-12 styleXXX\" style=\"padding-top:100px;\">\r\n          <h1>${title}</h1>\r\n        <form class=\"login-form\" submit.delegate=\"login()\">\r\n            <input type=\"text\" placeholder=\"username\" value.bind=\"username\" />\r\n            <input type=\"password\" placeholder=\"password\" value.bind=\"password\" />\r\n            <button type=\"submit\">Login</button>\r\n            <span class=\"error\">${error}</span>\r\n        </form>\r\n    </div>\r\n    </div>\r\n  </div>\r\n    \r\n</template>"; });
@@ -4720,7 +4776,7 @@ define('text!views/pages/login.html', ['module'], function(module) { module.expo
 define('text!views/pages/user-add.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/inputs/form-input\"></require>\r\n  <require from=\"../widgets/inputs/form-select\"></require>\r\n  <require from=\"../widgets/inputs/form-radio\"></require>\r\n  <require from=\"../widgets/inputs/form-checkbox\"></require>\r\n  <require from=\"../widgets/form-user-full-body\"></require>\r\n  <require from=\"../widgets/btn-xc-all\"></require>\r\n\r\n  <div class=\"btn-group btn-edit-avatar pull-right\" role=\"group\" aria-label=\"user options\">\r\n\r\n    <div class=\"btn-group\" role=\"group\">\r\n      <button class=\"btn btn-default dropdown-toggle btn-i\" type=\"button\"\r\n        id=\"dropdownMenu1\"\r\n        data-toggle=\"dropdown\"\r\n        aria-haspopup=\"true\"\r\n        aria-expanded=\"true\">\r\n          <i class=\"fa fa-pencil\"></i>\r\n          David Bowie\r\n          <span class=\"caret\"></span>\r\n      </button>\r\n      <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\r\n        <li><a href=\"#\"><i class=\"fa fa-fw fa-pencil\"></i> Change Username</a></li>\r\n        <li><a href=\"#\"><i class=\"fa fa-fw fa-photo\"></i> Change Avatar</a></li>\r\n      </ul>\r\n    </div>\r\n\r\n    <a class=\"btn btn-default avatar\">\r\n      <img src=\"/src/img/low.jpg\" alt=\"tmp me\">\r\n    </a>\r\n\r\n  </div>\r\n\r\n\r\n  <h1 class=\"display-inline-block\">${title}</h1>\r\n  <btn-xc-all wrapper-id=\"user-panels\"></btn-xc-all>\r\n\r\n  <form role=\"form\" class=\"form-horizontal\" id=\"user-panels\">\r\n<!--cust-xc-expanded=\"true\"-->\r\n    <form-user-full-body user.bind=\"user\" cust-title=\"User\" cust-body=\"user-details\" cust-xc=\"true\" cust-xc-id=\"xc_user\" cust-xc-expanded=\"true\"></form-user-full-body>\r\n\r\n    <!--<form-user-full-body user.bind=\"user\" cust-title=\"MRT Role Information\" cust-body=\"user-mrt-role\" cust-xc=\"true\" cust-xc-id=\"xc_mrt-role\"></form-user-full-body>-->\r\n\r\n    <form-user-full-body user.bind=\"user\" cust-title=\"Languages\" cust-body=\"user-languages\" cust-xc=\"true\" cust-xc-id=\"xc_languages\"></form-user-full-body>\r\n\r\n    <form-user-full-body user.bind=\"user\" cust-title=\"Passport Information\" cust-body=\"user-passport\" cust-xc=\"true\" cust-xc-id=\"xc_passport\"></form-user-full-body>\r\n\r\n    <form-user-full-body user.bind=\"user\" cust-title=\"Visa Information\" cust-body=\"user-visa\" cust-xc=\"true\" cust-xc-id=\"xc_visa\"></form-user-full-body>\r\n\r\n    <form-user-full-body user.bind=\"user\" cust-title=\"Training\" cust-body=\"user-training\" cust-xc=\"true\" cust-xc-id=\"xc_training\"></form-user-full-body>\r\n\r\n    <!--<form-user-full-body user.bind=\"user\" cust-title=\"TWIC Information\" cust-body=\"user-twic\" cust-xc=\"true\" cust-xc-id=\"xc_twic\"></form-user-full-body>-->\r\n\r\n    <form-user-full-body if.bind=\"user.permissions.accessConfidentialFields\" cust-icon=\"fa-exclamation-triangle\" user.bind=\"user\" cust-title=\"Confidential Information\" cust-body=\"user-confidential\" cust-xc=\"true\" cust-xc-id=\"xc_confidential\"></form-user-full-body>\r\n\r\n  </form>\r\n\r\n  <div class=\"button-bar col-md-12 padding-x-0 text-align-right\">\r\n      <button class=\"btn btn-success\" click.delegate=\"save()\" disabled.bind=\"!canSave\">Save</button>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/pages/user-no-selection.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/user-list\"></require>\r\n\r\n  <div class=\"col-md-12\" if.bind=\"title\">\r\n    <h1>${title}<span class=\"html-file-name\">(user-no-selection.html)</span></h1>\r\n    <hr>\r\n  </div>\r\n\r\n  <user-list class=\"col-md-12\"></user-list>\r\n\r\n</template>"; });
 define('text!views/pages/user-selected.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/user-list\"></require>\r\n  <require from=\"../widgets/user-edit\"></require>\r\n  <require from=\"./user-add\"></require>\r\n\r\n  <!--<div class=\"col-md-12\">\r\n    <h1>${title}<span class=\"html-file-name\">(user-selected.html)</span></h1>\r\n    <hr>\r\n  </div>-->\r\n\r\n  <div if.bind=\"!editType\">\r\n    <user-list class=\"col-xs-12 col-md-8\"></user-list>\r\n\r\n    <div class=\"col-xs-12 col-md-4\">\r\n      <user-edit user.bind=\"user\"></user-edit>\r\n    </div>\r\n  </div>\r\n\r\n  <div if.bind=\"user && editType=='edit'\" class=\"col-xs-12\">\r\n    <user-add user.bind=\"user\"></user-add>\r\n  </div>\r\n\r\n</template>"; });
-define('text!views/pages/welcome.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../widgets/list-activity\"></require>\r\n    <require from=\"../widgets/user-list\"></require>\r\n    <require from=\"../widgets/profile-brief\"></require>\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <h1>${title}<span class=\"html-file-name\">(welcome.html)</span></h1>\r\n        </div>\r\n    </div>\r\n\r\n    <hr>-->\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <div id=\"exTab2\" class=\"containerXXX\">\r\n                <ul class=\"nav nav-pills\">\r\n                    <li class=\"active\">\r\n                        <a href=\"#home\" data-toggle=\"tab\">Home</a>\r\n                    </li>\r\n                    <li><a href=\"#team\" data-toggle=\"tab\">Team</a>\r\n                    </li>\r\n                </ul>\r\n\r\n                <div class=\"tab-content clearfix\">\r\n                    <div class=\"tab-pane active\" id=\"home\">\r\n                        <h3>Home</h3>\r\n                    </div>\r\n                    <div class=\"tab-pane\" id=\"team\">\r\n                        <h3>Team</h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>-->\r\n\r\n    <div class=\"row margin-bottom-g1\">\r\n        <div class=\"col-md-12\">\r\n            <img src=\"/src/img/MRT_Letterhead.png\" class=\"fit-col\">            \r\n        </div>\r\n    </div>\r\n\r\n    <div if.bind=\"isMember\" class=\"row-fluid\">\r\n        <div class=\"col-md-6\">\r\n            <!--<img src=\"/src/img/MRT_Letterhead.png\" class=\"fit-col\">-->\r\n            <div class=\"margin-bottom-2\">\r\n            <h1 class=\"margin-top-0\">Welcome to MRT</h1>\r\n            <p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Org.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Admin.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Ident.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Valid.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Toolbox.png\" class=\"fit-col\">\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-6\">\r\n            <!--<user-list cust-title=\"Users-lite\" cust-disable-cells=\"['firstName','personalNumber','systemRoles']\" cust-table-pagination.bind=\"true\"\r\n                cust-table-page-size.bind=\"10\"></user-list>-->\r\n            <list-activity></list-activity>\r\n        </div>\r\n    </div>\r\n\r\n    <div if.bind=\"!isMember\" class=\"row-fluid\">\r\n        <div class=\"col-md-6\">\r\n            <!--<img src=\"/src/img/MRT_Letterhead.png\" class=\"fit-col\">-->\r\n            <div class=\"margin-bottom-2\">\r\n            <h1 class=\"margin-top-0\">Welcome to MRT</h1>\r\n            <p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-6\">\r\n            <profile-brief member-arr.bind=\"memberPreview\"></profile-brief>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/pages/welcome.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../widgets/list-activity\"></require>\r\n    <require from=\"../widgets/user-list\"></require>\r\n    <require from=\"../widgets/profile-brief\"></require>\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <h1>${title}<span class=\"html-file-name\">(welcome.html)</span></h1>\r\n        </div>\r\n    </div>\r\n\r\n    <hr>-->\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <div id=\"exTab2\" class=\"containerXXX\">\r\n                <ul class=\"nav nav-pills\">\r\n                    <li class=\"active\">\r\n                        <a href=\"#home\" data-toggle=\"tab\">Home</a>\r\n                    </li>\r\n                    <li><a href=\"#team\" data-toggle=\"tab\">Team</a>\r\n                    </li>\r\n                </ul>\r\n\r\n                <div class=\"tab-content clearfix\">\r\n                    <div class=\"tab-pane active\" id=\"home\">\r\n                        <h3>Home</h3>\r\n                    </div>\r\n                    <div class=\"tab-pane\" id=\"team\">\r\n                        <h3>Team</h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>-->\r\n\r\n    <div class=\"row margin-bottom-g1\">\r\n        ? isMember: ${isMember} !\r\n        <div class=\"col-md-12\">\r\n            <img src=\"/src/img/MRT_Letterhead.png\" class=\"fit-col\">            \r\n        </div>\r\n    </div>\r\n\r\n    <div if.bind=\"isMember\" class=\"row-fluid\">\r\n        <div class=\"col-md-6\">\r\n            <!--<img src=\"/src/img/MRT_Letterhead.png\" class=\"fit-col\">-->\r\n            <div class=\"margin-bottom-2\">\r\n            <h1 class=\"margin-top-0\">Welcome to MRT</h1>\r\n            <p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Org.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Admin.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Ident.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Valid.png\" class=\"fit-col\">\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <img src=\"/src/img/MRT_Toolbox.png\" class=\"fit-col\">\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-6\">\r\n            <!--<user-list cust-title=\"Users-lite\" cust-disable-cells=\"['firstName','personalNumber','systemRoles']\" cust-table-pagination.bind=\"true\"\r\n                cust-table-page-size.bind=\"10\"></user-list>-->\r\n            <list-activity></list-activity>\r\n        </div>\r\n    </div>\r\n\r\n    <div if.bind=\"!isMember\" class=\"row-fluid\">\r\n        <div class=\"col-md-6\">\r\n            <!--<img src=\"/src/img/MRT_Letterhead.png\" class=\"fit-col\">-->\r\n            <div class=\"margin-bottom-2\">\r\n            <h1 class=\"margin-top-0\">Welcome to MRT</h1>\r\n            <p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-6\">\r\n            <profile-brief member-arr.bind=\"memberPreview\"></profile-brief>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/btn-xc-all.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"wrap_xc_btns_all\">\r\n    <a click.trigger=\"xc_all('expand')\">${CV.BTN_XC_Expand}</a>\r\n    <div class=\"divider\"></div>\r\n    <a click.trigger=\"xc_all('collapse')\">${CV.BTN_XC_Collapse}</a>\r\n  </div>\r\n</template>"; });
 define('text!views/widgets/form-user-full-body.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"./user-panels/user-panel-details\"></require>\r\n    <!--<require from=\"./user-panels/user-panel-mrt-role\"></require>-->\r\n    <require from=\"./user-panels/user-panel-languages\"></require>    \r\n    <require from=\"./user-panels/user-panel-passport\"></require>\r\n    <require from=\"./user-panels/user-panel-visa\"></require>\r\n    <require from=\"./user-panels/user-panel-training\"></require>\r\n    <require from=\"./user-panels/user-panel-twic\"></require>\r\n    <require from=\"./user-panels/user-panel-confidential\"></require>\r\n    \r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\"\r\n                data-target=\"#${custXcId}\">\r\n            <i if.bind=\"custIcon\" class=\"fa ${custIcon} text-after\"></i>\r\n\r\n            ${custTitle}\r\n             <!--| ${user.firstName} | ${user.lkp_regions_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected}-->\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\"                \r\n                aria-expanded=\"${custXcExpanded}\"\r\n                aria-controls=\"collapseExample\">\r\n            </button>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}\">\r\n            <div class=\"wrap-fields\">\r\n                <user-panel-details if.bind=\"custBody=='user-details'\" user.bind=\"user\"></user-panel-details>                \r\n                <!--<user-panel-mrt-role if.bind=\"custBody=='user-mrt-role'\" user.bind=\"user\"></user-panel-mrt-role>-->\r\n                <user-panel-languages if.bind=\"custBody=='user-languages'\" user.bind=\"user\"></user-panel-languages>\r\n                <user-panel-passport if.bind=\"custBody=='user-passport'\" user.bind=\"user\"></user-panel-passport>\r\n                <user-panel-visa if.bind=\"custBody=='user-visa'\" user.bind=\"user\"></user-panel-visa>\r\n                <user-panel-training if.bind=\"custBody=='user-training'\" user.bind=\"user\"></user-panel-training>\r\n                <user-panel-twic if.bind=\"custBody=='user-twic'\" user.bind=\"user\"></user-panel-twic>\r\n                <user-panel-confidential if.bind=\"custBody=='user-confidential'\" user.bind=\"user\"></user-panel-confidential>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/list-activity.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\" data-target=\"#${custXcId}\">\r\n            <i class=\"fa fa-bell text-after\"></i>\r\n            ${title}\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\" aria-expanded=\"${custXcExpanded}\" aria-controls=\"collapseExample\">\r\n            </button>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-12\">\r\n                    <table class=\"table table-striped margin-top-1\">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Date</th>\r\n                        <th>Team Member</th>\r\n                        <th>Action</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>08/04/2017</td>\r\n                        <td>David Sousek</td>\r\n                        <td><i class=\"fa fa-search text-after\"></i>view</td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>03/04/2017</td>\r\n                        <td>Alex Mack</td>\r\n                        <td><i class=\"fa fa-search text-after\"></i>view</td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>01/04/2017</td>\r\n                        <td>Alex Mack</td>\r\n                        <td><i class=\"fa fa-search text-after\"></i>view</td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>01/04/2017</td>\r\n                        <td>Alex Mack</td>\r\n                        <td><i class=\"fa fa-search text-after\"></i>view</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n \r\n\r\n\r\n    <!--<div class=\"panel panel-default\">\r\n        <div class=\"panel-heading\">${title2}<i class=\"fa fa-history pull-right\"></i></div>\r\n        <div class=\"panel-body\">\r\n            <table class=\"table table-striped\">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Date</th>\r\n                        <th>Activity</th>\r\n                        <th>Status</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>23/01/2017 17:31pm</td>\r\n                        <td><a href=\"#\">David Bowie</a> updated profile</td>\r\n                        <td><i class=\"fa fa-pencil\"></i></td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>22/01/2017 09:44pm</td>\r\n                        <td><a href=\"#\">David Bowie</a> added to MRT</td>\r\n                        <td><i class=\"fa fa-plus\"></i></td>\r\n                    </tr>\r\n                    <tr>\r\n                        <td>18/01/2017 11:57pm</td>\r\n                        <td><a href=\"#\">Charles Carter</a> deleted from MRT</td>\r\n                        <td><i class=\"fa fa-minus\"></i></td>\r\n                    </tr>\r\n                </tbody>\r\n        </div>\r\n    </div>-->\r\n\r\n</template>"; });
