@@ -8,7 +8,15 @@
   <div id="container-fixed-footer">
     <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
     <nav-bar router.bind="router" id="header"></nav-bar>
-
+APP: ${isMember}
+<ul>
+    <li repeat.for="repo of repos">
+      <a href.bind="repo.html_url" target="_blank">
+        ${repo.name} (${repo.stargazers_count} stars)
+      </a>
+    </li>
+  </ul>
+  
     <div class="container" id="body">
       <div class="row">      
         <router-view></router-view>

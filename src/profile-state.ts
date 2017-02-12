@@ -7,7 +7,7 @@ const CV = Constants
 
 
 @inject(WebAPIUsers)
-export class ApplicationState {
+export class ProfileState {
   public CV = CV;
   public loggedInUser = null;
   myProfile;

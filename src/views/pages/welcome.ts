@@ -3,11 +3,11 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 import { Lookups } from '../../resources/lookups';
-import {ApplicationState} from '../../application-state';
+import {ProfileState} from '../../profile-state';
 import { WebAPIUsers } from '../../api/web-api-users';
 
 //@autoinject
-@inject(WebAPIUsers,EventAggregator,ApplicationState)
+@inject(WebAPIUsers,EventAggregator,ProfileState)
 
 export class Welcome {
 
@@ -16,14 +16,15 @@ public CV = CV;
   title = '';
   isMember;
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator, private appState: ApplicationState) {
+  constructor(private api: WebAPIUsers, private ea: EventAggregator, private appState: ProfileState) {
     this.appState = appState;
     if (CV.debugConsoleLog) console.log('welcome.ts | const ' + JSON.stringify(appState) );
   }
 
-  created(appState){
-    if (CV.debugConsoleLog) console.log('welcome.ts | created: ' + JSON.stringify(this.appState) );
-    if(this.appState.myProfile) this.isMember = this.appState.myProfile.currentUser.isMember;
+  async created(){
+    //alert('welcome.ts | created');
+    // if (CV.debugConsoleLog) console.log('welcome.ts | created: ' + JSON.stringify(this.appState) );
+    // if(this.appState.myProfile) this.isMember = this.appState.myProfile.currentUser.isMember;
   }
 
 }

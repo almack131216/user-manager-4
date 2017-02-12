@@ -1,39 +1,58 @@
 import { Router, RouterConfiguration } from 'aurelia-router';
 import { inject, autoinject } from 'aurelia-framework';
-import { WebAPI } from './api/web-api';
 import * as Constants from './resources/constants';
 const CV = Constants
 
 import {FetchConfig} from 'aurelia-auth';
 
-import {ApplicationState} from './application-state';
+import {ProfileState} from './profile-state';
 import { WebAPIUsers } from './api/web-api-users';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
-@inject(WebAPI,Router,FetchConfig,ApplicationState)
+import {HttpClient} from 'aurelia-http-client';  
+
+const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
+
+
+@inject(HttpClient,Router,FetchConfig,ProfileState)
 
 export class App {
-  api: WebAPI
+  repos = null;
   router: Router
   fetchConfig: FetchConfig
-  isMember;
   public CV = CV  
+http;
+  isMember;
 
-  constructor(private appState: ApplicationState) {
-    //this.appState = appState;
-    //this.isMember = this.appState.isMember;
-    //this.isMember = this.appState.myProfile.currentUser.isMember;
-    //if (CV.debugConsoleLog) console.log('app.ts | const: ' + JSON.stringify(this.appState) );
-    // this.router = router;
-    // this.fetchConfig = fetchConfig;
+  constructor(http) {
+    this.http = http;
+    //alert(http);
   }
 
-   created(){
-    //if (CV.debugConsoleLog) console.log('app.ts | created -> appState: ' + JSON.stringify(this.appState) );
+  activate() {
+    // return a Promise that will resolve when the repos have
+    // been loaded and sorted by star count.
+    return this.http.get(reposUrl)
+      .then(response => {
+        this.repos = response.content
+          .sort((a, b) => b.stargazers_count - a.stargazers_count);
+      });
   }
 
-  activate(){
+  // constructor(private api: WebAPIUsers, private ea: EventAggregator, private appState: ProfileState) {
+  //   this.appState = appState;
+  //   if (CV.debugConsoleLog) console.log('app.ts | const ' + JSON.stringify(appState) );
+  // }
+
+  // async attached(appState){
+  //   //alert('app.ts | created');
+  //   alert('app.ts | created: ' + JSON.stringify(this.appState) );
+  //   if(this.appState.myProfile) this.isMember = this.appState.myProfile.currentUser.isMember;
+  // }
+
+  //activate(){
     //this.fetchConfig.configure();
-  }
+  //}
 
   configureRouter(config: RouterConfiguration, router: Router): void {
     config.title = CV.SITE_NAME_ABBR;
