@@ -20,7 +20,7 @@ public CV = CV;
   constructor(myState:ProfileState) {
     this.myState = myState;
     //this.myProfile = myState
-    alert('welcome.ts | const | ' + JSON.stringify(myState) + ' / ');
+    //alert('welcome.ts | const | ' + JSON.stringify(myState) + ' / ');
     // if (CV.debugConsoleLog) console.log('welcome.ts | const ' + JSON.stringify(myState) );
   }
 

@@ -3,6 +3,8 @@
 
     <ui-header current-user.bind="currentUser"></ui-header>
 ? navbar > isMember: ${currentUser.isMember} !
+<p>${router.navigation['welcome']}</p>
+
     <nav id="header" class="navbar navbar-default navbar-static-topXXX" role="navigation">
         
         <div class="container">
@@ -21,8 +23,8 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li repeat.for="row of router.navigation | authFilter: isLoggedIn" class="${row.isActive ? 'active' : ''}">
-                        <a href.bind="row.href">${row.title}</a>
+                    <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                        <a href.bind="row.href">${row.title} / ${row.isMemberOnly}</a>
                     </li>
                 </ul>
 
