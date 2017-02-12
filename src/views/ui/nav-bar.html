@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li repeat.for="row of router.navigation" if.bind="hasAccess(currentUser,row)" class="${row.isActive ? 'active' : ''}">
-                        <a href.bind="row.href">${row.title} / ${currentUser.isMember} | ${row.settings.data.isMemberOnly}</a>
+                        <a href.bind="row.href">${row.title}<span if.bind="CV.debugShowCurrentUser"> / ${currentUser.isMember} | ${row.settings.data.isMemberOnly}</span></a>
                     </li>
                 </ul>
 
