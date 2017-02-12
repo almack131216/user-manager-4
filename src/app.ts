@@ -5,7 +5,6 @@ const CV = Constants
 
 import {FetchConfig} from 'aurelia-auth';
 
-import {ProfileState} from './profile-state';
 import { WebAPIUsers } from './api/web-api-users';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
@@ -15,7 +14,7 @@ const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
 const profileUrl = 'src/api/api-global.json';
 
 @autoinject
-@inject(HttpClient,Router,FetchConfig,ProfileState,WebAPIUsers)
+@inject(HttpClient,Router,FetchConfig,WebAPIUsers)
 
 export class App {
   public CV = CV 
