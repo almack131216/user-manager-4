@@ -15,7 +15,7 @@ routeConfig;
 public CV = CV;
   title = '';
   myState;
-  currentUser;
+  @bindable currentUser;
 
   constructor(myState:ProfileState) {
     this.myState = myState;

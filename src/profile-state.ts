@@ -40,19 +40,6 @@ export class ProfileState {
         .sort((a, b) => b.stargazers_count - a.stargazers_count)
         */
       });
-
-    // return this.api.getGlobal()
-    //         .then(currentUser => this.currentUser = currentUser)
-    //         // .then(() => alert(JSON.stringify(this.users) ))
-    //         .then(() => {
-    //           alert(this.currentUser.currentUser.isMember),
-    //           this.currentUser = this.currentUser.currentUser,
-    //           this.myId = this.currentUser.id;
-    //           this.myDisplayName = this.currentUser.displayName,
-    //           this.isMember = this.currentUser.isMember,
-    //           this.isReader = this.currentUser.isReader,        
-    //           this.isEditor = this.currentUser.isEditor
-    //         });
   }
 
 }

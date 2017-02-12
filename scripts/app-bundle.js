@@ -327,9 +327,9 @@ define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./re
                 var _this = this;
                 return __generator(this, function (_a) {
                     this.api.getGlobal()
-                        .then(function (currentUser) { return _this.currentUser = currentUser; })
+                        .then(function (currentUserX) { return _this.currentUserX = currentUserX; })
                         .then(function () {
-                        _this.currentUser = _this.currentUser.currentUser,
+                        _this.currentUser = _this.currentUserX.currentUser,
                             _this.myId = _this.currentUser.id;
                         _this.myDisplayName = _this.currentUser.displayName,
                             _this.isMemberXXX = _this.currentUser.isMember,
@@ -1561,6 +1561,10 @@ define('views/pages/welcome',["require", "exports", "aurelia-framework", "aureli
         };
         return Welcome;
     }());
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], Welcome.prototype, "currentUser", void 0);
     Welcome = __decorate([
         aurelia_framework_1.inject(web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator, profile_state_1.ProfileState),
         __metadata("design:paramtypes", [profile_state_1.ProfileState])
@@ -1595,7 +1599,9 @@ define('views/ui/nav-bar',["require", "exports", "aurelia-framework", "../../res
         };
         NavBar.prototype.hasAccess = function (getUser, getPage) {
             console.log('hasAccess: ' + JSON.stringify(getUser) + ' / ' + getPage + ' (' + getPage.settings.data.isMemberOnly + ')');
-            if (getUser && getPage.settings.data.isMemberOnly == true)
+            if (!getUser)
+                return false;
+            if (!getPage.settings.data.isMemberOnly || (getUser.isMember && getPage.settings.data.isMemberOnly == true))
                 return true;
             return false;
         };

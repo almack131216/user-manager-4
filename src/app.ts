@@ -25,7 +25,7 @@ export class App {
   fetchConfig: FetchConfig
    
   http;
-
+currentUserX;
   currentUser;
   myId
   myDisplayName
@@ -43,26 +43,16 @@ isEditor
     // been loaded and sorted by star count.
 
     this.api.getGlobal()
-            .then(currentUser => this.currentUser = currentUser)
+            .then(currentUserX => this.currentUserX = currentUserX)
             // .then(() => alert(JSON.stringify(this.users) ))
             .then(() => {
-              this.currentUser = this.currentUser.currentUser,
+              this.currentUser = this.currentUserX.currentUser,
               this.myId = this.currentUser.id;
               this.myDisplayName = this.currentUser.displayName,
               this.isMemberXXX = this.currentUser.isMember,
               this.isReader = this.currentUser.isReader,        
               this.isEditor = this.currentUser.isEditor
             });
-    // return this.http.get(profileUrl)
-    //   .then(response => {
-    //     this.repos = response.content,
-    //     this.currentUser = response.content.currentUser,
-    //     this.myId = this.currentUser.id;
-    //     this.myDisplayName = this.currentUser.displayName;
-    //     this.isMember = this.currentUser.isMember;
-    //     this.isReader = this.currentUser.isReader;        
-    //     this.isEditor = this.currentUser.isEditor;
-    //   });
   }
 
 
