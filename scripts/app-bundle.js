@@ -103,7 +103,7 @@ define('api/web-api',["require", "exports"], function (require, exports) {
 
 define('resources/constants',["require", "exports"], function (require, exports) {
     "use strict";
-    exports.debugConsoleLog = false;
+    exports.debugConsoleLog = true;
     exports.debugShowOutput = false;
     exports.COPYRIGHT = '© 2017 BP p.l.c.';
     exports.SITE_OWNER_ABBR = 'BP';
@@ -127,6 +127,153 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+define('api/web-api-users',["require", "exports", "aurelia-fetch-client", "aurelia-framework"], function (require, exports, aurelia_fetch_client_1, aurelia_framework_1) {
+    "use strict";
+    var latency = 200;
+    var id = 0;
+    var users = null;
+    var usersArr = [];
+    var results = null;
+    var myProfile = null;
+    var WebAPIUsers = (function () {
+        function WebAPIUsers(http) {
+            this.isRequesting = false;
+            this.usersArr = [];
+            this.http = http;
+        }
+        WebAPIUsers.prototype.getGlobal = function () {
+            var _this = this;
+            this.isRequesting = true;
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var myProfile = _this.http.fetch('src/api/api-global.json')
+                        .then(function (myProfile) { return myProfile.json(); });
+                    resolve(myProfile);
+                    _this.isRequesting = false;
+                }, latency);
+            });
+        };
+        WebAPIUsers.prototype.getUserList = function () {
+            var _this = this;
+            this.isRequesting = true;
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var users = _this.http.fetch('src/api/api-all-users.json')
+                        .then(function (users) { return users.json(); });
+                    resolve(users);
+                    _this.isRequesting = false;
+                }, latency);
+            });
+        };
+        WebAPIUsers.prototype.getUserDetails = function (id) {
+            var _this = this;
+            console.log('getUserDetails: ' + id);
+            this.isRequesting = true;
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    console.log('usersArr:' + usersArr);
+                    var found = _this.http.fetch('src/api/dummy-user-all.json')
+                        .then(function (found) { return found.json(); })
+                        .then(function (found) { return found; });
+                    console.log('getUserDetails ARR: ' + JSON.stringify(found));
+                    resolve(found);
+                    _this.isRequesting = false;
+                }, latency);
+            });
+        };
+        WebAPIUsers.prototype.getUserRole = function (id) {
+            var _this = this;
+            console.log('getUserRole: ' + id);
+            this.isRequesting = true;
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var found = _this.http.fetch('src/api/dummy-user-role.json')
+                        .then(function (found) { return found.json(); })
+                        .then(function (found) { return found; });
+                    console.log('getUserRole ARR: ' + JSON.stringify(found));
+                    resolve(found);
+                    _this.isRequesting = false;
+                }, latency);
+            });
+        };
+        WebAPIUsers.prototype.saveUser = function (user) {
+            var _this = this;
+            this.isRequesting = true;
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var instance = JSON.parse(JSON.stringify(user));
+                    var found = users.filter(function (x) { return x.id == user.id; })[0];
+                    if (found) {
+                        var index = users.indexOf(found);
+                        users[index] = instance;
+                    }
+                    else {
+                        users.push(instance);
+                    }
+                    _this.isRequesting = false;
+                    resolve(instance);
+                }, latency);
+            });
+        };
+        return WebAPIUsers;
+    }());
+    WebAPIUsers = __decorate([
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [aurelia_fetch_client_1.HttpClient])
+    ], WebAPIUsers);
+    exports.WebAPIUsers = WebAPIUsers;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('application-state',["require", "exports", "aurelia-router", "aurelia-framework", "./api/web-api-users", "./resources/constants"], function (require, exports, aurelia_router_1, aurelia_framework_1, web_api_users_1, Constants) {
+    "use strict";
+    var CV = Constants;
+    var ApplicationState = (function () {
+        function ApplicationState(api, router) {
+            var _this = this;
+            this.api = api;
+            this.CV = CV;
+            this.loggedInUser = null;
+            this.api.getGlobal().then(function (myProfile) {
+                _this.myProfile = myProfile;
+                if (CV.debugConsoleLog)
+                    console.log('application-status.ts | constructor : ' + JSON.stringify(myProfile));
+                if (_this.isMember) {
+                    if (CV.debugConsoleLog)
+                        console.log('application-status.ts | isMember | yup!');
+                }
+                else {
+                    if (CV.debugConsoleLog)
+                        console.log('application-status.ts | isMember | naaaaaaah!');
+                }
+            });
+        }
+        return ApplicationState;
+    }());
+    ApplicationState = __decorate([
+        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers),
+        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_router_1.Router])
+    ], ApplicationState);
+    exports.ApplicationState = ApplicationState;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./api/web-api", "./resources/constants", "aurelia-auth", "./application-state"], function (require, exports, aurelia_router_1, aurelia_framework_1, web_api_1, Constants, aurelia_auth_1, application_state_1) {
     "use strict";
     var CV = Constants;
@@ -134,11 +281,8 @@ define('app',["require", "exports", "aurelia-router", "aurelia-framework", "./ap
         function App(appState) {
             this.appState = appState;
             this.CV = CV;
-            this.appState = appState;
-            alert('app.ts | const: ' + JSON.stringify(this.appState));
         }
-        App.prototype.created = function (appState) {
-            alert('app.ts | created -> appState: ' + JSON.stringify(this.appState));
+        App.prototype.created = function () {
         };
         App.prototype.activate = function () {
         };
@@ -340,112 +484,6 @@ define('api/utility',["require", "exports"], function (require, exports) {
     }
     exports.areEqual = areEqual;
     ;
-});
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('api/web-api-users',["require", "exports", "aurelia-fetch-client", "aurelia-framework"], function (require, exports, aurelia_fetch_client_1, aurelia_framework_1) {
-    "use strict";
-    var latency = 200;
-    var id = 0;
-    var users = null;
-    var usersArr = [];
-    var results = null;
-    var myProfile = null;
-    var WebAPIUsers = (function () {
-        function WebAPIUsers(http) {
-            this.isRequesting = false;
-            this.usersArr = [];
-            this.http = http;
-        }
-        WebAPIUsers.prototype.getGlobal = function () {
-            var _this = this;
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    var myProfile = _this.http.fetch('src/api/api-global.json')
-                        .then(function (myProfile) { return myProfile.json(); });
-                    resolve(myProfile);
-                    _this.isRequesting = false;
-                }, latency);
-            });
-        };
-        WebAPIUsers.prototype.getUserList = function () {
-            var _this = this;
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    var users = _this.http.fetch('src/api/api-all-users.json')
-                        .then(function (users) { return users.json(); });
-                    resolve(users);
-                    _this.isRequesting = false;
-                }, latency);
-            });
-        };
-        WebAPIUsers.prototype.getUserDetails = function (id) {
-            var _this = this;
-            console.log('getUserDetails: ' + id);
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    console.log('usersArr:' + usersArr);
-                    var found = _this.http.fetch('src/api/dummy-user-all.json')
-                        .then(function (found) { return found.json(); })
-                        .then(function (found) { return found; });
-                    console.log('getUserDetails ARR: ' + JSON.stringify(found));
-                    resolve(found);
-                    _this.isRequesting = false;
-                }, latency);
-            });
-        };
-        WebAPIUsers.prototype.getUserRole = function (id) {
-            var _this = this;
-            console.log('getUserRole: ' + id);
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    var found = _this.http.fetch('src/api/dummy-user-role.json')
-                        .then(function (found) { return found.json(); })
-                        .then(function (found) { return found; });
-                    console.log('getUserRole ARR: ' + JSON.stringify(found));
-                    resolve(found);
-                    _this.isRequesting = false;
-                }, latency);
-            });
-        };
-        WebAPIUsers.prototype.saveUser = function (user) {
-            var _this = this;
-            this.isRequesting = true;
-            return new Promise(function (resolve) {
-                setTimeout(function () {
-                    var instance = JSON.parse(JSON.stringify(user));
-                    var found = users.filter(function (x) { return x.id == user.id; })[0];
-                    if (found) {
-                        var index = users.indexOf(found);
-                        users[index] = instance;
-                    }
-                    else {
-                        users.push(instance);
-                    }
-                    _this.isRequesting = false;
-                    resolve(instance);
-                }, latency);
-            });
-        };
-        return WebAPIUsers;
-    }());
-    WebAPIUsers = __decorate([
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [aurelia_fetch_client_1.HttpClient])
-    ], WebAPIUsers);
-    exports.WebAPIUsers = WebAPIUsers;
 });
 
 define('resources/messages',["require", "exports"], function (require, exports) {
@@ -1423,13 +1461,17 @@ define('views/pages/welcome',["require", "exports", "aurelia-framework", "aureli
             this.api = api;
             this.ea = ea;
             this.appState = appState;
+            this.CV = CV;
             this.title = '';
             this.appState = appState;
-            alert('welcome.ts | const ' + JSON.stringify(appState));
+            if (CV.debugConsoleLog)
+                console.log('welcome.ts | const ' + JSON.stringify(appState));
         }
         Welcome.prototype.created = function (appState) {
-            alert('welcome.ts | created: ' + JSON.stringify(this.appState));
-            this.isMember = this.appState.myProfile.currentUser.isMember;
+            if (CV.debugConsoleLog)
+                console.log('welcome.ts | created: ' + JSON.stringify(this.appState));
+            if (this.appState.myProfile)
+                this.isMember = this.appState.myProfile.currentUser.isMember;
         };
         return Welcome;
     }());
@@ -4718,42 +4760,6 @@ define('aurelia-dialog/dialog-service',['exports', 'aurelia-metadata', 'aurelia-
     }
   }
 });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('application-state',["require", "exports", "aurelia-router", "aurelia-framework", "./api/web-api-users"], function (require, exports, aurelia_router_1, aurelia_framework_1, web_api_users_1) {
-    "use strict";
-    var ApplicationState = (function () {
-        function ApplicationState(api, router) {
-            var _this = this;
-            this.api = api;
-            this.loggedInUser = null;
-            this.api.getGlobal().then(function (myProfile) {
-                _this.myProfile = myProfile;
-                alert('application-status: ' + myProfile);
-                if (_this.isMember) {
-                    alert('yup!');
-                }
-                else {
-                    alert('naaaaaaah!');
-                }
-            });
-        }
-        return ApplicationState;
-    }());
-    ApplicationState = __decorate([
-        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers),
-        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_router_1.Router])
-    ], ApplicationState);
-    exports.ApplicationState = ApplicationState;
-});
-
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./views/ui/nav-bar\"></require>\r\n  <require from=\"./views/ui/ui-footer\"></require>\r\n  <require from=\"./font-awesome.css\"></require>\r\n  <link href=\"src/css/main.css\" rel=\"stylesheet\" />\r\n  <link href=\"src/css/bootstrap.min.css\" rel=\"stylesheet\" />\r\n\r\n  <div id=\"container-fixed-footer\">\r\n    <loading-indicator loading.bind=\"router.isNavigating || api.isRequesting\"></loading-indicator>\r\n    <nav-bar router.bind=\"router\" id=\"header\"></nav-bar>\r\n\r\n    <div class=\"container\" id=\"body\">\r\n      <div class=\"row\">      \r\n        <router-view></router-view>\r\n      </div>\r\n    </div>\r\n\r\n    <ui-footer id=\"footer\"></ui-footer>\r\n  </div>\r\n\r\n</template>"; });
 define('text!styles.css', ['module'], function(module) { module.exports = "body { }\r\n\r\n/* forms */\r\n.form-group label {background:yellow;}\r\n\r\n/* offsets */\r\n.padding-x-0 {padding-left:0px !important;padding-right:0px !important;}\r\n.margin-x-0 {margin-left:0px !important;margin-right:0px !important;}\r\n\r\n.html-file-name {margin-left:10px;color:red;font-size:0.5em;}\r\n\r\n.display-none {display:none !important}\r\n.display-block {display:block !important}\r\n.display-inline-block {display:inline-block !important}\r\n\r\n.btn-i i.fa {margin-right:10px;}\r\n\r\nsection {\r\n  margin: 0 20px;\r\n}\r\n\r\na:focus {\r\n  outline: none;\r\n}\r\n\r\n.navbar-nav li.loader {\r\n    margin: 12px 24px 0 6px;\r\n}\r\n\r\n.no-selection {\r\n  margin: 20px;\r\n}\r\n\r\n.contact-list {\r\n  overflow-y: auto;\r\n  border: 1px solid #ddd;\r\n  padding: 10px;\r\n}\r\n\r\n.panel {\r\n  margin: 20px;\r\n}\r\n\r\n.button-bar {\r\n  right: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  border-top: 1px solid #ddd;\r\n  background: white;\r\n}\r\n\r\n.button-bar > button {\r\n  float: right;\r\n  margin: 20px;\r\n}\r\n\r\nli.list-group-item {\r\n  list-style: none;\r\n}\r\n\r\nli.list-group-item > a {\r\n  text-decoration: none;\r\n}\r\n\r\nli.list-group-item.active > a {\r\n  color: white;\r\n}\r\n"; });
 define('text!login.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"bootstrap/css/bootstrap.css\"></require>\r\n  <require from=\"font-awesome.css\"></require>\r\n\r\n    <div class=\"container\">\r\n    <div class=\"row\">      \r\n      <div class=\"col-md-12 styleXXX\" style=\"padding-top:100px;\">\r\n          <h1>${title}</h1>\r\n        <form class=\"login-form\" submit.delegate=\"login()\">\r\n            <input type=\"text\" placeholder=\"username\" value.bind=\"username\" />\r\n            <input type=\"password\" placeholder=\"password\" value.bind=\"password\" />\r\n            <button type=\"submit\">Login</button>\r\n            <span class=\"error\">${error}</span>\r\n        </form>\r\n    </div>\r\n    </div>\r\n  </div>\r\n    \r\n</template>"; });

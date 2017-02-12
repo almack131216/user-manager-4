@@ -19,18 +19,16 @@ export class App {
   public CV = CV  
 
   constructor(private appState: ApplicationState) {
-    this.appState = appState;
+    //this.appState = appState;
     //this.isMember = this.appState.isMember;
     //this.isMember = this.appState.myProfile.currentUser.isMember;
-    alert('app.ts | const: ' + JSON.stringify(this.appState) );
+    //if (CV.debugConsoleLog) console.log('app.ts | const: ' + JSON.stringify(this.appState) );
     // this.router = router;
     // this.fetchConfig = fetchConfig;
   }
 
-   created(appState){
-    alert('app.ts | created -> appState: ' + JSON.stringify(this.appState) );
-    //this.isMember = this.appState.myProfile.currentUser.isMember;
-    //alert('isMember: ' + this.isMember );
+   created(){
+    //if (CV.debugConsoleLog) console.log('app.ts | created -> appState: ' + JSON.stringify(this.appState) );
   }
 
   activate(){

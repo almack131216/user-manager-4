@@ -2,11 +2,13 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
 import { inject, autoinject } from 'aurelia-framework';
 import { WebAPIUsers } from './api/web-api-users';
+import * as Constants from './resources/constants';
+const CV = Constants
 
 
 @inject(WebAPIUsers)
 export class ApplicationState {
-
+  public CV = CV;
   public loggedInUser = null;
   myProfile;
   isMember;
@@ -17,13 +19,13 @@ export class ApplicationState {
 
     this.api.getGlobal().then(myProfile => {
       this.myProfile = myProfile;
-      alert('application-status: ' + myProfile);
+      if (CV.debugConsoleLog) console.log('application-status.ts | constructor : ' + JSON.stringify(myProfile) );
       //this.isMember = myProfile['currentUser'].isMember;
 
       if(this.isMember){
-            alert('yup!');
+            if (CV.debugConsoleLog) console.log('application-status.ts | isMember | yup!');
         }else{
-            alert('naaaaaaah!');
+            if (CV.debugConsoleLog) console.log('application-status.ts | isMember | naaaaaaah!');
         }
     });
   }

@@ -1,4 +1,4 @@
-export const debugConsoleLog = false;
+export const debugConsoleLog = true;
 export const debugShowOutput = false;
 export const COPYRIGHT = '© 2017 BP p.l.c.';
 export const SITE_OWNER_ABBR = 'BP';
