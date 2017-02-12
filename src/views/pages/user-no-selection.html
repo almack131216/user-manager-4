@@ -1,11 +1,12 @@
 <template>
   <require from="../widgets/user-list"></require>
 
+   ? user-selected: ${currentUser.isMember} !
+
   <div class="col-md-12" if.bind="title">
     <h1>${title}<span class="html-file-name">(user-no-selection.html)</span></h1>
-    <hr>
   </div>
 
-  <user-list class="col-md-12"></user-list>
+  <user-list class="col-md-12" if.bind="currentUser.isMember"></user-list>
 
 </template>

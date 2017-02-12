@@ -3,6 +3,8 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../../api/web-api-users';
 import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
+import * as Constants from '../../resources/constants';
+const CV = Constants
 
 interface User {
   firstName: string;
@@ -14,6 +16,7 @@ interface User {
 
 @inject(WebAPIUsers, EventAggregator)
 export class UserSelected {
+  public CV = CV
   routeConfig;
   user: User;
   editType = null;

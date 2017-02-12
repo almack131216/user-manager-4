@@ -18,7 +18,6 @@ export class NavBar {
 
   constructor(router){
     this.router = router;
-
   }
 
   attached(){
@@ -33,6 +32,7 @@ export class NavBar {
   }
   
   get isLoggedIn(){
+
     //userInfo is an object that is updated on authentication
     return true;//this.currentUser.isMember;
   }

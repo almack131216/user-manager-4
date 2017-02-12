@@ -8,7 +8,7 @@
   <div id="container-fixed-footer">
     <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
     <nav-bar router.bind="router" id="header" current-user.bind="currentUser"></nav-bar>
-    ? APP: ${currentUser.isMember} !
+    <p if.bind="CV.debugShowCurrentUser">? APP: ${currentUser.isMember} !</p>
 
     <div class="container" id="body">
       <div class="row">

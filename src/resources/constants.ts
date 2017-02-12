@@ -1,5 +1,6 @@
 export const debugConsoleLog = true;
-export const debugShowOutput = false;
+export const debugShowOutput = true;
+export const debugShowCurrentUser = true;
 export const COPYRIGHT = '© 2017 BP p.l.c.';
 export const SITE_OWNER_ABBR = 'BP';
 export const SITE_OWNER = 'British Petroleum';

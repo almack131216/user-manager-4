@@ -33,6 +33,7 @@ currentUserX;
 isReader      
 isEditor
 
+
   constructor(http,private api: WebAPIUsers) {
     this.http = http;
     //alert( 'repos' + JSON.stringify(this.repos))
@@ -60,7 +61,7 @@ isEditor
     config.title = CV.SITE_NAME_ABBR;
     config.map([
       { route: ['','welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Home', settings: {data: {isMemberOnly: false} } },
-      { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: {data: {isMemberOnly: true} } },
+      { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: {data: {isMemberOnly: true}}, xxx:true },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'Team' },
       { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' }
       // { route: 'users/add', moduleId: './views/pages/user-add', name: 'user-add', nav: true, title: 'Add User' },
