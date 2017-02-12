@@ -26,7 +26,7 @@ export class WebAPIUsers {
 
     return new Promise(resolve => {
       setTimeout(() => {
-        let users = this.http.fetch('src/views/widgets/user-panels/dummy-data.json')
+        let users = this.http.fetch('src/api/api-all-users.json')
             .then(users => users.json());   
 
         resolve(users);
@@ -42,7 +42,7 @@ export class WebAPIUsers {
       setTimeout(() => {
         console.log('usersArr:' + usersArr);
         //let found = usersArr.filter(x => x.id == id);
-        let found = this.http.fetch('src/views/widgets/user-panels/dummy-user-all.json')
+        let found = this.http.fetch('src/api/dummy-user-all.json')
             .then(found => found.json())
             .then(found => found);
             
@@ -61,7 +61,7 @@ export class WebAPIUsers {
       setTimeout(() => {
         //console.log('usersArr:' + usersArr);
         //let found = usersArr.filter(x => x.id == id);
-        let found = this.http.fetch('src/views/widgets/user-panels/dummy-user-role.json')
+        let found = this.http.fetch('src/api/dummy-user-role.json')
             .then(found => found.json())
             .then(found => found);            
 

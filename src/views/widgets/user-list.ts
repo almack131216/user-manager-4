@@ -50,7 +50,7 @@ export class UserList {
         ea.subscribe(UserViewed, msg => this.select(msg.user));
         ea.subscribe(UserUpdated, msg => {
             let id = msg.user.id;
-            let found = this.users.find(x => x.id == id);
+            let found = this.users.data.find(x => x.id == id);
             Object.assign(found, msg.user);
         });
 
@@ -66,8 +66,11 @@ export class UserList {
     created() {
         if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
         if (this.custTitle) this.title = this.custTitle;
-        this.api.getUserList().then(users => this.users = users)
+        this.api.getUserList()
+            .then(users => this.users = users)
+            // .then(() => alert(JSON.stringify(this.users) ))
             .then(() => this.populateRoleFilterFromList());
+
     }
 
     select(user) {
@@ -121,7 +124,7 @@ export class UserList {
 
     filters = [
         { value: '', keys: ['firstName', 'lastName', 'emailAddress', 'personalNumber'] },
-        { value: '1', keys: ['systemRoles.value'] }
+        { value: '1', keys: ['isMember'] }
     ];
 
     returnLabelFromValue(getId){
@@ -134,7 +137,7 @@ export class UserList {
         //this.rolesArrLabels=[];
         this.rolesArrDynamic=[];
 
-        for (let next of this.users) {
+        for (let next of this.users.data) {
             let nextRole = next.systemRoles;
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {

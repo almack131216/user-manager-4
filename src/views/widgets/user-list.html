@@ -45,15 +45,14 @@
                 <!-- Table -->
                 <div class="row">
                     <div class="col-xs-12">
-                        <table class="table table-striped" aurelia-table="data.bind: users; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
+                        <table class="table table-striped" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
                             <thead>
                                 <tr>
                                     <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
                                     <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
                                     <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Last Name</th>
                                     <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">E-mail</th>
-                                    <th aut-sort="key: personalNumber" if.bind="isNotDisabled('personalNumber')">Telephone</th>
-                                    <th aut-sort="key: systemRoles.value" if.bind="isNotDisabled('systemRoles')">Role</th>
+                                    <th aut-sort="key: isMember" if.bind="isNotDisabled('isMember')">isMember</th>
                                     <th if.bind="isNotDisabled('edit')">Edit</th>
                                 </tr>
                             </thead>
@@ -63,13 +62,9 @@
                                     <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
                                     <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
                                     <td if.bind="isNotDisabled('emailAddress')"><a href="mailto:${user.emailAddress}">${user.emailAddress}</a></td>
-                                    <td if.bind="isNotDisabled('personalNumber')"><a href="tel:${user.personalNumber}">${user.personalNumber}</a></td>
-                                    <td if.bind="isNotDisabled('systemRoles')">${user.systemRoles.name}</td>
+                                    <td if.bind="isNotDisabled('isMember')">${user.isMember}</td>
                                     <td if.bind="isNotDisabled('edit')">
                                         <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                            <!--<a class="btn btn-default" route-href="route: users; params.bind: {id:user.id}" title="Quick edit">
-                            <i class="fa fa-pencil"></i>
-                        </a>-->
                                             <a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
                                                 <i class="fa fa-list"></i>
                                             </a>
