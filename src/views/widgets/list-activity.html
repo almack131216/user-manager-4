@@ -1,9 +1,9 @@
 <template>
+    <require from="../../resources/format/format-date"></require>
 
     <div class="panel panel-default panel-xc">
         <div class="panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
-            <i class="fa fa-bell text-after"></i>
-            ${title}
+            <i class="fa fa-bell text-after"></i> ${title}
             <button if.bind="custXc" class="btn btn-xc_chevron btn-xs" type="button" aria-expanded="${custXcExpanded}" aria-controls="collapseExample">
             </button>
         </div>
@@ -12,77 +12,35 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <table class="table table-striped margin-top-1">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Team Member</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>08/04/2017</td>
-                        <td>David Sousek</td>
-                        <td><i class="fa fa-search text-after"></i>view</td>
-                    </tr>
-                    <tr>
-                        <td>03/04/2017</td>
-                        <td>Alex Mack</td>
-                        <td><i class="fa fa-search text-after"></i>view</td>
-                    </tr>
-                    <tr>
-                        <td>01/04/2017</td>
-                        <td>Alex Mack</td>
-                        <td><i class="fa fa-search text-after"></i>view</td>
-                    </tr>
-                    <tr>
-                        <td>01/04/2017</td>
-                        <td>Alex Mack</td>
-                        <td><i class="fa fa-search text-after"></i>view</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <table class="table table-striped margin-top-1" aurelia-table="data.bind: apiData; display-data.bind: $displayData;">
+                        <thead>
+                            <tr>
+                                <th if.bind="custXcId=='xs_recentSubmits'" aut-sort="key: submittedOn; default: desc">Submitted</th>
+                                <th if.bind="custXcId=='xs_recentReviews'" aut-sort="key: submittedOn; default: desc">Reviewed</th>
+                                <th aut-sort="key: displayName;">Team Member</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr repeat.for="row of $displayData">
+                                <td if.bind="custXcId=='xs_recentSubmits'">${row.submittedOn | formatDate}</td>
+                                <td if.bind="custXcId=='xs_recentReviews'">${row.reviewedOn | formatDate}</td>
+                                <td><a href="#">${row.displayName}</a></td>
+                                <td>
+                                    <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
+                                        <button disabled.bind="row.emailAddress==null" class="btn btn-default" href="mailto:${row.emailAddress}" title="Email User">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </button>
+                                        <a class="btn btn-default" href="#"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
         </div>
     </div>
-
-
-
- 
-
-
-    <!--<div class="panel panel-default">
-        <div class="panel-heading">${title2}<i class="fa fa-history pull-right"></i></div>
-        <div class="panel-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Activity</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>23/01/2017 17:31pm</td>
-                        <td><a href="#">David Bowie</a> updated profile</td>
-                        <td><i class="fa fa-pencil"></i></td>
-                    </tr>
-                    <tr>
-                        <td>22/01/2017 09:44pm</td>
-                        <td><a href="#">David Bowie</a> added to MRT</td>
-                        <td><i class="fa fa-plus"></i></td>
-                    </tr>
-                    <tr>
-                        <td>18/01/2017 11:57pm</td>
-                        <td><a href="#">Charles Carter</a> deleted from MRT</td>
-                        <td><i class="fa fa-minus"></i></td>
-                    </tr>
-                </tbody>
-        </div>
-    </div>-->
 
 </template>

@@ -51,6 +51,20 @@ export class WebAPIUsers {
     });
   }
 
+  getHomepageData() {
+    this.isRequesting = true;
+    return new Promise(resolve => {
+      setTimeout(() => {
+        let data = this.http.fetch('src/api/api-welcome.json')
+          .then(data => data.json());
+        resolve(data);
+        this.isRequesting = false;
+      }, latency);
+    });
+  }
+
+  
+
   getUserDetails(id) {
     console.log('getUserDetails: ' + id);
     this.isRequesting = true;

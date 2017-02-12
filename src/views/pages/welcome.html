@@ -34,7 +34,7 @@
         </div>
     </div>-->
 
-    <div class="row margin-bottom-g1">
+    <div if.bind="pageData" class="row margin-bottom-g1">
         <p if.bind="CV.debugShowCurrentUser">? welcome: isMember: ${currentUser.isMember} !</p>
         <div class="col-md-12">
             <img src="/src/img/MRT_Letterhead.png" class="fit-col">
@@ -45,8 +45,8 @@
         <div class="col-md-6">
             <!--<img src="/src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
-                <h1 class="margin-top-0">Welcome to MRT</h1>
-                <p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>
+                <h1 class="margin-top-0">${title_isMember}</h1>
+                <p innerhtml.bind="message_isMember"></p>
             </div>
 
             <div class="row">
@@ -71,7 +71,8 @@
         <div class="col-md-6">
             <!--<user-list cust-title="Users-lite" cust-disable-cells="['firstName','personalNumber','systemRoles']" cust-table-pagination.bind="true"
                 cust-table-page-size.bind="10"></user-list>-->
-            <list-activity></list-activity>
+            <list-activity title="Recent Changes" cust-xc-id="xs_recentSubmits" cust-xc-expanded="true" api-data.bind="pageData.recentSubmits"></list-activity>
+            <list-activity title="Recent Reviews" cust-xc-id="xs_recentReviews" api-data.bind="pageData.recentReviews"></list-activity>
         </div>
     </div>
 
@@ -79,13 +80,13 @@
         <div class="col-md-6">
             <!--<img src="/src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
-                <h1 class="margin-top-0">Welcome to MRT</h1>
-                <p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>
+                <h1 class="margin-top-0">${title}</h1>
+                <p innerhtml.bind="message"></p>
             </div>
         </div>
 
         <div class="col-md-6">
-            <profile-brief member-arr.bind="memberPreview"></profile-brief>
+            <profile-brief member-arr.bind="pageData.memberPreview"></profile-brief>
         </div>
     </div>
 

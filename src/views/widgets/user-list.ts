@@ -123,7 +123,7 @@ export class UserList {
     }
 
     filters = [
-        { value: '', keys: ['firstName', 'lastName', 'emailAddress', 'personalNumber'] },
+        { value: '', keys: ['loginName', 'firstName', 'lastName', 'emailAddress', 'personalNumber'] },
         { value: '1', keys: ['isMember'] }
     ];
 

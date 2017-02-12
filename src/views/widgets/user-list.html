@@ -51,7 +51,7 @@
                                     <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
                                     <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
                                     <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Last Name</th>
-                                    <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">E-mail</th>
+                                    <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login Name</th>
                                     <th aut-sort="key: isMember" if.bind="isNotDisabled('isMember')">isMember</th>
                                     <th if.bind="isNotDisabled('edit')">Edit</th>
                                 </tr>
@@ -61,13 +61,16 @@
                                     <td if.bind="isNotDisabled('id')">${user.id}</td>
                                     <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
                                     <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
-                                    <td if.bind="isNotDisabled('emailAddress')"><a href="mailto:${user.emailAddress}">${user.emailAddress}</a></td>
+                                    <td if.bind="isNotDisabled('loginName')">${user.loginName}</td>
                                     <td if.bind="isNotDisabled('isMember')">${user.isMember}</td>
                                     <td if.bind="isNotDisabled('edit')">
                                         <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
                                             <a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
                                                 <i class="fa fa-list"></i>
                                             </a>
+                                            <button disabled.bind="user.emailAddress==null" class="btn btn-default" href="mailto:${user.emailAddress}" title="Email User">
+                                                <i class="fa fa-envelope-o"></i>
+                                            </button>
                                             <a class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">
                                                 <i class="fa fa-cog"></i>
                                             </a>
