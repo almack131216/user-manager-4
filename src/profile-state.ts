@@ -4,9 +4,10 @@ import { inject, autoinject } from 'aurelia-framework';
 import { WebAPIUsers } from './api/web-api-users';
 import * as Constants from './resources/constants';
 const CV = Constants
+import {HttpClient} from 'aurelia-http-client'; 
+const profileUrl = 'src/api/api-global.json';
 
-
-@inject(WebAPIUsers)
+@inject(HttpClient,WebAPIUsers)
 export class ProfileState {
   public CV = CV;
   public loggedInUser = null;
@@ -14,36 +15,38 @@ export class ProfileState {
   isMember;
   router;
   tmp;
+   http;
+   repos;
 
-  constructor(public api: WebAPIUsers, router: Router) {
+  constructor(http,public api: WebAPIUsers, router: Router) {
+    this.http = http;
 
-    this.api.getGlobal().then(myProfile => {
-      this.myProfile = myProfile;
-      if (CV.debugConsoleLog) console.log('application-status.ts | constructor : ' + JSON.stringify(myProfile) );
-      //this.isMember = myProfile['currentUser'].isMember;
+    
 
-      if(this.isMember){
-            if (CV.debugConsoleLog) console.log('application-status.ts | isMember | yup!');
-        }else{
-            if (CV.debugConsoleLog) console.log('application-status.ts | isMember | naaaaaaah!');
-        }
-    });
+    // this.api.getGlobal().then(myProfile => {
+    //   this.myProfile = myProfile;
+    //   if (CV.debugConsoleLog) console.log('application-status.ts | constructor : ' + JSON.stringify(myProfile) );
+    //   //this.isMember = myProfile['currentUser'].isMember;
+
+    //   if(this.isMember){
+    //         if (CV.debugConsoleLog) console.log('application-status.ts | isMember | yup!');
+    //     }else{
+    //         if (CV.debugConsoleLog) console.log('application-status.ts | isMember | naaaaaaah!');
+    //     }
+
+    // });
+
+    //alert('attct');
+    return this.http.get(profileUrl)
+      .then(response => {
+        this.repos = response.content,
+        this.myProfile = response.content[0].currentUser,
+        this.isMember = response.content[0].currentUser.isMember;
+        /*
+        this.repos = response.content
+        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+        */
+      });
   }
 
-  // constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups, router: Router) {
-  //       ea.subscribe(UserViewed, msg => this.select(msg.user));
-  //       ea.subscribe(UserUpdated, msg => {
-  //           let id = msg.user.id;
-  //           let found = this.users.data.find(x => x.id == id);
-  //           Object.assign(found, msg.user);
-  //       });
-
-  //       this.lkp_role = lookups.lkp_role;
-  //       this.rolesArr = this.lkp_role.map(x =>  { return {
-  //         value:x.value,
-  //         name:x.name
-  //       }});
-
-  //       this.router = router;
-  //   }
 }

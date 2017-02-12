@@ -12,7 +12,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import {HttpClient} from 'aurelia-http-client';  
 
 const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
-
+const profileUrl = 'src/api/api-global.json';
 
 @inject(HttpClient,Router,FetchConfig,ProfileState)
 
@@ -21,21 +21,28 @@ export class App {
   router: Router
   fetchConfig: FetchConfig
   public CV = CV  
-http;
-  isMember;
+  http;
+  isMember = false;
+  myProfile;
 
   constructor(http) {
     this.http = http;
+    //alert( 'repos' + JSON.stringify(this.repos))
     //alert(http);
   }
 
   activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
-    return this.http.get(reposUrl)
+    return this.http.get(profileUrl)
       .then(response => {
+        this.repos = response.content,
+        this.myProfile = response.content[0].currentUser,
+        this.isMember = response.content[0].currentUser.isMember;
+        /*
         this.repos = response.content
-          .sort((a, b) => b.stargazers_count - a.stargazers_count);
+        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+        */
       });
   }
 

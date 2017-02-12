@@ -14,17 +14,17 @@ export class Welcome {
 routeConfig;
 public CV = CV;
   title = '';
-  isMember;
+  isMember2;
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator, private appState: ProfileState) {
-    this.appState = appState;
-    if (CV.debugConsoleLog) console.log('welcome.ts | const ' + JSON.stringify(appState) );
+  constructor(private api: WebAPIUsers, private ea: EventAggregator, private myState: ProfileState) {
+    // this.myState = myState;
+    // if (CV.debugConsoleLog) console.log('welcome.ts | const ' + JSON.stringify(myState) );
   }
 
   async created(){
-    //alert('welcome.ts | created');
-    // if (CV.debugConsoleLog) console.log('welcome.ts | created: ' + JSON.stringify(this.appState) );
-    // if(this.appState.myProfile) this.isMember = this.appState.myProfile.currentUser.isMember;
+    // alert('welcome.ts | created' + JSON.stringify(this.myState) + ' / ' + this.isMember2);
+    // if (CV.debugConsoleLog) console.log('welcome.ts | created: ' + JSON.stringify(this.myState) );
+    // if(this.myState.myProfile) this.isMember2 = this.myState.myProfile.currentUser.isMember;
   }
 
 }
