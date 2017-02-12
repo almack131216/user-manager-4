@@ -14,52 +14,57 @@ import {HttpClient} from 'aurelia-http-client';
 const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
 const profileUrl = 'src/api/api-global.json';
 
-@inject(HttpClient,Router,FetchConfig,ProfileState)
+@autoinject
+@inject(HttpClient,Router,FetchConfig,ProfileState,WebAPIUsers)
 
 export class App {
+  public CV = CV 
+  
   repos = null;
   router: Router
   fetchConfig: FetchConfig
-  public CV = CV  
+   
   http;
-  isMember = false;
-  myProfile;
 
-  constructor(http) {
+  currentUser;
+  myId
+  myDisplayName
+  isMemberXXX
+isReader      
+isEditor
+
+  constructor(http,private api: WebAPIUsers) {
     this.http = http;
     //alert( 'repos' + JSON.stringify(this.repos))
-    //alert(http);
   }
 
-  activate() {
+  async activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
-    return this.http.get(profileUrl)
-      .then(response => {
-        this.repos = response.content,
-        this.myProfile = response.content[0].currentUser,
-        this.isMember = response.content[0].currentUser.isMember;
-        /*
-        this.repos = response.content
-        .sort((a, b) => b.stargazers_count - a.stargazers_count)
-        */
-      });
+
+    this.api.getGlobal()
+            .then(currentUser => this.currentUser = currentUser)
+            // .then(() => alert(JSON.stringify(this.users) ))
+            .then(() => {
+              this.currentUser = this.currentUser.currentUser,
+              this.myId = this.currentUser.id;
+              this.myDisplayName = this.currentUser.displayName,
+              this.isMemberXXX = this.currentUser.isMember,
+              this.isReader = this.currentUser.isReader,        
+              this.isEditor = this.currentUser.isEditor
+            });
+    // return this.http.get(profileUrl)
+    //   .then(response => {
+    //     this.repos = response.content,
+    //     this.currentUser = response.content.currentUser,
+    //     this.myId = this.currentUser.id;
+    //     this.myDisplayName = this.currentUser.displayName;
+    //     this.isMember = this.currentUser.isMember;
+    //     this.isReader = this.currentUser.isReader;        
+    //     this.isEditor = this.currentUser.isEditor;
+    //   });
   }
 
-  // constructor(private api: WebAPIUsers, private ea: EventAggregator, private appState: ProfileState) {
-  //   this.appState = appState;
-  //   if (CV.debugConsoleLog) console.log('app.ts | const ' + JSON.stringify(appState) );
-  // }
-
-  // async attached(appState){
-  //   //alert('app.ts | created');
-  //   alert('app.ts | created: ' + JSON.stringify(this.appState) );
-  //   if(this.appState.myProfile) this.isMember = this.appState.myProfile.currentUser.isMember;
-  // }
-
-  //activate(){
-    //this.fetchConfig.configure();
-  //}
 
   configureRouter(config: RouterConfiguration, router: Router): void {
     config.title = CV.SITE_NAME_ABBR;

@@ -3,7 +3,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 import { Lookups } from '../../resources/lookups';
-import {ProfileState} from '../../profile-state';
+import { ProfileState } from '../../profile-state';
 import { WebAPIUsers } from '../../api/web-api-users';
 
 //@autoinject
@@ -14,10 +14,13 @@ export class Welcome {
 routeConfig;
 public CV = CV;
   title = '';
-  isMember2;
+  myState;
+  currentUser;
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator, private myState: ProfileState) {
-    // this.myState = myState;
+  constructor(myState:ProfileState) {
+    this.myState = myState;
+    //this.myProfile = myState
+    alert('welcome.ts | const | ' + JSON.stringify(myState) + ' / ');
     // if (CV.debugConsoleLog) console.log('welcome.ts | const ' + JSON.stringify(myState) );
   }
 

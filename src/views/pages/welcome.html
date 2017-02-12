@@ -35,13 +35,13 @@
     </div>-->
 
     <div class="row margin-bottom-g1">
-        ? isMember2: ${isMember} / ${myProfile} !
+        ? welcome: isMember: ${currentUser.isMember} !
         <div class="col-md-12">
             <img src="/src/img/MRT_Letterhead.png" class="fit-col">            
         </div>
     </div>
 
-    <div if.bind="isMember" class="row-fluid">
+    <div if.bind="currentUser.isMember" class="row-fluid">
         <div class="col-md-6">
             <!--<img src="/src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <div if.bind="!isMember" class="row-fluid">
+    <div if.bind="!currentUser.isMember" class="row-fluid">
         <div class="col-md-6">
             <!--<img src="/src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">

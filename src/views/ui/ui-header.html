@@ -1,6 +1,7 @@
 <template>
 
     <header class="container">
+        ? ui-header > isMember: ${currentUser.isMember} !
         <div class="row">
             <div class="col-xs-8 logo-wrap">
                 <a class="logo" href="#" title="${CV.SITE_NAME}">
@@ -18,7 +19,8 @@
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="true">
-                            Alex Mack
+                            ${currentUser.displayName}
+
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

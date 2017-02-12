@@ -2,51 +2,57 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
 import { inject, autoinject } from 'aurelia-framework';
 import { WebAPIUsers } from './api/web-api-users';
-import * as Constants from './resources/constants';
-const CV = Constants
+// import * as Constants from './resources/constants';
+// const CV = Constants
 import {HttpClient} from 'aurelia-http-client'; 
 const profileUrl = 'src/api/api-global.json';
 
 @inject(HttpClient,WebAPIUsers)
 export class ProfileState {
-  public CV = CV;
+  //public CV = CV;
   public loggedInUser = null;
-  myProfile;
-  isMember;
+  currentUser2;
+  myId2;
+  myDisplayName2;
+  isReader2;
+  isMember2;
+  isEditor2;
   router;
   tmp;
    http;
-   repos;
+   repos2;
 
-  constructor(http,public api: WebAPIUsers, router: Router) {
+  constructor(http,api: WebAPIUsers, router: Router) {
     this.http = http;
+    //this.api = api;
 
-    
-
-    // this.api.getGlobal().then(myProfile => {
-    //   this.myProfile = myProfile;
-    //   if (CV.debugConsoleLog) console.log('application-status.ts | constructor : ' + JSON.stringify(myProfile) );
-    //   //this.isMember = myProfile['currentUser'].isMember;
-
-    //   if(this.isMember){
-    //         if (CV.debugConsoleLog) console.log('application-status.ts | isMember | yup!');
-    //     }else{
-    //         if (CV.debugConsoleLog) console.log('application-status.ts | isMember | naaaaaaah!');
-    //     }
-
-    // });
-
-    //alert('attct');
     return this.http.get(profileUrl)
       .then(response => {
-        this.repos = response.content,
-        this.myProfile = response.content[0].currentUser,
-        this.isMember = response.content[0].currentUser.isMember;
+        this.repos2 = response.content,
+        this.currentUser2 = response.content.currentUser,
+              this.myId2 = this.currentUser2.id;
+              this.myDisplayName2 = this.currentUser2.displayName,
+              this.isMember2 = this.currentUser2.isMember,
+              this.isReader2 = this.currentUser2.isReader,        
+              this.isEditor2 = this.currentUser2.isEditor
         /*
         this.repos = response.content
         .sort((a, b) => b.stargazers_count - a.stargazers_count)
         */
       });
+
+    // return this.api.getGlobal()
+    //         .then(currentUser => this.currentUser = currentUser)
+    //         // .then(() => alert(JSON.stringify(this.users) ))
+    //         .then(() => {
+    //           alert(this.currentUser.currentUser.isMember),
+    //           this.currentUser = this.currentUser.currentUser,
+    //           this.myId = this.currentUser.id;
+    //           this.myDisplayName = this.currentUser.displayName,
+    //           this.isMember = this.currentUser.isMember,
+    //           this.isReader = this.currentUser.isReader,        
+    //           this.isEditor = this.currentUser.isEditor
+    //         });
   }
 
 }

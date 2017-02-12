@@ -7,18 +7,11 @@
 
   <div id="container-fixed-footer">
     <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
-    <nav-bar router.bind="router" id="header"></nav-bar>
-APP: ${isMember} / ${repos[0].currentUser.isMember}
-<ul>
-    <li repeat.for="repo of repos">
-      <a href.bind="repo.html_url" target="_blank">
-        ${repo.currentUser.isMember} (${repo.stargazers_count} stars)
-      </a>
-    </li>
-  </ul>
+    <nav-bar router.bind="router" id="header" current-user.bind="currentUser"></nav-bar>
+    ? APP: ${currentUser.isMember} !
 
     <div class="container" id="body">
-      <div class="row">      
+      <div class="row">
         <router-view></router-view>
       </div>
     </div>

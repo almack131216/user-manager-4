@@ -9,7 +9,7 @@ let users = null;
 let usersArr = [];
 let results = null;
 let myProfile = null;
-
+const profileUrl = 'src/api/api-global.json';
 @autoinject
 export class WebAPIUsers {
   isRequesting = false;
@@ -24,27 +24,17 @@ export class WebAPIUsers {
 
   getGlobal() {
     this.isRequesting = true;
-
+    
     return new Promise(resolve => {
       setTimeout(() => {
-        let myProfile = this.http.fetch('src/api/api-global.json')
-          .then(myProfile => myProfile.json());
+        let currentUser = this.http.fetch(profileUrl)
+          .then(currentUser => currentUser.json());
 
-        resolve(myProfile);
+        resolve(currentUser);
         this.isRequesting = false;
       }, latency);
     });
-    // this.isRequesting = true;
 
-    // return new Promise(resolve => {
-    //   setTimeout(() => {
-    //     let myProfile = this.http.fetch('src/api/api-global.json')
-    //       .then(myProfile => myProfile.json());
-    //     alert('api myProfile: ' + JSON.stringify(myProfile) );
-    //     resolve(myProfile);
-    //     this.isRequesting = false;
-    //   }, latency);
-    // });
   }
 
   getUserList() {
