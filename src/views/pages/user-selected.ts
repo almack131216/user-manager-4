@@ -41,7 +41,17 @@ export class UserSelected {
         regionId: this.user['profile'].region.id,
         hubId: this.user['profile'].hub.id,
         segmentId: this.user['profile'].segment.id,
-        entityId: this.user['profile'].entity.id
+        entityId: this.user['profile'].entity.id,
+        languages: []
+      }
+      let i = 0;
+      let tmpLevel;
+      for(i=0;i<this.user['profile'].languages.length;i++){
+        console.log('index: ' + i);
+        tmpLevel = !this.user['profile'].languages[i].proficiency ? null : this.user['profile'].languages[i].proficiency.value;
+        this.profile['languages'].push({languageId:this.user['profile'].languages[i].language.id, proficiencyValue: tmpLevel});
+        // this.profile['languages'].push({"languageId":this.user['profile'].languages[i].language.id, "proficiencyValue": this.user['profile'].languages[i].proficiency.value});
+        //this.profile['languages'].push({languageId:this.user['profile'].languages[i].language.id, proficiencyValue: 2});
       }
       this.routeConfig.navModel.setTitle(this.user.firstName);
       this.originalUser = JSON.parse(JSON.stringify(this.user));

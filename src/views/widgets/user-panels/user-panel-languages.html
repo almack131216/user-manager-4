@@ -12,26 +12,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of user.profile.languages">
+                <tr repeat.for="row of profile.languages">
                     <td class="padded-cell">
-                        <form-select name="lkp_language[$index]"
+                        <form-select
                             input-only="true"
-                            model.two-way="user.profile.languages[$index].language.id"
-                            options.bind="lkp_languages"
-                            changed.two-way="user.profile.languages[$index].language.id"
+                            model.two-way="profile.languages[$index].languageId"
+                            options.bind="lkp_languages"                            
                             autocomplete.bind="true"
-                            init-selected.two-way="user.profile.languages[$index].language.id"></form-select>
+                            init-selected.two-way="profile.languages[$index].languageId"></form-select>
+                            <!--changed.two-way="user.profile.languages[$index].language.id"-->
 
                     </td>
                     <td class="padded-cell">
                         <form-select name="lkp_languageLevel[$index]"
                             input-only="true"
                             prop-arr.bind="['value','name']"
-                            model.two-way="user.profile.languages[$index].proficiency.value"
-                            options.bind="lkp_languageLevel"
-                            changed.two-way="user.profile.languages[$index].proficiency.value"
-                            init-selected.two-way="user.profile.languages[$index].proficiency.value"
-                            is-enabled.bind="user.profile.languages[$index].language.id"></form-select>
+                            model.two-way="profile.languages[$index].proficiencyValue"
+                            options.bind="lkp_languageLevel"                            
+                            init-selected.two-way="profile.languages[$index].proficiencyValue"
+                            is-enabled.bind="profile.languages[$index].languageId"></form-select>
+                            <!--changed.two-way="user.profile.languages[$index].proficiency.value"-->
                     </td>
                 </tr>
             </tbody>

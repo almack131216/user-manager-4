@@ -4,6 +4,7 @@ import { Lookups } from '../../../resources/lookups';
 
 export class UserPanelLanguages {
     @bindable user;
+    @bindable profile;
     public lkp_member_status;
     public lkp_languages;
     public lkp_languageLevel;
