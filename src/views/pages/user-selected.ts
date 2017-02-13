@@ -20,7 +20,7 @@ export class UserSelected {
   public CV = CV
   routeConfig;
   user: User;
-  user2;
+  profile = {};
   editType = null;
   originalUser: User;
   title = ''
@@ -37,6 +37,12 @@ export class UserSelected {
       this.user = <User>user;
       //alert(JSON.stringify(this.user['user']));
       this.user.regionId = this.user['profile'].region.id;
+      this.profile = {
+        regionId: this.user['profile'].region.id,
+        hubId: this.user['profile'].hub.id,
+        segmentId: 1,
+        entityId: 1
+      }
       this.routeConfig.navModel.setTitle(this.user.firstName);
       this.originalUser = JSON.parse(JSON.stringify(this.user));
       this.ea.publish(new UserViewed(this.user));

@@ -18,19 +18,20 @@
      <div class="divider"></div>-->
 
     <form-select name="region"
-        model.two-way="user.regionId"
+        model.two-way="profile.regionId"
         options.bind="lkp_regions"
-        changed.two-way="user.regionId"
+        changed.two-way="profile.regionId"
         autocomplete.bind="true"
-        init-selected.two-way="user.regionId"
+        init-selected.two-way="profile.regionId"
         is-mandatory.bind="true"></form-select>
-
-    <form-select name="region"
-        model.two-way="user2.regionId"
-        options.bind="lkp_regions"
-        changed.two-way="user2.regionId"
-        autocomplete.bind="true"
-        init-selected.two-way="user2.regionId"
+    
+    <form-select inp-label="hub"
+        model.two-way="profile.hubId"
+        options.bind="lkp_hub"
+        changed.two-way="profile.hubId"        
+        init-selected.two-way="profile.hubId"
+        option-filter.bind="['regionId',profile.regionId]"
+        is-enabled.bind="profile.regionId"
         is-mandatory.bind="true"></form-select>
 
     <form-select inp-label="hub"

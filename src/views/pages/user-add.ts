@@ -17,6 +17,7 @@ interface User {
 @inject(Element)
 export class UserAdd {
   @bindable user = null;
+  @bindable profile = null;
   routeConfig;
   originalUser;
   

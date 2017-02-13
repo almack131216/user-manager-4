@@ -24,7 +24,7 @@
 
         <div id="${custXcId}" class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}">
             <div class="wrap-fields">
-                <user-panel-details if.bind="custBody=='user-details'" user.bind="user"></user-panel-details>                
+                <user-panel-details if.bind="custBody=='user-details'" user.bind="user" profile.bind="profile"></user-panel-details>                
                 <!--<user-panel-mrt-role if.bind="custBody=='user-mrt-role'" user.bind="user"></user-panel-mrt-role>-->
                 <user-panel-languages if.bind="custBody=='user-languages'" user.bind="user"></user-panel-languages>
                 <user-panel-passport if.bind="custBody=='user-passport'" user.bind="user"></user-panel-passport>

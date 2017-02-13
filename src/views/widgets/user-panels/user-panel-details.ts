@@ -6,6 +6,7 @@ import { Lookups } from '../../../resources/lookups';
 
 export class UserPanelDetails {
     @bindable user;
+    @bindable profile;
     public CV = CV;
 
     public lkp_regions;
