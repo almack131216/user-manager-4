@@ -8,13 +8,15 @@ const CV = Constants
 inject(Element)
 @customElement('FormFilterRole')
 export class FormFilterRole {
+    @bindable inpLabel = '';
+
     @bindable autocomplete = null;    
 
     @bindable optionFilter = null;
 
     @bindable isEnabled = true;
 
-    inpPlaceholder = 'All roles';
+    inpPlaceholder = '> No Filter <';
 
     @bindable name = null;
 

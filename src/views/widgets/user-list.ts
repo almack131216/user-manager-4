@@ -25,8 +25,8 @@ export class UserList {
     @bindable custTablePagination = false;
     @bindable custTablePageSize = 100;
 
-    @bindable custXc = true;
-    @bindable custXcId = 'userList';
+    @bindable custXc = false;
+    @bindable custXcId = '';//userList
     @bindable custXcExpanded = true;
 
     public CV = CV
@@ -36,6 +36,8 @@ export class UserList {
     rolesArr;
     rolesArrDynamic = [];
     lkp_role;
+    filter_role;
+    filter_active;
     router;
     
 
@@ -55,7 +57,9 @@ export class UserList {
         });
 
         this.lkp_role = lookups.lkp_role;
-        this.rolesArr = this.lkp_role.map(x =>  { return {
+        this.filter_role = lookups.filter_role;
+        this.filter_active = lookups.filter_active;
+        this.rolesArr = this.filter_role.map(x =>  { return {
           value:x.value,
           name:x.name
         }});
@@ -124,7 +128,8 @@ export class UserList {
 
     filters = [
         { value: '', keys: ['loginName', 'firstName', 'lastName', 'emailAddress', 'personalNumber'] },
-        { value: '1', keys: ['isMember'] }
+        { value: '1', keys: ['isMember'] },
+        { value: '2', keys: ['isActive'] }
     ];
 
     returnLabelFromValue(getId){

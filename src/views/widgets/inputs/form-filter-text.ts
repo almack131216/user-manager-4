@@ -8,7 +8,7 @@ inject(Element)
 export class FormFilterText {
     @bindable isMandatory = null;
 
-    inpLabel = 'Filter';
+    @bindable inpLabel = 'Text';
     @bindable name = null;
     @bindable value = null;
 

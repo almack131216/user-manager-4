@@ -4,7 +4,11 @@ put all global variables here, as camel-case prefixed with a small 'g'
 */
 
 export class Lookups {
-  lkp_role;
+
+  filter_role
+  filter_active
+
+  lkp_role
   lkp_regions
   lkp_hub
   lkp_segment
@@ -88,6 +92,16 @@ export class Lookups {
     ]
 
     /* ROLES */
+    this.filter_role = [
+      { "value": true, "name": "Members" },
+      { "value": false, "name": "Non-members" }
+    ]
+
+    this.filter_active = [
+      { "value": true, "name": "Active" },
+      { "value": false, "name": "Archived" }
+    ]
+
     this.lkp_role = [
       { "value": 1, "name": "Viewer" },
       { "value": 3, "name": "Admin" }

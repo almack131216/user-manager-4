@@ -230,7 +230,10 @@ input, textarea, button {
     color: $color-priority;
 }
 
-.color-pending,
+.color-pending {
+    color: $color-pending;
+}
+
 .color-warning {
     color: $color-warning;
 }
