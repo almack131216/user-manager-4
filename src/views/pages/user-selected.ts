@@ -77,7 +77,14 @@ export class UserSelected {
           expiresOn:this.user['profile'].visas[i].expiresOn
         });
       }
-
+      /* loop trainings */     
+      for(i=0;i<this.user['profile'].trainings.length;i++){
+        let tmpTraining = !this.user['profile'].trainings[i].training ? null : this.user['profile'].trainings[i].training.id;
+        this.profile['trainings'].push({
+          trainingId:tmpTraining,
+          expiresOn:this.user['profile'].trainings[i].expiresOn
+        });
+      }
 
 
 
