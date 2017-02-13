@@ -18,9 +18,9 @@
      <div class="divider"></div>-->
 
     <form-select name="region"
-        model.two-way="user.profile.region.id"
+        model.two-way="user.regionId"
         options.bind="lkp_regions"
-        changed.two-way="user.profile.region.id"
+        changed.two-way="user.regionId"
         autocomplete.bind="true"
         init-selected.two-way="user.profile.region.id"
         is-mandatory.bind="true"></form-select>

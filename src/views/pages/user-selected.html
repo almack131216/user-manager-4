@@ -2,6 +2,7 @@
   <require from="../widgets/user-list"></require>
   <require from="../widgets/user-edit"></require>
   <require from="./user-add"></require>
+  <require from="../../resources/format/json"></require>
 
   <!--<div class="col-md-12">
     <h1>${title}<span class="html-file-name">(user-selected.html)</span></h1>
@@ -9,6 +10,10 @@
   </div>-->
 
   <p if.bind="CV.debugShowCurrentUser">? user-selected: ${currentUser.isMember} !</p>
+
+  <pre id="data"><code>${userStringify}</code></pre>
+  <pre>JSON.stringify(user)</pre>
+  <pre>${user & json}</pre>
 
   <div if.bind="!editType">
     <user-list class="col-xs-12 col-md-8"></user-list>

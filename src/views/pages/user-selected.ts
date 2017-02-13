@@ -9,6 +9,7 @@ const CV = Constants
 interface User {
   firstName: string;
   lastName: string;
+  regionId: number;
   emailAddress: string;
   personalNumber: string;
   lkp_regions_selected: number;
