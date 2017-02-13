@@ -42,17 +42,33 @@ export class UserSelected {
         hubId: this.user['profile'].hub.id,
         segmentId: this.user['profile'].segment.id,
         entityId: this.user['profile'].entity.id,
-        languages: []
+        languages: [],
+        passports: [],
+        visas: [],
+        trainings: []
       }
+      
+      /* for loops for object arrays */
       let i = 0;
-      let tmpLevel;
+      /* loop languages */     
       for(i=0;i<this.user['profile'].languages.length;i++){
-        console.log('index: ' + i);
-        tmpLevel = !this.user['profile'].languages[i].proficiency ? null : this.user['profile'].languages[i].proficiency.value;
+        let tmpLevel = !this.user['profile'].languages[i].proficiency ? null : this.user['profile'].languages[i].proficiency.value;
         this.profile['languages'].push({languageId:this.user['profile'].languages[i].language.id, proficiencyValue: tmpLevel});
-        // this.profile['languages'].push({"languageId":this.user['profile'].languages[i].language.id, "proficiencyValue": this.user['profile'].languages[i].proficiency.value});
-        //this.profile['languages'].push({languageId:this.user['profile'].languages[i].language.id, proficiencyValue: 2});
       }
+      /* loop passports */     
+      for(i=0;i<this.user['profile'].passports.length;i++){
+        let tmpType = !this.user['profile'].passports[i].type ? null : this.user['profile'].passports[i].type.value;
+        this.profile['passports'].push({
+          countryId:this.user['profile'].passports[i].country.id,
+          number:this.user['profile'].passports[i].number,
+          typeValue:tmpType,
+          expiresOn:this.user['profile'].passports[i].expiresOn
+        });
+      }
+
+
+
+
       this.routeConfig.navModel.setTitle(this.user.firstName);
       this.originalUser = JSON.parse(JSON.stringify(this.user));
       this.ea.publish(new UserViewed(this.user));

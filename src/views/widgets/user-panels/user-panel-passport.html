@@ -15,22 +15,36 @@
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of user.profile.passports">
+                <tr repeat.for="row of profile.passports">
                     <td>
-                        <form-select inp-label="Passport Type" prop-arr.bind="['value','name']" model.two-way="user.profile.passports[$index].type.value"
-                            options.bind="lkp_passportTypes" changed.two-way="user.profile.passports[$index].type.value" autocomplete.bind="true"
-                            init-selected.two-way="user.profile.passports[$index].type.value" is-mandatory.bind="true" input-only="true"></form-select>
+                        <form-select inp-label="Passport Type"
+                            prop-arr.bind="['value','name']"
+                            model.two-way="profile.passports[$index].typeValue"
+                            options.bind="lkp_passportTypes"
+                            autocomplete.bind="true"
+                            init-selected.two-way="profile.passports[$index].typeValue"
+                            is-mandatory.bind="true"
+                            input-only="true"></form-select>
+                            <!--changed.two-way="user.profile.passports[$index].type.value"-->
                     </td>
                     <td>
-                        <form-input model.two-way="user.profile.passports[$index].number" inp-label="Passport Number" is-mandatory.bind="true" input-only="true"></form-input>
+                        <form-input model.two-way="profile.passports[$index].number" inp-label="Passport Number" is-mandatory.bind="true" input-only="true"></form-input>
                     </td>
                     <td>
-                        <form-select inp-label="Passport Nationality" model.two-way="user.profile.passports[$index].country.id" options.bind="lkp_passportNationality"
-                            changed.two-way="user.profile.passports[$index].country.id" autocomplete.bind="true" init-selected.two-way="user.profile.passports[$index].country.id"
-                            is-mandatory.bind="true" input-only="true"></form-select>
+                        <form-select inp-label="Passport Nationality"
+                            model.two-way="profile.passports[$index].countryId"
+                            options.bind="lkp_passportNationality"                            
+                            autocomplete.bind="true"
+                            init-selected.two-way="profile.passports[$index].countryId"
+                            is-mandatory.bind="true"
+                            input-only="true"></form-select>
+                            <!--changed.two-way="user.profile.passports[$index].country.id"-->
                     </td>
                     <td>
-                        <form-input inp-type="date" model.two-way="user.profile.passports[$index].expiresOn" inp-label="Passport Expiry Date" is-mandatory.bind="true"
+                        <form-input inp-label="Passport Expiry Date"
+                            inp-type="date"
+                            model.two-way="profile.passports[$index].expiresOn"
+                            is-mandatory.bind="true"
                             input-only="true"></form-input>
                     </td>
 
