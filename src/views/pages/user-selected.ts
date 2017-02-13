@@ -40,8 +40,8 @@ export class UserSelected {
       this.profile = {
         regionId: this.user['profile'].region.id,
         hubId: this.user['profile'].hub.id,
-        segmentId: 1,
-        entityId: 1
+        segmentId: this.user['profile'].segment.id,
+        entityId: this.user['profile'].entity.id
       }
       this.routeConfig.navModel.setTitle(this.user.firstName);
       this.originalUser = JSON.parse(JSON.stringify(this.user));

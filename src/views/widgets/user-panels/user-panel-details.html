@@ -19,11 +19,11 @@
 
     <form-select name="region"
         model.two-way="profile.regionId"
-        options.bind="lkp_regions"
-        changed.two-way="profile.regionId"
+        options.bind="lkp_regions"        
         autocomplete.bind="true"
         init-selected.two-way="profile.regionId"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="profile.regionId"-->
     
     <form-select inp-label="hub"
         model.two-way="profile.hubId"
@@ -33,15 +33,6 @@
         is-enabled.bind="profile.regionId"
         is-mandatory.bind="true"></form-select>
         <!-- XXX CR - 170213: changed.two-way="profile.hubId" may be excess -->
-
-    <form-select inp-label="hub"
-        model.two-way="user.profile.hub.id"
-        options.bind="lkp_hub"
-        changed.two-way="user.profile.hub.id"        
-        init-selected.two-way="user.profile.hub.id"
-        option-filter.bind="['regionId',user.profile.region.id]"
-        is-enabled.bind="user.profile.region.id"
-        is-mandatory.bind="true"></form-select>
 
     <!--<div class="form-group col-xs-12">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
@@ -63,21 +54,23 @@
      <div class="divider"></div>
      
     <form-select name="segment"
-        model.two-way="user.profile.segment.id"
-        options.bind="lkp_segment"
-        changed.two-way="user.profile.segment.id"        
-        init-selected.two-way="user.profile.segment.id"
+        model.two-way="profile.segmentId"
+        options.bind="lkp_segment"              
+        init-selected.two-way="profile.segmentId"
         autocomplete.bind="true"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="user.profile.segment.id"  -->
 
     <form-select inp-label="Entity"
-        model.two-way="user.profile.entity.id"
-        options.bind="lkp_entity"
-        changed.two-way="user.profile.entity.id"        
-        init-selected.two-way="user.profile.entity.id"
-        option-filter.bind="['segmentId',user.profile.segment.id]"
-        is-enabled.bind="user.profile.segment.id"
+        model.two-way="profile.entityId"
+        options.bind="lkp_entity"       
+        init-selected.two-way="profile.entityId"
+        option-filter.bind="['segmentId',profile.segmentId]"
+        is-enabled.bind="profile.segmentId"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="user.profile.entity.id" -->
+
+
     <!--<div class="form-group col-xs-12">
         <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
             Entity
@@ -114,39 +107,39 @@
 
     <form-select name="Primary ICS"
         model.two-way="user.profile.primaryPosition.id"
-        options.bind="lkp_primaryPositions"
-        changed.two-way="user.profile.primaryPosition.id"
+        options.bind="lkp_primaryPositions"        
         autocomplete.bind="true"
         init-selected.two-way="user.profile.primaryPosition.id"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="user.profile.primaryPosition.id"-->
 
     <form-select inp-label="Secondary ICS"
         model.two-way="user.profile.secondaryPosition.id"
-        options.bind="lkp_secondaryPositions"
-        changed.two-way="user.profile.secondaryPosition.id"        
+        options.bind="lkp_secondaryPositions"                
         init-selected.two-way="user.profile.secondaryPosition.id"
         option-filter.bind="['primaryPositionId',user.profile.primaryPosition.id]"
         is-enabled.bind="user.profile.primaryPosition.id"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="user.profile.secondaryPosition.id"-->
 
     <div class="divider"></div>
     
     <form-select inp-label="BP Office"
         model.two-way="user.profile.office.id"
-        options.bind="lkp_bp_office_address"
-        changed.two-way="user.profile.office.id"
+        options.bind="lkp_bp_office_address"        
         autocomplete.bind="true"
         init-selected.two-way="user.profile.office.id"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="user.profile.office.id"-->
 
     <div class="divider"></div>
 
     <form-select name="lkp_member_status" inp-label="Coat Size"
         model.two-way="user.profile.coatSize.id"
-        options.bind="lkp_coatSizes"
-        changed.two-way="user.profile.coatSize.id"
+        options.bind="lkp_coatSizes"        
         init-selected.two-way="user.profile.coatSize.id"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="user.profile.coatSize.id"-->
 
     <div class="divider"></div>
     

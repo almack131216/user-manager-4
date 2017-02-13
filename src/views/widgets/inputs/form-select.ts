@@ -50,15 +50,6 @@ export class FormSelect {
         this.selected = this.changed;
     }
 
-    modelChanged(newVal, oldVal){
-        console.log('xxx: ' + this.inpLabel + ': ' + this.initSelected + ' | ' + newVal + ' | ' + oldVal);
-        this.initSelected = newVal==0 ? null : newVal;
-        newVal = this.initSelected;
-        this.selected = this.initSelected;
-        this.changed = this.initSelected;
-        console.log('xxxxxx: ' + this.selected + ': ' + this.changed + ' | ' + newVal + ' | ' + oldVal);
-    }
-
     tmpCreateLabel(getStr){
         return getStr;// getStr.replace(/_/g,' ').toLowerCase();
     }
@@ -77,7 +68,7 @@ export class FormSelect {
                  http://stackoverflow.com/questions/33452623/aurelia-trying-to-load-html-from-select2#answer-34121891 */
     /* tslint:disable-next-line no-empty */
     changeCallback(evt: Event){
-        this.initSelected = this.initSelected==0 ? null : this.initSelected;
+        this.initSelected = this.initSelected<=0 ? null : this.initSelected;//set to null if no option selected
         console.log('[form-select] changeCallback: ' + this.initSelected );
         //this.changed = newValue!=null ? newValue : this.initSelected;//(<HTMLInputElement>event.currentTarget).value;
     }
