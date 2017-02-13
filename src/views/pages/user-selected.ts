@@ -57,12 +57,24 @@ export class UserSelected {
       }
       /* loop passports */     
       for(i=0;i<this.user['profile'].passports.length;i++){
+        let tmpCountry = !this.user['profile'].passports[i].country ? null : this.user['profile'].passports[i].country.id;
         let tmpType = !this.user['profile'].passports[i].type ? null : this.user['profile'].passports[i].type.value;
         this.profile['passports'].push({
-          countryId:this.user['profile'].passports[i].country.id,
+          countryId:tmpCountry,
           number:this.user['profile'].passports[i].number,
           typeValue:tmpType,
           expiresOn:this.user['profile'].passports[i].expiresOn
+        });
+      }
+      /* loop visas */     
+      for(i=0;i<this.user['profile'].visas.length;i++){
+        let tmpCountry = !this.user['profile'].visas[i].country ? null : this.user['profile'].visas[i].country.id;
+        let tmpType = !this.user['profile'].visas[i].type ? null : this.user['profile'].visas[i].type.value;
+        this.profile['visas'].push({
+          countryId:tmpCountry,
+          typeValue:tmpType,
+          multipleEntry:this.user['profile'].visas[i].multipleEntry,
+          expiresOn:this.user['profile'].visas[i].expiresOn
         });
       }
 
