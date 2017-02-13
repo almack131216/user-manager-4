@@ -22,11 +22,10 @@
                         <label>${user.profile.trainings[$index].training.name}</label>
                     </td>
                     <td>
-                        <!--<form-radio inp-name.bind="['training_' + $index]"
-                            inp-label.bind="user.profile.trainings[$index].training.name"
-                            model.two-way="profile.trainings[$index].trainingId"                            
-                            init-selected.two-way="profile.trainings[$index].trainingId"
-                            input-only="true"></form-radio>-->
+                        <form-radio inp-name.bind="['training_' + $index]"
+                            model.two-way="user.profile.trainings[$index].attended"                            
+                            init-selected.two-way="user.profile.trainings[$index].expiresOn ? true : false"
+                            input-only="true"></form-radio>
                         
                     </td>
                     <td>
@@ -34,7 +33,8 @@
                             inp-label="Expiry Date"
                             model.two-way="profile.trainings[$index].expiresOn"
                             is-mandatory.bind="true"
-                            input-only="true"></form-input>
+                            input-only="true"
+                            is-readonly.bind="user.profile.trainings[$index].attended"></form-input>
                     </td>
                 </tr>
             </tbody>
