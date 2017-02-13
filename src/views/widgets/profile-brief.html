@@ -4,13 +4,16 @@
 
     <form role="form" class="form-horizontal" id="user-panel-brief">
         <div class="panel panel-default panel-xc">
-            <div class="panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
-                <!--<i class="fa fa-bell text-after"></i>-->
-                ${title}
-                <button if.bind="custXc" class="btn btn-xc_chevron btn-xs" type="button" aria-expanded="${custXcExpanded}" aria-controls="collapseExample">
-                </button>
+            <div class="panel-heading collapsable-toggle_wrap">
+                <a if.bind="custXc" class="collapsable-toggle ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
+                    <span class="panel-title">${title}</span>
+                    <button if.bind="custXc" class="btn btn-xc_chevron btn-xs" type="button" aria-expanded="${custXcExpanded}" aria-controls="collapseExample">
+                    </button>
+                </a>
 
-                <a class="btn btn-xs btn-i btn-text margin-left-1">
+                <span if.bind="!custXc" class="panel-title">${title}</span>
+
+                <a class="btn btn-xs btn-i btn-text btn-pos-right">
                     <i class="fa fa-pencil"></i>Update
                 </a>
             </div>
