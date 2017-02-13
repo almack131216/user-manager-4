@@ -68,12 +68,14 @@
                                     <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
                                     <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>                                    
                                     <td if.bind="isNotDisabled('isMember')">
-                                        <span if.bind="user.isMember">${user.profileDate | formatDate}</span>
-                                        <span if.bind="!user.isMember && user.profilePending" class="color-pending">Pending</span>
-                                        <span if.bind="!user.isMember && !user.profilePending">New</span>
+                                        <span if.bind="user.isMember" class="${user.updatePending ? 'color-pending' : ''}">${user.profileDate | formatDate}</span>
+                                        <span if.bind="!user.isMember">Viewer</span>
                                     </td>
                                     <td if.bind="isNotDisabled('isActive')">
-                                        ${user.isActive}
+                                        <span class="color-archive" if.bind="!user.isActive"><i class="fa fa-archive text-after"></i>Archived</span>
+                                        <span class="color-pending" if.bind="user.isActive && user.reviewPending"><i class="fa fa-clock-o text-after"></i>Pending</span>
+                                        <span class="color-good" if.bind="user.isActive && !user.reviewPending && user.reviewResult"><i class="fa fa-check text-after"></i>Approved</span>
+                                        <span class="color-danger" if.bind="user.isActive && !user.reviewPending && !user.reviewResult"><i class="fa fa-ban text-after"></i>Rejected</span>
                                     </td>
                                     <td if.bind="isNotDisabled('edit')">
                                         <div class="btn-group btn-group-xs" role="group" aria-label="User actions">

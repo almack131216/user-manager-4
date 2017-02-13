@@ -11,7 +11,7 @@
       "emailAddress": null,
       "isMember": false,
       "profileDate": null,
-      "profilePending": false,
+      "updatePending": false,
       "reviewResult": null,
       "reviewPending": false,
       "isActive": false
@@ -24,7 +24,7 @@
       "emailAddress": null,
       "isMember": false,
       "profileDate": null,
-      "profilePending": false,
+      "updatePending": false,
       "reviewResult": null,
       "reviewPending": false,
       "isActive": true
@@ -36,10 +36,10 @@
       "lastName": null,
       "emailAddress": null,
       "isMember": true,
-      "profileDate": "2017-02-10T17:20:32Z",
-      "profilePending": false,
+      "profileDate": "2017-02-13T11:40:44Z",
+      "updatePending": true,
       "reviewResult": true,
-      "reviewPending": false,
+      "reviewPending": true,
       "isActive": true
     },
     {
@@ -50,7 +50,7 @@
       "emailAddress": "david.sousek@agily.cz",
       "isMember": false,
       "profileDate": null,
-      "profilePending": false,
+      "updatePending": false,
       "reviewResult": null,
       "reviewPending": false,
       "isActive": true
@@ -62,8 +62,8 @@
       "lastName": "Mackenzie",
       "emailAddress": "alex.mackenzie@agily.cz",
       "isMember": true,
-      "profileDate": "2017-02-08T21:41:34Z",
-      "profilePending": true,
+      "profileDate": "2017-02-13T13:36:40Z",
+      "updatePending": false,
       "reviewResult": null,
       "reviewPending": true,
       "isActive": true
@@ -76,7 +76,7 @@
       "emailAddress": "jakub.bohm@agily.cz",
       "isMember": false,
       "profileDate": null,
-      "profilePending": false,
+      "updatePending": false,
       "reviewResult": null,
       "reviewPending": false,
       "isActive": true
@@ -89,10 +89,10 @@
       "emailAddress": "IAshworth@agily.cz",
       "isMember": false,
       "profileDate": null,
-      "profilePending": false,
+      "updatePending": false,
       "reviewResult": null,
       "reviewPending": false,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": 8,
@@ -102,7 +102,7 @@
       "emailAddress": "frantisek.pasek@agily.cz",
       "isMember": false,
       "profileDate": null,
-      "profilePending": false,
+      "updatePending": false,
       "reviewResult": null,
       "reviewPending": false,
       "isActive": true
