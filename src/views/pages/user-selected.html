@@ -11,8 +11,9 @@
 
   <p if.bind="CV.debugShowCurrentUser">? user-selected: ${currentUser.isMember} !</p>
 
-  <pre>JSON.stringify(profile)</pre>
-  <pre>${profile & json}</pre>
+
+  <pre if.bind="debugShowCodeOutput">JSON.stringify(profile)</pre>
+  <pre if.bind="debugShowCodeOutput">${profile & json}</pre>
 
   <div if.bind="!editType">
     <user-list class="col-xs-12 col-md-8"></user-list>
@@ -26,6 +27,6 @@
     <user-add user.bind="user" profile.bind="profile"></user-add>
   </div>
 
-  <pre>${user & json}</pre>
+  <pre if.bind="debugShowCodeOutput">${user & json}</pre>
 
 </template>
