@@ -27,12 +27,12 @@
     
     <form-select inp-label="hub"
         model.two-way="profile.hubId"
-        options.bind="lkp_hub"
-        changed.two-way="profile.hubId"        
+        options.bind="lkp_hub"        
         init-selected.two-way="profile.hubId"
         option-filter.bind="['regionId',profile.regionId]"
         is-enabled.bind="profile.regionId"
         is-mandatory.bind="true"></form-select>
+        <!-- XXX CR - 170213: changed.two-way="profile.hubId" may be excess -->
 
     <form-select inp-label="hub"
         model.two-way="user.profile.hub.id"
