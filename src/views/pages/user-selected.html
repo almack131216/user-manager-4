@@ -24,7 +24,9 @@
   </div>
 
   <div if.bind="user && editType=='edit'" class="col-xs-12">
-    <user-add user.bind="user"></user-add>
+    <user-add user.bind="user" user2.bind="user2"></user-add>
   </div>
+
+  <pre>${user2 & json}</pre>
 
 </template>

@@ -22,7 +22,15 @@
         options.bind="lkp_regions"
         changed.two-way="user.regionId"
         autocomplete.bind="true"
-        init-selected.two-way="user.profile.region.id"
+        init-selected.two-way="user.regionId"
+        is-mandatory.bind="true"></form-select>
+
+    <form-select name="region"
+        model.two-way="user2.regionId"
+        options.bind="lkp_regions"
+        changed.two-way="user2.regionId"
+        autocomplete.bind="true"
+        init-selected.two-way="user2.regionId"
         is-mandatory.bind="true"></form-select>
 
     <form-select inp-label="hub"

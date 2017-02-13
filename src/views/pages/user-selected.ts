@@ -20,12 +20,13 @@ export class UserSelected {
   public CV = CV
   routeConfig;
   user: User;
+  user2;
   editType = null;
   originalUser: User;
   title = ''
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
-
+    
   }
 
   activate(params, routeConfig) {
@@ -34,6 +35,8 @@ export class UserSelected {
     return this.api.getUserDetails(params.id).then(user => {
       if(params.editType) this.editType = params.editType;
       this.user = <User>user;
+      //alert(JSON.stringify(this.user['user']));
+      this.user.regionId = this.user['profile'].region.id;
       this.routeConfig.navModel.setTitle(this.user.firstName);
       this.originalUser = JSON.parse(JSON.stringify(this.user));
       this.ea.publish(new UserViewed(this.user));
