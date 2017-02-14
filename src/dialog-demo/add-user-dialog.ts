@@ -41,11 +41,11 @@ export class AddUserDialog {
         this.selectUserToAdd = (getUser) => {
             this.selectedId = getUser.id;
             console.log('add-user-dialog: select: ' + this.selectedId + ' / ' + getUser.id);
-            // this.api.getUserRole(6).then(user => {
-            //     this.userRole = <User>user;
-            //     //this.selectedId = this.userRole.id;
-            //     console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole));
-            // });
+            this.api.getUserRole(this.selectedId).then(user => {
+                this.userRole = <User>user;
+                //this.selectedId = this.userRole.id;
+                console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole));
+            });
         }
 
         this.lkp_role = lookups.lkp_role;
