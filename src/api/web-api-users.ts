@@ -14,7 +14,8 @@ let myProfile = null;
 const profileUrl = '../../MRT.Api.Web/views/global';
 const views_welcome = '../../MRT.Api.Web/views/welcome';
 const data_users_all = '../../MRT.Api.Web/data/users/query';
-const data_users_X_profile = 'src/api/dummy-user-all.json';// '../../MRT.Api.Web/data/users/5/profile';
+const data_users_X_profile = '../../MRT.Api.Web/data/users/5/profile';//'src/api/dummy-user-all.json';// 
+const views_profileform_X = '../../MRT.Api.Web/views/profileform/5';
 
 
 //  const profileUrl = 'src/api/dummy-user-all.json';
@@ -108,10 +109,9 @@ export class WebAPIUsers {
       setTimeout(() => {
         console.log('usersArr:' + usersArr);
         //let found = usersArr.filter(x => x.id == id);
-        let found = this.http.fetch(data_users_X_profile)
+        let found = this.http.fetch(views_profileform_X)
           .then(found => found.json())
           .then(found => found);
-
 
         console.log('getUserDetails ARR: ' + JSON.stringify(found));
         resolve(found);
@@ -130,6 +130,7 @@ export class WebAPIUsers {
         let found = this.http.fetch('src/api/dummy-user-role.json')
           .then(found => found.json())
           .then(found => found);
+
 
         console.log('getUserRole ARR: ' + JSON.stringify(found));
         resolve(found);

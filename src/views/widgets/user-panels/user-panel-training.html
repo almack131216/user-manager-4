@@ -19,7 +19,7 @@
             <tbody>
                 <tr repeat.for="row of profile.trainings">
                     <td>
-                        <label>${user.trainings[$index].training.name}</label>
+                        <label>${user.profile.trainings[$index].training.name}</label>
                     </td>
                     <td>
                         <form-radio inp-name.bind="['training_' + $index]"

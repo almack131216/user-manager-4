@@ -71,3 +71,31 @@
             </select>
         </div>
     </div>-->
+
+
+    
+    <!--<div class="form-group col-xs-12">
+        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
+            Entity
+        </label>
+        <div class="col-sm-6">
+            <select class="form-control"
+                model.bind="user.profile.entity.id"
+                disabled.bind="!user.profile.segment.id"        
+                >        
+                <option value="">Select...</option>
+                <option repeat.for="option of lkp_entity | filter:'segmentId':user.profile.segment.id" value="option.id" selected.bind="option.id==user.profile.entity.id">
+                    ${option.name}
+                </option>
+            </select>
+        </div>
+    </div>-->
+
+    <!--<form-select name="lkp_entity"
+        model.two-way="user.lkp_entity_selected"
+        options.bind="lkp_entity"
+        changed.two-way="user.lkp_entity_selected"        
+        init-selected.two-way="user.lkp_entity_selected"
+        option-filter.bind="user.lkp_segment_selected"
+        autocomplete.bind="true"
+        is-enabled.bind="user.lkp_regions_selected && user.lkp_hub_selected && user.lkp_segment_selected"></form-select>-->

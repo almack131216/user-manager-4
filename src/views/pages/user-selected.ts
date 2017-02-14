@@ -39,67 +39,67 @@ export class UserSelected {
       //console.log(JSON.stringify(this.user));
       //this.user.regionId = this.user['region'].id;
       this.profile = {
-        regionId: this.user['region'] ? this.user['region'].id : null,
-        hubId: this.user['hub'] ? this.user['hub'].id : null,
-        segmentId: this.user['segment'] ? this.user['segment'].id : null,
-        entityId: this.user['entity'] ? this.user['entity'].id : null,
-        languages: this.user['languages'] ? [] : null,
-        passports: this.user['passports'] ? [] : null,
-        visas: this.user['visas'] ? [] : null,
-        trainings: this.user['trainings'] ? [] : null
+        regionId: this.user['profile']['region'] ? this.user['profile']['region'].id : null,
+        hubId: this.user['profile']['hub'] ? this.user['profile']['hub'].id : null,
+        segmentId: this.user['profile']['segment'] ? this.user['profile']['segment'].id : null,
+        entityId: this.user['profile']['entity'] ? this.user['profile']['entity'].id : null,
+        languages: this.user['profile']['languages'] ? [] : null,
+        passports: this.user['profile']['passports'] ? [] : null,
+        visas: this.user['profile']['visas'] ? [] : null,
+        trainings: this.user['profile']['trainings'] ? [] : null
       }
 
       /* for loops for object arrays */
       let i = 0;
       /* loop languages */
-      if (this.user['languages'].length) {
-        for (i = 0; i < this.user['languages'].length; i++) {
-          let tmpLevel = !this.user['languages'][i].proficiency ? null : this.user['languages'][i].proficiency.value;
-          this.profile['languages'].push({ languageId: this.user['languages'][i].language.id, proficiencyValue: tmpLevel });
+      if (this.user['profile']['languages'].length) {
+        for (i = 0; i < this.user['profile']['languages'].length; i++) {
+          let tmpLevel = !this.user['profile']['languages'][i].proficiency ? null : this.user['profile']['languages'][i].proficiency.value;
+          this.profile['languages'].push({ languageId: this.user['profile']['languages'][i].language.id, proficiencyValue: tmpLevel });
         }
       }
       /* loop passports */
-      if (this.user['passports'].length) {
-        for (i = 0; i < this.user['passports'].length; i++) {
-          let tmpCountry = !this.user['passports'][i].country ? null : this.user['passports'][i].country.id;
-          let tmpType = !this.user['passports'][i].type ? null : this.user['passports'][i].type.value;
+      if (this.user['profile']['passports'].length) {
+        for (i = 0; i < this.user['profile']['passports'].length; i++) {
+          let tmpCountry = !this.user['profile']['passports'][i].country ? null : this.user['profile']['passports'][i].country.id;
+          let tmpType = !this.user['profile']['passports'][i].type ? null : this.user['profile']['passports'][i].type.value;
           this.profile['passports'].push({
             countryId: tmpCountry,
-            number: this.user['passports'][i].number,
+            number: this.user['profile']['passports'][i].number,
             typeValue: tmpType,
-            expiresOn: this.user['passports'][i].expiresOn
+            expiresOn: this.user['profile']['passports'][i].expiresOn
           });
         }
       }
       /* loop visas */
-      if (this.user['visas'].length) {
-        for (i = 0; i < this.user['visas'].length; i++) {
-          let tmpCountry = !this.user['visas'][i].country ? null : this.user['visas'][i].country.id;
-          let tmpType = !this.user['visas'][i].type ? null : this.user['visas'][i].type.value;
+      if (this.user['profile']['visas'].length) {
+        for (i = 0; i < this.user['profile']['visas'].length; i++) {
+          let tmpCountry = !this.user['profile']['visas'][i].country ? null : this.user['profile']['visas'][i].country.id;
+          let tmpType = !this.user['profile']['visas'][i].type ? null : this.user['profile']['visas'][i].type.value;
           this.profile['visas'].push({
             countryId: tmpCountry,
             typeValue: tmpType,
-            multipleEntry: this.user['visas'][i].multipleEntry,
-            expiresOn: this.user['visas'][i].expiresOn
+            multipleEntry: this.user['profile']['visas'][i].multipleEntry,
+            expiresOn: this.user['profile']['visas'][i].expiresOn
           });
         }
       }
       /* loop trainings */
-      if (this.user['trainings'].length) {
-        for (i = 0; i < this.user['trainings'].length; i++) {
-          let tmpTraining = !this.user['trainings'][i].training ? null : this.user['trainings'][i].training.id;
+      if (this.user['profile']['trainings'].length) {
+        for (i = 0; i < this.user['profile']['trainings'].length; i++) {
+          let tmpTraining = !this.user['profile']['trainings'][i].training ? null : this.user['profile']['trainings'][i].training.id;
           this.profile['trainings'].push({
             trainingId: tmpTraining,
-            expiresOn: this.user['trainings'][i].expiresOn
+            expiresOn: this.user['profile']['trainings'][i].expiresOn
           });
         }
       }
 
 
 
-      this.routeConfig.navModel.setTitle(this.user.firstName);
-      this.originalUser = JSON.parse(JSON.stringify(this.user));
-      this.ea.publish(new UserViewed(this.user));
+      this.routeConfig.navModel.setTitle(this.user['user'].firstName);
+      // this.originalUser = JSON.parse(JSON.stringify(this.user));
+      // this.ea.publish(new UserViewed(this.user));
     });
   }
 

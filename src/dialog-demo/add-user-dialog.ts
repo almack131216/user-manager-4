@@ -21,7 +21,7 @@ export class AddUserDialog {
     title = 'Add User';
     userRole = null;
     originalUser = null;
-    users;
+    usersListToAdd;
     private selectedId;
     selectUserToAdd;
     rolesArr;
@@ -36,11 +36,11 @@ export class AddUserDialog {
         this.selectUserToAdd = (getUser) => {
             this.selectedId = getUser.id;
             console.log('add-user-dialog: select: ' + this.selectedId + ' / ' + getUser.id);
-            this.api.getUserRole(6).then(user => {
-                this.userRole = <User>user;
-                //this.selectedId = this.userRole.id;
-                console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole));
-            });
+            // this.api.getUserRole(6).then(user => {
+            //     this.userRole = <User>user;
+            //     //this.selectedId = this.userRole.id;
+            //     console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole));
+            // });
         }
 
 
@@ -61,8 +61,11 @@ export class AddUserDialog {
 
 
     created() {
-        this.api.getUserList().then(users => this.users = users)
-            .then(() => this.populateRoleFilterFromList());
+        this.api.getUserList()
+            .then(usersListToAdd => this.usersListToAdd = usersListToAdd)
+            .then(() => this.populateRoleFilterFromList()
+            );
+        //alert(this.users);
     }
 
     //All of the parameters that we passed to the dialog are available through the model
@@ -94,8 +97,7 @@ export class AddUserDialog {
     // }
 
     filters = [
-        { value: '', keys: ['firstName', 'lastName', 'emailAddress', 'personalNumber'] },
-        { value: '1', keys: ['systemRoles.value'] }
+        { value: '', keys: ['firstName', 'lastName', 'emailAddress'] }
     ];
 
     returnLabelFromValue(getId) {
@@ -108,7 +110,7 @@ export class AddUserDialog {
         //this.rolesArrLabels=[];
         this.rolesArrDynamic = [];
 
-        for (let next of this.users) {
+        for (let next of this.usersListToAdd) {
             let nextRole = next.systemRoles;
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
