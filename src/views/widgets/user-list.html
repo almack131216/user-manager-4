@@ -70,7 +70,7 @@
                                 <td if.bind="isNotDisabled('loginName')">${user.loginName}</td>
                                 <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
                                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
-                                <td if.bind="isNotDisabled('emailAddress')">${user.isMember} | ${user.emailAddress}</td>
+                                <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>
                                 <td if.bind="isNotDisabled('isMember')">
                                     <span-cust-member-status is-member.bind="user.isMember" update-pending.bind="user.updatePending" profile-date.bind="user.profileDate"></span-cust-member-status>
                                 </td>
