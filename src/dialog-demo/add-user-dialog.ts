@@ -24,7 +24,7 @@ export class AddUserDialog {
     title = 'Add User';
     userRole = null;
     originalUser = null;
-    users;
+    listUsersToAdd;
     private selectedId;
     selectUserToAdd;
     rolesArr;
@@ -65,9 +65,9 @@ export class AddUserDialog {
 
     created() {
         this.api.getUserList()
-            .then(users => this.users = users)
+            .then(listUsersToAdd => this.listUsersToAdd = listUsersToAdd)
             .then(() => this.populateRoleFilterFromList())
-            .then(() => console.log('xxxxxxxxx' + JSON.stringify(this.users)) )
+            .then(() => console.log('xxxxxxxxx' + JSON.stringify(this.listUsersToAdd)) )
             ;
         //alert(this.users);
     }
@@ -116,7 +116,7 @@ export class AddUserDialog {
         //this.rolesArrLabels=[];
         this.rolesArrDynamic = [];
 
-        for (let next of this.users) {
+        for (let next of this.listUsersToAdd) {
             let nextRole = next.systemRoles;
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {

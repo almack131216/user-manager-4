@@ -33,11 +33,11 @@
                 <!-- (END) Filters -->
 
             <!--if.bind="CV.debugShowCodeOutput"-->
-            <pre if.bind="CV.debugShowCodeOutput">${users & json}</pre>
+            <pre if.bind="CV.debugShowCodeOutput">${listUsersToAdd & json}</pre>
 
             <div class="wrap_table-add-user-from-list">
                 <!--filters.bind: filters;-->
-                <table class="table table-striped table-hover" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters;">
+                <table class="table table-striped table-hover" aurelia-table="data.bind: listUsersToAdd.data; display-data.bind: $displayData; filters.bind: filters;">
                     <thead>
                         <tr>
                             <th aut-sort="key: id; default: desc">ID</th>
