@@ -1,0 +1,6 @@
+<template>
+    <require from="../../../resources/format/format-date"></require>
+
+    <span if.bind="isMember" class="${updatePending ? 'color-pending' : ''}">${profileDate | formatDate}</span>
+    <span if.bind="!isMember">Viewer</span>
+</template>

@@ -5,6 +5,8 @@
     <require from="../widgets/inputs/form-filter-role"></require>
     <require from="../widgets/inputs/form-select"></require>
     <require from="../../resources/format/format-date"></require>
+    <require from="../widgets/cust-span/span-cust-member-status"></require>
+    <require from="../widgets/cust-span/span-cust-active-status"></require>
 
     <!--<div class="hdr-wrap" if.bind="!custHideTitleBar">
         <h1 class="hdr-inline">${title}<span class="html-file-name">(user-list.html)</span></h1>
@@ -70,14 +72,10 @@
                                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
                                 <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>
                                 <td if.bind="isNotDisabled('isMember')">
-                                    <span if.bind="user.isMember" class="${user.updatePending ? 'color-pending' : ''}">${user.profileDate | formatDate}</span>
-                                    <span if.bind="!user.isMember">Viewer</span>
+                                    <span-cust-member-status is-member.bind="user.isMember" update-pending.bind="user.updatePending" profile-date.bind="user.profileDate"></span-cust-member-status>
                                 </td>
                                 <td if.bind="isNotDisabled('isActive')">
-                                    <span class="color-archive" if.bind="!user.isActive"><i class="fa fa-archive text-after"></i>Archived</span>
-                                    <span class="color-pending" if.bind="user.isActive && user.reviewPending"><i class="fa fa-clock-o text-after"></i>Pending</span>
-                                    <span class="color-good" if.bind="user.isActive && !user.reviewPending && user.reviewResult"><i class="fa fa-check text-after"></i>Approved</span>
-                                    <span class="color-danger" if.bind="user.isActive && !user.reviewPending && !user.reviewResult"><i class="fa fa-ban text-after"></i>Rejected</span>
+                                    <span-cust-active-status is-active.bind="user.isActive" review-pending.bind="user.reviewPending" review-result.bind="user.reviewResult"></span-cust-active-status>
                                 </td>
                                 <td if.bind="isNotDisabled('edit')">
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
