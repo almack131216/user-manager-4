@@ -56,6 +56,8 @@ div.wrap_table-add-user-from-list {
 ai-dialog {
     width:600px;
 
+    &.wide {width:800px;}
+
     ai-dialog-header {
         h2 {
             margin:0;

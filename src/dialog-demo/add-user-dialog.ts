@@ -4,6 +4,8 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../api/web-api-users';
 import { UserUpdated, UserViewed } from '../resources/messages';
 import { Lookups } from '../resources/lookups';
+import * as Constants from '../resources/constants';
+const CV = Constants
 
 interface User {
     id: number;
@@ -17,16 +19,19 @@ interface User {
 @autoinject
 @inject(DialogController, WebAPIUsers, EventAggregator, Lookups)
 export class AddUserDialog {
+    public CV = CV;
     //@bindable user;
     title = 'Add User';
     userRole = null;
     originalUser = null;
-    usersListToAdd;
+    users;
     private selectedId;
     selectUserToAdd;
     rolesArr;
     rolesArrDynamic = [];
     lkp_role;
+    filter_role;
+    filter_active;
     router;
     //selectedId = null;
 
@@ -43,15 +48,13 @@ export class AddUserDialog {
             // });
         }
 
-
-
         this.lkp_role = lookups.lkp_role;
-        this.rolesArr = this.lkp_role.map(x => {
-            return {
-                value: x.value,
-                name: x.name
-            }
-        });
+        this.filter_role = lookups.filter_role;
+        this.filter_active = lookups.filter_active;
+        this.rolesArr = this.filter_role.map(x =>  { return {
+          value:x.value,
+          name:x.name
+        }});
 
     }
 
@@ -62,9 +65,10 @@ export class AddUserDialog {
 
     created() {
         this.api.getUserList()
-            .then(usersListToAdd => this.usersListToAdd = usersListToAdd)
-            .then(() => this.populateRoleFilterFromList()
-            );
+            .then(users => this.users = users)
+            .then(() => this.populateRoleFilterFromList())
+            .then(() => console.log('xxxxxxxxx' + JSON.stringify(this.users)) )
+            ;
         //alert(this.users);
     }
 
@@ -97,7 +101,8 @@ export class AddUserDialog {
     // }
 
     filters = [
-        { value: '', keys: ['firstName', 'lastName', 'emailAddress'] }
+        { value: '', keys: ['firstName', 'lastName'] },
+        { value: '1', keys: ['isMember'] }
     ];
 
     returnLabelFromValue(getId) {
@@ -110,7 +115,7 @@ export class AddUserDialog {
         //this.rolesArrLabels=[];
         this.rolesArrDynamic = [];
 
-        for (let next of this.usersListToAdd) {
+        for (let next of this.users) {
             let nextRole = next.systemRoles;
 
             if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {

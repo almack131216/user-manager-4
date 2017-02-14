@@ -49,12 +49,12 @@ export class UserList {
     }
 
     constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups, router: Router) {
-        ea.subscribe(UserViewed, msg => this.select(msg.user));
-        ea.subscribe(UserUpdated, msg => {
-            let id = msg.user.id;
-            let found = this.users.data.find(x => x.id == id);
-            Object.assign(found, msg.user);
-        });
+        // ea.subscribe(UserViewed, msg => this.select(msg.user));
+        // ea.subscribe(UserUpdated, msg => {
+        //     let id = msg.user.id;
+        //     let found = this.users.data.find(x => x.id == id);
+        //     Object.assign(found, msg.user);
+        // });
 
         this.lkp_role = lookups.lkp_role;
         this.filter_role = lookups.filter_role;

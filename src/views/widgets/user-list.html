@@ -29,104 +29,106 @@
         </div>
 
         <div id="${custXcId}" class="panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
-                <!-- Filters -->
-                <div class="row margin-y-g1">
-                    <div class="col-xs-4">
-                        <form-filter-text model.two-way="filters[0].value"></form-filter-text>
-                    </div>
-                    <div class="col-xs-4">
-                        <form-filter-role inp-label="Role" model.two-way="filters[1].value" options.bind="filter_role" changed.two-way="filters[1].value" init-selected.two-way="filters[1].value"></form-filter-role>
-                    </div>
-                    <div class="col-xs-4">
-
-                        <form-filter-role inp-label="Status" model.two-way="filters[2].value" options.bind="filter_active" changed.two-way="filters[2].value" init-selected.two-way="filters[2].value"></form-filter-role>
-                    </div>
+            <!-- Filters -->
+            <div class="row margin-y-g1">
+                <div class="col-xs-4">
+                    <form-filter-text model.two-way="filters[0].value"></form-filter-text>
                 </div>
-                <!-- (END) Filters -->
+                <div class="col-xs-4">
+                    <form-filter-role inp-label="Role" model.two-way="filters[1].value" options.bind="filter_role" changed.two-way="filters[1].value"
+                        init-selected.two-way="filters[1].value"></form-filter-role>
+                </div>
+                <div class="col-xs-4">
 
-                <!-- Table -->
-                <div class="row">
-                    <div class="col-xs-12">
-                        <table class="table table-striped" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
-                            <thead>
-                                <tr>
-                                    <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
-                                    <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login Name</th>
-                                    <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
-                                    <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Last Name</th>
-                                    <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">Last Name</th>
-                                    <th aut-sort="key: isMember" if.bind="isNotDisabled('isMember')">Profile</th>
-                                    <th aut-sort="key: isActive" if.bind="isNotDisabled('isActive')">Status</th>
-                                    <th if.bind="isNotDisabled('edit')">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
-                                    <td if.bind="isNotDisabled('id')">${user.id}</td>
-                                    <td if.bind="isNotDisabled('loginName')">${user.loginName}</td>
-                                    <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
-                                    <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
-                                    <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>                                    
-                                    <td if.bind="isNotDisabled('isMember')">
-                                        <span if.bind="user.isMember" class="${user.updatePending ? 'color-pending' : ''}">${user.profileDate | formatDate}</span>
-                                        <span if.bind="!user.isMember">Viewer</span>
-                                    </td>
-                                    <td if.bind="isNotDisabled('isActive')">
-                                        <span class="color-archive" if.bind="!user.isActive"><i class="fa fa-archive text-after"></i>Archived</span>
-                                        <span class="color-pending" if.bind="user.isActive && user.reviewPending"><i class="fa fa-clock-o text-after"></i>Pending</span>
-                                        <span class="color-good" if.bind="user.isActive && !user.reviewPending && user.reviewResult"><i class="fa fa-check text-after"></i>Approved</span>
-                                        <span class="color-danger" if.bind="user.isActive && !user.reviewPending && !user.reviewResult"><i class="fa fa-ban text-after"></i>Rejected</span>
-                                    </td>
-                                    <td if.bind="isNotDisabled('edit')">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                            <a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
-                                                <i class="fa fa-list"></i>
-                                            </a>
-                                            <button disabled.bind="user.emailAddress==null" class="btn btn-default" href="mailto:${user.emailAddress}" title="Email User">
+                    <form-filter-role inp-label="Status" model.two-way="filters[2].value" options.bind="filter_active" changed.two-way="filters[2].value"
+                        init-selected.two-way="filters[2].value"></form-filter-role>
+                </div>
+            </div>
+            <!-- (END) Filters -->
+
+            <!-- Table -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
+                        <thead>
+                            <tr>
+                                <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
+                                <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login Name</th>
+                                <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
+                                <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Last Name</th>
+                                <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">Last Name</th>
+                                <th aut-sort="key: isMember" if.bind="isNotDisabled('isMember')">Profile</th>
+                                <th aut-sort="key: isActive" if.bind="isNotDisabled('isActive')">Status</th>
+                                <th if.bind="isNotDisabled('edit')">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
+                                <td if.bind="isNotDisabled('id')">${user.id}</td>
+                                <td if.bind="isNotDisabled('loginName')">${user.loginName}</td>
+                                <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
+                                <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
+                                <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>
+                                <td if.bind="isNotDisabled('isMember')">
+                                    <span if.bind="user.isMember" class="${user.updatePending ? 'color-pending' : ''}">${user.profileDate | formatDate}</span>
+                                    <span if.bind="!user.isMember">Viewer</span>
+                                </td>
+                                <td if.bind="isNotDisabled('isActive')">
+                                    <span class="color-archive" if.bind="!user.isActive"><i class="fa fa-archive text-after"></i>Archived</span>
+                                    <span class="color-pending" if.bind="user.isActive && user.reviewPending"><i class="fa fa-clock-o text-after"></i>Pending</span>
+                                    <span class="color-good" if.bind="user.isActive && !user.reviewPending && user.reviewResult"><i class="fa fa-check text-after"></i>Approved</span>
+                                    <span class="color-danger" if.bind="user.isActive && !user.reviewPending && !user.reviewResult"><i class="fa fa-ban text-after"></i>Rejected</span>
+                                </td>
+                                <td if.bind="isNotDisabled('edit')">
+                                    <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
+                                        <a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
+                                            <i class="fa fa-list"></i>
+                                        </a>
+                                        <button disabled.bind="user.emailAddress==null" class="btn btn-default" href="mailto:${user.emailAddress}" title="Email User">
                                                 <i class="fa fa-envelope-o"></i>
                                             </button>
-                                            <a class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">
-                                                <i class="fa fa-cog"></i>
-                                            </a>
-                                            <a class="btn btn-default" click.delegate="deleteUser(user.id)" title="Delete User">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
+                                        <a class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">
+                                            <i class="fa fa-cog"></i>
+                                        </a>
+                                        <a class="btn btn-default" click.delegate="deleteUser(user.id)" title="Delete User">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- (END) Table -->
 
-                <!-- Pagination -->
-                <div class="row margin-bottom-g1 display-none" if.bind="custTablePagination">
 
-                    <div class="col-md-7">
-                        <aut-pagination current-page.bind="currentPage" page-size.bind="custTablePageSize" total-items.bind="totalItems" pagination-size.bind="5"
-                            boundary-links.bind="true"> </aut-pagination>
-                    </div>
 
-                    <div class="col-md-5">
-                        <div class="form-inline">
-                            <div class="form-group pull-right">
-                                <label for="custTablePageSize">Page Size: </label>
-                                <select value.bind="custTablePageSize" id="custTablePageSize" class="form-control">
+            </div>
+            <!-- (END) Table -->
+
+            <!-- Pagination -->
+            <div class="row margin-bottom-g1 display-none" if.bind="custTablePagination">
+
+                <div class="col-md-7">
+                    <aut-pagination current-page.bind="currentPage" page-size.bind="custTablePageSize" total-items.bind="totalItems" pagination-size.bind="5"
+                        boundary-links.bind="true"> </aut-pagination>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="form-inline">
+                        <div class="form-group pull-right">
+                            <label for="custTablePageSize">Page Size: </label>
+                            <select value.bind="custTablePageSize" id="custTablePageSize" class="form-control">
                         <option model.bind="5">5</option>
                         <option model.bind="10">10</option>
                         <option model.bind="20">20</option>
                         <option model.bind="50">50</option>
                         <option model.bind="100">100</option>
                     </select>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- (END) Pagination -->
+            </div>
+            <!-- (END) Pagination -->
 
         </div>
     </div>
