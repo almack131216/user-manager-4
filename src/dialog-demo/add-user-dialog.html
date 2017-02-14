@@ -33,7 +33,7 @@
                 <!-- (END) Filters -->
 
             <!--if.bind="CV.debugShowCodeOutput"-->
-            <pre if.bind="CV.debugShowCodeOutput">? ${users & json} !</pre>
+            <pre if.bind="CV.debugShowCodeOutput">${users & json}</pre>
 
             <div class="wrap_table-add-user-from-list">
                 <!--filters.bind: filters;-->
@@ -64,7 +64,7 @@
             </div>
             
             <div if.bind="selectedId" class="panel panel-info">
-                <pre if.bind="CV.debugShowCodeOutput">? ${userRole & json} !</pre>
+                <pre if.bind="CV.debugShowCodeOutput">${userRole & json}</pre>
 
                 <div class="panel-heading">
                     <button type="button" class="close" aria-label="Close" click.delegate="deselectUser()">

@@ -86,7 +86,8 @@
 }
 
 
-.table.border-none > tr {
+.table.border-none > tr,
+.table.border-none > * > tr {
     th, td {border:0px !important;}
 }
 
