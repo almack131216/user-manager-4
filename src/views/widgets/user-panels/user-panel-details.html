@@ -33,23 +33,6 @@
         is-enabled.bind="profile.regionId"
         is-mandatory.bind="true"></form-select>
         <!-- XXX CR - 170213: changed.two-way="profile.hubId" may be excess -->
-
-    <!--<div class="form-group col-xs-12">
-        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
-            Hub
-        </label>
-        <div class="col-sm-6">
-            <select class="form-control"
-                model.bind="user.profile.hub.id"
-                disabled.bind="!user.profile.region.id"        
-                >        
-                <option value="">Select...</option>
-                <option repeat.for="option of lkp_hub | filter:'regionId':user.profile.region.id" value="option.id" selected.bind="option.id==user.profile.hub.id">
-                    ${option.name}
-                </option>
-            </select>
-        </div>
-    </div>-->
   
      <div class="divider"></div>
      

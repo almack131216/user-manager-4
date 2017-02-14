@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of user.profile.visas">
+                <tr repeat.for="row of profile.visas">
                     <td>
                         <form-select inp-label="Visa Country"
                             model.two-way="profile.visas[$index].countryId"
@@ -52,20 +52,6 @@
                             input-only="true"
                             is-mandatory.bind="true"></form-checkbox>
                     </td>
-
-                    <!--<form-checkbox
-            class="margin-x-g1"
-            inp-label="Multiple Visas"                            
-            model.two-way="user.profile.visas[$index].multipleEntry"
-            init-selected.two-way="user.profile.visas[$index].multipleEntry"
-            input-only="true"
-            is-mandatory.bind="true"></form-checkbox>-->
-
-                    <!--<span class="form-group col-xs-6 col-debug is-mandatory">            
-            <label class="label-with-checkbox">
-                <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">
-                Multiple Visas
-            </label>        -->
 
                 </tr>
             </tbody>
