@@ -5,7 +5,8 @@
     <require from="select2/css/select2.min.css"></require>
 
     <label if.bind="!inputOnly" class="col-xs-6" for.bind="name" title.bind="inpLabel">
-        ${inpLabel} | ${model}
+        ${inpLabel}
+         <!--| ${model}-->
         <!--${optionFilter ? ' > [' + optionFilter + ']' : ''}-->
     </label>
     <div class="${!inputOnly ? 'col-xs-6' : ''}">

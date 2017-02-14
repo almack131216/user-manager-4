@@ -14,10 +14,13 @@ let myProfile = null;
 const profileUrl = '../../MRT.Api.Web/views/global';
 const views_welcome = '../../MRT.Api.Web/views/welcome';
 const data_users_all = '../../MRT.Api.Web/data/users/query';
+const data_users_X_profile = 'src/api/dummy-user-all.json';// '../../MRT.Api.Web/data/users/5/profile';
+
 
 //  const profileUrl = 'src/api/dummy-user-all.json';
 //   const views_welcome = 'src/api/api-welcome.json';
 //   const data_users_all = 'src/api/api-all-users.json';
+// const data_users_X_profile 'src/api/dummy-user-all.json';
   
 //if (window.location.hostname==='localhost') {
 // if (String(window.location) == 'http://localhost:9002/') {
@@ -105,7 +108,7 @@ export class WebAPIUsers {
       setTimeout(() => {
         console.log('usersArr:' + usersArr);
         //let found = usersArr.filter(x => x.id == id);
-        let found = this.http.fetch('src/api/dummy-user-all.json')
+        let found = this.http.fetch(data_users_X_profile)
           .then(found => found.json())
           .then(found => found);
 
