@@ -9,7 +9,25 @@ let users = null;
 let usersArr = [];
 let results = null;
 let myProfile = null;
-const profileUrl = 'src/api/api-global.json';
+
+
+const profileUrl = '../../MRT.Api.Web/views/global';
+const views_welcome = '../../MRT.Api.Web/views/welcome';
+const data_users_all = '../../MRT.Api.Web/data/users/query';
+
+//  const profileUrl = 'src/api/dummy-user-all.json';
+//   const views_welcome = 'src/api/api-welcome.json';
+//   const data_users_all = 'src/api/api-all-users.json';
+  
+//if (window.location.hostname==='localhost') {
+// if (String(window.location) == 'http://localhost:9002/') {
+//   //alert('local 2 | ' + window.location);
+//   const profileUrl = 'src/api/dummy-user-all.json';
+//   const views_welcome = 'src/api/api-welcome.json';
+//   const data_users_all = 'src/api/api-all-users.json';
+// }
+
+
 @autoinject
 export class WebAPIUsers {
   isRequesting = false;
@@ -18,13 +36,27 @@ export class WebAPIUsers {
   http: HttpClient
 
   constructor(http: HttpClient) {
+    http.configure(config => {
+      config
+        .useStandardConfiguration()        
+        .withDefaults({
+          mode: 'cors',
+          cache: 'default',
+          body: {},
+          headers: {
+            'TimeZone': new Date().getTimezoneOffset(),
+            'Content-type' : 'application/json',
+            'Accept': 'application/json'
+          }
+        });
+    });
     this.http = http;
   }
 
 
   getGlobal() {
     this.isRequesting = true;
-    
+
     return new Promise(resolve => {
       setTimeout(() => {
         let currentUser = this.http.fetch(profileUrl)
@@ -42,10 +74,11 @@ export class WebAPIUsers {
 
     return new Promise(resolve => {
       setTimeout(() => {
-        let users = this.http.fetch('src/api/api-all-users.json')
-          .then(users => users.json());
-
+        let users = this.http.fetch(data_users_all, {method: 'SEARCh', body: json({}) })
+        
+          .then(users => users.json())
         resolve(users);
+
         this.isRequesting = false;
       }, latency);
     });
@@ -55,7 +88,7 @@ export class WebAPIUsers {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let data = this.http.fetch('src/api/api-welcome.json')
+        let data = this.http.fetch(views_welcome, { method: "GET" })
           .then(data => data.json());
         resolve(data);
         this.isRequesting = false;
@@ -63,7 +96,7 @@ export class WebAPIUsers {
     });
   }
 
-  
+
 
   getUserDetails(id) {
     console.log('getUserDetails: ' + id);

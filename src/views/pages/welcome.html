@@ -37,13 +37,13 @@
     <div if.bind="pageData" class="row margin-bottom-g1">
         <p if.bind="CV.debugShowCurrentUser">? welcome: isMember: ${currentUser.isMember} !</p>
         <div class="col-md-12">
-            <img src="/src/img/MRT_Letterhead.png" class="fit-col">
+            <img src="src/img/MRT_Letterhead.png" class="fit-col">
         </div>
     </div>
 
     <div if.bind="currentUser.isMember" class="row-fluid">
         <div class="col-md-6">
-            <!--<img src="/src/img/MRT_Letterhead.png" class="fit-col">-->
+            <!--<img src="src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
                 <h1 class="margin-top-0">${title_isMember}</h1>
                 <p innerhtml.bind="message_isMember"></p>
@@ -51,19 +51,19 @@
 
             <div class="row">
                 <div class="col-md-2">
-                    <a href="#"><img src="/src/img/MRT_Org.png" class="fit-col"></a>
+                    <a href="#"><img src="src/img/MRT_Org.png" class="fit-col"></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="#"><img src="/src/img/MRT_Admin.png" class="fit-col"></a>
+                    <a href="#"><img src="src/img/MRT_Admin.png" class="fit-col"></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="#"><img src="/src/img/MRT_Ident.png" class="fit-col"></a>
+                    <a href="#"><img src="src/img/MRT_Ident.png" class="fit-col"></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="#"> <img src="/src/img/MRT_Valid.png" class="fit-col"></a>
+                    <a href="#"> <img src="src/img/MRT_Valid.png" class="fit-col"></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="#"><img src="/src/img/MRT_Toolbox.png" class="fit-col"></a>
+                    <a href="#"><img src="src/img/MRT_Toolbox.png" class="fit-col"></a>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
 
     <div if.bind="!currentUser.isMember" class="row-fluid">
         <div class="col-md-6">
-            <!--<img src="/src/img/MRT_Letterhead.png" class="fit-col">-->
+            <!--<img src="src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
                 <h1 class="margin-top-0">${title}</h1>
                 <p innerhtml.bind="message"></p>
