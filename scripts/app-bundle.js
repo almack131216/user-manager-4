@@ -34,10 +34,10 @@ define('api/web-api-users',["require", "exports", "aurelia-fetch-client", "aurel
     var usersArr = [];
     var results = null;
     var myProfile = null;
+    var api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
     var profileUrl = '../../MRT.Api.Web/views/global';
     var views_welcome = '../../MRT.Api.Web/views/welcome';
     var data_users_all = '../../MRT.Api.Web/data/users/query';
-    var data_users_X_profile = '../../MRT.Api.Web/data/users/5/profile';
     var views_profileform_X = '../../MRT.Api.Web/views/profileform/';
     var data_users_X = '../../MRT.Api.Web/data/users/';
     var WebAPIUsers = (function () {
@@ -68,6 +68,18 @@ define('api/web-api-users',["require", "exports", "aurelia-fetch-client", "aurel
                     var currentUser = _this.http.fetch(profileUrl)
                         .then(function (currentUser) { return currentUser.json(); });
                     resolve(currentUser);
+                    _this.isRequesting = false;
+                }, latency);
+            });
+        };
+        WebAPIUsers.prototype.getLookups = function () {
+            var _this = this;
+            this.isRequesting = true;
+            return new Promise(function (resolve) {
+                setTimeout(function () {
+                    var data = _this.http.fetch(api_lookups)
+                        .then(function (data) { return data.json(); });
+                    resolve(data);
                     _this.isRequesting = false;
                 }, latency);
             });
@@ -564,304 +576,95 @@ define('resources/messages',["require", "exports"], function (require, exports) 
     exports.UserViewed = UserViewed;
 });
 
-define('resources/lookups',["require", "exports"], function (require, exports) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define('resources/lookups',["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-framework", "./constants", "aurelia-auth", "../api/web-api-users", "aurelia-http-client"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_framework_2, Constants, aurelia_auth_1, web_api_users_1, aurelia_http_client_1) {
     "use strict";
+    var CV = Constants;
     var Lookups = (function () {
-        function Lookups() {
-            this.memberPreview = {
-                "displayName": "Alex Mackenzie",
-                "emailAddress": "alex.mackenzie@agily.cz",
-                "profilePending": true,
-                "reviewPending": true,
-                "manager": {
-                    "displayName": "David Soušek",
-                    "emailAddress": "david.sousek@agily.cz"
-                },
-                "profile": {
-                    "hub": null,
-                    "entity": null,
-                    "position": null,
-                    "function": null,
-                    "location": null,
-                    "office": null,
-                    "businessNumber": null,
-                    "personalNumber": null,
-                    "submittedOn": "2017-02-08T21:41:34Z"
-                }
-            };
-            this.recentSubmits = [
-                {
-                    "id": 3,
-                    "displayName": "EXAMPLE",
-                    "emailAddress": null,
-                    "submittedOn": "2017-02-10T14:04:17Z",
-                    "isActive": true
-                },
-                {
-                    "id": 5,
-                    "displayName": "Alex Mackenzie",
-                    "emailAddress": "alex.mackenzie@agily.cz",
-                    "submittedOn": "2017-02-08T21:41:34Z",
-                    "isActive": true
-                }
-            ];
-            this.recentReviews = [
-                {
-                    "id": 3,
-                    "displayName": "EXAMPLE",
-                    "emailAddress": null,
-                    "reviewedByDisplayName": "TEST",
-                    "reviewedByEmailAddress": null,
-                    "reviewedOn": "2017-02-10T14:04:16Z",
-                    "reviewResult": {
-                        "value": 1,
-                        "name": "Approved"
+        function Lookups(http, api) {
+            var _this = this;
+            this.api = api;
+            this.http = http;
+            this.api.getLookups()
+                .then(function (lookups_all) { return _this.lookups_all = lookups_all; })
+                .then(function () {
+                _this.lookups_all = _this.lookups_all['lookups'];
+                alert(JSON.stringify(_this.lookups_all));
+                console.log('lookups_all: ' + JSON.stringify(_this.lookups_all));
+                _this.filter_role = [
+                    { "value": true, "name": "MembersX" },
+                    { "value": false, "name": "Non-membersXXX" }
+                ];
+                _this.filter_active = [
+                    { "value": true, "name": "Active" },
+                    { "value": false, "name": "Archived" }
+                ];
+                _this.lkp_role = [
+                    { "value": 1, "name": "Viewer" },
+                    { "value": 3, "name": "Admin" }
+                ];
+                _this.lkp_regions = _this.lookups_all['regions'];
+                _this.lkp_hub = _this.lookups_all['hubs'];
+                _this.lkp_segment = _this.lookups_all['segments'];
+                _this.lkp_entity = _this.lookups_all['entities'];
+                _this.lkp_bp_office_address = _this.lookups_all['offices'];
+                _this.lkp_member_status = [
+                    { "value": 1, "label": "Status 1" },
+                    { "value": 2, "label": "Status 2" },
+                    { "value": 3, "label": "Status 3" }
+                ];
+                _this.lkp_coatSizes = _this.lookups_all['coatSizes'];
+                _this.lkp_languages = _this.lookups_all['languages'];
+                _this.lkp_languageLevel = _this.lookups_all['languageProficiencies'];
+                _this.lkp_primaryPositions = _this.lookups_all['primaryPositions'];
+                _this.lkp_secondaryPositions = _this.lookups_all['secondaryPositions'];
+                _this.lkp_passportTypes = _this.lookups_all['passportTypes'];
+                _this.lkp_passportNationality = _this.lookups_all['countries'];
+                _this.lkp_visaTypes = _this.lookups_all['visaTypes'];
+                _this.lkp_visaCountry = _this.lookups_all['countries'];
+                _this.lkp_userProfiles = [
+                    {
+                        "value": 5,
+                        "name": "Alex Mackenzie",
+                        "loginName": "AGILY\\AMackenzie",
                     },
-                    "profileExists": true,
-                    "isActive": true
-                }
-            ];
-            this.filter_role = [
-                { "value": true, "name": "Members" },
-                { "value": false, "name": "Non-members" }
-            ];
-            this.filter_active = [
-                { "value": true, "name": "Active" },
-                { "value": false, "name": "Archived" }
-            ];
-            this.lkp_role = [
-                { "value": 1, "name": "Viewer" },
-                { "value": 3, "name": "Admin" }
-            ];
-            this.lkp_regions = [
-                {
-                    "id": 1,
-                    "name": "Northern Hemispere"
-                },
-                {
-                    "id": 2,
-                    "name": "Southern Hemisphere"
-                }
-            ];
-            this.lkp_hub = [
-                { "id": 1, "name": "Hub 1.1", "regionId": 1 },
-                { "id": 2, "name": "Hub 1.2", "regionId": 1 },
-                { "id": 3, "name": "Hub 1.3", "regionId": 1 },
-                { "id": 4, "name": "Hub 1.4", "regionId": 1 },
-                { "id": 5, "name": "Hub 2.5", "regionId": 2 },
-                { "id": 6, "name": "Hub 2.6", "regionId": 2 },
-                { "id": 7, "name": "Hub 2.7", "regionId": 2 },
-                { "id": 8, "name": "Hub 3.8", "regionId": 3 },
-                { "id": 9, "name": "Hub 3.9", "regionId": 3 }
-            ];
-            this.lkp_segment = [
-                { "id": 1, "name": "Segment 1" },
-                { "id": 2, "name": "Segment 2" },
-                { "id": 3, "name": "Segment 3" },
-                { "id": 4, "name": "Segment 4" },
-                { "id": 5, "name": "Segment 5" },
-                { "id": 6, "name": "Segment 6" },
-                { "id": 7, "name": "Segment 7" },
-                { "id": 8, "name": "Segment 8" },
-                { "id": 9, "name": "Segment 9" }
-            ];
-            this.lkp_entity = [
-                { "id": 1, "name": "Entity 1", "segmentId": 1 },
-                { "id": 2, "name": "Entity 2", "segmentId": 1 },
-                { "id": 3, "name": "Entity 3", "segmentId": 1 },
-                { "id": 4, "name": "Entity 4", "segmentId": 1 },
-                { "id": 5, "name": "Entity 5", "segmentId": 2 },
-                { "id": 6, "name": "Entity 6", "segmentId": 2 },
-                { "id": 7, "name": "Entity 7", "segmentId": 2 },
-                { "id": 8, "name": "Entity 8", "segmentId": 8 },
-                { "id": 9, "name": "Entity 9", "segmentId": 8 }
-            ];
-            this.lkp_bp_office_address = [
-                {
-                    "id": 1,
-                    "name": "Office 1"
-                },
-                {
-                    "id": 2,
-                    "name": "Office 2"
-                }
-            ];
-            this.lkp_member_status = [
-                { "value": 1, "label": "Status 1" },
-                { "value": 2, "label": "Status 2" },
-                { "value": 3, "label": "Status 3" }
-            ];
-            this.lkp_coatSizes = [
-                { "id": 1, "name": "XXXS" },
-                { "id": 2, "name": "XS" },
-                { "id": 3, "name": "S" },
-                { "id": 4, "name": "M" },
-                { "id": 5, "name": "L" },
-                { "id": 6, "name": "XL" }
-            ];
-            this.lkp_languages = [
-                {
-                    "id": 1,
-                    "name": "English"
-                },
-                {
-                    "id": 2,
-                    "name": "Czech"
-                },
-                {
-                    "id": 3,
-                    "name": "Spanish"
-                }
-            ];
-            this.lkp_languageLevel = [
-                {
-                    "value": 1,
-                    "name": "Basic"
-                },
-                {
-                    "value": 2,
-                    "name": "Proficient"
-                },
-                {
-                    "value": 3,
-                    "name": "Fluent"
-                }
-            ];
-            this.lkp_primaryPositions = [
-                {
-                    "id": 1,
-                    "name": "Command Staff"
-                },
-                {
-                    "id": 2,
-                    "name": "Operations Section"
-                },
-                {
-                    "id": 3,
-                    "name": "Planning Section"
-                }
-            ];
-            this.lkp_secondaryPositions = [
-                {
-                    "id": 1,
-                    "name": "Deputy Incident Commanders",
-                    "primaryPositionId": 1
-                },
-                {
-                    "id": 2,
-                    "name": "Safety OfficerHealth Specialist",
-                    "primaryPositionId": 1
-                },
-                {
-                    "id": 3,
-                    "name": "Safety Officer Industrial Hygienist Specialists",
-                    "primaryPositionId": 1
-                },
-                {
-                    "id": 4,
-                    "name": "Section Chief",
-                    "primaryPositionId": 2
-                }
-            ];
-            this.lkp_passportTypes = [
-                {
-                    "value": 1,
-                    "name": "Regular"
-                },
-                {
-                    "value": 2,
-                    "name": "Diplomatic"
-                },
-                {
-                    "value": 3,
-                    "name": "Special"
-                },
-                {
-                    "value": 4,
-                    "name": "Temporary"
-                }
-            ];
-            this.lkp_passportNationality = [
-                {
-                    "id": 1,
-                    "name": "Afghanistan"
-                },
-                {
-                    "id": 2,
-                    "name": "Albania"
-                },
-                {
-                    "id": 3,
-                    "name": "Algeria"
-                }
-            ];
-            this.lkp_visaTypes = [
-                {
-                    "value": 1,
-                    "name": "Business visitor"
-                },
-                {
-                    "value": 2,
-                    "name": "Foreign national"
-                },
-                {
-                    "value": 3,
-                    "name": "Medical"
-                }
-            ];
-            this.lkp_visaCountry = [
-                {
-                    "id": 1,
-                    "name": "Afghanistan"
-                },
-                {
-                    "id": 2,
-                    "name": "Albania"
-                },
-                {
-                    "id": 3,
-                    "name": "Algeria"
-                }
-            ];
-            this.lkp_userProfiles = [
-                {
-                    "value": 5,
-                    "name": "Alex Mackenzie",
-                    "loginName": "AGILY\\AMackenzie",
-                },
-                {
-                    "value": 2,
-                    "name": "David Sousek",
-                    "loginName": "AGILY\\DSousek",
-                }
-            ];
-            this.lkp_credentialLevels = [
-                {
-                    "value": 1,
-                    "name": "1"
-                },
-                {
-                    "value": 2,
-                    "name": "2"
-                },
-                {
-                    "value": 3,
-                    "name": "3"
-                }
-            ];
-            this.lkp_memberStatus = [
-                {
-                    "value": 1,
-                    "name": "Employed"
-                },
-                {
-                    "value": 2,
-                    "name": "Retired"
-                }
-            ];
+                    {
+                        "value": 2,
+                        "name": "David Sousek",
+                        "loginName": "AGILY\\DSousek",
+                    }
+                ];
+                _this.lkp_credentialLevels = _this.lookups_all['credentialLevels'];
+                _this.lkp_memberStatus = [
+                    {
+                        "value": 1,
+                        "name": "Employed"
+                    },
+                    {
+                        "value": 2,
+                        "name": "Retired"
+                    }
+                ];
+            });
         }
+        Lookups.prototype.activate = function () {
+        };
         return Lookups;
     }());
+    Lookups = __decorate([
+        aurelia_framework_2.autoinject,
+        aurelia_framework_2.inject(aurelia_http_client_1.HttpClient, aurelia_router_1.Router, aurelia_auth_1.FetchConfig, web_api_users_1.WebAPIUsers),
+        aurelia_framework_1.noView,
+        __metadata("design:paramtypes", [Object, web_api_users_1.WebAPIUsers])
+    ], Lookups);
     exports.Lookups = Lookups;
 });
 
@@ -1620,11 +1423,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('views/pages/welcome',["require", "exports", "aurelia-framework", "../../resources/constants", "../../api/web-api-users"], function (require, exports, aurelia_framework_1, Constants, web_api_users_1) {
+define('views/pages/welcome',["require", "exports", "aurelia-framework", "../../resources/constants", "../../resources/lookups", "../../api/web-api-users"], function (require, exports, aurelia_framework_1, Constants, lookups_1, web_api_users_1) {
     "use strict";
     var CV = Constants;
     var Welcome = (function () {
-        function Welcome(api) {
+        function Welcome(api, lookups) {
             this.api = api;
             this.CV = CV;
             this.title = 'Welcome to MRT';
@@ -1641,8 +1444,8 @@ define('views/pages/welcome',["require", "exports", "aurelia-framework", "../../
         return Welcome;
     }());
     Welcome = __decorate([
-        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers),
-        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers])
+        aurelia_framework_1.inject(web_api_users_1.WebAPIUsers, lookups_1.Lookups),
+        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, lookups_1.Lookups])
     ], Welcome);
     exports.Welcome = Welcome;
 });
@@ -2175,37 +1978,6 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
         __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator, user_info_1.UserInfo, aurelia_dialog_1.DialogService, lookups_1.Lookups, aurelia_router_1.Router])
     ], UserList);
     exports.UserList = UserList;
-});
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define('views/widgets/cust-span/span-cust-member-status',["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
-    "use strict";
-    var SpanCustMemberStatus = (function () {
-        function SpanCustMemberStatus() {
-        }
-        return SpanCustMemberStatus;
-    }());
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], SpanCustMemberStatus.prototype, "isMember", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], SpanCustMemberStatus.prototype, "profileDate", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], SpanCustMemberStatus.prototype, "updatePending", void 0);
-    exports.SpanCustMemberStatus = SpanCustMemberStatus;
 });
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -7369,6 +7141,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+define('views/widgets/cust-span/span-cust-member-status',["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+    "use strict";
+    var SpanCustMemberStatus = (function () {
+        function SpanCustMemberStatus() {
+        }
+        return SpanCustMemberStatus;
+    }());
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], SpanCustMemberStatus.prototype, "isMember", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], SpanCustMemberStatus.prototype, "profileDate", void 0);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], SpanCustMemberStatus.prototype, "updatePending", void 0);
+    exports.SpanCustMemberStatus = SpanCustMemberStatus;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 define('views/widgets/cust-span/span-cust-active-status',["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     "use strict";
     var SpanCustActiveStatus = (function () {
@@ -7407,14 +7210,14 @@ define('text!resources/select2.html', ['module'], function(module) { module.expo
 define('text!user-info/set-info.html', ['module'], function(module) { module.exports = "<template>\r\n    \r\n    <div class=\"col-md-2\"></div>\r\n    <div class=\"col-md-8\">\r\n        <form action=\"\" submit.trigger=\"save()\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" value.bind=\"firstName\" placeholder=\"First Name\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" value.bind=\"lastName\" placeholder=\"Last Name\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" value.bind=\"emailAddress\" placeholder=\"emailAddress\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" value.bind=\"city\" placeholder=\"City\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" value.bind=\"country\" placeholder=\"Country\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button class=\"btn btn-primary\" type=\"submit\">Save</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n    \r\n</template>"; });
 define('text!user-info/view-info.html', ['module'], function(module) { module.exports = "<template>\r\n    \r\n    <div class=\"col-md-2\"></div>\r\n    <div class=\"col-md-8\">\r\n        <div class=\"text-center\">\r\n            <div class=\"row\">\r\n                <strong>First Name: </strong> ${userInfo.first_ame}\r\n            </div>\r\n            <div class=\"row\">\r\n                <strong>Last Name: </strong> ${userInfo.lastName}\r\n            </div>\r\n            <div class=\"row\">\r\n                <strong>emailAddress: </strong> ${userInfo.emailAddress}\r\n            </div>\r\n            <div class=\"row\">\r\n                <strong>City: </strong> ${userInfo.city}\r\n            </div>\r\n            <div class=\"row\">\r\n                <strong>Country: </strong> ${userInfo.country}\r\n            </div>\r\n        </div>\r\n    </div>\r\n    \r\n</template>"; });
 define('text!_excess-ref/xxx_dev-inputs.html', ['module'], function(module) { module.exports = "<!--<form-checkbox\r\n            class=\"margin-x-g1\"\r\n            inp-label=\"Multiple Visas\"                            \r\n            model.two-way=\"user.profile.visas[$index].multipleEntry\"\r\n            init-selected.two-way=\"user.profile.visas[$index].multipleEntry\"\r\n            input-only=\"true\"\r\n            is-mandatory.bind=\"true\"></form-checkbox>-->\r\n\r\n                    <!--<span class=\"form-group col-xs-6 col-debug is-mandatory\">            \r\n            <label class=\"label-with-checkbox\">\r\n                <input type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">\r\n                Multiple Visas\r\n            </label>        -->\r\n\r\n            <!--<div class=\"col-xs-12\">\r\n            <form-radio inp-name.bind.bind=\"'training_ics\" inp-label.bind=\"user.profile.trainings[0].training.name\" model.two-way=\"user.profile.trainings[0].training.id\"\r\n                expiry-date.two-way=\"user.profile.trainings[0].expiresOn ? user.profile.trainings[0].expiresOn : '--'\"\r\n                init-selected.two-way=\"user.profile.trainings[0].training.id\"></form-radio>\r\n        </div>\r\n\r\n        <div class=\"divider dotted\"></div>\r\n\r\n        <div class=\"col-xs-12\">\r\n            <form-radio inp-name.bind=\"'training_haz'\" inp-label.bind=\"user.profile.trainings[1].training.name\" model.two-way=\"user.profile.trainings[1].training.id\"\r\n                expiry-date.two-way=\"user.profile.trainings[1].expiresOn ? user.profile.trainings[1].expiresOn : '--'\"\r\n                init-selected.two-way=\"user.profile.trainings[1].training.id\"></form-radio>\r\n        </div>\r\n\r\n        <div class=\"divider dotted\"></div>\r\n\r\n        <div class=\"col-xs-12 margin-bottom-2\">\r\n            <form-radio inp-name.bind=\"'training_offs'\" inp-label.bind=\"user.profile.trainings[2].training.name\" model.two-way=\"user.profile.trainings[2].training.id\"\r\n                expiry-date.two-way=\"user.profile.trainings[2].expiresOn ? user.profile.trainings[2].expiresOn : '--'\"\r\n                init-selected.two-way=\"user.profile.trainings[2].training.id\"></form-radio>\r\n        </div>-->\r\n\r\n    <!--</div>-->\r\n\r\n\r\n    <!-- details -->\r\n    <form-select name=\"region\"\r\n        model.two-way=\"profile.regionId\"\r\n        options.bind=\"lkp_regions\"        \r\n        autocomplete.bind=\"true\"\r\n        init-selected.two-way=\"profile.regionId\"\r\n        is-mandatory.bind=\"true\"></form-select>\r\n        <!--changed.two-way=\"profile.regionId\"-->\r\n    \r\n    <form-select inp-label=\"hub\"\r\n        model.two-way=\"profile.hubId\"\r\n        options.bind=\"lkp_hub\"        \r\n        init-selected.two-way=\"profile.hubId\"\r\n        option-filter.bind=\"['regionId',profile.regionId]\"\r\n        is-enabled.bind=\"profile.regionId\"\r\n        is-mandatory.bind=\"true\"></form-select>\r\n        <!-- XXX CR - 170213: changed.two-way=\"profile.hubId\" may be excess -->\r\n\r\n    <!--<div class=\"form-group col-xs-12\">\r\n        <label class=\"col-sm-6\" for.bind=\"name\" title.bind=\"inpLabel\">\r\n            Hub\r\n        </label>\r\n        <div class=\"col-sm-6\">\r\n            <select class=\"form-control\"\r\n                model.bind=\"user.profile.hub.id\"\r\n                disabled.bind=\"!user.profile.region.id\"        \r\n                >        \r\n                <option value=\"\">Select...</option>\r\n                <option repeat.for=\"option of lkp_hub | filter:'regionId':user.profile.region.id\" value=\"option.id\" selected.bind=\"option.id==user.profile.hub.id\">\r\n                    ${option.name}\r\n                </option>\r\n            </select>\r\n        </div>\r\n    </div>-->\r\n\r\n\r\n    \r\n    <!--<div class=\"form-group col-xs-12\">\r\n        <label class=\"col-sm-6\" for.bind=\"name\" title.bind=\"inpLabel\">\r\n            Entity\r\n        </label>\r\n        <div class=\"col-sm-6\">\r\n            <select class=\"form-control\"\r\n                model.bind=\"user.profile.entity.id\"\r\n                disabled.bind=\"!user.profile.segment.id\"        \r\n                >        \r\n                <option value=\"\">Select...</option>\r\n                <option repeat.for=\"option of lkp_entity | filter:'segmentId':user.profile.segment.id\" value=\"option.id\" selected.bind=\"option.id==user.profile.entity.id\">\r\n                    ${option.name}\r\n                </option>\r\n            </select>\r\n        </div>\r\n    </div>-->\r\n\r\n    <!--<form-select name=\"lkp_entity\"\r\n        model.two-way=\"user.lkp_entity_selected\"\r\n        options.bind=\"lkp_entity\"\r\n        changed.two-way=\"user.lkp_entity_selected\"        \r\n        init-selected.two-way=\"user.lkp_entity_selected\"\r\n        option-filter.bind=\"user.lkp_segment_selected\"\r\n        autocomplete.bind=\"true\"\r\n        is-enabled.bind=\"user.lkp_regions_selected && user.lkp_hub_selected && user.lkp_segment_selected\"></form-select>-->"; });
-define('text!views/ui/nav-bar.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"./ui-header\"></require>\r\n\r\n    <ui-header current-user.bind=\"currentUser\"></ui-header>\r\n    <p if.bind=\"CV.debugShowCurrentUser\">? navbar > isMember: ${currentUser.isMember} !</p>\r\n\r\n    <nav id=\"header\" class=\"navbar navbar-default ${routeName=='welcome' ? 'margin-bottom-0' : ''} navbar-static-topXXX\" role=\"navigation\">\r\n\r\n        <div class=\"container padding-x-0\">\r\n            <div class=\"navbar-header\">\r\n                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\r\n                    <span class=\"sr-only\">Toggle Navigation</span>\r\n                    <span class=\"icon-bar\"></span>\r\n                    <span class=\"icon-bar\"></span>\r\n                    <span class=\"icon-bar\"></span>\r\n                </button>\r\n                <!--<a class=\"navbar-brand\" href=\"/#/\">\r\n                    <i class=\"fa fa-home\"></i>\r\n                    <span>${router.title}</span>\r\n                </a>-->\r\n            </div>\r\n\r\n            <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n                <ul class=\"nav navbar-nav\">\r\n                    <li repeat.for=\"row of router.navigation\" if.bind=\"hasAccess(currentUser,row)\" class=\"${row.isActive ? 'active' : ''}\">\r\n                        <a href.bind=\"row.href\">${row.title}<span if.bind=\"CV.debugShowCurrentUser\"> / ${currentUser.isMember} | ${row.settings.data.isMemberOnly}</span></a>\r\n                    </li>\r\n                </ul>\r\n\r\n                <ul class=\"nav navbar-nav navbar-right\">\r\n                    <li class=\"loader\" if.bind=\"router.isNavigating\">\r\n                        <i class=\"fa fa-spinner fa-spin fa-2x color-white\"></i>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n\r\n    </nav>\r\n\r\n</template>"; });
-define('text!views/ui/ui-footer.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <footer>        \r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-6\">\r\n                    <ul class=\"ul-inline-piped\">\r\n                        <li>${CV.SITE_OWNER_ABBR} ${CV.SITE_NAME}</li>\r\n                    </ul>\r\n                </div>\r\n                 <div class=\"col-xs-6 text-align-right\">\r\n                    <span>${CV.COPYRIGHT}</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
-define('text!views/ui/ui-header.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <header class=\"container\">\r\n        <p if.bind=\"CV.debugShowCurrentUser\">? ui-header > isMember: ${currentUser.isMember} !</p>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-8 logo-wrap\">\r\n                <a class=\"logo\" href=\"#\" title=\"${CV.SITE_NAME}\">\r\n                    <img src=\"src/css/bp-responsive.svg\" alt=\"${CV.SITE_NAME_ABBR}\">\r\n                    \r\n                    <!--<h3>${CV.SITE_NAME}</h3>-->\r\n                </a>\r\n                <img class=\"strapline\" src=\"src/img/MRT_Identifier_V1b.png\">\r\n            </div>\r\n            <div class=\"col-xs-4 user\">\r\n                <div class=\"btn-group btn-edit-avatar\" role=\"group\" aria-label=\"user options\">\r\n\r\n                    <div class=\"btn-group\" role=\"group\">\r\n                        <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" \r\n                            data-toggle=\"dropdown\"\r\n                            aria-haspopup=\"true\"\r\n                            aria-expanded=\"true\">\r\n                            ${currentUser.displayName}\r\n\r\n                            <span class=\"caret\"></span>\r\n                        </button>\r\n                        <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-cog\"></i> Profile Settings</a></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-bell\"></i> Notifications</a></li>\r\n                            <li role=\"separator\" class=\"divider\"></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-sign-out\"></i> Log out</a></li>\r\n                        </ul>\r\n                    </div>\r\n\r\n                    <a class=\"btn btn-default avatar\">\r\n                        <img src=\"src/img/tmp-avatar-me.jpg\" alt=\"tmp me\">\r\n                    </a>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
 define('text!views/pages/login.html', ['module'], function(module) { module.exports = "<template>\r\n    ${title}\r\n</template>"; });
 define('text!views/pages/user-add.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/inputs/form-input\"></require>\r\n  <require from=\"../widgets/inputs/form-select\"></require>\r\n  <require from=\"../widgets/inputs/form-radio\"></require>\r\n  <require from=\"../widgets/inputs/form-checkbox\"></require>\r\n  <require from=\"../widgets/form-user-full-body\"></require>\r\n  <require from=\"../widgets/btn-xc-all\"></require>\r\n\r\n  <div class=\"btn-group btn-edit-avatar pull-right\" role=\"group\" aria-label=\"user options\">\r\n\r\n    <div class=\"btn-group\" role=\"group\">\r\n      <button class=\"btn btn-default dropdown-toggle btn-i\" type=\"button\"\r\n        id=\"dropdownMenu1\"\r\n        data-toggle=\"dropdown\"\r\n        aria-haspopup=\"true\"\r\n        aria-expanded=\"true\">\r\n          <i class=\"fa fa-pencil\"></i>\r\n          David Bowie\r\n          <span class=\"caret\"></span>\r\n      </button>\r\n      <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\r\n        <li><a href=\"#\"><i class=\"fa fa-fw fa-pencil\"></i> Change Username</a></li>\r\n        <li><a href=\"#\"><i class=\"fa fa-fw fa-photo\"></i> Change Avatar</a></li>\r\n      </ul>\r\n    </div>\r\n\r\n    <a class=\"btn btn-default avatar\">\r\n      <img src=\"src/img/low.jpg\" alt=\"tmp me\">\r\n    </a>\r\n\r\n  </div>\r\n\r\n\r\n  <h1 class=\"display-inline-block\">${title}</h1>\r\n  <btn-xc-all wrapper-id=\"user-panels\"></btn-xc-all>\r\n\r\n  <form role=\"form\" class=\"form-horizontal\" id=\"user-panels\">\r\n<!--cust-xc-expanded=\"true\"-->\r\n    <form-user-full-body user.bind=\"user\" profile.bind=\"profile\" cust-title=\"User\" cust-body=\"user-details\" cust-xc=\"true\" cust-xc-id=\"xc_user\" cust-xc-expanded=\"true\"></form-user-full-body>\r\n\r\n    <!--<form-user-full-body user.bind=\"user\" cust-title=\"MRT Role Information\" cust-body=\"user-mrt-role\" cust-xc=\"true\" cust-xc-id=\"xc_mrt-role\"></form-user-full-body>-->\r\n\r\n    <form-user-full-body user.bind=\"user\" profile.bind=\"profile\" cust-title=\"Languages\" cust-body=\"user-languages\" cust-xc=\"true\" cust-xc-id=\"xc_languages\"></form-user-full-body>\r\n\r\n    <form-user-full-body user.bind=\"user\" profile.bind=\"profile\" cust-title=\"Passport Information\" cust-body=\"user-passport\" cust-xc=\"true\" cust-xc-id=\"xc_passport\"></form-user-full-body>\r\n\r\n    <form-user-full-body user.bind=\"user\" profile.bind=\"profile\" cust-title=\"Visa Information\" cust-body=\"user-visa\" cust-xc=\"true\" cust-xc-id=\"xc_visa\"></form-user-full-body>\r\n\r\n    <form-user-full-body user.bind=\"user\" profile.bind=\"profile\" cust-title=\"Training\" cust-body=\"user-training\" cust-xc=\"true\" cust-xc-id=\"xc_training\"></form-user-full-body>\r\n\r\n    <!--<form-user-full-body user.bind=\"user\" cust-title=\"TWIC Information\" cust-body=\"user-twic\" cust-xc=\"true\" cust-xc-id=\"xc_twic\"></form-user-full-body>-->\r\n\r\n    <form-user-full-body if.bind=\"user.permissions.accessConfidentialFields\" cust-icon=\"fa-exclamation-triangle\" user.bind=\"user\" cust-title=\"Confidential Information\" cust-body=\"user-confidential\" cust-xc=\"true\" cust-xc-id=\"xc_confidential\"></form-user-full-body>\r\n\r\n  </form>\r\n\r\n  <div class=\"button-bar col-md-12 padding-x-0 text-align-right\">\r\n      <button class=\"btn btn-success\" click.delegate=\"save()\" disabled.bind=\"!canSave\">Save</button>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/pages/user-no-selection.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/user-list\"></require>\r\n\r\n  <p if.bind=\"CV.debugShowCurrentUser\">? user-selected: ${currentUser.isMember} !</p>\r\n\r\n  <div class=\"col-md-12\" if.bind=\"title\">\r\n    <h1>${title}<span class=\"html-file-name\">(user-no-selection.html)</span></h1>\r\n  </div>\r\n\r\n  <user-list class=\"col-md-12\" if.bind=\"currentUser.isMember\"></user-list>\r\n\r\n</template>"; });
 define('text!views/pages/user-selected.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/user-list\"></require>\r\n  <require from=\"../widgets/user-edit\"></require>\r\n  <require from=\"./user-add\"></require>\r\n  <require from=\"../../resources/format/json\"></require>\r\n\r\n  <!--<div class=\"col-md-12\">\r\n    <h1>${title}<span class=\"html-file-name\">(user-selected.html)</span></h1>\r\n    <hr>\r\n  </div>-->\r\n\r\n  <p if.bind=\"CV.debugShowCurrentUser\">? user-selected: ${currentUser.isMember} !</p>\r\n\r\n\r\n  <pre if.bind=\"CV.debugShowCodeOutput\">JSON.stringify(profile)</pre>\r\n  <pre if.bind=\"CV.debugShowCodeOutput\">${user & json}</pre>\r\n\r\n  <div if.bind=\"!editType\">\r\n    <user-list class=\"col-xs-12 col-md-8\"></user-list>\r\n\r\n    <div class=\"col-xs-12 col-md-4\">\r\n      <user-edit user.bind=\"user\"></user-edit>\r\n    </div>\r\n  </div>\r\n\r\n  <div if.bind=\"user && editType=='edit'\" class=\"col-xs-12\">\r\n    <user-add user.bind=\"user\" profile.bind=\"profile\"></user-add>\r\n  </div>\r\n\r\n  <pre if.bind=\"debugShowCodeOutput\">${user & json}</pre>\r\n\r\n</template>"; });
 define('text!views/pages/welcome.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../widgets/list-activity\"></require>\r\n    <require from=\"../widgets/user-list\"></require>\r\n    <require from=\"../widgets/profile-brief\"></require>\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <h1>${title}<span class=\"html-file-name\">(welcome.html)</span></h1>\r\n        </div>\r\n    </div>\r\n\r\n    <hr>-->\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <div id=\"exTab2\" class=\"containerXXX\">\r\n                <ul class=\"nav nav-pills\">\r\n                    <li class=\"active\">\r\n                        <a href=\"#home\" data-toggle=\"tab\">Home</a>\r\n                    </li>\r\n                    <li><a href=\"#team\" data-toggle=\"tab\">Team</a>\r\n                    </li>\r\n                </ul>\r\n\r\n                <div class=\"tab-content clearfix\">\r\n                    <div class=\"tab-pane active\" id=\"home\">\r\n                        <h3>Home</h3>\r\n                    </div>\r\n                    <div class=\"tab-pane\" id=\"team\">\r\n                        <h3>Team</h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>-->\r\n\r\n    <div if.bind=\"pageData\" class=\"row margin-bottom-g1\">\r\n        <p if.bind=\"CV.debugShowCurrentUser\">? welcome: isMember: ${currentUser.isMember} !</p>\r\n        <div class=\"col-md-12\">\r\n            <img src=\"src/img/MRT_Letterhead.png\" class=\"fit-col\">\r\n        </div>\r\n    </div>\r\n\r\n    <div if.bind=\"currentUser.isMember\" class=\"row-fluid\">\r\n        <div class=\"col-md-6\">\r\n            <!--<img src=\"src/img/MRT_Letterhead.png\" class=\"fit-col\">-->\r\n            <div class=\"margin-bottom-2\">\r\n                <h1 class=\"margin-top-0\">${title_isMember}</h1>\r\n                <p innerhtml.bind=\"message_isMember\"></p>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-md-2\">\r\n                    <a href=\"#\"><img src=\"src/img/MRT_Org.png\" class=\"fit-col\"></a>\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <a href=\"#\"><img src=\"src/img/MRT_Admin.png\" class=\"fit-col\"></a>\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <a href=\"#\"><img src=\"src/img/MRT_Ident.png\" class=\"fit-col\"></a>\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <a href=\"#\"> <img src=\"src/img/MRT_Valid.png\" class=\"fit-col\"></a>\r\n                </div>\r\n                <div class=\"col-md-2\">\r\n                    <a href=\"#\"><img src=\"src/img/MRT_Toolbox.png\" class=\"fit-col\"></a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-6\">\r\n            <!--<user-list cust-title=\"Users-lite\" cust-disable-cells=\"['firstName','personalNumber','systemRoles']\" cust-table-pagination.bind=\"true\"\r\n                cust-table-page-size.bind=\"10\"></user-list>-->\r\n            <list-activity title=\"Recent Changes\" cust-xc-id=\"xs_recentSubmits\" cust-xc-expanded=\"true\" api-data.bind=\"pageData.recentSubmits\"></list-activity>\r\n            <list-activity title=\"Recent Reviews\" cust-xc-id=\"xs_recentReviews\" api-data.bind=\"pageData.recentReviews\"></list-activity>\r\n        </div>\r\n    </div>\r\n\r\n    <div if.bind=\"!currentUser.isMember\" class=\"row-fluid\">\r\n        <div class=\"col-md-6\">\r\n            <!--<img src=\"src/img/MRT_Letterhead.png\" class=\"fit-col\">-->\r\n            <div class=\"margin-bottom-2\">\r\n                <h1 class=\"margin-top-0\">${title}</h1>\r\n                <p innerhtml.bind=\"message\"></p>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"col-md-6\">\r\n            <profile-brief member-arr.bind=\"pageData.memberPreview\"></profile-brief>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/ui/nav-bar.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"./ui-header\"></require>\r\n\r\n    <ui-header current-user.bind=\"currentUser\"></ui-header>\r\n    <p if.bind=\"CV.debugShowCurrentUser\">? navbar > isMember: ${currentUser.isMember} !</p>\r\n\r\n    <nav id=\"header\" class=\"navbar navbar-default ${routeName=='welcome' ? 'margin-bottom-0' : ''} navbar-static-topXXX\" role=\"navigation\">\r\n\r\n        <div class=\"container padding-x-0\">\r\n            <div class=\"navbar-header\">\r\n                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\r\n                    <span class=\"sr-only\">Toggle Navigation</span>\r\n                    <span class=\"icon-bar\"></span>\r\n                    <span class=\"icon-bar\"></span>\r\n                    <span class=\"icon-bar\"></span>\r\n                </button>\r\n                <!--<a class=\"navbar-brand\" href=\"/#/\">\r\n                    <i class=\"fa fa-home\"></i>\r\n                    <span>${router.title}</span>\r\n                </a>-->\r\n            </div>\r\n\r\n            <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n                <ul class=\"nav navbar-nav\">\r\n                    <li repeat.for=\"row of router.navigation\" if.bind=\"hasAccess(currentUser,row)\" class=\"${row.isActive ? 'active' : ''}\">\r\n                        <a href.bind=\"row.href\">${row.title}<span if.bind=\"CV.debugShowCurrentUser\"> / ${currentUser.isMember} | ${row.settings.data.isMemberOnly}</span></a>\r\n                    </li>\r\n                </ul>\r\n\r\n                <ul class=\"nav navbar-nav navbar-right\">\r\n                    <li class=\"loader\" if.bind=\"router.isNavigating\">\r\n                        <i class=\"fa fa-spinner fa-spin fa-2x color-white\"></i>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n\r\n    </nav>\r\n\r\n</template>"; });
+define('text!views/ui/ui-footer.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <footer>        \r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-6\">\r\n                    <ul class=\"ul-inline-piped\">\r\n                        <li>${CV.SITE_OWNER_ABBR} ${CV.SITE_NAME}</li>\r\n                    </ul>\r\n                </div>\r\n                 <div class=\"col-xs-6 text-align-right\">\r\n                    <span>${CV.COPYRIGHT}</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
+define('text!views/ui/ui-header.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <header class=\"container\">\r\n        <p if.bind=\"CV.debugShowCurrentUser\">? ui-header > isMember: ${currentUser.isMember} !</p>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-8 logo-wrap\">\r\n                <a class=\"logo\" href=\"#\" title=\"${CV.SITE_NAME}\">\r\n                    <img src=\"src/css/bp-responsive.svg\" alt=\"${CV.SITE_NAME_ABBR}\">\r\n                    \r\n                    <!--<h3>${CV.SITE_NAME}</h3>-->\r\n                </a>\r\n                <img class=\"strapline\" src=\"src/img/MRT_Identifier_V1b.png\">\r\n            </div>\r\n            <div class=\"col-xs-4 user\">\r\n                <div class=\"btn-group btn-edit-avatar\" role=\"group\" aria-label=\"user options\">\r\n\r\n                    <div class=\"btn-group\" role=\"group\">\r\n                        <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" \r\n                            data-toggle=\"dropdown\"\r\n                            aria-haspopup=\"true\"\r\n                            aria-expanded=\"true\">\r\n                            ${currentUser.displayName}\r\n\r\n                            <span class=\"caret\"></span>\r\n                        </button>\r\n                        <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-cog\"></i> Profile Settings</a></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-bell\"></i> Notifications</a></li>\r\n                            <li role=\"separator\" class=\"divider\"></li>\r\n                            <li><a href=\"#\"><i class=\"fa fa-fw fa-sign-out\"></i> Log out</a></li>\r\n                        </ul>\r\n                    </div>\r\n\r\n                    <a class=\"btn btn-default avatar\">\r\n                        <img src=\"src/img/tmp-avatar-me.jpg\" alt=\"tmp me\">\r\n                    </a>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </header>\r\n\r\n</template>"; });
 define('text!views/widgets/btn-xc-all.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"wrap_xc_btns_all\">\r\n    <a click.trigger=\"xc_all('expand')\">${CV.BTN_XC_Expand}</a>\r\n    <div class=\"divider\"></div>\r\n    <a click.trigger=\"xc_all('collapse')\">${CV.BTN_XC_Collapse}</a>\r\n  </div>\r\n</template>"; });
 define('text!views/widgets/form-user-full-body.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"./user-panels/user-panel-details\"></require>\r\n    <!--<require from=\"./user-panels/user-panel-mrt-role\"></require>-->\r\n    <require from=\"./user-panels/user-panel-languages\"></require>    \r\n    <require from=\"./user-panels/user-panel-passport\"></require>\r\n    <require from=\"./user-panels/user-panel-visa\"></require>\r\n    <require from=\"./user-panels/user-panel-training\"></require>\r\n    <require from=\"./user-panels/user-panel-twic\"></require>\r\n    <require from=\"./user-panels/user-panel-confidential\"></require>\r\n    \r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\"\r\n                data-target=\"#${custXcId}\">\r\n            <i if.bind=\"custIcon\" class=\"fa ${custIcon} text-after\"></i>\r\n\r\n            ${custTitle}\r\n             <!--| ${user.firstName} | ${user.lkp_regions_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected}-->\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\"                \r\n                aria-expanded=\"${custXcExpanded}\"\r\n                aria-controls=\"collapseExample\">\r\n            </button>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}\">\r\n            <div class=\"wrap-fields\">\r\n                <user-panel-details if.bind=\"custBody=='user-details'\" user.bind=\"user\" profile.bind=\"profile\"></user-panel-details>                \r\n                <!--<user-panel-mrt-role if.bind=\"custBody=='user-mrt-role'\" user.bind=\"user\"></user-panel-mrt-role>-->\r\n                <user-panel-languages if.bind=\"custBody=='user-languages'\" user.bind=\"user\" profile.bind=\"profile\"></user-panel-languages>\r\n                <user-panel-passport if.bind=\"custBody=='user-passport'\" user.bind=\"user\" profile.bind=\"profile\"></user-panel-passport>\r\n                <user-panel-visa if.bind=\"custBody=='user-visa'\" user.bind=\"user\" profile.bind=\"profile\"></user-panel-visa>\r\n                <user-panel-training if.bind=\"custBody=='user-training'\" user.bind=\"user\" profile.bind=\"profile\"></user-panel-training>\r\n                <user-panel-twic if.bind=\"custBody=='user-twic'\" user.bind=\"user\"></user-panel-twic>\r\n                <user-panel-confidential if.bind=\"custBody=='user-confidential'\" user.bind=\"user\"></user-panel-confidential>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/list-activity.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../../resources/format/format-date\"></require>\r\n\r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\" data-target=\"#${custXcId}\">\r\n            <i class=\"fa fa-bell text-after\"></i> ${title}\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\" aria-expanded=\"${custXcExpanded}\" aria-controls=\"collapseExample\">\r\n            </button>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-12\">\r\n                    <table class=\"table table-striped margin-top-1\" aurelia-table=\"data.bind: apiData; display-data.bind: $displayData;\">\r\n                        <thead>\r\n                            <tr>\r\n                                <th if.bind=\"custXcId=='xs_recentSubmits'\" aut-sort=\"key: submittedOn; default: desc\">Submitted</th>\r\n                                <th if.bind=\"custXcId=='xs_recentReviews'\" aut-sort=\"key: submittedOn; default: desc\">Reviewed</th>\r\n                                <th aut-sort=\"key: displayName;\">Team Member</th>\r\n                                <th>Action</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr repeat.for=\"row of $displayData\">\r\n                                <td if.bind=\"custXcId=='xs_recentSubmits'\">${row.submittedOn | formatDate}</td>\r\n                                <td if.bind=\"custXcId=='xs_recentReviews'\">${row.reviewedOn | formatDate}</td>\r\n                                <td><a href=\"#\">${row.displayName}</a></td>\r\n                                <td>\r\n                                    <div class=\"btn-group btn-group-xs\" role=\"group\" aria-label=\"User actions\">\r\n                                        <button disabled.bind=\"row.emailAddress==null\" class=\"btn btn-default\" href=\"mailto:${row.emailAddress}\" title=\"Email User\">\r\n                                            <i class=\"fa fa-envelope-o\"></i>\r\n                                        </button>\r\n                                        <a class=\"btn btn-default\" href=\"#\"><i class=\"fa fa-search\"></i></a>\r\n                                    </div>\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
@@ -7422,7 +7225,6 @@ define('text!views/widgets/profile-brief.html', ['module'], function(module) { m
 define('text!views/widgets/prompt.html', ['module'], function(module) { module.exports = "<template>\r\n  <ai-dialog>\r\n    <ai-dialog-body>\r\n      <h2>Dialog</h2>\r\n    </ai-dialog-body>\r\n  </ai-dialog>\r\n</template>"; });
 define('text!views/widgets/user-edit.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/inputs/form-input\"></require>\r\n\r\n  <div class=\"hdr-wrap\">\r\n    <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-edit.html)</span></h1>\r\n  </div>\r\n\r\n  <!--<p>id: ${user.id}</p>\r\n  <p>originalUser.firstName: ${originalUser.firstName}</p>\r\n  <p>user.firstName: ${user.firstName}</p>-->\r\n\r\n  <div class=\"panel panel-bp margin-x-0 has-button-bar\">\r\n    <div class=\"panel-body row\">\r\n      \r\n      <form role=\"form\" class=\"form-horizontal\">\r\n\r\n        <form-input name=\"firstName\" model.two-way=\"user.firstName\"></form-input>\r\n        <form-input name=\"lastName\" model.two-way=\"user.lastName\" inp-label=\"Last Name\"></form-input>\r\n        <form-input name=\"emailAddress\" model.two-way=\"user.emailAddress\" inp-label=\"emailAddress\"></form-input>\r\n        <form-input name=\"personalNumber\" model.two-way=\"user.personalNumber\" inp-label=\"Telephone\"></form-input>\r\n\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <div bind.if=\"user\">\r\n    <div class=\"button-bar col-md-12 padding-x-0 text-align-right\">\r\n      <button class=\"btn btn-success\" click.delegate=\"save()\" disabled.bind=\"!canSave\">Save</button>\r\n    </div>\r\n  </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-list.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../widgets/inputs/form-input\"></require>\r\n    <require from=\"../widgets/inputs/form-filter-text\"></require>\r\n    <require from=\"../widgets/inputs/form-filter-role\"></require>\r\n    <require from=\"../widgets/inputs/form-select\"></require>\r\n    <require from=\"../../resources/format/format-date\"></require>\r\n    <require from=\"../widgets/cust-span/span-cust-member-status\"></require>\r\n    <require from=\"../widgets/cust-span/span-cust-active-status\"></require>\r\n\r\n    <!--<div class=\"hdr-wrap\" if.bind=\"!custHideTitleBar\">\r\n        <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-list.html)</span></h1>\r\n        <a class=\"btn btn-default btn-i pull-right\" click.delegate=\"addUser()\">\r\n            <i class=\"fa fa-plus\"></i>Add User\r\n        </a>\r\n    </div>-->\r\n\r\n    <p if.bind=\"debugShowOutput\">found: ${found} / ${selectedId} / filter: ${filters}</p>\r\n    <p if.bind=\"debugShowOutput\">rolesArrDynamic: ${rolesArrDynamic}</p>\r\n    <p if.bind=\"debugShowOutput\">filters[1].value: ${filters[1].value} / ${rolesArrDynamic}</p>\r\n\r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading ${custXc ? 'cursor-hover' : ''} ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\" data-target=\"#${custXcId}\">\r\n            ${title}\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\" aria-expanded=\"${custXcExpanded}\" aria-controls=\"collapseExample\">\r\n            </button>\r\n\r\n            <a class=\"btn btn-xs btn-i btn-text pull-right\" click.delegate=\"addUser()\">\r\n                <i class=\"fa fa-plus\"></i>Add User\r\n            </a>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n            <!-- Filters -->\r\n            <div class=\"row margin-y-g1\">\r\n                <div class=\"col-xs-4\">\r\n                    <form-filter-text model.two-way=\"filters[0].value\"></form-filter-text>\r\n                </div>\r\n                <div class=\"col-xs-4\">\r\n                    <form-filter-role inp-label=\"Role\" model.two-way=\"filters[1].value\" options.bind=\"filter_role\" changed.two-way=\"filters[1].value\"\r\n                        init-selected.two-way=\"filters[1].value\"></form-filter-role>\r\n                </div>\r\n                <div class=\"col-xs-4\">\r\n\r\n                    <form-filter-role inp-label=\"Status\" model.two-way=\"filters[2].value\" options.bind=\"filter_active\" changed.two-way=\"filters[2].value\"\r\n                        init-selected.two-way=\"filters[2].value\"></form-filter-role>\r\n                </div>\r\n            </div>\r\n            <!-- (END) Filters -->\r\n\r\n            <!-- Table -->\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-12\">\r\n                    <table class=\"table table-striped\" aurelia-table=\"data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;\">\r\n                        <thead>\r\n                            <tr>\r\n                                <th aut-sort=\"key: id; default: desc\" if.bind=\"isNotDisabled('id')\">id</th>\r\n                                <th aut-sort=\"key: loginName\" if.bind=\"isNotDisabled('loginName')\">Login Name</th>\r\n                                <th aut-sort=\"key: firstName\" if.bind=\"isNotDisabled('firstName')\">First Name</th>\r\n                                <th aut-sort=\"key: lastName\" if.bind=\"isNotDisabled('lastName')\">Last Name</th>\r\n                                <th aut-sort=\"key: emailAddress\" if.bind=\"isNotDisabled('emailAddress')\">Last Name</th>\r\n                                <th aut-sort=\"key: isMember\" if.bind=\"isNotDisabled('isMember')\">Profile</th>\r\n                                <th aut-sort=\"key: isActive\" if.bind=\"isNotDisabled('isActive')\">Status</th>\r\n                                <th if.bind=\"isNotDisabled('edit')\">Actions</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr repeat.for=\"user of $displayData\" class=\"${user.id === $parent.selectedId ? 'active' : ''}\">\r\n                                <td if.bind=\"isNotDisabled('id')\">${user.id}</td>\r\n                                <td if.bind=\"isNotDisabled('loginName')\">${user.loginName}</td>\r\n                                <td if.bind=\"isNotDisabled('firstName')\">${user.firstName}</td>\r\n                                <td if.bind=\"isNotDisabled('lastName')\">${user.lastName}</td>\r\n                                <td if.bind=\"isNotDisabled('emailAddress')\">${user.emailAddress}</td>\r\n                                <td if.bind=\"isNotDisabled('isMember')\">\r\n                                    <span-cust-member-status is-member.bind=\"user.isMember\" update-pending.bind=\"user.updatePending\" profile-date.bind=\"user.profileDate\"></span-cust-member-status>\r\n                                </td>\r\n                                <td if.bind=\"isNotDisabled('isActive')\">\r\n                                    <span-cust-active-status is-active.bind=\"user.isActive\" review-pending.bind=\"user.reviewPending\" review-result.bind=\"user.reviewResult\"></span-cust-active-status>\r\n                                </td>\r\n                                <td if.bind=\"isNotDisabled('edit')\">\r\n                                    <div class=\"btn-group btn-group-xs\" role=\"group\" aria-label=\"User actions\">\r\n                                        <button disabled.bind=\"!user.isMember\" class=\"btn btn-default\" click.delegate=\"navigateTo( 'users/' + user.id + '/edit' )\" title=\"Edit User\">\r\n                                            <i class=\"fa fa-pencil\"></i>\r\n                                        </button>\r\n                                        <!--<a class=\"btn btn-default\" route-href=\"route: user-edit; params.bind: {id:user.id, editType:'edit'}\" title=\"Full edit\">\r\n                                            <i class=\"fa fa-list\"></i>\r\n                                        </a>-->\r\n                                        <button disabled.bind=\"user.emailAddress==null\" class=\"btn btn-default\" href=\"mailto:${user.emailAddress}\" title=\"Email User\">\r\n                                                <i class=\"fa fa-envelope-o\"></i>\r\n                                            </button>\r\n                                        <a class=\"btn btn-default\" click.delegate=\"changeUserRoles(user.id)\" title=\"Change User Permissions\">\r\n                                            <i class=\"fa fa-cog\"></i>\r\n                                        </a>\r\n                                        <a class=\"btn btn-default\" click.delegate=\"deleteUser(user.id)\" title=\"Delete User\">\r\n                                            <i class=\"fa fa-trash\"></i>\r\n                                        </a>\r\n                                    </div>\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n\r\n\r\n\r\n            </div>\r\n            <!-- (END) Table -->\r\n\r\n            <!-- Pagination -->\r\n            <div class=\"row margin-bottom-g1 display-none\" if.bind=\"custTablePagination\">\r\n\r\n                <div class=\"col-md-7\">\r\n                    <aut-pagination current-page.bind=\"currentPage\" page-size.bind=\"custTablePageSize\" total-items.bind=\"totalItems\" pagination-size.bind=\"5\"\r\n                        boundary-links.bind=\"true\"> </aut-pagination>\r\n                </div>\r\n\r\n                <div class=\"col-md-5\">\r\n                    <div class=\"form-inline\">\r\n                        <div class=\"form-group pull-right\">\r\n                            <label for=\"custTablePageSize\">Page Size: </label>\r\n                            <select value.bind=\"custTablePageSize\" id=\"custTablePageSize\" class=\"form-control\">\r\n                        <option model.bind=\"5\">5</option>\r\n                        <option model.bind=\"10\">10</option>\r\n                        <option model.bind=\"20\">20</option>\r\n                        <option model.bind=\"50\">50</option>\r\n                        <option model.bind=\"100\">100</option>\r\n                    </select>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!-- (END) Pagination -->\r\n\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/cust-span/span-cust-member-status.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <span if.bind=\"isMember\" class=\"${updatePending ? 'color-pending' : ''}\">${profileDate | formatDate}</span>\r\n    <span if.bind=\"!isMember\">Viewer</span>\r\n</template>"; });
 define('text!views/widgets/inputs/form-checkbox.html', ['module'], function(module) { module.exports = "<template class=\"${inputOnly ? 'form-group-input-only' : 'form-group col-xs-12'} ${isMandatory ? 'is-mandatory' : ''}\">\r\n\r\n    <span if.bind=\"!inputOnly\" class=\"col-xs-6 col-debug\">\r\n        <label for.bind=\"inpName\" title.bind=\"inpLabel\">\r\n            ${inpLabel} / ${model}\r\n        </label>\r\n    </span>\r\n    <span if.bind=\"!inputOnly\" class=\"col-xs-6 col-debug\">\r\n        <label for.bind=\"inpName\" if.bind=\"inputOnly\" class=\"label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}\">\r\n            ${inpLabel}\r\n        </label>\r\n        <input type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">\r\n    </span>\r\n\r\n\r\n    <label if.bind=\"inputOnly\" class=\"label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}\">\r\n        <input type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">\r\n        ${inpLabel}\r\n    </label>\r\n\r\n\r\n    <!--<span class=\"${inputOnly ? '' : 'col-xs-4'} col-debug\">\r\n        <label if.bind=\"inputOnly\" class=\"label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}\">\r\n            <input type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">${inpLabel}\r\n        </label>\r\n        <input if.bind=\"!inputOnly\" type=\"checkbox\" name.bind=\"inpName\" model.bind=\"true\" checked.bind=\"model\">\r\n    </span>-->\r\n</template>"; });
 define('text!views/widgets/inputs/form-filter-role.html', ['module'], function(module) { module.exports = "<template class=\"input-group\">\r\n    \r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"select2/css/select2.min.css\"></require>\r\n\r\n    <span class=\"input-group-addon\" id=\"basic-addon3\">\r\n        <i class=\"fa fa-filter text-after\"></i>\r\n        ${inpLabel}\r\n    </span>\r\n\r\n    <select if.bind=\"!autocomplete\" class=\"form-control\" value.bind=\"initSelected\" disabled.bind=\"!isEnabled\" selected.two-way=\"selected\"\r\n        change.delegate=\"changeCallback($event)\">\r\n        <option value=\"\">${inpPlaceholder}</option>                 \r\n        <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">\r\n            ${option.name}\r\n        </option>\r\n    </select>\r\n\r\n    <select if.bind=\"autocomplete\" class=\"form-control\" id.bind=\"name\" select2.bind=\"selectOptions\" value.bind=\"initSelected\"\r\n        disabled.bind=\"!isEnabled\" change.delegate=\"changeCallback($event)\">\r\n        \r\n        <option value=\"\">${inpPlaceholder}</option>\r\n        <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">\r\n            ${option.name}\r\n        </option>\r\n    </select>\r\n\r\n</template>"; });
 define('text!views/widgets/inputs/form-filter-text.html', ['module'], function(module) { module.exports = "<template class=\"input-group\">\r\n    <span class=\"input-group-addon\" id=\"basic-addon3\">\r\n        <i class=\"fa fa-filter text-after\"></i>\r\n        ${inpLabel}\r\n    </span>\r\n    <input type=\"text\" value.bind=\"model\" placeholder=\"Enter filter text\" class=\"form-control\" />\r\n</template>"; });
@@ -7437,5 +7239,6 @@ define('text!views/widgets/user-panels/user-panel-passport.html', ['module'], fu
 define('text!views/widgets/user-panels/user-panel-training.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-radio\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <div class=\"col-xs-12\" innerhtml.bind=\"message\"></div>\r\n    </div>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-3 user-panel-table padded-cells\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Training</th>\r\n                    <th>Attended</th>\r\n                    <th>Expiry Date</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.trainings\">\r\n                    <td>\r\n                        <label>${user.profile.trainings[$index].training.name}</label>\r\n                    </td>\r\n                    <td>\r\n                        <form-radio inp-name.bind=\"['training_' + $index]\"\r\n                            model.two-way=\"user.trainings[$index].attended\"                            \r\n                            init-selected.two-way=\"user.trainings[$index].expiresOn ? true : false\"\r\n                            input-only=\"true\"></form-radio>\r\n                        \r\n                    </td>\r\n                    <td>\r\n                        <form-input inp-type=\"date\"\r\n                            inp-label=\"Expiry Date\"\r\n                            model.two-way=\"profile.trainings[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"user.trainings[$index].attended\"></form-input>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-twic.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-radio\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <form-radio inp-name.bind=\"twic_card\"\r\n            inp-label=\"Hold a TWIC Card\"\r\n            model.two-way=\"user.twic_card.value\"\r\n            expiry-date.two-way=\"user.twic_card.expiryDate\"\r\n            init-selected.two-way=\"user.twic_card.value\"></form-radio>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-visa.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../inputs/form-checkbox\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table user-panel-table padded-cells cols-4\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Visa Country</th>\r\n                    <th>Visa Type</th>\r\n                    <th>Expiry Date</th>\r\n                    <th>Multiple Visa</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.visas\">\r\n                    <td>\r\n                        <form-select inp-label=\"Visa Country\"\r\n                            model.two-way=\"profile.visas[$index].countryId\"\r\n                            options.bind=\"lkp_passportNationality\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].countryId\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].country.id\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-select inp-label=\"Visa Type\"                            \r\n                            model.two-way=\"profile.visas[$index].typeValue\"\r\n                            options.bind=\"lkp_visaTypes\"  \r\n                            prop-arr.bind=\"['value','name']\"                          \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].typeValue\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].type.value\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input inp-type=\"date\"\r\n                            model.two-way=\"profile.visas[$index].expiresOn\"\r\n                            inp-label=\"Visa Expiry Date\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-input>\r\n                    </td>\r\n                    <td>\r\n                        <form-checkbox inp-name.bind=\"['multipleEntry_' + $index]\"\r\n                            inp-label=\"Multiple Visas\"\r\n                            model.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            init-selected.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            input-only=\"true\"\r\n                            is-mandatory.bind=\"true\"></form-checkbox>\r\n                    </td>\r\n\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div class=\"col-xs-12 margin-bottom-g1\">\r\n        <button class=\"btn btn-default btn-sm btn-i\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Visa\r\n        </button>\r\n    </div>\r\n\r\n\r\n</template>"; });
+define('text!views/widgets/cust-span/span-cust-member-status.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <span if.bind=\"isMember\" class=\"${updatePending ? 'color-pending' : ''}\">${profileDate | formatDate}</span>\r\n    <span if.bind=\"!isMember\">Viewer</span>\r\n</template>"; });
 define('text!views/widgets/cust-span/span-cust-active-status.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <span class=\"color-archive\" if.bind=\"!isActive\"><i class=\"fa fa-archive text-after\"></i>Archived</span>\r\n    <span class=\"color-pending\" if.bind=\"isActive && reviewPending\"><i class=\"fa fa-clock-o text-after\"></i>Pending</span>\r\n    <span class=\"color-good\" if.bind=\"isActive && !reviewPending && reviewResult\"><i class=\"fa fa-check text-after\"></i>Approved</span>\r\n    <span class=\"color-danger\" if.bind=\"isActive && !reviewPending && !reviewResult\"><i class=\"fa fa-ban text-after\"></i>Rejected</span>\r\n</template>"; });
 //# sourceMappingURL=app-bundle.js.map

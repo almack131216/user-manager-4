@@ -10,18 +10,17 @@ let usersArr = [];
 let results = null;
 let myProfile = null;
 
-
+const api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
 const profileUrl = '../../MRT.Api.Web/views/global';
 const views_welcome = '../../MRT.Api.Web/views/welcome';
 const data_users_all = '../../MRT.Api.Web/data/users/query';
-const data_users_X_profile = '../../MRT.Api.Web/data/users/5/profile';//'src/api/dummy-user-all.json';// 
 const views_profileform_X = '../../MRT.Api.Web/views/profileform/';
 const data_users_X = '../../MRT.Api.Web/data/users/';
 
 //  const profileUrl = 'src/api/dummy-user-all.json';
 //   const views_welcome = 'src/api/api-welcome.json';
 //   const data_users_all = 'src/api/api-all-users.json';
-// const data_users_X_profile 'src/api/dummy-user-all.json';
+
   
 //if (window.location.hostname==='localhost') {
 // if (String(window.location) == 'http://localhost:9002/') {
@@ -67,6 +66,21 @@ export class WebAPIUsers {
           .then(currentUser => currentUser.json());
 
         resolve(currentUser);
+        this.isRequesting = false;
+      }, latency);
+    });
+
+  }
+
+  getLookups() {
+    this.isRequesting = true;
+
+    return new Promise(resolve => {
+      setTimeout(() => {
+        let data = this.http.fetch(api_lookups)
+          .then(data => data.json());
+
+        resolve(data);
         this.isRequesting = false;
       }, latency);
     });

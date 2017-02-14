@@ -5,7 +5,7 @@ const CV = Constants
 import { Lookups } from '../../resources/lookups';
 import { WebAPIUsers } from '../../api/web-api-users';
 
-@inject(WebAPIUsers)
+@inject(WebAPIUsers,Lookups)
 export class Welcome {
   public CV = CV;
   title = 'Welcome to MRT';
@@ -15,7 +15,7 @@ export class Welcome {
 
   pageData;
   
-  constructor(private api: WebAPIUsers) {
+  constructor(private api: WebAPIUsers, lookups:Lookups) {
 
   }
 

@@ -1,5 +1,6 @@
 import { Router, RouterConfiguration } from 'aurelia-router';
 import { inject, autoinject } from 'aurelia-framework';
+import {Lookups} from './resources/lookups';
 import * as Constants from './resources/constants';
 const CV = Constants
 
@@ -9,6 +10,7 @@ import { WebAPIUsers } from './api/web-api-users';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import {HttpClient} from 'aurelia-http-client';  
+
 
 const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
 const profileUrl = 'src/api/api-global.json';
@@ -41,7 +43,6 @@ isEditor
   async activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
-
     this.api.getGlobal()
             .then(currentUserX => this.currentUserX = currentUserX)
             // .then(() => alert(JSON.stringify(this.users) ))
@@ -52,7 +53,7 @@ isEditor
               this.isMemberXXX = this.currentUser.isMember,
               this.isReader = this.currentUser.isReader,        
               this.isEditor = this.currentUser.isEditor
-            });
+            });  
   }
 
 
