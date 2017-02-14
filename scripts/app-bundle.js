@@ -891,7 +891,8 @@ define('dialog-demo/add-user-dialog',["require", "exports", "aurelia-framework",
             this.rolesArrDynamic = [];
             this.filters = [
                 { value: '', keys: ['firstName', 'lastName'] },
-                { value: '1', keys: ['isMember'] }
+                { value: '1', keys: ['isMember'] },
+                { value: '2', keys: ['isActive'] }
             ];
             this.selectUserToAdd = function (getUser) {
                 _this.selectedId = getUser.id;

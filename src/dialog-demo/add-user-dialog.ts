@@ -102,7 +102,8 @@ export class AddUserDialog {
 
     filters = [
         { value: '', keys: ['firstName', 'lastName'] },
-        { value: '1', keys: ['isMember'] }
+        { value: '1', keys: ['isMember'] },
+        { value: '2', keys: ['isActive'] }
     ];
 
     returnLabelFromValue(getId) {
