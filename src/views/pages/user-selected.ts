@@ -43,11 +43,40 @@ export class UserSelected {
         hubId: this.user['profile']['hub'] ? this.user['profile']['hub'].id : null,
         segmentId: this.user['profile']['segment'] ? this.user['profile']['segment'].id : null,
         entityId: this.user['profile']['entity'] ? this.user['profile']['entity'].id : null,
+        primaryPositionId: this.user['profile']['primaryPosition'] ? this.user['profile']['primaryPosition'].id : null,
+        secondaryPosition: this.user['profile']['secondaryPosition'] ? this.user['profile']['secondaryPosition'].id : null,
+        officeId: this.user['profile']['office'] ? this.user['profile']['office'].id : null,
+        function: this.user['profile']['function'] ? this.user['profile']['function'] : null,
+        location: this.user['profile']['location'] ? this.user['profile']['location'] : null,
+        businessNumber: this.user['profile']['businessNumber'] ? this.user['profile']['businessNumber'] : null,
+        personalNumber: this.user['profile']['personalNumber'] ? this.user['profile']['personalNumber'] : null,
+        officeNumber: this.user['profile']['officeNumber'] ? this.user['profile']['officeNumber'] : null,
+        lyncNumber: this.user['profile']['lyncNumber'] ? this.user['profile']['lyncNumber'] : null,
+        homeNumber: this.user['profile']['homeNumber'] ? this.user['profile']['homeNumber'] : null,
+        emergencyContactName: this.user['profile']['emergencyContactName'] ? this.user['profile']['emergencyContactName'] : null,
+        emergencyContactNumber: this.user['profile']['emergencyContactNumber'] ? this.user['profile']['emergencyContactNumber'] : null,
+        coatSizeId: this.user['profile']['coatSize'] ? this.user['profile']['coatSize'].id : null,
+
+        /* arrays */
+        confidentialData: this.user['profile']['confidentialData'] ? {
+          memberSince: this.user['profile']['confidentialData'].memberSince ? this.user['profile']['confidentialData'].memberSince : null,
+          employmentStatus: {
+            value: this.user['profile']['confidentialData']['employmentStatus'].value ? this.user['profile']['confidentialData']['employmentStatus'].value : null,
+            name: this.user['profile']['confidentialData']['employmentStatus'].name ? this.user['profile']['confidentialData']['employmentStatus'].name : null
+          },
+          credentialLevel: {
+            value: this.user['profile']['confidentialData']['credentialLevel'].value ? this.user['profile']['confidentialData']['credentialLevel'].value : null,
+            name: this.user['profile']['confidentialData']['credentialLevel'].name ? this.user['profile']['confidentialData']['credentialLevel'].name : null
+          },
+          field1: this.user['profile']['confidentialData'].field1 ? this.user['profile']['confidentialData'].field1 : null,
+          field2: this.user['profile']['confidentialData'].field2 ? this.user['profile']['confidentialData'].field2 : null
+        } : null,
         languages: this.user['profile']['languages'] ? [] : null,
         passports: this.user['profile']['passports'] ? [] : null,
         visas: this.user['profile']['visas'] ? [] : null,
         trainings: this.user['profile']['trainings'] ? [] : null
       }
+
 
       /* for loops for object arrays */
       let i = 0;
