@@ -7,20 +7,14 @@ let users = null;
 let usersArr = [];
 let results = null;
 let myProfile = null;
+let hw_useJson = null;
 
-//const api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
-//const profileUrl = '../../MRT.Api.Web/views/global';
-//const views_welcome = '../../MRT.Api.Web/views/welcome';
-// const data_users_all = '../../MRT.Api.Web/data/users/query';
-// const views_profileform_X = '../../MRT.Api.Web/views/profileform/';
-// const data_users_X = '../../MRT.Api.Web/data/users/';
-
-const api_lookups = 'src/api/api-lookups.json';
-const profileUrl = 'src/api/api-global.json';
-const views_welcome = 'src/api/api-welcome.json';
-const data_users_all = 'src/api/api-all-users.json';
-const views_profileform_X = '';
-const data_users_X = '';
+const api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
+const profileUrl = '../../MRT.Api.Web/views/global';
+const views_welcome = '../../MRT.Api.Web/views/welcome';
+const data_users_all = '../../MRT.Api.Web/data/users/query';
+const views_profileform_X = '../../MRT.Api.Web/views/profileform/';
+const data_users_X = '../../MRT.Api.Web/data/users/';
 
 
 @autoinject
@@ -40,11 +34,11 @@ export class WebAPIUsers {
           body: {},
           headers: {
             'TimeZone': new Date().getTimezoneOffset(),
-            'Content-type' : 'application/json',
+            'Content-type': 'application/json',
             'Accept': 'application/json'
           }
         });
-        
+
     });
     this.http = http;
   }
@@ -55,7 +49,6 @@ export class WebAPIUsers {
 
     return new Promise(resolve => {
       setTimeout(() => {
-        
         let currentUser = this.http.fetch(profileUrl)
           .then(currentUser => currentUser.json());
 
@@ -68,10 +61,12 @@ export class WebAPIUsers {
 
   getLookups() {
     this.isRequesting = true;
+    let tmpUrl = api_lookups;
+    if (hw_useJson) tmpUrl = 'src/api/api-lookups.json';
 
     return new Promise(resolve => {
       setTimeout(() => {
-        let data = this.http.fetch(api_lookups)
+        let data = this.http.fetch(tmpUrl)
           .then(data => data.json());
 
         resolve(data);
@@ -83,13 +78,12 @@ export class WebAPIUsers {
 
   getUserList() {
     this.isRequesting = true;
-
+    //alert('getUserList');
     return new Promise(resolve => {
       setTimeout(() => {
-        //let users = this.http.fetch(data_users_all, {method: 'SEARCH', body: json({}) })
-        let users = this.http.fetch(data_users_all)
-        
-          .then(users => users.json())
+        let users = this.http.fetch(data_users_all, {method: 'SEARCH', body: json({}) })
+        .then(users => users.json());
+
         resolve(users);
 
         this.isRequesting = false;
@@ -99,9 +93,12 @@ export class WebAPIUsers {
 
   getHomepageData() {
     this.isRequesting = true;
+    let tmpUrl = views_welcome;
+    if (hw_useJson) tmpUrl = 'src/api/api-welcome.json';
+
     return new Promise(resolve => {
       setTimeout(() => {
-        let data = this.http.fetch(views_welcome, { method: "GET" })
+        let data = this.http.fetch(tmpUrl, { method: "GET" })
           .then(data => data.json());
         resolve(data);
         this.isRequesting = false;
@@ -117,7 +114,8 @@ export class WebAPIUsers {
     return new Promise(resolve => {
       setTimeout(() => {
         //let found = usersArr.filter(x => x.id == id);
-        let tmpUrl = views_profileform_X ? views_profileform_X + id : 'src/api/api-user.json';
+        let tmpUrl = views_profileform_X + id;
+        if (hw_useJson) tmpUrl = 'src/api/api-user.json';
         let found = this.http.fetch(tmpUrl)
           .then(found => found.json())
           .then(found => found);
@@ -134,7 +132,8 @@ export class WebAPIUsers {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let tmpUrl = data_users_X ? data_users_X + id : 'src/api/api-user.json';
+        let tmpUrl = data_users_X + id;
+        if (hw_useJson) tmpUrl = 'src/api/api-user.json';
         let found = this.http.fetch(tmpUrl)
           .then(found => found.json())
           .then(found => found);
@@ -146,12 +145,12 @@ export class WebAPIUsers {
     });
   }
 
-  updateUserProfile(user) {
-        this.http.fetch('users', {
-            method: 'post',
-            body: json(user)
-        })
-    }
+  // updateUserProfile(user) {
+  //   this.http.fetch('users', {
+  //     method: 'post',
+  //     body: json(user)
+  //   })
+  // }
 
   saveUser(user) {
     this.isRequesting = true;

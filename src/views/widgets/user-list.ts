@@ -76,7 +76,6 @@ export class UserList {
         if (this.custTitle) this.title = this.custTitle;
         this.api.getUserList()
             .then(users => this.users = users)
-            // .then(() => alert(JSON.stringify(this.users) ))
             .then(() => this.populateRoleFilterFromList());
 
     }

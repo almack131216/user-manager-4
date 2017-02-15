@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" if.bind="pageData">
             <!--<user-list cust-title="Users-lite" cust-disable-cells="['firstName','personalNumber','systemRoles']" cust-table-pagination.bind="true"
                 cust-table-page-size.bind="10"></user-list>-->
             <list-activity title="Recent Changes" cust-xc-id="xs_recentSubmits" cust-xc-expanded="true" api-data.bind="pageData.recentSubmits"></list-activity>

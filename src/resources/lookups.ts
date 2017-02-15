@@ -60,7 +60,6 @@ export class Lookups {
   activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
-
   }
 
   constructor(http, private api: WebAPIUsers) {
@@ -70,7 +69,6 @@ export class Lookups {
       .then(lookups_all => this.lookups_all = lookups_all)
       .then(() => {
         this.lookups_all = this.lookups_all['lookups'];
-        alert(JSON.stringify(this.lookups_all));
         console.log('lookups_all: ' + JSON.stringify(this.lookups_all));
 
 
