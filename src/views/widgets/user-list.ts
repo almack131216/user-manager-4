@@ -40,10 +40,7 @@ export class UserList {
     filter_active;
     router;
     
-    navigateTo(getUrl){
-        //route: user-edit; params.bind: {id:user.id, editType:'edit'}
-        this.router.navigate(getUrl);//"users/5/edit"
-    }
+    
 
     isNotDisabled(getField) {
         if (CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);

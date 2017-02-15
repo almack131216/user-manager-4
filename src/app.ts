@@ -38,7 +38,11 @@ export class App {
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
     //alert( 'repos' + JSON.stringify(this.repos))
+
+    
   }
+
+  
 
   async activate() {
     // return a Promise that will resolve when the repos have

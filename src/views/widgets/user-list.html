@@ -79,7 +79,7 @@
                                 </td>
                                 <td if.bind="isNotDisabled('edit')">
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="navigateTo( 'users/' + user.id + '/edit' )" title="Edit User">
+                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'users/' + user.id + '/edit' )" title="Edit User">
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         <!--<a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">

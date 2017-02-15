@@ -13,33 +13,38 @@ interface User {
   lkp_regions_selected: number;
 }
 
-
-@inject(Element)
+@inject(WebAPIUsers)
 export class UserAdd {
   @bindable user = null;
   @bindable profile = null;
   routeConfig;
   originalUser;
+  savedData;
   
   title = 'Edit User'
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
-
+    this.api = api;
   }
 
   get canSave() {
-    return this.user.firstName && this.user.lastName && !this.api.isRequesting;
+    return this.profile.regionId && this.profile.hubId && !this.api.isRequesting;
   }
 
   save() {
-    this.api.saveUser(this.user).then(user => {
-      console.log('save this.user: ' + JSON.stringify(this.originalUser));
-      console.log('save user: ' + JSON.stringify(user));
-      this.user = <User>user;
-      //this.routeConfig.navModel.setTitle(this.user.firstName);
-      this.originalUser = JSON.parse(JSON.stringify(this.user));
-      this.ea.publish(new UserUpdated(this.user));
-    });
+    console.log('SAVE... ' + this.api + ' > ' + this.user + ' / ' + this.profile);
+
+    return this.api.saveUserProfile(this.user.user.id, this.profile)
+      .then(savedData => this.savedData = savedData)
+      .then(profile => {
+        console.log('save this.user: ' + JSON.stringify(this.originalUser));
+        console.log('save user: ' + JSON.stringify(this.savedData));
+        //this.profile = <User>profile;
+        //this.routeConfig.navModel.setTitle(this.user.firstName);
+        
+        // this.originalUser = JSON.parse(JSON.stringify(this.profile));
+        // this.ea.publish(new UserUpdated(this.profile));
+      });
   }
 
 }

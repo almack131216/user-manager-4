@@ -31,19 +31,6 @@ export class UserEdit {
     this.originalUser = JSON.parse(JSON.stringify(this.user));
   }
 
-  get canSave() {
-    return this.user.firstName && this.user.lastName && !this.api.isRequesting;
-  }
-
-  save() {
-    this.api.saveUser(this.user).then(user => {
-      console.log('save this.user: ' + JSON.stringify(this.originalUser));
-      console.log('save user: ' + JSON.stringify(user));
-      this.user = <User>user;
-      //this.routeConfig.navModel.setTitle(this.user.firstName);
-      this.originalUser = JSON.parse(JSON.stringify(this.user));
-      this.ea.publish(new UserUpdated(this.user));
-    });
-  }
+  
 
 }

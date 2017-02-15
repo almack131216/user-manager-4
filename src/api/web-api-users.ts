@@ -1,5 +1,6 @@
 import { HttpClient, json } from 'aurelia-fetch-client';
 import { autoinject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 
 let latency = 200;
 let id = 0;
@@ -23,8 +24,9 @@ export class WebAPIUsers {
   usersArr = [];
 
   http: HttpClient
+  router: Router;
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, router: Router) {
     http.configure(config => {
       config
         .useStandardConfiguration()
@@ -41,6 +43,7 @@ export class WebAPIUsers {
 
     });
     this.http = http;
+    this.router = router;
   }
 
 
@@ -152,23 +155,37 @@ export class WebAPIUsers {
   //   })
   // }
 
-  saveUser(user) {
+  navigateTo(getUrl){
+        //route: user-edit; params.bind: {id:user.id, editType:'edit'}
+        this.router.navigate(getUrl);//"users/5/edit"
+    }
+
+  saveUserProfile(id,data) {
+    console.log('saveUserProfile... (' + id + ')');
     this.isRequesting = true;
+    let tmpUrl = '../../MRT.Api.Web/data/users/' + id + '/profile';
+
     return new Promise(resolve => {
       setTimeout(() => {
-        let instance = JSON.parse(JSON.stringify(user));
-        let found = users.filter(x => x.id == user.id)[0];
+        // let instance = JSON.parse(JSON.stringify(user));
+        // let found = users.filter(x => x.id == user.id)[0];
 
-        if (found) {
-          let index = users.indexOf(found);
-          users[index] = instance;
-        } else {
-          //instance.id = getId();
-          users.push(instance);
-        }
+        // if (found) {
+        //   let index = users.indexOf(found);
+        //   users[index] = instance;
+        // } else {
+        //   //instance.id = getId();
+        //   users.push(instance);
+        // }
+        
+        let savedData = this.http.fetch(tmpUrl)
+          .then(savedData => savedData.json())
+          .then(() => {
+            console.log('saveUserProfile... saved successfully')
+          });
 
         this.isRequesting = false;
-        resolve(instance);
+        resolve(savedData);
       }, latency);
     });
   }
