@@ -5,14 +5,12 @@ import { Lookups } from '../../../resources/lookups';
 export class UserPanelLanguages {
     @bindable user;
     @bindable profile;
-    public lkp_member_status;
     public lkp_languages;
     public lkp_languageLevel;
     public lkp_languages_limitTo = 5;
 
 
     constructor(lookups:Lookups) {
-        this.lkp_member_status = lookups.lkp_member_status
 
         this.lkp_languages = lookups.lkp_languages
 

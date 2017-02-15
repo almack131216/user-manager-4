@@ -29,7 +29,6 @@ export class Lookups {
   lkp_segment
   lkp_entity
   lkp_bp_office_address
-  lkp_member_status
   lkp_coatSizes
   lkp_languages
   lkp_languageLevel
@@ -96,11 +95,6 @@ export class Lookups {
         this.lkp_bp_office_address = this.lookups_all['offices'];
 
         /* MRT Details */
-        this.lkp_member_status = [
-          { "value": 1, "label": "Status 1" },
-          { "value": 2, "label": "Status 2" },
-          { "value": 3, "label": "Status 3" }
-        ]
         this.lkp_coatSizes = this.lookups_all['coatSizes'];
 
         /* languages */
@@ -119,6 +113,22 @@ export class Lookups {
         this.lkp_visaTypes = this.lookups_all['visaTypes'];
         this.lkp_visaCountry = this.lookups_all['countries'];
 
+        this.lkp_credentialLevels = this.lookups_all['credentialLevels'];
+
+        
+
+        /* tmp / dummyData */
+        this.lkp_memberStatus = [
+          {
+            "value": 1,
+            "name": "Employed"
+          },
+          {
+            "value": 2,
+            "name": "Retired"
+          }
+        ]
+
         this.lkp_userProfiles = [
           {
             "value": 5,
@@ -131,19 +141,7 @@ export class Lookups {
             "loginName": "AGILY\\DSousek",
           }
         ]
-
-        this.lkp_credentialLevels = this.lookups_all['credentialLevels'];
-
-        this.lkp_memberStatus = [
-          {
-            "value": 1,
-            "name": "Employed"
-          },
-          {
-            "value": 2,
-            "name": "Retired"
-          }
-        ]
+        /* (END) tmp / dummyData */
 
       });
 
