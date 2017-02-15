@@ -38,6 +38,7 @@ export class Lookups {
   lkp_passportNationality;
   lkp_visaTypes;
   lkp_visaCountry;
+  lkp_trainings;
   lkp_credentialLevels;
   lkp_employmentStatuses;
   /* XXX
@@ -92,22 +93,23 @@ export class Lookups {
         this.lkp_entity = this.lookups_all['entities'];
         this.lkp_bp_office_address = this.lookups_all['offices'];
         this.lkp_coatSizes = this.lookups_all['coatSizes'];
+        this.lkp_primaryPositions = this.lookups_all['primaryPositions'];
+        this.lkp_secondaryPositions = this.lookups_all['secondaryPositions'];
 
         /* languages */
         this.lkp_languages = this.lookups_all['languages'];
         this.lkp_languageLevel = this.lookups_all['languageProficiencies'];
-
-        /* MRT Role Information */
-        this.lkp_primaryPositions = this.lookups_all['primaryPositions'];
-        this.lkp_secondaryPositions = this.lookups_all['secondaryPositions'];
-
+        
         /* Passport */
         this.lkp_passportTypes = this.lookups_all['passportTypes'];
         this.lkp_passportNationality = this.lookups_all['countries'];
 
-        //visa    
+        /* visa */
         this.lkp_visaTypes = this.lookups_all['visaTypes'];
         this.lkp_visaCountry = this.lookups_all['countries'];
+
+        /* Training */
+        this.lkp_trainings = this.lookups_all['trainings'];
 
         /* Confidential Information*/
         this.lkp_credentialLevels = this.lookups_all['credentialLevels'];

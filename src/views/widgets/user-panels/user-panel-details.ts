@@ -20,6 +20,7 @@ export class UserPanelDetails {
     lkp_secondaryPositions;
 
     constructor(lookups:Lookups) {
+
         this.lkp_coatSizes = lookups.lkp_coatSizes
 
         this.lkp_primaryPositions = lookups.lkp_primaryPositions

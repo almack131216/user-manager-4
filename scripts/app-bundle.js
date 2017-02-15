@@ -220,14 +220,15 @@ define('resources/lookups',["require", "exports", "aurelia-framework", "aurelia-
                 _this.lkp_entity = _this.lookups_all['entities'];
                 _this.lkp_bp_office_address = _this.lookups_all['offices'];
                 _this.lkp_coatSizes = _this.lookups_all['coatSizes'];
-                _this.lkp_languages = _this.lookups_all['languages'];
-                _this.lkp_languageLevel = _this.lookups_all['languageProficiencies'];
                 _this.lkp_primaryPositions = _this.lookups_all['primaryPositions'];
                 _this.lkp_secondaryPositions = _this.lookups_all['secondaryPositions'];
+                _this.lkp_languages = _this.lookups_all['languages'];
+                _this.lkp_languageLevel = _this.lookups_all['languageProficiencies'];
                 _this.lkp_passportTypes = _this.lookups_all['passportTypes'];
                 _this.lkp_passportNationality = _this.lookups_all['countries'];
                 _this.lkp_visaTypes = _this.lookups_all['visaTypes'];
                 _this.lkp_visaCountry = _this.lookups_all['countries'];
+                _this.lkp_trainings = _this.lookups_all['trainings'];
                 _this.lkp_credentialLevels = _this.lookups_all['credentialLevels'];
                 _this.lkp_employmentStatuses = _this.lookups_all['employmentStatuses'];
             });
@@ -1826,7 +1827,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregator", "aurelia-router", "../../api/web-api-users", "aurelia-framework", "aurelia-framework", "../../resources/constants", "aurelia-dialog", "../../user-info/user-info", "../../dialog-demo/roles-dialog", "../../dialog-demo/add-user-dialog", "../../dialog-demo/delete-user-dialog", "../../resources/lookups"], function (require, exports, aurelia_event_aggregator_1, aurelia_router_1, web_api_users_1, aurelia_framework_1, aurelia_framework_2, Constants, aurelia_dialog_1, user_info_1, roles_dialog_1, add_user_dialog_1, delete_user_dialog_1, lookups_1) {
+define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregator", "aurelia-router", "../../api/web-api-users", "aurelia-framework", "../../resources/constants", "aurelia-dialog", "../../user-info/user-info", "../../dialog-demo/roles-dialog", "../../dialog-demo/add-user-dialog", "../../dialog-demo/delete-user-dialog", "../../resources/lookups"], function (require, exports, aurelia_event_aggregator_1, aurelia_router_1, web_api_users_1, aurelia_framework_1, Constants, aurelia_dialog_1, user_info_1, roles_dialog_1, add_user_dialog_1, delete_user_dialog_1, lookups_1) {
     "use strict";
     var CV = Constants;
     var UserList = (function () {
@@ -1945,35 +1946,35 @@ define('views/widgets/user-list',["require", "exports", "aurelia-event-aggregato
         return UserList;
     }());
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custTitle", void 0);
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custDisableCells", void 0);
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custHideTitleBar", void 0);
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custTablePagination", void 0);
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custTablePageSize", void 0);
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custXc", void 0);
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custXcId", void 0);
     __decorate([
-        aurelia_framework_2.bindable,
+        aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserList.prototype, "custXcExpanded", void 0);
     UserList = __decorate([
@@ -2760,14 +2761,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('views/widgets/user-panels/user-panel-training',["require", "exports", "aurelia-framework", "../../../resources/constants"], function (require, exports, aurelia_framework_1, Constants) {
+define('views/widgets/user-panels/user-panel-training',["require", "exports", "aurelia-framework", "../../../resources/constants", "../../../resources/lookups"], function (require, exports, aurelia_framework_1, Constants, lookups_1) {
     "use strict";
     var CV = Constants;
     var UserPanelTraining = (function () {
-        function UserPanelTraining() {
+        function UserPanelTraining(lookups) {
+            this.lookups = lookups;
             this.CV = CV;
             this.message = CV.MSG_TRAINING;
+            this.myTrainingArrDynamic = [];
+            this.lkp_trainings = lookups.lkp_trainings;
         }
+        UserPanelTraining.prototype.attached = function () {
+            var tmp_rolesArrValues = [];
+            for (var _i = 0, _a = this.profile.trainings; _i < _a.length; _i++) {
+                var next = _a[_i];
+                var nextRole = next.trainingId;
+                this.myTrainingArrDynamic.push(nextRole);
+            }
+            this.myTrainingArr = this.profile.trainings.map(function (x) {
+                return {
+                    trainingId: x.trainingId,
+                    expiresOn: x.expiresOn
+                };
+            });
+        };
+        UserPanelTraining.prototype.returnTrainingData = function (getId, getField) {
+            console.log('returnTrainingData: ' + getId + ' > ' + this.myTrainingArr[getId]);
+            if (getId && getField == 'trainingId' && this.myTrainingArrDynamic.indexOf(getId) != -1)
+                return this.myTrainingArr.filter(function (x) { return x.trainingId == getId; })[0].expiresOn ? 'Attended' : '';
+            if (getId && getField == 'expiresOn' && this.myTrainingArrDynamic.indexOf(getId) != -1)
+                return this.myTrainingArr.filter(function (x) { return x.trainingId == getId; })[0].expiresOn ? this.myTrainingArr.filter(function (x) { return x.trainingId == getId; })[0].expiresOn : '';
+            return '';
+        };
         return UserPanelTraining;
     }());
     __decorate([
@@ -2778,6 +2804,10 @@ define('views/widgets/user-panels/user-panel-training',["require", "exports", "a
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
     ], UserPanelTraining.prototype, "profile", void 0);
+    UserPanelTraining = __decorate([
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [lookups_1.Lookups])
+    ], UserPanelTraining);
     exports.UserPanelTraining = UserPanelTraining;
 });
 
@@ -7243,7 +7273,7 @@ define('text!views/widgets/user-panels/user-panel-details.html', ['module'], fun
 define('text!views/widgets/user-panels/user-panel-languages.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-2 user-panel-table\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Language</th>\r\n                    <th>Proficiency</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.languages\">\r\n                    <td class=\"padded-cell\">\r\n                        <form-select\r\n                            input-only=\"true\"\r\n                            model.two-way=\"profile.languages[$index].languageId\"\r\n                            options.bind=\"lkp_languages\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.languages[$index].languageId\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.languages[$index].language.id\"-->\r\n\r\n                    </td>\r\n                    <td class=\"padded-cell\">\r\n                        <form-select name=\"lkp_languageLevel[$index]\"\r\n                            input-only=\"true\"\r\n                            prop-arr.bind=\"['value','name']\"\r\n                            model.two-way=\"profile.languages[$index].proficiencyValue\"\r\n                            options.bind=\"lkp_languageLevel\"                            \r\n                            init-selected.two-way=\"profile.languages[$index].proficiencyValue\"\r\n                            is-enabled.bind=\"profile.languages[$index].languageId\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.languages[$index].proficiency.value\"-->\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n   <div class=\"col-xs-12 margin-bottom-g1\">\r\n       <!--if.bind=\"$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo\"-->\r\n        <button class=\"btn btn-default btn-sm\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Language\r\n        </button>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-mrt-role.html', ['module'], function(module) { module.exports = "<template>\r\n    \r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n\r\n    <form-select name=\"coatSize\" inp-label=\"Coat Size\"\r\n        model.two-way=\"user.profile.coatSize.id\"\r\n        options.bind=\"lkp_coatSizes\"\r\n        changed.two-way=\"user.profile.coatSize.id\"\r\n        init-selected.two-way=\"user.profile.coatSize.id\"\r\n        is-mandatory.bind=\"true\"></form-select>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <form-select name=\"Primary ICS\"\r\n        model.two-way=\"user.profile.primaryPosition.id\"\r\n        options.bind=\"lkp_primaryPositions\"\r\n        changed.two-way=\"user.profile.primaryPosition.id\"\r\n        autocomplete.bind=\"true\"\r\n        init-selected.two-way=\"user.profile.primaryPosition.id\"\r\n        is-mandatory.bind=\"true\"></form-select>\r\n\r\n    <form-select inp-label=\"Secondary ICS\"\r\n        model.two-way=\"user.profile.secondaryPosition.id\"\r\n        options.bind=\"lkp_secondaryPositions\"\r\n        changed.two-way=\"user.profile.secondaryPosition.id\"        \r\n        init-selected.two-way=\"user.profile.secondaryPosition.id\"\r\n        option-filter.bind=\"['primaryPositionId',user.profile.primaryPosition.id]\"\r\n        is-enabled.bind=\"user.profile.primaryPosition.id\"\r\n        is-mandatory.bind=\"true\"></form-select>\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-passport.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../inputs/form-checkbox\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table user-panel-table cols-4 padded-cells\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Type</th>\r\n                    <th>Number</th>\r\n                    <th>Passport Nationality</th>\r\n                    <th>Expiry Date</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.passports\">\r\n                    <td>\r\n                        <form-select inp-label=\"Passport Type\"\r\n                            prop-arr.bind=\"['value','name']\"\r\n                            model.two-way=\"profile.passports[$index].typeValue\"\r\n                            options.bind=\"lkp_passportTypes\"\r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.passports[$index].typeValue\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.passports[$index].type.value\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input model.two-way=\"profile.passports[$index].number\" inp-label=\"Passport Number\" is-mandatory.bind=\"true\" input-only=\"true\"></form-input>\r\n                    </td>\r\n                    <td>\r\n                        <form-select inp-label=\"Passport Nationality\"\r\n                            model.two-way=\"profile.passports[$index].countryId\"\r\n                            options.bind=\"lkp_passportNationality\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.passports[$index].countryId\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.passports[$index].country.id\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input inp-label=\"Passport Expiry Date\"\r\n                            inp-type=\"date\"\r\n                            model.two-way=\"profile.passports[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-input>\r\n                    </td>\r\n\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div class=\"col-xs-12 margin-bottom-g1\">\r\n        <button class=\"btn btn-default btn-sm btn-i\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Passport\r\n        </button>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/user-panels/user-panel-training.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-radio\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <div class=\"col-xs-12\" innerhtml.bind=\"message\"></div>\r\n    </div>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-2 user-panel-table padded-cells\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Training</th>\r\n                    <th>Expiry Date</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.trainings\" if.bind=\"profile.trainings[$index].expiresOn!=null\">\r\n                    <td>\r\n                        <label>${user.profile.trainings[$index].training.name}</label>\r\n                    </td>\r\n                    <td>\r\n                        <form-input inp-type=\"date\"\r\n                            inp-label=\"user.profile.trainings[$index].training.name\"\r\n                            model.two-way=\"profile.trainings[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"user.trainings[$index].attended\"></form-input>\r\n                    </td>\r\n                </tr>                \r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/widgets/user-panels/user-panel-training.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-radio\"></require>\r\n    <require from=\"../../../resources/format/json\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <div class=\"col-xs-12\" innerhtml.bind=\"message\"></div>\r\n    </div>\r\n\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${lkp_trainings & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myTrainingArr & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myTrainingArrDynamic & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">\r\n        <ul>\r\n            <li repeat.for=\"row of lkp_trainings\">\r\n                ${row & json}\r\n            </li>\r\n        </ul>\r\n    </pre>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-3 user-panel-table padded-cells\" if.bind=\"myTrainingArr && lkp_trainings\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Training</th>\r\n                    <th>Attended</th>\r\n                    <th>Expiry Date</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of lkp_trainings\">\r\n                    <td>\r\n                        <label>${row.name}</label>\r\n                    </td>\r\n                    <td>\r\n                        <span if.bind=\"returnTrainingData(row.id,'trainingId')\">\r\n                            <i class=\"fa fa-check text-after color-good\"></i>\r\n                            ${ returnTrainingData(row.id,'trainingId') }                            \r\n                        </span>\r\n                        <!--<form-radio inp-name.bind=\"['training_' + $index]\"\r\n                            model.two-way=\"user.trainings[$index].attended\"                            \r\n                            init-selected.two-way=\"user.trainings[$index].expiresOn ? true : false\"\r\n                            input-only=\"true\"></form-radio>-->\r\n                        \r\n                        <!--<form-checkbox inp-name.bind=\"['multipleEntry_' + $index]\"\r\n                            inp-label=\"Multiple Visas\"\r\n                            model.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            init-selected.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            input-only=\"true\"\r\n                            is-mandatory.bind=\"true\"></form-checkbox>-->\r\n\r\n                        <!--<span if.bind=\"user.profile.trainings[$index].expiresOn!=null\">Attended</span>                        -->\r\n                    </td>\r\n                    <td>\r\n                        <!--<span>${ returnTrainingData(row.id,'expiresOn') }</span>-->\r\n                        <form-input inp-type=\"date\" if.bind=\"returnTrainingData(row.id,'expiresOn')\"\r\n                            inp-label=\"user.profile.trainings[$index].training.name\"\r\n                            model.two-way=\"profile.trainings[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"user.trainings[$index].attended\"></form-input>\r\n                    </td>\r\n                </tr>                \r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-twic.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-radio\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <form-radio inp-name.bind=\"twic_card\"\r\n            inp-label=\"Hold a TWIC Card\"\r\n            model.two-way=\"user.twic_card.value\"\r\n            expiry-date.two-way=\"user.twic_card.expiryDate\"\r\n            init-selected.two-way=\"user.twic_card.value\"></form-radio>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-panels/user-panel-visa.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../inputs/form-checkbox\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table user-panel-table padded-cells cols-4\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Visa Country</th>\r\n                    <th>Visa Type</th>\r\n                    <th>Expiry Date</th>\r\n                    <th>Multiple Visa</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.visas\">\r\n                    <td>\r\n                        <form-select inp-label=\"Visa Country\"\r\n                            model.two-way=\"profile.visas[$index].countryId\"\r\n                            options.bind=\"lkp_passportNationality\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].countryId\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].country.id\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-select inp-label=\"Visa Type\"                            \r\n                            model.two-way=\"profile.visas[$index].typeValue\"\r\n                            options.bind=\"lkp_visaTypes\"  \r\n                            prop-arr.bind=\"['value','name']\"                          \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].typeValue\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].type.value\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input inp-type=\"date\"\r\n                            model.two-way=\"profile.visas[$index].expiresOn\"\r\n                            inp-label=\"Visa Expiry Date\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"></form-input>\r\n                    </td>\r\n                    <td>\r\n                        <form-checkbox inp-name.bind=\"['multipleEntry_' + $index]\"\r\n                            inp-label=\"Multiple Visas\"\r\n                            model.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            init-selected.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            input-only=\"true\"\r\n                            is-mandatory.bind=\"true\"></form-checkbox>\r\n                    </td>\r\n\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div class=\"col-xs-12 margin-bottom-g1\">\r\n        <button class=\"btn btn-default btn-sm btn-i\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Visa\r\n        </button>\r\n    </div>\r\n\r\n\r\n</template>"; });
 define('text!_excess-ref/tab-dev.html', ['module'], function(module) { module.exports = "<!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <h1>${title}<span class=\"html-file-name\">(welcome.html)</span></h1>\r\n        </div>\r\n    </div>\r\n\r\n    <hr>-->\r\n\r\n    <!--<div class=\"row\">\r\n        <div class=\"col-md-12\">\r\n            <div id=\"exTab2\" class=\"containerXXX\">\r\n                <ul class=\"nav nav-pills\">\r\n                    <li class=\"active\">\r\n                        <a href=\"#home\" data-toggle=\"tab\">Home</a>\r\n                    </li>\r\n                    <li><a href=\"#team\" data-toggle=\"tab\">Team</a>\r\n                    </li>\r\n                </ul>\r\n\r\n                <div class=\"tab-content clearfix\">\r\n                    <div class=\"tab-pane active\" id=\"home\">\r\n                        <h3>Home</h3>\r\n                    </div>\r\n                    <div class=\"tab-pane\" id=\"team\">\r\n                        <h3>Team</h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>-->"; });

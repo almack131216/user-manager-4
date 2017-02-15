@@ -2,8 +2,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { Router } from 'aurelia-router';
 import { WebAPIUsers } from '../../api/web-api-users';
 import { UserUpdated, UserViewed } from '../../resources/messages';
-import { inject, autoinject } from 'aurelia-framework';
-import { bindable } from 'aurelia-framework';
+import { inject, autoinject, bindable } from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
@@ -39,8 +38,6 @@ export class UserList {
     filter_memberType;
     filter_active;
     router;
-    
-    
 
     isNotDisabled(getField) {
         if (CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);
