@@ -20,7 +20,7 @@ import { HttpClient } from 'aurelia-http-client';
 @noView
 export class Lookups {
 
-  filter_role
+  filter_memberType
   filter_active
 
   lkp_role
@@ -72,9 +72,9 @@ export class Lookups {
 
 
         /* ROLES */
-        this.filter_role = [
-          { "value": true, "name": "MembersX" },
-          { "value": false, "name": "Non-membersXXX" }
+        this.filter_memberType = [
+          { "value": true, "name": "Members" },
+          { "value": false, "name": "Non-members" }
         ]
 
         this.filter_active = [

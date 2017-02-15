@@ -30,7 +30,7 @@ export class AddUserDialog {
     rolesArr;
     rolesArrDynamic = [];
     lkp_role;
-    filter_role;
+    filter_memberType;
     filter_active;
     router;
     //selectedId = null;
@@ -49,9 +49,9 @@ export class AddUserDialog {
         }
 
         this.lkp_role = lookups.lkp_role;
-        this.filter_role = lookups.filter_role;
+        this.filter_memberType = lookups.filter_memberType;
         this.filter_active = lookups.filter_active;
-        this.rolesArr = this.filter_role.map(x =>  { return {
+        this.rolesArr = this.filter_memberType.map(x =>  { return {
           value:x.value,
           name:x.name
         }});
