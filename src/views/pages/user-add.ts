@@ -20,6 +20,7 @@ export class UserAdd {
   routeConfig;
   originalUser;
   savedData;
+  isSavingData;
   
   title = 'Edit User'
 
@@ -33,7 +34,7 @@ export class UserAdd {
 
   save() {
     console.log('SAVE... user (' + this.user.user.id + ')...' + this.api + ' hubId  ' + this.profile.hubId);
-
+    this.isSavingData = true;
     return this.api.saveUserProfile(this.user.user.id, this.profile)
       .then(savedData => this.savedData = savedData)
       .then(profile => {
@@ -44,7 +45,9 @@ export class UserAdd {
         
         // this.originalUser = JSON.parse(JSON.stringify(this.profile));
         // this.ea.publish(new UserUpdated(this.profile));
+        this.isSavingData = false;
       });
+      
   }
 
 }

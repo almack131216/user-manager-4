@@ -8,35 +8,27 @@
     </div>
 
     <div class="col-xs-12">
-        <table class="table cols-3 user-panel-table padded-cells">
+        <table class="table cols-2 user-panel-table padded-cells">
             <thead>
                 <tr>
                     <th>Training</th>
-                    <th>Attended</th>
                     <th>Expiry Date</th>
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of profile.trainings">
+                <tr repeat.for="row of profile.trainings" if.bind="profile.trainings[$index].expiresOn!=null">
                     <td>
                         <label>${user.profile.trainings[$index].training.name}</label>
                     </td>
                     <td>
-                        <form-radio inp-name.bind="['training_' + $index]"
-                            model.two-way="user.trainings[$index].attended"                            
-                            init-selected.two-way="user.trainings[$index].expiresOn ? true : false"
-                            input-only="true"></form-radio>
-                        
-                    </td>
-                    <td>
                         <form-input inp-type="date"
-                            inp-label="Expiry Date"
+                            inp-label="user.profile.trainings[$index].training.name"
                             model.two-way="profile.trainings[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"
                             is-readonly.bind="user.trainings[$index].attended"></form-input>
                     </td>
-                </tr>
+                </tr>                
             </tbody>
         </table>
     </div>
