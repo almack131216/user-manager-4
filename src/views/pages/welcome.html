@@ -3,39 +3,8 @@
     <require from="../widgets/user-list"></require>
     <require from="../widgets/profile-brief"></require>
 
-    <!--<div class="row">
-        <div class="col-md-12">
-            <h1>${title}<span class="html-file-name">(welcome.html)</span></h1>
-        </div>
-    </div>
-
-    <hr>-->
-
-    <!--<div class="row">
-        <div class="col-md-12">
-            <div id="exTab2" class="containerXXX">
-                <ul class="nav nav-pills">
-                    <li class="active">
-                        <a href="#home" data-toggle="tab">Home</a>
-                    </li>
-                    <li><a href="#team" data-toggle="tab">Team</a>
-                    </li>
-                </ul>
-
-                <div class="tab-content clearfix">
-                    <div class="tab-pane active" id="home">
-                        <h3>Home</h3>
-                    </div>
-                    <div class="tab-pane" id="team">
-                        <h3>Team</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
     <div if.bind="pageData" class="row margin-bottom-g1">
-        <p if.bind="CV.debugShowCurrentUser">? welcome: isMember: ${currentUser.isMember} !</p>
+        <pre if.bind="CV.debugShowCurrentUser">? welcome.html | isMember: ${currentUser.isMember} !</pre>
         <div class="col-md-12">
             <img src="src/img/MRT_Letterhead.png" class="fit-col">
         </div>

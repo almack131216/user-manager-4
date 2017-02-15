@@ -168,7 +168,6 @@ export class WebAPIUsers {
     return new Promise(resolve => {
       setTimeout(() => {        
         let savedData = this.http.fetch(tmpUrl, {method: "POST", body: json(data)})
-          .then(savedData => savedData.json())
           .then(() => {
             console.log('saveUserProfile... saved successfully')
           });

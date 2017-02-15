@@ -6,6 +6,8 @@
   <require from="../widgets/form-user-full-body"></require>
   <require from="../widgets/btn-xc-all"></require>
 
+  <pre if.bind="CV.debugShowCurrentUser">? user-add.html | isMember: ${currentUser.isMember} !</pre>
+
   <div class="btn-group btn-edit-avatar pull-right" role="group" aria-label="user options">
 
     <div class="btn-group" role="group">
@@ -50,7 +52,7 @@
 
     <!--<form-user-full-body user.bind="user" cust-title="TWIC Information" cust-body="user-twic" cust-xc="true" cust-xc-id="xc_twic"></form-user-full-body>-->
 
-    <form-user-full-body if.bind="user.permissions.accessConfidentialFields" cust-icon="fa-exclamation-triangle" user.bind="user" cust-title="Confidential Information" cust-body="user-confidential" cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
+    <form-user-full-body if.bind="profile.confidentialData!=null" cust-icon="fa-exclamation-triangle" user.bind="user" profile.bind="profile" cust-title="Confidential Information" cust-body="user-confidential" cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
 
   </form>
 

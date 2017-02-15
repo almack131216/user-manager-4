@@ -2,7 +2,7 @@
     <require from="./ui-header"></require>
 
     <ui-header current-user.bind="currentUser"></ui-header>
-    <p if.bind="CV.debugShowCurrentUser">? navbar > isMember: ${currentUser.isMember} !</p>
+    <pre if.bind="CV.debugShowCurrentUser">? nav-bar.html | isMember: ${currentUser.isMember} !</pre>
 
     <nav id="header" class="navbar navbar-default ${routeName=='welcome' ? 'margin-bottom-0' : ''} navbar-static-topXXX" role="navigation">
 

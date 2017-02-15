@@ -71,7 +71,6 @@ export class UserSelected {
         trainings: this.user['profile']['trainings'] ? [] : null
       }
 
-
       /* for loops for object arrays */
       let i = 0;
       /* loop languages */
