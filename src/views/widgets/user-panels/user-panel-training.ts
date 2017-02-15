@@ -45,7 +45,7 @@ export class UserPanelTraining {
         //alert('returnTrainingData: ' + getId + ' > ' + this.myTrainingArr.filter(x => x.trainingId == getId)[0].id + ' > ' + this.myTrainingArr.filter(x => x.trainingId == getId).id);
         console.log('returnTrainingData: ' + getId + ' > ' + this.myTrainingArr[getId]);
         //if(getId && this.myTrainingArr[getId] && this.myTrainingArr[getId].expiresOn) return 'Attended';// this.myTrainingArr.filter(x => x.trainingId == getId)[0].trainingId;
-        if(getId && getField=='trainingId' && this.myTrainingArrDynamic.indexOf(getId) != -1) return this.myTrainingArr.filter(x => x.trainingId == getId)[0].expiresOn ? 'Attended' : '';
+        if(getId && getField=='trainingId' && this.myTrainingArrDynamic.indexOf(getId) != -1) return this.myTrainingArr.filter(x => x.trainingId == getId)[0].trainingId ? 'Attended' : '';
         if(getId && getField=='expiresOn' && this.myTrainingArrDynamic.indexOf(getId) != -1) return this.myTrainingArr.filter(x => x.trainingId == getId)[0].expiresOn ? this.myTrainingArr.filter(x => x.trainingId == getId)[0].expiresOn : '';
         return '';
     }

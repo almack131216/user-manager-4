@@ -2789,7 +2789,7 @@ define('views/widgets/user-panels/user-panel-training',["require", "exports", "a
         UserPanelTraining.prototype.returnTrainingData = function (getId, getField) {
             console.log('returnTrainingData: ' + getId + ' > ' + this.myTrainingArr[getId]);
             if (getId && getField == 'trainingId' && this.myTrainingArrDynamic.indexOf(getId) != -1)
-                return this.myTrainingArr.filter(function (x) { return x.trainingId == getId; })[0].expiresOn ? 'Attended' : '';
+                return this.myTrainingArr.filter(function (x) { return x.trainingId == getId; })[0].trainingId ? 'Attended' : '';
             if (getId && getField == 'expiresOn' && this.myTrainingArrDynamic.indexOf(getId) != -1)
                 return this.myTrainingArr.filter(function (x) { return x.trainingId == getId; })[0].expiresOn ? this.myTrainingArr.filter(function (x) { return x.trainingId == getId; })[0].expiresOn : '';
             return '';
