@@ -32,7 +32,7 @@ export class UserAdd {
   }
 
   save() {
-    console.log('SAVE... ' + this.api + ' > ' + this.user + ' / ' + this.profile);
+    console.log('SAVE... user (' + this.user.user.id + ')...' + this.api + ' hubId  ' + this.profile.hubId);
 
     return this.api.saveUserProfile(this.user.user.id, this.profile)
       .then(savedData => this.savedData = savedData)

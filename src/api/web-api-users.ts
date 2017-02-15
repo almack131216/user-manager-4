@@ -166,19 +166,8 @@ export class WebAPIUsers {
     let tmpUrl = '../../MRT.Api.Web/data/users/' + id + '/profile';
 
     return new Promise(resolve => {
-      setTimeout(() => {
-        // let instance = JSON.parse(JSON.stringify(user));
-        // let found = users.filter(x => x.id == user.id)[0];
-
-        // if (found) {
-        //   let index = users.indexOf(found);
-        //   users[index] = instance;
-        // } else {
-        //   //instance.id = getId();
-        //   users.push(instance);
-        // }
-        
-        let savedData = this.http.fetch(tmpUrl)
+      setTimeout(() => {        
+        let savedData = this.http.fetch(tmpUrl, {method: "POST", body: json(data)})
           .then(savedData => savedData.json())
           .then(() => {
             console.log('saveUserProfile... saved successfully')

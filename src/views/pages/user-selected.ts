@@ -60,14 +60,8 @@ export class UserSelected {
         /* arrays */
         confidentialData: this.user['profile']['confidentialData'] ? {
           memberSince: this.user['profile']['confidentialData'].memberSince ? this.user['profile']['confidentialData'].memberSince : null,
-          employmentStatus: {
-            value: this.user['profile']['confidentialData']['employmentStatus'].value ? this.user['profile']['confidentialData']['employmentStatus'].value : null,
-            name: this.user['profile']['confidentialData']['employmentStatus'].name ? this.user['profile']['confidentialData']['employmentStatus'].name : null
-          },
-          credentialLevel: {
-            value: this.user['profile']['confidentialData']['credentialLevel'].value ? this.user['profile']['confidentialData']['credentialLevel'].value : null,
-            name: this.user['profile']['confidentialData']['credentialLevel'].name ? this.user['profile']['confidentialData']['credentialLevel'].name : null
-          },
+          employmentStatusValue: this.user['profile']['confidentialData']['employmentStatus'].value ? this.user['profile']['confidentialData']['employmentStatus'].value : null,
+          credentialLevelValue: this.user['profile']['confidentialData']['credentialLevel'].value ? this.user['profile']['confidentialData']['credentialLevel'].value : null,
           field1: this.user['profile']['confidentialData'].field1 ? this.user['profile']['confidentialData'].field1 : null,
           field2: this.user['profile']['confidentialData'].field2 ? this.user['profile']['confidentialData'].field2 : null
         } : null,
