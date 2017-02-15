@@ -1,8 +1,6 @@
 import { HttpClient, json } from 'aurelia-fetch-client';
 import { autoinject } from 'aurelia-framework';
 
-
-
 let latency = 200;
 let id = 0;
 let users = null;
@@ -10,25 +8,19 @@ let usersArr = [];
 let results = null;
 let myProfile = null;
 
-const api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
-const profileUrl = '../../MRT.Api.Web/views/global';
-const views_welcome = '../../MRT.Api.Web/views/welcome';
-const data_users_all = '../../MRT.Api.Web/data/users/query';
-const views_profileform_X = '../../MRT.Api.Web/views/profileform/';
-const data_users_X = '../../MRT.Api.Web/data/users/';
+//const api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
+//const profileUrl = '../../MRT.Api.Web/views/global';
+//const views_welcome = '../../MRT.Api.Web/views/welcome';
+// const data_users_all = '../../MRT.Api.Web/data/users/query';
+// const views_profileform_X = '../../MRT.Api.Web/views/profileform/';
+// const data_users_X = '../../MRT.Api.Web/data/users/';
 
-//  const profileUrl = 'src/api/dummy-user-all.json';
-//   const views_welcome = 'src/api/api-welcome.json';
-//   const data_users_all = 'src/api/api-all-users.json';
-
-  
-//if (window.location.hostname==='localhost') {
-// if (String(window.location) == 'http://localhost:9002/') {
-//   //alert('local 2 | ' + window.location);
-//   const profileUrl = 'src/api/dummy-user-all.json';
-//   const views_welcome = 'src/api/api-welcome.json';
-//   const data_users_all = 'src/api/api-all-users.json';
-// }
+const api_lookups = 'src/api/api-lookups.json';
+const profileUrl = 'src/api/api-global.json';
+const views_welcome = 'src/api/api-welcome.json';
+const data_users_all = 'src/api/api-all-users.json';
+const views_profileform_X = '';
+const data_users_X = '';
 
 
 @autoinject
@@ -41,7 +33,7 @@ export class WebAPIUsers {
   constructor(http: HttpClient) {
     http.configure(config => {
       config
-        .useStandardConfiguration()        
+        .useStandardConfiguration()
         .withDefaults({
           mode: 'cors',
           cache: 'default',
@@ -52,6 +44,7 @@ export class WebAPIUsers {
             'Accept': 'application/json'
           }
         });
+        
     });
     this.http = http;
   }
@@ -62,6 +55,7 @@ export class WebAPIUsers {
 
     return new Promise(resolve => {
       setTimeout(() => {
+        
         let currentUser = this.http.fetch(profileUrl)
           .then(currentUser => currentUser.json());
 
@@ -92,7 +86,8 @@ export class WebAPIUsers {
 
     return new Promise(resolve => {
       setTimeout(() => {
-        let users = this.http.fetch(data_users_all, {method: 'SEARCh', body: json({}) })
+        //let users = this.http.fetch(data_users_all, {method: 'SEARCH', body: json({}) })
+        let users = this.http.fetch(data_users_all)
         
           .then(users => users.json())
         resolve(users);
@@ -122,7 +117,8 @@ export class WebAPIUsers {
     return new Promise(resolve => {
       setTimeout(() => {
         //let found = usersArr.filter(x => x.id == id);
-        let found = this.http.fetch(views_profileform_X + id)
+        let tmpUrl = views_profileform_X ? views_profileform_X + id : 'src/api/api-user.json';
+        let found = this.http.fetch(tmpUrl)
           .then(found => found.json())
           .then(found => found);
 
@@ -138,7 +134,8 @@ export class WebAPIUsers {
     this.isRequesting = true;
     return new Promise(resolve => {
       setTimeout(() => {
-        let found = this.http.fetch(data_users_X + id)
+        let tmpUrl = data_users_X ? data_users_X + id : 'src/api/api-user.json';
+        let found = this.http.fetch(tmpUrl)
           .then(found => found.json())
           .then(found => found);
 
@@ -149,6 +146,12 @@ export class WebAPIUsers {
     });
   }
 
+  updateUserProfile(user) {
+        this.http.fetch('users', {
+            method: 'post',
+            body: json(user)
+        })
+    }
 
   saveUser(user) {
     this.isRequesting = true;
