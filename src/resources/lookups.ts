@@ -38,9 +38,8 @@ export class Lookups {
   lkp_passportNationality;
   lkp_visaTypes;
   lkp_visaCountry;
-  lkp_userProfiles;
   lkp_credentialLevels;
-  lkp_memberStatus;
+  lkp_employmentStatuses;
   /* XXX
   ??? do we need lookups for...
   trainings
@@ -70,7 +69,6 @@ export class Lookups {
         this.lookups_all = this.lookups_all['lookups'];
         console.log('lookups_all: ' + JSON.stringify(this.lookups_all));
 
-
         /* ROLES */
         this.filter_memberType = [
           { "value": true, "name": "Members" },
@@ -93,8 +91,6 @@ export class Lookups {
         this.lkp_segment = this.lookups_all['segments'];
         this.lkp_entity = this.lookups_all['entities'];
         this.lkp_bp_office_address = this.lookups_all['offices'];
-
-        /* MRT Details */
         this.lkp_coatSizes = this.lookups_all['coatSizes'];
 
         /* languages */
@@ -113,38 +109,12 @@ export class Lookups {
         this.lkp_visaTypes = this.lookups_all['visaTypes'];
         this.lkp_visaCountry = this.lookups_all['countries'];
 
+        /* Confidential Information*/
         this.lkp_credentialLevels = this.lookups_all['credentialLevels'];
-
-        
-
-        /* tmp / dummyData */
-        this.lkp_memberStatus = [
-          {
-            "value": 1,
-            "name": "Employed"
-          },
-          {
-            "value": 2,
-            "name": "Retired"
-          }
-        ]
-
-        this.lkp_userProfiles = [
-          {
-            "value": 5,
-            "name": "Alex Mackenzie",
-            "loginName": "AGILY\\AMackenzie",
-          },
-          {
-            "value": 2,
-            "name": "David Sousek",
-            "loginName": "AGILY\\DSousek",
-          }
-        ]
-        /* (END) tmp / dummyData */
+        this.lkp_employmentStatuses = this.lookups_all['employmentStatuses'];
 
       });
-
-
   }
+  // (END) constructor
+
 }

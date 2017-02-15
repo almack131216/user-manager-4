@@ -6,42 +6,32 @@
     <require from="../../../resources/constants"></require>
     <require from="../../../resources/select2"></require>
 
-    <form-select inp-label="Member Status"
-        model.two-way="tmpMemberStatus"
-        options.bind="lkp_memberStatus"
-        changed.two-way="tmpMemberStatus"
+    <form-select inp-label="Employment Status"
+        model.two-way="profile.confidentialData.employmentStatusValue"
+        options.bind="lkp_employmentStatuses"
+        prop-arr.bind="['value','name']"        
         autocomplete.bind="true"
-        init-selected.two-way="tmpMemberStatus"
+        init-selected.two-way="profile.confidentialData.employmentStatusValue"
         is-mandatory.bind="true"></form-select>
+        <!--changed.two-way="tmpMemberStatus"-->
 
-    <form-input inp-type="date" model.two-way="user.profile.entityStatus.createdOn" inp-label="Date Joined" is-mandatory.bind="true"></form-input>
+    <form-input inp-type="date" model.two-way="profile.confidentialData.memberSince" inp-label="Member Since" is-mandatory.bind="true"></form-input>
 
     <div class="divider"></div>
-
-    <!--<form-select inp-label="Username/NTID"
-        prop-arr.bind="['value','loginName']"
-        model.two-way="user.user.id"
-        options.bind="lkp_userProfiles"
-        changed.two-way="user.user.id"
-        autocomplete.bind="true"
-        init-selected.two-way="user.user.id"
-        is-mandatory.bind="true"></form-select>-->
 
     <form-select inp-label="Credentials Level"
         prop-arr.bind="['value','name']"
-        model.two-way="user.user.systemRoles.value"
-        options.bind="lkp_credentialLevels"
-        changed.two-way="user.user.systemRoles.value"
+        model.two-way="profile.confidentialData.credentialLevelValue"
+        options.bind="lkp_credentialLevels"        
         autocomplete.bind="true"
-        init-selected.two-way="user.user.systemRoles.value"
+        init-selected.two-way="profile.confidentialData.credentialLevelValue"
         is-mandatory.bind="true"></form-select>
-
-        <div class="divider"></div>
-
-    <form-input model.two-way="tmpField2" inp-label="Confidential Field 2"></form-input>
+        <!--changed.two-way="user.user.systemRoles.value"-->
 
     <div class="divider"></div>
+    <form-input model.two-way="profile.confidentialData.field1" inp-label="Confidential Field 1"></form-input>
 
-     <form-input model.two-way="tmpField3" inp-label="Confidential Field 3"></form-input>
+    <div class="divider"></div>
+    <form-input model.two-way="profile.confidentialData.field2" inp-label="Confidential Field 2"></form-input>
 
 </template>

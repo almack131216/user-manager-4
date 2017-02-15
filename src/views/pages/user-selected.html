@@ -9,9 +9,7 @@
     <hr>
   </div>-->
 
-  <p if.bind="CV.debugShowCurrentUser">? user-selected: ${currentUser.isMember} !</p>
-
-
+  <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | isMember: ${currentUser.isMember} !</pre>
   <pre if.bind="CV.debugShowCodeOutput">JSON.stringify(profile)</pre>
   <pre if.bind="CV.debugShowCodeOutput">${profile & json}</pre>
 
@@ -24,7 +22,7 @@
   </div>
 
   <div if.bind="user && editType=='edit'" class="col-xs-12">
-    <user-add user.bind="user" profile.bind="profile"></user-add>
+    <user-add user.bind="user" profile.bind="profile" current-user.bind="currentUser"></user-add>
   </div>
 
   <pre if.bind="debugShowCodeOutput">${user & json}</pre>

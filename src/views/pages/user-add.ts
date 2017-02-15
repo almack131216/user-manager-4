@@ -5,6 +5,9 @@ import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
 import {bindable,autoinject} from 'aurelia-framework';
 
+import * as Constants from '../../resources/constants';
+const CV = Constants
+
 interface User {
   firstName: string;
   lastName: string;
@@ -15,8 +18,10 @@ interface User {
 
 @inject(WebAPIUsers)
 export class UserAdd {
+  public CV = CV;
   @bindable user = null;
   @bindable profile = null;
+  @bindable currentUser = null;
   routeConfig;
   originalUser;
   savedData;
