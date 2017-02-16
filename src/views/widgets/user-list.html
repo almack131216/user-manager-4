@@ -50,7 +50,7 @@
             <!-- (END) Filters -->
 
             <!-- Table -->
-            ? filter_memberType: ${filter_memberType}
+            <!--? filter_memberType: ${filter_memberType}-->
             <pre if.bind="debugShowOutput">${users & json}</pre>
             
             <div class="row">
@@ -59,10 +59,10 @@
                         <thead>
                             <tr>
                                 <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
-                                <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login Name</th>
+                                <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login</th>
                                 <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
-                                <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Last Name</th>
-                                <!--<th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">Email</th>-->
+                                <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Surname</th>
+                                <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">Email</th>
                                 <th aut-sort="key: isMember" if.bind="isNotDisabled('isMember')">Profile</th>
                                 <th aut-sort="key: isActive" if.bind="isNotDisabled('isActive')">Status</th>
                                 <th if.bind="isNotDisabled('edit')">Actions</th>
@@ -74,7 +74,7 @@
                                 <td if.bind="isNotDisabled('loginName')">${user.loginName}</td>
                                 <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
                                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
-                                <!--<td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>-->
+                                <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>
                                 <td if.bind="isNotDisabled('isMember')">
                                     <span-cust-member-status is-member.bind="user.isMember" update-pending.bind="user.updatePending" profile-date.bind="user.profileDate"></span-cust-member-status>
                                 </td>

@@ -77,7 +77,7 @@ export class UserList {
             this.api.getLookups()
                 .then(lkp_all => this.lkp_all = lkp_all['lookups'])
                 .then(() =>{
-                    alert('lkp_all: ' + JSON.stringify(this.lkp_all) );
+                    //alert('lkp_all: ' + JSON.stringify(this.lkp_all) );
                 });
         }
 
