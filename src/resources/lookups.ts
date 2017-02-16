@@ -59,11 +59,17 @@ export class Lookups {
   activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
+    
   }
 
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
+    this.loadLookUps();
+  }
+  // (END) constructor
 
+  loadLookUps(){
+    //alert('? lookups.ts | loadLookUps');
     this.api.getLookups()
       .then(lookups_all => this.lookups_all = lookups_all)
       .then(() => {
@@ -88,6 +94,7 @@ export class Lookups {
 
         /* User Details */
         this.lkp_regions = this.lookups_all['regions'];
+        //alert(this.lkp_regions);
         this.lkp_hub = this.lookups_all['hubs'];
         this.lkp_segment = this.lookups_all['segments'];
         this.lkp_entity = this.lookups_all['entities'];
@@ -117,6 +124,5 @@ export class Lookups {
 
       });
   }
-  // (END) constructor
 
 }

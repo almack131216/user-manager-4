@@ -10,7 +10,7 @@
         </ai-dialog-header>
 
         <ai-dialog-body>
-            <table class="table border-none half-n-half">
+            <table class="table border-none half-n-half" if.bind="userRole && lkp_role">
                 <tbody>
                 <tr>
                     <td><label>ID:</label> ${userRole.id}</td>

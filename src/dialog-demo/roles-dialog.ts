@@ -28,19 +28,19 @@ export class RolesDialog {
         this.userSelectedId = controller.settings.userId;
 
         this.api.getUserRole(this.userSelectedId).then(user => {
-            this.userRole = <User>user;
+            //this.userRole = <User>user;
+            this.userRole = user;
+            this.lkp_role = lookups.lkp_role;
         });
 
-        this.lkp_role = lookups.lkp_role;
+        
     }
 
     //All of the parameters that we passed to the dialog are available through the model
-    activate(model) {
-
-        this.userRole = model;
+    activate() {
         //alert('activate: ' + JSON.stringify(this.userRole.info.id) );
 
-        console.log('model: ' + JSON.stringify(model) + ' > ' + this.lkp_role);
+        //console.log('model: ' + JSON.stringify(model) + ' > ' + this.lkp_role);
     }
 
     //When the user clicks on the 'Yes' button the controller closes the dialog 

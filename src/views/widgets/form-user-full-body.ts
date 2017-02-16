@@ -3,6 +3,7 @@ import * as Constants from '../../resources/constants';
 const CV = Constants
 
 export class FormUserFullBody {
+    public CV = CV;
     @bindable user = null;
     @bindable profile = null;
     @bindable custIcon = null;

@@ -9,32 +9,36 @@ export class UserPanelDetails {
     @bindable profile;
     public CV = CV;
 
-    public lkp_regions;
-    public lkp_hub;
-    public lkp_segment;
-    public lkp_entity;
-    public lkp_bp_office_address;
+    tmpShowLookupsDebug = false;
 
-    lkp_coatSizes;
+    public lkp_regions;
+    lkp_hub;
+    lkp_segment;
+    lkp_entity;
     lkp_primaryPositions;
     lkp_secondaryPositions;
+    lkp_bp_office_address;
+    lkp_coatSizes;    
 
-    constructor(lookups:Lookups) {
-
-        this.lkp_coatSizes = lookups.lkp_coatSizes
-
-        this.lkp_primaryPositions = lookups.lkp_primaryPositions
-
-        this.lkp_secondaryPositions = lookups.lkp_secondaryPositions;
-
+    constructor(private lookups:Lookups) {
         this.lkp_regions = lookups.lkp_regions
 
         this.lkp_hub = lookups.lkp_hub
 
         this.lkp_segment = lookups.lkp_segment
 
-        this.lkp_entity = lookups.lkp_entity
+        this.lkp_entity = lookups.lkp_entity        
+
+        this.lkp_primaryPositions = lookups.lkp_primaryPositions
+
+        this.lkp_secondaryPositions = lookups.lkp_secondaryPositions        
 
         this.lkp_bp_office_address = lookups.lkp_bp_office_address
+
+        this.lkp_coatSizes = lookups.lkp_coatSizes
+    }
+
+    activate(lookups){
+        
     }
 }

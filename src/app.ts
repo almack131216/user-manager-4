@@ -34,6 +34,8 @@ export class App {
   isReader
   isEditor
 
+  public lkp_all;
+
 
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
@@ -56,6 +58,12 @@ export class App {
         this.isMemberXXX = this.currentUser.isMember,
         this.isReader = this.currentUser.isReader,
         this.isEditor = this.currentUser.isEditor
+      });
+
+      this.api.getLookups()
+      .then(lkp_all => this.lkp_all = lkp_all)
+      .then(() => {
+        //alert('loaded')
       });
   }
 

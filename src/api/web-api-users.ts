@@ -8,7 +8,7 @@ let users = null;
 let usersArr = [];
 let results = null;
 let myProfile = null;
-let hw_useJson = true;
+let hw_useJson = null;
 
 const api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
 const profileUrl = '../../MRT.Api.Web/views/global';

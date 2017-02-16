@@ -38,6 +38,7 @@ export class UserList {
     filter_memberType;
     filter_active;
     router;
+    lkp_all;
 
     isNotDisabled(getField) {
         if (CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);
@@ -45,33 +46,43 @@ export class UserList {
         if (this.custDisableCells.indexOf(getField) == -1) return true;
         return false;
     }
-    lookups: Lookups;
-    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups, router: Router) {
+
+    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, private lookups: Lookups, router: Router) {
         // ea.subscribe(UserViewed, msg => this.select(msg.user));
         // ea.subscribe(UserUpdated, msg => {
         //     let id = msg.user.id;
         //     let found = this.users.data.find(x => x.id == id);
         //     Object.assign(found, msg.user);
         // });
+        this.lookups = lookups;
 
+        ///tmp
+        this.filter_memberType = [
+          { "value": true, "name": "Members" },
+          { "value": false, "name": "Non-members" }
+        ]
 
+        this.filter_active = [
+          { "value": true, "name": "Active" },
+          { "value": false, "name": "Archived" }
+        ]
+
+        this.lkp_role = [
+          { "value": 1, "name": "Viewer" },
+          { "value": 3, "name": "Admin" }
+        ]
+
+        if(!this.lookups.filter_memberType){
+            //alert('? user-list.ts | get Lookups...');
+            this.api.getLookups()
+                .then(lkp_all => this.lkp_all = lkp_all['lookups'])
+                .then(() =>{
+                    alert('lkp_all: ' + JSON.stringify(this.lkp_all) );
+                });
+        }
 
         this.api.getUserList()
             .then(users => this.users = users)
-            .then(() => {
-                this.lkp_role = lookups.lkp_role;
-                this.filter_memberType = lookups.filter_memberType;
-                this.filter_active = lookups.filter_active;
-                //alert('activate: ' + this.rolesArr + ' / ' + lookups.filter_memberType);
-                this.filter_memberType = lookups.filter_memberType;
-                this.rolesArr = this.filter_memberType.map(x => {
-                    return {
-                        value: x.value,
-                        name: x.name
-                    }
-                });
-                //console.log('activate 2: ' + this.rolesArr + ' | ' + this.filter_memberType + ' | ' + this.filter_active);
-            })
             .then(() => this.populateRoleFilterFromList());
 
         this.router = router;
