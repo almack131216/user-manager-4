@@ -68,7 +68,7 @@ export class Lookups {
       .then(lookups_all => this.lookups_all = lookups_all)
       .then(() => {
         this.lookups_all = this.lookups_all['lookups'];
-        console.log('lookups_all: ' + JSON.stringify(this.lookups_all));
+        //console.log('lookups_all: ' + JSON.stringify(this.lookups_all));
 
         /* ROLES */
         this.filter_memberType = [

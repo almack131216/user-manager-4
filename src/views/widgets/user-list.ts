@@ -12,7 +12,7 @@ import { InfoDialog } from '../../dialog-demo/info-dialog';
 import { RolesDialog } from '../../dialog-demo/roles-dialog';
 import { AddUserDialog } from '../../dialog-demo/add-user-dialog';
 import { DeleteDialog } from '../../dialog-demo/delete-user-dialog';
-import {Lookups} from '../../resources/lookups';
+import { Lookups } from '../../resources/lookups';
 
 
 @autoinject
@@ -20,7 +20,7 @@ import {Lookups} from '../../resources/lookups';
 export class UserList {
     @bindable custTitle;
     @bindable custDisableCells;
-    @bindable custHideTitleBar = false;    
+    @bindable custHideTitleBar = false;
     @bindable custTablePagination = false;
     @bindable custTablePageSize = 100;
 
@@ -45,7 +45,7 @@ export class UserList {
         if (this.custDisableCells.indexOf(getField) == -1) return true;
         return false;
     }
-
+    lookups: Lookups;
     constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups, router: Router) {
         // ea.subscribe(UserViewed, msg => this.select(msg.user));
         // ea.subscribe(UserUpdated, msg => {
@@ -54,28 +54,36 @@ export class UserList {
         //     Object.assign(found, msg.user);
         // });
 
-        this.lkp_role = lookups.lkp_role;
-        this.filter_memberType = lookups.filter_memberType;
-        this.filter_active = lookups.filter_active;
-        this.rolesArr = this.filter_memberType.map(x =>  { return {
-          value:x.value,
-          name:x.name
-        }});
+
+
+        this.api.getUserList()
+            .then(users => this.users = users)
+            .then(() => {
+                this.lkp_role = lookups.lkp_role;
+                this.filter_memberType = lookups.filter_memberType;
+                this.filter_active = lookups.filter_active;
+                //alert('activate: ' + this.rolesArr + ' / ' + lookups.filter_memberType);
+                this.filter_memberType = lookups.filter_memberType;
+                this.rolesArr = this.filter_memberType.map(x => {
+                    return {
+                        value: x.value,
+                        name: x.name
+                    }
+                });
+                //console.log('activate 2: ' + this.rolesArr + ' | ' + this.filter_memberType + ' | ' + this.filter_active);
+            })
+            .then(() => this.populateRoleFilterFromList());
 
         this.router = router;
     }
 
-    created() {
+    created(lookups) {
         if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
         if (this.custTitle) this.title = this.custTitle;
-        this.api.getUserList()
-            .then(users => this.users = users)
-            .then(() => this.populateRoleFilterFromList());
-
     }
 
     select(user) {
-        this.selectedId = user.id;        
+        this.selectedId = user.id;
         //alert('select: ' + this.selectedId);
         return true;
     }
@@ -129,15 +137,15 @@ export class UserList {
         { value: '2', keys: ['isActive'] }
     ];
 
-    returnLabelFromValue(getId){
-        if(getId) return this.rolesArr.filter(x => x.value == getId)[0].name;
+    returnLabelFromValue(getId) {
+        if (getId) return this.rolesArr.filter(x => x.value == getId)[0].name;
         return '';
     }
 
-    populateRoleFilterFromList() {        
-        let tmp_rolesArrValues=[];
+    populateRoleFilterFromList() {
+        let tmp_rolesArrValues = [];
         //this.rolesArrLabels=[];
-        this.rolesArrDynamic=[];
+        this.rolesArrDynamic = [];
 
         for (let next of this.users.data) {
             let nextRole = next.systemRoles;
@@ -147,9 +155,9 @@ export class UserList {
                 let nextLabel = nextRole;// this.rolesArr.filter(x => x.value == nextRole)[0].name;
                 //console.log('???' + nextRole + ' | ' + nextLabel);
                 //this.rolesArrLabels.push(nextLabel);
-                this.rolesArrDynamic.push({"value":nextRole, "name":nextLabel});
+                this.rolesArrDynamic.push({ "value": nextRole, "name": nextLabel });
             }
-        }        
+        }
     }
 
 

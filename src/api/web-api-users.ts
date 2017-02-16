@@ -8,7 +8,7 @@ let users = null;
 let usersArr = [];
 let results = null;
 let myProfile = null;
-let hw_useJson = null;
+let hw_useJson = true;
 
 const api_lookups = '../../MRT.Api.Web/views/profileform/5?includeLookups=true';
 const profileUrl = '../../MRT.Api.Web/views/global';
@@ -49,10 +49,12 @@ export class WebAPIUsers {
 
   getGlobal() {
     this.isRequesting = true;
+    let tmpUrl = api_lookups;
+    if (tmpUrl) tmpUrl = 'src/api/api-global.json';
 
     return new Promise(resolve => {
       setTimeout(() => {
-        let currentUser = this.http.fetch(profileUrl)
+        let currentUser = this.http.fetch(tmpUrl)
           .then(currentUser => currentUser.json());
 
         resolve(currentUser);
@@ -81,11 +83,15 @@ export class WebAPIUsers {
 
   getUserList() {
     this.isRequesting = true;
+    let tmpUrl = data_users_all;
+    if (tmpUrl) tmpUrl = 'src/api/api-all-users.json';
     //alert('getUserList');
     return new Promise(resolve => {
       setTimeout(() => {
-        let users = this.http.fetch(data_users_all, {method: 'SEARCH', body: json({}) })
-        .then(users => users.json());
+        // let users = this.http.fetch(tmpUrl, {method: 'SEARCH', body: json({}) })
+        // .then(users => users.json());
+        let users = this.http.fetch(tmpUrl)
+          .then(users => users.json());
 
         resolve(users);
 
@@ -114,11 +120,13 @@ export class WebAPIUsers {
   getUserDetails(id) {
     console.log('getUserDetails: ' + id);
     this.isRequesting = true;
+    let tmpUrl = views_profileform_X + id;
+    if (hw_useJson) tmpUrl = 'src/api/api-user.json';
+
     return new Promise(resolve => {
       setTimeout(() => {
         //let found = usersArr.filter(x => x.id == id);
-        let tmpUrl = views_profileform_X + id;
-        if (hw_useJson) tmpUrl = 'src/api/api-user.json';
+
         let found = this.http.fetch(tmpUrl)
           .then(found => found.json())
           .then(found => found);
@@ -133,15 +141,17 @@ export class WebAPIUsers {
   getUserRole(id) {
     console.log('getUserRole: ' + id);
     this.isRequesting = true;
+    let tmpUrl = data_users_X + id;
+    if (hw_useJson) tmpUrl = 'src/api/api-user.json';
+
     return new Promise(resolve => {
       setTimeout(() => {
-        let tmpUrl = data_users_X + id;
-        if (hw_useJson) tmpUrl = 'src/api/api-user.json';
+
         let found = this.http.fetch(tmpUrl)
           .then(found => found.json())
           .then(found => found);
 
-        console.log('getUserRole ARR: ' + JSON.stringify(found));
+        //console.log('getUserRole ARR: ' + JSON.stringify(found));
         resolve(found);
         this.isRequesting = false;
       }, latency);
@@ -155,19 +165,19 @@ export class WebAPIUsers {
   //   })
   // }
 
-  navigateTo(getUrl){
-        //route: user-edit; params.bind: {id:user.id, editType:'edit'}
-        this.router.navigate(getUrl);//"users/5/edit"
-    }
+  navigateTo(getUrl) {
+    //route: user-edit; params.bind: {id:user.id, editType:'edit'}
+    this.router.navigate(getUrl);//"users/5/edit"
+  }
 
-  saveUserProfile(id,data) {
+  saveUserProfile(id, data) {
     console.log('saveUserProfile... (' + id + ')');
     this.isRequesting = true;
     let tmpUrl = '../../MRT.Api.Web/data/users/' + id + '/profile';
 
     return new Promise(resolve => {
-      setTimeout(() => {        
-        let savedData = this.http.fetch(tmpUrl, {method: "POST", body: json(data)})
+      setTimeout(() => {
+        let savedData = this.http.fetch(tmpUrl, { method: "POST", body: json(data) })
           .then(() => {
             console.log('saveUserProfile... saved successfully')
           });

@@ -5,6 +5,7 @@
     <require from="../widgets/inputs/form-filter-role"></require>
     <require from="../widgets/inputs/form-select"></require>
     <require from="../../resources/format/format-date"></require>
+     <require from="../../resources/format/json"></require>
     <require from="../widgets/cust-span/span-cust-member-status"></require>
     <require from="../widgets/cust-span/span-cust-active-status"></require>
 
@@ -32,26 +33,28 @@
 
         <div id="${custXcId}" class="panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
             <!-- Filters -->
-            <div class="row margin-y-g1">
+            <div class="row margin-y-g1" if.bind="filters">
                 <div class="col-xs-4">
                     <form-filter-text model.two-way="filters[0].value"></form-filter-text>
                 </div>
                 <div class="col-xs-4">
-                    <form-filter-role inp-label="Role" model.two-way="filters[1].value" options.bind="filter_memberType" changed.two-way="filters[1].value"
+                    <form-filter-role if.bind="filter_memberType" inp-label="Role" model.two-way="filters[1].value" options.bind="filter_memberType" changed.two-way="filters[1].value"
                         init-selected.two-way="filters[1].value"></form-filter-role>
                 </div>
                 <div class="col-xs-4">
 
-                    <form-filter-role inp-label="Status" model.two-way="filters[2].value" options.bind="filter_active" changed.two-way="filters[2].value"
+                    <form-filter-role if.bind="filter_active" inp-label="Status" model.two-way="filters[2].value" options.bind="filter_active" changed.two-way="filters[2].value"
                         init-selected.two-way="filters[2].value"></form-filter-role>
                 </div>
             </div>
             <!-- (END) Filters -->
 
             <!-- Table -->
+            <pre if.bind="debugShowOutput">${users & json}</pre>
+            
             <div class="row">
                 <div class="col-xs-12">
-                    <table class="table table-striped" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
+                    <table class="table table-striped" if.bind="users && filters" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
                         <thead>
                             <tr>
                                 <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
@@ -100,9 +103,6 @@
                         </tbody>
                     </table>
                 </div>
-
-
-
             </div>
             <!-- (END) Table -->
 
@@ -119,12 +119,12 @@
                         <div class="form-group pull-right">
                             <label for="custTablePageSize">Page Size: </label>
                             <select value.bind="custTablePageSize" id="custTablePageSize" class="form-control">
-                        <option model.bind="5">5</option>
-                        <option model.bind="10">10</option>
-                        <option model.bind="20">20</option>
-                        <option model.bind="50">50</option>
-                        <option model.bind="100">100</option>
-                    </select>
+                                <option model.bind="5">5</option>
+                                <option model.bind="10">10</option>
+                                <option model.bind="20">20</option>
+                                <option model.bind="50">50</option>
+                                <option model.bind="100">100</option>
+                            </select>
                         </div>
                     </div>
                 </div>
