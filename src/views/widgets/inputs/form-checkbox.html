@@ -2,7 +2,7 @@
 
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">
         <label for.bind="inpName" title.bind="inpLabel">
-            ${inpLabel} / ${model}
+            ${inpLabel}
         </label>
     </span>
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">
@@ -14,7 +14,7 @@
 
 
     <label if.bind="inputOnly" class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
-        <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">
+        <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model" disabled="disabled">
         ${inpLabel}
     </label>
 

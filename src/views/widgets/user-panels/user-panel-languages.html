@@ -19,7 +19,8 @@
                             model.two-way="profile.languages[$index].languageId"
                             options.bind="lkp_languages"                            
                             autocomplete.bind="true"
-                            init-selected.two-way="profile.languages[$index].languageId"></form-select>
+                            init-selected.two-way="profile.languages[$index].languageId"
+                            is-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.languages[$index].language.id"-->
 
                     </td>
@@ -30,7 +31,8 @@
                             model.two-way="profile.languages[$index].proficiencyValue"
                             options.bind="lkp_languageLevel"                            
                             init-selected.two-way="profile.languages[$index].proficiencyValue"
-                            is-enabled.bind="profile.languages[$index].languageId"></form-select>
+                            is-enabled.bind="profile.languages[$index].languageId"
+                            is-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.languages[$index].proficiency.value"-->
                     </td>
                 </tr>
@@ -38,7 +40,7 @@
         </table>
     </div>
 
-   <div class="col-xs-12 margin-bottom-g1">
+   <div if.bind="!isReadOnly" class="col-xs-12 margin-bottom-g1">
        <!--if.bind="$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo"-->
         <button class="btn btn-default btn-sm">
             <i class="fa fa-plus"></i>

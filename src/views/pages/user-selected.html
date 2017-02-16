@@ -22,7 +22,8 @@
   </div>
 
   <div if.bind="user && editType=='edit'" class="col-xs-12">
-    <user-add user.bind="user" profile.bind="profile" current-user.bind="currentUser" if.bind="user && profile"></user-add>
+    <!--? user-selected.html | isReadOnly: ${isReadOnly} !-->
+    <user-add user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" current-user.bind="currentUser" if.bind="user && profile"></user-add>
   </div>
 
   <pre if.bind="debugShowCodeOutput">${user & json}</pre>

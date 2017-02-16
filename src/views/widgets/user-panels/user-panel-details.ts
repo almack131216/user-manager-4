@@ -7,6 +7,7 @@ import { Lookups } from '../../../resources/lookups';
 export class UserPanelDetails {
     @bindable user;
     @bindable profile;
+    @bindable isReadOnly;
     public CV = CV;
 
     tmpShowLookupsDebug = false;

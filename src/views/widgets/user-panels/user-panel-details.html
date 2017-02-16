@@ -6,6 +6,8 @@
     <require from="../../../resources/select2"></require>
     <require from="../../../resources/format/json"></require>
 
+    <!--? user-panel-details.html | isReadOnly: ${isReadOnly} !-->
+
     <form-input name="firstName" model.two-way="user.user.firstName" inp-label="First Name" is-readonly.bind="true"></form-input>
     <form-input name="lastName" model.two-way="user.user.lastName" inp-label="Last Name" is-readonly.bind="true"></form-input>
     <form-input name="loginName" model.two-way="user.user.loginName" inp-label="Username/NTID" is-readonly.bind="true"></form-input>
@@ -33,7 +35,8 @@
         options.bind="lkp_regions"        
         autocomplete.bind="true"
         init-selected.two-way="profile.regionId"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="profile.regionId"-->
     
     <form-select if.bind="lkp_hub" inp-label="hub"
@@ -42,7 +45,8 @@
         init-selected.two-way="profile.hubId"
         option-filter.bind="['regionId',profile.regionId]"
         is-enabled.bind="profile.regionId"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!-- XXX CR - 170213: changed.two-way="profile.hubId" may be excess -->
   
      <div class="divider"></div>
@@ -52,7 +56,8 @@
         options.bind="lkp_segment"              
         init-selected.two-way="profile.segmentId"
         autocomplete.bind="true"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.segment.id"  -->
 
     <form-select if.bind="lkp_entity" inp-label="Entity"
@@ -61,13 +66,14 @@
         init-selected.two-way="profile.entityId"
         option-filter.bind="['segmentId',profile.segmentId]"
         is-enabled.bind="profile.segmentId"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.entity.id" -->
     
     <div class="divider"></div>
 
-    <form-input inp-label="Function" model.two-way="profile.function" is-mandatory.bind="true"></form-input>
-    <form-input inp-label="Location" model.two-way="profile.location" is-mandatory.bind="true"></form-input>
+    <form-input inp-label="Function" model.two-way="profile.function" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
+    <form-input inp-label="Location" model.two-way="profile.location" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
 
     <div class="divider"></div>
 
@@ -76,7 +82,8 @@
         options.bind="lkp_primaryPositions"        
         autocomplete.bind="true"
         init-selected.two-way="profile.primaryPositionId"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.primaryPosition.id"-->
 
     <form-select if.bind="lkp_secondaryPositions" inp-label="Secondary ICS"
@@ -85,7 +92,8 @@
         init-selected.two-way="profile.secondaryPosition"
         option-filter.bind="['primaryPositionId',profile.primaryPositionId]"
         is-enabled.bind="profile.primaryPositionId"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.secondaryPosition.id"-->
 
     <div class="divider"></div>
@@ -95,7 +103,8 @@
         options.bind="lkp_bp_office_address"        
         autocomplete.bind="true"
         init-selected.two-way="profile.officeId"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.office.id"-->
 
     <div class="divider"></div>
@@ -104,7 +113,8 @@
         model.two-way="profile.coatSizeId"
         options.bind="lkp_coatSizes"        
         init-selected.two-way="profile.coatSizeId"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.coatSize.id"-->
 
     <div class="divider"></div>
@@ -120,18 +130,18 @@
             <tbody>
                 <tr>
                     <td class="padding-bottom-0">
-                        <form-input name="businessNumber" model.two-way="profile.businessNumber" mask-pattern="telephone" inp-label="Business Cell No." is-mandatory.bind="true"></form-input>
-                        <form-input name="personalNumber" model.two-way="profile.personalNumber" mask-pattern="telephone" inp-label="Personal Cell No."></form-input>
-                        <form-input name="officeNumber" model.two-way="profile.officeNumber" mask-pattern="telephone" inp-label="Office Number"></form-input>
-                        <form-input name="lyncNumber" model.two-way="profile.lyncNumber" mask-pattern="telephone" inp-label="Lync Number"></form-input>
-                        <form-input name="homeNumber" model.two-way="profile.homeNumber" mask-pattern="telephone" inp-label="Home Number"></form-input>
+                        <form-input name="businessNumber" model.two-way="profile.businessNumber" mask-pattern="telephone" inp-label="Business Cell No." is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="personalNumber" model.two-way="profile.personalNumber" mask-pattern="telephone" inp-label="Personal Cell No." is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="officeNumber" model.two-way="profile.officeNumber" mask-pattern="telephone" inp-label="Office Number" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="lyncNumber" model.two-way="profile.lyncNumber" mask-pattern="telephone" inp-label="Lync Number" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="homeNumber" model.two-way="profile.homeNumber" mask-pattern="telephone" inp-label="Home Number" is-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td class="padding-bottom-0">
-                        <form-input name="manager" model.two-way="user.user.manager.displayName" inp-label="Line Manager" is-readonly.bind="true"></form-input>
-                        <form-input name="manager_emailAddress" model.two-way="user.user.manager.emailAddress" inp-label="Line Manager Email" is-readonly.bind="true"></form-input>
-                        <form-input name="loginName" model.two-way="user.user.manager.loginName" inp-label="Line Manager NTID" is-readonly.bind="true"></form-input>
-                        <form-input name="emergencyContactName" model.two-way="profile.emergencyContactName" inp-label="Emergency Contact Name" is-mandatory.bind="true"></form-input>
-                        <form-input name="emergencyContactNumber" model.two-way="profile.emergencyContactNumber" mask-pattern="telephone" inp-label="Emergency Contact No." is-mandatory.bind="true"></form-input>
+                        <form-input name="manager" model.two-way="user.user.manager.displayName" inp-label="Line Manager" is-readonly.bind="true" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="manager_emailAddress" model.two-way="user.user.manager.emailAddress" inp-label="Line Manager Email" is-readonly.bind="true" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="loginName" model.two-way="user.user.manager.loginName" inp-label="Line Manager NTID" is-readonly.bind="true" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="emergencyContactName" model.two-way="profile.emergencyContactName" inp-label="Emergency Contact Name" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input name="emergencyContactNumber" model.two-way="profile.emergencyContactNumber" mask-pattern="telephone" inp-label="Emergency Contact No." is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
                     </td>
                 </tr>
             </tbody>

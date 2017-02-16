@@ -7,6 +7,8 @@ import { Lookups } from '../../../resources/lookups';
 export class UserPanelPassport {
     @bindable user;
     @bindable profile;
+    @bindable isReadOnly = null;
+    
     lkp_passportTypes;
     lkp_passportNationality;
 

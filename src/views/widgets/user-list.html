@@ -70,7 +70,7 @@
                         <tbody>
                             <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
                                 <td if.bind="isNotDisabled('loginName')">
-                                    <a if.bind="user.isMember" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit', readonly:true}" title="View member">${user.loginName}</a>
+                                    <a if.bind="user.isMember" route-href="route: user-read; params.bind: {id:user.id, editType:'edit', readonly:'read'}" title="View member">${user.loginName}</a>
                                     <span if.bind="!user.isMember">${user.loginName}</span>
                                 </td>
                                 <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>

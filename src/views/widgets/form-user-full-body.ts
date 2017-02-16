@@ -6,6 +6,7 @@ export class FormUserFullBody {
     public CV = CV;
     @bindable user = null;
     @bindable profile = null;
+    @bindable isReadOnly = null;
     @bindable custIcon = null;
     @bindable custBody = null;
     @bindable custClass = null;

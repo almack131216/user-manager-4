@@ -16,6 +16,8 @@ export class FormSelect {
     @bindable isMandatory = null;
     @bindable name = null;
 
+    @bindable isReadonly = null;
+
     @bindable
     public initSelected: null;
     public changed: number;
@@ -48,6 +50,7 @@ export class FormSelect {
         if(CV.debugConsoleLog) console.log('[form-select] selectedChanged: ' + newValue + ' / ' + this.initSelected);
         this.changed = newValue ? newValue : null;//(<HTMLInputElement>event.currentTarget).value;
         this.selected = this.changed;
+        
     }
 
     tmpCreateLabel(getStr){

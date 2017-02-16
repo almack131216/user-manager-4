@@ -24,12 +24,12 @@
         <div id="${custXcId}" class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}">
             <div class="wrap-fields">
                 <!--<pre>${user & json}</pre>-->
-                <user-panel-details if.bind="custBody=='user-details'" user.bind="user" profile.bind="profile"></user-panel-details>
-                <user-panel-languages if.bind="custBody=='user-languages'" user.bind="user" profile.bind="profile"></user-panel-languages>
-                <user-panel-passport if.bind="custBody=='user-passport'" user.bind="user" profile.bind="profile"></user-panel-passport>
-                <user-panel-visa if.bind="custBody=='user-visa'" user.bind="user" profile.bind="profile"></user-panel-visa>
-                <user-panel-training if.bind="custBody=='user-training'" user.bind="user" profile.bind="profile"></user-panel-training>
-                <user-panel-confidential if.bind="custBody=='user-confidential'" user.bind="user" profile.bind="profile"></user-panel-confidential>
+                <user-panel-details if.bind="custBody=='user-details'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-details>
+                <user-panel-languages if.bind="custBody=='user-languages'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-languages>
+                <user-panel-passport if.bind="custBody=='user-passport'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-passport>
+                <user-panel-visa if.bind="custBody=='user-visa'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-visa>
+                <user-panel-training if.bind="custBody=='user-training'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-training>
+                <user-panel-confidential if.bind="custBody=='user-confidential'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-confidential>
             </div>
         </div>
     </div>

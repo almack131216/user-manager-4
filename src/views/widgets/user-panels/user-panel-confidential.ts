@@ -6,6 +6,8 @@ import { Lookups } from '../../../resources/lookups';
 export class UserPanelConfidential {
     @bindable user;
     @bindable profile;
+    @bindable isReadOnly;
+    
     lkp_employmentStatuses;
     lkp_credentialLevels;
     tmpField2;

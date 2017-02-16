@@ -59,7 +59,7 @@
                             model.two-way="profile.trainings[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="user.trainings[$index].attended"></form-input>
+                            is-readonly.bind="user.trainings[$index].attended || isReadOnly"></form-input>
                     </td>
                 </tr>                
             </tbody>

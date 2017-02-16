@@ -22,6 +22,7 @@ export class UserSelected {
   user: User;
   profile = {};
   editType = null;
+  isReadOnly = null;
   originalUser: User;
   title = ''
 
@@ -31,9 +32,10 @@ export class UserSelected {
 
   activate(params, routeConfig) {
     this.routeConfig = routeConfig;
-    console.log('activate: ' + params.id + ' (' + params.editType + ')');
+    console.log('activate: ' + params.id + ' (' + params.editType + '), readonly: ' + params.isReadOnly);
     return this.api.getUserDetails(params.id).then(user => {
       if (params.editType) this.editType = params.editType;
+      if (params.readonly) this.isReadOnly = true;
       this.user = <User>user;
       //alert(JSON.stringify(this.user));
       //console.log(JSON.stringify(this.user));

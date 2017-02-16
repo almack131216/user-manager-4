@@ -8,6 +8,7 @@ import { Lookups } from '../../../resources/lookups';
 export class UserPanelTraining {
     @bindable user;
     @bindable profile;
+    @bindable isReadOnly = null;
 
     public CV = CV;
     message = CV.MSG_TRAINING;

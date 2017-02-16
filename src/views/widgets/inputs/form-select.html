@@ -14,11 +14,17 @@
         <!--selected.two-way="selected" -->
         <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
         <!--propArr: ${propArr[0]} | ${propArr[1]}-->
-        <select class="form-control"
+
+        <!--<input if.bind="isReadonly" type="text" value.bind="model" class="form-control" placeholder.bind="inpPlaceholder" readonly>-->
+<!--if.bind="!isReadonly"-->
+        <select 
+            reaonly.bind="isReadonly"
+            class="form-control"
             value.bind="initSelected"
-            disabled.bind="!isEnabled"
+            disabled.bind="!isEnabled || isReadonly"
             selected.two-way="selected"
-            change.delegate="changeCallback($event)">
+            change.delegate="changeCallback($event)"
+            >
 
             <option model.bind="null">${inpPlaceholder}</option>
             <!--<option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">-->

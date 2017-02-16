@@ -5,6 +5,8 @@ import { Lookups } from '../../../resources/lookups';
 export class UserPanelLanguages {
     @bindable user;
     @bindable profile;
+    @bindable isReadOnly;
+    
     public lkp_languages;
     public lkp_languageLevel;
     public lkp_languages_limitTo = 5;

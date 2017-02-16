@@ -22,6 +22,8 @@ export class UserAdd {
   @bindable user = null;
   @bindable profile = null;
   @bindable currentUser = null;
+  @bindable isReadOnly = null;
+  
   routeConfig;
   originalUser;
   savedData;

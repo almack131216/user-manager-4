@@ -74,7 +74,8 @@ export class App {
       { route: ['', 'welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Home', settings: { data: { isMemberOnly: false } } },
       { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: { data: { isMemberOnly: true } }, xxx: true },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'Team' },
-      { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' }
+      { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' },
+      { route: 'users/:id/:editType/:readonly', moduleId: './views/pages/user-selected', name: 'user-read', title: 'Read' }
       // { route: 'users/add', moduleId: './views/pages/user-add', name: 'user-add', nav: true, title: 'Add User' },
       // { route: 'dialog-demo', name: 'dialog-demo', moduleId: './dialog-demo/dialog-demo', nav: true, title: 'Dialog Demo' }
     ]);
