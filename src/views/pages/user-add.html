@@ -11,16 +11,16 @@
   <div class="btn-group btn-edit-avatar pull-right" role="group" aria-label="user options">
 
     <div class="btn-group" role="group">
-      <button class="btn btn-default dropdown-toggle btn-i" type="button"
+      <button class="btn btn-default dropdown-toggle btn-i" type="button" disabled="isReadOnly"
         id="dropdownMenu1"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="true">
-          <i class="fa fa-pencil"></i>
+          <i if.bind="!isReadOnly" class="fa fa-pencil"></i>
           David Bowie
-          <span class="caret"></span>
+          <span if.bind="!isReadOnly" class="caret"></span>
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <ul if.bind="!isReadOnly" class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li><a href="#"><i class="fa fa-fw fa-pencil"></i> Change Username</a></li>
         <li><a href="#"><i class="fa fa-fw fa-photo"></i> Change Avatar</a></li>
       </ul>
@@ -33,7 +33,8 @@
   </div>
 
 
-  <h1 class="display-inline-block">${title}</h1>
+  <h1 if.bind="!isReadOnly" class="display-inline-block">${title}</h1>
+  <h1 if.bind="isReadOnly" class="display-inline-block">${title_isReadOnly}</h1>
   <btn-xc-all wrapper-id="user-panels"></btn-xc-all>
 
   <form role="form" class="form-horizontal" id="user-panels" if.bind="user && profile">

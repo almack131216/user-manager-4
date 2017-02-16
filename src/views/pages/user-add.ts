@@ -23,13 +23,14 @@ export class UserAdd {
   @bindable profile = null;
   @bindable currentUser = null;
   @bindable isReadOnly = null;
-  
+
   routeConfig;
   originalUser;
   savedData;
   isSavingData;
   
   title = 'Edit User'
+  title_isReadOnly = 'View User';
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
     this.api = api;
