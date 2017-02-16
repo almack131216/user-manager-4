@@ -58,10 +58,9 @@
                     <table class="table table-striped" if.bind="users && filters" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
                         <thead>
                             <tr>
-                                <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
                                 <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login</th>
                                 <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
-                                <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Surname</th>
+                                <th aut-sort="key: lastName; default: asc" if.bind="isNotDisabled('lastName')">Surname</th>
                                 <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">Email</th>
                                 <th aut-sort="key: isMember" if.bind="isNotDisabled('isMember')">Profile</th>
                                 <th aut-sort="key: isActive" if.bind="isNotDisabled('isActive')">Status</th>
@@ -70,8 +69,10 @@
                         </thead>
                         <tbody>
                             <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
-                                <td if.bind="isNotDisabled('id')">${user.id}</td>
-                                <td if.bind="isNotDisabled('loginName')">${user.loginName}</td>
+                                <td if.bind="isNotDisabled('loginName')">
+                                    <a if.bind="user.isMember" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit', readonly:true}" title="View member">${user.loginName}</a>
+                                    <span if.bind="!user.isMember">${user.loginName}</span>
+                                </td>
                                 <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
                                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
                                 <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>
