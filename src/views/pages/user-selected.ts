@@ -36,23 +36,16 @@ export class UserSelected {
     this.routeConfig = routeConfig;
     console.log('activate: ' + params.id + ' (' + params.editType + '), readonly: ' + params.isReadOnly);
 
-    this.api.apiCall('lookups',params.id)
-      .then(apiResultData => this.myLookups = apiResultData)
-      .then(() => {
-        this.myLookups = this.myLookups['lookups'];
-        //alert('user-selected.ts: ' + this.myLookups.languages);
-        //alert('user-selected -> all lookups: ' + this.myLookups['hubs']);
-      });
-
-
     return this.api.apiCall('user-selected',params.id)
     .then(user => {
       if (params.editType) this.editType = params.editType;
       if (params.readonly) this.isReadOnly = true;
-      this.user = <User>user;
+      this.user = user;
       //alert(JSON.stringify(this.user));
       //console.log(JSON.stringify(this.user));
       //this.user.regionId = this.user['region'].id;
+      this.myLookups = this.user['lookups'];
+
       this.profile = {
         regionId: this.user['profile']['region'] ? this.user['profile']['region'].id : null,
         hubId: this.user['profile']['hub'] ? this.user['profile']['hub'].id : null,

@@ -1676,10 +1676,9 @@ define('views/pages/user-add',["require", "exports", "aurelia-framework", "aurel
     ], UserAdd.prototype, "myLookups", void 0);
     UserAdd = __decorate([
         aurelia_framework_1.inject(web_api_users_1.WebAPIUsers),
-        __metadata("design:paramtypes", [typeof (_a = typeof web_api_users_1.WebAPIUsers !== "undefined" && web_api_users_1.WebAPIUsers) === "function" && _a || Object, aurelia_event_aggregator_1.EventAggregator])
+        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator])
     ], UserAdd);
     exports.UserAdd = UserAdd;
-    var _a;
 });
 
 define('views/pages/user-no-selection',["require", "exports"], function (require, exports) {
@@ -1719,11 +1718,6 @@ define('views/pages/user-selected',["require", "exports", "aurelia-framework", "
             var _this = this;
             this.routeConfig = routeConfig;
             console.log('activate: ' + params.id + ' (' + params.editType + '), readonly: ' + params.isReadOnly);
-            this.api.apiCall('lookups', params.id)
-                .then(function (apiResultData) { return _this.myLookups = apiResultData; })
-                .then(function () {
-                _this.myLookups = _this.myLookups['lookups'];
-            });
             return this.api.apiCall('user-selected', params.id)
                 .then(function (user) {
                 if (params.editType)
@@ -1731,6 +1725,7 @@ define('views/pages/user-selected',["require", "exports", "aurelia-framework", "
                 if (params.readonly)
                     _this.isReadOnly = true;
                 _this.user = user;
+                _this.myLookups = _this.user['lookups'];
                 _this.profile = {
                     regionId: _this.user['profile']['region'] ? _this.user['profile']['region'].id : null,
                     hubId: _this.user['profile']['hub'] ? _this.user['profile']['hub'].id : null,
