@@ -1,0 +1,13 @@
+<template>
+
+    <require from="../inputs/form-radio"></require>
+
+    <div class="col-xs-12">
+        <form-radio inp-name.bind="twic_card"
+            inp-label="Hold a TWIC Card"
+            model.two-way="user.twic_card.value"
+            expiry-date.two-way="user.twic_card.expiryDate"
+            init-selected.two-way="user.twic_card.value"></form-radio>
+    </div>
+
+</template>

@@ -8,7 +8,10 @@ export class UserPanelTraining {
     @bindable user;
     @bindable profile;
     @bindable isReadOnly = null;
+<<<<<<< HEAD
     @bindable myLookups;
+=======
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
 
     public CV = CV;
     message = CV.MSG_TRAINING;

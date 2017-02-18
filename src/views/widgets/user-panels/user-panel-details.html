@@ -7,8 +7,11 @@
     <require from="../../../resources/format/json"></require>
 
     <!--? user-panel-details.html | isReadOnly: ${isReadOnly} !-->
+<<<<<<< HEAD
 
     <!--<pre>${myLookups.hubs & json}</pre>-->
+=======
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
 
     <form-input name="firstName" model.two-way="user.user.firstName" inp-label="First Name" is-readonly.bind="true"></form-input>
     <form-input name="lastName" model.two-way="user.user.lastName" inp-label="Last Name" is-readonly.bind="true"></form-input>
@@ -32,7 +35,11 @@
      <pre if.bind="tmpShowLookupsDebug">${lkp_coatSizes & json}</pre>
 
 
+<<<<<<< HEAD
     <form-select if.bind="myLookups.regions" name="region"
+=======
+    <form-select if.bind="lkp_regions" name="region"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.regionId"
         options.bind="myLookups.regions"        
         autocomplete.bind="true"
@@ -41,7 +48,11 @@
         is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="profile.regionId"-->
     
+<<<<<<< HEAD
     <form-select if.bind="myLookups.hubs" inp-label="hub"
+=======
+    <form-select if.bind="lkp_hub" inp-label="hub"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.hubId"
         options.bind="myLookups.hubs"        
         init-selected.two-way="profile.hubId"
@@ -53,7 +64,11 @@
   
      <div class="divider"></div>
      
+<<<<<<< HEAD
     <form-select if.bind="myLookups.segments" name="segment"
+=======
+    <form-select if.bind="lkp_segment" name="segment"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.segmentId"
         options.bind="myLookups.segments"              
         init-selected.two-way="profile.segmentId"
@@ -62,7 +77,11 @@
         is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.segment.id"  -->
 
+<<<<<<< HEAD
     <form-select if.bind="myLookups.entities" inp-label="Entity"
+=======
+    <form-select if.bind="lkp_entity" inp-label="Entity"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.entityId"
         options.bind="myLookups.entities"       
         init-selected.two-way="profile.entityId"
@@ -79,7 +98,11 @@
 
     <div class="divider"></div>
 
+<<<<<<< HEAD
     <form-select if.bind="myLookups.primaryPositions" inp-label="Primary ICS"
+=======
+    <form-select if.bind="lkp_primaryPositions" inp-label="Primary ICS"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.primaryPositionId"
         options.bind="myLookups.primaryPositions"        
         autocomplete.bind="true"
@@ -88,7 +111,11 @@
         is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.profile.primaryPosition.id"-->
 
+<<<<<<< HEAD
     <form-select if.bind="myLookups.secondaryPositions" inp-label="Secondary ICS"
+=======
+    <form-select if.bind="lkp_secondaryPositions" inp-label="Secondary ICS"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.secondaryPosition"
         options.bind="myLookups.secondaryPositions"                
         init-selected.two-way="profile.secondaryPosition"
@@ -100,7 +127,11 @@
 
     <div class="divider"></div>
     
+<<<<<<< HEAD
     <form-select if.bind="myLookups.offices" inp-label="BP Office"
+=======
+    <form-select if.bind="lkp_bp_office_address" inp-label="BP Office"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.officeId"
         options.bind="myLookups.offices"        
         autocomplete.bind="true"
@@ -111,7 +142,11 @@
 
     <div class="divider"></div>
 
+<<<<<<< HEAD
     <form-select if.bind="myLookups.coatSizes" name="coatSize" inp-label="Coat Size"
+=======
+    <form-select if.bind="lkp_coatSizes" name="coatSize" inp-label="Coat Size"
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
         model.two-way="profile.coatSizeId"
         options.bind="myLookups.coatSizes"        
         init-selected.two-way="profile.coatSizeId"

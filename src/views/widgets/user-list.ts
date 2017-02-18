@@ -36,6 +36,7 @@ export class UserList {
     rolesArrDynamic = [];
 
     router;
+    lkp_all;
 
     searchFor_active;
     searchFor_name;
@@ -60,9 +61,40 @@ export class UserList {
         // });
         this.lookups = lookups;
 
+<<<<<<< HEAD
         this.isAllChecked = false;
 
         this.loadUserList({});
+=======
+        ///tmp
+        this.filter_memberType = [
+          { "value": true, "name": "Members" },
+          { "value": false, "name": "Non-members" }
+        ]
+
+        this.filter_active = [
+          { "value": true, "name": "Active" },
+          { "value": false, "name": "Archived" }
+        ]
+
+        this.lkp_role = [
+          { "value": 1, "name": "Viewer" },
+          { "value": 3, "name": "Admin" }
+        ]
+
+        if(!this.lookups.filter_memberType){
+            //alert('? user-list.ts | get Lookups...');
+            this.api.getLookups()
+                .then(lkp_all => this.lkp_all = lkp_all['lookups'])
+                .then(() =>{
+                    //alert('lkp_all: ' + JSON.stringify(this.lkp_all) );
+                });
+        }
+
+        this.api.getUserList()
+            .then(users => this.users = users)
+            .then(() => this.populateRoleFilterFromList());
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
 
         this.router = router;
 

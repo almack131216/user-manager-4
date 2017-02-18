@@ -33,6 +33,8 @@ export class App {
   isReader
   isEditor
 
+  public lkp_all;
+
 
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
@@ -55,6 +57,14 @@ export class App {
         this.isEditor = this.currentUser.isEditor
       });
 
+<<<<<<< HEAD
+=======
+      this.api.getLookups()
+      .then(lkp_all => this.lkp_all = lkp_all)
+      .then(() => {
+        //alert('loaded')
+      });
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
   }
 
 
@@ -64,7 +74,11 @@ export class App {
       { route: ['', 'welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Home', settings: { data: { isMemberOnly: false } } },
       { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: { data: { isMemberOnly: true } }, xxx: true },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'Team' },
+<<<<<<< HEAD
       { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', settings: { data: { isMemberOnly: true } }, title: 'Edit' },
+=======
+      { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' },
+>>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
       { route: 'users/:id/:editType/:readonly', moduleId: './views/pages/user-selected', name: 'user-read', title: 'Read' }
       // { route: 'users/add', moduleId: './views/pages/user-add', name: 'user-add', nav: true, title: 'Add User' },
       // { route: 'dialog-demo', name: 'dialog-demo', moduleId: './dialog-demo/dialog-demo', nav: true, title: 'Dialog Demo' }
