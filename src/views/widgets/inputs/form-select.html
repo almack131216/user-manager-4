@@ -1,4 +1,4 @@
-<template class="${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''} ${inpClass}">
+<template class="${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !custReadonly ? 'is-mandatory' : ''} ${inpClass}">
 
     <require from="../filter"></require>
     <require from="../../../resources/select2"></require>
@@ -18,13 +18,13 @@
         <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
         <!--propArr: ${propArr[0]} | ${propArr[1]}-->
 
-        <!--<input if.bind="isReadonly" type="text" value.bind="model" class="form-control" placeholder.bind="inpPlaceholder" readonly>-->
-<!--if.bind="!isReadonly"-->
+        <!--<input if.bind="custReadonly" type="text" value.bind="model" class="form-control" placeholder.bind="inpPlaceholder" readonly>-->
+<!--if.bind="!custReadonly"-->
         <select 
-            reaonly.bind="isReadonly"
+            reaonly.bind="custReadonly"
             class="form-control"
             value.bind="initSelected"
-            disabled.bind="!isEnabled || isReadonly"
+            disabled.bind="!isEnabled || custReadonly"
             selected.two-way="selected"
             change.delegate="changeCallback($event)"
             >

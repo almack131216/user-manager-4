@@ -16,7 +16,7 @@ export class FormSelect {
     @bindable isMandatory = null;
     @bindable name = null;
     @bindable inpClass;
-    @bindable isReadonly = null;
+    @bindable custReadonly = null;
 
     @bindable
     public initSelected: null;

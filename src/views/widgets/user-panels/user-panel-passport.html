@@ -26,7 +26,7 @@
                             init-selected.two-way="profile.passports[$index].typeValue"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="isReadOnly"></form-select>
+                            cust-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.passports[$index].type.value"-->
                     </td>
                     <td>
@@ -34,7 +34,7 @@
                             cust-label="Passport Number"
                             model.two-way="profile.passports[$index].number"
                             is-mandatory.bind="true" input-only="true"
-                            is-readonly.bind="isReadOnly"></form-input>
+                            cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
                         <form-select cust-name.bind="['passportNationality_' + $index]"
@@ -45,7 +45,7 @@
                             init-selected.two-way="profile.passports[$index].countryId"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="isReadOnly"></form-select>
+                            cust-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.passports[$index].country.id"-->
                     </td>
                     <td>
@@ -55,7 +55,7 @@
                             model.two-way="profile.passports[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="isReadOnly"></form-input>
+                            cust-readonly.bind="isReadOnly"></form-input>
                     </td>
 
                 </tr>

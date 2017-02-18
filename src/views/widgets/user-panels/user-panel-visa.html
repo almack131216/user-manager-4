@@ -25,7 +25,7 @@
                             init-selected.two-way="profile.visas[$index].countryId"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="isReadOnly"></form-select>
+                            cust-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.visas[$index].country.id"-->
                     </td>
                     <td>
@@ -38,7 +38,7 @@
                             init-selected.two-way="profile.visas[$index].typeValue"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="isReadOnly"></form-select>
+                            cust-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.visas[$index].type.value"-->
                     </td>
                     <td>
@@ -48,14 +48,14 @@
                             model.two-way="profile.visas[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="isReadOnly"></form-input>
+                            cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
                         <form-checkbox cust-name.bind="['visaMultiple_' + $index]"
                             cust-label="Multiple Visas"
                             model.two-way="profile.visas[$index].multipleEntry"
                             init-selected.two-way="profile.visas[$index].multipleEntry"
-                            is-readonly.bind="isReadOnly"></form-checkbox>
+                            cust-readonly.bind="isReadOnly"></form-checkbox>
                     </td>
 
                 </tr>

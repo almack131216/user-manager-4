@@ -22,7 +22,7 @@ export class FormInput {
     @bindable isMemberOnly = null;
 
     @bindable isEnabled = true;//xxx
-    @bindable isReadonly = false;//xxx
+    @bindable custReadonly = false;//xxx
 
     @bindable name = null;//xxx
     @bindable value = null;
@@ -52,7 +52,7 @@ export class FormInput {
         //console.log('[form-inputs] created: ' + this.name + ' > ' + CV.myLabels[this.custName]);
         if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;// this.tmpCreateLabel(this.name);
         if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.custLabel;
-        if(this.isReadonly) this.isMandatory = false;        
+        if(this.custReadonly) this.isMandatory = false;        
     }
 
 }

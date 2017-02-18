@@ -1,7 +1,7 @@
-<template class="${inputOnly ? 'form-group-input-only' : 'form-group form-cust-wrap'} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}">
+<template class="${inputOnly ? 'form-group-input-only' : 'form-group form-cust-wrap'} ${isMandatory && !custReadonly ? 'is-mandatory' : ''}">
 
     <label class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
-        <input type="checkbox" name.bind="custName" model.bind="true" checked.bind="model">
+        <input type="checkbox" name.bind="custName" model.bind="true" checked.bind="model" disabled.bind="custReadonly || isReadOnly">
         ${custLabel}
     </label>
 

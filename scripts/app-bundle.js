@@ -1286,265 +1286,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('_excess-ref/web-api-users',["require", "exports", "aurelia-fetch-client", "aurelia-framework", "aurelia-router", "jquery"], function (require, exports, aurelia_fetch_client_1, aurelia_framework_1, aurelia_router_1) {
-    "use strict";
-    var latency = 200;
-    var id = 0;
-    var users = null;
-    var usersArr = [];
-    var results = null;
-    var myProfile = null;
-    var hw_useJson = false;
-    var path_api = '../../MRT.Api.Web';
-    var profileUrl = path_api + '/views/global';
-    var views_welcome = path_api + '/views/welcome';
-    var data_users_all = path_api + '/data/users/query';
-    var views_profileform_X = path_api + '/views/profileform/';
-    var data_users_X = path_api + '/data/users/';
-    var ldap_query_limit = path_api + '/ldap/query?limit=5';
-    var ldap_query_ntId = path_api + '/ldap/query';
-    var delete_users_X = path_api + '/data/users/';
-    var delete_multiple = path_api + '/data/users';
-    var WebAPIUsers = (function () {
-        function WebAPIUsers(http, router) {
-            this.isRequesting = false;
-            this.usersArr = [];
-            http.configure(function (config) {
-                config
-                    .useStandardConfiguration()
-                    .withDefaults({
-                    mode: 'cors',
-                    cache: 'default',
-                    body: {},
-                    headers: {
-                        'TimeZone': new Date().getTimezoneOffset(),
-                        'Content-type': 'application/json',
-                        'Accept': 'application/json'
-                    }
-                });
-            });
-            this.http = http;
-            this.router = router;
-        }
-        WebAPIUsers.prototype.getGlobal = function () {
-            this.isRequesting = true;
-            var tmpUrl = profileUrl;
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-global.json';
-            var data = null;
-            return $.ajax({
-                type: 'GET',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) {
-                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-                },
-                success: function (data, textStatus, jqXHR) {
-                    var currentUser = data;
-                }
-            });
-        };
-        WebAPIUsers.prototype.getLookups = function (id) {
-            this.isRequesting = true;
-            var tmpUrl = path_api + '/views/profileform/' + id + '?includeLookups=true';
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-lookups.json';
-            var data = null;
-            return $.ajax({
-                type: 'GET',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
-            });
-        };
-        WebAPIUsers.prototype.deleteMultipleUsers = function (data) {
-            this.isRequesting = true;
-            var tmpUrl = delete_multiple;
-            alert(JSON.stringify(data));
-            return $.ajax({
-                type: 'DELETE',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
-            });
-        };
-        WebAPIUsers.prototype.getUserList = function (data) {
-            this.isRequesting = true;
-            var tmpUrl = data_users_all;
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-all-users.json';
-            return $.ajax({
-                type: 'SEARCH',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
-            });
-        };
-        WebAPIUsers.prototype.getUserToAddList = function () {
-            this.isRequesting = true;
-            var tmpUrl = ldap_query_limit;
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-list-add-users.json';
-            var data = {};
-            return $.ajax({
-                type: 'SEARCH',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
-            });
-        };
-        WebAPIUsers.prototype.getUserToAddList_search = function (getType, getStr) {
-            this.isRequesting = true;
-            var tmpUrl = ldap_query_ntId;
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-user-to-add.json';
-            var data = {};
-            if (getType == 'name') {
-                data = { name: getStr };
-            }
-            else {
-                data = { ntId: getStr };
-            }
-            return $.ajax({
-                type: 'SEARCH',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
-            });
-        };
-        WebAPIUsers.prototype.getHomepageData = function () {
-            this.isRequesting = true;
-            var tmpUrl = views_welcome;
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-welcome.json';
-            var data = null;
-            return $.ajax({
-                type: 'GET',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
-            });
-        };
-        WebAPIUsers.prototype.getUserDetails = function (id) {
-            console.log('getUserDetails: ' + id);
-            this.isRequesting = true;
-            var tmpUrl = views_profileform_X + id + '?includeLookups=true';
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-user.json';
-            var data = null;
-            return $.ajax({
-                type: 'GET',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) {
-                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-                },
-                success: function (data, textStatus, jqXHR) {
-                    var currentUser = data;
-                }
-            });
-        };
-        WebAPIUsers.prototype.getUserRole = function (id) {
-            console.log('getUserRole: ' + id);
-            this.isRequesting = true;
-            var tmpUrl = data_users_X + id;
-            if (hw_useJson)
-                tmpUrl = 'src/api/api-user.json';
-            var data = null;
-            return $.ajax({
-                type: 'GET',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) {
-                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-                },
-                success: function (data, textStatus, jqXHR) {
-                    var currentUser = data;
-                }
-            });
-        };
-        WebAPIUsers.prototype.navigateTo = function (getUrl) {
-            this.router.navigate(getUrl);
-        };
-        WebAPIUsers.prototype.getUserToAdd_addUser = function (data) {
-            this.isRequesting = true;
-            var tmpUrl = path_api + '/data/users';
-            return $.ajax({
-                type: 'POST',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) {
-                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-                },
-                success: function (data, textStatus, jqXHR) {
-                }
-            });
-        };
-        WebAPIUsers.prototype.saveUserProfile = function (id, data) {
-            console.log('saveUserProfile... (' + id + ')');
-            this.isRequesting = true;
-            var tmpUrl = path_api + '/data/users/' + id + '/profile';
-            return $.ajax({
-                type: 'POST',
-                url: tmpUrl,
-                data: data ? JSON.stringify(data) : null,
-                contentType: 'application/json',
-                beforeSend: function (request) {
-                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-                },
-                success: function (data, textStatus, jqXHR) {
-                    var currentUser = data;
-                }
-            });
-        };
-        WebAPIUsers.prototype.deleteUser = function (id) {
-            console.log('saveUserProfile... (' + id + ')');
-            this.isRequesting = true;
-            var tmpUrl = delete_users_X + id;
-            return $.ajax({
-                type: 'DELETE',
-                url: tmpUrl,
-                data: null,
-                contentType: 'application/json',
-                beforeSend: function (request) {
-                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-                },
-                success: function (data, textStatus, jqXHR) {
-                    var currentUser = data;
-                }
-            });
-        };
-        WebAPIUsers.prototype.emailUser = function (getEmailAddress) {
-            console.log('mailto:' + getEmailAddress);
-        };
-        return WebAPIUsers;
-    }());
-    WebAPIUsers = __decorate([
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [aurelia_fetch_client_1.HttpClient, aurelia_router_1.Router])
-    ], WebAPIUsers);
-    exports.WebAPIUsers = WebAPIUsers;
-});
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 define('resources/elements/loading-indicator',["require", "exports", "nprogress", "aurelia-framework"], function (require, exports, nprogress, aurelia_framework_1) {
     "use strict";
     var LoadingIndicator = (function () {
@@ -1718,9 +1459,10 @@ define('views/pages/user-add',["require", "exports", "aurelia-framework", "aurel
     ], UserAdd.prototype, "myLookups", void 0);
     UserAdd = __decorate([
         aurelia_framework_1.inject(web_api_users_1.WebAPIUsers),
-        __metadata("design:paramtypes", [web_api_users_1.WebAPIUsers, aurelia_event_aggregator_1.EventAggregator])
+        __metadata("design:paramtypes", [typeof (_a = typeof web_api_users_1.WebAPIUsers !== "undefined" && web_api_users_1.WebAPIUsers) === "function" && _a || Object, aurelia_event_aggregator_1.EventAggregator])
     ], UserAdd);
     exports.UserAdd = UserAdd;
+    var _a;
 });
 
 define('views/pages/user-no-selection',["require", "exports"], function (require, exports) {
@@ -2545,7 +2287,7 @@ define('views/widgets/inputs/form-checkbox',["require", "exports", "aurelia-fram
         function FormCheckbox(model) {
             this.custLabel = null;
             this.isMandatory = null;
-            this.isReadonly = null;
+            this.custReadonly = null;
         }
         FormCheckbox.prototype.activate = function (model) {
         };
@@ -2577,7 +2319,7 @@ define('views/widgets/inputs/form-checkbox',["require", "exports", "aurelia-fram
     __decorate([
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
-    ], FormCheckbox.prototype, "isReadonly", void 0);
+    ], FormCheckbox.prototype, "custReadonly", void 0);
     __decorate([
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
@@ -2752,7 +2494,7 @@ define('views/widgets/inputs/form-input',["require", "exports", "aurelia-framewo
             this.isMandatory = null;
             this.isMemberOnly = null;
             this.isEnabled = true;
-            this.isReadonly = false;
+            this.custReadonly = false;
             this.name = null;
             this.value = null;
             this.inputOnly = false;
@@ -2769,7 +2511,7 @@ define('views/widgets/inputs/form-input',["require", "exports", "aurelia-framewo
                 this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;
             if (!this.inpPlaceholder)
                 this.inpPlaceholder = "Enter " + this.custLabel;
-            if (this.isReadonly)
+            if (this.custReadonly)
                 this.isMandatory = false;
         };
         return FormInput;
@@ -2821,7 +2563,7 @@ define('views/widgets/inputs/form-input',["require", "exports", "aurelia-framewo
     __decorate([
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
-    ], FormInput.prototype, "isReadonly", void 0);
+    ], FormInput.prototype, "custReadonly", void 0);
     __decorate([
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
@@ -2948,7 +2690,7 @@ define('views/widgets/inputs/form-select',["require", "exports", "aurelia-framew
             this.inpPlaceholder = null;
             this.isMandatory = null;
             this.name = null;
-            this.isReadonly = null;
+            this.custReadonly = null;
             this.propArr = ['id', 'name'];
             this.options = [];
             this.inputOnly = false;
@@ -3024,7 +2766,7 @@ define('views/widgets/inputs/form-select',["require", "exports", "aurelia-framew
     __decorate([
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
-    ], FormSelect.prototype, "isReadonly", void 0);
+    ], FormSelect.prototype, "custReadonly", void 0);
     __decorate([
         aurelia_framework_1.bindable,
         __metadata("design:type", void 0)
@@ -7680,6 +7422,265 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+define('_excess-ref/web-api-users',["require", "exports", "aurelia-fetch-client", "aurelia-framework", "aurelia-router", "jquery"], function (require, exports, aurelia_fetch_client_1, aurelia_framework_1, aurelia_router_1) {
+    "use strict";
+    var latency = 200;
+    var id = 0;
+    var users = null;
+    var usersArr = [];
+    var results = null;
+    var myProfile = null;
+    var hw_useJson = false;
+    var path_api = '../../MRT.Api.Web';
+    var profileUrl = path_api + '/views/global';
+    var views_welcome = path_api + '/views/welcome';
+    var data_users_all = path_api + '/data/users/query';
+    var views_profileform_X = path_api + '/views/profileform/';
+    var data_users_X = path_api + '/data/users/';
+    var ldap_query_limit = path_api + '/ldap/query?limit=5';
+    var ldap_query_ntId = path_api + '/ldap/query';
+    var delete_users_X = path_api + '/data/users/';
+    var delete_multiple = path_api + '/data/users';
+    var WebAPIUsers = (function () {
+        function WebAPIUsers(http, router) {
+            this.isRequesting = false;
+            this.usersArr = [];
+            http.configure(function (config) {
+                config
+                    .useStandardConfiguration()
+                    .withDefaults({
+                    mode: 'cors',
+                    cache: 'default',
+                    body: {},
+                    headers: {
+                        'TimeZone': new Date().getTimezoneOffset(),
+                        'Content-type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+            });
+            this.http = http;
+            this.router = router;
+        }
+        WebAPIUsers.prototype.getGlobal = function () {
+            this.isRequesting = true;
+            var tmpUrl = profileUrl;
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-global.json';
+            var data = null;
+            return $.ajax({
+                type: 'GET',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) {
+                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var currentUser = data;
+                }
+            });
+        };
+        WebAPIUsers.prototype.getLookups = function (id) {
+            this.isRequesting = true;
+            var tmpUrl = path_api + '/views/profileform/' + id + '?includeLookups=true';
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-lookups.json';
+            var data = null;
+            return $.ajax({
+                type: 'GET',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
+            });
+        };
+        WebAPIUsers.prototype.deleteMultipleUsers = function (data) {
+            this.isRequesting = true;
+            var tmpUrl = delete_multiple;
+            alert(JSON.stringify(data));
+            return $.ajax({
+                type: 'DELETE',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
+            });
+        };
+        WebAPIUsers.prototype.getUserList = function (data) {
+            this.isRequesting = true;
+            var tmpUrl = data_users_all;
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-all-users.json';
+            return $.ajax({
+                type: 'SEARCH',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
+            });
+        };
+        WebAPIUsers.prototype.getUserToAddList = function () {
+            this.isRequesting = true;
+            var tmpUrl = ldap_query_limit;
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-list-add-users.json';
+            var data = {};
+            return $.ajax({
+                type: 'SEARCH',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
+            });
+        };
+        WebAPIUsers.prototype.getUserToAddList_search = function (getType, getStr) {
+            this.isRequesting = true;
+            var tmpUrl = ldap_query_ntId;
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-user-to-add.json';
+            var data = {};
+            if (getType == 'name') {
+                data = { name: getStr };
+            }
+            else {
+                data = { ntId: getStr };
+            }
+            return $.ajax({
+                type: 'SEARCH',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
+            });
+        };
+        WebAPIUsers.prototype.getHomepageData = function () {
+            this.isRequesting = true;
+            var tmpUrl = views_welcome;
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-welcome.json';
+            var data = null;
+            return $.ajax({
+                type: 'GET',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) { request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString()); }
+            });
+        };
+        WebAPIUsers.prototype.getUserDetails = function (id) {
+            console.log('getUserDetails: ' + id);
+            this.isRequesting = true;
+            var tmpUrl = views_profileform_X + id + '?includeLookups=true';
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-user.json';
+            var data = null;
+            return $.ajax({
+                type: 'GET',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) {
+                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var currentUser = data;
+                }
+            });
+        };
+        WebAPIUsers.prototype.getUserRole = function (id) {
+            console.log('getUserRole: ' + id);
+            this.isRequesting = true;
+            var tmpUrl = data_users_X + id;
+            if (hw_useJson)
+                tmpUrl = 'src/api/api-user.json';
+            var data = null;
+            return $.ajax({
+                type: 'GET',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) {
+                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var currentUser = data;
+                }
+            });
+        };
+        WebAPIUsers.prototype.navigateTo = function (getUrl) {
+            this.router.navigate(getUrl);
+        };
+        WebAPIUsers.prototype.getUserToAdd_addUser = function (data) {
+            this.isRequesting = true;
+            var tmpUrl = path_api + '/data/users';
+            return $.ajax({
+                type: 'POST',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) {
+                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+                },
+                success: function (data, textStatus, jqXHR) {
+                }
+            });
+        };
+        WebAPIUsers.prototype.saveUserProfile = function (id, data) {
+            console.log('saveUserProfile... (' + id + ')');
+            this.isRequesting = true;
+            var tmpUrl = path_api + '/data/users/' + id + '/profile';
+            return $.ajax({
+                type: 'POST',
+                url: tmpUrl,
+                data: data ? JSON.stringify(data) : null,
+                contentType: 'application/json',
+                beforeSend: function (request) {
+                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var currentUser = data;
+                }
+            });
+        };
+        WebAPIUsers.prototype.deleteUser = function (id) {
+            console.log('saveUserProfile... (' + id + ')');
+            this.isRequesting = true;
+            var tmpUrl = delete_users_X + id;
+            return $.ajax({
+                type: 'DELETE',
+                url: tmpUrl,
+                data: null,
+                contentType: 'application/json',
+                beforeSend: function (request) {
+                    request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var currentUser = data;
+                }
+            });
+        };
+        WebAPIUsers.prototype.emailUser = function (getEmailAddress) {
+            console.log('mailto:' + getEmailAddress);
+        };
+        return WebAPIUsers;
+    }());
+    WebAPIUsers = __decorate([
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [aurelia_fetch_client_1.HttpClient, aurelia_router_1.Router])
+    ], WebAPIUsers);
+    exports.WebAPIUsers = WebAPIUsers;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 define('name-labels',["require", "exports", "aurelia-framework", "./api/web-api-users", "aurelia-http-client"], function (require, exports, aurelia_framework_1, web_api_users_1, aurelia_http_client_1) {
     "use strict";
     var myLabels = {};
@@ -7740,23 +7741,22 @@ define('text!views/ui/ui-loading.html', ['module'], function(module) { module.ex
 define('text!views/widgets/btn-xc-all.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"wrap_xc_btns_all\">\r\n    <a click.trigger=\"xc_all('expand')\">${CV.BTN_XC_Expand}</a>\r\n    <div class=\"divider\"></div>\r\n    <a click.trigger=\"xc_all('collapse')\">${CV.BTN_XC_Collapse}</a>\r\n  </div>\r\n</template>"; });
 define('text!views/widgets/form-user-full-body.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"./user-panels/user-panel-details\"></require>\r\n    <require from=\"./user-panels/user-panel-languages\"></require>    \r\n    <require from=\"./user-panels/user-panel-passport\"></require>\r\n    <require from=\"./user-panels/user-panel-visa\"></require>\r\n    <require from=\"./user-panels/user-panel-training\"></require>\r\n    <require from=\"./user-panels/user-panel-confidential\"></require>\r\n    <require from=\"../../resources/format/json\"></require>\r\n    \r\n    <div class=\"panel panel-default panel-xc\" if.bind=\"user && profile\">\r\n        <div class=\"panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\"\r\n                data-target=\"#${custXcId}\">\r\n            <i if.bind=\"custIcon\" class=\"fa ${custIcon} text-after\"></i>\r\n\r\n            ${custTitle}\r\n             <!--| ${user.firstName} | ${user.lkp_regions_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected}-->\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\"                \r\n                aria-expanded=\"${custXcExpanded}\"\r\n                aria-controls=\"collapseExample\">\r\n            </button>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body row ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n            <div class=\"wrap-fields\">\r\n                <!--? ${myLookups.languages}-->\r\n                <user-panel-details if.bind=\"custBody=='user-details'\" user.bind=\"user\" profile.bind=\"profile\" my-lookups.bind=\"myLookups\" is-read-only.bind=\"isReadOnly\"></user-panel-details>\r\n                <user-panel-languages if.bind=\"custBody=='user-languages'\" user.bind=\"user\" profile.bind=\"profile\" my-lookups.bind=\"myLookups\" is-read-only.bind=\"isReadOnly\"></user-panel-languages>\r\n                <user-panel-passport if.bind=\"custBody=='user-passport'\" user.bind=\"user\" profile.bind=\"profile\" my-lookups.bind=\"myLookups\" is-read-only.bind=\"isReadOnly\"></user-panel-passport>\r\n                <user-panel-visa if.bind=\"custBody=='user-visa'\" user.bind=\"user\" profile.bind=\"profile\" my-lookups.bind=\"myLookups\" is-read-only.bind=\"isReadOnly\"></user-panel-visa>\r\n                <user-panel-training if.bind=\"custBody=='user-training'\" user.bind=\"user\" profile.bind=\"profile\" my-lookups.bind=\"myLookups\" is-read-only.bind=\"isReadOnly\"></user-panel-training>\r\n                <!--<user-panel-confidential if.bind=\"custBody=='user-confidential'\" user.bind=\"user\" profile.bind=\"profile\" my-lookups.bind=\"myLookups\" is-read-only.bind=\"isReadOnly\"></user-panel-confidential>-->\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/list-activity.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../../resources/format/format-date\"></require>\r\n\r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\" data-target=\"#${custXcId}\">\r\n            <i class=\"fa fa-bell text-after\"></i> ${title}\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\" aria-expanded=\"${custXcExpanded}\" aria-controls=\"collapseExample\">\r\n            </button>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-12\">\r\n                    <table if.bind=\"apiData\" class=\"table table-striped margin-top-1\" aurelia-table=\"data.bind: apiData; display-data.bind: $displayData;\">\r\n                        <thead>\r\n                            <tr>\r\n                                <th if.bind=\"custXcId=='xs_recentSubmits'\" aut-sort=\"key: submittedOn; default: desc\">Submitted</th>\r\n                                <th if.bind=\"custXcId=='xs_recentReviews'\" aut-sort=\"key: reviewedOn; default: desc\">Reviewed</th>\r\n                                <th aut-sort=\"key: displayName\">Team Member</th>\r\n                                <th>Action</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr repeat.for=\"row of $displayData\">\r\n                                <td if.bind=\"custXcId=='xs_recentSubmits'\">${row.submittedOn | formatDate}</td>\r\n                                <td if.bind=\"custXcId=='xs_recentReviews'\">${row.reviewedOn | formatDate}</td>\r\n                                <td><a href=\"#\">${row.displayName}</a></td>\r\n                                <td>\r\n                                    <div class=\"btn-group btn-group-xs\" role=\"group\" aria-label=\"User actions\">\r\n                                        <button disabled.bind=\"row.emailAddress==null\" class=\"btn btn-default\" href=\"mailto:${row.emailAddress}\" title=\"Email User\">\r\n                                            <i class=\"fa fa-envelope-o\"></i>\r\n                                        </button>\r\n                                        <a class=\"btn btn-default\" href=\"#\"><i class=\"fa fa-search\"></i></a>\r\n                                    </div>\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/profile-brief.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"./inputs/form-input\"></require>\r\n\r\n    <form role=\"form\" class=\"form-horizontal\" id=\"user-panel-brief\">\r\n        <div class=\"panel panel-strong\">\r\n            <div class=\"panel-heading\">\r\n                <a if.bind=\"custXc\" class=\"collapsable-toggle ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\" data-target=\"#${custXcId}\">\r\n                    <span class=\"panel-title\">${title}</span>\r\n                    <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\" aria-expanded=\"${custXcExpanded}\" aria-controls=\"collapseExample\">\r\n                    </button>\r\n                </a>\r\n\r\n                <span if.bind=\"!custXc\" class=\"panel-title\">${title}</span>\r\n\r\n                <a class=\"btn btn-xs btn-i btn-text pull-right\">\r\n                    <i class=\"fa fa-pencil\"></i>Update\r\n                </a>\r\n            </div>\r\n\r\n            <div id=\"${custXcId}\" class=\"panel-body bg-lightgray ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n\r\n                <div class=\"padding-top-g1\">\r\n                    <div class=\"row\">\r\n                        <form-input cust-label=\"Name\" model.two-way=\"memberArr.displayName\" is-readonly.bind=\"true\"></form-input>\r\n                        <form-input cust-label=\"Manager\" model.two-way=\"memberArr.manager.displayName\" is-readonly.bind=\"true\"></form-input>\r\n                        <form-input cust-type=\"date\" cust-label=\"Updated\" model.two-way=\"memberArr.profile.submittedOn\" is-readonly.bind=\"true\"></form-input>\r\n                    </div>\r\n\r\n                    <!--<div class=\"row\">\r\n                        <div class=\"button-bar col-md-12 text-align-right\">\r\n                            <button class=\"btn btn-success\" click.delegate=\"save()\">Update</button>\r\n                        </div>\r\n                    </div>-->\r\n                </div>\r\n\r\n            </div>\r\n        </div>\r\n\r\n\r\n    </form>\r\n\r\n</template>"; });
+define('text!views/widgets/profile-brief.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"./inputs/form-input\"></require>\r\n\r\n    <form role=\"form\" class=\"form-horizontal\" id=\"user-panel-brief\">\r\n        <div class=\"panel panel-strong\">\r\n            <div class=\"panel-heading\">\r\n                <a if.bind=\"custXc\" class=\"collapsable-toggle ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\" data-target=\"#${custXcId}\">\r\n                    <span class=\"panel-title\">${title}</span>\r\n                    <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\" aria-expanded=\"${custXcExpanded}\" aria-controls=\"collapseExample\">\r\n                    </button>\r\n                </a>\r\n\r\n                <span if.bind=\"!custXc\" class=\"panel-title\">${title}</span>\r\n\r\n                <a class=\"btn btn-xs btn-i btn-text pull-right\">\r\n                    <i class=\"fa fa-pencil\"></i>Update\r\n                </a>\r\n            </div>\r\n\r\n            <div id=\"${custXcId}\" class=\"panel-body bg-lightgray ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n\r\n                <div class=\"padding-top-g1\">\r\n                    <div class=\"row\">\r\n                        <form-input cust-label=\"Name\" model.two-way=\"memberArr.displayName\" cust-readonly.bind=\"true\"></form-input>\r\n                        <form-input cust-label=\"Manager\" model.two-way=\"memberArr.manager.displayName\" cust-readonly.bind=\"true\"></form-input>\r\n                        <form-input cust-type=\"date\" cust-label=\"Updated\" model.two-way=\"memberArr.profile.submittedOn\" cust-readonly.bind=\"true\"></form-input>\r\n                    </div>\r\n\r\n                    <!--<div class=\"row\">\r\n                        <div class=\"button-bar col-md-12 text-align-right\">\r\n                            <button class=\"btn btn-success\" click.delegate=\"save()\">Update</button>\r\n                        </div>\r\n                    </div>-->\r\n                </div>\r\n\r\n            </div>\r\n        </div>\r\n\r\n\r\n    </form>\r\n\r\n</template>"; });
 define('text!views/widgets/prompt.html', ['module'], function(module) { module.exports = "<template>\r\n  <ai-dialog>\r\n    <ai-dialog-body>\r\n      <h2>Dialog</h2>\r\n    </ai-dialog-body>\r\n  </ai-dialog>\r\n</template>"; });
 define('text!views/widgets/user-edit.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../widgets/inputs/form-input\"></require>\r\n\r\n  <div class=\"hdr-wrap\">\r\n    <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-edit.html)</span></h1>\r\n  </div>\r\n\r\n  <!--<p>id: ${user.id}</p>\r\n  <p>originalUser.firstName: ${originalUser.firstName}</p>\r\n  <p>user.firstName: ${user.firstName}</p>-->\r\n\r\n  <div class=\"panel panel-bp margin-x-0 has-button-bar\">\r\n    <div class=\"panel-body row\">\r\n      \r\n      <form role=\"form\" class=\"form-horizontal\">\r\n\r\n        <form-input name=\"firstName\" model.two-way=\"user.firstName\"></form-input>\r\n        <form-input name=\"lastName\" model.two-way=\"user.lastName\" cust-label=\"Last Name\"></form-input>\r\n        <form-input name=\"emailAddress\" model.two-way=\"user.emailAddress\" cust-label=\"emailAddress\"></form-input>\r\n        <form-input name=\"personalNumber\" model.two-way=\"user.personalNumber\" cust-label=\"Telephone\"></form-input>\r\n\r\n      </form>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <div bind.if=\"user\">\r\n    <div class=\"button-bar col-md-12 padding-x-0 text-align-right\">\r\n      <button class=\"btn btn-success\" click.delegate=\"save()\" disabled.bind=\"!canSave\">Save</button>\r\n    </div>\r\n  </div>\r\n\r\n</template>"; });
 define('text!views/widgets/user-list.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../widgets/inputs/form-checkbox\"></require>\r\n    <require from=\"../widgets/inputs/form-select\"></require>\r\n    <require from=\"../../resources/format/format-date\"></require>\r\n    <require from=\"../../resources/format/json\"></require>\r\n    <require from=\"../widgets/cust-span/span-cust-member-status\"></require>\r\n    <require from=\"../widgets/cust-span/span-cust-active-status\"></require>\r\n\r\n    <!--<div class=\"hdr-wrap\" if.bind=\"!custHideTitleBar\">\r\n        <h1 class=\"hdr-inline\">${title}<span class=\"html-file-name\">(user-list.html)</span></h1>\r\n        <a class=\"btn btn-default btn-i pull-right\" click.delegate=\"addUser()\">\r\n            <i class=\"fa fa-plus\"></i>Add User\r\n        </a>\r\n    </div>-->\r\n\r\n    <p if.bind=\"debugShowOutput\">found: ${found} / ${selectedId} / filter: ${filters}</p>\r\n    <p if.bind=\"debugShowOutput\">rolesArrDynamic: ${rolesArrDynamic}</p>\r\n    <p if.bind=\"debugShowOutput\">filters[1].value: ${filters[1].value} / ${rolesArrDynamic}</p>\r\n\r\n    <div class=\"panel panel-default panel-xc\">\r\n        <div class=\"panel-heading ${custXc ? 'cursor-hover' : ''} ${custXcExpanded ? '' : 'collapsed'}\" data-toggle=\"collapse\" data-target=\"#${custXcId}\">\r\n            ${title}\r\n            <button if.bind=\"custXc\" class=\"btn btn-xc_chevron btn-xs\" type=\"button\" aria-expanded=\"${custXcExpanded}\" aria-controls=\"collapseExample\">\r\n            </button>\r\n\r\n            <a class=\"btn btn-xs btn-i btn-text pull-right\" click.delegate=\"addUser()\">\r\n                <i class=\"fa fa-plus\"></i>Add User\r\n            </a>\r\n        </div>\r\n\r\n        <div id=\"${custXcId}\" class=\"panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}\">\r\n            <!-- Filters -->\r\n            <form class=\"row margin-y-g1\" if.bind=\"filters\">\r\n\r\n                <div class=\"col-xs-3\">\r\n                    <input type=\"text\" class=\"form-control\" value.bind=\"searchFor_name\" placeholder=\"Search Name\">\r\n                </div>\r\n                <div class=\"col-xs-3\">\r\n                    <form-select cust-label=\"System Role\" model.two-way=\"searchFor_userTypeValue\" options.bind=\"lookups.userTypes\" prop-arr.bind=\"['value','name']\"\r\n                        autocomplete.bind=\"true\" init-selected.two-way=\"searchFor_userTypeValue\" input-only=\"true\"></form-select>\r\n                </div>\r\n                <div class=\"col-xs-3\">\r\n                    <form-select cust-label=\"Status\" model.two-way=\"searchFor_active\" options.bind=\"lookups.lkp_isActive\" prop-arr.bind=\"['value','name']\"\r\n                        autocomplete.bind=\"true\" init-selected.two-way=\"searchFor_active\" input-only=\"true\"></form-select>\r\n                </div>\r\n                <div class=\"col-xs-3\">\r\n                    <button class=\"btn btn-default\" type=\"submit\" click.delegate=\"loadUserList_prep()\">\r\n                                <i class=\"fa fa-filter text-after\"></i>\r\n                                Filter\r\n                            </button>\r\n                </div>\r\n            </form>\r\n            <!-- (END) Filters -->\r\n\r\n            <!-- Table -->\r\n            <!--? filter_memberType: ${filter_memberType}-->\r\n            <!--filters.bind: filters;-->\r\n            <pre if.bind=\"debugShowOutput\">${users & json}</pre>\r\n\r\n            <div class=\"panel panel-warning\" if.bind=\"checkedItemsArr.length>=1\">\r\n                <div class=\"panel-heading panel-heading-custom\">\r\n                    <span class=\"display-inline-block\"><strong>${checkedItemsArr}</strong> users selected.</span>\r\n                    <button class=\"btn btn-danger\" click.delegate=\"deleteMultiple()\">\r\n                    Delete ${checkedItemsArr.length} users\r\n                </button>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-xs-12\">\r\n                    <table class=\"table table-striped\" if.bind=\"users && filters\" aurelia-table=\"data.bind: users.data; display-data.bind: $displayData; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;\">\r\n                        <thead>\r\n                            <tr>\r\n                                <th><input type=\"checkbox\" value=\"true\" checked.bind=\"isAllChecked\" change.delegate=\"checkAll()\"></th>\r\n                                <th aut-sort=\"key: loginName\" if.bind=\"isNotDisabled('loginName')\">Login</th>\r\n                                <th aut-sort=\"key: firstName\" if.bind=\"isNotDisabled('firstName')\">First Name</th>\r\n                                <th aut-sort=\"key: lastName; default: asc\" if.bind=\"isNotDisabled('lastName')\">Surname</th>\r\n                                <th aut-sort=\"key: emailAddress\" if.bind=\"isNotDisabled('emailAddress')\">Email</th>\r\n                                <th aut-sort=\"key: isMember\" if.bind=\"isNotDisabled('isMember')\">Profile</th>\r\n                                <th aut-sort=\"key: isActive\" if.bind=\"isNotDisabled('isActive')\">Status</th>\r\n                                <th if.bind=\"isNotDisabled('edit')\">Actions</th>\r\n                            </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                            <tr repeat.for=\"user of $displayData\" class=\"${user.id === $parent.selectedId ? 'active' : ''}\">\r\n                                <td> <input type=\"checkbox\" value=\"true\" checked.bind=\"user.checked\" change.delegate=\"checkMe(user.id)\"\r\n                                    /></td>\r\n                                <td if.bind=\"isNotDisabled('loginName')\">\r\n                                    <a if.bind=\"user.isMember\" route-href=\"route: user-read; params.bind: {id:user.id, editType:'edit', readonly:'read'}\" title=\"View member\">${user.loginName}</a>\r\n                                    <span if.bind=\"!user.isMember\">${user.loginName}</span>\r\n                                </td>\r\n                                <td if.bind=\"isNotDisabled('firstName')\">${user.firstName}</td>\r\n                                <td if.bind=\"isNotDisabled('lastName')\">${user.lastName}</td>\r\n                                <td if.bind=\"isNotDisabled('emailAddress')\">${user.emailAddress}</td>\r\n                                <td if.bind=\"isNotDisabled('isMember')\">\r\n                                    <span-cust-member-status is-member.bind=\"user.isMember\" update-pending.bind=\"user.updatePending\" profile-date.bind=\"user.profileDate\"></span-cust-member-status>\r\n                                </td>\r\n                                <td if.bind=\"isNotDisabled('isActive')\">\r\n                                    <span-cust-active-status is-active.bind=\"user.isActive\" review-pending.bind=\"user.reviewPending\" review-result.bind=\"user.reviewResult\"></span-cust-active-status>\r\n                                </td>\r\n                                <td if.bind=\"isNotDisabled('edit')\">\r\n                                    <div class=\"btn-group btn-group-xs\" role=\"group\" aria-label=\"User actions\">\r\n                                        <button disabled.bind=\"!user.isMember\" class=\"btn btn-default\" click.delegate=\"api.navigateTo( 'users/' + user.id + '/edit' )\"\r\n                                            title=\"Edit User\">\r\n                                            <i class=\"fa fa-pencil\"></i>\r\n                                        </button>\r\n                                        <!--<a class=\"btn btn-default\" route-href=\"route: user-edit; params.bind: {id:user.id, editType:'edit'}\" title=\"Full edit\">\r\n                                            <i class=\"fa fa-list\"></i>\r\n                                        </a>-->\r\n                                        <button disabled.bind=\"user.emailAddress==null\" class=\"btn btn-default\" click.delegate=\"api.emailUser(user.emailAddress)\"\r\n                                            title=\"Email User\">\r\n                                                <i class=\"fa fa-envelope-o\"></i>\r\n                                            </button>\r\n                                        <a class=\"btn btn-default\" click.delegate=\"changeUserRoles(user.id)\" title=\"Change User Permissions\">\r\n                                            <i class=\"fa fa-cog\"></i>\r\n                                        </a>\r\n                                        <a class=\"btn btn-default\" click.delegate=\"deleteUser(user.id)\" title=\"Delete User\">\r\n                                            <i class=\"fa fa-trash\"></i>\r\n                                        </a>\r\n                                    </div>\r\n                                </td>\r\n                            </tr>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n            </div>\r\n            <!-- (END) Table -->\r\n\r\n            <!-- Pagination -->\r\n            <div class=\"row margin-bottom-g1 display-none\" if.bind=\"custTablePagination\">\r\n\r\n                <div class=\"col-md-7\">\r\n                    <aut-pagination current-page.bind=\"currentPage\" page-size.bind=\"custTablePageSize\" total-items.bind=\"totalItems\" pagination-size.bind=\"5\"\r\n                        boundary-links.bind=\"true\"> </aut-pagination>\r\n                </div>\r\n\r\n                <div class=\"col-md-5\">\r\n                    <div class=\"form-inline\">\r\n                        <div class=\"form-group pull-right\">\r\n                            <label for=\"custTablePageSize\">Page Size: </label>\r\n                            <select value.bind=\"custTablePageSize\" id=\"custTablePageSize\" class=\"form-control\">\r\n                                <option model.bind=\"5\">5</option>\r\n                                <option model.bind=\"10\">10</option>\r\n                                <option model.bind=\"20\">20</option>\r\n                                <option model.bind=\"50\">50</option>\r\n                                <option model.bind=\"100\">100</option>\r\n                            </select>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <!-- (END) Pagination -->\r\n\r\n        </div>\r\n    </div>\r\n\r\n</template>"; });
 define('text!views/widgets/cust-span/span-cust-active-status.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <span class=\"color-archive\" if.bind=\"!isActive\"><i class=\"fa fa-archive text-after\"></i>Archived</span>\r\n    <span class=\"color-pending\" if.bind=\"isActive && reviewPending\"><i class=\"fa fa-clock-o text-after\"></i>Pending</span>\r\n    <span class=\"color-good\" if.bind=\"isActive && !reviewPending && reviewResult\"><i class=\"fa fa-check text-after\"></i>Approved</span>\r\n    <span class=\"color-danger\" if.bind=\"isActive && !reviewPending && !reviewResult\"><i class=\"fa fa-ban text-after\"></i>Rejected</span>\r\n</template>"; });
 define('text!views/widgets/cust-span/span-cust-member-status.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <span if.bind=\"isMember\" class=\"${updatePending ? 'color-pending' : ''}\">${profileDate | formatDate}</span>\r\n    <span if.bind=\"!isMember\">Viewer</span>\r\n</template>"; });
-define('text!views/widgets/inputs/form-checkbox.html', ['module'], function(module) { module.exports = "<template class=\"${inputOnly ? 'form-group-input-only' : 'form-group form-cust-wrap'} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}\">\r\n\r\n    <label class=\"label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}\">\r\n        <input type=\"checkbox\" name.bind=\"custName\" model.bind=\"true\" checked.bind=\"model\">\r\n        ${custLabel}\r\n    </label>\r\n\r\n</template>"; });
+define('text!views/widgets/inputs/form-checkbox.html', ['module'], function(module) { module.exports = "<template class=\"${inputOnly ? 'form-group-input-only' : 'form-group form-cust-wrap'} ${isMandatory && !custReadonly ? 'is-mandatory' : ''}\">\r\n\r\n    <label class=\"label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}\">\r\n        <input type=\"checkbox\" name.bind=\"custName\" model.bind=\"true\" checked.bind=\"model\" disabled.bind=\"custReadonly || isReadOnly\">\r\n        ${custLabel}\r\n    </label>\r\n\r\n</template>"; });
 define('text!views/widgets/inputs/form-filter-role.html', ['module'], function(module) { module.exports = "<template class=\"input-group\">\r\n    \r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"select2/css/select2.min.css\"></require>\r\n\r\n    <span class=\"input-group-addon\" id=\"basic-addon3\">\r\n        <i class=\"fa fa-filter text-after\"></i>\r\n        ${custLabel}\r\n    </span>\r\n\r\n    <select if.bind=\"!autocomplete\" class=\"form-control\" value.bind=\"initSelected\" disabled.bind=\"!isEnabled\" selected.two-way=\"selected\"\r\n        change.delegate=\"changeCallback($event)\">\r\n        <option value=\"\">${inpPlaceholder}</option>                 \r\n        <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">\r\n            ${option.name}\r\n        </option>\r\n    </select>\r\n\r\n    <select if.bind=\"autocomplete\" class=\"form-control\" id.bind=\"name\" select2.bind=\"selectOptions\" value.bind=\"initSelected\"\r\n        disabled.bind=\"!isEnabled\" change.delegate=\"changeCallback($event)\">\r\n        \r\n        <option value=\"\">${inpPlaceholder}</option>\r\n        <option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option.value\">\r\n            ${option.name}\r\n        </option>\r\n    </select>\r\n\r\n</template>"; });
 define('text!views/widgets/inputs/form-filter-text.html', ['module'], function(module) { module.exports = "<template class=\"input-group\">\r\n    <span class=\"input-group-addon\" id=\"basic-addon3\">\r\n        <i class=\"fa fa-filter text-after\"></i>\r\n        ${custLabel}\r\n    </span>\r\n    <input type=\"text\" value.bind=\"model\" placeholder=\"Enter filter text\" class=\"form-control\" />\r\n</template>"; });
-define('text!views/widgets/inputs/form-input.html', ['module'], function(module) { module.exports = "<template class=\"${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}\">\r\n    \r\n    <require from=\"aurelia-mask/masked-input\"></require>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <label if.bind=\"!inputOnly\" class=\"form-cust-label\" for.bind=\"custName\" title.bind=\"custLabel\">\r\n        ${custLabel}\r\n    </label>\r\n    <!--<span>\r\n        ? ${custName}\r\n    </span>-->\r\n    <div class=\"${!inputOnly ? 'form-cust-input' : ''}\">\r\n        <input if.bind=\"maskPattern=='telephone'\" type=\"custType\" masked=\"value.bind: model; mask.bind: maskPatternTelephone\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"isReadonly || isReadOnly\">\r\n        <input if.bind=\"maskPattern=='telephone-cc'\" type=\"custType\" masked=\"value.bind: model; mask.bind: maskPatternTelephoneCc\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"isReadonly || isReadOnly\">\r\n        <input if.bind=\"custType=='date'\" type=\"custType\" value.bind=\"model | formatDate\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"isReadonly || isReadOnly\">\r\n        <input if.bind=\"!maskPattern && custType=='text'\" type=\"custType\" value.bind=\"model\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"isReadonly || isReadOnly\">\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/inputs/form-radio.html', ['module'], function(module) { module.exports = "<template class=\"${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}\">\r\n\r\n    <!--<require from=\"../../../resources/format/format-date\"></require>-->\r\n    <require from=\"./form-input\"></require>\r\n\r\n    <label if.bind=\"!inputOnly\" class=\"col-xs-8 col-debug\" for.bind=\"inpName\" title.bind=\"custLabel\">\r\n            ${custLabel}\r\n    </label>\r\n    <span class=\"${!inputOnly ? 'col-xs-2' : 'col-xs-6'} col-debug\">\r\n        <input type=\"radio\" name.bind=\"inpName\" model.bind=\"1\" checked.bind=\"model\"> Yes\r\n    </span>\r\n    <span class=\"${!inputOnly ? 'col-xs-2' : 'col-xs-6'} col-debug\">\r\n        <input type=\"radio\" name.bind=\"inpName\" model.bind=\"0\" checked.bind=\"model\"> No\r\n    </span>\r\n    <!--<span if.bind=\"expiryDate\" class=\"col-xs-3 ${expiryDate ? 'col-md-2' : ''} text-align-right col-debug\">\r\n        <input if.bind=\"expiryDate=='--'\" type=\"text\" value=\"--\" class=\"form-control\">\r\n        <input if.bind=\"expiryDate!='--'\" type=\"text\" value.bind=\"expiryDate | formatDate\" class=\"form-control\">\r\n    </span>-->\r\n\r\n</template>"; });
-define('text!views/widgets/inputs/form-select.html', ['module'], function(module) { module.exports = "<template class=\"${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''} ${inpClass}\">\r\n\r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"select2/css/select2.min.css\"></require>\r\n\r\n    <label if.bind=\"!inputOnly\" class=\"form-cust-label\" for.bind=\"name\" title.bind=\"custLabel\">\r\n        ${custLabel}\r\n         <!--| ${model}-->\r\n        <!--${optionFilter ? ' > [' + optionFilter + ']' : ''}-->\r\n    </label>\r\n    <!--<span>\r\n        ? ${custName}\r\n    </span>-->\r\n    <div class=\"${!inputOnly ? 'form-cust-input' : ''}\">\r\n        <!--/ ${changed} / ${initSelected} / ${selected}-->\r\n        <!--selected.two-way=\"selected\" -->\r\n        <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->\r\n        <!--propArr: ${propArr[0]} | ${propArr[1]}-->\r\n\r\n        <!--<input if.bind=\"isReadonly\" type=\"text\" value.bind=\"model\" class=\"form-control\" placeholder.bind=\"inpPlaceholder\" readonly>-->\r\n<!--if.bind=\"!isReadonly\"-->\r\n        <select \r\n            reaonly.bind=\"isReadonly\"\r\n            class=\"form-control\"\r\n            value.bind=\"initSelected\"\r\n            disabled.bind=\"!isEnabled || isReadonly\"\r\n            selected.two-way=\"selected\"\r\n            change.delegate=\"changeCallback($event)\"\r\n            >\r\n\r\n            <option model.bind=\"null\">${inpPlaceholder}</option>\r\n            <!--<option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option[propArr[0]]\">-->\r\n            <option repeat.for=\"option of options | filter:optionFilter[0]:optionFilter[1]\"\r\n                model.bind=\"option[propArr[0]]\"\r\n                css=\"background-color:red\"\r\n                >\r\n                ${option[propArr[1]]}\r\n            </option>\r\n        </select>\r\n\r\n\r\n        <!--<select if.bind=\"autocomplete\" class=\"form-control\"\r\n            id.bind=\"name\"\r\n            select2.bind=\"selectOptions\"\r\n            value.bind=\"initSelected\"\r\n            disabled.bind=\"!isEnabled\"\r\n            change.delegate=\"changeCallback($event)\">\r\n\r\n            <option value=\"\">${inpPlaceholder}</option>\r\n            <option repeat.for=\"option of options | filter:optionFilter[0]:optionFilter[1]\" model.bind=\"option[propArr[0]]\">\r\n                ${option[propArr[1]]}\r\n            </option>\r\n        </select>-->\r\n\r\n    </div>\r\n</template>"; });
-define('text!views/widgets/user-panels/user-panel-confidential.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/constants\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n\r\n    <form-select cust-label=\"Employment Status\"\r\n        model.two-way=\"profile.confidentialData.employmentStatusValue\"\r\n        options.bind=\"myLookups.employmentStatuses\"\r\n        prop-arr.bind=\"['value','name']\"        \r\n        autocomplete.bind=\"true\"\r\n        init-selected.two-way=\"profile.confidentialData.employmentStatusValue\"\r\n        is-mandatory.bind=\"true\"\r\n        is-readonly.bind=\"isReadOnly\"></form-select>\r\n        <!--changed.two-way=\"tmpMemberStatus\"-->\r\n\r\n    <form-input cust-type=\"date\" model.two-way=\"profile.confidentialData.memberSince\" cust-label=\"Member Since\" is-mandatory.bind=\"true\"\r\n        is-readonly.bind=\"isReadOnly\"></form-input>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <form-select cust-label=\"Credentials Level\"\r\n        prop-arr.bind=\"['value','name']\"\r\n        model.two-way=\"profile.confidentialData.credentialLevelValue\"\r\n        options.bind=\"myLookups.credentialLevels\"        \r\n        autocomplete.bind=\"true\"\r\n        init-selected.two-way=\"profile.confidentialData.credentialLevelValue\"\r\n        is-mandatory.bind=\"true\"\r\n        is-readonly.bind=\"isReadOnly\"></form-select>\r\n        <!--changed.two-way=\"user.user.systemRoles.value\"-->\r\n\r\n    <div class=\"divider\"></div>\r\n    <form-input model.two-way=\"profile.confidentialData.field1\" cust-label=\"Confidential Field 1\"\r\n        is-readonly.bind=\"isReadOnly\"></form-input>\r\n\r\n    <div class=\"divider\"></div>\r\n    <form-input model.two-way=\"profile.confidentialData.field2\" cust-label=\"Confidential Field 2\"\r\n        is-readonly.bind=\"isReadOnly\"></form-input>\r\n\r\n</template>"; });
-define('text!views/widgets/user-panels/user-panel-details.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/constants\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"../../../resources/format/json\"></require>\r\n\r\n    <!--? user-panel-details.html | isReadOnly: ${isReadOnly} !-->\r\n\r\n    <!--<pre>${myLookups.hubs & json}</pre>-->\r\n\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"firstName\" model.two-way=\"user.user.firstName\" is-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"lastName\" model.two-way=\"user.user.lastName\" is-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"loginName\" model.two-way=\"user.user.loginName\" is-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"emailAddress\" model.two-way=\"user.user.emailAddress\" is-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n    <pre class=\"col-xs-12\" if.bind=\"CV.debugShowOutput\">? DEV NOTE: SELECT [1,3,8,9] ... SELECTED: ${user.firstName}: ${user.lkp_regions_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected} ?</pre>\r\n\r\n    <!--<div class=\"divider\"></div>\r\n    ? ${user.profile.region.id} > ${user.profile.hub.id} !\r\n     <div class=\"divider\"></div>-->\r\n\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_regions & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_hub & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_entity & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_segment & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_primaryPositions & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_secondaryPositions & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_bp_office_address & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_coatSizes & json}</pre>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.regions\" cust-name=\"lkp_regions\" model.two-way=\"profile.regionId\" options.bind=\"myLookups.regions\"\r\n                autocomplete.bind=\"true\" init-selected.two-way=\"profile.regionId\" is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"profile.regionId\"-->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.hubs\" cust-name=\"lkp_hubs\" model.two-way=\"profile.hubId\" options.bind=\"myLookups.hubs\" init-selected.two-way=\"profile.hubId\"\r\n                option-filter.bind=\"['regionId',profile.regionId]\" is-enabled.bind=\"profile.regionId\" is-mandatory.bind=\"true\"\r\n                is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!-- XXX CR - 170213: changed.two-way=\"profile.hubId\" may be excess -->\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.segments\" cust-name=\"lkp_segments\" model.two-way=\"profile.segmentId\" options.bind=\"myLookups.segments\"\r\n                init-selected.two-way=\"profile.segmentId\" autocomplete.bind=\"true\" is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.segment.id\"  -->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.entities\" cust-name=\"lkp_entities\" model.two-way=\"profile.entityId\" options.bind=\"myLookups.entities\"\r\n                init-selected.two-way=\"profile.entityId\" option-filter.bind=\"['segmentId',profile.segmentId]\" is-enabled.bind=\"profile.segmentId\"\r\n                is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.entity.id\" -->\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"function\" model.two-way=\"profile.function\" is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"location\" model.two-way=\"profile.location\" is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.primaryPositions\" cust-name=\"lkp_primaryPositions\" model.two-way=\"profile.primaryPositionId\"\r\n                options.bind=\"myLookups.primaryPositions\" autocomplete.bind=\"true\" init-selected.two-way=\"profile.primaryPositionId\"\r\n                is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.primaryPosition.id\"-->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.secondaryPositions\" cust-name=\"lkp_secondaryPositions\" model.two-way=\"profile.secondaryPosition\"\r\n                options.bind=\"myLookups.secondaryPositions\" init-selected.two-way=\"profile.secondaryPosition\" option-filter.bind=\"['primaryPositionId',profile.primaryPositionId]\"\r\n                is-enabled.bind=\"profile.primaryPositionId\" is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.secondaryPosition.id\"-->\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.offices\" cust-name=\"lkp_offices\" model.two-way=\"profile.officeId\" options.bind=\"myLookups.offices\"\r\n                autocomplete.bind=\"true\" init-selected.two-way=\"profile.officeId\" is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.office.id\"-->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.coatSizes\" cust-name=\"lkp_coatSizes\" model.two-way=\"profile.coatSizeId\" options.bind=\"myLookups.coatSizes\"\r\n                init-selected.two-way=\"profile.coatSizeId\" is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.coatSize.id\"-->\r\n\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-2 user-panel-table\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Contact</th>\r\n                    <th>&nbsp;</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <td class=\"padding-bottom-0\">\r\n                        <form-input cust-name=\"businessNumber\" model.two-way=\"profile.businessNumber\" mask-pattern=\"telephone\" is-mandatory.bind=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"personalNumber\" model.two-way=\"profile.personalNumber\" mask-pattern=\"telephone\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"officeNumber\" model.two-way=\"profile.officeNumber\" mask-pattern=\"telephone\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"lyncNumber\" model.two-way=\"profile.lyncNumber\" mask-pattern=\"telephone\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"homeNumber\" model.two-way=\"profile.homeNumber\" mask-pattern=\"telephone\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                    <td class=\"padding-bottom-0\">\r\n                        <form-input cust-name=\"manager_displayName\" model.two-way=\"user.user.manager.displayName\" is-readonly.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                        <form-input cust-name=\"manager_emailAddress\" model.two-way=\"user.user.manager.emailAddress\" is-readonly.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                        <form-input cust-name=\"manager_loginName\" model.two-way=\"user.user.manager.loginName\" is-readonly.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                        <form-input cust-name=\"manager_emergencyContactName\" model.two-way=\"profile.emergencyContactName\" is-mandatory.bind=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"manager_emergencyContactNumber\" model.two-way=\"profile.emergencyContactNumber\" mask-pattern=\"telephone\"\r\n                                is-mandatory.bind=\"true\" is-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/user-panels/user-panel-languages.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <!--? languages:  ${profile.languages} !\r\n\r\n<h1>1</h1>\r\n    <ul>\r\n        <li repeat.for=\"row of myLookups.languages\">\r\n            ${row.name}\r\n        </li>\r\n    </ul>\r\n    <h1>1.2 ${profile.languages.length}</h1>\r\n    <ul>\r\n        <li repeat.for=\"row of profile.languages\">\r\n            ${row.name}\r\n        </li>\r\n    </ul>\r\nlkp_languages: ${lkp_languages} / ${myLookups.languages}-->\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-2 user-panel-table\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.language}</th>\r\n                    <th>${CV.myLabels.languageProficiency}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.languages\">\r\n                    <td class=\"padded-cell\">\r\n                        <form-select cust-name.bind=\"['language_' + $index]\"\r\n                            cust-label=\"Language\"\r\n                            input-only=\"true\"\r\n                            model.two-way=\"profile.languages[$index].languageId\"\r\n                            options.bind=\"myLookups.languages\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.languages[$index].languageId\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.languages[$index].language.id\"-->\r\n\r\n                    </td>\r\n                    <td class=\"padded-cell\">\r\n                        <form-select cust-name.bind=\"['languageProficiency_' + $index]\"\r\n                            cust-label=\"Proficiency\"\r\n                            input-only=\"true\"\r\n                            prop-arr.bind=\"['value','name']\"\r\n                            model.two-way=\"profile.languages[$index].proficiencyValue\"\r\n                            options.bind=\"myLookups.languageProficiencies\"                            \r\n                            init-selected.two-way=\"profile.languages[$index].proficiencyValue\"\r\n                            is-enabled.bind=\"profile.languages[$index].languageId\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.languages[$index].proficiency.value\"-->\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n   <div if.bind=\"!isReadOnly\" class=\"col-xs-12 margin-bottom-g1\">\r\n       <!--if.bind=\"$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo\"-->\r\n        <button class=\"btn btn-default btn-sm\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Language\r\n        </button>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/user-panels/user-panel-passport.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../inputs/form-checkbox\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table user-panel-table cols-4 padded-cells\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.passportType}</th>\r\n                    <th>${CV.myLabels.passportNumber}</th>\r\n                    <th>${CV.myLabels.passportNationality}</th>\r\n                    <th>${CV.myLabels.passportExpiryDate}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.passports\">\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['passportType_' + $index]\"\r\n                            cust-label=\"Passport Type\"\r\n                            prop-arr.bind=\"['value','name']\"\r\n                            model.two-way=\"profile.passports[$index].typeValue\"\r\n                            options.bind=\"myLookups.passportTypes\"\r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.passports[$index].typeValue\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.passports[$index].type.value\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input cust-name.bind=\"['passportNumber_' + $index]\"\r\n                            cust-label=\"Passport Number\"\r\n                            model.two-way=\"profile.passports[$index].number\"\r\n                            is-mandatory.bind=\"true\" input-only=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['passportNationality_' + $index]\"\r\n                            cust-label=\"Passport Nationality\"\r\n                            model.two-way=\"profile.passports[$index].countryId\"\r\n                            options.bind=\"myLookups.countries\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.passports[$index].countryId\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.passports[$index].country.id\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input cust-name.bind=\"['passportExpiryDate_' + $index]\"\r\n                            cust-label=\"Passport Expiry Date\"\r\n                            cust-type=\"date\"\r\n                            model.two-way=\"profile.passports[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div if.bind=\"!isReadOnly\" class=\"col-xs-12 margin-bottom-g1\">\r\n        <button class=\"btn btn-default btn-sm btn-i\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Passport\r\n        </button>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/user-panels/user-panel-training.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-radio\"></require>\r\n    <require from=\"../../../resources/format/json\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <div class=\"col-xs-12\" innerhtml.bind=\"message\"></div>\r\n    </div>\r\n\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myLookups.trainings & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myTrainingArr & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myTrainingArrDynamic & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">\r\n        <ul>\r\n            <li repeat.for=\"row of myLookups.trainings\">\r\n                ${row & json}\r\n            </li>\r\n        </ul>\r\n    </pre>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-3 user-panel-table padded-cells\" if.bind=\"myTrainingArr && myLookups.trainings\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.training}</th>\r\n                    <th>${CV.myLabels.attended}</th>\r\n                    <th>${CV.myLabels.expiryDate}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of myLookups.trainings\" if.bind=\"!isReadOnly || isReadOnly && returnTrainingData(row.id,'trainingId')\">\r\n                    <td>\r\n                        <label>${row.name}</label>\r\n                    </td>\r\n                    <td>\r\n                        <span if.bind=\"returnTrainingData(row.id,'trainingId')\">\r\n                            <i class=\"fa fa-check text-after color-good\"></i>\r\n                            ${ returnTrainingData(row.id,'trainingId') }                            \r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        <!--<span>${ profile.trainings[$index] & json }</span>-->\r\n                        <!--${row.id}-->\r\n                        <form-input if.bind=\"returnTrainingData(row.id,'expiresOn')\"\r\n                            cust-name.bind=\"['trainingExpiryDate_' + $index]\"\r\n                            cust-type=\"date\" \r\n                            cust-label=\"Expiry Date\"\r\n                            model.two-way=\"profile.trainings[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"user.trainings[$index].attended || isReadOnly\"></form-input>\r\n                    </td>\r\n                </tr>                \r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n</template>"; });
-define('text!views/widgets/user-panels/user-panel-visa.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../inputs/form-checkbox\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table user-panel-table padded-cells cols-4\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.visaCountry}</th>\r\n                    <th>${CV.myLabels.visaType}</th>\r\n                    <th>${CV.myLabels.expiryDate}</th>\r\n                    <th>${CV.myLabels.visaMultiple}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.visas\">\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['visaCountry_' + $index]\"\r\n                            cust-label=\"Visa Country\"                            \r\n                            model.two-way=\"profile.visas[$index].countryId\"\r\n                            options.bind=\"myLookups.countries\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].countryId\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].country.id\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['visaType_' + $index]\"\r\n                            cust-label=\"Visa Type\"                                                    \r\n                            model.two-way=\"profile.visas[$index].typeValue\"\r\n                            options.bind=\"myLookups.visaTypes\"  \r\n                            prop-arr.bind=\"['value','name']\"                          \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].typeValue\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].type.value\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input cust-name.bind=\"['visaExpiryDate_' + $index]\"\r\n                            cust-label=\"Expiry Date\"\r\n                            cust-type=\"date\"\r\n                            model.two-way=\"profile.visas[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                    <td>\r\n                        <form-checkbox cust-name.bind=\"['visaMultiple_' + $index]\"\r\n                            cust-label=\"Multiple Visas\"\r\n                            model.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            init-selected.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            is-readonly.bind=\"isReadOnly\"></form-checkbox>\r\n                    </td>\r\n\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div if.bind=\"!isReadOnly\" class=\"col-xs-12 margin-bottom-g1\">\r\n        <button class=\"btn btn-default btn-sm btn-i\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Visa\r\n        </button>\r\n    </div>\r\n\r\n\r\n</template>"; });
-//# sourceMappingURL=app-bundle.js.mapdd Visa\r\n        </button>\r\n    </div>\r\n\r\n\r\n</template>"; });
+define('text!views/widgets/inputs/form-input.html', ['module'], function(module) { module.exports = "<template class=\"${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !custReadonly ? 'is-mandatory' : ''}\">\r\n    \r\n    <require from=\"aurelia-mask/masked-input\"></require>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <label if.bind=\"!inputOnly\" class=\"form-cust-label\" for.bind=\"custName\" title.bind=\"custLabel\">\r\n        ${custLabel}\r\n    </label>\r\n    <!--<span>\r\n        ? ${custName}\r\n    </span>-->\r\n    <div class=\"${!inputOnly ? 'form-cust-input' : ''}\">\r\n        <input if.bind=\"maskPattern=='telephone'\" type=\"custType\" masked=\"value.bind: model; mask.bind: maskPatternTelephone\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"custReadonly || isReadOnly\">\r\n        <input if.bind=\"maskPattern=='telephone-cc'\" type=\"custType\" masked=\"value.bind: model; mask.bind: maskPatternTelephoneCc\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"custReadonly || isReadOnly\">\r\n        <input if.bind=\"custType=='date'\" type=\"custType\" value.bind=\"model | formatDate\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"custReadonly || isReadOnly\">\r\n        <input if.bind=\"!maskPattern && custType=='text'\" type=\"custType\" value.bind=\"model\" class=\"form-control\" name.one-way=\"custName\" placeholder.bind=\"inpPlaceholder\" readonly.bind=\"custReadonly || isReadOnly\">\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/widgets/inputs/form-radio.html', ['module'], function(module) { module.exports = "<template class=\"${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !custReadonly ? 'is-mandatory' : ''}\">\r\n\r\n    <!--<require from=\"../../../resources/format/format-date\"></require>-->\r\n    <require from=\"./form-input\"></require>\r\n\r\n    <label if.bind=\"!inputOnly\" class=\"col-xs-8 col-debug\" for.bind=\"inpName\" title.bind=\"custLabel\">\r\n            ${custLabel}\r\n    </label>\r\n    <span class=\"${!inputOnly ? 'col-xs-2' : 'col-xs-6'} col-debug\">\r\n        <input type=\"radio\" name.bind=\"inpName\" model.bind=\"1\" checked.bind=\"model\"> Yes\r\n    </span>\r\n    <span class=\"${!inputOnly ? 'col-xs-2' : 'col-xs-6'} col-debug\">\r\n        <input type=\"radio\" name.bind=\"inpName\" model.bind=\"0\" checked.bind=\"model\"> No\r\n    </span>\r\n    <!--<span if.bind=\"expiryDate\" class=\"col-xs-3 ${expiryDate ? 'col-md-2' : ''} text-align-right col-debug\">\r\n        <input if.bind=\"expiryDate=='--'\" type=\"text\" value=\"--\" class=\"form-control\">\r\n        <input if.bind=\"expiryDate!='--'\" type=\"text\" value.bind=\"expiryDate | formatDate\" class=\"form-control\">\r\n    </span>-->\r\n\r\n</template>"; });
+define('text!views/widgets/inputs/form-select.html', ['module'], function(module) { module.exports = "<template class=\"${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !custReadonly ? 'is-mandatory' : ''} ${inpClass}\">\r\n\r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"select2/css/select2.min.css\"></require>\r\n\r\n    <label if.bind=\"!inputOnly\" class=\"form-cust-label\" for.bind=\"name\" title.bind=\"custLabel\">\r\n        ${custLabel}\r\n         <!--| ${model}-->\r\n        <!--${optionFilter ? ' > [' + optionFilter + ']' : ''}-->\r\n    </label>\r\n    <!--<span>\r\n        ? ${custName}\r\n    </span>-->\r\n    <div class=\"${!inputOnly ? 'form-cust-input' : ''}\">\r\n        <!--/ ${changed} / ${initSelected} / ${selected}-->\r\n        <!--selected.two-way=\"selected\" -->\r\n        <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->\r\n        <!--propArr: ${propArr[0]} | ${propArr[1]}-->\r\n\r\n        <!--<input if.bind=\"custReadonly\" type=\"text\" value.bind=\"model\" class=\"form-control\" placeholder.bind=\"inpPlaceholder\" readonly>-->\r\n<!--if.bind=\"!custReadonly\"-->\r\n        <select \r\n            reaonly.bind=\"custReadonly\"\r\n            class=\"form-control\"\r\n            value.bind=\"initSelected\"\r\n            disabled.bind=\"!isEnabled || custReadonly\"\r\n            selected.two-way=\"selected\"\r\n            change.delegate=\"changeCallback($event)\"\r\n            >\r\n\r\n            <option model.bind=\"null\">${inpPlaceholder}</option>\r\n            <!--<option repeat.for=\"option of options | filter:'parentValue':optionFilter\" model.bind=\"option[propArr[0]]\">-->\r\n            <option repeat.for=\"option of options | filter:optionFilter[0]:optionFilter[1]\"\r\n                model.bind=\"option[propArr[0]]\"\r\n                css=\"background-color:red\"\r\n                >\r\n                ${option[propArr[1]]}\r\n            </option>\r\n        </select>\r\n\r\n\r\n        <!--<select if.bind=\"autocomplete\" class=\"form-control\"\r\n            id.bind=\"name\"\r\n            select2.bind=\"selectOptions\"\r\n            value.bind=\"initSelected\"\r\n            disabled.bind=\"!isEnabled\"\r\n            change.delegate=\"changeCallback($event)\">\r\n\r\n            <option value=\"\">${inpPlaceholder}</option>\r\n            <option repeat.for=\"option of options | filter:optionFilter[0]:optionFilter[1]\" model.bind=\"option[propArr[0]]\">\r\n                ${option[propArr[1]]}\r\n            </option>\r\n        </select>-->\r\n\r\n    </div>\r\n</template>"; });
+define('text!views/widgets/user-panels/user-panel-confidential.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/constants\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n\r\n    <form-select cust-label=\"Employment Status\"\r\n        model.two-way=\"profile.confidentialData.employmentStatusValue\"\r\n        options.bind=\"myLookups.employmentStatuses\"\r\n        prop-arr.bind=\"['value','name']\"        \r\n        autocomplete.bind=\"true\"\r\n        init-selected.two-way=\"profile.confidentialData.employmentStatusValue\"\r\n        is-mandatory.bind=\"true\"\r\n        cust-readonly.bind=\"isReadOnly\"></form-select>\r\n        <!--changed.two-way=\"tmpMemberStatus\"-->\r\n\r\n    <form-input cust-type=\"date\" model.two-way=\"profile.confidentialData.memberSince\" cust-label=\"Member Since\" is-mandatory.bind=\"true\"\r\n        cust-readonly.bind=\"isReadOnly\"></form-input>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <form-select cust-label=\"Credentials Level\"\r\n        prop-arr.bind=\"['value','name']\"\r\n        model.two-way=\"profile.confidentialData.credentialLevelValue\"\r\n        options.bind=\"myLookups.credentialLevels\"        \r\n        autocomplete.bind=\"true\"\r\n        init-selected.two-way=\"profile.confidentialData.credentialLevelValue\"\r\n        is-mandatory.bind=\"true\"\r\n        cust-readonly.bind=\"isReadOnly\"></form-select>\r\n        <!--changed.two-way=\"user.user.systemRoles.value\"-->\r\n\r\n    <div class=\"divider\"></div>\r\n    <form-input model.two-way=\"profile.confidentialData.field1\" cust-label=\"Confidential Field 1\"\r\n        cust-readonly.bind=\"isReadOnly\"></form-input>\r\n\r\n    <div class=\"divider\"></div>\r\n    <form-input model.two-way=\"profile.confidentialData.field2\" cust-label=\"Confidential Field 2\"\r\n        cust-readonly.bind=\"isReadOnly\"></form-input>\r\n\r\n</template>"; });
+define('text!views/widgets/user-panels/user-panel-details.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../filter\"></require>\r\n    <require from=\"../../../resources/constants\"></require>\r\n    <require from=\"../../../resources/select2\"></require>\r\n    <require from=\"../../../resources/format/json\"></require>\r\n\r\n    <!--? user-panel-details.html | isReadOnly: ${isReadOnly} !-->\r\n\r\n    <!--<pre>${myLookups.hubs & json}</pre>-->\r\n\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"firstName\" model.two-way=\"user.user.firstName\" cust-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"lastName\" model.two-way=\"user.user.lastName\" cust-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"loginName\" model.two-way=\"user.user.loginName\" cust-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"emailAddress\" model.two-way=\"user.user.emailAddress\" cust-readonly.bind=\"true\"></form-input>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n    <pre class=\"col-xs-12\" if.bind=\"CV.debugShowOutput\">? DEV NOTE: SELECT [1,3,8,9] ... SELECTED: ${user.firstName}: ${user.lkp_regions_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected} ?</pre>\r\n\r\n    <!--<div class=\"divider\"></div>\r\n    ? ${user.profile.region.id} > ${user.profile.hub.id} !\r\n     <div class=\"divider\"></div>-->\r\n\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_regions & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_hub & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_entity & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_segment & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_primaryPositions & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_secondaryPositions & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_bp_office_address & json}</pre>\r\n    <pre if.bind=\"tmpShowLookupsDebug\">${lkp_coatSizes & json}</pre>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.regions\" cust-name=\"lkp_regions\" model.two-way=\"profile.regionId\" options.bind=\"myLookups.regions\"\r\n                autocomplete.bind=\"true\" init-selected.two-way=\"profile.regionId\" is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"profile.regionId\"-->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.hubs\" cust-name=\"lkp_hubs\" model.two-way=\"profile.hubId\" options.bind=\"myLookups.hubs\" init-selected.two-way=\"profile.hubId\"\r\n                option-filter.bind=\"['regionId',profile.regionId]\" is-enabled.bind=\"profile.regionId\" is-mandatory.bind=\"true\"\r\n                cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!-- XXX CR - 170213: changed.two-way=\"profile.hubId\" may be excess -->\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.segments\" cust-name=\"lkp_segments\" model.two-way=\"profile.segmentId\" options.bind=\"myLookups.segments\"\r\n                init-selected.two-way=\"profile.segmentId\" autocomplete.bind=\"true\" is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.segment.id\"  -->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.entities\" cust-name=\"lkp_entities\" model.two-way=\"profile.entityId\" options.bind=\"myLookups.entities\"\r\n                init-selected.two-way=\"profile.entityId\" option-filter.bind=\"['segmentId',profile.segmentId]\" is-enabled.bind=\"profile.segmentId\"\r\n                is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.entity.id\" -->\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"function\" model.two-way=\"profile.function\" is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-input cust-name=\"location\" model.two-way=\"profile.location\" is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.primaryPositions\" cust-name=\"lkp_primaryPositions\" model.two-way=\"profile.primaryPositionId\"\r\n                options.bind=\"myLookups.primaryPositions\" autocomplete.bind=\"true\" init-selected.two-way=\"profile.primaryPositionId\"\r\n                is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.primaryPosition.id\"-->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.secondaryPositions\" cust-name=\"lkp_secondaryPositions\" model.two-way=\"profile.secondaryPosition\"\r\n                options.bind=\"myLookups.secondaryPositions\" init-selected.two-way=\"profile.secondaryPosition\" option-filter.bind=\"['primaryPositionId',profile.primaryPositionId]\"\r\n                is-enabled.bind=\"profile.primaryPositionId\" is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.secondaryPosition.id\"-->\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.offices\" cust-name=\"lkp_offices\" model.two-way=\"profile.officeId\" options.bind=\"myLookups.offices\"\r\n                autocomplete.bind=\"true\" init-selected.two-way=\"profile.officeId\" is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.office.id\"-->\r\n        </div>\r\n        <div class=\"col-xs-6\">\r\n            <form-select if.bind=\"myLookups.coatSizes\" cust-name=\"lkp_coatSizes\" model.two-way=\"profile.coatSizeId\" options.bind=\"myLookups.coatSizes\"\r\n                init-selected.two-way=\"profile.coatSizeId\" is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                <!--changed.two-way=\"user.profile.coatSize.id\"-->\r\n\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"divider\"></div>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-2 user-panel-table\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Contact</th>\r\n                    <th>&nbsp;</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <td class=\"padding-bottom-0\">\r\n                        <form-input cust-name=\"businessNumber\" model.two-way=\"profile.businessNumber\" mask-pattern=\"telephone\" is-mandatory.bind=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"personalNumber\" model.two-way=\"profile.personalNumber\" mask-pattern=\"telephone\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"officeNumber\" model.two-way=\"profile.officeNumber\" mask-pattern=\"telephone\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"lyncNumber\" model.two-way=\"profile.lyncNumber\" mask-pattern=\"telephone\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"homeNumber\" model.two-way=\"profile.homeNumber\" mask-pattern=\"telephone\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                    <td class=\"padding-bottom-0\">\r\n                        <form-input cust-name=\"manager_displayName\" model.two-way=\"user.user.manager.displayName\" cust-readonly.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                        <form-input cust-name=\"manager_emailAddress\" model.two-way=\"user.user.manager.emailAddress\" cust-readonly.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                        <form-input cust-name=\"manager_loginName\" model.two-way=\"user.user.manager.loginName\" cust-readonly.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                        <form-input cust-name=\"manager_emergencyContactName\" model.two-way=\"profile.emergencyContactName\" is-mandatory.bind=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                            <form-input cust-name=\"manager_emergencyContactNumber\" model.two-way=\"profile.emergencyContactNumber\" mask-pattern=\"telephone\"\r\n                                is-mandatory.bind=\"true\" cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/widgets/user-panels/user-panel-languages.html', ['module'], function(module) { module.exports = "<template>\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../../../resources/format/format-date\"></require>\r\n\r\n    <!--? languages:  ${profile.languages} !\r\n\r\n<h1>1</h1>\r\n    <ul>\r\n        <li repeat.for=\"row of myLookups.languages\">\r\n            ${row.name}\r\n        </li>\r\n    </ul>\r\n    <h1>1.2 ${profile.languages.length}</h1>\r\n    <ul>\r\n        <li repeat.for=\"row of profile.languages\">\r\n            ${row.name}\r\n        </li>\r\n    </ul>\r\nlkp_languages: ${lkp_languages} / ${myLookups.languages}-->\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-2 user-panel-table\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.language}</th>\r\n                    <th>${CV.myLabels.languageProficiency}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.languages\">\r\n                    <td class=\"padded-cell\">\r\n                        <form-select cust-name.bind=\"['language_' + $index]\"\r\n                            cust-label=\"Language\"\r\n                            input-only=\"true\"\r\n                            model.two-way=\"profile.languages[$index].languageId\"\r\n                            options.bind=\"myLookups.languages\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.languages[$index].languageId\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.languages[$index].language.id\"-->\r\n\r\n                    </td>\r\n                    <td class=\"padded-cell\">\r\n                        <form-select cust-name.bind=\"['languageProficiency_' + $index]\"\r\n                            cust-label=\"Proficiency\"\r\n                            input-only=\"true\"\r\n                            prop-arr.bind=\"['value','name']\"\r\n                            model.two-way=\"profile.languages[$index].proficiencyValue\"\r\n                            options.bind=\"myLookups.languageProficiencies\"                            \r\n                            init-selected.two-way=\"profile.languages[$index].proficiencyValue\"\r\n                            is-enabled.bind=\"profile.languages[$index].languageId\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.languages[$index].proficiency.value\"-->\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n   <div if.bind=\"!isReadOnly\" class=\"col-xs-12 margin-bottom-g1\">\r\n       <!--if.bind=\"$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo\"-->\r\n        <button class=\"btn btn-default btn-sm\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Language\r\n        </button>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/widgets/user-panels/user-panel-passport.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../inputs/form-checkbox\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table user-panel-table cols-4 padded-cells\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.passportType}</th>\r\n                    <th>${CV.myLabels.passportNumber}</th>\r\n                    <th>${CV.myLabels.passportNationality}</th>\r\n                    <th>${CV.myLabels.passportExpiryDate}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.passports\">\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['passportType_' + $index]\"\r\n                            cust-label=\"Passport Type\"\r\n                            prop-arr.bind=\"['value','name']\"\r\n                            model.two-way=\"profile.passports[$index].typeValue\"\r\n                            options.bind=\"myLookups.passportTypes\"\r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.passports[$index].typeValue\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.passports[$index].type.value\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input cust-name.bind=\"['passportNumber_' + $index]\"\r\n                            cust-label=\"Passport Number\"\r\n                            model.two-way=\"profile.passports[$index].number\"\r\n                            is-mandatory.bind=\"true\" input-only=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['passportNationality_' + $index]\"\r\n                            cust-label=\"Passport Nationality\"\r\n                            model.two-way=\"profile.passports[$index].countryId\"\r\n                            options.bind=\"myLookups.countries\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.passports[$index].countryId\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.passports[$index].country.id\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input cust-name.bind=\"['passportExpiryDate_' + $index]\"\r\n                            cust-label=\"Passport Expiry Date\"\r\n                            cust-type=\"date\"\r\n                            model.two-way=\"profile.passports[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div if.bind=\"!isReadOnly\" class=\"col-xs-12 margin-bottom-g1\">\r\n        <button class=\"btn btn-default btn-sm btn-i\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Passport\r\n        </button>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/widgets/user-panels/user-panel-training.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-radio\"></require>\r\n    <require from=\"../../../resources/format/json\"></require>\r\n\r\n    <div class=\"row-fluid\">\r\n        <div class=\"col-xs-12\" innerhtml.bind=\"message\"></div>\r\n    </div>\r\n\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myLookups.trainings & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myTrainingArr & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">${myTrainingArrDynamic & json}</pre>\r\n    <pre if.bind=\"CV.debugShowCodeOutput\">\r\n        <ul>\r\n            <li repeat.for=\"row of myLookups.trainings\">\r\n                ${row & json}\r\n            </li>\r\n        </ul>\r\n    </pre>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table cols-3 user-panel-table padded-cells\" if.bind=\"myTrainingArr && myLookups.trainings\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.training}</th>\r\n                    <th>${CV.myLabels.attended}</th>\r\n                    <th>${CV.myLabels.expiryDate}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of myLookups.trainings\" if.bind=\"!isReadOnly || isReadOnly && returnTrainingData(row.id,'trainingId')\">\r\n                    <td>\r\n                        <label>${row.name}</label>\r\n                    </td>\r\n                    <td>\r\n                        <span if.bind=\"returnTrainingData(row.id,'trainingId')\">\r\n                            <i class=\"fa fa-check text-after color-good\"></i>\r\n                            ${ returnTrainingData(row.id,'trainingId') }                            \r\n                        </span>\r\n                    </td>\r\n                    <td>\r\n                        <!--<span>${ profile.trainings[$index] & json }</span>-->\r\n                        <!--${row.id}-->\r\n                        <form-input if.bind=\"returnTrainingData(row.id,'expiresOn')\"\r\n                            cust-name.bind=\"['trainingExpiryDate_' + $index]\"\r\n                            cust-type=\"date\" \r\n                            cust-label=\"Expiry Date\"\r\n                            model.two-way=\"profile.trainings[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            cust-readonly.bind=\"user.trainings[$index].attended || isReadOnly\"></form-input>\r\n                    </td>\r\n                </tr>                \r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n</template>"; });
+define('text!views/widgets/user-panels/user-panel-visa.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <require from=\"../inputs/form-input\"></require>\r\n    <require from=\"../inputs/form-select\"></require>\r\n    <require from=\"../inputs/form-checkbox\"></require>\r\n\r\n    <div class=\"col-xs-12\">\r\n        <table class=\"table user-panel-table padded-cells cols-4\">\r\n            <thead>\r\n                <tr>\r\n                    <th>${CV.myLabels.visaCountry}</th>\r\n                    <th>${CV.myLabels.visaType}</th>\r\n                    <th>${CV.myLabels.expiryDate}</th>\r\n                    <th>${CV.myLabels.visaMultiple}</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr repeat.for=\"row of profile.visas\">\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['visaCountry_' + $index]\"\r\n                            cust-label=\"Visa Country\"                            \r\n                            model.two-way=\"profile.visas[$index].countryId\"\r\n                            options.bind=\"myLookups.countries\"                            \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].countryId\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].country.id\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-select cust-name.bind=\"['visaType_' + $index]\"\r\n                            cust-label=\"Visa Type\"                                                    \r\n                            model.two-way=\"profile.visas[$index].typeValue\"\r\n                            options.bind=\"myLookups.visaTypes\"  \r\n                            prop-arr.bind=\"['value','name']\"                          \r\n                            autocomplete.bind=\"true\"\r\n                            init-selected.two-way=\"profile.visas[$index].typeValue\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-select>\r\n                            <!--changed.two-way=\"user.profile.visas[$index].type.value\"-->\r\n                    </td>\r\n                    <td>\r\n                        <form-input cust-name.bind=\"['visaExpiryDate_' + $index]\"\r\n                            cust-label=\"Expiry Date\"\r\n                            cust-type=\"date\"\r\n                            model.two-way=\"profile.visas[$index].expiresOn\"\r\n                            is-mandatory.bind=\"true\"\r\n                            input-only=\"true\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-input>\r\n                    </td>\r\n                    <td>\r\n                        <form-checkbox cust-name.bind=\"['visaMultiple_' + $index]\"\r\n                            cust-label=\"Multiple Visas\"\r\n                            model.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            init-selected.two-way=\"profile.visas[$index].multipleEntry\"\r\n                            cust-readonly.bind=\"isReadOnly\"></form-checkbox>\r\n                    </td>\r\n\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n\r\n    <div if.bind=\"!isReadOnly\" class=\"col-xs-12 margin-bottom-g1\">\r\n        <button class=\"btn btn-default btn-sm btn-i\">\r\n            <i class=\"fa fa-plus\"></i>\r\n            Add Visa\r\n        </button>\r\n    </div>\r\n\r\n\r\n</template>"; });
 //# sourceMappingURL=app-bundle.js.map
