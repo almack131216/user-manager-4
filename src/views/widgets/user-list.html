@@ -1,11 +1,9 @@
 <template>
 
-    <require from="../widgets/inputs/form-input"></require>
-    <require from="../widgets/inputs/form-filter-text"></require>
-    <require from="../widgets/inputs/form-filter-role"></require>
+    <require from="../widgets/inputs/form-checkbox"></require>
     <require from="../widgets/inputs/form-select"></require>
     <require from="../../resources/format/format-date"></require>
-     <require from="../../resources/format/json"></require>
+    <require from="../../resources/format/json"></require>
     <require from="../widgets/cust-span/span-cust-member-status"></require>
     <require from="../widgets/cust-span/span-cust-active-status"></require>
 
@@ -33,35 +31,57 @@
 
         <div id="${custXcId}" class="panel-body bg-white ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
             <!-- Filters -->
-            <div class="row margin-y-g1" if.bind="filters">
-                <div class="col-xs-4">
-                    <form-filter-text model.two-way="filters[0].value"></form-filter-text>
-                </div>
-                <div class="col-xs-4">
-                    <form-filter-role if.bind="filter_memberType" inp-label="Role" model.two-way="filters[1].value" options.bind="filter_memberType" changed.two-way="filters[1].value"
-                        init-selected.two-way="filters[1].value"></form-filter-role>
-                </div>
-                <div class="col-xs-4">
+            <form class="row margin-y-g1" if.bind="filters">
 
-                    <form-filter-role if.bind="filter_active" inp-label="Status" model.two-way="filters[2].value" options.bind="filter_active" changed.two-way="filters[2].value"
-                        init-selected.two-way="filters[2].value"></form-filter-role>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" value.bind="searchFor_name" placeholder="Search Name">
                 </div>
-            </div>
+                <div class="col-xs-3">
+                    <form-select inp-label="System Role" model.two-way="searchFor_userTypeValue" options.bind="lookups.userTypes" prop-arr.bind="['value','name']"
+                        autocomplete.bind="true" init-selected.two-way="searchFor_userTypeValue" input-only="true"></form-select>
+                </div>
+                <div class="col-xs-3">
+                    <form-select inp-label="Status" model.two-way="searchFor_active" options.bind="lookups.lkp_isActive" prop-arr.bind="['value','name']"
+                        autocomplete.bind="true" init-selected.two-way="searchFor_active" input-only="true"></form-select>
+                    <!--<form-checkbox inp-name.bind="'select_isMember'"
+                            inp-label="Active"
+                            model.two-way="searchFor_active"
+                            init-selected.two-way="searchFor_active"
+                            input-only="true"></form-checkbox>-->
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn btn-default" type="submit" click.delegate="loadUserList_prep()">
+                                <i class="fa fa-filter text-after"></i>
+                                Filter
+                            </button>
+                </div>
+            </form>
             <!-- (END) Filters -->
 
             <!-- Table -->
+            <!--? filter_memberType: ${filter_memberType}-->
+            <!--filters.bind: filters;-->
             <pre if.bind="debugShowOutput">${users & json}</pre>
-            
+
+            <div class="panel panel-warning" if.bind="checkedItemsArr.length>=1">
+                <div class="panel-heading panel-heading-custom">
+                    <span class="display-inline-block"><strong>${checkedItemsArr}</strong> users selected.</span>
+                    <button class="btn btn-danger" click.delegate="deleteMultiple()">
+                    Delete ${checkedItemsArr.length} users
+                </button>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-xs-12">
-                    <table class="table table-striped" if.bind="users && filters" aurelia-table="data.bind: users.data; display-data.bind: $displayData; filters.bind: filters; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
+                    <table class="table table-striped" if.bind="users && filters" aurelia-table="data.bind: users.data; display-data.bind: $displayData; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
                         <thead>
                             <tr>
-                                <th aut-sort="key: id; default: desc" if.bind="isNotDisabled('id')">id</th>
-                                <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login Name</th>
+                                <th><input type="checkbox" value="true" checked.bind="isAllChecked" change.delegate="checkAll()"></th>
+                                <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login</th>
                                 <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
-                                <th aut-sort="key: lastName" if.bind="isNotDisabled('lastName')">Last Name</th>
-                                <!--<th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">Email</th>-->
+                                <th aut-sort="key: lastName; default: asc" if.bind="isNotDisabled('lastName')">Surname</th>
+                                <th aut-sort="key: emailAddress" if.bind="isNotDisabled('emailAddress')">Email</th>
                                 <th aut-sort="key: isMember" if.bind="isNotDisabled('isMember')">Profile</th>
                                 <th aut-sort="key: isActive" if.bind="isNotDisabled('isActive')">Status</th>
                                 <th if.bind="isNotDisabled('edit')">Actions</th>
@@ -69,11 +89,15 @@
                         </thead>
                         <tbody>
                             <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
-                                <td if.bind="isNotDisabled('id')">${user.id}</td>
-                                <td if.bind="isNotDisabled('loginName')">${user.loginName}</td>
+                                <td> <input type="checkbox" value="true" checked.bind="user.checked" change.delegate="checkMe(user.id)"
+                                    /></td>
+                                <td if.bind="isNotDisabled('loginName')">
+                                    <a if.bind="user.isMember" route-href="route: user-read; params.bind: {id:user.id, editType:'edit', readonly:'read'}" title="View member">${user.loginName}</a>
+                                    <span if.bind="!user.isMember">${user.loginName}</span>
+                                </td>
                                 <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
                                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
-                                <!--<td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>-->
+                                <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>
                                 <td if.bind="isNotDisabled('isMember')">
                                     <span-cust-member-status is-member.bind="user.isMember" update-pending.bind="user.updatePending" profile-date.bind="user.profileDate"></span-cust-member-status>
                                 </td>
@@ -82,13 +106,15 @@
                                 </td>
                                 <td if.bind="isNotDisabled('edit')">
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'users/' + user.id + '/edit' )" title="Edit User">
+                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'users/' + user.id + '/edit' )"
+                                            title="Edit User">
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         <!--<a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
                                             <i class="fa fa-list"></i>
                                         </a>-->
-                                        <button disabled.bind="user.emailAddress==null" class="btn btn-default" href="mailto:${user.emailAddress}" title="Email User">
+                                        <button disabled.bind="user.emailAddress==null" class="btn btn-default" click.delegate="api.emailUser(user.emailAddress)"
+                                            title="Email User">
                                                 <i class="fa fa-envelope-o"></i>
                                             </button>
                                         <a class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">

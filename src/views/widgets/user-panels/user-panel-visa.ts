@@ -1,24 +1,9 @@
 
-import { autoinject, bindable } from 'aurelia-framework';
-import { Lookups } from '../../../resources/lookups';
-
-@autoinject
+import { bindable } from 'aurelia-framework';
 
 export class UserPanelVisa {
     @bindable user;
     @bindable profile;
-    lkp_passportNationality;
-    lkp_visaCountry;
-    lkp_visaTypes;
-
-    constructor(private lookups: Lookups) {
-
-        this.lkp_passportNationality = lookups.lkp_passportNationality
-
-        this.lkp_visaCountry = lookups.lkp_visaCountry
-
-        this.lkp_visaTypes = lookups.lkp_visaTypes
-
-    }
-
+    @bindable isReadOnly = null;
+    @bindable myLookups;
 }

@@ -10,11 +10,11 @@
         </ai-dialog-header>
 
         <ai-dialog-body>
-            <table class="table border-none half-n-half">
+            <table class="table border-none half-n-half" if.bind="userRole && systemRoles">
                 <tbody>
                 <tr>
-                    <td><label>ID:</label> ${userRole.id}</td>
-                    <td><label>Name:</label> ${userRole.firstName} ${userRole.lastName}</td>
+                    <!--<td><label>ID:</label> ${userRole.id}</td>-->
+                    <td colspan="2"><label>Name:</label> ${userRole.firstName} ${userRole.lastName}</td>
                 </tr>
                 <tr>
                     <td>
@@ -25,7 +25,7 @@
                             input-only="true"></form-checkbox>
                     </td>
                     <td class="xxx_wrap-role">
-                        <form-filter-role name="userRole_system_role" model.two-way="userRole.systemRoles.value" options.bind="lkp_role" changed.two-way="userRole.systemRoles.value"
+                        <form-filter-role name="userRole_system_role" model.two-way="userRole.systemRoles.value" options.bind="systemRoles" changed.two-way="userRole.systemRoles.value"
                             init-selected.two-way="userRole.systemRoles.value"></form-filter-role>
                     </td>
                 </tr>
@@ -35,7 +35,7 @@
         </ai-dialog-body>
 
         <ai-dialog-footer>
-            <button class="btn btn-primary" click.trigger="yes()">Yes</button>
+            <button class="btn btn-primary" click.trigger="yes()">Update</button>
             <button class="btn btn-default pull-left" click.trigger="cancel()">Cancel</button>
         </ai-dialog-footer>
     </ai-dialog>

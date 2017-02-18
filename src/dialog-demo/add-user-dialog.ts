@@ -25,37 +25,69 @@ export class AddUserDialog {
     userRole = null;
     originalUser = null;
     listUsersToAdd;
-    private selectedId;
+    selectedId = null;
     selectUserToAdd;
+    selectedUserArr
     rolesArr;
     rolesArrDynamic = [];
-    lkp_role;
+    systemRoles;
     filter_memberType;
     filter_active;
     router;
+    searchFor_ntId;
+    searchFor_name;
+    select_isMember;
+    select_systemRole;
+    isLoadingApi;
     //selectedId = null;
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private lookups: Lookups) {
-        //this.lkp_role = lookups.lkp_role;
 
         this.selectUserToAdd = (getUser) => {
-            this.selectedId = getUser.id;
-            console.log('add-user-dialog: select: ' + this.selectedId + ' / ' + getUser.id);
-            this.api.getUserRole(this.selectedId).then(user => {
-                this.userRole = <User>user;
-                //this.selectedId = this.userRole.id;
-                console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole));
-            });
+            this.selectedId = getUser.uniqueId;
+            this.userRole = getUser;
+            console.log('add-user-dialog: select: ' + this.selectedId);
+
+            // this.api.getUserRole(this.selectedId).then(user => {
+            //     this.userRole = <User>user;
+            //     //this.selectedId = this.userRole.id;
+            //     console.log('selectUserToAdd -> getUserRole (success) - ' + this.selectedId + ' = ' + JSON.stringify(this.userRole));
+            // });
         }
 
-        this.lkp_role = lookups.lkp_role;
-        this.filter_memberType = lookups.filter_memberType;
-        this.filter_active = lookups.filter_active;
-        this.rolesArr = this.filter_memberType.map(x =>  { return {
-          value:x.value,
-          name:x.name
-        }});
+        this.filter_memberType = [
+          { "value": true, "name": "Members" },
+          { "value": false, "name": "Non-members" }
+        ]
 
+        this.filter_active = [
+          { "value": true, "name": "Active" },
+          { "value": false, "name": "Archived" }
+        ]
+
+        this.systemRoles = lookups.systemRoles;
+
+    }
+
+    addUserSearch(getType,getUserId){
+        //alert('addUserSearch: ' + getUserId);
+        var tmpData = {}
+
+        if(getType=='ntId'){
+            this.searchFor_name = '';
+            tmpData = { ntId: getUserId }
+        }
+        if(getType=='name'){
+            this.searchFor_ntId = '';
+            tmpData = { name: getUserId }
+        }
+
+        this.api.apiCall('user-list-to-add', tmpData)
+            .then(selectedUserArr => this.selectedUserArr = selectedUserArr)
+            .then(() => {         
+                this.selectedId = null;      
+                console.log('addUserSearch(): Selected > ' + this.selectedUserArr.length + ' > ' + this.selectedUserArr)
+             });
     }
 
     deselectUser() {
@@ -64,11 +96,16 @@ export class AddUserDialog {
 
 
     created() {
-        this.api.getUserList()
+        this.isLoadingApi = true;
+        //<li><a href="javascript:queryApi('SEARCH', {}, 'ldap/query?limit=5')">SEARCH ldap/query?limit=5</a> {}</li>
+        this.api.apiCall('user-list-to-add',null)
             .then(listUsersToAdd => this.listUsersToAdd = listUsersToAdd)
             .then(() => this.populateRoleFilterFromList())
-            .then(() => console.log('xxxxxxxxx' + JSON.stringify(this.listUsersToAdd)) )
-            ;
+            .then(() => {
+                this.isLoadingApi = false;
+                this.selectedId = null;
+                console.log('xxxxxxxxx' + JSON.stringify(this.listUsersToAdd))
+             });
         //alert(this.users);
     }
 
@@ -80,8 +117,17 @@ export class AddUserDialog {
     //When the user clicks on the 'Yes' button the controller closes the dialog 
     //and returns a promise that when resolved, it wil give us a response with a .wasCancelled property set to false and
     //an .output property set to this.info    
-    yes(): void {
-        this.controller.ok();
+    addUser(getUser,getSelected_isMember,getSelected_systemRole): void {
+        //alert(JSON.stringify(getUser));
+
+        let tmpData = { uniqueId: getUser.uniqueId, isMember: getSelected_isMember, systemRolesValue: getSelected_systemRole }
+        console.log('addUser() -> tmpData: ' + JSON.stringify(tmpData) );
+        this.api.getUserToAdd_addUser(tmpData)
+            .then(() => {
+                this.controller.ok();
+                console.log('ADD USER: ' + JSON.stringify(this.listUsersToAdd))
+             });
+        
     }
 
     //When the user clicks on the 'No' button the controller closes the dialog box
@@ -101,9 +147,7 @@ export class AddUserDialog {
     // }
 
     filters = [
-        { value: '', keys: ['firstName', 'lastName'] },
-        { value: '1', keys: ['isMember'] },
-        { value: '2', keys: ['isActive'] }
+        { value: '', keys: ['fullName', 'email', 'ntId', 'uniqueId'] }
     ];
 
     returnLabelFromValue(getId) {

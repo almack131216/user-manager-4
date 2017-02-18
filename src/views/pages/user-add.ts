@@ -22,19 +22,23 @@ export class UserAdd {
   @bindable user = null;
   @bindable profile = null;
   @bindable currentUser = null;
+  @bindable isReadOnly = null;
+  @bindable myLookups;
+
   routeConfig;
   originalUser;
   savedData;
   isSavingData;
   
   title = 'Edit User'
+  title_isReadOnly = 'View User';
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
     this.api = api;
   }
 
   get canSave() {
-    return this.profile.regionId && this.profile.hubId && !this.api.isRequesting;
+    return true;// this.profile.regionId && this.profile.hubId && !this.api.isRequesting;
   }
 
   save() {

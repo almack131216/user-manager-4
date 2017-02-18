@@ -12,6 +12,7 @@
   <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | isMember: ${currentUser.isMember} !</pre>
   <pre if.bind="CV.debugShowCodeOutput">JSON.stringify(profile)</pre>
   <pre if.bind="CV.debugShowCodeOutput">${profile & json}</pre>
+  <!--<pre>${myLookups.hubs & json}</pre>-->
 
   <div if.bind="!editType">
     <user-list class="col-xs-12 col-md-8"></user-list>
@@ -22,7 +23,9 @@
   </div>
 
   <div if.bind="user && editType=='edit'" class="col-xs-12">
-    <user-add user.bind="user" profile.bind="profile" current-user.bind="currentUser" if.bind="user && profile"></user-add>
+    <!--? user-selected.html | isReadOnly: ${isReadOnly} !-->
+    <!--? user-selected.html | isReadOnly: ${myLookups} !-->
+    <user-add user.bind="user" profile.bind="profile" my-lookups.bind="myLookups" is-read-only.bind="isReadOnly" current-user.bind="currentUser" if.bind="user && profile"></user-add>
   </div>
 
   <pre if.bind="debugShowCodeOutput">${user & json}</pre>

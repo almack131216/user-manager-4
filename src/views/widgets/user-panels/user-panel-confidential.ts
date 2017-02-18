@@ -1,21 +1,14 @@
-import { autoinject, bindable } from 'aurelia-framework';
-import { Lookups } from '../../../resources/lookups';
-
-@autoinject
+import { bindable } from 'aurelia-framework';
 
 export class UserPanelConfidential {
     @bindable user;
     @bindable profile;
-    lkp_employmentStatuses;
+    @bindable isReadOnly;
+    @bindable myLookups;
+    
+    // lkp_employmentStatuses;
     lkp_credentialLevels;
     tmpField2;
     tmpField3;
-
-    constructor(private lookups: Lookups) {
-
-        this.lkp_employmentStatuses = lookups.lkp_employmentStatuses;
-        this.lkp_credentialLevels = lookups.lkp_credentialLevels;
-
-    }
 
 }

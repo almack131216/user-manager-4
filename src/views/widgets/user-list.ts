@@ -34,10 +34,15 @@ export class UserList {
     title = 'Users';
     rolesArr;
     rolesArrDynamic = [];
-    lkp_role;
-    filter_memberType;
-    filter_active;
+
     router;
+
+    searchFor_active;
+    searchFor_name;
+    searchFor_userTypeValue;
+
+    isAllChecked;
+    checkedItemsArr = [];
 
     isNotDisabled(getField) {
         if (CV.debugConsoleLog) console.log('isNotDisabled? ' + getField);
@@ -45,36 +50,80 @@ export class UserList {
         if (this.custDisableCells.indexOf(getField) == -1) return true;
         return false;
     }
-    lookups: Lookups;
-    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, lookups: Lookups, router: Router) {
+
+    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, private lookups: Lookups, router: Router) {
         // ea.subscribe(UserViewed, msg => this.select(msg.user));
         // ea.subscribe(UserUpdated, msg => {
         //     let id = msg.user.id;
         //     let found = this.users.data.find(x => x.id == id);
         //     Object.assign(found, msg.user);
         // });
+        this.lookups = lookups;
 
+        this.isAllChecked = false;
 
-
-        this.api.getUserList()
-            .then(users => this.users = users)
-            .then(() => {
-                this.lkp_role = lookups.lkp_role;
-                this.filter_memberType = lookups.filter_memberType;
-                this.filter_active = lookups.filter_active;
-                //alert('activate: ' + this.rolesArr + ' / ' + lookups.filter_memberType);
-                this.filter_memberType = lookups.filter_memberType;
-                this.rolesArr = this.filter_memberType.map(x => {
-                    return {
-                        value: x.value,
-                        name: x.name
-                    }
-                });
-                //console.log('activate 2: ' + this.rolesArr + ' | ' + this.filter_memberType + ' | ' + this.filter_active);
-            })
-            .then(() => this.populateRoleFilterFromList());
+        this.loadUserList({});
 
         this.router = router;
+
+    }
+
+    deleteMultiple(){
+        alert('deleteMultiple()' + this.checkedItemsArr);
+        this.api.deleteMultipleUsers(this.checkedItemsArr)
+        // .then(result => {
+        //         console.log('Deleted ' + this.checkedItemsArr + ' users')
+        //     })
+    }
+
+
+    checkMe(getId){
+        if(this.checkedItemsArr.indexOf(getId) == -1){
+            this.checkedItemsArr.push(getId)
+        }else{
+            var index = this.checkedItemsArr.indexOf(getId);
+            this.checkedItemsArr.splice(index,1);
+            if(this.checkedItemsArr.length==0) this.isAllChecked = false;
+        }
+    }
+
+    checkAll() {
+        //alert('checkAll(): ' + this.isAllChecked);
+        // for(var i=0;i<this.users.length;i++){
+        //     this.users['data'][i].checked = this.isAllChecked;
+        // }
+        this.users['data'].forEach(i => {
+            i.checked = this.isAllChecked,
+            this.checkedItemsArr.push(i.id)
+        });
+
+        if(!this.isAllChecked) this.checkedItemsArr = [];
+        
+    }
+
+
+    loadUserList_prep() {
+        //this.searchFor_userTypeValue = this.searchFor_userTypeValue!=null ? this.searchFor_userTypeValue : null;
+        //var data = {active: this.searchFor_active, name: this.searchFor_name, userTypeValue: this.searchFor_userTypeValue};
+        var data = {};
+        if (this.searchFor_active) data['active'] = this.searchFor_active;
+        if (this.searchFor_name) data['name'] = this.searchFor_name;
+        if (this.searchFor_userTypeValue) data['userTypeValue'] = this.searchFor_userTypeValue;
+        //alert('data: ' + JSON.stringify(data));
+        this.loadUserList(data);
+    }
+
+    loadUserList(data) {
+        // 'SEARCH', {}, 'data/users/query'
+        // 'SEARCH', { active: true }, 'data/users/query'
+        // 'SEARCH', { active: true, name: 'ds alex' }, 'data/users/query'
+        // 'SEARCH', { active: true, userTypeValue: 2 }, 'data/users/query'
+        // 'SEARCH', { active: true, userTypeValue: 3 }, 'data/users/query'
+        // 'SEARCH', { userTypeValue: 1 }, 'data/users/query'
+        this.api.apiCall('user-list',data)
+            .then(users => this.users = users)            
+            .then(() => this.populateRoleFilterFromList());
+            
     }
 
     created(lookups) {
@@ -87,6 +136,19 @@ export class UserList {
         //alert('select: ' + this.selectedId);
         return true;
     }
+
+    // filterSearch(getType,getUserId){
+    //     //alert('addUserSearch: ' + getUserId);
+    //     if(getType=='ntId') this.searchFor_name = '';
+    //     if(getType=='name') this.searchFor_ntId = '';
+
+    //     this.api.getUserToAddList_search(getType,getUserId)
+    //         .then(selectedUserArr => this.selectedUserArr = selectedUserArr)
+    //         .then(() => {         
+    //             this.selectedId = null;      
+    //             console.log('addUserSearch(): Selected > ' + this.selectedUserArr.length + ' > ' + this.selectedUserArr)
+    //          });
+    // }
 
     addUser(): void {
         this.dialogService.open({

@@ -6,6 +6,7 @@ import { areEqual } from '../../api/utility';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
+
 interface User {
   firstName: string;
   lastName: string;
@@ -22,8 +23,10 @@ export class UserSelected {
   user: User;
   profile = {};
   editType = null;
+  isReadOnly = null;
   originalUser: User;
-  title = ''
+  title = '';
+  myLookups;
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
 
@@ -31,9 +34,21 @@ export class UserSelected {
 
   activate(params, routeConfig) {
     this.routeConfig = routeConfig;
-    console.log('activate: ' + params.id + ' (' + params.editType + ')');
-    return this.api.getUserDetails(params.id).then(user => {
+    console.log('activate: ' + params.id + ' (' + params.editType + '), readonly: ' + params.isReadOnly);
+
+    this.api.apiCall('lookups',params.id)
+      .then(apiResultData => this.myLookups = apiResultData)
+      .then(() => {
+        this.myLookups = this.myLookups['lookups'];
+        //alert('user-selected.ts: ' + this.myLookups.languages);
+        //alert('user-selected -> all lookups: ' + this.myLookups['hubs']);
+      });
+
+
+    return this.api.apiCall('user-selected',params.id)
+    .then(user => {
       if (params.editType) this.editType = params.editType;
+      if (params.readonly) this.isReadOnly = true;
       this.user = <User>user;
       //alert(JSON.stringify(this.user));
       //console.log(JSON.stringify(this.user));
@@ -60,8 +75,8 @@ export class UserSelected {
         /* arrays */
         confidentialData: this.user['profile']['confidentialData'] ? {
           memberSince: this.user['profile']['confidentialData'].memberSince ? this.user['profile']['confidentialData'].memberSince : null,
-          employmentStatusValue: this.user['profile']['confidentialData']['employmentStatus'].value ? this.user['profile']['confidentialData']['employmentStatus'].value : null,
-          credentialLevelValue: this.user['profile']['confidentialData']['credentialLevel'].value ? this.user['profile']['confidentialData']['credentialLevel'].value : null,
+          employmentStatusValue: this.user['profile']['confidentialData']['employmentStatus'] ? this.user['profile']['confidentialData']['employmentStatus'].value : null,
+          credentialLevelValue: this.user['profile']['confidentialData']['credentialLevel'] ? this.user['profile']['confidentialData']['credentialLevel'].value : null,
           field1: this.user['profile']['confidentialData'].field1 ? this.user['profile']['confidentialData'].field1 : null,
           field2: this.user['profile']['confidentialData'].field2 ? this.user['profile']['confidentialData'].field2 : null
         } : null,

@@ -1,8 +1,8 @@
-<template class="${inputOnly ? 'form-group-input-only' : 'form-group col-xs-12'} ${isMandatory ? 'is-mandatory' : ''}">
+<template class="${inputOnly ? 'form-group-input-only' : 'form-group col-xs-12'} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}">
 
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">
         <label for.bind="inpName" title.bind="inpLabel">
-            ${inpLabel} / ${model}
+            ${inpLabel}
         </label>
     </span>
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">

@@ -15,6 +15,8 @@ export class FormSelect {
 
     @bindable isMandatory = null;
     @bindable name = null;
+    @bindable inpClass;
+    @bindable isReadonly = null;
 
     @bindable
     public initSelected: null;
@@ -48,6 +50,7 @@ export class FormSelect {
         if(CV.debugConsoleLog) console.log('[form-select] selectedChanged: ' + newValue + ' / ' + this.initSelected);
         this.changed = newValue ? newValue : null;//(<HTMLInputElement>event.currentTarget).value;
         this.selected = this.changed;
+        
     }
 
     tmpCreateLabel(getStr){
@@ -57,7 +60,7 @@ export class FormSelect {
     created(){
         if(CV.debugConsoleLog) console.log('[form-select] created: ' + this.name );
         if(!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name);//.substring(3)
-        if(!this.inpPlaceholder) this.inpPlaceholder = "Please Select";// "Enter " + this.inpLabel;
+        if(!this.inpPlaceholder) this.inpPlaceholder = "> Select " + this.inpLabel + " <";// "Enter " + this.inpLabel;
     }
 
     selectOptions = { allowClear: true, placeholder: 'Select...' };

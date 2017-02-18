@@ -2,25 +2,20 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { bindable,autoinject } from 'aurelia-framework';
 import * as Constants from '../../../resources/constants';
 const CV = Constants
-import { Lookups } from '../../../resources/lookups';
 @autoinject
 
 export class UserPanelTraining {
     @bindable user;
     @bindable profile;
+    @bindable isReadOnly = null;
+    @bindable myLookups;
 
     public CV = CV;
     message = CV.MSG_TRAINING;
 
-    lkp_trainings;
     myTrainingArr;
     myTrainingArrDynamic = [];
 
-    constructor(private lookups: Lookups) {
-
-        this.lkp_trainings = lookups.lkp_trainings
-
-    }
 
     attached(){
         //alert(JSON.stringify(this.profile.trainings));

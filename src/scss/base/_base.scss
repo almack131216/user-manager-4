@@ -138,6 +138,16 @@ input, textarea, button {
     font-style: italic;
 }
 
+.color-green-dark {
+    color:$bp_color-green-dark
+}
+.color-green-1 {
+    color:$bp_color-green-1
+}
+.color-green-2 {
+    color:$bp_color-green-2
+}
+
 .color-danger,
 .span-error {
     color: $color-danger;

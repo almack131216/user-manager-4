@@ -1,5 +1,6 @@
 <template>
 
+    <require from="../views/ui/ui-loading"></require>
     <require from="../views/widgets/inputs/form-checkbox"></require>
     <require from="../views/widgets/inputs/form-select"></require>
     <require from="../views/widgets/inputs/form-filter-text"></require>
@@ -16,53 +17,90 @@
         </ai-dialog-header>
 
         <ai-dialog-body>
+            <ui-loading if.bind="isLoadingApi"></ui-loading>
 
+            <div>
             <!-- Filters -->
-                <div class="row margin-bottom-g1">
-                    <div class="col-xs-4">
-                        <form-filter-text model.two-way="filters[0].value"></form-filter-text>
-                    </div>
-                    <div class="col-xs-4">
-                        <form-filter-role inp-label="Role" model.two-way="filters[1].value" options.bind="filter_memberType" changed.two-way="filters[1].value" init-selected.two-way="filters[1].value"></form-filter-role>
-                    </div>
-                    <div class="col-xs-4">
+            <div class="row margin-bottom-g1">
+                <form class="col-xs-6">
+                    <!--<form>-->
+                    <!--<form-filter-text model.two-way="filters[0].value"></form-filter-text>-->
+                    <!--? ${searchFor_ntId} !
+                    filter: <input type="text" name="searchFor_ntId" value.bind="searchFor_ntId" placeholder="Search Unique Id">
+                    <button click.delegate="addUserSearch(searchFor_ntId)" disabled.bind="!searchFor_ntId">SEARCH</button>-->
 
-                        <form-filter-role inp-label="Status" model.two-way="filters[2].value" options.bind="filter_active" changed.two-way="filters[2].value" init-selected.two-way="filters[2].value"></form-filter-role>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value.bind="searchFor_ntId" placeholder="Search Unique Id">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" click.delegate="addUserSearch('ntId',searchFor_ntId)" disabled.bind="!searchFor_ntId">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
+                    <!-- /input-group -->
+                </form>
+                <form class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" value.bind="searchFor_name" placeholder="Search name">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" click.delegate="addUserSearch('name',searchFor_name)" disabled.bind="!searchFor_name">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </form>
+                <!--<div class="col-xs-4">
+                    <form-filter-role if.bind="filter_memberType" inp-label="Role" model.two-way="filters[1].value" options.bind="filter_memberType" changed.two-way="filters[1].value"
+                        init-selected.two-way="filters[1].value"></form-filter-role>
                 </div>
-                <!-- (END) Filters -->
+                <div class="col-xs-4">
+
+                    <form-filter-role if.bind="filter_active" inp-label="Status" model.two-way="filters[2].value" options.bind="filter_active" changed.two-way="filters[2].value"
+                        init-selected.two-way="filters[2].value"></form-filter-role>
+                </div>-->
+            </div>
+            <!-- (END) Filters -->
 
             <!--if.bind="CV.debugShowCodeOutput"-->
+            <!--? ${filters & json}-->
             <pre if.bind="CV.debugShowCodeOutput">${listUsersToAdd & json}</pre>
+            <!--<ul>    
+                <li repeat.for="row of listUsersToAdd">
+                    ${row.ntId}
+                </li>
+            </ul>-->
 
-            <div class="wrap_table-add-user-from-list">
+            <div if.bind="!isLoadingApi" class="wrap_table-add-user-from-list">
+                
                 <!--filters.bind: filters;-->
-                <table class="table table-striped table-hover" aurelia-table="data.bind: listUsersToAdd.data; display-data.bind: $displayData; filters.bind: filters;">
+                <table if.bind="listUsersToAdd" class="table table-striped table-hover" aurelia-table="data.bind: selectedUserArr && (searchFor_ntId || searchFor_name) ? selectedUserArr : listUsersToAdd; display-data.bind: $displayData;">
                     <thead>
                         <tr>
-                            <th aut-sort="key: id; default: desc">ID</th>
+                            <th aut-sort="key: ntId">ntId</th>
                             <th aut-sort="key: firstName">First Name</th>
-                            <th aut-sort="key: lastName">Last Name</th>
-                            <th aut-sort="key: isMember">Profile</th>
-                            <th aut-sort="key: isActive">Status</th>
+                            <th aut-sort="key: lastName; default: desc">Last Name</th>
+                            <th aut-sort="key: email;">Email</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr repeat.for="user of $displayData" click.delegate="selectUserToAdd(user)">
-                            <td>${user.id}</td>
+                        <!--click.delegate="selectUserToAdd(user)"-->
+                        <tr if.bind="selectedUserArr.length==0 && (searchFor_ntId || searchFor_name)">
+                            <td colspan="4">
+                                No results forund for your search criteria
+                            </td>
+                        </tr>
+
+                        <tr repeat.for="user of $displayData" click.delegate="selectUserToAdd(user)" class="${user.uniqueId == userRole.uniqueId ? 'tr-row-selected' : ''}">
+                            <td>${user.ntId}</td>
                             <td>${user.firstName}</td>
                             <td>${user.lastName}</td>
-                            <td>
-                                <span-cust-member-status is-member.bind="user.isMember" update-pending.bind="user.updatePending" profile-date.bind="user.profileDate"></span-cust-member-status>
-                            </td>
-                            <td>
-                                <span-cust-active-status is-active.bind="user.isActive" review-pending.bind="user.reviewPending" review-result.bind="user.reviewResult"></span-cust-active-status> 
-                            </td>
+                            <td>${user.email}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            
+
             <div if.bind="selectedId" class="panel panel-info">
                 <pre if.bind="CV.debugShowCodeOutput">${userRole & json}</pre>
 
@@ -70,36 +108,40 @@
                     <button type="button" class="close" aria-label="Close" click.delegate="deselectUser()">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <strong>Selected:</strong> ${userRole.firstName} ${userRole.lastName} ( ${userRole.id} )    
+                    <strong>Selected:</strong> ${userRole.firstName} ${userRole.lastName} ( ${userRole.uniqueId} )
                 </div>
                 <div class="panel-body">
                     <table class="table border-none half-n-half margin-bottom-0">
                         <tbody>
-                        <tr>
-                            <td>
-                                <form-checkbox inp-name="userRole_isMember"
-                                    inp-label="MRT Member"                            
-                                    model.two-way="userRole.isMember"
-                                    init-selected.two-way="userRole.isMember"
-                                    input-only="true"></form-checkbox>
-                            </td>
-                            <td class="xxx_wrap-role">
-                                <!--<form-select prop-arr.bind="['value','name']" name="userRole_system_role" input-only="true" model.two-way="userRole.systemRoles.value" options.bind="lkp_role"
-                                    changed.two-way="userRole.systemRoles.value" init-selected.two-way="userRole.systemRoles.value"></form-select>-->
-
-                                <form-filter-role model.two-way="userRole.systemRoles.value" options.bind="lkp_role" changed.two-way="userRole.systemRoles.value"
-                                    init-selected.two-way="userRole.systemRoles.value"></form-filter-role>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                        <form-checkbox inp-name.bind="'select_isMember'"
+                            inp-label="MRT Member"
+                            model.two-way="select_isMember"
+                            init-selected.two-way="select_isMember"
+                            input-only="true"></form-checkbox>
+                                </td>
+                                <td class="xxx_wrap-role">
+                                    <form-select inp-label="System Role"
+                                    inp-class="padding-x-0"                            
+                            model.two-way="select_systemRole"
+                            options.bind="systemRoles"  
+                            prop-arr.bind="['value','name']"                          
+                            autocomplete.bind="true"
+                            init-selected.two-way="select_systemRole"></form-select>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            
+
+            </div>
+
         </ai-dialog-body>
 
-        <ai-dialog-footer>            
-            <button disabled.bind="!selectedId" class="btn ${selectedId ? 'btn-primary' : 'btn-default'}" click.trigger="yes()">Add</button>
+        <ai-dialog-footer>
+            <button disabled.bind="!select_systemRole" class="btn ${selectedId ? 'btn-primary' : 'btn-default'}" click.trigger="addUser(userRole,select_isMember,select_systemRole)">Add</button>
             <button class="btn btn-default pull-left" click.trigger="cancel()">Cancel</button>
         </ai-dialog-footer>
     </ai-dialog>

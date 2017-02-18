@@ -22,14 +22,15 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li repeat.for="row of router.navigation" if.bind="hasAccess(currentUser,row)" class="${row.isActive ? 'active' : ''}">
+                    <!--if.bind="hasAccess(currentUser,row)"-->
+                    <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
                         <a href.bind="row.href">${row.title}<span if.bind="CV.debugShowCurrentUser"> / ${currentUser.isMember} | ${row.settings.data.isMemberOnly}</span></a>
                     </li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right margin-right-1">
                     <li class="loader" if.bind="router.isNavigating">
-                        <i class="fa fa-spinner fa-spin fa-2x color-white"></i>
+                        <i class="fa fa-spinner fa-spin fa-2x color-green-dark"></i>
                     </li>
                 </ul>
             </div>

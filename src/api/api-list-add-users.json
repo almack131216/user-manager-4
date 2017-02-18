@@ -1,0 +1,62 @@
+[
+  {
+    "firstName": "Agily",
+    "lastName": "Administrator",
+    "email": "AgilyAdmin@agily.cz",
+    "title": "",
+    "department": "",
+    "location": "",
+    "manager": null,
+    "uniqueId": "AgilyAdmin@agily.local",
+    "ntId": "AGILY\\AgilyAdmin",
+    "fullName": "Administrator, Agily"
+  },
+  {
+    "firstName": "Jakub",
+    "lastName": "Böhm",
+    "email": "jakub.bohm@agily.cz",
+    "title": "",
+    "department": "",
+    "location": "",
+    "manager": null,
+    "uniqueId": "JBohm@agily.local",
+    "ntId": "AGILY\\JBohm",
+    "fullName": "Böhm, Jakub"
+  },
+  {
+    "firstName": "David",
+    "lastName": "Soušek",
+    "email": "david.sousek@agily.cz",
+    "title": "",
+    "department": "",
+    "location": "",
+    "manager": null,
+    "uniqueId": "DSousek@agily.local",
+    "ntId": "AGILY\\DSousek",
+    "fullName": "Soušek, David"
+  },
+  {
+    "firstName": "Michal",
+    "lastName": "Vilím",
+    "email": "michal.vilim@agily.cz",
+    "title": "",
+    "department": "",
+    "location": "",
+    "manager": null,
+    "uniqueId": "MVilim@agily.local",
+    "ntId": "AGILY\\MVilim",
+    "fullName": "Vilím, Michal"
+  },
+  {
+    "firstName": "SharePoint",
+    "lastName": "Service",
+    "email": "SharePointService@agily.cz",
+    "title": "",
+    "department": "",
+    "location": "",
+    "manager": null,
+    "uniqueId": "SharePointService@agily.local",
+    "ntId": "AGILY\\SharePointService",
+    "fullName": "Service, SharePoint"
+  }
+]

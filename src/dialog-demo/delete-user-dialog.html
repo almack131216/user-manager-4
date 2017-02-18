@@ -13,8 +13,8 @@
             <table class="table border-none half-n-half">
                 <tbody>
                 <tr>
-                    <td><label>ID:</label> ${userRole.id}</td>
-                    <td><label>Name:</label> ${userRole.firstName} ${userRole.lastName}</td>
+                    <!--<td><label>ID:</label> ${userRole.id}</td>-->
+                    <td colspan="2"><label>Name:</label> ${userRole.firstName} ${userRole.lastName}</td>
                 </tr>                
                 </tbody>
             </table>
@@ -22,7 +22,7 @@
         </ai-dialog-body>
 
         <ai-dialog-footer>
-            <button class="btn btn-primary" click.trigger="yes()">Yes</button>
+            <button class="btn btn-danger" click.trigger="triggerDelete(userRole.id)">Delete</button>
             <button class="btn btn-default pull-left" click.trigger="cancel()">Cancel</button>
         </ai-dialog-footer>
     </ai-dialog>

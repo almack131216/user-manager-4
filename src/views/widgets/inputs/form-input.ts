@@ -30,11 +30,13 @@ export class FormInput {
     @bindable inputOnly = false;
 
     public constructor(model) {
+
     }
 
     @bindable model;
     activate(model) {
         // model is the passed through object
+        
     }
 
     tmpCreateLabel(getStr) {
@@ -45,6 +47,8 @@ export class FormInput {
         if (CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.model);
         if (!this.inpLabel) this.inpLabel = this.tmpCreateLabel(this.name);
         if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
+        if(this.isReadonly) this.isMandatory = false;
+        
     }
 }
 

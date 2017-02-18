@@ -8,19 +8,19 @@
         <div class="col-xs-12" innerhtml.bind="message"></div>
     </div>
 
-    <pre if.bind="CV.debugShowCodeOutput">${lkp_trainings & json}</pre>
+    <pre if.bind="CV.debugShowCodeOutput">${myLookups.trainings & json}</pre>
     <pre if.bind="CV.debugShowCodeOutput">${myTrainingArr & json}</pre>
     <pre if.bind="CV.debugShowCodeOutput">${myTrainingArrDynamic & json}</pre>
     <pre if.bind="CV.debugShowCodeOutput">
         <ul>
-            <li repeat.for="row of lkp_trainings">
+            <li repeat.for="row of myLookups.trainings">
                 ${row & json}
             </li>
         </ul>
     </pre>
 
     <div class="col-xs-12">
-        <table class="table cols-3 user-panel-table padded-cells" if.bind="myTrainingArr && lkp_trainings">
+        <table class="table cols-3 user-panel-table padded-cells" if.bind="myTrainingArr && myLookups.trainings">
             <thead>
                 <tr>
                     <th>Training</th>
@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of lkp_trainings">
+                <tr repeat.for="row of myLookups.trainings" if.bind="!isReadOnly || isReadOnly && returnTrainingData(row.id,'trainingId')">
                     <td>
                         <label>${row.name}</label>
                     </td>
@@ -53,13 +53,14 @@
                         <!--<span if.bind="user.profile.trainings[$index].expiresOn!=null">Attended</span>                        -->
                     </td>
                     <td>
-                        <!--<span>${ returnTrainingData(row.id,'expiresOn') }</span>-->
+                        <!--<span>${ profile.trainings[$index] & json }</span>-->
+                        <!--${row.id}-->
                         <form-input inp-type="date" if.bind="returnTrainingData(row.id,'expiresOn')"
                             inp-label="user.profile.trainings[$index].training.name"
                             model.two-way="profile.trainings[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"
-                            is-readonly.bind="user.trainings[$index].attended"></form-input>
+                            is-readonly.bind="user.trainings[$index].attended || isReadOnly"></form-input>
                     </td>
                 </tr>                
             </tbody>

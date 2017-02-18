@@ -6,8 +6,8 @@ import {BindingEngine} from "aurelia-binding";
 inject(BindingEngine)
 inject(Element)
 export class FormCheckbox {  
-
     @bindable model;
+    
     @bindable name = null;
     @bindable inpPlacement = null;
     @bindable inpLabel = null;
@@ -15,14 +15,20 @@ export class FormCheckbox {
     @bindable inpName = null;
     @bindable inpValue = null;
     @bindable isMandatory = null;
+    @bindable isReadonly = null;
 
     public initSelected: null;
 
     @bindable
     public inputOnly: boolean;
 
+    public constructor(model) {
+
+    }
+
+    
     activate(model) {
-        // model is the passed through object
+        // model is the passed through object        
     }
 
     changeCallback(evt: Event): void {

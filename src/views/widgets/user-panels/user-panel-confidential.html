@@ -8,30 +8,35 @@
 
     <form-select inp-label="Employment Status"
         model.two-way="profile.confidentialData.employmentStatusValue"
-        options.bind="lkp_employmentStatuses"
+        options.bind="myLookups.employmentStatuses"
         prop-arr.bind="['value','name']"        
         autocomplete.bind="true"
         init-selected.two-way="profile.confidentialData.employmentStatusValue"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="tmpMemberStatus"-->
 
-    <form-input inp-type="date" model.two-way="profile.confidentialData.memberSince" inp-label="Member Since" is-mandatory.bind="true"></form-input>
+    <form-input inp-type="date" model.two-way="profile.confidentialData.memberSince" inp-label="Member Since" is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-input>
 
     <div class="divider"></div>
 
     <form-select inp-label="Credentials Level"
         prop-arr.bind="['value','name']"
         model.two-way="profile.confidentialData.credentialLevelValue"
-        options.bind="lkp_credentialLevels"        
+        options.bind="myLookups.credentialLevels"        
         autocomplete.bind="true"
         init-selected.two-way="profile.confidentialData.credentialLevelValue"
-        is-mandatory.bind="true"></form-select>
+        is-mandatory.bind="true"
+        is-readonly.bind="isReadOnly"></form-select>
         <!--changed.two-way="user.user.systemRoles.value"-->
 
     <div class="divider"></div>
-    <form-input model.two-way="profile.confidentialData.field1" inp-label="Confidential Field 1"></form-input>
+    <form-input model.two-way="profile.confidentialData.field1" inp-label="Confidential Field 1"
+        is-readonly.bind="isReadOnly"></form-input>
 
     <div class="divider"></div>
-    <form-input model.two-way="profile.confidentialData.field2" inp-label="Confidential Field 2"></form-input>
+    <form-input model.two-way="profile.confidentialData.field2" inp-label="Confidential Field 2"
+        is-readonly.bind="isReadOnly"></form-input>
 
 </template>

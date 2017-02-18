@@ -1,5 +1,26 @@
 /* _recycled.scss */
 
+tr.tr-row-selected td {
+    background-color:#fcf8e3;
+}
+
+select.form-control[disabled],
+select.form-control[readonly] {
+    background-color:transparent !important;
+    padding:5px 10px !important;
+    border:none !important;
+
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+select.form-control[disabled]::-ms-expand {
+    display: none !important;
+}
+
 img.fit-col {width:100%;height:auto;}
 
 .cursor-hover {cursor:pointer;}
@@ -107,7 +128,7 @@ ai-dialog {
     border:1px solid $bp_color-green-1;
     @include box-shadow(false);
     
-    .panel-heading {
+    .panel-heading:not(.panel-heading-custom) {
         border-bottom:0px;
         background:$bp_color-green-1;
         color:white;

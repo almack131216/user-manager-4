@@ -20,24 +20,27 @@
                         <form-select inp-label="Passport Type"
                             prop-arr.bind="['value','name']"
                             model.two-way="profile.passports[$index].typeValue"
-                            options.bind="lkp_passportTypes"
+                            options.bind="myLookups.passportTypes"
                             autocomplete.bind="true"
                             init-selected.two-way="profile.passports[$index].typeValue"
                             is-mandatory.bind="true"
-                            input-only="true"></form-select>
+                            input-only="true"
+                            is-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.passports[$index].type.value"-->
                     </td>
                     <td>
-                        <form-input model.two-way="profile.passports[$index].number" inp-label="Passport Number" is-mandatory.bind="true" input-only="true"></form-input>
+                        <form-input model.two-way="profile.passports[$index].number" inp-label="Passport Number" is-mandatory.bind="true" input-only="true"
+                            is-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
                         <form-select inp-label="Passport Nationality"
                             model.two-way="profile.passports[$index].countryId"
-                            options.bind="lkp_passportNationality"                            
+                            options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
                             init-selected.two-way="profile.passports[$index].countryId"
                             is-mandatory.bind="true"
-                            input-only="true"></form-select>
+                            input-only="true"
+                            is-readonly.bind="isReadOnly"></form-select>
                             <!--changed.two-way="user.profile.passports[$index].country.id"-->
                     </td>
                     <td>
@@ -45,7 +48,8 @@
                             inp-type="date"
                             model.two-way="profile.passports[$index].expiresOn"
                             is-mandatory.bind="true"
-                            input-only="true"></form-input>
+                            input-only="true"
+                            is-readonly.bind="isReadOnly"></form-input>
                     </td>
 
                 </tr>
@@ -53,7 +57,7 @@
         </table>
     </div>
 
-    <div class="col-xs-12 margin-bottom-g1">
+    <div if.bind="!isReadOnly" class="col-xs-12 margin-bottom-g1">
         <button class="btn btn-default btn-sm btn-i">
             <i class="fa fa-plus"></i>
             Add Passport

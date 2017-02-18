@@ -33,12 +33,6 @@ export class UserInfo {
 
     constructor(private api: WebAPIUsers, private ea: EventAggregator) {
 
-        this.api.getUserRole(6).then(user => {
-            //alert('? 2' + JSON.stringify(user));
-            this.info = <User>user;
-            //this.firstName = this.info.firstName;
-            this.firstName = this.info.firstName;
-        });
     }
 
     created(params, routeConfig) {
