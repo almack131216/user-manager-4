@@ -3,17 +3,17 @@
     <require from="aurelia-mask/masked-input"></require>
     <require from="../../../resources/format/format-date"></require>
 
-    <label if.bind="!inputOnly" class="col-xs-6" for.bind="custName" title.bind="inpLabel">
-        ${inpLabel}
+    <label if.bind="!inputOnly" class="col-xs-6" for.bind="custName" title.bind="custLabel">
+        ${custLabel}
     </label>
     <span>
         ? ${custName}
     </span>
     <div class="${!inputOnly ? 'col-xs-6' : ''}">
-        <input if.bind="maskPattern=='telephone'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
-        <input if.bind="maskPattern=='telephone-cc'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
-        <input if.bind="inpType=='date'" type="inpType" value.bind="model | formatDate" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
-        <input if.bind="!maskPattern && inpType=='text'" type="inpType" value.bind="model" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
+        <input if.bind="maskPattern=='telephone'" type="custType" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
+        <input if.bind="maskPattern=='telephone-cc'" type="custType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
+        <input if.bind="custType=='date'" type="custType" value.bind="model | formatDate" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
+        <input if.bind="!maskPattern && custType=='text'" type="custType" value.bind="model" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
     </div>
 
 </template>

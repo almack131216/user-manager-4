@@ -11,9 +11,9 @@ export class FormInput {
     maskPatternTelephone = '+ 999 / 999999';
     maskPatternTelephoneCc = '+ 999 / 999999';    
 
-    @bindable inpType = "text";
+    @bindable custType = "text";
     @bindable formatDate = null;
-    @bindable inpLabel = null;//xxx
+    @bindable custLabel = null;//xxx
     @bindable inpPlaceholder = null;
     @bindable inpName = null;//xxx
     @bindable inpValue = null;
@@ -50,8 +50,8 @@ export class FormInput {
         if (CV.debugConsoleLog) console.log('[form-inputs] created: ' + this.model);
         //this.name = this.custName;
         //console.log('[form-inputs] created: ' + this.name + ' > ' + CV.myLabels[this.custName]);
-        if (!this.inpLabel) this.inpLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;// this.tmpCreateLabel(this.name);
-        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
+        if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;// this.tmpCreateLabel(this.name);
+        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.custLabel;
         if(this.isReadonly) this.isMandatory = false;        
     }
 

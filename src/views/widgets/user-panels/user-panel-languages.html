@@ -23,15 +23,15 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
         <table class="table cols-2 user-panel-table">
             <thead>
                 <tr>
-                    <th>Language</th>
-                    <th>Proficiency</th>
+                    <th>${CV.myLabels.language}</th>
+                    <th>${CV.myLabels.languageProficiency}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr repeat.for="row of profile.languages">
                     <td class="padded-cell">
                         <form-select cust-name.bind="['language_' + $index]"
-                            inp-label="Language"
+                            cust-label="Language"
                             input-only="true"
                             model.two-way="profile.languages[$index].languageId"
                             options.bind="myLookups.languages"                            
@@ -43,7 +43,7 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                     </td>
                     <td class="padded-cell">
                         <form-select cust-name.bind="['languageProficiency_' + $index]"
-                            inp-label="Proficiency"
+                            cust-label="Proficiency"
                             input-only="true"
                             prop-arr.bind="['value','name']"
                             model.two-way="profile.languages[$index].proficiencyValue"

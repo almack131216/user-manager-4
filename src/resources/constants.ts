@@ -48,7 +48,7 @@ export const myLabels = {
     "visaCountry": "Visa Country",
     "visaType": "Visa Type",
     "visaExpiryDate": "Visa Expiry Date",
-    "visaMultiple": "Multiple Visas",
+    "visaMultiple": "Multiple Visa",
 
     "passportType": "Passport Type",
     "passportNumber": "Passport Number",
@@ -57,6 +57,9 @@ export const myLabels = {
 
     "trainingExpiryDate": "Training Expiry Date",
 
-    "expiryDate": "Expiry Date"
+    "expiryDate": "Expiry Date",
+
+    "training": "Training",
+    "attended": "Attended"
 
 }

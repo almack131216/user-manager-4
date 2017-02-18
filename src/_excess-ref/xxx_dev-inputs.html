@@ -1,6 +1,6 @@
 <!--<form-checkbox
             class="margin-x-g1"
-            inp-label="Multiple Visas"                            
+            cust-label="Multiple Visas"                            
             model.two-way="user.profile.visas[$index].multipleEntry"
             init-selected.two-way="user.profile.visas[$index].multipleEntry"
             input-only="true"
@@ -13,7 +13,7 @@
             </label>        -->
 
             <!--<div class="col-xs-12">
-            <form-radio inp-name.bind.bind="'training_ics" inp-label.bind="user.profile.trainings[0].training.name" model.two-way="user.profile.trainings[0].training.id"
+            <form-radio inp-name.bind.bind="'training_ics" cust-label.bind="user.profile.trainings[0].training.name" model.two-way="user.profile.trainings[0].training.id"
                 expiry-date.two-way="user.profile.trainings[0].expiresOn ? user.profile.trainings[0].expiresOn : '--'"
                 init-selected.two-way="user.profile.trainings[0].training.id"></form-radio>
         </div>
@@ -21,7 +21,7 @@
         <div class="divider dotted"></div>
 
         <div class="col-xs-12">
-            <form-radio inp-name.bind="'training_haz'" inp-label.bind="user.profile.trainings[1].training.name" model.two-way="user.profile.trainings[1].training.id"
+            <form-radio inp-name.bind="'training_haz'" cust-label.bind="user.profile.trainings[1].training.name" model.two-way="user.profile.trainings[1].training.id"
                 expiry-date.two-way="user.profile.trainings[1].expiresOn ? user.profile.trainings[1].expiresOn : '--'"
                 init-selected.two-way="user.profile.trainings[1].training.id"></form-radio>
         </div>
@@ -29,7 +29,7 @@
         <div class="divider dotted"></div>
 
         <div class="col-xs-12 margin-bottom-2">
-            <form-radio inp-name.bind="'training_offs'" inp-label.bind="user.profile.trainings[2].training.name" model.two-way="user.profile.trainings[2].training.id"
+            <form-radio inp-name.bind="'training_offs'" cust-label.bind="user.profile.trainings[2].training.name" model.two-way="user.profile.trainings[2].training.id"
                 expiry-date.two-way="user.profile.trainings[2].expiresOn ? user.profile.trainings[2].expiresOn : '--'"
                 init-selected.two-way="user.profile.trainings[2].training.id"></form-radio>
         </div>-->
@@ -46,7 +46,7 @@
         is-mandatory.bind="true"></form-select>
         <!--changed.two-way="profile.regionId"-->
     
-    <form-select inp-label="hub"
+    <form-select cust-label="hub"
         model.two-way="profile.hubId"
         options.bind="lkp_hub"        
         init-selected.two-way="profile.hubId"
@@ -56,7 +56,7 @@
         <!-- XXX CR - 170213: changed.two-way="profile.hubId" may be excess -->
 
     <!--<div class="form-group col-xs-12">
-        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
+        <label class="col-sm-6" for.bind="name" title.bind="custLabel">
             Hub
         </label>
         <div class="col-sm-6">
@@ -75,7 +75,7 @@
 
     
     <!--<div class="form-group col-xs-12">
-        <label class="col-sm-6" for.bind="name" title.bind="inpLabel">
+        <label class="col-sm-6" for.bind="name" title.bind="custLabel">
             Entity
         </label>
         <div class="col-sm-6">

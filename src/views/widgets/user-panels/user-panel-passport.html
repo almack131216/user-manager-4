@@ -8,17 +8,17 @@
         <table class="table user-panel-table cols-4 padded-cells">
             <thead>
                 <tr>
-                    <th>Type</th>
-                    <th>Number</th>
-                    <th>Passport Nationality</th>
-                    <th>Expiry Date</th>
+                    <th>${CV.myLabels.passportType}</th>
+                    <th>${CV.myLabels.passportNumber}</th>
+                    <th>${CV.myLabels.passportNationality}</th>
+                    <th>${CV.myLabels.passportExpiryDate}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr repeat.for="row of profile.passports">
                     <td>
                         <form-select cust-name.bind="['passportType_' + $index]"
-                            inp-label="Passport Type"
+                            cust-label="Passport Type"
                             prop-arr.bind="['value','name']"
                             model.two-way="profile.passports[$index].typeValue"
                             options.bind="myLookups.passportTypes"
@@ -31,14 +31,14 @@
                     </td>
                     <td>
                         <form-input cust-name.bind="['passportNumber_' + $index]"
-                            inp-label="Passport Number"
+                            cust-label="Passport Number"
                             model.two-way="profile.passports[$index].number"
                             is-mandatory.bind="true" input-only="true"
                             is-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
                         <form-select cust-name.bind="['passportNationality_' + $index]"
-                            inp-label="Passport Nationality"
+                            cust-label="Passport Nationality"
                             model.two-way="profile.passports[$index].countryId"
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
@@ -50,8 +50,8 @@
                     </td>
                     <td>
                         <form-input cust-name.bind="['passportExpiryDate_' + $index]"
-                            inp-label="Passport Expiry Date"
-                            inp-type="date"
+                            cust-label="Passport Expiry Date"
+                            cust-type="date"
                             model.two-way="profile.passports[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"

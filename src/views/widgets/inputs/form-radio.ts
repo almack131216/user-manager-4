@@ -8,9 +8,9 @@ inject(Element)
 export class FormRadio {  
 
     @bindable model;
-    @bindable inpType = "radio";
+    @bindable custType = "radio";
     @bindable name = null;
-    @bindable inpLabel = null;
+    @bindable custLabel = null;
     @bindable inpPlaceholder = null;
     @bindable inpName = null;
     @bindable inpValue = null;
@@ -34,8 +34,8 @@ export class FormRadio {
 
     created() {
         if (CV.debugConsoleLog) console.log('[form-radio] created: ' + this.model);
-        if (!this.inpLabel && this.name) this.inpLabel = this.tmpCreateLabel(this.name);
-        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
+        if (!this.custLabel && this.name) this.custLabel = this.tmpCreateLabel(this.name);
+        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.custLabel;
     }
 
 }

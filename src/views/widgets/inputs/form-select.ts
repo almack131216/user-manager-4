@@ -10,7 +10,7 @@ export class FormSelect {
     @bindable optionFilter = null;
 
     @bindable isEnabled = true;
-    @bindable inpLabel = null;
+    @bindable custLabel = null;
     @bindable inpPlaceholder = null;
 
     @bindable isMandatory = null;
@@ -62,8 +62,8 @@ export class FormSelect {
     created(){
         if(CV.debugConsoleLog) console.log('[form-select] created: ' + this.name );
         this.name = this.custName;
-        if (!this.inpLabel) this.inpLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : '______________' + this.custName;//.substring(3)
-        if(!this.inpPlaceholder) this.inpPlaceholder = "> Select " + this.inpLabel + " <";// "Enter " + this.inpLabel;
+        if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : '______________' + this.custName;//.substring(3)
+        if(!this.inpPlaceholder) this.inpPlaceholder = "> Select " + this.custLabel + " <";// "Enter " + this.custLabel;
     }
 
     selectOptions = { allowClear: true, placeholder: 'Select...' };

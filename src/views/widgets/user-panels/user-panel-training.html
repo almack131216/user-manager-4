@@ -23,9 +23,9 @@
         <table class="table cols-3 user-panel-table padded-cells" if.bind="myTrainingArr && myLookups.trainings">
             <thead>
                 <tr>
-                    <th>Training</th>
-                    <th>Attended</th>
-                    <th>Expiry Date</th>
+                    <th>${CV.myLabels.training}</th>
+                    <th>${CV.myLabels.attended}</th>
+                    <th>${CV.myLabels.expiryDate}</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@
                             input-only="true"></form-radio>-->
                         
                         <!--<form-checkbox inp-name.bind="['multipleEntry_' + $index]"
-                            inp-label="Multiple Visas"
+                            cust-label="Multiple Visas"
                             model.two-way="profile.visas[$index].multipleEntry"
                             init-selected.two-way="profile.visas[$index].multipleEntry"
                             input-only="true"
@@ -57,8 +57,8 @@
                         <!--${row.id}-->
                         <form-input if.bind="returnTrainingData(row.id,'expiresOn')"
                             cust-name.bind="['trainingExpiryDate_' + $index]"
-                            inp-type="date" 
-                            inp-label="Expiry Date"
+                            cust-type="date" 
+                            cust-label="Expiry Date"
                             model.two-way="profile.trainings[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"

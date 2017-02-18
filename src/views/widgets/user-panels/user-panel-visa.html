@@ -8,17 +8,17 @@
         <table class="table user-panel-table padded-cells cols-4">
             <thead>
                 <tr>
-                    <th>Visa Country</th>
-                    <th>Visa Type</th>
-                    <th>Expiry Date</th>
-                    <th>Multiple Visa</th>
+                    <th>${CV.myLabels.visaCountry}</th>
+                    <th>${CV.myLabels.visaType}</th>
+                    <th>${CV.myLabels.expiryDate}</th>
+                    <th>${CV.myLabels.visaMultiple}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr repeat.for="row of profile.visas">
                     <td>
                         <form-select cust-name.bind="['visaCountry_' + $index]"
-                            inp-label="Visa Country"                            
+                            cust-label="Visa Country"                            
                             model.two-way="profile.visas[$index].countryId"
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
@@ -30,7 +30,7 @@
                     </td>
                     <td>
                         <form-select cust-name.bind="['visaType_' + $index]"
-                            inp-label="Visa Type"                                                    
+                            cust-label="Visa Type"                                                    
                             model.two-way="profile.visas[$index].typeValue"
                             options.bind="myLookups.visaTypes"  
                             prop-arr.bind="['value','name']"                          
@@ -43,8 +43,8 @@
                     </td>
                     <td>
                         <form-input cust-name.bind="['visaExpiryDate_' + $index]"
-                            inp-label="Expiry Date"
-                            inp-type="date"
+                            cust-label="Expiry Date"
+                            cust-type="date"
                             model.two-way="profile.visas[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"
@@ -52,7 +52,7 @@
                     </td>
                     <td>
                         <form-checkbox cust-name.bind="['visaMultiple_' + $index]"
-                            inp-label="Multiple Visas"
+                            cust-label="Multiple Visas"
                             model.two-way="profile.visas[$index].multipleEntry"
                             init-selected.two-way="profile.visas[$index].multipleEntry"
                             input-only="true"

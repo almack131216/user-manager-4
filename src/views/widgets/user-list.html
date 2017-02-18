@@ -37,14 +37,14 @@
                     <input type="text" class="form-control" value.bind="searchFor_name" placeholder="Search Name">
                 </div>
                 <div class="col-xs-3">
-                    <form-select inp-label="System Role" model.two-way="searchFor_userTypeValue" options.bind="lookups.userTypes" prop-arr.bind="['value','name']"
+                    <form-select cust-label="System Role" model.two-way="searchFor_userTypeValue" options.bind="lookups.userTypes" prop-arr.bind="['value','name']"
                         autocomplete.bind="true" init-selected.two-way="searchFor_userTypeValue" input-only="true"></form-select>
                 </div>
                 <div class="col-xs-3">
-                    <form-select inp-label="Status" model.two-way="searchFor_active" options.bind="lookups.lkp_isActive" prop-arr.bind="['value','name']"
+                    <form-select cust-label="Status" model.two-way="searchFor_active" options.bind="lookups.lkp_isActive" prop-arr.bind="['value','name']"
                         autocomplete.bind="true" init-selected.two-way="searchFor_active" input-only="true"></form-select>
                     <!--<form-checkbox inp-name.bind="'select_isMember'"
-                            inp-label="Active"
+                            cust-label="Active"
                             model.two-way="searchFor_active"
                             init-selected.two-way="searchFor_active"
                             input-only="true"></form-checkbox>-->

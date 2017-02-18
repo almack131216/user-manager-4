@@ -3,8 +3,8 @@
     <!--<require from="../../../resources/format/format-date"></require>-->
     <require from="./form-input"></require>
 
-    <label if.bind="!inputOnly" class="col-xs-8 col-debug" for.bind="inpName" title.bind="inpLabel">
-            ${inpLabel}
+    <label if.bind="!inputOnly" class="col-xs-8 col-debug" for.bind="inpName" title.bind="custLabel">
+            ${custLabel}
     </label>
     <span class="${!inputOnly ? 'col-xs-2' : 'col-xs-6'} col-debug">
         <input type="radio" name.bind="inpName" model.bind="1" checked.bind="model"> Yes

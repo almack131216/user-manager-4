@@ -1,7 +1,10 @@
 
 import { bindable } from 'aurelia-framework';
+import * as Constants from '../../../resources/constants';
+const CV = Constants
 
 export class UserPanelVisa {
+    public CV = CV;
     @bindable user;
     @bindable profile;
     @bindable isReadOnly = null;

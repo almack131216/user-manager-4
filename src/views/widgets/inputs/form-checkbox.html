@@ -1,13 +1,13 @@
 <template class="${inputOnly ? 'form-group-input-only' : 'form-group col-xs-12'} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}">
 
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">
-        <label for.bind="custName" title.bind="inpLabel">
-            ${inpLabel}
+        <label for.bind="custName" title.bind="custLabel">
+            ${custLabel}
         </label>
     </span>
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">
         <label for.bind="custName" if.bind="inputOnly" class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
-            ${inpLabel}
+            ${custLabel}
         </label>
         <input type="checkbox" name.bind="custName" model.bind="true" checked.bind="model">
     </span>
@@ -18,13 +18,13 @@
 
     <label if.bind="inputOnly" class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
         <input type="checkbox" name.bind="custName" model.bind="true" checked.bind="model">
-        ${inpLabel}
+        ${custLabel}
     </label>
 
 
     <!--<span class="${inputOnly ? '' : 'col-xs-4'} col-debug">
         <label if.bind="inputOnly" class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
-            <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">${inpLabel}
+            <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">${custLabel}
         </label>
         <input if.bind="!inputOnly" type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">
     </span>-->
