@@ -1,5 +1,23 @@
 /* _recycled.scss */
 
+
+// .collapsable-toggle_wrap {
+//       position:relative;
+//       height:42px;   
+    
+//     > a.collapsable-toggle {
+//       position:absolute;
+//       display:block;
+//       width:100%;
+//       height:100%;
+//       color:white;
+//       padding:10px 15px;
+//       z-index:1;
+//     }
+
+    
+// }
+
 tr.tr-row-selected td {
     background-color:#fcf8e3;
 }
@@ -8,9 +26,7 @@ select.form-control[disabled],
 select.form-control[readonly] {
     background-color:transparent !important;
     padding:5px 10px !important;
-    border:none !important;
-
-
+    border:0px !important;
     -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 1px;
@@ -123,12 +139,13 @@ ai-dialog {
 }
 
 
-.panel.panel-xc {
+.panel.panel-xc,
+.panel.panel-strong {
     margin-bottom:$offset-g1;
     border:1px solid $bp_color-green-1;
     @include box-shadow(false);
     
-    .panel-heading:not(.panel-heading-custom) {
+    .panel-heading {
         border-bottom:0px;
         background:$bp_color-green-1;
         color:white;
