@@ -75,7 +75,7 @@ export class WebAPIUsers {
 
     let apiData = getData ? JSON.stringify(getData) : apiUrlsArr[getId].data;
 
-    alert(apiMethod + ' > ' + apiUrl + ' > ' + apiData);
+    //alert(apiMethod + ' > ' + apiUrl + ' > ' + apiData);
 
     return $.ajax({
       type: apiMethod,

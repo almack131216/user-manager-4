@@ -16,10 +16,12 @@ export class NavBar {
   }
 
   hasAccess(getUser,getPage){
-    //console.log('hasAccess: ' + JSON.stringify(getUser) + ' / ' + getPage + ' (' + getPage.settings.data.isMemberOnly + ')');
+    console.log('hasAccess: ' + JSON.stringify(getUser) + ' / ' + getPage.settings );// + ' (' + getPage.settings.data.isMemberOnly + ' | ' + getPage.settings.data.isEditorOnly  + ')');
+    //return true;
     if(!getUser) return false;
-    if(!getPage.settings.data.isMemberOnly || (getUser.isMember && getPage.settings.data.isMemberOnly==true)) return true;
-    return false;
+    //if(!getPage.settings) return true;
+    if(getPage.settings && (!getUser.isEditor && getPage.settings.isEditorOnly)) return false;
+    return true;
   }
 
   attached() {

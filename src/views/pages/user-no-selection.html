@@ -1,13 +1,13 @@
 <template>
   <require from="../widgets/user-list"></require>
 
-  <pre if.bind="CV.debugShowCurrentUser">? user-no-selection.html | isMember: ${currentUser.isMember} !</pre>
+  <pre if.bind="CV.debugShowCurrentUser">? user-no-selection.html | isMember: ${currentUser.isMember} | isEditor: ${currentUser.isEditor} !</pre>
 
   <div class="col-md-12" if.bind="title">
     <h1>${title}<span class="html-file-name">(user-no-selection.html)</span></h1>
   </div>
 
   <!--<pre>? user-no-selection.html | isMember: ${currentUser.isMember} | users: ${users} !</pre>-->
-  <user-list class="col-md-12"></user-list>
+  <user-list if.bind="currentUser.isEditor" class="col-md-12"></user-list>
 
 </template>

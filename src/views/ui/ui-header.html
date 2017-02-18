@@ -1,7 +1,7 @@
 <template>
 
     <header class="container">
-        <p if.bind="CV.debugShowCurrentUser">? ui-header > isMember: ${currentUser.isMember} !</p>
+        <pre if.bind="CV.debugShowCurrentUser">? ui-header.html | isMember: ${currentUser.isMember} | isEditor: ${currentUser.isEditor} !</pre>
         <div class="row">
             <div class="col-xs-8 logo-wrap">
                 <a class="logo" href="#" title="${CV.SITE_NAME}">

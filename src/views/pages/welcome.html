@@ -4,13 +4,13 @@
     <require from="../widgets/profile-brief"></require>
 
     <div if.bind="pageData" class="row margin-bottom-g1">
-        <pre if.bind="CV.debugShowCurrentUser">? welcome.html | isMember: ${currentUser.isMember} !</pre>
+        <pre if.bind="CV.debugShowCurrentUser">? welcome.html | isMember: ${currentUser.isMember} | isEditor: ${currentUser.isEditor} !</pre>
         <div class="col-md-12">
             <img src="${imgSrc_splash}" class="fit-col">
         </div>
     </div>
 
-    <div class="row-fluid">
+    <div  class="row-fluid">
         <div class="col-md-6">
             <!--<img src="src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
@@ -44,8 +44,9 @@
             <list-activity title="Recent Reviews" cust-xc-id="xs_recentReviews" api-data.bind="pageData.recentReviews"></list-activity>
         </div>
     </div>
-<!--
-    <div if.bind="!currentUser.isMember" class="row-fluid">
+
+
+    <div if.bind="!currentUser.isEditor" class="row-fluid">
         <div class="col-md-6">
             <div class="margin-bottom-2">
                 <h1 class="margin-top-0">${title}</h1>
@@ -56,6 +57,6 @@
         <div class="col-md-6">
             <profile-brief member-arr.bind="pageData.memberPreview"></profile-brief>
         </div>
-    </div>-->
+    </div>
 
 </template>

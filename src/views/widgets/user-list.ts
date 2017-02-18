@@ -120,6 +120,7 @@ export class UserList {
         // 'SEARCH', { active: true, userTypeValue: 2 }, 'data/users/query'
         // 'SEARCH', { active: true, userTypeValue: 3 }, 'data/users/query'
         // 'SEARCH', { userTypeValue: 1 }, 'data/users/query'
+        //alert('loadUserList: ' + JSON.stringify(data) );
         this.api.apiCall('user-list',data)
             .then(users => this.users = users)            
             .then(() => this.populateRoleFilterFromList());
