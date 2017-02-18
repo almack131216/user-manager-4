@@ -29,7 +29,6 @@ export class UserSelected {
   myLookups;
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
-
   }
 
   activate(params, routeConfig) {

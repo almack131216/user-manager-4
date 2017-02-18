@@ -12,9 +12,9 @@ let usersArr = [];
 let results = null;
 let myProfile = null;
 let hw_useJson = true;
-//let path_api = '../../MRT.Api.Web';
+let path_api = '../../MRT.Api.Web';
 //let path_api = '../api';
-let path_api = 'src/api';
+let path_local = 'src/api';
 
 const apiUrlsArr = [];
 apiUrlsArr['global'] = { method: 'GET', url: '/views/global', urlLocal: '/api-global.json', data: null }
@@ -65,7 +65,7 @@ export class WebAPIUsers {
   apiCall(getId, getData) {
     this.isRequesting = true;
     var apiMethod = !hw_useJson ? apiUrlsArr[getId].method : "GET";
-    let apiUrl = !hw_useJson ? path_api + apiUrlsArr[getId].url : path_api + apiUrlsArr[getId].urlLocal;
+    let apiUrl = !hw_useJson &&apiUrlsArr[getId].url ? path_api + apiUrlsArr[getId].url : path_local + apiUrlsArr[getId].urlLocal;
 
     if(!hw_useJson && getData && apiUrlsArr[getId].urlAppendWithId) {
       apiUrl += getData + apiUrlsArr[getId].getData;

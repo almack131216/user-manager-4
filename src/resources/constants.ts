@@ -1,7 +1,7 @@
 export const debugConsoleLog = false;
 export const debugShowOutput = false;
 export const debugShowCodeOutput = false;
-export const debugShowCurrentUser = true;
+export const debugShowCurrentUser = false;
 export const COPYRIGHT = '© 2017 BP p.l.c.';
 export const SITE_OWNER_ABBR = 'BP';
 export const SITE_OWNER = 'British Petroleum';
@@ -15,3 +15,30 @@ export const MSG_TRAINING = "<p>No training is mandatory or required. Roles that
 
 /* formatters */
 export const FORMAT_DATE = "MMMM Do YYYY";//February 7th 2017
+
+export const myLabels = {
+    "firstName": "First Name x",
+    "lastName": "Last Name x",
+    "emailAddress": "Email Address x",
+    "loginName": "Username/NTID",
+    "lkp_regions": "Region",
+    "lkp_hubs": "Hub",
+    "lkp_segments": "Segments",
+    "lkp_entities": "Entity",
+    "function": "Function",
+    "location": "Location",
+    "lkp_primaryPositions": "Primary ICS",
+    "lkp_secondaryPositions": "Secondary ICS",
+    "lkp_offices": "BP Office",
+    "lkp_coatSizes": "Coat Size",
+    "businessNumber": "Business Cell No.",
+    "personalNumber": "Personal Cell No.",
+    "officeNumber": "Office Number",
+    "lyncNumber": "Lync Number",
+    "homeNumber": "Home Number",
+    "manager_displayName": "Line Manager",
+    "manager_emailAddress": "Line Manager Email",
+    "manager_loginName": "Line Manager NTID",
+    "manager_emergencyContactName": "Emergency Contact Name",
+    "manager_emergencyContactNumber": "Emergency Contact No."
+}

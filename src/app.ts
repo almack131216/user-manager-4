@@ -5,15 +5,13 @@ const CV = Constants
 
 import { FetchConfig } from 'aurelia-auth';
 
-import { WebAPIUsers } from './api/web-api-users';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { HttpClient } from 'aurelia-http-client';
-
+import { WebAPIUsers } from './api/web-api-users';
 
 const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
 const profileUrl = 'src/api/api-global.json';
-
 
 @autoinject
 @inject(HttpClient, Router, FetchConfig, WebAPIUsers)
@@ -29,30 +27,29 @@ export class App {
   currentUser;
   myId
   myDisplayName
+  
   isMemberXXX
   isReader
   isEditor
 
-
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
-    //alert( 'repos' + JSON.stringify(this.repos))
   }
 
-  
+
 
   async activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
-    this.api.apiCall('global',null)
+    this.api.apiCall('global', null)
       .then(apiResultData => this.currentUser = apiResultData)
       .then(() => {
         this.currentUser = this.currentUser.currentUser,
-        this.myId = this.currentUser.id;
+          this.myId = this.currentUser.id,
         this.myDisplayName = this.currentUser.displayName,
-        this.isMemberXXX = this.currentUser.isMember,
-        this.isReader = this.currentUser.isReader,
-        this.isEditor = this.currentUser.isEditor
+          this.isMemberXXX = this.currentUser.isMember,
+          this.isReader = this.currentUser.isReader,
+          this.isEditor = this.currentUser.isEditor
       });
 
   }

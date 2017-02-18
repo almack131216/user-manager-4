@@ -41,7 +41,7 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
 
                     </td>
                     <td class="padded-cell">
-                        <form-select name="lkp_languageLevel[$index]"
+                        <form-select inp-name.bind="Proficiency"
                             input-only="true"
                             prop-arr.bind="['value','name']"
                             model.two-way="profile.languages[$index].proficiencyValue"
