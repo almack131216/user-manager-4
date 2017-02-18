@@ -6,6 +6,9 @@
     <label if.bind="!inputOnly" class="col-xs-6" for.bind="custName" title.bind="inpLabel">
         ${inpLabel}
     </label>
+    <span>
+        ? ${custName}
+    </span>
     <div class="${!inputOnly ? 'col-xs-6' : ''}">
         <input if.bind="maskPattern=='telephone'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
         <input if.bind="maskPattern=='telephone-cc'" type="inpType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">

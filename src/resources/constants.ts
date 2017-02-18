@@ -40,5 +40,23 @@ export const myLabels = {
     "manager_emailAddress": "Line Manager Email",
     "manager_loginName": "Line Manager NTID",
     "manager_emergencyContactName": "Emergency Contact Name",
-    "manager_emergencyContactNumber": "Emergency Contact No."
+    "manager_emergencyContactNumber": "Emergency Contact No.",
+
+    "language": "Language",
+    "languageProficiency": "Language Proficiency",
+
+    "visaCountry": "Visa Country",
+    "visaType": "Visa Type",
+    "visaExpiryDate": "Visa Expiry Date",
+    "visaMultiple": "Multiple Visas",
+
+    "passportType": "Passport Type",
+    "passportNumber": "Passport Number",
+    "passportNationality": "Passport Nationality",
+    "passportExpiryDate": "Passport Expiry Date",
+
+    "trainingExpiryDate": "Training Expiry Date",
+
+    "expiryDate": "Expiry Date"
+
 }

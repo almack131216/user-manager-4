@@ -8,14 +8,16 @@ inject(Element)
 export class FormCheckbox {  
     @bindable model;
     
-    @bindable name = null;
+    //@bindable name = null;
     @bindable inpPlacement = null;
     @bindable inpLabel = null;
     @bindable inpPlaceholder = null;
-    @bindable inpName = null;
+    //@bindable inpName = null;
     @bindable inpValue = null;
     @bindable isMandatory = null;
     @bindable isReadonly = null;
+
+    @bindable custName;
 
     public initSelected: null;
 
@@ -40,7 +42,7 @@ export class FormCheckbox {
 
     created() {
         if (CV.debugConsoleLog) console.log('[form-checkbox] created: ' + this.model);
-        if (!this.inpLabel && this.name) this.inpLabel = this.tmpCreateLabel(this.name);
+        if (!this.inpLabel) this.inpLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;
         if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.inpLabel;
     }
 

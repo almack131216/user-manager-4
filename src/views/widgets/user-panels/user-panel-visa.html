@@ -17,7 +17,8 @@
             <tbody>
                 <tr repeat.for="row of profile.visas">
                     <td>
-                        <form-select inp-label="Visa Country"
+                        <form-select cust-name.bind="['visaCountry_' + $index]"
+                            inp-label="Visa Country"                            
                             model.two-way="profile.visas[$index].countryId"
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
@@ -28,7 +29,8 @@
                             <!--changed.two-way="user.profile.visas[$index].country.id"-->
                     </td>
                     <td>
-                        <form-select inp-label="Visa Type"                            
+                        <form-select cust-name.bind="['visaType_' + $index]"
+                            inp-label="Visa Type"                                                    
                             model.two-way="profile.visas[$index].typeValue"
                             options.bind="myLookups.visaTypes"  
                             prop-arr.bind="['value','name']"                          
@@ -40,15 +42,16 @@
                             <!--changed.two-way="user.profile.visas[$index].type.value"-->
                     </td>
                     <td>
-                        <form-input inp-type="date"
+                        <form-input cust-name.bind="['visaExpiryDate_' + $index]"
+                            inp-label="Expiry Date"
+                            inp-type="date"
                             model.two-way="profile.visas[$index].expiresOn"
-                            inp-label="Visa Expiry Date"
                             is-mandatory.bind="true"
                             input-only="true"
                             is-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
-                        <form-checkbox inp-name.bind="['multipleEntry_' + $index]"
+                        <form-checkbox cust-name.bind="['visaMultiple_' + $index]"
                             inp-label="Multiple Visas"
                             model.two-way="profile.visas[$index].multipleEntry"
                             init-selected.two-way="profile.visas[$index].multipleEntry"

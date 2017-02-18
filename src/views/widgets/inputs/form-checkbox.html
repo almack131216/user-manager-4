@@ -1,20 +1,23 @@
 <template class="${inputOnly ? 'form-group-input-only' : 'form-group col-xs-12'} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}">
 
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">
-        <label for.bind="inpName" title.bind="inpLabel">
+        <label for.bind="custName" title.bind="inpLabel">
             ${inpLabel}
         </label>
     </span>
     <span if.bind="!inputOnly" class="col-xs-6 col-debug">
-        <label for.bind="inpName" if.bind="inputOnly" class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
+        <label for.bind="custName" if.bind="inputOnly" class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
             ${inpLabel}
         </label>
-        <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">
+        <input type="checkbox" name.bind="custName" model.bind="true" checked.bind="model">
     </span>
 
+    <span>
+        ? ${custName}
+    </span>
 
     <label if.bind="inputOnly" class="label-with-checkbox ${inpPlacement ? 'checkbox-' + inpPlacement : ''}">
-        <input type="checkbox" name.bind="inpName" model.bind="true" checked.bind="model">
+        <input type="checkbox" name.bind="custName" model.bind="true" checked.bind="model">
         ${inpLabel}
     </label>
 

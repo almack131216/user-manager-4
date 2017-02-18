@@ -55,8 +55,10 @@
                     <td>
                         <!--<span>${ profile.trainings[$index] & json }</span>-->
                         <!--${row.id}-->
-                        <form-input inp-type="date" if.bind="returnTrainingData(row.id,'expiresOn')"
-                            inp-label="user.profile.trainings[$index].training.name"
+                        <form-input if.bind="returnTrainingData(row.id,'expiresOn')"
+                            cust-name.bind="['trainingExpiryDate_' + $index]"
+                            inp-type="date" 
+                            inp-label="Expiry Date"
                             model.two-way="profile.trainings[$index].expiresOn"
                             is-mandatory.bind="true"
                             input-only="true"

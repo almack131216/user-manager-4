@@ -17,7 +17,8 @@
             <tbody>
                 <tr repeat.for="row of profile.passports">
                     <td>
-                        <form-select inp-label="Passport Type"
+                        <form-select cust-name.bind="['passportType_' + $index]"
+                            inp-label="Passport Type"
                             prop-arr.bind="['value','name']"
                             model.two-way="profile.passports[$index].typeValue"
                             options.bind="myLookups.passportTypes"
@@ -29,11 +30,15 @@
                             <!--changed.two-way="user.profile.passports[$index].type.value"-->
                     </td>
                     <td>
-                        <form-input model.two-way="profile.passports[$index].number" inp-label="Passport Number" is-mandatory.bind="true" input-only="true"
+                        <form-input cust-name.bind="['passportNumber_' + $index]"
+                            inp-label="Passport Number"
+                            model.two-way="profile.passports[$index].number"
+                            is-mandatory.bind="true" input-only="true"
                             is-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
-                        <form-select inp-label="Passport Nationality"
+                        <form-select cust-name.bind="['passportNationality_' + $index]"
+                            inp-label="Passport Nationality"
                             model.two-way="profile.passports[$index].countryId"
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
@@ -44,7 +49,8 @@
                             <!--changed.two-way="user.profile.passports[$index].country.id"-->
                     </td>
                     <td>
-                        <form-input inp-label="Passport Expiry Date"
+                        <form-input cust-name.bind="['passportExpiryDate_' + $index]"
+                            inp-label="Passport Expiry Date"
                             inp-type="date"
                             model.two-way="profile.passports[$index].expiresOn"
                             is-mandatory.bind="true"
