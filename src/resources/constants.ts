@@ -60,6 +60,8 @@ export const myLabels = {
     "expiryDate": "Expiry Date",
 
     "training": "Training",
-    "attended": "Attended"
+    "attended": "Attended",
+
+    "MRTMember": "MRT Member"
 
 }

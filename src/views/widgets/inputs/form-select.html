@@ -1,18 +1,18 @@
-<template class="${!inputOnly ? 'form-group col-xs-12' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''} ${inpClass}">
+<template class="${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''} ${inpClass}">
 
     <require from="../filter"></require>
     <require from="../../../resources/select2"></require>
     <require from="select2/css/select2.min.css"></require>
 
-    <label if.bind="!inputOnly" class="col-xs-6" for.bind="name" title.bind="custLabel">
+    <label if.bind="!inputOnly" class="form-cust-label" for.bind="name" title.bind="custLabel">
         ${custLabel}
          <!--| ${model}-->
         <!--${optionFilter ? ' > [' + optionFilter + ']' : ''}-->
     </label>
-    <span>
+    <!--<span>
         ? ${custName}
-    </span>
-    <div class="${!inputOnly ? 'col-xs-6' : ''}">
+    </span>-->
+    <div class="${!inputOnly ? 'form-cust-input' : ''}">
         <!--/ ${changed} / ${initSelected} / ${selected}-->
         <!--selected.two-way="selected" -->
         <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->

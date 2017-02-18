@@ -18,11 +18,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <form-checkbox inp-name="userRole_isMember"
-                            cust-label="MRT Member"                            
+                        <form-checkbox cust-name="MRTMember"                          
                             model.two-way="userRole.isMember"
-                            init-selected.two-way="userRole.isMember"
-                            input-only="true"></form-checkbox>
+                            init-selected.two-way="userRole.isMember"></form-checkbox>
                     </td>
                     <td class="xxx_wrap-role">
                         <form-filter-role name="userRole_system_role" model.two-way="userRole.systemRoles.value" options.bind="systemRoles" changed.two-way="userRole.systemRoles.value"

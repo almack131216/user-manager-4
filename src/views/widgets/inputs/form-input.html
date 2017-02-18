@@ -1,15 +1,15 @@
-<template class="${!inputOnly ? 'form-group col-xs-12' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}">
+<template class="${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !isReadonly ? 'is-mandatory' : ''}">
     
     <require from="aurelia-mask/masked-input"></require>
     <require from="../../../resources/format/format-date"></require>
 
-    <label if.bind="!inputOnly" class="col-xs-6" for.bind="custName" title.bind="custLabel">
+    <label if.bind="!inputOnly" class="form-cust-label" for.bind="custName" title.bind="custLabel">
         ${custLabel}
     </label>
-    <span>
+    <!--<span>
         ? ${custName}
-    </span>
-    <div class="${!inputOnly ? 'col-xs-6' : ''}">
+    </span>-->
+    <div class="${!inputOnly ? 'form-cust-input' : ''}">
         <input if.bind="maskPattern=='telephone'" type="custType" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
         <input if.bind="maskPattern=='telephone-cc'" type="custType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">
         <input if.bind="custType=='date'" type="custType" value.bind="model | formatDate" class="form-control" name.one-way="custName" placeholder.bind="inpPlaceholder" readonly.bind="isReadonly || isReadOnly">

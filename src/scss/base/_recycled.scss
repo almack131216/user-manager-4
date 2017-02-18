@@ -18,6 +18,26 @@
     
 // }
 
+.form-cust-wrap {
+    width:100%;
+    margin:0;
+    padding:0;
+    display:block;
+
+    .form-cust-label {
+        float:left;
+        display:inline-block;
+        width:50%;
+        padding:0 $offset-g1;
+    }
+    .form-cust-input {
+        float:left;
+        display:inline-block;
+        width:50%;
+        padding:0 $offset-g1;
+    }
+}
+
 tr.tr-row-selected td {
     background-color:#fcf8e3;
 }
@@ -289,74 +309,21 @@ section {
   margin: 0 20px;
 }
 
-.col-dep {
-    float:left;
-}
-.col-dep-3 {
-    width: 25%;
-}
-.col-dep-4 {
-    width: 33.33333333%;
-}
-.col-dep-5 {
-    width: 41.66666667%;
-}
-.col-dep-6 {
-    width: 50%;
-}
-.col-dep-7 {
-    width:58.33333333%;
-}
-.col-dep-8 {
-    width:66.66666667%;
-}
-.col-dep-12 {width: 100%;}
 
 @media (min-width: 1200px) {
-    .row.row-col-lg-6 {
-        > .wrap-fields > * > .form-group,
-        > .wrap-fields > * > .repeaters > .form-group {
-            width: 50%;
-        }
-    }
-    .row.row-col-lg-4 {  
-        > .wrap-fields > * > .form-group,
-        > .wrap-fields > * > .repeaters > .form-group {
-            width: 50%;//33.33333333%;
-        }
-    }
+
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-    .row.row-col-md-6 {        
-        > .wrap-fields > * > .form-group,
-        > .wrap-fields > * > .repeaters > .form-group {
-            width: 50%;
-        }
-    }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .row.row-col-sm-6 {        
-        > .wrap-fields > * > .form-group,
-        > .wrap-fields > * > .repeaters > .form-group {
-            width: 50%;
-        }
-    }
+
 }
 
 @media (max-width: 767px) {
-    .row.row-col-xs-6 {        
-        > .wrap-fields > * > .form-group,
-        > .wrap-fields > * > .repeaters > .form-group {
-            width: 50%;
-        }
-    }
+
 }
 @media (min-width:481px) and (max-width: 640px){
-    .row.row-col-xxs-12 {        
-        > .wrap-fields > * > .form-group,
-        > .wrap-fields > * > .repeaters > .form-group {
-            width: 100%;
-        }
-    }
+
 }

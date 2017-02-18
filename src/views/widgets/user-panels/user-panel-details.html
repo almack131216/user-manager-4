@@ -10,117 +10,126 @@
 
     <!--<pre>${myLookups.hubs & json}</pre>-->
 
-    <form-input cust-name="firstName" model.two-way="user.user.firstName" is-readonly.bind="true"></form-input>
-    <form-input cust-name="lastName" model.two-way="user.user.lastName" is-readonly.bind="true"></form-input>
-    <form-input cust-name="loginName" model.two-way="user.user.loginName" is-readonly.bind="true"></form-input>
-    <form-input cust-name="emailAddress" model.two-way="user.user.emailAddress" is-readonly.bind="true"></form-input>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form-input cust-name="firstName" model.two-way="user.user.firstName" is-readonly.bind="true"></form-input>
+        </div>
+        <div class="col-xs-6">
+            <form-input cust-name="lastName" model.two-way="user.user.lastName" is-readonly.bind="true"></form-input>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form-input cust-name="loginName" model.two-way="user.user.loginName" is-readonly.bind="true"></form-input>
+        </div>
+        <div class="col-xs-6">
+            <form-input cust-name="emailAddress" model.two-way="user.user.emailAddress" is-readonly.bind="true"></form-input>
+        </div>
+    </div>
+
+
+
+
 
     <div class="divider"></div>
     <pre class="col-xs-12" if.bind="CV.debugShowOutput">? DEV NOTE: SELECT [1,3,8,9] ... SELECTED: ${user.firstName}: ${user.lkp_regions_selected} > ${user.lkp_hub_selected} > ${user.lkp_segment_selected} > ${user.lkp_entity_selected} ?</pre>
-    
-     <!--<div class="divider"></div>
+
+    <!--<div class="divider"></div>
     ? ${user.profile.region.id} > ${user.profile.hub.id} !
      <div class="divider"></div>-->
 
-     <pre if.bind="tmpShowLookupsDebug">${lkp_regions & json}</pre>
-     <pre if.bind="tmpShowLookupsDebug">${lkp_hub & json}</pre>
-     <pre if.bind="tmpShowLookupsDebug">${lkp_entity & json}</pre>
-     <pre if.bind="tmpShowLookupsDebug">${lkp_segment & json}</pre>
-     <pre if.bind="tmpShowLookupsDebug">${lkp_primaryPositions & json}</pre>
-     <pre if.bind="tmpShowLookupsDebug">${lkp_secondaryPositions & json}</pre>
-     <pre if.bind="tmpShowLookupsDebug">${lkp_bp_office_address & json}</pre>
-     <pre if.bind="tmpShowLookupsDebug">${lkp_coatSizes & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_regions & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_hub & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_entity & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_segment & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_primaryPositions & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_secondaryPositions & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_bp_office_address & json}</pre>
+    <pre if.bind="tmpShowLookupsDebug">${lkp_coatSizes & json}</pre>
 
+    <div class="row">
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.regions" cust-name="lkp_regions" model.two-way="profile.regionId" options.bind="myLookups.regions"
+                autocomplete.bind="true" init-selected.two-way="profile.regionId" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-select>
+                <!--changed.two-way="profile.regionId"-->
+        </div>
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.hubs" cust-name="lkp_hubs" model.two-way="profile.hubId" options.bind="myLookups.hubs" init-selected.two-way="profile.hubId"
+                option-filter.bind="['regionId',profile.regionId]" is-enabled.bind="profile.regionId" is-mandatory.bind="true"
+                is-readonly.bind="isReadOnly"></form-select>
+                <!-- XXX CR - 170213: changed.two-way="profile.hubId" may be excess -->
+        </div>
+    </div>
 
-    <form-select if.bind="myLookups.regions" cust-name="lkp_regions"
-        model.two-way="profile.regionId"
-        options.bind="myLookups.regions"        
-        autocomplete.bind="true"
-        init-selected.two-way="profile.regionId"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="profile.regionId"-->
-    
-    <form-select if.bind="myLookups.hubs" cust-name="lkp_hubs"
-        model.two-way="profile.hubId"
-        options.bind="myLookups.hubs"        
-        init-selected.two-way="profile.hubId"
-        option-filter.bind="['regionId',profile.regionId]"
-        is-enabled.bind="profile.regionId"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!-- XXX CR - 170213: changed.two-way="profile.hubId" may be excess -->
-  
-     <div class="divider"></div>
-     
-    <form-select if.bind="myLookups.segments" cust-name="lkp_segments"
-        model.two-way="profile.segmentId"
-        options.bind="myLookups.segments"              
-        init-selected.two-way="profile.segmentId"
-        autocomplete.bind="true"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="user.profile.segment.id"  -->
-
-    <form-select if.bind="myLookups.entities" cust-name="lkp_entities"
-        model.two-way="profile.entityId"
-        options.bind="myLookups.entities"       
-        init-selected.two-way="profile.entityId"
-        option-filter.bind="['segmentId',profile.segmentId]"
-        is-enabled.bind="profile.segmentId"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="user.profile.entity.id" -->
-    
-    <div class="divider"></div>
-
-    <form-input cust-name="function" model.two-way="profile.function" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
-    <form-input cust-name="location" model.two-way="profile.location" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
 
     <div class="divider"></div>
 
-    <form-select if.bind="myLookups.primaryPositions" cust-name="lkp_primaryPositions"
-        model.two-way="profile.primaryPositionId"
-        options.bind="myLookups.primaryPositions"        
-        autocomplete.bind="true"
-        init-selected.two-way="profile.primaryPositionId"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="user.profile.primaryPosition.id"-->
+    <div class="row">
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.segments" cust-name="lkp_segments" model.two-way="profile.segmentId" options.bind="myLookups.segments"
+                init-selected.two-way="profile.segmentId" autocomplete.bind="true" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-select>
+                <!--changed.two-way="user.profile.segment.id"  -->
+        </div>
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.entities" cust-name="lkp_entities" model.two-way="profile.entityId" options.bind="myLookups.entities"
+                init-selected.two-way="profile.entityId" option-filter.bind="['segmentId',profile.segmentId]" is-enabled.bind="profile.segmentId"
+                is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-select>
+                <!--changed.two-way="user.profile.entity.id" -->
+        </div>
+    </div>
 
-    <form-select if.bind="myLookups.secondaryPositions" cust-name="lkp_secondaryPositions"
-        model.two-way="profile.secondaryPosition"
-        options.bind="myLookups.secondaryPositions"                
-        init-selected.two-way="profile.secondaryPosition"
-        option-filter.bind="['primaryPositionId',profile.primaryPositionId]"
-        is-enabled.bind="profile.primaryPositionId"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="user.profile.secondaryPosition.id"-->
-
-    <div class="divider"></div>
-    
-    <form-select if.bind="myLookups.offices" cust-name="lkp_offices"
-        model.two-way="profile.officeId"
-        options.bind="myLookups.offices"        
-        autocomplete.bind="true"
-        init-selected.two-way="profile.officeId"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="user.profile.office.id"-->
 
     <div class="divider"></div>
 
-    <form-select if.bind="myLookups.coatSizes" cust-name="lkp_coatSizes"
-        model.two-way="profile.coatSizeId"
-        options.bind="myLookups.coatSizes"        
-        init-selected.two-way="profile.coatSizeId"
-        is-mandatory.bind="true"
-        is-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="user.profile.coatSize.id"-->
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form-input cust-name="function" model.two-way="profile.function" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
+        </div>
+        <div class="col-xs-6">
+            <form-input cust-name="location" model.two-way="profile.location" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
+        </div>
+    </div>
 
     <div class="divider"></div>
-    
+
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.primaryPositions" cust-name="lkp_primaryPositions" model.two-way="profile.primaryPositionId"
+                options.bind="myLookups.primaryPositions" autocomplete.bind="true" init-selected.two-way="profile.primaryPositionId"
+                is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-select>
+                <!--changed.two-way="user.profile.primaryPosition.id"-->
+        </div>
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.secondaryPositions" cust-name="lkp_secondaryPositions" model.two-way="profile.secondaryPosition"
+                options.bind="myLookups.secondaryPositions" init-selected.two-way="profile.secondaryPosition" option-filter.bind="['primaryPositionId',profile.primaryPositionId]"
+                is-enabled.bind="profile.primaryPositionId" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-select>
+                <!--changed.two-way="user.profile.secondaryPosition.id"-->
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.offices" cust-name="lkp_offices" model.two-way="profile.officeId" options.bind="myLookups.offices"
+                autocomplete.bind="true" init-selected.two-way="profile.officeId" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-select>
+                <!--changed.two-way="user.profile.office.id"-->
+        </div>
+        <div class="col-xs-6">
+            <form-select if.bind="myLookups.coatSizes" cust-name="lkp_coatSizes" model.two-way="profile.coatSizeId" options.bind="myLookups.coatSizes"
+                init-selected.two-way="profile.coatSizeId" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-select>
+                <!--changed.two-way="user.profile.coatSize.id"-->
+
+        </div>
+    </div>
+
+
+    <div class="divider"></div>
+
     <div class="col-xs-12">
         <table class="table cols-2 user-panel-table">
             <thead>
@@ -132,22 +141,25 @@
             <tbody>
                 <tr>
                     <td class="padding-bottom-0">
-                        <form-input cust-name="businessNumber" model.two-way="profile.businessNumber" mask-pattern="telephone" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="personalNumber" model.two-way="profile.personalNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="officeNumber" model.two-way="profile.officeNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="lyncNumber" model.two-way="profile.lyncNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="homeNumber" model.two-way="profile.homeNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input cust-name="businessNumber" model.two-way="profile.businessNumber" mask-pattern="telephone" is-mandatory.bind="true"
+                            is-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="personalNumber" model.two-way="profile.personalNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="officeNumber" model.two-way="profile.officeNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="lyncNumber" model.two-way="profile.lyncNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="homeNumber" model.two-way="profile.homeNumber" mask-pattern="telephone" is-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td class="padding-bottom-0">
                         <form-input cust-name="manager_displayName" model.two-way="user.user.manager.displayName" is-readonly.bind="true" is-readonly.bind="isReadOnly"></form-input>
                         <form-input cust-name="manager_emailAddress" model.two-way="user.user.manager.emailAddress" is-readonly.bind="true" is-readonly.bind="isReadOnly"></form-input>
                         <form-input cust-name="manager_loginName" model.two-way="user.user.manager.loginName" is-readonly.bind="true" is-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="manager_emergencyContactName" model.two-way="profile.emergencyContactName" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="manager_emergencyContactNumber" model.two-way="profile.emergencyContactNumber" mask-pattern="telephone" is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
+                        <form-input cust-name="manager_emergencyContactName" model.two-way="profile.emergencyContactName" is-mandatory.bind="true"
+                            is-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="manager_emergencyContactNumber" model.two-way="profile.emergencyContactNumber" mask-pattern="telephone"
+                                is-mandatory.bind="true" is-readonly.bind="isReadOnly"></form-input>
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>    
+    </div>
 
 </template>

@@ -21,7 +21,7 @@
             </button>
         </div>
 
-        <div id="${custXcId}" class="panel-body row row-col-xxs-12 row-col-xs-6 row-col-sm-6 row-col-md-6 ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''} ${custXcResClass ? custXcResClass : 'row-col-lg-4'}">
+        <div id="${custXcId}" class="panel-body row ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
             <div class="wrap-fields">
                 <!--? ${myLookups.languages}-->
                 <user-panel-details if.bind="custBody=='user-details'" user.bind="user" profile.bind="profile" my-lookups.bind="myLookups" is-read-only.bind="isReadOnly"></user-panel-details>

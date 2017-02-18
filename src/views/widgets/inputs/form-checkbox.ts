@@ -9,20 +9,17 @@ export class FormCheckbox {
     @bindable model;
     
     //@bindable name = null;
-    @bindable inpPlacement = null;
+    //@bindable inpPlacement = null;
     @bindable custLabel = null;
-    @bindable inpPlaceholder = null;
+    //@bindable inpPlaceholder = null;
     //@bindable inpName = null;
-    @bindable inpValue = null;
+    //@bindable inpValue = null;
     @bindable isMandatory = null;
     @bindable isReadonly = null;
 
     @bindable custName;
 
     public initSelected: null;
-
-    @bindable
-    public inputOnly: boolean;
 
     public constructor(model) {
 
@@ -43,7 +40,6 @@ export class FormCheckbox {
     created() {
         if (CV.debugConsoleLog) console.log('[form-checkbox] created: ' + this.model);
         if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;
-        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.custLabel;
     }
 
 }
