@@ -11,7 +11,6 @@ let users = null;
 let usersArr = [];
 let results = null;
 let myProfile = null;
-<<<<<<< HEAD
 let hw_useJson = true;
 //let path_api = '../../MRT.Api.Web';
 //let path_api = '../api';
@@ -25,9 +24,6 @@ apiUrlsArr['lookups'] = { method: 'GET', url: '/views/profileform/', urlAppend: 
 apiUrlsArr['user-list-to-add'] = { method: 'GET', url: '/ldap/query?limit=5', urlLocal: '/api-list-add-users.json', data: {} }
 apiUrlsArr['user-list'] = { method: 'SEARCH', url: '/data/users/query', urlLocal: '/api-all-users.json', data: null }
 apiUrlsArr['user-role'] = { method: 'GET', url: '/data/users/', urlAppendWithId:true, urlLocal: '/api-user.json', data: null }
-=======
-let hw_useJson = null;
->>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
 
 
 const data_users_X = path_api + '/data/users/';
@@ -118,15 +114,6 @@ export class WebAPIUsers {
     });
   }
 
-
-  
-
-  // updateUserProfile(user) {
-  //   this.http.fetch('users', {
-  //     method: 'post',
-  //     body: json(user)
-  //   })
-  // }
 
   navigateTo(getUrl) {
     //route: user-edit; params.bind: {id:user.id, editType:'edit'}

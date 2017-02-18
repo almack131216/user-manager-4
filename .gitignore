@@ -5,7 +5,7 @@ bootstrap-config/excess-dev
 bootstrap-config/bootstrap/css
 bootstrap-config/bootstrap/js
 _excess
-_excess-ref
+src/_excess-ref
 fonts
 src/css/tagline.gif
 src/css/bp-responsive.svg

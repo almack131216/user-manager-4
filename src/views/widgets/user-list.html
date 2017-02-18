@@ -60,10 +60,7 @@
 
             <!-- Table -->
             <!--? filter_memberType: ${filter_memberType}-->
-<<<<<<< HEAD
             <!--filters.bind: filters;-->
-=======
->>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
             <pre if.bind="debugShowOutput">${users & json}</pre>
 
             <div class="panel panel-warning" if.bind="checkedItemsArr.length>=1">
@@ -80,10 +77,7 @@
                     <table class="table table-striped" if.bind="users && filters" aurelia-table="data.bind: users.data; display-data.bind: $displayData; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
                         <thead>
                             <tr>
-<<<<<<< HEAD
                                 <th><input type="checkbox" value="true" checked.bind="isAllChecked" change.delegate="checkAll()"></th>
-=======
->>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
                                 <th aut-sort="key: loginName" if.bind="isNotDisabled('loginName')">Login</th>
                                 <th aut-sort="key: firstName" if.bind="isNotDisabled('firstName')">First Name</th>
                                 <th aut-sort="key: lastName; default: asc" if.bind="isNotDisabled('lastName')">Surname</th>
@@ -95,11 +89,8 @@
                         </thead>
                         <tbody>
                             <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
-<<<<<<< HEAD
                                 <td> <input type="checkbox" value="true" checked.bind="user.checked" change.delegate="checkMe(user.id)"
                                     /></td>
-=======
->>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
                                 <td if.bind="isNotDisabled('loginName')">
                                     <a if.bind="user.isMember" route-href="route: user-read; params.bind: {id:user.id, editType:'edit', readonly:'read'}" title="View member">${user.loginName}</a>
                                     <span if.bind="!user.isMember">${user.loginName}</span>

@@ -5,11 +5,7 @@ import * as Constants from '../../resources/constants';
 const CV = Constants
 import { WebAPIUsers } from '../../api/web-api-users';
 
-<<<<<<< HEAD
 @inject(WebAPIUsers,Router)
-=======
-@inject(WebAPIUsers,Lookups,Router)
->>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
 export class Welcome {
   public CV = CV;
   title = 'Welcome to MRT';
@@ -18,14 +14,9 @@ export class Welcome {
   message_isMember = '<p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>';
   router;
   pageData;
-<<<<<<< HEAD
   imgSrc_splash;
 
   constructor(private api: WebAPIUsers, router: Router) {
-=======
-  
-  constructor(private api: WebAPIUsers, lookups:Lookups, router: Router) {
->>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
     this.router = router;
   }
 

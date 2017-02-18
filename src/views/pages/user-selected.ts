@@ -35,7 +35,6 @@ export class UserSelected {
   activate(params, routeConfig) {
     this.routeConfig = routeConfig;
     console.log('activate: ' + params.id + ' (' + params.editType + '), readonly: ' + params.isReadOnly);
-<<<<<<< HEAD
 
     this.api.apiCall('lookups',params.id)
       .then(apiResultData => this.myLookups = apiResultData)
@@ -48,9 +47,6 @@ export class UserSelected {
 
     return this.api.apiCall('user-selected',params.id)
     .then(user => {
-=======
-    return this.api.getUserDetails(params.id).then(user => {
->>>>>>> 5adbb3d24b54c25f384a3239d8f94bb42af2727a
       if (params.editType) this.editType = params.editType;
       if (params.readonly) this.isReadOnly = true;
       this.user = <User>user;

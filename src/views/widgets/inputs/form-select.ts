@@ -18,8 +18,6 @@ export class FormSelect {
     @bindable inpClass;
     @bindable isReadonly = null;
 
-    @bindable isReadonly = null;
-
     @bindable
     public initSelected: null;
     public changed: number;
