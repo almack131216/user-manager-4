@@ -24,16 +24,15 @@
                             options.bind="myLookups.passportTypes"
                             autocomplete.bind="true"
                             init-selected.two-way="profile.passports[$index].typeValue"
-                            is-mandatory.bind="true"
+                            cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
-                            <!--changed.two-way="user.profile.passports[$index].type.value"-->
                     </td>
                     <td>
                         <form-input cust-name.bind="['passportNumber_' + $index]"
                             cust-label="Passport Number"
                             model.two-way="profile.passports[$index].number"
-                            is-mandatory.bind="true" input-only="true"
+                            cust-mandatory.bind="true" input-only="true"
                             cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
@@ -43,21 +42,19 @@
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
                             init-selected.two-way="profile.passports[$index].countryId"
-                            is-mandatory.bind="true"
+                            cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
-                            <!--changed.two-way="user.profile.passports[$index].country.id"-->
                     </td>
                     <td>
                         <form-input cust-name.bind="['passportExpiryDate_' + $index]"
                             cust-label="Passport Expiry Date"
                             cust-type="date"
                             model.two-way="profile.passports[$index].expiresOn"
-                            is-mandatory.bind="true"
+                            cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-input>
                     </td>
-
                 </tr>
             </tbody>
         </table>

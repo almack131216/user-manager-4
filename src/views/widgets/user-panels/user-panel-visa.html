@@ -23,10 +23,9 @@
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
                             init-selected.two-way="profile.visas[$index].countryId"
-                            is-mandatory.bind="true"
+                            cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
-                            <!--changed.two-way="user.profile.visas[$index].country.id"-->
                     </td>
                     <td>
                         <form-select cust-name.bind="['visaType_' + $index]"
@@ -36,17 +35,16 @@
                             prop-arr.bind="['value','name']"                          
                             autocomplete.bind="true"
                             init-selected.two-way="profile.visas[$index].typeValue"
-                            is-mandatory.bind="true"
+                            cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
-                            <!--changed.two-way="user.profile.visas[$index].type.value"-->
                     </td>
                     <td>
                         <form-input cust-name.bind="['visaExpiryDate_' + $index]"
                             cust-label="Expiry Date"
                             cust-type="date"
                             model.two-way="profile.visas[$index].expiresOn"
-                            is-mandatory.bind="true"
+                            cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-input>
                     </td>

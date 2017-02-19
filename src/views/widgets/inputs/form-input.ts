@@ -14,11 +14,10 @@ export class FormInput {
     @bindable custType = "text";
     @bindable formatDate = null;
     @bindable custLabel = null;//xxx
-    @bindable inpPlaceholder = null;
-    @bindable inpName = null;//xxx
+    @bindable custPlaceholder = null;
     @bindable inpValue = null;
     @bindable inpValueTwoWay = null;
-    @bindable isMandatory = null;
+    @bindable custMandatory = null;
     @bindable isMemberOnly = null;
 
     @bindable isEnabled = true;//xxx
@@ -51,8 +50,8 @@ export class FormInput {
         //this.name = this.custName;
         //console.log('[form-inputs] created: ' + this.name + ' > ' + CV.myLabels[this.custName]);
         if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;// this.tmpCreateLabel(this.name);
-        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.custLabel;
-        if(this.custReadonly) this.isMandatory = false;        
+        if (!this.custPlaceholder) this.custPlaceholder = "Enter " + this.custLabel;
+        if(this.custReadonly) this.custMandatory = false;        
     }
 
 }

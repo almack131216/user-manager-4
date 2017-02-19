@@ -12,11 +12,10 @@
         prop-arr.bind="['value','name']"        
         autocomplete.bind="true"
         init-selected.two-way="profile.confidentialData.employmentStatusValue"
-        is-mandatory.bind="true"
+        cust-mandatory.bind="true"
         cust-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="tmpMemberStatus"-->
 
-    <form-input cust-type="date" model.two-way="profile.confidentialData.memberSince" cust-label="Member Since" is-mandatory.bind="true"
+    <form-input cust-type="date" model.two-way="profile.confidentialData.memberSince" cust-label="Member Since" cust-mandatory.bind="true"
         cust-readonly.bind="isReadOnly"></form-input>
 
     <div class="divider"></div>
@@ -27,9 +26,8 @@
         options.bind="myLookups.credentialLevels"        
         autocomplete.bind="true"
         init-selected.two-way="profile.confidentialData.credentialLevelValue"
-        is-mandatory.bind="true"
+        cust-mandatory.bind="true"
         cust-readonly.bind="isReadOnly"></form-select>
-        <!--changed.two-way="user.user.systemRoles.value"-->
 
     <div class="divider"></div>
     <form-input model.two-way="profile.confidentialData.field1" cust-label="Confidential Field 1"

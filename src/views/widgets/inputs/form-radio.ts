@@ -11,11 +11,9 @@ export class FormRadio {
     @bindable custType = "radio";
     @bindable name = null;
     @bindable custLabel = null;
-    @bindable inpPlaceholder = null;
-    @bindable inpName = null;
+    @bindable custPlaceholder = null;
     @bindable inpValue = null;
-    @bindable isMandatory = null;
-    //@bindable expiryDate = null;
+    @bindable custMandatory = null;
 
     public initSelected: null;
 
@@ -35,7 +33,7 @@ export class FormRadio {
     created() {
         if (CV.debugConsoleLog) console.log('[form-radio] created: ' + this.model);
         if (!this.custLabel && this.name) this.custLabel = this.tmpCreateLabel(this.name);
-        if (!this.inpPlaceholder) this.inpPlaceholder = "Enter " + this.custLabel;
+        if (!this.custPlaceholder) this.custPlaceholder = "Enter " + this.custLabel;
     }
 
 }

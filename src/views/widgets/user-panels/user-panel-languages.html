@@ -38,8 +38,6 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                             autocomplete.bind="true"
                             init-selected.two-way="profile.languages[$index].languageId"
                             cust-readonly.bind="isReadOnly"></form-select>
-                            <!--changed.two-way="user.profile.languages[$index].language.id"-->
-
                     </td>
                     <td class="padded-cell">
                         <form-select cust-name.bind="['languageProficiency_' + $index]"
@@ -51,7 +49,6 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                             init-selected.two-way="profile.languages[$index].proficiencyValue"
                             is-enabled.bind="profile.languages[$index].languageId"
                             cust-readonly.bind="isReadOnly"></form-select>
-                            <!--changed.two-way="user.profile.languages[$index].proficiency.value"-->
                     </td>
                 </tr>
             </tbody>

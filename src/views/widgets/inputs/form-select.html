@@ -1,4 +1,4 @@
-<template class="${!inputOnly ? 'form-group form-cust-wrap' : ''} ${isMandatory && !custReadonly ? 'is-mandatory' : ''} ${inpClass}">
+<template class="${!inputOnly ? 'form-group form-cust-wrap' : ''} ${custMandatory && !custReadonly ? 'cust-mandatory' : ''}">
 
     <require from="../filter"></require>
     <require from="../../../resources/select2"></require>
@@ -18,9 +18,12 @@
         <!--| ${model} | ${selected} | ${changed} | ${initSelected}-->
         <!--propArr: ${propArr[0]} | ${propArr[1]}-->
 
-        <!--<input if.bind="custReadonly" type="text" value.bind="model" class="form-control" placeholder.bind="inpPlaceholder" readonly>-->
+        <!--<input if.bind="custReadonly" type="text" value.bind="model" class="form-control" placeholder.bind="custPlaceholder" readonly>-->
 <!--if.bind="!custReadonly"-->
-        <select 
+
+        <input if.bind="custReadonly && !initSelected" type="text" class="form-control" value="---" readonly>
+
+        <select if.bind="!custReadonly || (custReadonly && initSelected)"
             reaonly.bind="custReadonly"
             class="form-control"
             value.bind="initSelected"
@@ -29,7 +32,7 @@
             change.delegate="changeCallback($event)"
             >
 
-            <option model.bind="null">${inpPlaceholder}</option>
+            <option model.bind="null">${custPlaceholder}</option>
             <!--<option repeat.for="option of options | filter:'parentValue':optionFilter" model.bind="option[propArr[0]]">-->
             <option repeat.for="option of options | filter:optionFilter[0]:optionFilter[1]"
                 model.bind="option[propArr[0]]"
@@ -39,7 +42,6 @@
             </option>
         </select>
 
-
         <!--<select if.bind="autocomplete" class="form-control"
             id.bind="name"
             select2.bind="selectOptions"
@@ -47,7 +49,7 @@
             disabled.bind="!isEnabled"
             change.delegate="changeCallback($event)">
 
-            <option value="">${inpPlaceholder}</option>
+            <option value="">${custPlaceholder}</option>
             <option repeat.for="option of options | filter:optionFilter[0]:optionFilter[1]" model.bind="option[propArr[0]]">
                 ${option[propArr[1]]}
             </option>

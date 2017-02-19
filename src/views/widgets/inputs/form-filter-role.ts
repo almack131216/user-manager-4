@@ -16,7 +16,7 @@ export class FormFilterRole {
 
     @bindable isEnabled = true;
 
-    inpPlaceholder = '> No Filter <';
+    custPlaceholder = '> No Filter <';
 
     @bindable name = null;
 

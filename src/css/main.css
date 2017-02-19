@@ -1638,8 +1638,8 @@ btn.active, .btn:active, .str-inline-with-btns:active, .pagination-controls .pag
 /* (END) overrule bootstrap btn active styles */
 /* _forms.scss */
 /* line 6, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
-.form-group.is-mandatory label:after,
-.form-group-input-only.is-mandatory label:after {
+.form-group.cust-mandatory label:after,
+.form-group-input-only.cust-mandatory label:after {
   content: "*";
   color: #f00;
   font-size: 1.2em;

@@ -11,10 +11,9 @@ export class FormCheckbox {
     //@bindable name = null;
     //@bindable inpPlacement = null;
     @bindable custLabel = null;
-    //@bindable inpPlaceholder = null;
-    //@bindable inpName = null;
+    //@bindable custPlaceholder = null;
     //@bindable inpValue = null;
-    @bindable isMandatory = null;
+    @bindable custMandatory = null;
     @bindable custReadonly = null;
 
     @bindable custName;

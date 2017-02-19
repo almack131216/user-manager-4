@@ -28,7 +28,6 @@ export class App {
   myId
   myDisplayName
   
-  isMemberXXX
   isReader
   isEditor
 
@@ -46,8 +45,7 @@ export class App {
       .then(() => {
         this.currentUser = this.currentUser.currentUser,
           this.myId = this.currentUser.id,
-        this.myDisplayName = this.currentUser.displayName,
-          this.isMemberXXX = this.currentUser.isMember,
+          this.myDisplayName = this.currentUser.displayName,
           this.isReader = this.currentUser.isReader,
           this.isEditor = this.currentUser.isEditor
       });

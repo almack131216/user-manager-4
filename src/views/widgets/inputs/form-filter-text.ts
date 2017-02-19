@@ -6,7 +6,7 @@ import {BindingEngine} from "aurelia-binding";
 inject(BindingEngine)
 inject(Element)
 export class FormFilterText {
-    @bindable isMandatory = null;
+    @bindable custMandatory = null;
 
     @bindable custLabel = 'Text';
     @bindable name = null;

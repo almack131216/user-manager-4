@@ -41,13 +41,12 @@
                     </td>
                     <td>
                         <!--<span>${ profile.trainings[$index] & json }</span>-->
-                        <!--${row.id}-->
                         <form-input if.bind="returnTrainingData(row.id,'expiresOn')"
                             cust-name.bind="['trainingExpiryDate_' + $index]"
                             cust-type="date" 
                             cust-label="Expiry Date"
                             model.two-way="profile.trainings[$index].expiresOn"
-                            is-mandatory.bind="true"
+                            cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="user.trainings[$index].attended || isReadOnly"></form-input>
                     </td>
