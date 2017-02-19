@@ -1,6 +1,7 @@
 import {Aurelia} from 'aurelia-framework'
 import environment from './environment';
 import config from './auth-config';
+import "kendo-ui-core";
 
 //Configure Bluebird Promises.
 (<any>Promise).config({
@@ -28,7 +29,10 @@ export function configure(aurelia: Aurelia) {
     .plugin('aurelia-auth', (baseConfig)=>{
          baseConfig.configure(config);
     })
-    ;
+    .plugin('aurelia-kendoui-bridge');
+
+//    .plugin('aurelia-kendoui-bridge', kendo => kendo.pro())
+
 
   if (environment.debug) {
     aurelia.use.developmentLogging();

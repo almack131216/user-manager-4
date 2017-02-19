@@ -6,6 +6,10 @@ import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
 import {bindable,autoinject} from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+//import {TaskQueue} from 'aurelia-task-queue';
+
+import * as $ from 'jquery';
+import 'kendo-ui-core/js/kendo.datepicker';
 
 import * as Constants from '../../resources/constants';
 const CV = Constants
@@ -18,7 +22,7 @@ interface User {
   lkp_regions_selected: number;
 }
 
-@inject(WebAPIUsers)
+@inject(WebAPIUsers)//TaskQueue
 export class UserAdd {
   public CV = CV;
   @bindable user = null;
@@ -33,15 +37,32 @@ export class UserAdd {
   isSavingData;
   
   http: HttpClient
-  router: Router;
+  router: Router
+  //taskQueue
 
   title = 'Edit User'
   title_isReadOnly = 'View User';
 
+  
+
   constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, router: Router) {
     this.api = api;
     this.router = router;
+    //this.taskQueue = taskQueue;
   }
+
+  attached() {
+      //this.taskQueue.queueTask(() => {
+        $('#datepicker, #datepicker_dateview').click(function(e){
+          alert('?');
+          e.stopPropagation();
+        });
+      //});
+    }
+
+    onReady(datePicker) {
+  datePicker.value(new Date(1994,4,2));
+}
 
   get canSave() {
     return true;// this.profile.regionId && this.profile.hubId && !this.api.isRequesting;

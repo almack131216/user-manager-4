@@ -5,9 +5,12 @@
   <require from="../widgets/inputs/form-checkbox"></require>
   <require from="../widgets/form-user-full-body"></require>
   <require from="../widgets/btn-xc-all"></require>
+  <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
 
   <pre if.bind="CV.debugShowCurrentUser">? user-add.html | isMember: ${currentUser.isMember} !</pre>
 
+<input id="datepicker" ak-datepicker="k-widget.two-way: datepicker" style="width: 100%" />
+<input ak-datepicker k-on-ready.delegate="onReady($event.detail)" style="width: 100%" />
 
   <div class="main-title-bar row">
 
@@ -17,8 +20,7 @@
         <btn-xc-all wrapper-id="user-panels"></btn-xc-all>
     </div>
 
-    <div class="col-xs-4">
-
+    <div class="col-xs-4 text-align-right">
 
       <div class="btn-group profile-avater" role="group">
         <button if.bind="!isReadOnly" class="btn btn-default btn-i"><i class="fa fa-pencil"></i>Change Avatar</button>

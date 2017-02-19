@@ -70,7 +70,7 @@
             ".html",
             ".css"
           ],
-          "stub": true
+          "stub": false
         }
       ]
     },
@@ -205,27 +205,18 @@
             "main": "moment"
           },
           {
-            "name": "moment-timezone",
-            "path": "../node_modules/moment-timezone",
-            "main": "moment-timezone",
-            "deps": [
-              "moment"
-            ]
+            "name": "kendo-ui-core",
+            "path": "../node_modules/kendo-ui-core/"
           },
           {
-            "name": "i18next",
-            "path": "../node_modules/i18next/dist/umd",
-            "main": "i18next"
+            "name": "aurelia-kendoui-bridge",
+            "path": "../node_modules/aurelia-kendoui-bridge/dist/amd",
+            "main": "index"
           },
           {
-            "name": "aurelia-i18n",
-            "path": "../node_modules/aurelia-i18n/dist/amd",
-            "main": "aurelia-i18n"
-          },
-          {
-            "name": "i18next-xhr-backend",
-            "path": "../node_modules/i18next-xhr-backend/dist/umd",
-            "main": "i18nextXHRBackend"
+            "name": "aurelia-task-queue",
+            "path": "../node_modules/aurelia-task-queue/dist/amd",
+            "main": "aurelia-task-queue"
           }
         ]
       }
