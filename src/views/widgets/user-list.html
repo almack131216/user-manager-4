@@ -101,7 +101,7 @@
                                 </td>
                                 <td if.bind="isNotDisabled('edit')">
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'user-edit/' + user.id )"
+                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'users/' + user.id + '/edit' )"
                                             title="Edit User">
                                             <i class="fa fa-pencil"></i>
                                         </button>

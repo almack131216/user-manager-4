@@ -18,6 +18,35 @@
     
 // }
 
+.k-widget.k-datepicker {
+width:100%;
+height:32px;
+}
+
+.k-picker-wrap {
+    background:white !important;
+    border-radius:0px;
+    border-color:$border-color !important;
+    height:100%;
+}
+
+.k-autocomplete .k-input, .k-dropdown-wrap .k-input, .k-numeric-wrap .k-input, .k-picker-wrap .k-input, .k-selectbox .k-input, .k-textbox>input {
+    height: 22px;
+    /* line-height: 1.65em; */
+    padding: 5px 10px;
+    text-indent: 0px;
+    border: 0;
+    margin: 0;
+}
+
+.k-state-default > .k-select {
+    border-color: #fff;
+    > .k-icon {
+        color:$hyperlink-color;
+    }
+}
+
+
 .main-title-bar {
     margin-bottom:$offset-g1;
     h1 {float:left;margin:0 $offset-g1 0 0;line-height:1.0em;}
@@ -44,6 +73,11 @@
         display:inline-block;
         width:50%;
         padding:0 $offset-g1;
+
+        &.label-with-checkbox {
+            text-align:left !important;
+            width:100%;
+        }
     }
     .form-cust-input {
         float:left;
