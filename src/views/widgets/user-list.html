@@ -18,8 +18,8 @@
     <p if.bind="debugShowOutput">rolesArrDynamic: ${rolesArrDynamic}</p>
     <p if.bind="debugShowOutput">filters[1].value: ${filters[1].value} / ${rolesArrDynamic}</p>
 
-    <div class="panel panel-default panel-xc">
-        <div class="panel-heading ${custXc ? 'cursor-hover' : ''} ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
+    <div class="panel panel-default">
+        <div class="panel-heading strong-heading ${custXc ? 'cursor-hover' : ''} ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
             ${title}
             <button if.bind="custXc" class="btn btn-xc_chevron btn-xs" type="button" aria-expanded="${custXcExpanded}" aria-controls="collapseExample">
             </button>
@@ -60,8 +60,8 @@
 
             <div class="panel panel-warning" if.bind="checkedItemsArr.length>=1">
                 <div class="panel-heading panel-heading-custom">
-                    <span class="display-inline-block"><strong>${checkedItemsArr}</strong> users selected.</span>
-                    <button class="btn btn-danger" click.delegate="deleteMultiple()">
+                    <span class="display-inline-block"><strong>${checkedItemsArr.length}</strong> users selected.</span>
+                    <button class="btn btn-danger btn-xs pull-right" click.delegate="deleteMultiple()">
                     Delete ${checkedItemsArr.length} users
                 </button>
                 </div>
@@ -101,7 +101,7 @@
                                 </td>
                                 <td if.bind="isNotDisabled('edit')">
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'users/' + user.id + '/edit' )"
+                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'user-edit/' + user.id )"
                                             title="Edit User">
                                             <i class="fa fa-pencil"></i>
                                         </button>

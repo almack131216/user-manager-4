@@ -3,8 +3,8 @@
     <require from="./inputs/form-input"></require>
 
     <form role="form" class="form-horizontal" id="user-panel-brief">
-        <div class="panel panel-strong">
-            <div class="panel-heading">
+        <div class="panel">
+            <div class="panel-heading strong-heading">
                 <a if.bind="custXc" class="collapsable-toggle ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
                     <span class="panel-title">${title}</span>
                     <button if.bind="custXc" class="btn btn-xc_chevron btn-xs" type="button" aria-expanded="${custXcExpanded}" aria-controls="collapseExample">

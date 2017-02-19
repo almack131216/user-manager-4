@@ -147,8 +147,6 @@ ai-dialog {
     }
 }
 
-.col-debug {}
-
 .select2 {width:100% !important;}
 
 .select2-container .select2-selection--single .select2-selection__rendered {
@@ -175,22 +173,26 @@ ai-dialog {
     -webkit-user-select: none;
 }
 
+.panel {
+.panel-heading.strong-heading {
+    border-bottom:0px;
+    background:$bp_color-green-1;
+    color:white;
+    font-weight:bold;
 
-.panel.panel-xc,
-.panel.panel-strong {
+    .btn-text {
+        color:$bp_color-yellow;
+    }
+}
+}
+
+.panel.panel-xc {
     margin-bottom:$offset-g1;
     border:1px solid $bp_color-green-1;
     @include box-shadow(false);
     
     .panel-heading {
-        border-bottom:0px;
-        background:$bp_color-green-1;
-        color:white;
-        font-weight:bold;
-
-        .btn-text {
-            color:$bp_color-yellow;
-        }
+        @extend .strong-heading;
 
         .btn.btn-xc_chevron {
             float:right;

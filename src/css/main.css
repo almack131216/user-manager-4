@@ -715,23 +715,23 @@ ai-dialog ai-dialog-header h2 {
   display: inline-block;
 }
 
-/* line 152, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 150, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2 {
   width: 100% !important;
 }
 
-/* line 154, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 152, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container .select2-selection--single .select2-selection__rendered {
   padding-left: 15px;
   padding-right: 25px;
 }
 
-/* line 159, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 157, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container--default .select2-selection--single .select2-selection__clear {
   padding: 0 5px;
 }
 
-/* line 163, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 161, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container--default .select2-selection--single {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -740,7 +740,7 @@ ai-dialog ai-dialog-header h2 {
   border-radius: 0px;
 }
 
-/* line 169, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 167, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container .select2-selection--single {
   box-sizing: border-box;
   cursor: pointer;
@@ -750,71 +750,54 @@ ai-dialog ai-dialog-header h2 {
   -webkit-user-select: none;
 }
 
-/* line 179, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc,
-.panel.panel-strong {
-  margin-bottom: 15px;
-  border: 1px solid #009900;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-/* line 185, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-heading,
-.panel.panel-strong .panel-heading {
+/* line 177, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel .panel-heading.strong-heading, .panel.panel-xc .panel-heading {
   border-bottom: 0px;
   background: #009900;
   color: white;
   font-weight: bold;
 }
 
-/* line 191, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-heading .btn-text,
-.panel.panel-strong .panel-heading .btn-text {
+/* line 183, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel .panel-heading.strong-heading .btn-text, .panel.panel-xc .panel-heading .btn-text {
   color: #FFFF00;
 }
 
-/* line 195, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-heading .btn.btn-xc_chevron, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number,
-.panel.panel-strong .panel-heading .btn.btn-xc_chevron,
-.panel.panel-strong .panel-heading .btn-xc_chevron.str-inline-with-btns,
-.panel.panel-strong .panel-heading .pagination-controls .btn-xc_chevron.page-number, .pagination-controls
-.panel.panel-strong .panel-heading .btn-xc_chevron.page-number {
+/* line 189, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc {
+  margin-bottom: 15px;
+  border: 1px solid #009900;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 197, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-heading .btn.btn-xc_chevron, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number {
   float: right;
   background: transparent;
 }
 
-/* line 199, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before,
-.panel.panel-strong .panel-heading .btn.btn-xc_chevron:before,
-.panel.panel-strong .panel-heading .btn-xc_chevron.str-inline-with-btns:before,
-.panel.panel-strong .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls
-.panel.panel-strong .panel-heading .btn-xc_chevron.page-number:before {
+/* line 201, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before {
   color: #FFFF00;
   font-size: 14px;
   line-height: 14px;
   content: "\f077";
 }
 
-/* line 209, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-heading.collapsed .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.page-number:before,
-.panel.panel-strong .panel-heading.collapsed .btn.btn-xc_chevron:before,
-.panel.panel-strong .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before,
-.panel.panel-strong .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls
-.panel.panel-strong .panel-heading.collapsed .btn-xc_chevron.page-number:before {
+/* line 211, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-heading.collapsed .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.page-number:before {
   content: "\f078";
 }
 
-/* line 215, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-body,
-.panel.panel-strong .panel-body {
+/* line 217, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-body {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
-/* line 219, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-body .wrap-fields,
-.panel.panel-strong .panel-body .wrap-fields {
+/* line 221, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-body .wrap-fields {
   background: #f9f9f9;
   padding: 15px 0 0 0;
   display: block;
@@ -823,27 +806,26 @@ ai-dialog ai-dialog-header h2 {
   height: auto;
 }
 
-/* line 229, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
-.panel.panel-xc .panel-body .wrap-fields .form-group label,
-.panel.panel-strong .panel-body .wrap-fields .form-group label {
+/* line 231, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-body .wrap-fields .form-group label {
   text-align: right;
   font-size: 13px;
   line-height: 1.4em;
   padding-top: 5px;
 }
 
-/* line 239, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 241, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .border-none {
   border: 0px;
 }
 
-/* line 248, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 250, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel-heading {
   background: #f9f9f9;
   border: 0px;
 }
 
-/* line 257, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 259, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .repeaters {
   clear: both;
   display: block;
@@ -851,7 +833,7 @@ ai-dialog ai-dialog-header h2 {
   height: auto;
 }
 
-/* line 264, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 266, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel-body .divider {
   clear: both;
   float: left;
@@ -862,50 +844,50 @@ ai-dialog ai-dialog-header h2 {
   margin: 0px;
 }
 
-/* line 273, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 275, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel-body .divider.dotted {
   border-top: 1px dotted #ddd;
   margin-bottom: 15px;
 }
 
-/* line 279, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 281, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-/* line 283, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 285, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .highlighted {
   background: yellow;
 }
 
-/* line 287, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 289, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .hide-border-top {
   border-top: none;
 }
 
-/* line 289, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 291, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .hide-border-top label {
   display: none;
 }
 
-/* line 292, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 294, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .color-amber {
   color: #FFA500;
 }
 
-/* line 296, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 298, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .color-good {
   color: #1fbb1f;
 }
 
-/* line 300, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 302, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .color-danger {
   color: #FF0000;
 }
 
 /* tmp */
 /* forms */
-/* line 310, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 312, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .form-group label {
   white-space: nowrap;
   overflow: hidden;
@@ -914,41 +896,41 @@ ai-dialog ai-dialog-header h2 {
 }
 
 /* offsets */
-/* line 313, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 315, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .padding-x-0 {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
-/* line 314, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 316, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .margin-x-0 {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
 
-/* line 316, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 318, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .html-file-name {
   margin-left: 10px;
   font-size: 0.5em;
   color: #aaa;
 }
 
-/* line 321, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 323, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .display-none {
   display: none !important;
 }
 
-/* line 322, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 324, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .display-block {
   display: block !important;
 }
 
-/* line 323, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 325, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .display-inline-block {
   display: inline-block !important;
 }
 
-/* line 325, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 327, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 section {
   margin: 0 20px;
 }
@@ -1197,11 +1179,7 @@ strong,
 }
 
 /* line 76, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
-.fa-dummy, .panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before,
-.panel.panel-strong .panel-heading .btn.btn-xc_chevron:before,
-.panel.panel-strong .panel-heading .btn-xc_chevron.str-inline-with-btns:before,
-.panel.panel-strong .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls
-.panel.panel-strong .panel-heading .btn-xc_chevron.page-number:before, ul.help-list li:before,
+.fa-dummy, .panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before, ul.help-list li:before,
 ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after {
   vertical-align: top;
   font-family: FontAwesome;
