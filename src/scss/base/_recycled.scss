@@ -18,21 +18,19 @@
     
 // }
 
-.btn-group.profile-avater {
-    float:right;
+.main-title-bar {
+    margin-bottom:$offset-g1;
+    h1 {float:left;margin:0 $offset-g1 0 0;line-height:1.0em;}
+
+    .btn-group.profile-avater {
     height:32px;
 
     .input-group-addon {
         padding:0px;
         width:auto;
         img {float:right;height:32px;width:auto;padding:0px}
-    }
-    
+    }    
 }
-
-.main-title-bar {
-    margin-bottom:$offset-g1;
-    h1 {float:left;margin:0 $offset-g1 0 0;line-height:1.0em;}
 }
 
 .form-cust-wrap {
