@@ -1,7 +1,6 @@
 <template>
-  <div class="wrap_xc_btns_all">
-    <a click.trigger="xc_all('expand')">${CV.BTN_XC_Expand}</a>
-    <div class="divider"></div>
-    <a click.trigger="xc_all('collapse')">${CV.BTN_XC_Collapse}</a>
+  <div class="btn-group" role="group">
+    <button class="btn btn-default btn-i" click.trigger="xc_all('expand')"><i class="fa fa-chevron-down"></i>${CV.BTN_XC_Expand}</button>
+    <button class="btn btn-default btn-i" click.trigger="xc_all('collapse')"><i class="fa fa-chevron-up"></i>${CV.BTN_XC_Collapse}</button>
   </div>
 </template>

@@ -544,6 +544,38 @@ input, textarea, button {
 
 /* _recycled.scss */
 /* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.btn-group.profile-avater {
+  float: right;
+  height: 32px;
+}
+
+/* line 25, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.btn-group.profile-avater .input-group-addon {
+  padding: 0px;
+  width: auto;
+}
+
+/* line 28, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.btn-group.profile-avater .input-group-addon img {
+  float: right;
+  height: 32px;
+  width: auto;
+  padding: 0px;
+}
+
+/* line 33, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar {
+  margin-bottom: 15px;
+}
+
+/* line 35, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar h1 {
+  float: left;
+  margin: 0 15px 0 0;
+  line-height: 1.0em;
+}
+
+/* line 38, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .form-cust-wrap {
   width: 100%;
   margin: 0;
@@ -551,7 +583,7 @@ input, textarea, button {
   display: block;
 }
 
-/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 44, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .form-cust-wrap .form-cust-label {
   float: left;
   display: inline-block;
@@ -559,7 +591,7 @@ input, textarea, button {
   padding: 0 15px;
 }
 
-/* line 33, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 50, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .form-cust-wrap .form-cust-input {
   float: left;
   display: inline-block;
@@ -567,12 +599,12 @@ input, textarea, button {
   padding: 0 15px;
 }
 
-/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 58, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 tr.tr-row-selected td {
   background-color: #fcf8e3;
 }
 
-/* line 45, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 62, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 select.form-control[disabled],
 select.form-control[readonly] {
   background-color: transparent !important;
@@ -584,30 +616,30 @@ select.form-control[readonly] {
   text-overflow: '';
 }
 
-/* line 56, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 73, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 select.form-control[disabled]::-ms-expand {
   display: none !important;
 }
 
-/* line 60, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 77, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 img.fit-col {
   width: 100%;
   height: auto;
 }
 
-/* line 62, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 79, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .cursor-hover {
   cursor: pointer;
 }
 
-/* line 64, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 81, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .strapline {
   float: left;
   height: 35px;
   margin: 40px 0 0 50px;
 }
 
-/* line 66, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 83, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .form-control[readonly] {
   background-color: transparent !important;
   border-color: transparent !important;
@@ -615,7 +647,7 @@ img.fit-col {
   opacity: 1;
 }
 
-/* line 75, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 92, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .xxx_wrap-role .input-group .input-group-addon {
   background: transparent;
   padding-left: 0px;
@@ -623,29 +655,29 @@ img.fit-col {
   border: 0px;
 }
 
-/* line 81, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 98, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .xxx_wrap-role .input-group .input-group-addon i.fa {
   display: none;
 }
 
-/* line 86, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 103, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 ai-dialog-overlay {
   background: white;
   filter: alpha(opacity=50) !important;
   opacity: 0.5 !important;
 }
 
-/* line 93, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 110, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 ai-dialog > ai-dialog-footer {
   padding: 15px;
 }
 
-/* line 100, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 117, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 table.table-hover tr:hover {
   cursor: pointer;
 }
 
-/* line 105, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 122, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 div.wrap_table-add-user-from-list {
   display: block;
   min-height: 100px;
@@ -654,22 +686,22 @@ div.wrap_table-add-user-from-list {
   overflow-x: hidden;
 }
 
-/* line 113, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 130, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 ai-dialog {
   width: 600px;
 }
 
-/* line 116, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 133, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 ai-dialog.wide {
   width: 800px;
 }
 
-/* line 119, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 136, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 ai-dialog ai-dialog-header h2 {
   margin: 0;
 }
 
-/* line 125, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 142, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .btn-row {
   clear: both;
   display: block;
@@ -678,28 +710,28 @@ ai-dialog ai-dialog-header h2 {
   text-align: center;
 }
 
-/* line 128, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 145, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .btn-row .btn, .btn-row .str-inline-with-btns, .btn-row .pagination-controls .page-number, .pagination-controls .btn-row .page-number {
   display: inline-block;
 }
 
-/* line 135, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 152, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2 {
   width: 100% !important;
 }
 
-/* line 137, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 154, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container .select2-selection--single .select2-selection__rendered {
   padding-left: 15px;
   padding-right: 25px;
 }
 
-/* line 142, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 159, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container--default .select2-selection--single .select2-selection__clear {
   padding: 0 5px;
 }
 
-/* line 146, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 163, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container--default .select2-selection--single {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -708,7 +740,7 @@ ai-dialog ai-dialog-header h2 {
   border-radius: 0px;
 }
 
-/* line 152, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 169, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .select2-container .select2-selection--single {
   box-sizing: border-box;
   cursor: pointer;
@@ -718,7 +750,7 @@ ai-dialog ai-dialog-header h2 {
   -webkit-user-select: none;
 }
 
-/* line 162, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 179, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc,
 .panel.panel-strong {
   margin-bottom: 15px;
@@ -727,7 +759,7 @@ ai-dialog ai-dialog-header h2 {
   box-shadow: none;
 }
 
-/* line 168, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 185, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading,
 .panel.panel-strong .panel-heading {
   border-bottom: 0px;
@@ -736,13 +768,13 @@ ai-dialog ai-dialog-header h2 {
   font-weight: bold;
 }
 
-/* line 174, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 191, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading .btn-text,
 .panel.panel-strong .panel-heading .btn-text {
   color: #FFFF00;
 }
 
-/* line 178, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 195, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading .btn.btn-xc_chevron, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number,
 .panel.panel-strong .panel-heading .btn.btn-xc_chevron,
 .panel.panel-strong .panel-heading .btn-xc_chevron.str-inline-with-btns,
@@ -752,7 +784,7 @@ ai-dialog ai-dialog-header h2 {
   background: transparent;
 }
 
-/* line 182, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 199, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before,
 .panel.panel-strong .panel-heading .btn.btn-xc_chevron:before,
 .panel.panel-strong .panel-heading .btn-xc_chevron.str-inline-with-btns:before,
@@ -764,7 +796,7 @@ ai-dialog ai-dialog-header h2 {
   content: "\f077";
 }
 
-/* line 192, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 209, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-heading.collapsed .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.page-number:before,
 .panel.panel-strong .panel-heading.collapsed .btn.btn-xc_chevron:before,
 .panel.panel-strong .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before,
@@ -773,14 +805,14 @@ ai-dialog ai-dialog-header h2 {
   content: "\f078";
 }
 
-/* line 198, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 215, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-body,
 .panel.panel-strong .panel-body {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
-/* line 202, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 219, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-body .wrap-fields,
 .panel.panel-strong .panel-body .wrap-fields {
   background: #f9f9f9;
@@ -791,7 +823,7 @@ ai-dialog ai-dialog-header h2 {
   height: auto;
 }
 
-/* line 212, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 229, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel.panel-xc .panel-body .wrap-fields .form-group label,
 .panel.panel-strong .panel-body .wrap-fields .form-group label {
   text-align: right;
@@ -800,18 +832,18 @@ ai-dialog ai-dialog-header h2 {
   padding-top: 5px;
 }
 
-/* line 222, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 239, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .border-none {
   border: 0px;
 }
 
-/* line 231, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 248, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel-heading {
   background: #f9f9f9;
   border: 0px;
 }
 
-/* line 240, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 257, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .repeaters {
   clear: both;
   display: block;
@@ -819,7 +851,7 @@ ai-dialog ai-dialog-header h2 {
   height: auto;
 }
 
-/* line 247, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 264, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel-body .divider {
   clear: both;
   float: left;
@@ -830,50 +862,50 @@ ai-dialog ai-dialog-header h2 {
   margin: 0px;
 }
 
-/* line 256, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 273, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .panel-body .divider.dotted {
   border-top: 1px dotted #ddd;
   margin-bottom: 15px;
 }
 
-/* line 262, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 279, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-/* line 266, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 283, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .highlighted {
   background: yellow;
 }
 
-/* line 270, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 287, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .hide-border-top {
   border-top: none;
 }
 
-/* line 272, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 289, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .hide-border-top label {
   display: none;
 }
 
-/* line 275, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 292, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .color-amber {
   color: #FFA500;
 }
 
-/* line 279, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 296, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .color-good {
   color: #1fbb1f;
 }
 
-/* line 283, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 300, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .color-danger {
   color: #FF0000;
 }
 
 /* tmp */
 /* forms */
-/* line 293, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 310, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .form-group label {
   white-space: nowrap;
   overflow: hidden;
@@ -882,41 +914,41 @@ ai-dialog ai-dialog-header h2 {
 }
 
 /* offsets */
-/* line 296, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 313, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .padding-x-0 {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
 
-/* line 297, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 314, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .margin-x-0 {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
 
-/* line 299, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 316, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .html-file-name {
   margin-left: 10px;
   font-size: 0.5em;
   color: #aaa;
 }
 
-/* line 304, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 321, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .display-none {
   display: none !important;
 }
 
-/* line 305, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 322, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .display-block {
   display: block !important;
 }
 
-/* line 306, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 323, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 .display-inline-block {
   display: inline-block !important;
 }
 
-/* line 308, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+/* line 325, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
 section {
   margin: 0 20px;
 }
@@ -1177,17 +1209,17 @@ ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after 
 
 /* _buttons.scss */
 /* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
-.wrap_xc_btns_all {
+.wrap_xc_btns_allXXX {
   display: inline-block;
 }
 
 /* line 5, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
-.wrap_xc_btns_all a {
+.wrap_xc_btns_allXXX a {
   margin: 0 10px;
 }
 
 /* line 8, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
-.wrap_xc_btns_all .divider {
+.wrap_xc_btns_allXXX .divider {
   display: inline-block;
   width: 1px;
   height: 10px;

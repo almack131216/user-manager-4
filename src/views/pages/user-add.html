@@ -8,55 +8,63 @@
 
   <pre if.bind="CV.debugShowCurrentUser">? user-add.html | isMember: ${currentUser.isMember} !</pre>
 
-  <div class="btn-group btn-edit-avatar pull-right" role="group" aria-label="user options">
 
-    <div class="btn-group" role="group">
-      <button class="btn btn-default dropdown-toggle btn-i" type="button" disabled="isReadOnly"
-        id="dropdownMenu1"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="true">
-          <i if.bind="!isReadOnly" class="fa fa-pencil"></i>
-          David Bowie
-          <span if.bind="!isReadOnly" class="caret"></span>
-      </button>
-      <ul if.bind="!isReadOnly" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#"><i class="fa fa-fw fa-pencil"></i> Change Username</a></li>
-        <li><a href="#"><i class="fa fa-fw fa-photo"></i> Change Avatar</a></li>
-      </ul>
+  <div class="main-title-bar row">
+
+    <div class="col-xs-8">
+      <h1 if.bind="!isReadOnly" class="display-inline-block">${title}</h1>
+      <h1 if.bind="isReadOnly" class="display-inline-block">${title_isReadOnly}</h1>
+        <btn-xc-all wrapper-id="user-panels"></btn-xc-all>
     </div>
 
-    <a class="btn btn-default avatar">
-      <img src="src/img/low.jpg" alt="tmp me">
-    </a>
+    <div class="col-xs-4">
 
+
+      <div class="btn-group profile-avater" role="group">
+        <button if.bind="!isReadOnly" class="btn btn-default btn-i"><i class="fa fa-pencil"></i>Change Avatar</button>
+
+        <!--? user-add.html | isReadOnly: ${isReadOnly} | ${currentUser.id} | ${user.user.id} !-->
+      <button if.bind="isReadOnly && (currentUser.id == user.user.id)" click.delegate="navigateToEditThisPage(currentUser.id)"
+        class="margin-x-1 btn btn-default btn-i">
+        <i class="fa fa-pencil"></i> Edit this profile
+        </button>
+
+        <span class="input-group-addon">
+          <img src="src/img/low.jpg" alt="tmp me">
+        </span>
+      </div>
+
+    </div>
   </div>
 
 
-  <h1 if.bind="!isReadOnly" class="display-inline-block">${title}</h1>
-  <h1 if.bind="isReadOnly" class="display-inline-block">${title_isReadOnly}</h1>
-  <btn-xc-all wrapper-id="user-panels"></btn-xc-all>
-
   <form role="form" class="form-horizontal" id="user-panels" if.bind="user && profile">
-<!--cust-xc-expanded="true"-->
+    <!--cust-xc-expanded="true"-->
 
-    <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="User" cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
+    <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="User"
+      cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
 
-    <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Languages" cust-body="user-languages" cust-xc="true" cust-xc-id="xc_languages"></form-user-full-body>
+      <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Languages"
+        cust-body="user-languages" cust-xc="true" cust-xc-id="xc_languages"></form-user-full-body>
 
-    <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Passport Information" cust-body="user-passport" cust-xc="true" cust-xc-id="xc_passport"></form-user-full-body>
+        <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Passport Information"
+          cust-body="user-passport" cust-xc="true" cust-xc-id="xc_passport"></form-user-full-body>
 
-    <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Visa Information" cust-body="user-visa" cust-xc="true" cust-xc-id="xc_visa"></form-user-full-body>
+          <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Visa Information"
+            cust-body="user-visa" cust-xc="true" cust-xc-id="xc_visa"></form-user-full-body>
 
-    <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Training" cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
+            <form-user-full-body user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly" my-lookups.bind="myLookups" cust-title="Training"
+              cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
 
-    <form-user-full-body if.bind="profile.confidentialData!=null" cust-icon="fa-exclamation-triangle" user.bind="user" profile.bind="profile" my-lookups.bind="myLookups" is-read-only.bind="isReadOnly" cust-title="Confidential Information" cust-body="user-confidential" cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
+              <form-user-full-body if.bind="profile.confidentialData!=null" cust-icon="fa-exclamation-triangle" user.bind="user" profile.bind="profile"
+                my-lookups.bind="myLookups" is-read-only.bind="isReadOnly" cust-title="Confidential Information" cust-body="user-confidential"
+                cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
 
   </form>
 
   <div if.bind="!isReadOnly" class="button-bar col-md-12 padding-x-0 text-align-right">
-      <!--?? hubId: ${user.profile.hub.id} > ${profile.hubId} !-->
-      <button class="btn btn-default" click.delegate="save()" disabled.bind="!canSave">Save</button>
-    </div>
+    <!--?? hubId: ${user.profile.hub.id} > ${profile.hubId} !-->
+    <button class="btn btn-default" click.delegate="save()" disabled.bind="!canSave">Save</button>
+  </div>
 
 </template>

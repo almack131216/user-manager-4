@@ -1,9 +1,11 @@
 import { inject } from 'aurelia-framework';
+import { HttpClient, json } from 'aurelia-fetch-client';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../../api/web-api-users';
 import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
 import {bindable,autoinject} from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 
 import * as Constants from '../../resources/constants';
 const CV = Constants
@@ -30,11 +32,15 @@ export class UserAdd {
   savedData;
   isSavingData;
   
+  http: HttpClient
+  router: Router;
+
   title = 'Edit User'
   title_isReadOnly = 'View User';
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator) {
+  constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, router: Router) {
     this.api = api;
+    this.router = router;
   }
 
   get canSave() {
@@ -59,4 +65,14 @@ export class UserAdd {
       
   }
 
+  navigateToEditThisPage(getId){    
+    var getUrl = 'users/' + getId + '/edit';
+    this.isReadOnly = false;
+    //alert( getUrl );
+    //user-edit; params.bind: {id:user.id, editType:'edit'}
+    //this.router.navigateToRoute('user-edit', {id: getId, editType:'edit'} );//"users/5/edit"
+    //this.router.navigate( 'users/' + getId + '/edit' );//"users/5/edit"
+    //this.router.navigate('user-edit', {id: getId, editType:'edit', replace: true, force: true} );
+    //this.router.refreshNavigation()
+  }
 }

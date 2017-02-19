@@ -19,8 +19,8 @@ let path_local = 'src/api';
 const apiUrlsArr = [];
 apiUrlsArr['global'] = { method: 'GET', url: '/views/global', urlLocal: '/api-global.json', data: null }
 apiUrlsArr['welcome'] = { method: 'GET', url: '/views/welcome', urlLocal: '/api-welcome.json', data: null }
-apiUrlsArr['user-selected'] = { method: 'GET', url: '/views/profileform/', urlAppendWithId:true, urlAppendEnd: '?includeLookups=true', urlLocal: '/api-user-with-lookups.json', data: null }
-apiUrlsArr['lookups'] = { method: 'GET', url: '/views/profileform/', urlAppend: '?includeLookups=true', urlLocal: '/api-user-with-lookups.json', data: null }
+apiUrlsArr['user-selected'] = { method: 'GET', url: '/views/profileform/', urlAppendWithId:true, urlAppendEnd: '?includeLookups=true', urlLocal: '/api-user-with-lookups-', urlLocalAppendEnd: '.json', data: null }
+//apiUrlsArr['lookups'] = { method: 'GET', url: '/views/profileform/', urlAppend: '?includeLookups=true', urlLocal: '/api-user-with-lookups.json', data: null }
 apiUrlsArr['user-list-to-add'] = { method: 'GET', url: '/ldap/query?limit=5', urlLocal: '/api-list-add-users.json', data: {} }
 apiUrlsArr['user-list'] = { method: 'SEARCH', url: '/data/users/query', urlLocal: '/api-all-users.json', data: null }
 apiUrlsArr['user-role'] = { method: 'GET', url: '/data/users/', urlAppendWithId:true, urlLocal: '/api-user.json', data: null }
@@ -65,17 +65,19 @@ export class WebAPIUsers {
   apiCall(getId, getData) {
     this.isRequesting = true;
     var apiMethod = !hw_useJson ? apiUrlsArr[getId].method : "GET";
-    let apiUrl = !hw_useJson &&apiUrlsArr[getId].url ? path_api + apiUrlsArr[getId].url : path_local + apiUrlsArr[getId].urlLocal;
+    let apiUrl = !hw_useJson && apiUrlsArr[getId].url ? path_api + apiUrlsArr[getId].url : path_local + apiUrlsArr[getId].urlLocal;
 
-    if(!hw_useJson && getData && apiUrlsArr[getId].urlAppendWithId) {
-      apiUrl += getData + apiUrlsArr[getId].getData;
-      getData = null;
+    if(getData && apiUrlsArr[getId].urlAppendWithId) {
+      apiUrl += getData;// + apiUrlsArr[getId].getData;
+      if(!hw_useJson) getData = null;
     }
-    if(!hw_useJson && getData && apiUrlsArr[getId].urlApurlAppendEndpend) apiUrl += apiUrlsArr[getId].urlAppendEnd;
+    if(!hw_useJson && getData && apiUrlsArr[getId].urlAppendEnd) apiUrl += apiUrlsArr[getId].urlAppendEnd;
+
+    if(hw_useJson && getData && apiUrlsArr[getId].urlLocalAppendEnd) apiUrl += apiUrlsArr[getId].urlLocalAppendEnd;
 
     let apiData = getData ? JSON.stringify(getData) : apiUrlsArr[getId].data;
 
-    //alert(apiMethod + ' > ' + apiUrl + ' > ' + apiData);
+    //alert(apiMethod + ' > ' + apiUrl + ' > ' + apiData + ' ? ' + apiUrlsArr[getId].urlLocalAppendEnd);
 
     return $.ajax({
       type: apiMethod,
