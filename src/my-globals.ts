@@ -7,6 +7,9 @@
 
 export class MyGlobals {
     foo = {}
+    currentUser = {}
+    profileSelected = {}
+    
 
     getFoo() { return this.foo }
     setFoo(bar) {

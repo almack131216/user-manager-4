@@ -52,7 +52,7 @@ export class App {
           this.myDisplayName = this.currentUser.displayName,
           this.isReader = this.currentUser.isReader,
           this.isEditor = this.currentUser.isEditor,
-          this.myGlobals.foo = this.myDisplayName
+          this.myGlobals.currentUser = this.currentUser
           //alert(this.myGlobals.foo)
       });
 

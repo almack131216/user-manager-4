@@ -6,6 +6,8 @@ import { areEqual } from '../../api/utility';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
+import { MyGlobals } from '../../my-globals';
+
 
 interface User {
   firstName: string;
@@ -16,7 +18,7 @@ interface User {
   lkp_regions_selected: number;
 }
 
-@inject(WebAPIUsers, EventAggregator)
+@inject(WebAPIUsers, EventAggregator, MyGlobals)
 export class UserSelected {
   public CV = CV
   routeConfig;
@@ -27,11 +29,13 @@ export class UserSelected {
   originalUser: User;
   title = '';
   myLookups;
+  myGlobals;
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator) {
+  constructor(private api: WebAPIUsers, private ea: EventAggregator, myGlobals: MyGlobals) {
+    this.myGlobals = MyGlobals; 
   }
 
-  activate(params, routeConfig) {
+  activate(params, routeConfig, myGlobals) {
     this.routeConfig = routeConfig;
     console.log('activate: ' + params.id + ' (' + params.editType + '), readonly: ' + params.isReadOnly);
 
@@ -124,7 +128,7 @@ export class UserSelected {
         }
       }
 
-
+      this.myGlobals.profileSelected = this.profile;
 
       this.routeConfig.navModel.setTitle(this.user['user'].firstName);
       // this.originalUser = JSON.parse(JSON.stringify(this.user));

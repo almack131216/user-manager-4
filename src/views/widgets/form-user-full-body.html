@@ -8,7 +8,8 @@
     <require from="./user-panels/user-panel-confidential"></require>
     <require from="../../resources/format/json"></require>
     
-    <pre>? myGlobals: ${myGlobals.foo} !</pre>
+    <!--<pre>? myGlobals: ${myGlobals.foo} | ${myGlobals.currentUser & json} | ${myGlobals.profileSelected & json} !</pre>-->
+
     <div class="panel panel-default panel-xc" if.bind="user && profile">
         <div class="panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse"
                 data-target="#${custXcId}">
