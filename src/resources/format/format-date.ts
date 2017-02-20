@@ -18,6 +18,7 @@ export class FormatDateValueConverter {
     }
     
    toView(value,format) {
+       if(format=='db') format = 'yyyy/dd/mm';
         console.log('DateFormatValueConverter: ' + value + ' / ' + this.gDateFormat + ' / ' + format);
       //return moment.tz("2014-06-01 12:00", "Europe/Amsterdam").format();//moment(value).format('YYYY-MM-DD HH:mm');//(format ? format : this.gDateFormat);
       //return (moment as any).default(value).format('YYYY-MM-DD HH:mm'); 

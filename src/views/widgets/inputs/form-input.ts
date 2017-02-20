@@ -33,9 +33,10 @@ export class FormInput {
 
     @bindable custName;
 
+    element;
 
-    public constructor(model) {
-
+    public constructor(model,element:Element) {
+        this.element = element;
     }
 
     attached(){
@@ -46,7 +47,17 @@ export class FormInput {
     }
 
     onReady(datePicker) {
-        datePicker.value(new Date(1994, 4, 2));
+        datePicker.value(this.model);
+    }
+
+    inputChanged(newValue, oldValue) {
+      // aurelia will call this automatically- a convention looks for methods on the vm that match bindable property names.
+      console.log('inputChanged: ' + this.value + ' | ' + this.model);
+    }
+
+    onChange(newValue, oldValue){
+        //datePicker.value(new Date(1994, 4, 2));
+        console.log('onChange: ' + this.value + ' | ' + this.model + ' / ' + newValue.value + ', ' + oldValue);
     }
 
     @bindable model;

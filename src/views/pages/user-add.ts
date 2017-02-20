@@ -8,9 +8,6 @@ import {bindable,autoinject} from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 //import {TaskQueue} from 'aurelia-task-queue';
 
-import * as $ from 'jquery';
-import 'kendo-ui-core/js/kendo.datepicker';
-
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
@@ -50,19 +47,6 @@ export class UserAdd {
     this.router = router;
     //this.taskQueue = taskQueue;
   }
-
-  attached() {
-      //this.taskQueue.queueTask(() => {
-        $('#datepicker, #datepicker_dateview').click(function(e){
-          alert('?');
-          e.stopPropagation();
-        });
-      //});
-    }
-
-    onReady(datePicker) {
-  datePicker.value(new Date(1994,4,2));
-}
 
   get canSave() {
     return true;// this.profile.regionId && this.profile.hubId && !this.api.isRequesting;
