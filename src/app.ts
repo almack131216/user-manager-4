@@ -13,8 +13,10 @@ import { WebAPIUsers } from './api/web-api-users';
 const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
 const profileUrl = 'src/api/api-global.json';
 
+import { MyGlobals } from './my-globals';
+
 @autoinject
-@inject(HttpClient, Router, FetchConfig, WebAPIUsers)
+@inject(HttpClient, Router, FetchConfig, WebAPIUsers, MyGlobals)
 
 export class App {
   public CV = CV
@@ -31,10 +33,12 @@ export class App {
   isReader
   isEditor
 
-  constructor(http, private api: WebAPIUsers) {
-    this.http = http;
-  }
+  myGlobals
 
+  constructor(http, private api: WebAPIUsers, myGlobals: MyGlobals) {
+    this.http = http;
+    this.myGlobals = MyGlobals;    
+  }
 
 
   async activate() {
@@ -47,7 +51,9 @@ export class App {
           this.myId = this.currentUser.id,
           this.myDisplayName = this.currentUser.displayName,
           this.isReader = this.currentUser.isReader,
-          this.isEditor = this.currentUser.isEditor
+          this.isEditor = this.currentUser.isEditor,
+          this.myGlobals.foo = this.myDisplayName
+          //alert(this.myGlobals.foo)
       });
 
   }

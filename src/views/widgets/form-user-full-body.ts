@@ -2,6 +2,8 @@ import { bindable, bindingMode } from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
+import { MyGlobals } from '../../my-globals';
+
 export class FormUserFullBody {
     public CV = CV;
     @bindable user = null;
@@ -17,4 +19,12 @@ export class FormUserFullBody {
     @bindable custXcId = null;
     @bindable custXcExpanded = null;
     @bindable custXcResClass = null;
+
+    myGlobals
+
+  constructor(myGlobals: MyGlobals) {
+    this.myGlobals = MyGlobals;
+    //this.myGlobals.foo = 'bar xxx';
+    //alert('body: ' + this.myGlobals.foo);
+  }
 }
