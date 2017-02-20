@@ -57,7 +57,7 @@ export class FormInput {
 
     onChange(newValue, oldValue){
         //datePicker.value(new Date(1994, 4, 2));
-        console.log('onChange: ' + this.value + ' | ' + this.model + ' / ' + newValue.value + ', ' + oldValue);
+        console.log('onChange() : model: ' + this.model + ' / ' +  + ', ' + oldValue);
     }
 
     @bindable model;
