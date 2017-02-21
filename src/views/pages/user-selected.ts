@@ -49,7 +49,8 @@ export class UserSelected {
       //alert(JSON.stringify(this.pageType + ' / ' + this.isReadOnly));
       //console.log(JSON.stringify(this.user));
       //this.user.regionId = this.user['region'].id;
-      this.myLookups = this.user['lookups'];
+      //this.myLookups = this.user['lookups'];
+      this.myGlobals.myLookups = this.user['lookups'];
 
       this.profile = {
         regionId: this.user['profile']['region'] ? this.user['profile']['region'].id : null,

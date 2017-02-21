@@ -28,7 +28,7 @@ export class UserAdd {
   @bindable profile = null;
   //@bindable currentUser = null;
   @bindable isReadOnly = null;
-  @bindable myLookups;
+  //@bindable myLookups;
 
   routeConfig;
   originalUser;

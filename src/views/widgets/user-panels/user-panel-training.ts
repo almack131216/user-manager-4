@@ -1,14 +1,15 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { bindable,autoinject } from 'aurelia-framework';
+import { inject,bindable,autoinject } from 'aurelia-framework';
+import {MyGlobals} from '../../../my-globals' 
 import * as Constants from '../../../resources/constants';
 const CV = Constants
-@autoinject
 
+@autoinject
+@inject(MyGlobals)
 export class UserPanelTraining {
     @bindable user;
     @bindable profile;
     @bindable isReadOnly = null;
-    @bindable myLookups;
 
     public CV = CV;
     message = CV.MSG_TRAINING;
@@ -16,7 +17,13 @@ export class UserPanelTraining {
     myTrainingArr;
     myTrainingArrDynamic = [];
 
+     myGlobals
+    myLookups    
 
+    constructor(myGlobals:MyGlobals){
+        this.myGlobals = MyGlobals
+        this.myLookups = this.myGlobals.myLookups
+    }
 
     onReady(datePicker,getValue) {
         datePicker.value(new Date(getValue));

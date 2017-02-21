@@ -9,7 +9,7 @@ export class FormUserFullBody {
     @bindable user = null;
     @bindable profile = null;
     @bindable isReadOnly = null;
-    @bindable myLookups;
+    //@bindable myLookups;
 
     @bindable custIcon = null;
     @bindable custBody = null;

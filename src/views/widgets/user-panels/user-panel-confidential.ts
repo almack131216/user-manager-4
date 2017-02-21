@@ -1,14 +1,24 @@
-import { bindable } from 'aurelia-framework';
+import { inject,bindable } from 'aurelia-framework';
+import {MyGlobals} from '../../../my-globals' 
 
+@inject(MyGlobals)
 export class UserPanelConfidential {
     @bindable user;
     @bindable profile;
     @bindable isReadOnly;
-    @bindable myLookups;
+    //@bindable myLookups;
     
     // lkp_employmentStatuses;
     lkp_credentialLevels;
     tmpField2;
     tmpField3;
+
+    myGlobals
+    myLookups    
+
+    constructor(myGlobals:MyGlobals){
+        this.myGlobals = MyGlobals
+        this.myLookups = this.myGlobals.myLookups
+    }
 
 }

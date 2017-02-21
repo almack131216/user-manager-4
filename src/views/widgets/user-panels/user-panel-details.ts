@@ -7,7 +7,7 @@ export class UserPanelDetails {
     @bindable user;
     @bindable profile;
     @bindable isReadOnly;
-    @bindable myLookups;
+    //@bindable myLookups;
 
     selectedFiles;
 
