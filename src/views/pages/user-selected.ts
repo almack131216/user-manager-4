@@ -8,7 +8,7 @@ const CV = Constants
 
 import * as $ from 'jquery';
 import 'kendo-ui-core/js/kendo.datepicker';
-//import { MyGlobals } from '../../my-globals';
+import { MyGlobals } from '../../my-globals';
 
 
 interface User {
@@ -31,10 +31,10 @@ export class UserSelected {
   originalUser: User;
   title = '';
   myLookups;
-  //myGlobals;
+  myGlobals;
 
   constructor(private api: WebAPIUsers, private ea: EventAggregator) {
-    //this.myGlobals = MyGlobals; 
+    this.myGlobals = MyGlobals; 
   }
 
   activate(params, routeConfig) {
@@ -130,7 +130,7 @@ export class UserSelected {
         }
       }
 
-      //this.myGlobals.profileSelected = this.profile;
+      this.myGlobals.profileSelected = this.profile;
 
       this.routeConfig.navModel.setTitle(this.user['user'].firstName);
       // this.originalUser = JSON.parse(JSON.stringify(this.user));

@@ -11,7 +11,7 @@ import { WebAPIUsers } from './api/web-api-users';
 const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
 const profileUrl = 'src/api/api-global.json';
 
-//import { MyGlobals } from './my-globals';
+import { MyGlobals } from './my-globals';
 
 @autoinject
 @inject(HttpClient, Router, FetchConfig, WebAPIUsers)
@@ -31,11 +31,11 @@ export class App {
   isReader
   isEditor
 
-  //myGlobals
+  myGlobals
 
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
-    //this.myGlobals = MyGlobals;    
+    this.myGlobals = MyGlobals;    
   }
 
 
@@ -50,7 +50,7 @@ export class App {
           this.myDisplayName = this.currentUser.displayName,
           this.isReader = this.currentUser.isReader,
           this.isEditor = this.currentUser.isEditor
-          //this.myGlobals.currentUser = this.currentUser
+          this.myGlobals.currentUser = this.currentUser
           //alert(this.myGlobals.foo)
       });
 
