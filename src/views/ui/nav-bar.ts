@@ -2,17 +2,17 @@ import {bindable,inject,computedFrom} from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
-//import { Router } from 'aurelia-router';
 
-//@inject(Router)
 export class NavBar {
   @bindable router = null;
   @bindable currentUser = null;
 
+  myGlobals
+
   public CV = CV
 
-  constructor(router){
-    this.router = router;
+  constructor(){
+
   }
 
   hasAccess(getUser,getPage){
@@ -25,6 +25,7 @@ export class NavBar {
   }
 
   attached() {
+    
      //  this.message = this.router.currentInstruction.config.title;
     }
     

@@ -10,7 +10,7 @@
     <hr>
   </div>-->
 
-  <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | isMember: ${currentUser.isMember} !</pre>
+  <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | myGlobals.isMember: ${myGlobals.currentUser.isMember} !</pre>
   <pre if.bind="CV.debugShowCodeOutput">JSON.stringify(profile)</pre>
   <pre if.bind="CV.debugShowCodeOutput">${profile & json}</pre>
   <!--<pre>${CV.myLabels & json}</pre>-->
@@ -26,7 +26,7 @@
   <div if.bind="user" class="col-xs-12">
     <!--? user-selected.html | isReadOnly: ${isReadOnly} | ${currentUser.id} | ${user.user.id} ! -->
     ? user-selected.html | myLookups: ${myGlobals.myLookups} !
-    <user-add user.bind="user" profile.bind="profile" my-lookups.bind="myLookups" is-read-only.bind="isReadOnly" current-user.bind="currentUser" if.bind="user && profile"></user-add>
+    <user-add user.bind="user" profile.bind="profile" my-lookups.bind="myLookups" is-read-only.bind="isReadOnly" if.bind="user && profile"></user-add>
   </div>
 
   <pre if.bind="debugShowCodeOutput">${user & json}</pre>

@@ -1,8 +1,8 @@
-import { noView } from 'aurelia-framework'
+//import { noView } from 'aurelia-framework'
 //import { MyClass } from './my-class';
 
 //@inject(MyClass)
-@noView
+//@noView
 export class MyGlobals {
     foo = {}
     isReadOnly = null

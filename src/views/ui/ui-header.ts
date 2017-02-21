@@ -4,7 +4,7 @@ const CV = Constants
 
 export class UiHeader {
     public CV = CV
-    @bindable currentUser = null;
+    //@bindable currentUser = null;
 
     imgSrc_logo;
     imgSrc_strapline;

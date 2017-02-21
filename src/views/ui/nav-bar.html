@@ -25,7 +25,7 @@
                     <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
                         <a if.bind="hasAccess(currentUser, row)" href.bind="row.href">
                             ${row.title}
-                            <span if.bind="CV.debugShowCurrentUser"> / [${currentUser.isMember}, ${row.settings.isMemberOnly}] | [${currentUser.isEditor}, ${row.settings.isEditorOnly}]</span>
+                            <span if.bind="CV.debugShowCurrentUser">? [${currentUser.isMember}, ${row.settings.isMemberOnly}] | [${currentUser.isEditor}, ${row.settings.isEditorOnly}]</span>
                         </a>
                     </li>
                 </ul>

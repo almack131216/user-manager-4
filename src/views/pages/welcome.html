@@ -2,15 +2,18 @@
     <require from="../widgets/list-activity"></require>
     <require from="../widgets/user-list"></require>
     <require from="../widgets/profile-brief"></require>
+    <require from="../../resources/format/json"></require>
 
     <div if.bind="pageData" class="row margin-bottom-g1">
-        <pre if.bind="CV.debugShowCurrentUser">? welcome.html | isMember: ${currentUser.isMember} | isEditor: ${currentUser.isEditor} !</pre>
+        <pre if.bind="CV.debugShowCurrentUser">? welcome.html | myGlobals.isMember: ${myGlobals.currentUser.isMember} | myGlobals.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
         <div class="col-md-12">
             <img src="${imgSrc_splash}" class="fit-col">
         </div>
     </div>
 
-    <div if.bind="currentUser.isEditor" class="row-fluid">
+    <pre if.bind="CV.debugShowCurrentUser">? welcome.html | myGlobals.currentUser: ${myGlobals.currentUser & json}</pre>
+
+    <div if.bind="myGlobals.currentUser.isEditor" class="row-fluid">
         <div class="col-md-6">
             <!--<img src="src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
@@ -46,7 +49,7 @@
     </div>
 
 
-    <div if.bind="!currentUser.isEditor" class="row-fluid">
+    <div if.bind="!myGlobals.currentUser.isEditor" class="row-fluid">
         <div class="col-md-6">
             <div class="margin-bottom-2">
                 <h1 class="margin-top-0">${title}</h1>

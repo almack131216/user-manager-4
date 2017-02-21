@@ -7,7 +7,7 @@
   <require from="../widgets/btn-xc-all"></require>
   <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
 
-  <pre if.bind="CV.debugShowCurrentUser">? user-add.html | isMember: ${currentUser.isMember} !</pre>
+  <pre if.bind="CV.debugShowCurrentUser">? user-add.html | myGlobals.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isReader: ${myGlobals.currentUser.isReader} !</pre>
 
   <div class="main-title-bar row">
 

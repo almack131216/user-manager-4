@@ -4,8 +4,9 @@ import { Router } from 'aurelia-router';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 import { WebAPIUsers } from '../../api/web-api-users';
+import { MyGlobals } from '../../my-globals';
 
-@inject(WebAPIUsers,Router)
+@inject(WebAPIUsers,Router,MyGlobals)
 export class Welcome {
   public CV = CV;
   title = 'Welcome to MRT';
@@ -15,9 +16,11 @@ export class Welcome {
   router;
   pageData;
   imgSrc_splash;
+  myGlobals
 
-  constructor(private api: WebAPIUsers, router: Router) {
+  constructor(public api: WebAPIUsers, router: Router, myGlobals: MyGlobals) {
     this.router = router;
+    this.myGlobals = MyGlobals;
   }
 
   activate() {

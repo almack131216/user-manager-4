@@ -11,6 +11,8 @@ import { Router } from 'aurelia-router';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
+import {MyGlobals } from '../../my-globals'
+
 interface User {
   firstName: string;
   lastName: string;
@@ -19,12 +21,12 @@ interface User {
   lkp_regions_selected: number;
 }
 
-@inject(WebAPIUsers)//TaskQueue
+@inject(WebAPIUsers,MyGlobals)//TaskQueue
 export class UserAdd {
   public CV = CV;
   @bindable user = null;
   @bindable profile = null;
-  @bindable currentUser = null;
+  //@bindable currentUser = null;
   @bindable isReadOnly = null;
   @bindable myLookups;
 
@@ -40,11 +42,14 @@ export class UserAdd {
   title = 'Edit User'
   title_isReadOnly = 'View User';
 
-  
+  myGlobals
+  currentUser
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, router: Router) {
+  constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, router: Router, myGlobals: MyGlobals) {
     this.api = api;
     this.router = router;
+    this.myGlobals = MyGlobals;
+    this.currentUser = this.myGlobals.currentUser;
     //this.taskQueue = taskQueue;
   }
 
