@@ -16,14 +16,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of profile.visas">
+                <tr repeat.for="row of myGlobals.profileSelected.visas">
                     <td>
                         <form-select cust-name.bind="['visaCountry_' + $index]"
                             cust-label="Visa Country"                            
-                            model.two-way="profile.visas[$index].countryId"
+                            model.two-way="myGlobals.profileSelected.visas[$index].countryId"
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
-                            init-selected.two-way="profile.visas[$index].countryId"
+                            init-selected.two-way="myGlobals.profileSelected.visas[$index].countryId"
                             cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
@@ -31,11 +31,11 @@
                     <td>
                         <form-select cust-name.bind="['visaType_' + $index]"
                             cust-label="Visa Type"                                                    
-                            model.two-way="profile.visas[$index].typeValue"
+                            model.two-way="myGlobals.profileSelected.visas[$index].typeValue"
                             options.bind="myLookups.visaTypes"  
                             prop-arr.bind="['value','name']"                          
                             autocomplete.bind="true"
-                            init-selected.two-way="profile.visas[$index].typeValue"
+                            init-selected.two-way="myGlobals.profileSelected.visas[$index].typeValue"
                             cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
@@ -44,22 +44,22 @@
                         <!--<form-input cust-name.bind="['visaExpiryDate_' + $index]"
                             cust-label="Expiry Date"
                             cust-type="date"
-                            model.two-way="profile.visas[$index].expiresOn"
+                            model.two-way="myGlobals.profileSelected.visas[$index].expiresOn"
                             cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-input>-->
 
-                        <input if.bind="isReadOnly" type="text" value.bind="profile.visas[$index].expiresOn ? profile.visas[$index].expiresOn : '---'" readonly>
+                        <input if.bind="isReadOnly" type="text" value.bind="myGlobals.profileSelected.visas[$index].expiresOn ? myGlobals.profileSelected.visas[$index].expiresOn : '---'" readonly>
                         <input if.bind="!isReadOnly" class="k_datepicker" id.bind="['visaExpiryDate_' + $index]"  name.one-way="['visaExpiryDate_' + $index]"
-            ak-datepicker="k-value.two-way: profile.visas[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
-            k-on-ready.delegate="onReady($event.detail,profile.visas[$index].expiresOn)"
-            k-on-change.delegate="onChange($event.detail,profile.visas[$index].expiresOn)">
+            ak-datepicker="k-value.two-way: myGlobals.profileSelected.visas[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
+            k-on-ready.delegate="onReady($event.detail,myGlobals.profileSelected.visas[$index].expiresOn)"
+            k-on-change.delegate="onChange($event.detail,myGlobals.profileSelected.visas[$index].expiresOn)">
                     </td>
                     <td>
                         <form-checkbox cust-name.bind="['visaMultiple_' + $index]"
                             cust-label="Multiple Visas"
-                            model.two-way="profile.visas[$index].multipleEntry"
-                            init-selected.two-way="profile.visas[$index].multipleEntry"
+                            model.two-way="myGlobals.profileSelected.visas[$index].multipleEntry"
+                            init-selected.two-way="myGlobals.profileSelected.visas[$index].multipleEntry"
                             cust-readonly.bind="isReadOnly"></form-checkbox>
                     </td>
 

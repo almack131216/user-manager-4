@@ -3,7 +3,7 @@
     <require from="../inputs/form-select"></require>
     <require from="../../../resources/format/format-date"></require>
 
-    <!--? languages:  ${profile.languages} !
+    <!--? languages:  ${myGlobals.profileSelected.languages} !
 
 <h1>1</h1>
     <ul>
@@ -11,9 +11,9 @@
             ${row.name}
         </li>
     </ul>
-    <h1>1.2 ${profile.languages.length}</h1>
+    <h1>1.2 ${myGlobals.profileSelected.languages.length}</h1>
     <ul>
-        <li repeat.for="row of profile.languages">
+        <li repeat.for="row of myGlobals.profileSelected.languages">
             ${row.name}
         </li>
     </ul>
@@ -28,15 +28,15 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of profile.languages">
+                <tr repeat.for="row of myGlobals.profileSelected.languages">
                     <td class="padded-cell">
                         <form-select cust-name.bind="['language_' + $index]"
                             cust-label="Language"
                             input-only="true"
-                            model.two-way="profile.languages[$index].languageId"
+                            model.two-way="myGlobals.profileSelected.languages[$index].languageId"
                             options.bind="myLookups.languages"                            
                             autocomplete.bind="true"
-                            init-selected.two-way="profile.languages[$index].languageId"
+                            init-selected.two-way="myGlobals.profileSelected.languages[$index].languageId"
                             cust-readonly.bind="isReadOnly"></form-select>
                     </td>
                     <td class="padded-cell">
@@ -44,10 +44,10 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                             cust-label="Proficiency"
                             input-only="true"
                             prop-arr.bind="['value','name']"
-                            model.two-way="profile.languages[$index].proficiencyValue"
+                            model.two-way="myGlobals.profileSelected.languages[$index].proficiencyValue"
                             options.bind="myLookups.languageProficiencies"                            
-                            init-selected.two-way="profile.languages[$index].proficiencyValue"
-                            is-enabled.bind="profile.languages[$index].languageId"
+                            init-selected.two-way="myGlobals.profileSelected.languages[$index].proficiencyValue"
+                            is-enabled.bind="myGlobals.profileSelected.languages[$index].languageId"
                             cust-readonly.bind="isReadOnly"></form-select>
                     </td>
                 </tr>
@@ -56,7 +56,7 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
     </div>
 
    <div if.bind="!isReadOnly" class="col-xs-12 margin-bottom-g1">
-       <!--if.bind="$index+1 == user.profile.languages.length && $index+1<lkp_languages_limitTo"-->
+       <!--if.bind="$index+1 == user.myGlobals.profileSelected.languages.length && $index+1<lkp_languages_limitTo"-->
         <button class="btn btn-default btn-sm">
             <i class="fa fa-plus"></i>
             Add Language

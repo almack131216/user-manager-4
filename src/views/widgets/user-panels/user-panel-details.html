@@ -50,12 +50,12 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.regions" cust-name="lkp_regions" model.two-way="profile.regionId" options.bind="myLookups.regions"
-                autocomplete.bind="true" init-selected.two-way="profile.regionId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
+            <form-select if.bind="myLookups.regions" cust-name="lkp_regions" model.two-way="myGlobals.profileSelected.regionId" options.bind="myLookups.regions"
+                autocomplete.bind="true" init-selected.two-way="myGlobals.profileSelected.regionId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
         </div>
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.hubs" cust-name="lkp_hubs" model.two-way="profile.hubId" options.bind="myLookups.hubs" init-selected.two-way="profile.hubId"
-                option-filter.bind="['regionId',profile.regionId]" is-enabled.bind="profile.regionId" cust-mandatory.bind="true"
+            <form-select if.bind="myLookups.hubs" cust-name="lkp_hubs" model.two-way="myGlobals.profileSelected.hubId" options.bind="myLookups.hubs" init-selected.two-way="myGlobals.profileSelected.hubId"
+                option-filter.bind="['regionId',myGlobals.profileSelected.regionId]" is-enabled.bind="myGlobals.profileSelected.regionId" cust-mandatory.bind="true"
                 cust-readonly.bind="isReadOnly"></form-select>
         </div>
     </div>
@@ -64,12 +64,12 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.segments" cust-name="lkp_segments" model.two-way="profile.segmentId" options.bind="myLookups.segments"
-                init-selected.two-way="profile.segmentId" autocomplete.bind="true" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
+            <form-select if.bind="myLookups.segments" cust-name="lkp_segments" model.two-way="myGlobals.profileSelected.segmentId" options.bind="myLookups.segments"
+                init-selected.two-way="myGlobals.profileSelected.segmentId" autocomplete.bind="true" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
         </div>
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.entities" cust-name="lkp_entities" model.two-way="profile.entityId" options.bind="myLookups.entities"
-                init-selected.two-way="profile.entityId" option-filter.bind="['segmentId',profile.segmentId]" is-enabled.bind="profile.segmentId"
+            <form-select if.bind="myLookups.entities" cust-name="lkp_entities" model.two-way="myGlobals.profileSelected.entityId" options.bind="myLookups.entities"
+                init-selected.two-way="myGlobals.profileSelected.entityId" option-filter.bind="['segmentId',myGlobals.profileSelected.segmentId]" is-enabled.bind="myGlobals.profileSelected.segmentId"
                 cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
         </div>
     </div>
@@ -78,10 +78,10 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <form-input cust-name="function" model.two-way="profile.function" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-input>
+            <form-input cust-name="function" model.two-way="myGlobals.profileSelected.function" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-input>
         </div>
         <div class="col-xs-6">
-            <form-input cust-name="location" model.two-way="profile.location" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-input>
+            <form-input cust-name="location" model.two-way="myGlobals.profileSelected.location" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-input>
         </div>
     </div>
 
@@ -89,14 +89,14 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.primaryPositions" cust-name="lkp_primaryPositions" model.two-way="profile.primaryPositionId"
-                options.bind="myLookups.primaryPositions" autocomplete.bind="true" init-selected.two-way="profile.primaryPositionId"
+            <form-select if.bind="myLookups.primaryPositions" cust-name="lkp_primaryPositions" model.two-way="myGlobals.profileSelected.primaryPositionId"
+                options.bind="myLookups.primaryPositions" autocomplete.bind="true" init-selected.two-way="myGlobals.profileSelected.primaryPositionId"
                 cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
         </div>
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.secondaryPositions" cust-name="lkp_secondaryPositions" model.two-way="profile.secondaryPosition"
-                options.bind="myLookups.secondaryPositions" init-selected.two-way="profile.secondaryPosition" option-filter.bind="['primaryPositionId',profile.primaryPositionId]"
-                is-enabled.bind="profile.primaryPositionId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
+            <form-select if.bind="myLookups.secondaryPositions" cust-name="lkp_secondaryPositions" model.two-way="myGlobals.profileSelected.secondaryPosition"
+                options.bind="myLookups.secondaryPositions" init-selected.two-way="myGlobals.profileSelected.secondaryPosition" option-filter.bind="['primaryPositionId',myGlobals.profileSelected.primaryPositionId]"
+                is-enabled.bind="myGlobals.profileSelected.primaryPositionId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
         </div>
     </div>
 
@@ -104,12 +104,12 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.offices" cust-name="lkp_offices" model.two-way="profile.officeId" options.bind="myLookups.offices"
-                autocomplete.bind="true" init-selected.two-way="profile.officeId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
+            <form-select if.bind="myLookups.offices" cust-name="lkp_offices" model.two-way="myGlobals.profileSelected.officeId" options.bind="myLookups.offices"
+                autocomplete.bind="true" init-selected.two-way="myGlobals.profileSelected.officeId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
         </div>
         <div class="col-xs-6">
-            <form-select if.bind="myLookups.coatSizes" cust-name="lkp_coatSizes" model.two-way="profile.coatSizeId" options.bind="myLookups.coatSizes"
-                init-selected.two-way="profile.coatSizeId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
+            <form-select if.bind="myLookups.coatSizes" cust-name="lkp_coatSizes" model.two-way="myGlobals.profileSelected.coatSizeId" options.bind="myLookups.coatSizes"
+                init-selected.two-way="myGlobals.profileSelected.coatSizeId" cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
         </div>
     </div>
 
@@ -126,20 +126,20 @@
             <tbody>
                 <tr>
                     <td class="padding-bottom-0">
-                        <form-input cust-name="businessNumber" model.two-way="profile.businessNumber" mask-pattern="telephone" cust-mandatory.bind="true"
+                        <form-input cust-name="businessNumber" model.two-way="myGlobals.profileSelected.businessNumber" mask-pattern="telephone" cust-mandatory.bind="true"
                             cust-readonly.bind="isReadOnly"></form-input>
-                            <form-input cust-name="personalNumber" model.two-way="profile.personalNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
-                            <form-input cust-name="officeNumber" model.two-way="profile.officeNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
-                            <form-input cust-name="lyncNumber" model.two-way="profile.lyncNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
-                            <form-input cust-name="homeNumber" model.two-way="profile.homeNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="personalNumber" model.two-way="myGlobals.profileSelected.personalNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="officeNumber" model.two-way="myGlobals.profileSelected.officeNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="lyncNumber" model.two-way="myGlobals.profileSelected.lyncNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
+                            <form-input cust-name="homeNumber" model.two-way="myGlobals.profileSelected.homeNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td class="padding-bottom-0">
                         <form-input cust-name="manager_displayName" model.one-way="myGlobals.userSelected.manager.displayName" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
                         <form-input cust-name="manager_emailAddress" model.one-way="myGlobals.userSelected.manager.emailAddress" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
                         <form-input cust-name="manager_loginName" model.one-way="myGlobals.userSelected.manager.loginName" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="manager_emergencyContactName" model.two-way="profile.emergencyContactName" cust-mandatory.bind="true"
+                        <form-input cust-name="manager_emergencyContactName" model.two-way="myGlobals.profileSelected.emergencyContactName" cust-mandatory.bind="true"
                             cust-readonly.bind="isReadOnly"></form-input>
-                            <form-input cust-name="manager_emergencyContactNumber" model.two-way="profile.emergencyContactNumber" mask-pattern="telephone"
+                            <form-input cust-name="manager_emergencyContactNumber" model.two-way="myGlobals.profileSelected.emergencyContactNumber" mask-pattern="telephone"
                                 cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                 </tr>

@@ -15,15 +15,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of profile.passports">
+                <tr repeat.for="row of myGlobals.profileSelected.passports">
                     <td>
                         <form-select cust-name.bind="['passportType_' + $index]"
                             cust-label="Passport Type"
                             prop-arr.bind="['value','name']"
-                            model.two-way="profile.passports[$index].typeValue"
+                            model.two-way="myGlobals.profileSelected.passports[$index].typeValue"
                             options.bind="myLookups.passportTypes"
                             autocomplete.bind="true"
-                            init-selected.two-way="profile.passports[$index].typeValue"
+                            init-selected.two-way="myGlobals.profileSelected.passports[$index].typeValue"
                             cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
@@ -31,17 +31,17 @@
                     <td>
                         <form-input cust-name.bind="['passportNumber_' + $index]"
                             cust-label="Passport Number"
-                            model.two-way="profile.passports[$index].number"
+                            model.two-way="myGlobals.profileSelected.passports[$index].number"
                             cust-mandatory.bind="true" input-only="true"
                             cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
                         <form-select cust-name.bind="['passportNationality_' + $index]"
                             cust-label="Passport Nationality"
-                            model.two-way="profile.passports[$index].countryId"
+                            model.two-way="myGlobals.profileSelected.passports[$index].countryId"
                             options.bind="myLookups.countries"                            
                             autocomplete.bind="true"
-                            init-selected.two-way="profile.passports[$index].countryId"
+                            init-selected.two-way="myGlobals.profileSelected.passports[$index].countryId"
                             cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-select>
@@ -50,7 +50,7 @@
                         <form-input cust-name.bind="['passportExpiryDate_' + $index]"
                             cust-label="Passport Expiry Date"
                             cust-type="date"
-                            model.two-way="profile.passports[$index].expiresOn"
+                            model.two-way="myGlobals.profileSelected.passports[$index].expiresOn"
                             cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="isReadOnly"></form-input>

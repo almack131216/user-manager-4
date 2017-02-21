@@ -41,22 +41,22 @@
                         </span>
                     </td>
                     <td>
-                        <!--<span>${ profile.trainings[$index] & json }</span>-->
+                        <!--<span>${ myGlobals.profileSelected.trainings[$index] & json }</span>-->
                         <!--<form-input if.bind="returnTrainingData(row.id,'expiresOn')"
                             cust-name.bind="['trainingExpiryDate_' + $index]"
                             cust-type="date" 
                             cust-label="Expiry Date"
-                            model.two-way="profile.trainings[$index].expiresOn"
+                            model.two-way="myGlobals.profileSelected.trainings[$index].expiresOn"
                             cust-mandatory.bind="true"
                             input-only="true"
                             cust-readonly.bind="user.trainings[$index].attended || isReadOnly"></form-input>-->
                             <!--? ${returnTrainingData(row.id,'expiresOn')} !-->
-                        <input if.bind="isReadOnly" class="form-control" type="text" value.bind="profile.trainings[$index].expiresOn ? profile.trainings[$index].expiresOn : '---'" readonly>
+                        <input if.bind="isReadOnly" class="form-control" type="text" value.bind="myGlobals.profileSelected.trainings[$index].expiresOn ? myGlobals.profileSelected.trainings[$index].expiresOn : '---'" readonly>
                         <input if.bind="!isReadOnly && returnTrainingData(row.id,'expiresOn')" class="k_datepicker"
                         id.bind="['trainingExpiryDate_' + $index]"  name.one-way="['trainingExpiryDate_' + $index]"
-            ak-datepicker="k-value.two-way: profile.trainings[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
-            k-on-ready.delegate="onReady($event.detail,profile.trainings[$index].expiresOn)"
-            k-on-change.delegate="onChange($event.detail,profile.trainings[$index].expiresOn)">
+            ak-datepicker="k-value.two-way: myGlobals.profileSelected.trainings[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
+            k-on-ready.delegate="onReady($event.detail,myGlobals.profileSelected.trainings[$index].expiresOn)"
+            k-on-change.delegate="onChange($event.detail,myGlobals.profileSelected.trainings[$index].expiresOn)">
                     </td>
                 </tr>                
             </tbody>
