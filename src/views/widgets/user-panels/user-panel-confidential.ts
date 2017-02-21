@@ -3,8 +3,8 @@ import {MyGlobals} from '../../../my-globals'
 
 @inject(MyGlobals)
 export class UserPanelConfidential {
-    @bindable user;
-    @bindable profile;
+    
+    profile;
     @bindable isReadOnly;
     //@bindable myLookups;
     
@@ -18,6 +18,7 @@ export class UserPanelConfidential {
 
     constructor(myGlobals:MyGlobals){
         this.myGlobals = MyGlobals
+        this.profile = this.myGlobals.profileSelected
         this.myLookups = this.myGlobals.myLookups
     }
 

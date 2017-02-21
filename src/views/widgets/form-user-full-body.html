@@ -26,12 +26,12 @@
         <div id="${custXcId}" class="panel-body row ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
             <div class="wrap-fields">
                 <!--? ${myLookups.languages}-->
-                <user-panel-details if.bind="custBody=='user-details'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-details>
-                <user-panel-languages if.bind="custBody=='user-languages'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-languages>
-                <user-panel-passport if.bind="custBody=='user-passport'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-passport>
-                <user-panel-visa if.bind="custBody=='user-visa'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-visa>
-                <user-panel-training if.bind="custBody=='user-training'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-training>
-                <!--<user-panel-confidential if.bind="custBody=='user-confidential'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-confidential>-->
+                <user-panel-details if.bind="custBody=='user-details'" is-read-only.bind="isReadOnly"></user-panel-details>
+                <user-panel-languages if.bind="custBody=='user-languages'" is-read-only.bind="isReadOnly"></user-panel-languages>
+                <user-panel-passport if.bind="custBody=='user-passport'" is-read-only.bind="isReadOnly"></user-panel-passport>
+                <user-panel-visa if.bind="custBody=='user-visa'" is-read-only.bind="isReadOnly"></user-panel-visa>
+                <user-panel-training if.bind="custBody=='user-training'" is-read-only.bind="isReadOnly"></user-panel-training>
+                <!--<user-panel-confidential if.bind="custBody=='user-confidential'" is-read-only.bind="isReadOnly"></user-panel-confidential>-->
             </div>
         </div>
     </div>

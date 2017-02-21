@@ -24,8 +24,8 @@ interface User {
 @inject(WebAPIUsers,MyGlobals)//TaskQueue
 export class UserAdd {
   public CV = CV;
-  @bindable user = null;
-  @bindable profile = null;
+  //@bindable user = null;
+  //@bindable profile = null;
   //@bindable currentUser = null;
   @bindable isReadOnly = null;
   //@bindable myLookups;
@@ -58,9 +58,9 @@ export class UserAdd {
   }
 
   save() {
-    console.log('SAVE... user (' + this.myGlobals.userSelected.id + ')...' + this.api + ' hubId  ' + this.profile.hubId);
+    console.log('SAVE... user (' + this.myGlobals.userSelected.id + ')...' + this.api + ' hubId  ' + this.myGlobals.profileSelected.hubId);
     this.isSavingData = true;
-    return this.api.saveUserProfile(this.myGlobals.userSelected.id, this.profile)
+    return this.api.saveUserProfile(this.myGlobals.userSelected.id, this.myGlobals.profileSelected)
       .then(savedData => this.savedData = savedData)
       .then(profile => {
         console.log('save this.user: ' + JSON.stringify(this.originalUser));

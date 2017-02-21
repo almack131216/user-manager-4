@@ -8,7 +8,7 @@ import { MyGlobals } from '../../my-globals';
 export class FormUserFullBody {
     public CV = CV;
     //@bindable user = null;
-    @bindable profile = null;
+    //@bindable profile = null;
     @bindable isReadOnly = null;
     //@bindable myLookups;
 

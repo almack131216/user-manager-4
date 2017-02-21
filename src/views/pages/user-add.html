@@ -4,6 +4,7 @@
   <require from="../widgets/inputs/form-radio"></require>
   <require from="../widgets/inputs/form-checkbox"></require>
   <require from="../widgets/form-user-full-body"></require>
+  <require from="../../resources/format/json"></require>
   <require from="../widgets/btn-xc-all"></require>
   <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
 
@@ -36,26 +37,27 @@
     </div>
   </div>
 
+<!--<pre>? user-add.html | ${myGlobals.profileSelected & json}</pre>-->
 
   <form role="form" class="form-horizontal" id="user-panels" if.bind="myGlobals.profileSelected">
     <!--cust-xc-expanded="true"-->
 
-    <form-user-full-body profile.bind="profile" is-read-only.bind="isReadOnly" cust-title="User"
+    <form-user-full-body is-read-only.bind="isReadOnly" cust-title="User"
       cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
 
-      <form-user-full-body profile.bind="profile" is-read-only.bind="isReadOnly" cust-title="Languages"
+      <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Languages"
         cust-body="user-languages" cust-xc="true" cust-xc-id="xc_languages"></form-user-full-body>
 
-        <form-user-full-body profile.bind="profile" is-read-only.bind="isReadOnly" cust-title="Passport Information"
+        <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Passport Information"
           cust-body="user-passport" cust-xc="true" cust-xc-id="xc_passport"></form-user-full-body>
 
-          <form-user-full-body profile.bind="profile" is-read-only.bind="isReadOnly" cust-title="Visa Information"
+          <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Visa Information"
             cust-body="user-visa" cust-xc="true" cust-xc-id="xc_visa"></form-user-full-body>
 
-            <form-user-full-body profile.bind="profile" is-read-only.bind="isReadOnly" cust-title="Training"
+            <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Training"
               cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
 
-              <form-user-full-body if.bind="profile.confidentialData!=null" cust-icon="fa-exclamation-triangle" profile.bind="profile"
+              <form-user-full-body if.bind="profile.confidentialData!=null" cust-icon="fa-exclamation-triangle" 
                 is-read-only.bind="isReadOnly" cust-title="Confidential Information" cust-body="user-confidential"
                 cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
 

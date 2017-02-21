@@ -6,8 +6,8 @@ const CV = Constants
 @inject(MyGlobals)
 export class UserPanelLanguages {
     public CV = CV;
-    @bindable user;
-    @bindable profile;
+    
+    profile;
     @bindable isReadOnly;
     //@bindable myLookups;
     lkp_languages_limitTo = 5;
@@ -17,6 +17,7 @@ export class UserPanelLanguages {
 
     constructor(myGlobals:MyGlobals){
         this.myGlobals = MyGlobals
+        this.profile = this.myGlobals.profileSelected
         this.myLookups = this.myGlobals.myLookups
     }
 }

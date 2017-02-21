@@ -8,8 +8,8 @@ const CV = Constants
 @inject(MyGlobals)
 export class UserPanelPassport {
     public CV = CV;
-    @bindable user;
-    @bindable profile;
+    
+    profile;
     @bindable isReadOnly = null;
 
     myGlobals
@@ -17,6 +17,7 @@ export class UserPanelPassport {
 
     constructor(myGlobals:MyGlobals){
         this.myGlobals = MyGlobals
+        this.profile = this.myGlobals.profileSelected
         this.myLookups = this.myGlobals.myLookups
     }
 }
