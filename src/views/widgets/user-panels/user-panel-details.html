@@ -25,23 +25,23 @@
     </ul>
   </div>
 
-
+<!--<pre>${myGlobals.userSelected & json}</pre>-->
 
     <div class="row">
         <div class="col-xs-6">
-            <form-input cust-name="firstName" model.two-way="user.user.firstName" cust-readonly.bind="true"></form-input>
+            <form-input cust-name="firstName" model.one-way="myGlobals.userSelected.firstName" cust-readonly.bind="true"></form-input>
         </div>
         <div class="col-xs-6">
-            <form-input cust-name="lastName" model.two-way="user.user.lastName" cust-readonly.bind="true"></form-input>
+            <form-input cust-name="lastName" model.one-way="myGlobals.userSelected.lastName" cust-readonly.bind="true"></form-input>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-6">
-            <form-input cust-name="loginName" model.two-way="user.user.loginName" cust-readonly.bind="true"></form-input>
+            <form-input cust-name="loginName" model.one-way="myGlobals.userSelected.loginName" cust-readonly.bind="true"></form-input>
         </div>
         <div class="col-xs-6">
-            <form-input cust-name="emailAddress" model.two-way="user.user.emailAddress" cust-readonly.bind="true"></form-input>
+            <form-input cust-name="emailAddress" model.one-way="myGlobals.userSelected.emailAddress" cust-readonly.bind="true"></form-input>
         </div>
     </div>
 
@@ -134,9 +134,9 @@
                             <form-input cust-name="homeNumber" model.two-way="profile.homeNumber" mask-pattern="telephone" cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td class="padding-bottom-0">
-                        <form-input cust-name="manager_displayName" model.two-way="user.user.manager.displayName" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="manager_emailAddress" model.two-way="user.user.manager.emailAddress" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
-                        <form-input cust-name="manager_loginName" model.two-way="user.user.manager.loginName" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
+                        <form-input cust-name="manager_displayName" model.one-way="myGlobals.userSelected.manager.displayName" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
+                        <form-input cust-name="manager_emailAddress" model.one-way="myGlobals.userSelected.manager.emailAddress" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
+                        <form-input cust-name="manager_loginName" model.one-way="myGlobals.userSelected.manager.loginName" cust-readonly.bind="true" cust-readonly.bind="isReadOnly"></form-input>
                         <form-input cust-name="manager_emergencyContactName" model.two-way="profile.emergencyContactName" cust-mandatory.bind="true"
                             cust-readonly.bind="isReadOnly"></form-input>
                             <form-input cust-name="manager_emergencyContactNumber" model.two-way="profile.emergencyContactNumber" mask-pattern="telephone"

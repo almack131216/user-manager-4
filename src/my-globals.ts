@@ -7,6 +7,8 @@ export class MyGlobals {
     foo = {}
     isReadOnly = null
     currentUser = {}
+    
+    userSelected = {}
     profileSelected = {}
 
     isMember

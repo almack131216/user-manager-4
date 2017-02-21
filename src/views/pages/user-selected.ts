@@ -46,11 +46,12 @@ export class UserSelected {
       this.pageType = params.pageType=='edit' ? 'edit' : 'read';
       this.isReadOnly = this.pageType=='read' ? true : false;
       this.user = user;
+      
       //alert(JSON.stringify(this.pageType + ' / ' + this.isReadOnly));
       //console.log(JSON.stringify(this.user));
       //this.user.regionId = this.user['region'].id;
       //this.myLookups = this.user['lookups'];
-      this.myGlobals.myLookups = this.user['lookups'];
+      
 
       this.profile = {
         regionId: this.user['profile']['region'] ? this.user['profile']['region'].id : null,
@@ -131,6 +132,8 @@ export class UserSelected {
         }
       }
 
+      this.myGlobals.userSelected = this.user['user'];
+      this.myGlobals.myLookups = this.user['lookups'];
       this.myGlobals.profileSelected = this.profile;
 
       this.routeConfig.navModel.setTitle(this.user['user'].firstName);

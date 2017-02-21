@@ -58,9 +58,9 @@ export class UserAdd {
   }
 
   save() {
-    console.log('SAVE... user (' + this.user.user.id + ')...' + this.api + ' hubId  ' + this.profile.hubId);
+    console.log('SAVE... user (' + this.myGlobals.userSelected.id + ')...' + this.api + ' hubId  ' + this.profile.hubId);
     this.isSavingData = true;
-    return this.api.saveUserProfile(this.user.user.id, this.profile)
+    return this.api.saveUserProfile(this.myGlobals.userSelected.id, this.profile)
       .then(savedData => this.savedData = savedData)
       .then(profile => {
         console.log('save this.user: ' + JSON.stringify(this.originalUser));

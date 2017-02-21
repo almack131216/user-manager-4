@@ -10,7 +10,7 @@
     
     <!--<pre>? myGlobals: ${myGlobals.foo} | ${myGlobals.currentUser & json} | ${myGlobals.profileSelected & json} !</pre>-->
 
-    <div class="panel panel-default panel-xc" if.bind="user && profile">
+    <div class="panel panel-default panel-xc" if.bind="myGlobals.profileSelected">
         <div class="panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse"
                 data-target="#${custXcId}">
             <i if.bind="custIcon" class="fa ${custIcon} text-after"></i>
@@ -26,12 +26,12 @@
         <div id="${custXcId}" class="panel-body row ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
             <div class="wrap-fields">
                 <!--? ${myLookups.languages}-->
-                <user-panel-details if.bind="custBody=='user-details'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-details>
-                <user-panel-languages if.bind="custBody=='user-languages'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-languages>
-                <user-panel-passport if.bind="custBody=='user-passport'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-passport>
-                <user-panel-visa if.bind="custBody=='user-visa'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-visa>
-                <user-panel-training if.bind="custBody=='user-training'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-training>
-                <!--<user-panel-confidential if.bind="custBody=='user-confidential'" user.bind="user" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-confidential>-->
+                <user-panel-details if.bind="custBody=='user-details'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-details>
+                <user-panel-languages if.bind="custBody=='user-languages'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-languages>
+                <user-panel-passport if.bind="custBody=='user-passport'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-passport>
+                <user-panel-visa if.bind="custBody=='user-visa'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-visa>
+                <user-panel-training if.bind="custBody=='user-training'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-training>
+                <!--<user-panel-confidential if.bind="custBody=='user-confidential'" profile.bind="profile" is-read-only.bind="isReadOnly"></user-panel-confidential>-->
             </div>
         </div>
     </div>

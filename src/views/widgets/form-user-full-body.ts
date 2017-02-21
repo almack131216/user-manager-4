@@ -1,12 +1,13 @@
-import { bindable, bindingMode } from 'aurelia-framework';
+import { inject, bindable, bindingMode } from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
-//import { MyGlobals } from '../../my-globals';
+import { MyGlobals } from '../../my-globals';
 
+@inject(MyGlobals)
 export class FormUserFullBody {
     public CV = CV;
-    @bindable user = null;
+    //@bindable user = null;
     @bindable profile = null;
     @bindable isReadOnly = null;
     //@bindable myLookups;
@@ -20,11 +21,11 @@ export class FormUserFullBody {
     @bindable custXcExpanded = null;
     @bindable custXcResClass = null;
 
-    //myGlobals
+    myGlobals
 
-  // constructor(myGlobals: MyGlobals) {
-  //   this.myGlobals = MyGlobals;
-  //   //this.myGlobals.foo = 'bar xxx';
-  //   //alert('body: ' + this.myGlobals.foo);
-  // }
+  constructor(myGlobals: MyGlobals) {
+    this.myGlobals = MyGlobals;
+    //this.myGlobals.foo = 'bar xxx';
+    //alert('body: ' + this.myGlobals.foo);
+  }
 }
