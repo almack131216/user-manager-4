@@ -74,10 +74,10 @@ export class UserAdd {
     var getUrl = 'users/' + getId + '/edit';
     this.isReadOnly = false;
     //alert( getUrl );
-    //user-edit; params.bind: {id:user.id, editType:'edit'}
-    //this.router.navigateToRoute('user-edit', {id: getId, editType:'edit'} );//"users/5/edit"
+    //user-edit; params.bind: {id:user.id, pageType:'edit'}
+    //this.router.navigateToRoute('user-edit', {id: getId, pageType:'edit'} );//"users/5/edit"
     //this.router.navigate( 'users/' + getId + '/edit' );//"users/5/edit"
-    //this.router.navigate('user-edit', {id: getId, editType:'edit', replace: true, force: true} );
+    //this.router.navigate('user-edit', {id: getId, pageType:'edit', replace: true, force: true} );
     //this.router.refreshNavigation()
   }
 }

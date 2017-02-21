@@ -14,7 +14,7 @@
   <pre if.bind="CV.debugShowCodeOutput">${profile & json}</pre>
   <!--<pre>${CV.myLabels & json}</pre>-->
 
-  <div if.bind="!editType">
+  <div if.bind="!pageType">
     <user-list class="col-xs-12 col-md-8"></user-list>
 
     <div class="col-xs-12 col-md-4">
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div if.bind="user && editType=='edit'" class="col-xs-12">
+  <div if.bind="user" class="col-xs-12">
     <!--? user-selected.html | isReadOnly: ${isReadOnly} | ${currentUser.id} | ${user.user.id} !
     ? user-selected.html | myLookups: ${myLookups} !-->
     <user-add user.bind="user" profile.bind="profile" my-lookups.bind="myLookups" is-read-only.bind="isReadOnly" current-user.bind="currentUser" if.bind="user && profile"></user-add>

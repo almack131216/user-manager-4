@@ -3,6 +3,7 @@
     <require from="../inputs/form-input"></require>
     <require from="../inputs/form-select"></require>
     <require from="../inputs/form-checkbox"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
 
     <div class="col-xs-12">
         <table class="table user-panel-table padded-cells cols-4">
@@ -40,13 +41,19 @@
                             cust-readonly.bind="isReadOnly"></form-select>
                     </td>
                     <td>
-                        <form-input cust-name.bind="['visaExpiryDate_' + $index]"
+                        <!--<form-input cust-name.bind="['visaExpiryDate_' + $index]"
                             cust-label="Expiry Date"
                             cust-type="date"
                             model.two-way="profile.visas[$index].expiresOn"
                             cust-mandatory.bind="true"
                             input-only="true"
-                            cust-readonly.bind="isReadOnly"></form-input>
+                            cust-readonly.bind="isReadOnly"></form-input>-->
+
+                        <input if.bind="isReadOnly" type="text" value.bind="profile.visas[$index].expiresOn ? profile.visas[$index].expiresOn : '---'" readonly>
+                        <input if.bind="!isReadOnly" class="k_datepicker" id.bind="['visaExpiryDate_' + $index]"  name.one-way="['visaExpiryDate_' + $index]"
+            ak-datepicker="k-value.two-way: profile.visas[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
+            k-on-ready.delegate="onReady($event.detail,profile.visas[$index].expiresOn)"
+            k-on-change.delegate="onChange($event.detail,profile.visas[$index].expiresOn)">
                     </td>
                     <td>
                         <form-checkbox cust-name.bind="['visaMultiple_' + $index]"

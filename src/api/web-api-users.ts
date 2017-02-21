@@ -19,11 +19,15 @@ let path_local = 'src/api';
 const apiUrlsArr = [];
 apiUrlsArr['global'] = { method: 'GET', url: '/views/global', urlLocal: '/api-global.json', data: null }
 apiUrlsArr['welcome'] = { method: 'GET', url: '/views/welcome', urlLocal: '/api-welcome.json', data: null }
-apiUrlsArr['user-selected'] = { method: 'GET', url: '/views/profileform/', urlAppendWithId:true, urlAppendEnd: '?includeLookups=true', urlLocal: '/api-user-with-lookups-', urlLocalAppendEnd: '.json', data: null }
+apiUrlsArr['user-selected'] = { method: 'GET', url: '/views/profileform/', urlAppendWithId: true, urlAppendEnd: '?includeLookups=true', urlLocal: '/api-user-with-lookups-', urlLocalAppendEnd: '.json', data: null }
 //apiUrlsArr['lookups'] = { method: 'GET', url: '/views/profileform/', urlAppend: '?includeLookups=true', urlLocal: '/api-user-with-lookups.json', data: null }
-apiUrlsArr['user-list-to-add'] = { method: 'GET', url: '/ldap/query?limit=5', urlLocal: '/api-list-add-users.json', data: {} }
+apiUrlsArr['user-list-to-add'] = { method: 'SEARCH', url: '/ldap/query?limit=5', urlLocal: '/api-list-add-users.json', data: {} }
 apiUrlsArr['user-list'] = { method: 'SEARCH', url: '/data/users/query', urlLocal: '/api-all-users.json', data: null }
-apiUrlsArr['user-role'] = { method: 'GET', url: '/data/users/', urlAppendWithId:true, urlLocal: '/api-user.json', data: null }
+apiUrlsArr['user-role'] = { method: 'GET', url: '/data/users/', urlAppendWithId: true, urlLocal: '/api-user.json', data: null }
+apiUrlsArr['delete-user'] = { method: 'DELETE', url: '/data/users/', urlAppendWithId: true, urlLocal: '', data: null }
+apiUrlsArr['delete-multiple-users'] = { method: 'DELETE', url: '/data/users', urlLocal: '', data: null }
+apiUrlsArr['user-list-to-add-add'] = { method: 'POST', url: '/data/users', urlLocal: '', data: null }
+
 
 
 const data_users_X = path_api + '/data/users/';
@@ -62,22 +66,21 @@ export class WebAPIUsers {
     this.router = router;
   }
 
+
   apiCall(getId, getData) {
     this.isRequesting = true;
-    var apiMethod = !hw_useJson ? apiUrlsArr[getId].method : "GET";
+    var apiMethod = hw_useJson ? "GET" : apiUrlsArr[getId].method;
     let apiUrl = !hw_useJson && apiUrlsArr[getId].url ? path_api + apiUrlsArr[getId].url : path_local + apiUrlsArr[getId].urlLocal;
 
-    if(getData && apiUrlsArr[getId].urlAppendWithId) {
+    if (getData && apiUrlsArr[getId].urlAppendWithId) {
       apiUrl += getData;// + apiUrlsArr[getId].getData;
-      if(!hw_useJson) getData = null;
+      //if (hw_useJson) getData = null;
     }
-    if(!hw_useJson && getData && apiUrlsArr[getId].urlAppendEnd) apiUrl += apiUrlsArr[getId].urlAppendEnd;
-
-    if(hw_useJson && getData && apiUrlsArr[getId].urlLocalAppendEnd) apiUrl += apiUrlsArr[getId].urlLocalAppendEnd;
+    if (getData && apiUrlsArr[getId].urlAppendEnd) apiUrl += !hw_useJson ? apiUrlsArr[getId].urlAppendEnd : apiUrlsArr[getId].urlLocalAppendEnd;
 
     let apiData = getData ? JSON.stringify(getData) : apiUrlsArr[getId].data;
 
-    //alert(apiMethod + ' > ' + apiUrl + ' > ' + apiData + ' ? ' + apiUrlsArr[getId].urlLocalAppendEnd);
+    //alert(apiMethod + ' > ' + apiUrl + ' > ' + apiData + ' ? ' + apiUrlsArr[getId].urlAppendEnd);
 
     return $.ajax({
       type: apiMethod,
@@ -99,13 +102,13 @@ export class WebAPIUsers {
   }
 
 
-  deleteMultipleUsers(data) {
+  deleteMultipleUsersXXX(data) {
     this.isRequesting = true;
     let tmpUrl = delete_multiple;
     //if (hw_useJson) tmpUrl = 'src/api/api-all-users.json';
     //alert('getUserList');
 
-    alert(JSON.stringify(data));
+    //alert(JSON.stringify(data));
 
     return $.ajax({
       type: 'DELETE',
@@ -117,12 +120,9 @@ export class WebAPIUsers {
   }
 
 
-  navigateTo(getUrl) {
-    //route: user-edit; params.bind: {id:user.id, editType:'edit'}
-    this.router.navigate(getUrl);//"users/5/edit"
-  }
 
-  getUserToAdd_addUser(data) {
+
+  getUserToAdd_addUserXXX(data) {
     this.isRequesting = true;
     let tmpUrl = path_api + '/data/users';// { loginName: 'AGILY\\JBohm', isMember: true, systemRolesValue: 3 }
     //alert('getUserToAdd_addUser: ' + tmpUrl + ' > ' + data);
@@ -183,12 +183,12 @@ export class WebAPIUsers {
   }
 
 
-  deleteUser(id) {
+  deleteUserXXX(id) {
     console.log('saveUserProfile... (' + id + ')');
     this.isRequesting = true;
     let tmpUrl = delete_users_X + id;
 
-    //alert(tmpUrl);
+    alert('DELETE > ' + tmpUrl + ' ? ' + 'null');
 
     return $.ajax({
       type: 'DELETE',
@@ -206,6 +206,10 @@ export class WebAPIUsers {
     });
   }
 
+  navigateTo(getUrl) {
+    //route: user-edit; params.bind: {id:user.id, pageType:'edit'}
+    this.router.navigate(getUrl);//"users/5/edit"
+  }
 
   emailUser(getEmailAddress) {
     console.log('mailto:' + getEmailAddress);

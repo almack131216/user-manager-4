@@ -69,8 +69,8 @@ export class UserList {
     }
 
     deleteMultiple(){
-        alert('deleteMultiple()' + this.checkedItemsArr);
-        this.api.deleteMultipleUsers(this.checkedItemsArr)
+        //alert('deleteMultiple()' + this.checkedItemsArr);
+        this.api.apiCall('delete-multiple-users',this.checkedItemsArr)
         // .then(result => {
         //         console.log('Deleted ' + this.checkedItemsArr + ' users')
         //     })

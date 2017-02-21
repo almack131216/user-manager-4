@@ -27,7 +27,7 @@ export class UserInfo {
     routeConfig;
     user = null;
     info = null;
-    editType = null;
+    pageType = null;
     originalUser = null;
 
 
@@ -36,7 +36,7 @@ export class UserInfo {
     }
 
     created(params, routeConfig) {
-    console.log('activateeeeeeeeeee: ' + params.id + ' (' + params.editType + ')');
+    console.log('activateeeeeeeeeee: ' + params.id + ' (' + params.pageType + ')');
   }
 
 }

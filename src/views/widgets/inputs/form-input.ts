@@ -4,8 +4,8 @@ const CV = Constants
 
 import { BindingEngine } from "aurelia-binding";
 
-import * as $ from 'jquery';
-import 'kendo-ui-core/js/kendo.datepicker';
+// import * as $ from 'jquery';
+// import 'kendo-ui-core/js/kendo.datepicker';
 
 inject(BindingEngine, Element)
 export class FormInput {
@@ -35,35 +35,12 @@ export class FormInput {
 
     element;
 
-    public constructor(model,element:Element) {
-        this.element = element;
-    }
-
-    attached(){
-        $('.k_datepicker').click(function(e){
-          //alert('???');
-          e.stopPropagation();
-        });
-    }
-
-    onReady(datePicker) {
-        datePicker.value(this.model);
-    }
-
-    inputChanged(newValue, oldValue) {
-      // aurelia will call this automatically- a convention looks for methods on the vm that match bindable property names.
-      console.log('inputChanged: ' + this.value + ' | ' + this.model);
-    }
-
-    onChange(newValue, oldValue){
-        //datePicker.value(new Date(1994, 4, 2));
-        console.log('onChange() : model: ' + this.model + ' / ' +  + ', ' + oldValue);
+    public constructor(model) {
     }
 
     @bindable model;
-    activate(model) {
+    activate(model,datePicker) {
         // model is the passed through object
-
     }
 
     tmpCreateLabel(getStr) {

@@ -9,6 +9,8 @@ export class UserPanelDetails {
     @bindable isReadOnly;
     @bindable myLookups;
 
+    selectedFiles;
+
     public CV = CV;
 
     tmpShowLookupsDebug = false;

@@ -87,7 +87,7 @@
                                 <td> <input type="checkbox" value="true" checked.bind="user.checked" change.delegate="checkMe(user.id)"
                                     /></td>
                                 <td if.bind="isNotDisabled('loginName')">
-                                    <a if.bind="user.isMember" route-href="route: user-read; params.bind: {id:user.id, editType:'edit', readonly:'read'}" title="View member">${user.loginName}</a>
+                                    <a if.bind="user.isMember" click.delegate="api.navigateTo( 'user/' + user.id + '/read' )" title="View member">${user.loginName}</a>
                                     <span if.bind="!user.isMember">${user.loginName}</span>
                                 </td>
                                 <td if.bind="isNotDisabled('firstName')">${user.firstName}</td>
@@ -101,23 +101,22 @@
                                 </td>
                                 <td if.bind="isNotDisabled('edit')">
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'users/' + user.id + '/edit' )"
-                                            title="Edit User">
+                                        <button disabled.bind="!user.isMember" class="btn btn-default" click.delegate="api.navigateTo( 'user/' + user.id + '/edit' )" title="Edit User">
                                             <i class="fa fa-pencil"></i>
                                         </button>
-                                        <!--<a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, editType:'edit'}" title="Full edit">
+                                        <!--<a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, pageType:'edit'}" title="Full edit">
                                             <i class="fa fa-list"></i>
                                         </a>-->
                                         <button disabled.bind="user.emailAddress==null" class="btn btn-default" click.delegate="api.emailUser(user.emailAddress)"
                                             title="Email User">
                                                 <i class="fa fa-envelope-o"></i>
                                             </button>
-                                        <a class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">
+                                        <button class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">
                                             <i class="fa fa-cog"></i>
-                                        </a>
-                                        <a class="btn btn-default" click.delegate="deleteUser(user.id)" title="Delete User">
+                                        </button>
+                                        <button class="btn btn-default" click.delegate="deleteUser(user.id)" title="Delete User">
                                             <i class="fa fa-trash"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>

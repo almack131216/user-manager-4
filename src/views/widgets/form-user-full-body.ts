@@ -2,7 +2,7 @@ import { bindable, bindingMode } from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
-import { MyGlobals } from '../../my-globals';
+//import { MyGlobals } from '../../my-globals';
 
 export class FormUserFullBody {
     public CV = CV;
@@ -20,11 +20,11 @@ export class FormUserFullBody {
     @bindable custXcExpanded = null;
     @bindable custXcResClass = null;
 
-    myGlobals
+    //myGlobals
 
-  constructor(myGlobals: MyGlobals) {
-    this.myGlobals = MyGlobals;
-    //this.myGlobals.foo = 'bar xxx';
-    //alert('body: ' + this.myGlobals.foo);
-  }
+  // constructor(myGlobals: MyGlobals) {
+  //   this.myGlobals = MyGlobals;
+  //   //this.myGlobals.foo = 'bar xxx';
+  //   //alert('body: ' + this.myGlobals.foo);
+  // }
 }

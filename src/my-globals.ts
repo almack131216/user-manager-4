@@ -5,14 +5,14 @@
 
 
 
-export class MyGlobals {
-    foo = {}
-    currentUser = {}
-    profileSelected = {}
+// export class MyGlobals {
+//     foo = {}
+//     currentUser = {}
+//     profileSelected = {}
     
 
-    getFoo() { return this.foo }
-    setFoo(bar) {
-        /* do something */
-    }
-}
+//     getFoo() { return this.foo }
+//     setFoo(bar) {
+//         /* do something */
+//     }
+// }

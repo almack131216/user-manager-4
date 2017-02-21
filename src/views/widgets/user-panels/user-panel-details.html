@@ -6,9 +6,25 @@
     <require from="../../../resources/select2"></require>
     <require from="../../../resources/format/json"></require>
 
+    <require from="../../../resources/format/blob-to-url"></require>
+  <require from="../../../resources/format/file-list-to-array"></require>
+
     <!--? user-panel-details.html | isReadOnly: ${isReadOnly} !-->
 
     <!--<pre>${myLookups.hubs & json}</pre>-->
+
+<input type="file" accept="image/*" files.bind="selectedFiles">
+? files: ${selectedFiles & json}
+  <div>
+    <ul>
+      <li repeat.for="file of selectedFiles | fileListToArray">
+        <img src.bind="file | blobToUrl" />
+        <h3>${file.name}: ${file.type} ${file.size / 1000} kb</h3>
+        <p>Last Modified: ${file.lastModifiedDate}</p>
+      </li>
+    </ul>
+  </div>
+
 
 
     <div class="row">

@@ -29,9 +29,7 @@ export function configure(aurelia: Aurelia) {
     .plugin('aurelia-auth', (baseConfig)=>{
          baseConfig.configure(config);
     })
-    .plugin('aurelia-kendoui-bridge', config => {
-      config.dateFormat = 'yyyy/mm/dd';
-    });
+    .plugin('aurelia-kendoui-bridge');
 
 //    .plugin('aurelia-kendoui-bridge', kendo => kendo.pro())
 

@@ -6,7 +6,9 @@ import { areEqual } from '../../api/utility';
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
-import { MyGlobals } from '../../my-globals';
+import * as $ from 'jquery';
+import 'kendo-ui-core/js/kendo.datepicker';
+//import { MyGlobals } from '../../my-globals';
 
 
 interface User {
@@ -18,33 +20,33 @@ interface User {
   lkp_regions_selected: number;
 }
 
-@inject(WebAPIUsers, EventAggregator, MyGlobals)
+@inject(WebAPIUsers, EventAggregator)
 export class UserSelected {
   public CV = CV
   routeConfig;
   user: User;
   profile = {};
-  editType = null;
+  pageType = null;
   isReadOnly = null;
   originalUser: User;
   title = '';
   myLookups;
-  myGlobals;
+  //myGlobals;
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator, myGlobals: MyGlobals) {
-    this.myGlobals = MyGlobals; 
+  constructor(private api: WebAPIUsers, private ea: EventAggregator) {
+    //this.myGlobals = MyGlobals; 
   }
 
-  activate(params, routeConfig, myGlobals) {
+  activate(params, routeConfig) {
     this.routeConfig = routeConfig;
-    console.log('activate: ' + params.id + ' (' + params.editType + '), readonly: ' + params.isReadOnly);
+    console.log('activate: ' + params.id + ' (' + params.pageType + '), readonly: ' + params.isReadOnly);
 
     return this.api.apiCall('user-selected',params.id)
     .then(user => {
-      if (params.editType) this.editType = params.editType;
-      if (params.readonly) this.isReadOnly = true;
+      this.pageType = params.pageType=='edit' ? 'edit' : 'read';
+      this.isReadOnly = this.pageType=='read' ? true : false;
       this.user = user;
-      //alert(JSON.stringify(this.user));
+      //alert(JSON.stringify(this.pageType + ' / ' + this.isReadOnly));
       //console.log(JSON.stringify(this.user));
       //this.user.regionId = this.user['region'].id;
       this.myLookups = this.user['lookups'];
@@ -128,7 +130,7 @@ export class UserSelected {
         }
       }
 
-      this.myGlobals.profileSelected = this.profile;
+      //this.myGlobals.profileSelected = this.profile;
 
       this.routeConfig.navModel.setTitle(this.user['user'].firstName);
       // this.originalUser = JSON.parse(JSON.stringify(this.user));

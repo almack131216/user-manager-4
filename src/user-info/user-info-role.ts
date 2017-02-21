@@ -25,7 +25,7 @@ export class UserInfoRole {
     routeConfig;
     user = null;
     info = null;
-    editType = null;
+    pageType = null;
     originalUser = null;
 
 

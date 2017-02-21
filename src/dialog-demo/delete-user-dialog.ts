@@ -47,7 +47,8 @@ export class DeleteDialog {
     //and returns a promise that when resolved, it wil give us a response with a .wasCancelled property set to false and
     //an .output property set to this.info    
     triggerDelete() {
-        this.api.deleteUser(this.userSelectedId).then(() => {
+        this.api.apiCall('delete-user',this.userSelectedId)
+        .then(() => {
             this.controller.ok(this.userRole);
         });        
     }

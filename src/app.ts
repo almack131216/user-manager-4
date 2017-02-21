@@ -4,19 +4,17 @@ import * as Constants from './resources/constants';
 const CV = Constants
 
 import { FetchConfig } from 'aurelia-auth';
-
 import { EventAggregator } from 'aurelia-event-aggregator';
-
 import { HttpClient } from 'aurelia-http-client';
 import { WebAPIUsers } from './api/web-api-users';
 
 const reposUrl = 'https://api.github.com/orgs/aurelia/repos';
 const profileUrl = 'src/api/api-global.json';
 
-import { MyGlobals } from './my-globals';
+//import { MyGlobals } from './my-globals';
 
 @autoinject
-@inject(HttpClient, Router, FetchConfig, WebAPIUsers, MyGlobals)
+@inject(HttpClient, Router, FetchConfig, WebAPIUsers)
 
 export class App {
   public CV = CV
@@ -33,11 +31,11 @@ export class App {
   isReader
   isEditor
 
-  myGlobals
+  //myGlobals
 
-  constructor(http, private api: WebAPIUsers, myGlobals: MyGlobals) {
+  constructor(http, private api: WebAPIUsers) {
     this.http = http;
-    this.myGlobals = MyGlobals;    
+    //this.myGlobals = MyGlobals;    
   }
 
 
@@ -51,8 +49,8 @@ export class App {
           this.myId = this.currentUser.id,
           this.myDisplayName = this.currentUser.displayName,
           this.isReader = this.currentUser.isReader,
-          this.isEditor = this.currentUser.isEditor,
-          this.myGlobals.currentUser = this.currentUser
+          this.isEditor = this.currentUser.isEditor
+          //this.myGlobals.currentUser = this.currentUser
           //alert(this.myGlobals.foo)
       });
 
@@ -65,8 +63,8 @@ export class App {
       { route: ['', 'welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Home' },
       { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: { isEditorOnly: true } },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'Team' },
-      { route: 'users/:id/:editType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' },
-      { route: 'users/:id/:editType/:readonly', moduleId: './views/pages/user-selected', name: 'user-read', title: 'Read' }
+      { route: 'user/:id/:pageType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' },
+      { route: 'user/:id/:pageType', moduleId: './views/pages/user-selected', name: 'user-read', title: 'Read' }
       // { route: 'users/add', moduleId: './views/pages/user-add', name: 'user-add', nav: true, title: 'Add User' },
       // { route: 'dialog-demo', name: 'dialog-demo', moduleId: './dialog-demo/dialog-demo', nav: true, title: 'Dialog Demo' }
     ]);
