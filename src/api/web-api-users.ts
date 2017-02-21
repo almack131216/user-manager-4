@@ -211,6 +211,12 @@ export class WebAPIUsers {
     this.router.navigate(getUrl);//"users/5/edit"
   }
 
+  navigateToUserPage(getName,getId) {  
+    var tmpUrl = 'user/' + getId + '/' + getName;
+    //route: user-edit; params.bind: {id:user.id, pageType:'edit'}
+    this.router.navigate(tmpUrl);//"users/5/edit"
+  }
+
   emailUser(getEmailAddress) {
     console.log('mailto:' + getEmailAddress);
   }

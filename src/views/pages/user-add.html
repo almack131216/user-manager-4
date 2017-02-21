@@ -23,7 +23,7 @@
         <button if.bind="!isReadOnly" class="btn btn-default btn-i"><i class="fa fa-pencil"></i>Change Avatar</button>
 
         <!--? user-add.html | isReadOnly: ${isReadOnly} | ${currentUser.id} | ${user.user.id} !-->
-      <button if.bind="isReadOnly && (currentUser.id == user.user.id)" click.delegate="navigateToEditThisPage(currentUser.id)"
+      <button if.bind="isReadOnly && (currentUser.id == user.user.id)" click.delegate="api.navigateToUserPage('edit',currentUser.id)"
         class="margin-x-1 btn btn-default btn-i">
         <i class="fa fa-pencil"></i> Edit this profile
         </button>
