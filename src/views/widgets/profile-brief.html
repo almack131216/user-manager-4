@@ -1,6 +1,11 @@
 <template>
 
     <require from="./inputs/form-input"></require>
+    <require from="../../resources/format/json"></require>
+    <require from="../../resources/format/format-date"></require>
+    <require from="./cust-span/span-cust-member-status"></require>
+
+    <!--<pre>? profile-brief.html | isReadOnly: ${myGlobals.isReadOnly} | currentUser: ${currentUser & json} | memberArr: ${memberArr & json} !</pre>-->
 
     <form role="form" class="form-horizontal" id="user-panel-brief">
         <div class="panel">
@@ -13,18 +18,52 @@
 
                 <span if.bind="!custXc" class="panel-title">${title}</span>
 
-                <a class="btn btn-xs btn-i btn-text pull-right">
+                <a if.bind="currentUser.isEditor" click.delegate="myNav.navigateToUserPage('edit',currentUser.id)" class="btn btn-xs btn-i btn-text pull-right" title="Edit profile">
                     <i class="fa fa-pencil"></i>Update
+                </a>
+
+                <a click.delegate="myNav.navigateToUserPage('read',currentUser.id)" class="btn btn-xs btn-i btn-text pull-right" title="View profile">
+                    <i class="fa fa-search"></i>View
                 </a>
             </div>
 
             <div id="${custXcId}" class="panel-body bg-lightgray ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
 
-                <div class="padding-top-g1">
+                <div class="padding-top-1">
                     <div class="row">
-                        <form-input cust-label="Name" model.two-way="memberArr.displayName" cust-readonly.bind="true"></form-input>
-                        <form-input cust-label="Manager" model.two-way="memberArr.manager.displayName" cust-readonly.bind="true"></form-input>
-                        <form-input cust-type="date" cust-label="Updated" model.two-way="memberArr.profile.submittedOn" cust-readonly.bind="true"></form-input>
+                        <div class="col-xs-6">
+                            <label>Manager</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <a if.bind="memberArr.manager.emailAddress" click.delegate="myNav.emailUser(memberArr.manager.emailAddress)">
+                                <i class="fa fa-envelope-o text-after"></i> ${memberArr.manager.displayName}
+                            </a>
+                            <span if.bind="!memberArr.manager.emailAddress">${memberArr.manager.displayName}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Function</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <span>${memberArr.profile.function}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Location</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <span>${memberArr.profile.location}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label>Modified</label>
+                        </div>
+                        <div class="col-xs-6">
+                            ${memberArr.profile.submittedOn | formatDate}
+                        </div>
                     </div>
 
                     <!--<div class="row">

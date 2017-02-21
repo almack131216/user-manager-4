@@ -13,18 +13,20 @@
             <table class="table border-none half-n-half" if.bind="userRole && systemRoles">
                 <tbody>
                 <tr>
-                    <!--<td><label>ID:</label> ${userRole.id}</td>-->
-                    <td colspan="2"><label>Name:</label> ${userRole.firstName} ${userRole.lastName}</td>
+                    <td><label>Name:</label> ${userRole.firstName} ${userRole.lastName}</td>
+                    <td><label>ntId:</label> ${userRole.loginName}</td>
                 </tr>
                 <tr>
                     <td>
                         <form-checkbox cust-name="MRTMember"                          
                             model.two-way="userRole.isMember"
-                            init-selected.two-way="userRole.isMember"></form-checkbox>
+                            init-selected.two-way="userRole.isMember"
+                            input-only="true"></form-checkbox>
                     </td>
                     <td class="xxx_wrap-role">
-                        <form-filter-role name="userRole_system_role" model.two-way="userRole.systemRoles.value" options.bind="systemRoles" changed.two-way="userRole.systemRoles.value"
-                            init-selected.two-way="userRole.systemRoles.value"></form-filter-role>
+                        <form-select cust-name="lkp_systemRole" model.two-way="userRole.systemRoles.value" options.bind="systemRoles" changed.two-way="userRole.systemRoles.value"
+                            init-selected.two-way="userRole.systemRoles.value"
+                            input-only="true"></form-select>
                     </td>
                 </tr>
                 </tbody>

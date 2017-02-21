@@ -2,7 +2,7 @@
 
 .form-group,
 .form-group-input-only {
-    &.cust-mandatory {
+    &.cust-mandatoryXXX {
         label:after {
             content:"*";
             color:$color-danger;

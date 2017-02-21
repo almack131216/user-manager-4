@@ -2,7 +2,7 @@
   "memberPreview": {
     "displayName": "Alex Mackenzie",
     "emailAddress": "alex.mackenzie@agily.cz",
-    "profilePending": false,
+    "updatePending": false,
     "reviewPending": true,
     "manager": {
       "displayName": "David Soušek",
@@ -10,45 +10,41 @@
     },
     "profile": {
       "hub": null,
-      "entity": "Rhine FVC",
-      "position": "Deputy Incident Commanders",
-      "function": "Brand new function",
-      "location": "Brand new location",
-      "office": "Office 1",
-      "businessNumber": "+000 000000000",
-      "personalNumber": "+000 000000000",
-      "submittedOn": "2017-02-10T17:39:03Z"
+      "entity": null,
+      "office": null,
+      "function": "this is my function",
+      "location": "my location",
+      "businessNumber": "111",
+      "personalNumber": null,
+      "submittedOn": "2017-02-21T11:50:31Z"
     }
   },
   "recentSubmits": [
     {
       "id": 5,
-      "displayName": "Alex Mckenzie",
+      "displayName": "Alex Mackenzie",
       "emailAddress": "alex.mackenzie@agily.cz",
-      "submittedOn": "2017-02-09T17:39:03Z",
+      "submittedOn": "2017-02-21T11:50:31Z",
+      "isMember": true,
       "isActive": true
     },
     {
-      "id": 3,
-      "displayName": "EXAMPLE",
-      "emailAddress": null,
-      "submittedOn": "2017-02-10T17:20:32Z",
+      "id": 4,
+      "displayName": "David Soušek",
+      "emailAddress": "david.sousek@agily.cz",
+      "submittedOn": "2017-02-20T16:45:06Z",
+      "isMember": false,
       "isActive": true
     }
   ],
   "recentReviews": [
     {
-      "id": 3,
-      "displayName": "EXAMPLE",
-      "emailAddress": null,
-      "reviewedByDisplayName": "TEST",
-      "reviewedByEmailAddress": null,
-      "reviewedOn": "2017-02-10T17:20:32Z",
-      "reviewResult": {
-        "value": 1,
-        "name": "Approved"
-      },
-      "profileExists": true,
+      "id": 7,
+      "displayName": "Iain Ashworth",
+      "emailAddress": "IAshworth@agily.cz",
+      "reviewedOn": "2017-02-20T17:59:05Z",
+      "approved": false,
+      "isMember": false,
       "isActive": true
     }
   ]

@@ -42,7 +42,7 @@ export class App {
   async activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
-    this.api.apiCall('global', null)
+    this.api.apiCall('global', null, null)
       .then(apiResultData => this.currentUser = apiResultData)
       .then(() => {
         this.currentUser = this.currentUser.currentUser,
@@ -51,7 +51,7 @@ export class App {
           this.isReader = this.currentUser.isReader,
           this.isEditor = this.currentUser.isEditor
           this.myGlobals.currentUser = this.currentUser
-          //alert(this.myGlobals.foo)
+          console.log('this.myGlobals.currentUser: ' + this.myGlobals.currentUser.id)
       });
 
   }
@@ -61,7 +61,7 @@ export class App {
     config.title = CV.SITE_NAME_ABBR;
     config.map([
       { route: ['', 'welcome'], moduleId: './views/pages/welcome', name: 'welcome', nav: true, title: 'Home' },
-      { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: { isEditorOnly: true } },
+      { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: { isReaderOnly: true } },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'Team' },
       { route: 'user/:id/:pageType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' },
       { route: 'user/:id/:pageType', moduleId: './views/pages/user-selected', name: 'user-read', title: 'Read' }

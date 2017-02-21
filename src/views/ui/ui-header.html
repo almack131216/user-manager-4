@@ -1,10 +1,10 @@
 <template>
 
     <header class="container">
-        <pre if.bind="CV.debugShowCurrentUser">? ui-header.html | isMember: ${currentUser.isMember} | isEditor: ${currentUser.isEditor} !</pre>
+        <pre if.bind="CV.debugShowCurrentUser">? ui-header.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
         <div class="row">
             <div class="col-xs-8 logo-wrap">
-                <a class="logo" href="#" title="${CV.SITE_NAME}">
+                <a class="logo" click.delegate="myNav.navigateTo('welcome')" title="${CV.SITE_NAME}">
                     <img src="${imgSrc_logo}" alt="${CV.SITE_NAME_ABBR}">
                     
                     <!--<h3>${CV.SITE_NAME}</h3>-->
@@ -19,15 +19,17 @@
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="true">
-                            ${currentUser.displayName}
-
+                            ${myGlobals.currentUser.displayName}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#"><i class="fa fa-fw fa-cog"></i> Profile Settings</a></li>
-                            <li><a href="#"><i class="fa fa-fw fa-bell"></i> Notifications</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-fw fa-sign-out"></i> Log out</a></li>
+                            <li><a click.delegate="myNav.navigateToUserPage('read',myGlobals.currentUser.id)"><i class="fa fa-fw fa-search"></i>View Profile</a></li>
+                            <li><a click.delegate="myNav.navigateToUserPage('edit',myGlobals.currentUser.id)"><i class="fa fa-fw fa-pencil"></i>Edit Profile</a></li>
+                            <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-bell"></i>Notifications</a></li>
+                            <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-check-square-o"></i>Validate</a></li>
+                            <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-archive"></i>Toolbox</a></li>
+                            <li if.bind="myGlobals.currentUser.isEditor" class="divider"></li>
+                            <li if.bind="myGlobals.currentUser.isEditor"><a click.delegate="myNav.navigateTo('users')"><i class="fa fa-fw fa-users"></i>Team</a></li>
                         </ul>
                     </div>
 

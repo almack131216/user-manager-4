@@ -13,7 +13,7 @@
 
     <pre if.bind="CV.debugShowCurrentUser">? welcome.html | myGlobals.currentUser: ${myGlobals.currentUser & json}</pre>
 
-    <div if.bind="myGlobals.currentUser.isEditor" class="row-fluid">
+    <div if.bind="myGlobals.currentUser.id && myGlobals.currentUser.isEditor" class="row-fluid">
         <div class="col-md-6">
             <!--<img src="src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
@@ -23,13 +23,13 @@
 
             <div class="row">
                 <div class="col-md-2">
-                    <a route-href="route: user-no-selection"><img src="src/img/MRT_Org.png" class="fit-col"></a>
+                    <a click.delegate="myNav.navigateTo('users')"><img src="src/img/MRT_Org.png" class="fit-col"></a>
+                </div>                
+                <div class="col-md-2">
+                    <a click.delegate="myNav.navigateToUserPage('read',myGlobals.currentUser.id)"><img src="src/img/MRT_Ident.png" class="fit-col"></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="#"><img src="src/img/MRT_Admin.png" class="fit-col"></a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#"><img src="src/img/MRT_Ident.png" class="fit-col"></a>
+                    <a click.delegate="myNav.navigateToUserPage('edit',myGlobals.currentUser.id)"><img src="src/img/MRT_Admin.png" class="fit-col"></a>
                 </div>
                 <div class="col-md-2">
                     <a href="#"> <img src="src/img/MRT_Valid.png" class="fit-col"></a>
@@ -48,8 +48,9 @@
         </div>
     </div>
 
+    <!--<pre>? welcome.html | myGlobals.currentUser.id: ${myGlobals.currentUser.id} !</pre>-->
 
-    <div if.bind="!myGlobals.currentUser.isEditor" class="row-fluid">
+    <div if.bind="myGlobals.currentUser.id && !myGlobals.currentUser.isEditor" class="row-fluid">
         <div class="col-md-6">
             <div class="margin-bottom-2">
                 <h1 class="margin-top-0">${title}</h1>
@@ -58,7 +59,7 @@
         </div>
 
         <div class="col-md-6">
-            <profile-brief member-arr.bind="pageData.memberPreview"></profile-brief>
+            <profile-brief current-user.bind="myGlobals.currentUser" member-arr.bind="pageData.memberPreview"></profile-brief>
         </div>
     </div>
 

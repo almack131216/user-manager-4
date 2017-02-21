@@ -1,18 +1,20 @@
 import { inject, bindable } from 'aurelia-framework';
-import { WebAPIUsers } from '../../api/web-api-users';
+import { WebAPIUsers } from '../../api/web-api-users';//maybeExcess
+import { MyNav } from '../../my-nav';
 
-@inject(WebAPIUsers)
+@inject(WebAPIUsers,MyNav)
 export class listActivity {
     @bindable title
-
     @bindable custXc = true
     @bindable custXcId = 'activityList'
     @bindable custXcExpanded = false
 
-    @bindable apiData
+    @bindable apiData;//receive data to populate table
 
-    constructor(private api: WebAPIUsers) {
+    myNav
 
+    constructor(private api: WebAPIUsers, myNav: MyNav) {
+        this.myNav = myNav;
     }
 
 }

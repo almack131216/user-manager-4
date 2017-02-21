@@ -27,7 +27,8 @@ export class DeleteDialog {
         //REF: output_controller_settings_roles-dialog.json
         this.userSelectedId = controller.settings.userId;
 
-        this.api.apiCall('user-role',this.userSelectedId).then(user => {
+        this.api.apiCall('user-role',this.userSelectedId,null)
+        .then(user => {
             this.userRole = <User>user;
         });
 
@@ -47,7 +48,7 @@ export class DeleteDialog {
     //and returns a promise that when resolved, it wil give us a response with a .wasCancelled property set to false and
     //an .output property set to this.info    
     triggerDelete() {
-        this.api.apiCall('delete-user',this.userSelectedId)
+        this.api.apiCall('delete-user',this.userSelectedId,null)
         .then(() => {
             this.controller.ok(this.userRole);
         });        

@@ -82,7 +82,7 @@ export class AddUserDialog {
             tmpData = { name: getUserId }
         }
 
-        this.api.apiCall('user-list-to-add', tmpData)
+        this.api.apiCall('user-list-to-add', null, tmpData)
             .then(selectedUserArr => this.selectedUserArr = selectedUserArr)
             .then(() => {         
                 this.selectedId = null;      
@@ -98,7 +98,7 @@ export class AddUserDialog {
     created() {
         this.isLoadingApi = true;
         //<li><a href="javascript:queryApi('SEARCH', {}, 'ldap/query?limit=5')">SEARCH ldap/query?limit=5</a> {}</li>
-        this.api.apiCall('user-list-to-add', {})
+        this.api.apiCall('user-list-to-add', null, {})
             .then(listUsersToAdd => this.listUsersToAdd = listUsersToAdd)
             .then(() => this.populateRoleFilterFromList())
             .then(() => {
@@ -122,7 +122,7 @@ export class AddUserDialog {
 
         let tmpData = { uniqueId: getUser.uniqueId, isMember: getSelected_isMember, systemRolesValue: getSelected_systemRole }
         console.log('addUser() -> tmpData: ' + JSON.stringify(tmpData) );
-        this.api.apiCall('user-list-to-add-add',tmpData)
+        this.api.apiCall('user-list-to-add-add',null,tmpData)
             .then(() => {
                 this.controller.ok();
                 console.log('ADD USER: ' + JSON.stringify(this.listUsersToAdd))

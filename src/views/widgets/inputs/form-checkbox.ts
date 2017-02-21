@@ -17,6 +17,7 @@ export class FormCheckbox {
     @bindable custReadonly = null;
 
     @bindable custName;
+    @bindable inputOnly = false;//xxx
 
     public initSelected: null;
 

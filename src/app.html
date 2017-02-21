@@ -12,7 +12,7 @@
 
   <div id="container-fixed-footer">
     <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
-    <nav-bar router.bind="router" id="header" current-user.bind="currentUser"></nav-bar>
+    <nav-bar router.bind="router" id="header"></nav-bar>
     <!--<div class="container">
       <div class="row">
       <nav class="breadcrumb">
@@ -25,7 +25,7 @@
     </div>-->
     
 
-    <pre if.bind="CV.debugShowCurrentUser">? app.html | isMember: ${myGlobals.currentUser.isMember} | isEditor: ${myGlobals.currentUser.isEditor} !</pre>
+    <pre if.bind="CV.debugShowCurrentUser">? app.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
     <div class="container" id="body">
       <div class="row">
         <router-view></router-view>

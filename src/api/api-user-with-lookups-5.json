@@ -4,6 +4,7 @@
     "loginName": "AGILY\\AMackenzie",
     "lastName": "Mackenzie",
     "firstName": "Alex",
+    "displayName": "Alex Mackenzie",
     "emailAddress": "alex.mackenzie@agily.cz",
     "systemRoles": {
       "flags": [
@@ -44,13 +45,13 @@
     },
     "changeStatus": {
       "changedBy": {
-        "id": 2,
-        "initials": "TE",
-        "loginName": "TEST",
-        "displayName": "TEST",
-        "emailAddress": null
+        "id": 4,
+        "initials": "DS",
+        "loginName": "AGILY\\DSousek",
+        "displayName": "David Soušek",
+        "emailAddress": "david.sousek@agily.cz"
       },
-      "changedOn": "2017-02-06T22:25:37Z",
+      "changedOn": "2017-02-21T11:55:45Z",
       "hasChanged": true
     },
     "archiveStatus": {
@@ -61,163 +62,34 @@
   },
   "profile": {
     "id": 2,
-    "region": {
-      "id": 1,
-      "name": "Northern Hemispere"
-    },
+    "region": null,
     "hub": null,
-    "segment": {
-      "id": 1,
-      "name": "R&M"
+    "segment": null,
+    "entity": null,
+    "primaryPosition": null,
+    "secondaryPosition": null,
+    "office": null,
+    "function": "this is my function",
+    "location": "my location",
+    "businessNumber": "111",
+    "personalNumber": null,
+    "officeNumber": null,
+    "lyncNumber": null,
+    "homeNumber": null,
+    "emergencyContactName": null,
+    "emergencyContactNumber": null,
+    "coatSize": null,
+    "confidentialData": {
+      "memberSince": null,
+      "employmentStatus": null,
+      "credentialLevel": null,
+      "field1": null,
+      "field2": null
     },
-    "entity": {
-      "id": 1,
-      "name": "Rhine FVC"
-    },
-    "primaryPosition": {
-      "id": 1,
-      "name": "Command Staff"
-    },
-    "secondaryPosition": {
-      "id": 1,
-      "name": "Deputy Incident Commanders"
-    },
-    "office": {
-      "id": 1,
-      "name": "Office 1"
-    },
-    "function": "Brand new function",
-    "location": "Brand new location",
-    "businessNumber": "+000 000000000",
-    "personalNumber": "+000 000000000",
-    "officeNumber": "+000 000000000",
-    "lyncNumber": "+000 000000000",
-    "homeNumber": "+000 000000000",
-    "emergencyContactName": "Brand new contact",
-    "emergencyContactNumber": "+000 000000000",
-    "coatSize": {
-      "id": 1,
-      "name": "XXXS"
-    },
-    "languages": [
-      {
-        "language": {
-          "id": 1,
-          "name": "English"
-        },
-        "proficiency": null
-      },
-      {
-        "language": {
-          "id": 2,
-          "name": "Czech"
-        },
-        "proficiency": {
-          "value": 1,
-          "name": "Basic"
-        }
-      },
-      {
-        "language": {
-          "id": 3,
-          "name": "Spanish"
-        },
-        "proficiency": null
-      }
-    ],
-    "passports": [
-      {
-        "country": {
-          "id": 1,
-          "name": "Afghanistan"
-        },
-        "number": null,
-        "type": null,
-        "expiresOn": null
-      },
-      {
-        "country": {
-          "id": 2,
-          "name": "Albania"
-        },
-        "number": "AA 00000000",
-        "type": {
-          "value": 1,
-          "name": "Regular"
-        },
-        "expiresOn": "2018-01-01T00:00:00Z"
-      },
-      {
-        "country": {
-          "id": 3,
-          "name": "Algeria"
-        },
-        "number": "BB 00000000",
-        "type": {
-          "value": 2,
-          "name": "Diplomatic"
-        },
-        "expiresOn": null
-      }
-    ],
-    "visas": [
-      {
-        "country": {
-          "id": 1,
-          "name": "Afghanistan"
-        },
-        "type": null,
-        "multipleEntry": null,
-        "expiresOn": null
-      },
-      {
-        "country": {
-          "id": 2,
-          "name": "Albania"
-        },
-        "type": {
-          "value": 1,
-          "name": "Business visitor"
-        },
-        "multipleEntry": true,
-        "expiresOn": "2018-01-01T00:00:00Z"
-      },
-      {
-        "country": {
-          "id": 3,
-          "name": "Algeria"
-        },
-        "type": {
-          "value": 2,
-          "name": "Foreign national"
-        },
-        "multipleEntry": false,
-        "expiresOn": null
-      }
-    ],
-    "trainings": [
-      {
-        "training": {
-          "id": 1,
-          "name": "ICS Training"
-        },
-        "expiresOn": null
-      },
-      {
-        "training": {
-          "id": 2,
-          "name": "Hazwoper"
-        },
-        "expiresOn": "2018-01-01T00:00:00Z"
-      },
-      {
-        "training": {
-          "id": 3,
-          "name": "Offshore Medical"
-        },
-        "expiresOn": null
-      }
-    ],
+    "languages": [],
+    "passports": [],
+    "visas": [],
+    "trainings": [],
     "submitStatus": {
       "submittedBy": {
         "id": 5,
@@ -226,7 +98,7 @@
         "displayName": "Alex Mackenzie",
         "emailAddress": "alex.mackenzie@agily.cz"
       },
-      "submittedOn": "2017-02-10T17:39:03Z",
+      "submittedOn": "2017-02-21T11:50:31Z",
       "isSubmitted": true
     },
     "entityStatus": {
@@ -247,7 +119,7 @@
         "displayName": "Alex Mackenzie",
         "emailAddress": "alex.mackenzie@agily.cz"
       },
-      "changedOn": "2017-02-10T17:39:03Z",
+      "changedOn": "2017-02-21T11:50:31Z",
       "hasChanged": true
     }
   },
@@ -1641,6 +1513,16 @@
       {
         "value": 3,
         "name": "Medical"
+      }
+    ],
+    "employmentStatuses": [
+      {
+        "value": 1,
+        "name": "Employed"
+      },
+      {
+        "value": 2,
+        "name": "Retired"
       }
     ],
     "credentialLevels": [

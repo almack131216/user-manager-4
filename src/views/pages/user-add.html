@@ -9,6 +9,7 @@
   <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
 
   <pre if.bind="CV.debugShowCurrentUser">? user-add.html | myGlobals.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isReader: ${myGlobals.currentUser.isReader} !</pre>
+  <pre if.bind="CV.debugShowCurrentUser">? user-add.html | isReadOnly: ${isReadOnly} | currentUser.id: ${currentUser.id} | myGlobals.userSelected.id: ${myGlobals.userSelected.id} !</pre>
 
   <div class="main-title-bar row">
 
@@ -23,8 +24,8 @@
       <div class="btn-group profile-avater" role="group">
         <button if.bind="!isReadOnly" class="btn btn-default btn-i"><i class="fa fa-pencil"></i>Change Avatar</button>
 
-        <!--? user-add.html | isReadOnly: ${isReadOnly} | ${currentUser.id} | ${myGlobals.userSelected.id} !-->
-      <button if.bind="isReadOnly && (currentUser.id == myGlobals.userSelected.id)" click.delegate="api.navigateToUserPage('edit',currentUser.id)"
+      <button if.bind="isReadOnly && (currentUser.id == myGlobals.userSelected.id || myGlobals.currentUser.isEditor)" 
+      click.delegate="myNav.navigateToUserPage('edit',myGlobals.userSelected.id)"
         class="margin-x-1 btn btn-default btn-i">
         <i class="fa fa-pencil"></i> Edit this profile
         </button>
@@ -37,7 +38,7 @@
     </div>
   </div>
 
-<pre>? user-add.html | ${myGlobals.profileSelected & json}</pre>
+<!--<pre>? user-add.html | ${myGlobals.profileSelected & json}</pre>-->
 
   <form role="form" class="form-horizontal" id="user-panels" if.bind="myGlobals.profileSelected">
     <!--cust-xc-expanded="true"-->
@@ -57,7 +58,9 @@
             <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Training"
               cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
 
-              <form-user-full-body if.bind="profile.confidentialData!=null" cust-icon="fa-exclamation-triangle" 
+<!--? profile.confidentialData: ${myGlobals.profileSelected}
+<pre>${myGlobals.currentUser.isEditor}</pre>-->
+              <form-user-full-body if.bind="myGlobals.currentUser.isEditor" cust-icon="fa-exclamation-triangle" 
                 is-read-only.bind="isReadOnly" cust-title="Confidential Information" cust-body="user-confidential"
                 cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
 

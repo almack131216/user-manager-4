@@ -2,30 +2,22 @@
   "user": {
     "id": 3,
     "loginName": "EXAMPLE",
-    "lastName": "Mack 3",
-    "firstName": "Al 3",
-    "emailAddress": "alex.mackenzie@agily.cz",
+    "lastName": null,
+    "firstName": null,
+    "displayName": "EXAMPLE",
+    "emailAddress": null,
     "systemRoles": {
-      "flags": [
-        {
-          "value": 1,
-          "name": "Viewer"
-        },
-        {
-          "value": 3,
-          "name": "Manager"
-        }
-      ],
-      "value": 3,
-      "name": "Manager"
+      "flags": [],
+      "value": 0,
+      "name": "None"
     },
     "isMember": true,
     "manager": {
-      "id": 4,
-      "initials": "DS",
-      "loginName": "AGILY\\DSousek",
-      "displayName": "David Soušek",
-      "emailAddress": "david.sousek@agily.cz"
+      "id": 3,
+      "initials": "EX",
+      "loginName": "EXAMPLE",
+      "displayName": "EXAMPLE",
+      "emailAddress": null
     },
     "reviewStatus": {
       "reviewedBy": null,
@@ -40,17 +32,17 @@
         "displayName": "TEST",
         "emailAddress": null
       },
-      "createdOn": "2017-02-06T22:25:33Z"
+      "createdOn": "2017-02-03T11:48:27Z"
     },
     "changeStatus": {
       "changedBy": {
-        "id": 2,
-        "initials": "TE",
-        "loginName": "TEST",
-        "displayName": "TEST",
+        "id": 1,
+        "initials": "SY",
+        "loginName": "SYSTEM",
+        "displayName": "SYSTEM",
         "emailAddress": null
       },
-      "changedOn": "2017-02-06T22:25:37Z",
+      "changedOn": "2017-02-13T10:40:55Z",
       "hasChanged": true
     },
     "archiveStatus": {
@@ -60,31 +52,34 @@
     }
   },
   "profile": {
-    "id": 2,
+    "id": 1,
     "region": {
-      "id": 1,
-      "name": "Northern Hemispere"
+      "id": 2,
+      "name": "EMEA"
     },
-    "hub": null,
+    "hub": {
+      "id": 4,
+      "name": "London"
+    },
     "segment": {
-      "id": 1,
-      "name": "R&M"
+      "id": 3,
+      "name": "Upstream"
     },
     "entity": {
-      "id": 1,
-      "name": "Rhine FVC"
+      "id": 50,
+      "name": "Asia Pacific"
     },
     "primaryPosition": {
-      "id": 1,
-      "name": "Command Staff"
+      "id": 2,
+      "name": "Operations Section"
     },
     "secondaryPosition": {
-      "id": 1,
-      "name": "Deputy Incident Commanders"
+      "id": 5,
+      "name": "Deputy Section Chief"
     },
     "office": {
-      "id": 1,
-      "name": "Office 1"
+      "id": 2,
+      "name": "Office 2"
     },
     "function": "Brand new function",
     "location": "Brand new location",
@@ -96,8 +91,21 @@
     "emergencyContactName": "Brand new contact",
     "emergencyContactNumber": "+000 000000000",
     "coatSize": {
-      "id": 1,
-      "name": "XXXS"
+      "id": 3,
+      "name": "XS"
+    },
+    "confidentialData": {
+      "memberSince": "2018-01-01T00:00:00Z",
+      "employmentStatus": {
+        "value": 1,
+        "name": "Employed"
+      },
+      "credentialLevel": {
+        "value": 1,
+        "name": "1"
+      },
+      "field1": "hello",
+      "field2": "world"
     },
     "languages": [
       {
@@ -219,15 +227,9 @@
       }
     ],
     "submitStatus": {
-      "submittedBy": {
-        "id": 5,
-        "initials": "AM",
-        "loginName": "AGILY\\AMackenzie",
-        "displayName": "Alex Mackenzie",
-        "emailAddress": "alex.mackenzie@agily.cz"
-      },
-      "submittedOn": "2017-02-10T17:39:03Z",
-      "isSubmitted": true
+      "submittedBy": null,
+      "submittedOn": null,
+      "isSubmitted": false
     },
     "entityStatus": {
       "createdBy": {
@@ -237,17 +239,17 @@
         "displayName": "TEST",
         "emailAddress": null
       },
-      "createdOn": "2017-02-06T22:25:37Z"
+      "createdOn": "2017-02-03T12:07:29Z"
     },
     "changeStatus": {
       "changedBy": {
-        "id": 5,
-        "initials": "AM",
-        "loginName": "AGILY\\AMackenzie",
-        "displayName": "Alex Mackenzie",
-        "emailAddress": "alex.mackenzie@agily.cz"
+        "id": 4,
+        "initials": "DS",
+        "loginName": "AGILY\\DSousek",
+        "displayName": "David Soušek",
+        "emailAddress": "david.sousek@agily.cz"
       },
-      "changedOn": "2017-02-10T17:39:03Z",
+      "changedOn": "2017-02-21T12:01:53Z",
       "hasChanged": true
     }
   },
@@ -1641,6 +1643,16 @@
       {
         "value": 3,
         "name": "Medical"
+      }
+    ],
+    "employmentStatuses": [
+      {
+        "value": 1,
+        "name": "Employed"
+      },
+      {
+        "value": 2,
+        "name": "Retired"
       }
     ],
     "credentialLevels": [

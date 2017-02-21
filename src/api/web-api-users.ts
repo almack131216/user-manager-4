@@ -27,8 +27,7 @@ apiUrlsArr['user-role'] = { method: 'GET', url: '/data/users/', urlAppendWithId:
 apiUrlsArr['delete-user'] = { method: 'DELETE', url: '/data/users/', urlAppendWithId: true, urlLocal: '', data: null }
 apiUrlsArr['delete-multiple-users'] = { method: 'DELETE', url: '/data/users', urlLocal: '', data: null }
 apiUrlsArr['user-list-to-add-add'] = { method: 'POST', url: '/data/users', urlLocal: '', data: null }
-
-
+apiUrlsArr['save-user'] = { method: 'POST', url: '/data/users/', urlAppendWithId: true, urlAppendEnd: '/profile', urlLocal: '' }
 
 const data_users_X = path_api + '/data/users/';
 const ldap_query_ntId = path_api + '/ldap/query';
@@ -44,7 +43,6 @@ export class WebAPIUsers {
   router: Router;
 
   currentUser;
-
 
   constructor(http: HttpClient, router: Router) {
     http.configure(config => {
@@ -67,38 +65,38 @@ export class WebAPIUsers {
   }
 
 
-  apiCall(getId, getData) {
+  apiCall(getId, getUserId, getData) {
     this.isRequesting = true;
     var apiMethod = hw_useJson ? "GET" : apiUrlsArr[getId].method;
     let apiUrl = !hw_useJson && apiUrlsArr[getId].url ? path_api + apiUrlsArr[getId].url : path_local + apiUrlsArr[getId].urlLocal;
 
-    if (getData && apiUrlsArr[getId].urlAppendWithId) {
-      apiUrl += getData;// + apiUrlsArr[getId].getData;
+    if (getUserId && apiUrlsArr[getId].urlAppendWithId) {    
+      apiUrl += getUserId;// + apiUrlsArr[getId].getData;
       //if (hw_useJson) getData = null;
     }
-    if (getData && apiUrlsArr[getId].urlAppendEnd) apiUrl += !hw_useJson ? apiUrlsArr[getId].urlAppendEnd : apiUrlsArr[getId].urlLocalAppendEnd;
+    if (apiUrlsArr[getId].urlAppendEnd) apiUrl += !hw_useJson ? apiUrlsArr[getId].urlAppendEnd : apiUrlsArr[getId].urlLocalAppendEnd;
 
     let apiData = getData ? JSON.stringify(getData) : apiUrlsArr[getId].data;
 
-    //alert(apiMethod + ' > ' + apiUrl + ' > ' + apiData + ' ? ' + apiUrlsArr[getId].urlAppendEnd);
 
-    return $.ajax({
-      type: apiMethod,
-      url: apiUrl,
-      data: apiData,
-      dataType: "json",
-      contentType: 'application/json',
-      beforeSend: function (request) {
-        request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-      },
-      success: function (result) {
-        // console.log('API CALL SUCCESS: ' + result);
-        // let returnData = result;
-      },
-      error: function (xhr, ajaxOptions, thrownError) {
-        console.log("Error: " + thrownError);
-      }
-    });
+      return $.ajax({
+        type: apiMethod,
+        url: apiUrl,
+        data: apiData,
+        dataType: "json",
+        contentType: 'application/json',
+        beforeSend: function (request) {
+          request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+        },
+        success: function (result) {
+          // console.log('API CALL SUCCESS: ' + result);
+          // let returnData = result;
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          console.log("Error: " + thrownError);
+        }
+      });
+
   }
 
 
@@ -143,7 +141,7 @@ export class WebAPIUsers {
 
   }
 
-  saveUserProfile(id, data) {
+  saveUserProfileXXX(id, data) {
     console.log('saveUserProfile... (' + id + ')');
     this.isRequesting = true;
     let tmpUrl = path_api + '/data/users/' + id + '/profile';
@@ -182,7 +180,6 @@ export class WebAPIUsers {
     // });
   }
 
-
   deleteUserXXX(id) {
     console.log('saveUserProfile... (' + id + ')');
     this.isRequesting = true;
@@ -204,22 +201,6 @@ export class WebAPIUsers {
         //showResponse(data ? JSON.stringify(data, null, 2) : textStatus, 'lightgreen');
       }
     });
-  }
-
-  navigateTo(getUrl) {
-    //route: user-edit; params.bind: {id:user.id, pageType:'edit'}
-    this.router.navigate(getUrl);//"users/5/edit"
-  }
-
-  navigateToUserPage(getName,getId) {  
-    console.log('navigateToUserPage: ' + getName + ', ' + getId)
-    var tmpUrl = 'user/' + getId + '/' + getName;
-    //route: user-edit; params.bind: {id:user.id, pageType:'edit'}
-    this.router.navigate(tmpUrl);//"users/5/edit"
-  }
-
-  emailUser(getEmailAddress) {
-    console.log('mailto:' + getEmailAddress);
   }
 
 }

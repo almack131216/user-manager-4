@@ -1,5 +1,4 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { Router } from 'aurelia-router';
 import { WebAPIUsers } from '../../api/web-api-users';
 import { UserUpdated, UserViewed } from '../../resources/messages';
 import { inject, autoinject, bindable } from 'aurelia-framework';
@@ -12,11 +11,13 @@ import { InfoDialog } from '../../dialog-demo/info-dialog';
 import { RolesDialog } from '../../dialog-demo/roles-dialog';
 import { AddUserDialog } from '../../dialog-demo/add-user-dialog';
 import { DeleteDialog } from '../../dialog-demo/delete-user-dialog';
-import { Lookups } from '../../resources/lookups';
+import { Lookups } from '../../resources/lookups';//maybeExcess
+import { MyGlobals } from '../../my-globals';
+import { MyNav } from '../../my-nav';
 
 
 @autoinject
-@inject(WebAPIUsers, EventAggregator, DialogService, Lookups, Router)
+@inject(WebAPIUsers, EventAggregator, DialogService, Lookups, MyGlobals, MyNav)
 export class UserList {
     @bindable custTitle;
     @bindable custDisableCells;
@@ -28,6 +29,8 @@ export class UserList {
     @bindable custXcId = '';//userList
     @bindable custXcExpanded = true;
 
+    @bindable currentUser;//CR
+
     public CV = CV
     users;
     selectedId = 0;
@@ -35,7 +38,8 @@ export class UserList {
     rolesArr;
     rolesArrDynamic = [];
 
-    router;
+    myNav
+    myGlobals
 
     searchFor_active;
     searchFor_name;
@@ -51,7 +55,7 @@ export class UserList {
         return false;
     }
 
-    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, private lookups: Lookups, router: Router) {
+    constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, private lookups: Lookups, myNav: MyNav, myGlobals: MyGlobals) {
         // ea.subscribe(UserViewed, msg => this.select(msg.user));
         // ea.subscribe(UserUpdated, msg => {
         //     let id = msg.user.id;
@@ -62,15 +66,25 @@ export class UserList {
 
         this.isAllChecked = false;
 
-        this.loadUserList({});
+        this.myNav = myNav;
 
-        this.router = router;
+        this.myGlobals = myGlobals
 
+        
+    }
+
+
+    attached(){
+        // alert('this.myGlobals 2: ' + JSON.stringify(this.myGlobals) );
+        // alert('this.currentUser 2: ' + JSON.stringify(this.currentUser) );
+        // if(this.currentUser.isReader) alert('this.myGlobals 2.3: ' + JSON.stringify(this.myGlobals) );
+        var tmpData = this.currentUser.isEditor ? {} : { active: true };
+        this.loadUserList(tmpData);
     }
 
     deleteMultiple(){
         //alert('deleteMultiple()' + this.checkedItemsArr);
-        this.api.apiCall('delete-multiple-users',this.checkedItemsArr)
+        this.api.apiCall('delete-multiple-users',null,this.checkedItemsArr)
         // .then(result => {
         //         console.log('Deleted ' + this.checkedItemsArr + ' users')
         //     })
@@ -121,13 +135,14 @@ export class UserList {
         // 'SEARCH', { active: true, userTypeValue: 3 }, 'data/users/query'
         // 'SEARCH', { userTypeValue: 1 }, 'data/users/query'
         //alert('loadUserList: ' + JSON.stringify(data) );
-        this.api.apiCall('user-list',data)
+        this.api.apiCall('user-list',null,data)
             .then(users => this.users = users)            
             .then(() => this.populateRoleFilterFromList());
             
     }
 
-    created(lookups) {
+    activate(lookups) {
+        alert('this.myGlobals 2.2: ' + JSON.stringify(this.myGlobals) );
         if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
         if (this.custTitle) this.title = this.custTitle;
     }

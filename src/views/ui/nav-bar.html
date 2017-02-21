@@ -2,7 +2,7 @@
     <require from="./ui-header"></require>
 
     <ui-header current-user.bind="currentUser"></ui-header>
-    <pre if.bind="CV.debugShowCurrentUser">? nav-bar.html | isMember: ${currentUser.isMember} | isEditor: ${currentUser.isEditor} !</pre>
+    <pre if.bind="CV.debugShowCurrentUser">? nav-bar.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
 
     <nav id="header" class="navbar navbar-default ${routeName=='welcome' ? 'margin-bottom-0' : ''}" role="navigation">
 
@@ -22,10 +22,10 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                        <a if.bind="hasAccess(currentUser, row)" href.bind="row.href">
+                    <li repeat.for="row of router.navigation" if.bind="hasAccess(myGlobals.currentUser, row)" class="${row.isActive ? 'active' : ''}">
+                        <a href.bind="row.href">
                             ${row.title}
-                            <span if.bind="CV.debugShowCurrentUser">? [${currentUser.isMember}, ${row.settings.isMemberOnly}] | [${currentUser.isEditor}, ${row.settings.isEditorOnly}]</span>
+                            <span if.bind="CV.debugShowCurrentUser">? [${myGlobals.currentUser.isMember}, ${row.settings.isMemberOnly}] | [${myGlobals.currentUser.isEditor}, ${row.settings.isEditorOnly}]</span>
                         </a>
                     </li>
                 </ul>

@@ -27,7 +27,8 @@ export class RolesDialog {
         //REF: output_controller_settings_roles-dialog.json
         this.userSelectedId = controller.settings.userId;
 
-        this.api.apiCall('user-role',this.userSelectedId).then(user => {
+        this.api.apiCall('user-role',this.userSelectedId,null)
+        .then(user => {
             //this.userRole = <User>user;
             this.userRole = user;
             this.systemRoles = lookups.systemRoles;

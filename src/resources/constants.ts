@@ -17,9 +17,9 @@ export const MSG_TRAINING = "<p>No training is mandatory or required. Roles that
 export const FORMAT_DATE = "MMMM Do YYYY";//February 7th 2017
 
 export const myLabels = {
-    "firstName": "First Name x",
-    "lastName": "Last Name x",
-    "emailAddress": "Email Address x",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "emailAddress": "Email Address",
     "loginName": "Username/NTID",
     "lkp_regions": "Region",
     "lkp_hubs": "Hub",
@@ -62,6 +62,8 @@ export const myLabels = {
     "training": "Training",
     "attended": "Attended",
 
-    "MRTMember": "MRT Member"
+    "MRTMember": "MRT Member",
+
+    "lkp_systemRole": "System Role"
 
 }

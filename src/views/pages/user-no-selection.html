@@ -1,13 +1,16 @@
 <template>
   <require from="../widgets/user-list"></require>
+  <require from="../widgets/panel-denied-access"></require>
 
-  <pre if.bind="CV.debugShowCurrentUser">? user-no-selection.html | isMember: ${currentUser.isMember} | isEditor: ${currentUser.isEditor} !</pre>
+  <pre if.bind="CV.debugShowCurrentUser">? user-no-selection.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isReader: ${myGlobals.currentUser.isReader} !</pre>
 
   <div class="col-md-12" if.bind="title">
     <h1>${title}<span class="html-file-name">(user-no-selection.html)</span></h1>
   </div>
 
   <!--<pre>? user-no-selection.html | isMember: ${currentUser.isMember} | users: ${users} !</pre>-->
-  <user-list if.bind="currentUser.isEditor" class="col-md-12"></user-list>
+  <user-list if.bind="currentUser.isReader" current-user.bind="myGlobals.currentUser" class="col-md-12"></user-list>
+
+  <panel-denied-access if.bind="!currentUser.isReader"></panel-denied-access>
 
 </template>

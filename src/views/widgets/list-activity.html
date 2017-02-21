@@ -25,13 +25,13 @@
                             <tr repeat.for="row of $displayData">
                                 <td if.bind="custXcId=='xs_recentSubmits'">${row.submittedOn | formatDate}</td>
                                 <td if.bind="custXcId=='xs_recentReviews'">${row.reviewedOn | formatDate}</td>
-                                <td><a click.delegate="api.navigateToUserPage('read',row.id)">${row.displayName}</a></td>
+                                <td><a click.delegate="myNav.navigateToUserPage('read',row.id)">${row.displayName}</a></td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button class="btn btn-default" click.delegate="api.navigateToUserPage('edit',row.id)" title="Edit User">
+                                        <button class="btn btn-default" click.delegate="myNav.navigateToUserPage('edit',row.id)" title="Edit User">
                                             <i class="fa fa-pencil"></i>
                                         </button>
-                                        <button disabled.bind="row.emailAddress==null" class="btn btn-default" click.delegate="api.emailUser(row.emailAddress)" title="Email User">
+                                        <button disabled.bind="row.emailAddress==null" class="btn btn-default" click.delegate="myNav.emailUser(row.emailAddress)" title="Email User">
                                             <i class="fa fa-envelope-o"></i>
                                         </button>
                                         <!--<a class="btn btn-default" href="#"><i class="fa fa-search"></i></a>-->
