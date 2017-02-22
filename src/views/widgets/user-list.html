@@ -71,7 +71,13 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <table class="table table-striped" if.bind="users && filters" aurelia-table="data.bind: users.data; display-data.bind: $displayData; current-page.bind: currentPage; page-size.bind: custTablePageSize; total-items.bind: totalItems;">
+                    <table class="table table-striped" if.bind="users"
+                            aurelia-table="data.bind: users.data;
+                            display-data.bind: $displayData;
+                            current-page.bind: currentPage;
+                            page-size.bind: custTablePageSize;
+                            total-items.bind: totalItems;
+                            filters.bind: !currentUser.isEditor ? filters_ro : ''">
                         <thead>
                             <tr>
                                 <th if.bind="currentUser.isEditor"><input type="checkbox" value="true" checked.bind="isAllChecked" change.delegate="checkAll()"></th>

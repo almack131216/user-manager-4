@@ -209,10 +209,10 @@ export class UserList {
         });
     }
 
-    filters = [
+    filters_ro = [
         { value: '', keys: ['loginName', 'firstName', 'lastName', 'emailAddress', 'personalNumber'] },
-        { value: '1', keys: ['isMember'] },
-        { value: '2', keys: ['isActive'] }
+        { value: 'true', keys: ['isMember'] },
+        { value: 'true', keys: ['isActive'] }
     ];
 
     returnLabelFromValue(getId) {
