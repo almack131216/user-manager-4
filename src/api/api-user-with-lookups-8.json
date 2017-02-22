@@ -1,0 +1,54 @@
+{
+  "user": {
+    "id": 3,
+    "loginName": "EXAMPLE 8",
+    "lastName": null,
+    "firstName": null,
+    "displayName": "EXAMPLE8",
+    "emailAddress": null,
+    "systemRoles": {
+      "flags": [],
+      "value": 0,
+      "name": "None"
+    },
+    "isMember": true,
+    "manager": {
+      "id": 3,
+      "initials": "EX8",
+      "loginName": "EXAMPLE8",
+      "displayName": "EXAMPLE8",
+      "emailAddress": null
+    },
+    "reviewStatus": {
+      "reviewedBy": null,
+      "reviewedOn": null,
+      "result": null
+    },
+    "entityStatus": {
+      "createdBy": {
+        "id": 2,
+        "initials": "TE",
+        "loginName": "TEST",
+        "displayName": "TEST",
+        "emailAddress": null
+      },
+      "createdOn": "2017-02-03T11:48:27Z"
+    },
+    "changeStatus": {
+      "changedBy": {
+        "id": 1,
+        "initials": "SY",
+        "loginName": "SYSTEM",
+        "displayName": "SYSTEM",
+        "emailAddress": null
+      },
+      "changedOn": "2017-02-13T10:40:55Z",
+      "hasChanged": true
+    },
+    "archiveStatus": {
+      "archivedBy": null,
+      "archivedOn": null,
+      "isActive": true
+    }
+  }
+}

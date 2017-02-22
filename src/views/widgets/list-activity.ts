@@ -9,6 +9,7 @@ export class listActivity {
     @bindable custXcId = 'activityList'
     @bindable custXcExpanded = false
 
+    @bindable currentUser
     @bindable apiData;//receive data to populate table
 
     myNav
@@ -16,5 +17,11 @@ export class listActivity {
     constructor(private api: WebAPIUsers, myNav: MyNav) {
         this.myNav = myNav;
     }
+
+    filters = [
+        { value: '', keys: ['displayName', 'emailAddress'] },
+        { value: 'true', keys: ['isMember'] },
+        { value: '', keys: ['isActive'] }
+    ];
 
 }

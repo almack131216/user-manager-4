@@ -12,7 +12,8 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <table if.bind="apiData" class="table table-striped margin-top-1" aurelia-table="data.bind: apiData; display-data.bind: $displayData;">
+                    <!--<input type="text" value.bind="filters[1].value">-->
+                    <table if.bind="apiData" class="table table-striped margin-top-1" aurelia-table="data.bind: apiData; display-data.bind: $displayData; filters.bind: !currentUser.isEditor ? filters : ''">
                         <thead>
                             <tr>
                                 <th if.bind="custXcId=='xs_recentSubmits'" aut-sort="key: submittedOn; default: desc">Submitted</th>
@@ -22,6 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!--if.bind="currentUser.isEditor || (!currentUser.isEditor && row.isMember)"-->
                             <tr repeat.for="row of $displayData">
                                 <td if.bind="custXcId=='xs_recentSubmits'">${row.submittedOn | formatDate}</td>
                                 <td if.bind="custXcId=='xs_recentReviews'">${row.reviewedOn | formatDate}</td>
