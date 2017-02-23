@@ -13,6 +13,8 @@ const profileUrl = 'src/api/api-global.json';
 
 import { MyGlobals } from './my-globals';
 
+import toastr = require('toastr');
+
 @autoinject
 @inject(HttpClient, Router, FetchConfig, WebAPIUsers)
 
@@ -35,7 +37,8 @@ export class App {
 
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
-    this.myGlobals = MyGlobals; 
+    this.myGlobals = MyGlobals;
+    toastr.options.preventDuplicates = true;
   }
 
 
