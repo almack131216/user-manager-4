@@ -6,6 +6,7 @@
 /// <reference path="globals/node/index.d.ts" />
 /// <reference path="globals/select2/index.d.ts" />
 /// <reference path="globals/selenium-webdriver/index.d.ts" />
+/// <reference path="globals/toastr/index.d.ts" />
 /// <reference path="globals/url-search-params-typing/index.d.ts" />
 /// <reference path="globals/whatwg-fetch/index.d.ts" />
 /// <reference path="globals/whatwg-streams/index.d.ts" />

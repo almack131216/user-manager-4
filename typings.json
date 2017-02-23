@@ -10,9 +10,10 @@
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
   },
   "globalDependencies": {
-    "jquery": "registry:dt/jquery#1.10.0+20170104155652",
+    "jquery": "registry:dt/jquery#1.10.0+20170123093700",
     "moment": "registry:dt/moment#2.11.1+20161010105546",
     "moment-timezone": "registry:dt/moment-timezone#0.2.5+20161208060822",
-    "select2": "registry:dt/select2#4.0.1+20161124150542"
+    "select2": "registry:dt/select2#4.0.1+20161124150542",
+    "toastr": "registry:dt/toastr#2.1.3+20161123234806"
   }
 }

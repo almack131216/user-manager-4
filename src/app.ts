@@ -35,7 +35,7 @@ export class App {
 
   constructor(http, private api: WebAPIUsers) {
     this.http = http;
-    this.myGlobals = MyGlobals;    
+    this.myGlobals = MyGlobals; 
   }
 
 

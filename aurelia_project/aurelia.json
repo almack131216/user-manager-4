@@ -217,6 +217,17 @@
             "name": "aurelia-task-queue",
             "path": "../node_modules/aurelia-task-queue/dist/amd",
             "main": "aurelia-task-queue"
+          },
+          {
+            "name": "toastr",
+            "path": "../node_modules/toastr",
+            "main": "toastr",
+            "resources": [
+              "build/toastr.min.css"
+            ],
+            "deps": [
+              "jquery"
+            ]
           }
         ]
       }

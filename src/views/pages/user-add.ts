@@ -5,14 +5,13 @@ import { WebAPIUsers } from '../../api/web-api-users';
 import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
 
-//import {TaskQueue} from 'aurelia-task-queue';
-
 import * as Constants from '../../resources/constants';
 const CV = Constants
 
 import { MyGlobals } from '../../my-globals'
 import { MyNav } from '../../my-nav';
-
+//import * as toastr from 'toastr';
+import toastr = require('toastr');
 
 @autoinject
 // @inject(WebAPIUsers, MyGlobals)//TaskQueue
@@ -36,17 +35,28 @@ export class UserAdd {
   title = 'Edit User'
   title_isReadOnly = 'View User';
 
-  myGlobals
-  
+  myGlobals  
   currentUser
+  toastr
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, myGlobals: MyGlobals, myNav: MyNav) {
+  constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, myGlobals: MyGlobals, myNav: MyNav, toastr: Toastr) {
     this.api = api;
     this.myGlobals = MyGlobals;
 
     this.myNav = myNav;
     this.currentUser = this.myGlobals.currentUser;
+    this.toastr = toastr;
     //this.taskQueue = taskQueue;
+  }
+
+  testToastr(){
+    console.log('TOASTR created');
+    toastr.info('blah 2');
+  }
+
+  attached(){
+    console.log('TOASTR attached');
+    toastr.info('blah');
   }
 
   get canSave() {
