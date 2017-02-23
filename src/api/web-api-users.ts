@@ -2,6 +2,7 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import 'jquery';
+import toastr = require('toastr');
 
 //import {HttpClient} from '../httpClient';
 
@@ -96,6 +97,7 @@ export class WebAPIUsers {
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log("Error: " + thrownError);
+        toastr.error("Error: " + thrownError);
       }
     });
 

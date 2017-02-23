@@ -10,7 +10,7 @@ const CV = Constants
 
 import { MyGlobals } from '../../my-globals'
 import { MyNav } from '../../my-nav';
-//import * as toastr from 'toastr';
+
 import toastr = require('toastr');
 
 @autoinject
@@ -37,26 +37,23 @@ export class UserAdd {
 
   myGlobals  
   currentUser
-  toastr
 
-  constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, myGlobals: MyGlobals, myNav: MyNav, toastr: Toastr) {
+  constructor(private api: WebAPIUsers, private ea: EventAggregator, http: HttpClient, myGlobals: MyGlobals, myNav: MyNav) {
     this.api = api;
     this.myGlobals = MyGlobals;
 
     this.myNav = myNav;
     this.currentUser = this.myGlobals.currentUser;
-    this.toastr = toastr;
     //this.taskQueue = taskQueue;
   }
 
-  testToastr(){
-    console.log('TOASTR created');
-    toastr.info('blah 2');
-  }
+  // testToastr(){
+  //   console.log('TOASTR created');
+  //   toastr.info('blah 2');
+  // }
 
   attached(){
-    console.log('TOASTR attached');
-    toastr.info('blah');
+
   }
 
   get canSave() {
