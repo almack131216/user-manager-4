@@ -3,6 +3,8 @@
     <require from="../inputs/form-input"></require>
     <require from="../inputs/form-select"></require>
     <require from="../inputs/form-checkbox"></require>
+    <require from="../../../resources/format/format-date"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
 
     <div class="col-xs-12">
         <table class="table user-panel-table cols-4 padded-cells">
@@ -12,6 +14,7 @@
                     <th>${CV.myLabels.passportNumber}</th>
                     <th>${CV.myLabels.passportNationality}</th>
                     <th>${CV.myLabels.passportExpiryDate}</th>
+                    <th if.bind="!isReadOnly">Remove</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,13 +50,32 @@
                             cust-readonly.bind="isReadOnly"></form-select>
                     </td>
                     <td>
-                        <form-input cust-name.bind="['passportExpiryDate_' + $index]"
+                        <!--<form-input cust-name.bind="['passportExpiryDate_' + $index]"
                             cust-label="Passport Expiry Date"
                             cust-type="date"
                             model.two-way="myGlobals.profileSelected.passports[$index].expiresOn"
                             cust-mandatory.bind="true"
                             input-only="true"
-                            cust-readonly.bind="isReadOnly"></form-input>
+                            cust-readonly.bind="isReadOnly"></form-input>-->
+                        <input if.bind="isReadOnly"
+                            type="text"
+                            class="form-control"
+                            value.bind="profileSelected.passports[$index].expiresOn | formatDate:'L'"
+                            readonly>
+
+                        <span if.bind="!isReadOnly">
+                            <input class="k_datepicker"
+                                id.bind="['passportExpiryDate_' + $index]"
+                                name.one-way="['passportExpiryDate_' + $index]"
+                                ak-datepicker="k-value.two-way: myGlobals.profileSelected.passports[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
+                                k-on-ready.delegate="onReady($event.detail,myGlobals.profileSelected.passports[$index].expiresOn)"
+                                k-on-change.delegate="onChange($event.detail,myGlobals.profileSelected.visas[$index].expiresOn)">
+                        </span>
+                    </td>
+                    <td if.bind="!isReadOnly" class="padded-cell">
+                        <button class="btn btn-xs btn-danger" click.trigger="remove($index)">
+                            <i class="fa fa-times"></i>
+                        </button>
                     </td>
                 </tr>
             </tbody>
@@ -61,7 +83,8 @@
     </div>
 
     <div if.bind="!isReadOnly" class="col-xs-12 margin-bottom-g1">
-        <button class="btn btn-default btn-sm btn-i">
+       <!--if.bind="$index+1 == user.myGlobals.profileSelected.languages.length && $index+1<lkp_languages_limitTo"-->
+        <button class="btn btn-default btn-sm" click.trigger="add()">
             <i class="fa fa-plus"></i>
             Add Passport
         </button>

@@ -52,7 +52,7 @@ export class FormInput {
         //this.name = this.custName;
         //console.log('[form-inputs] created: ' + this.name + ' > ' + CV.myLabels[this.custName]);
         if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;// this.tmpCreateLabel(this.name);
-        if (!this.custPlaceholder) this.custPlaceholder = "Enter " + this.custLabel;
+        this.custPlaceholder = '';//if (!this.custPlaceholder) this.custPlaceholder = "Enter " + this.custLabel;
         if (this.custReadonly) this.custMandatory = false;
     }
 

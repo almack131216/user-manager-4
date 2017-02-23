@@ -25,6 +25,7 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                 <tr>
                     <th>${CV.myLabels.language}</th>
                     <th>${CV.myLabels.languageProficiency}</th>
+                    <th if.bind="!isReadOnly">Remove</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +35,7 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                             cust-label="Language"
                             input-only="true"
                             model.two-way="myGlobals.profileSelected.languages[$index].languageId"
-                            options.bind="myLookups.languages"                            
+                            options.bind="myLookups.languages"                           
                             autocomplete.bind="true"
                             init-selected.two-way="myGlobals.profileSelected.languages[$index].languageId"
                             cust-readonly.bind="isReadOnly"></form-select>
@@ -50,14 +51,19 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
                             is-enabled.bind="myGlobals.profileSelected.languages[$index].languageId"
                             cust-readonly.bind="isReadOnly"></form-select>
                     </td>
+                    <td if.bind="!isReadOnly" class="padded-cell">
+                        <button class="btn btn-xs btn-danger" click.trigger="remove($index)">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-   <div if.bind="!isReadOnly" class="col-xs-12 margin-bottom-g1">
+   <div if.bind="!isReadOnly && myGlobals.profileSelected.languages.length < myLookups.languages.length" class="col-xs-12 margin-bottom-g1">
        <!--if.bind="$index+1 == user.myGlobals.profileSelected.languages.length && $index+1<lkp_languages_limitTo"-->
-        <button class="btn btn-default btn-sm">
+        <button class="btn btn-default btn-sm" click.trigger="add()">
             <i class="fa fa-plus"></i>
             Add Language
         </button>

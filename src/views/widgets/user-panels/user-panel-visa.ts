@@ -40,4 +40,12 @@ export class UserPanelVisa {
         //datePicker.value(new Date(1994, 4, 2));
         console.log('onChange() : model: ' + newValue + ' | ' + oldValue);
     }
+
+    add() {
+        this.myGlobals.profileSelected.visas.push({ countryId: null, typeValue: null, multipleEntry: null, expiresOn: null  });
+    }
+
+    remove(getPos) {
+        this.myGlobals.profileSelected.visas.splice(getPos, 1);
+    }
 }

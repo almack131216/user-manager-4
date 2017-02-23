@@ -63,23 +63,25 @@ export class UserList {
         //     Object.assign(found, msg.user);
         // });
         this.lookups = lookups;
-
         this.isAllChecked = false;
-
         this.myNav = myNav;
-
-        this.myGlobals = myGlobals
-
-        
+        this.myGlobals = myGlobals        
     }
 
+    activate() {
+        alert('this.myGlobals 2.2: ' + JSON.stringify(this.myGlobals) );
+        if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
+        if (this.custTitle) this.title = this.custTitle;
+    }
 
     attached(){
         // alert('this.myGlobals 2: ' + JSON.stringify(this.myGlobals) );
         // alert('this.currentUser 2: ' + JSON.stringify(this.currentUser) );
         // if(this.currentUser.isReader) alert('this.myGlobals 2.3: ' + JSON.stringify(this.myGlobals) );
-        var tmpData = this.currentUser.isEditor ? {} : { active: true };
-        this.loadUserList(tmpData);
+        if(this.currentUser){
+            var tmpData = this.currentUser.isEditor ? {} : { active: true };
+            this.loadUserList(tmpData); 
+        }
     }
 
     deleteMultiple(){
@@ -141,11 +143,7 @@ export class UserList {
             
     }
 
-    activate(lookups) {
-        alert('this.myGlobals 2.2: ' + JSON.stringify(this.myGlobals) );
-        if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
-        if (this.custTitle) this.title = this.custTitle;
-    }
+   
 
     select(user) {
         this.selectedId = user.id;

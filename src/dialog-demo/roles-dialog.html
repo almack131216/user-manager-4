@@ -2,7 +2,7 @@
 
     <require from="../views/widgets/inputs/form-checkbox"></require>
     <require from="../views/widgets/inputs/form-select"></require>
-    <require from="../views/widgets/inputs/form-filter-role"></require>
+    <require from="../resources/format/json"></require>
 
     <ai-dialog>
         <ai-dialog-header>
@@ -13,19 +13,24 @@
             <table class="table border-none half-n-half" if.bind="userRole && systemRoles">
                 <tbody>
                 <tr>
-                    <td><label>Name:</label> ${userRole.firstName} ${userRole.lastName}</td>
+                    <td><label>Name:</label> ${userId} ${userRole.firstName} ${userRole.lastName}</td>
                     <td><label>ntId:</label> ${userRole.loginName}</td>
                 </tr>
                 <tr>
                     <td>
+                        <!--? select_isMember: ${select_isMember}-->
                         <form-checkbox cust-name="MRTMember"                          
-                            model.two-way="userRole.isMember"
-                            init-selected.two-way="userRole.isMember"
+                            model.two-way="select_isMember"
+                            init-selected.two-way="select_isMember"
                             input-only="true"></form-checkbox>
                     </td>
                     <td class="xxx_wrap-role">
-                        <form-select cust-name="lkp_systemRole" model.two-way="userRole.systemRoles.value" options.bind="systemRoles" changed.two-way="userRole.systemRoles.value"
-                            init-selected.two-way="userRole.systemRoles.value"
+                        <!--? select_systemRole: ${select_systemRole} | userRole.systemRoles.value: ${userRole.systemRoles & json}-->
+                        <form-select cust-name="lkp_systemRole"
+                            prop-arr.bind="['value','name']"
+                            model.two-way="select_systemRole"
+                            options.bind="systemRoles"
+                            init-selected.two-way="select_systemRole"
                             input-only="true"></form-select>
                     </td>
                 </tr>
@@ -35,7 +40,9 @@
         </ai-dialog-body>
 
         <ai-dialog-footer>
-            <button class="btn btn-primary" click.trigger="yes()">Update</button>
+            <!--? hasChanged: ${hasChanged}-->
+            <button disabled.bind="!hasChanged" class="btn ${hasChanged ? 'btn-primary' : 'btn-default'}" click.trigger="updateUserRole(select_isMember,select_systemRole)">Update</button>
+            <!--<button class="btn btn-primary" click.trigger="yes()">Update</button>-->
             <button class="btn btn-default pull-left" click.trigger="cancel()">Cancel</button>
         </ai-dialog-footer>
     </ai-dialog>

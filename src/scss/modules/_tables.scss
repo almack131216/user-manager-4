@@ -233,6 +233,14 @@ table.table.user-panel-table {
         }
     }
 
+    &.cols-3 {
+        tr {
+            td {
+                width:33.333333%;
+            }
+        }
+    }
+
     &.cols-4 {
         tr {
             td {

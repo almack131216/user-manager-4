@@ -28,6 +28,7 @@ apiUrlsArr['delete-user'] = { method: 'DELETE', url: '/data/users/', urlAppendWi
 apiUrlsArr['delete-multiple-users'] = { method: 'DELETE', url: '/data/users', urlLocal: '', data: null }
 apiUrlsArr['user-list-to-add-add'] = { method: 'POST', url: '/data/users', urlLocal: '', data: null }
 apiUrlsArr['save-user'] = { method: 'POST', url: '/data/users/', urlAppendWithId: true, urlAppendEnd: '/profile', urlLocal: '' }
+apiUrlsArr['save-user-role'] = { method: 'PUT', url: '/data/users/', urlAppendWithId: true, urlLocal: '', data: null }
 
 const data_users_X = path_api + '/data/users/';
 const ldap_query_ntId = path_api + '/ldap/query';
@@ -70,32 +71,33 @@ export class WebAPIUsers {
     var apiMethod = hw_useJson ? "GET" : apiUrlsArr[getId].method;
     let apiUrl = !hw_useJson && apiUrlsArr[getId].url ? path_api + apiUrlsArr[getId].url : path_local + apiUrlsArr[getId].urlLocal;
 
-    if (getUserId && apiUrlsArr[getId].urlAppendWithId) {    
+    if (getUserId && apiUrlsArr[getId].urlAppendWithId) {
       apiUrl += getUserId;// + apiUrlsArr[getId].getData;
       //if (hw_useJson) getData = null;
     }
     if (apiUrlsArr[getId].urlAppendEnd) apiUrl += !hw_useJson ? apiUrlsArr[getId].urlAppendEnd : apiUrlsArr[getId].urlLocalAppendEnd;
 
+    console.log('apiCall: ' + getId + ' > getUserId: ' + getUserId + ' > getData: ' + JSON.stringify(getData));
+
     let apiData = getData ? JSON.stringify(getData) : apiUrlsArr[getId].data;
 
-
-      return $.ajax({
-        type: apiMethod,
-        url: apiUrl,
-        data: apiData,
-        dataType: "json",
-        contentType: 'application/json',
-        beforeSend: function (request) {
-          request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
-        },
-        success: function (result) {
-          // console.log('API CALL SUCCESS: ' + result);
-          // let returnData = result;
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          console.log("Error: " + thrownError);
-        }
-      });
+    return $.ajax({
+      type: apiMethod,
+      url: apiUrl,
+      data: apiData,
+      dataType: "json",
+      contentType: 'application/json',
+      beforeSend: function (request) {
+        request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
+      },
+      success: function (result) {
+        // console.log('API CALL SUCCESS: ' + result);
+        // let returnData = result;
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log("Error: " + thrownError);
+      }
+    });
 
   }
 

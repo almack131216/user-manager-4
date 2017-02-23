@@ -16,9 +16,9 @@
                     <table if.bind="apiData" class="table table-striped margin-top-1" aurelia-table="data.bind: apiData; display-data.bind: $displayData; filters.bind: !currentUser.isEditor ? filters : ''">
                         <thead>
                             <tr>
-                                <th if.bind="custXcId=='xs_recentSubmits'" aut-sort="key: submittedOn; default: desc">Submitted</th>
-                                <th if.bind="custXcId=='xs_recentReviews'" aut-sort="key: reviewedOn; default: desc">Reviewed</th>
-                                <th aut-sort="key: displayName">Team Member</th>
+                                <th if.bind="custXcId=='xs_recentSubmits'">Submitted</th>
+                                <th if.bind="custXcId=='xs_recentReviews'">Reviewed</th>
+                                <th>Team Member</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

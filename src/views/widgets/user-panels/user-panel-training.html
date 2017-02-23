@@ -2,15 +2,23 @@
 
     <require from="../inputs/form-input"></require>
     <require from="../inputs/form-radio"></require>
+    <require from="../inputs/form-checkbox"></require>
     <require from="../../../resources/format/json"></require>
+    <require from="../../../resources/format/format-date"></require>
     <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
 
     <div class="row-fluid">
         <div class="col-xs-12" innerhtml.bind="message"></div>
     </div>
 
+    <!--<pre class="col-xs-4">??? tmpTrainingsMule: <br>${tmpTrainingsMule & json} !!!</pre>
+    <div class="col-xs-4">
+        <pre>??? myTrainingArrDynamic: <br>${myTrainingArrDynamic & json} !!! </pre>
+        <pre>??? myTrainingArr_init: <br>${myTrainingArr_init & json} !!!</pre>
+    </div>
+    <pre class="col-xs-4">??? myGlobals.profileSelected.trainings: <br>${myGlobals.profileSelected.trainings & json} !!!</pre>-->
     <pre if.bind="CV.debugShowCodeOutput">${myLookups.trainings & json}</pre>
-    <pre if.bind="CV.debugShowCodeOutput">${myTrainingArr & json}</pre>
+    <pre if.bind="CV.debugShowCodeOutput">${myTrainingArr_init & json}</pre>
     <pre if.bind="CV.debugShowCodeOutput">${myTrainingArrDynamic & json}</pre>
     <pre if.bind="CV.debugShowCodeOutput">
         <ul>
@@ -21,7 +29,9 @@
     </pre>
 
     <div class="col-xs-12">
-        <table class="table cols-3 user-panel-table padded-cells" if.bind="myTrainingArr && myLookups.trainings">
+        <span class="display-block padding-bottom-2" if.bind="isReadOnly && !myGlobals.profileSelected.trainings.length"><strong>No Training Attended</strong></span>
+
+        <table class="table cols-3 user-panel-table padded-cells" if.bind="(tmpTrainingsMule && !isReadOnly) || (isReadOnly && myGlobals.profileSelected.trainings.length>0)">
             <thead>
                 <tr>
                     <th>${CV.myLabels.training}</th>
@@ -30,35 +40,43 @@
                 </tr>
             </thead>
             <tbody>
-                <tr repeat.for="row of myLookups.trainings" if.bind="!isReadOnly || isReadOnly && returnTrainingData(row.id,'trainingId')">
+                <tr repeat.for="row of myGlobals.profileSelected.trainings" if.bind="isReadOnly">
                     <td>
-                        <label>${row.name}</label>
+                        <label>${returnTrainingLabel(row.trainingId)}</label>
                     </td>
                     <td>
-                        <span if.bind="returnTrainingData(row.id,'trainingId')">
-                            <i class="fa fa-check text-after color-good"></i>
-                            ${ returnTrainingData(row.id,'trainingId') }                            
+                        <i class="fa fa-check text-after"></i>Attended
+                    </td>
+                    <td>
+                        <input type="text"
+                            class="form-control"
+                            value.bind="row.expiresOn | formatDate:'L'"
+                            readonly>
+                    </td>
+                </tr>
+                <tr repeat.for="row of tmpTrainingsMule" if.bind="!isReadOnly">
+                    <td>
+                        <label>${tmpTrainingsMule[$index].name}</label>
+                    </td>
+                    <td>
+                        <label class="form-cust-label label-with-checkbox">
+                            <input type="checkbox"
+                                model.two-way="tmpTrainingsMule[$index].attended"
+                                checked.bind="tmpTrainingsMule[$index].attended"
+                                change.delegate="onTrainingChecked(row.id)"
+                                value="true">Attended</label>
+
+                    </td>
+                    <td>                        
+                        <span if.bind="!isReadOnly && tmpTrainingsMule[$index].expires && tmpTrainingsMule[$index].attended">
+                            <input class="k_datepicker"
+                                id.bind="['trainingExpiryDate_' + $index]"  name.one-way="['trainingExpiryDate_' + $index]"
+                                ak-datepicker="k-value.two-way: tmpTrainingsMule[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
+                                k-on-ready.delegate="onReady($event.detail,tmpTrainingsMule[$index].expiresOn)"
+                                k-on-change.delegate="onTrainingChecked(row.id)">
                         </span>
                     </td>
-                    <td>
-                        <!--<span>${ myGlobals.profileSelected.trainings[$index] & json }</span>-->
-                        <!--<form-input if.bind="returnTrainingData(row.id,'expiresOn')"
-                            cust-name.bind="['trainingExpiryDate_' + $index]"
-                            cust-type="date" 
-                            cust-label="Expiry Date"
-                            model.two-way="myGlobals.profileSelected.trainings[$index].expiresOn"
-                            cust-mandatory.bind="true"
-                            input-only="true"
-                            cust-readonly.bind="user.trainings[$index].attended || isReadOnly"></form-input>-->
-                            <!--? ${returnTrainingData(row.id,'expiresOn')} !-->
-                        <input if.bind="isReadOnly" class="form-control" type="text" value.bind="myGlobals.profileSelected.trainings[$index].expiresOn ? myGlobals.profileSelected.trainings[$index].expiresOn : '---'" readonly>
-                        <input if.bind="!isReadOnly && returnTrainingData(row.id,'expiresOn')" class="k_datepicker"
-                        id.bind="['trainingExpiryDate_' + $index]"  name.one-way="['trainingExpiryDate_' + $index]"
-            ak-datepicker="k-value.two-way: myGlobals.profileSelected.trainings[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
-            k-on-ready.delegate="onReady($event.detail,myGlobals.profileSelected.trainings[$index].expiresOn)"
-            k-on-change.delegate="onChange($event.detail,myGlobals.profileSelected.trainings[$index].expiresOn)">
-                    </td>
-                </tr>                
+                </tr>
             </tbody>
         </table>
     </div>

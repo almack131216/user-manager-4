@@ -22,21 +22,21 @@
             </div>
 
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <a click.delegate="myNav.navigateTo('users')"><img src="src/img/MRT_Org.png" class="fit-col"></a>
                 </div>                
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <a click.delegate="myNav.navigateToUserPage('read',myGlobals.currentUser.id)"><img src="src/img/MRT_Ident.png" class="fit-col"></a>
                 </div>
-                <div class="col-md-2" if.bind="myGlobals.currentUser.isEditor">
+                <div class="col-md-3" if.bind="myGlobals.currentUser.isEditor">
                     <a click.delegate="myNav.navigateToUserPage('edit',myGlobals.currentUser.id)"><img src="src/img/MRT_Admin.png" class="fit-col"></a>
                 </div>
-                <div class="col-md-2" if.bind="myGlobals.currentUser.isEditor">
+                <!--<div class="col-md-2" if.bind="myGlobals.currentUser.isEditor">
                     <a href="#"> <img src="src/img/MRT_Valid.png" class="fit-col"></a>
                 </div>
                 <div class="col-md-2" if.bind="myGlobals.currentUser.isEditor">
                     <a href="#"><img src="src/img/MRT_Toolbox.png" class="fit-col"></a>
-                </div>
+                </div>-->
             </div>
         </div>
 

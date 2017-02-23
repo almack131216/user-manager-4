@@ -39,7 +39,7 @@ export class UserSelected {
     this.myGlobals = MyGlobals;
   }
 
-  async activate(params, routeConfig) {
+  canActivate(params, routeConfig) {
     this.routeConfig = routeConfig;
     console.log('activate: ' + params.id + ' (' + params.pageType + '), readonly: ' + params.isReadOnly);
 

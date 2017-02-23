@@ -21,7 +21,8 @@
     <!--<pre>? user-list.html | currentUser.isEditor: ${currentUser.isEditor}</pre>-->
 
     <div if.bind="currentUser" class="panel panel-default">
-        <div class="panel-heading strong-heading ${custXc ? 'cursor-hover' : ''} ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse" data-target="#${custXcId}">
+        <div class="panel-heading strong-heading ${custXc ? 'cursor-hover' : ''} ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse"
+            data-target="#${custXcId}">
             ${title}
             <button if.bind="custXc" class="btn btn-xc_chevron btn-xs" type="button" aria-expanded="${custXcExpanded}" aria-controls="collapseExample">
             </button>
@@ -71,8 +72,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <table class="table table-striped" if.bind="users"
-                            aurelia-table="data.bind: users.data;
+                    <table class="table table-striped" if.bind="users" aurelia-table="data.bind: users.data;
                             display-data.bind: $displayData;
                             current-page.bind: currentPage;
                             page-size.bind: custTablePageSize;
@@ -93,7 +93,7 @@
                         <tbody>
                             <tr repeat.for="user of $displayData" class="${user.id === $parent.selectedId ? 'active' : ''}">
                                 <td if.bind="currentUser.isEditor">
-                                    <input type="checkbox" value="true" checked.bind="user.checked" change.delegate="checkMe(user.id)"/>
+                                    <input type="checkbox" value="true" checked.bind="user.checked" change.delegate="checkMe(user.id)" />
                                 </td>
                                 <td if.bind="isNotDisabled('loginName')">
                                     <a if.bind="user.isMember" click.delegate="myNav.navigateToUserPage('read',user.id)" title="View member">${user.loginName}</a>
@@ -103,6 +103,7 @@
                                 <td if.bind="isNotDisabled('lastName')">${user.lastName}</td>
                                 <td if.bind="isNotDisabled('emailAddress')">${user.emailAddress}</td>
                                 <td if.bind="isNotDisabled('isMember')">
+                                    <!--?? ${user.isMember}-->
                                     <span-cust-member-status is-member.bind="user.isMember" update-pending.bind="user.updatePending" profile-date.bind="user.profileDate"></span-cust-member-status>
                                 </td>
                                 <td if.bind="isNotDisabled('isActive')">
@@ -110,7 +111,8 @@
                                 </td>
                                 <td if.bind="isNotDisabled('edit')">
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button if.bind="currentUser.isEditor" disabled.bind="!user.isMember" class="btn btn-default" click.delegate="myNav.navigateToUserPage('edit',user.id)" title="Edit User">
+                                        <button if.bind="currentUser.isEditor" disabled.bind="!user.isMember" class="btn btn-default" click.delegate="myNav.navigateToUserPage('edit',user.id)"
+                                            title="Edit Profile">
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         <!--<a class="btn btn-default" route-href="route: user-edit; params.bind: {id:user.id, pageType:'edit'}" title="Full edit">
@@ -120,7 +122,7 @@
                                             title="Email User">
                                                 <i class="fa fa-envelope-o"></i>
                                             </button>
-                                        <button if.bind="currentUser.isEditor" class="btn btn-default" click.delegate="changeUserRoles(user.id)" title="Change User Permissions">
+                                        <button if.bind="currentUser.isEditor" disabled.bind="currentUser.id==user.id" class="btn btn-default" click.delegate="changeUserRoles(user.id)" title.bind="currentUser.id==user.id ? 'Cannot change own role' : 'Change User Permissions'">
                                             <i class="fa fa-cog"></i>
                                         </button>
                                         <button if.bind="currentUser.isEditor" class="btn btn-default" click.delegate="deleteUser(user.id)" title="Delete User">

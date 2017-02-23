@@ -39,10 +39,10 @@ export class App {
   }
 
 
-  async activate() {
+  activate() {
     // return a Promise that will resolve when the repos have
     // been loaded and sorted by star count.
-    this.api.apiCall('global', null, null)
+    return this.api.apiCall('global', null, null)
       .then(apiResultData => this.currentUser = apiResultData)
       .then(() => {
         this.currentUser = this.currentUser.currentUser,

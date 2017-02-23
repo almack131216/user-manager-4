@@ -13,13 +13,6 @@ const CV = Constants
 import { MyGlobals } from '../../my-globals'
 import { MyNav } from '../../my-nav';
 
-interface User {
-  firstName: string;
-  lastName: string;
-  emailAddress: string;
-  personalNumber: string;
-  lkp_regions_selected: number;
-}
 
 @autoinject
 // @inject(WebAPIUsers, MyGlobals)//TaskQueue
@@ -60,14 +53,20 @@ export class UserAdd {
     return true;// this.profile.regionId && this.profile.hubId && !this.api.isRequesting;
   }
 
+  // canDeactivate() {
+  //     if(!this.isPristine()) {
+  //         var result = confirm('Do you really want to discard your changes?');
+  //         return result;
+  //     }
+  //   };
+
   save() {
     console.log('SAVE... user (' + this.myGlobals.userSelected.id + ')...' + this.api + ' hubId  ' + this.myGlobals.profileSelected.hubId);
     this.isSavingData = true;
     return this.api.apiCall('save-user', this.myGlobals.userSelected.id, this.myGlobals.profileSelected)
       .then(savedData => this.savedData = savedData)
       .then(profile => {
-        console.log('save this.user: ' + JSON.stringify(this.originalUser));
-        console.log('save user: ' + JSON.stringify(this.savedData));
+        console.log('SUCCESSFULLY saved user: ' + JSON.stringify(this.myGlobals.profileSelected));
         //this.profile = <User>profile;
         //this.routeConfig.navModel.setTitle(this.user.firstName);
 

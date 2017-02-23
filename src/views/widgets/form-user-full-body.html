@@ -10,7 +10,7 @@
     
     <!--<pre>? myGlobals: ${myGlobals.foo} | ${myGlobals.currentUser & json} | ${myGlobals.profileSelected & json} !</pre>-->
 
-    <div class="panel panel-default panel-xc" if.bind="myGlobals.profileSelected">
+    <div class="panel panel-default panel-xc" if.bind="myGlobals.userSelected">
         <div class="panel-heading cursor-hover ${custXcExpanded ? '' : 'collapsed'}" data-toggle="collapse"
                 data-target="#${custXcId}">
             <i if.bind="custIcon" class="fa ${custIcon} text-after"></i>

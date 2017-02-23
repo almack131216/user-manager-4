@@ -16,7 +16,7 @@
     <div class="col-xs-8">
       <h1 if.bind="!isReadOnly" class="display-inline-block">${title}</h1>
       <h1 if.bind="isReadOnly" class="display-inline-block">${title_isReadOnly}</h1>
-        <btn-xc-all wrapper-id="user-panels"></btn-xc-all>
+        <btn-xc-all if.bind="myGlobals.profileSelected" wrapper-id="user-panels"></btn-xc-all>
     </div>
 
     <div class="col-xs-4 text-align-right">
@@ -38,29 +38,30 @@
     </div>
   </div>
 
-<!--<pre>? user-add.html | ${myGlobals.profileSelected & json}</pre>-->
+<!--<pre>? user-add.html | myGlobals.userSelected: ${myGlobals.userSelected & json}</pre>-->
+<!--<pre>??? user-add.html | myGlobals.profileSelected: ${myGlobals.profileSelected & json}</pre>-->
 
-  <form role="form" class="form-horizontal" id="user-panels" if.bind="myGlobals.profileSelected">
+  <form role="form" class="form-horizontal" id="user-panels" if.bind="myGlobals.userSelected">
     <!--cust-xc-expanded="true"-->
 
     <form-user-full-body is-read-only.bind="isReadOnly" cust-title="User"
       cust-body="user-details" cust-xc="true" cust-xc-id="xc_user" cust-xc-expanded="true"></form-user-full-body>
 
-      <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Languages"
+      <form-user-full-body if.bind="myGlobals.myLookups" is-read-only.bind="isReadOnly" cust-title="Languages"
         cust-body="user-languages" cust-xc="true" cust-xc-id="xc_languages"></form-user-full-body>
 
-        <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Passport Information"
+        <form-user-full-body if.bind="myGlobals.myLookups" is-read-only.bind="isReadOnly" cust-title="Passport Information"
           cust-body="user-passport" cust-xc="true" cust-xc-id="xc_passport"></form-user-full-body>
 
-          <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Visa Information"
+          <form-user-full-body if.bind="myGlobals.myLookups" is-read-only.bind="isReadOnly" cust-title="Visa Information"
             cust-body="user-visa" cust-xc="true" cust-xc-id="xc_visa"></form-user-full-body>
 
-            <form-user-full-body is-read-only.bind="isReadOnly" cust-title="Training"
+            <form-user-full-body if.bind="myGlobals.myLookups" is-read-only.bind="isReadOnly" cust-title="Training"
               cust-body="user-training" cust-xc="true" cust-xc-id="xc_training"></form-user-full-body>
 
 <!--? profile.confidentialData: ${myGlobals.profileSelected}
 <pre>${myGlobals.currentUser.isEditor}</pre>-->
-              <form-user-full-body if.bind="myGlobals.currentUser.isEditor" cust-icon="fa-exclamation-triangle" 
+              <form-user-full-body if.bind="myGlobals.myLookups" if.bind="myGlobals.currentUser.isEditor" cust-icon="fa-exclamation-triangle" 
                 is-read-only.bind="isReadOnly" cust-title="Confidential Information" cust-body="user-confidential"
                 cust-xc="true" cust-xc-id="xc_confidential"></form-user-full-body>
 

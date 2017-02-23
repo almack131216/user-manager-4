@@ -27,16 +27,22 @@ export class UserInfo {
     routeConfig;
     user = null;
     info = null;
-    pageType = null;
+    editType = null;
     originalUser = null;
 
 
     constructor(private api: WebAPIUsers, private ea: EventAggregator) {
 
+        // this.api.getUserRole(6).then(user => {
+        //     //alert('? 2' + JSON.stringify(user));
+        //     this.info = <User>user;
+        //     //this.firstName = this.info.firstName;
+        //     this.firstName = this.info.firstName;
+        // });
     }
 
     created(params, routeConfig) {
-    console.log('activateeeeeeeeeee: ' + params.id + ' (' + params.pageType + ')');
+    console.log('activateeeeeeeeeee: ' + params.id + ' (' + params.editType + ')');
   }
 
 }

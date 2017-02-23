@@ -28,8 +28,8 @@
 
   <div if.bind="user" class="col-xs-12">
     <!--? user-selected.html | isReadOnly: ${isReadOnly} | ${currentUser.id} ! -->
-    <!--<pre>? user-selected.html | myLookups: ${myGlobals.myLookups} | profileSelected: ${myGlobals.profileSelected & json} !</pre>-->
-    <user-add is-read-only.bind="isReadOnly" if.bind="myGlobals.profileSelected && myGlobals.myLookups"></user-add>
+    <!--<pre>? user-selected.html | myLookups: ${myGlobals.myLookups} | myGlobals.userSelected: ${myGlobals.userSelected & json} !</pre>-->
+    <user-add is-read-only.bind="isReadOnly" if.bind="myGlobals.userSelected"></user-add>
   </div>
 
   <pre if.bind="debugShowCodeOutput">${user & json}</pre>

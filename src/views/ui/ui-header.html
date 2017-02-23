@@ -25,9 +25,9 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a click.delegate="myNav.navigateToUserPage('read',myGlobals.currentUser.id)"><i class="fa fa-fw fa-search"></i>View Profile</a></li>
                             <li><a click.delegate="myNav.navigateToUserPage('edit',myGlobals.currentUser.id)"><i class="fa fa-fw fa-pencil"></i>Edit Profile</a></li>
-                            <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-bell"></i>Notifications</a></li>
+                            <!--<li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-bell"></i>Notifications</a></li>
                             <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-check-square-o"></i>Validate</a></li>
-                            <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-archive"></i>Toolbox</a></li>
+                            <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-archive"></i>Toolbox</a></li>-->
                             <li if.bind="myGlobals.currentUser.isEditor" class="divider"></li>
                             <li if.bind="myGlobals.currentUser.isEditor"><a click.delegate="myNav.navigateTo('users')"><i class="fa fa-fw fa-users"></i>Team</a></li>
                         </ul>
