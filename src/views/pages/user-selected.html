@@ -10,25 +10,23 @@
     <hr>
   </div>-->
   <!--<pre>? user-selected.html | myGlobals.isEditor: ${myGlobals.isEditor} | myGlobals.currentUser.id: ${myGlobals.currentUser.id}</pre>-->
-  <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | user.id: ${user.id} | myGlobals.currentUser: ${myGlobals.currentUser & json} !</pre>
-  <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} !</pre>
+  <div if.bind="CV.debugShowCurrentUser">
+    <p><span class="debug_filename">user-selected.html (user.id: ${user.id})</span></p>
+    <pre class="col-xs-6">myGlobals.currentUser: ${myGlobals.currentUser & json}</pre>
+    <pre class="col-xs-6">myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} !</pre>
+  </div>
+
   <pre if.bind="CV.debugShowCodeOutput">profile:<br>${profile & json}</pre>
   <!--<pre>${CV.myLabels & json}</pre>-->
 
-<!--
-  <div if.bind="!pageType">
-    <user-list class="col-xs-12 col-md-8"></user-list>
-
-    <div class="col-xs-12 col-md-4">
-      <user-edit user.bind="user"></user-edit>
-    </div>
-  </div>-->
-
   <panel-denied-access if.bind="accessDenied"></panel-denied-access>
 
-  <div if.bind="user" class="col-xs-12">
-    <!--? user-selected.html | isReadOnly: ${isReadOnly} | ${currentUser.id} ! -->
-    <!--<pre>? user-selected.html | myLookups: ${myGlobals.myLookups} | myGlobals.userSelected: ${myGlobals.userSelected & json} !</pre>-->
+  <div if.bind="user && !accessDenied" class="col-xs-12">
+    <!--<div>
+      <p><span class="debug_filename">user-selected.html (user.id: ${user.user.id})</span></p>
+      <pre class="col-xs-6">myGlobals.userSelected: ${myGlobals.userSelected & json}</pre>
+      <pre class="col-xs-6">myGlobals.profileSelected: ${myGlobals.profileSelected & json}</pre>
+    </div>-->
     <user-add is-read-only.bind="isReadOnly" if.bind="myGlobals.userSelected"></user-add>
   </div>
 

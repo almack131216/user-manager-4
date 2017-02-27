@@ -8,7 +8,6 @@ const CV = Constants
 @inject(MyGlobals)
 export class UserPanelTraining {
 
-    profile;
     @bindable isReadOnly = null;
 
     public CV = CV;
@@ -24,7 +23,6 @@ export class UserPanelTraining {
 
     constructor(myGlobals: MyGlobals) {
         this.myGlobals = MyGlobals
-        this.profile = this.myGlobals.profileSelected
         this.myLookups = this.myGlobals.myLookups
     }
 
@@ -42,29 +40,16 @@ export class UserPanelTraining {
         console.log('onChange() : model: ' + newValue + ' | ' + oldValue);
     }
 
-    onTrainingChecked(getId){        
-        let rowPos:number
+    onTrainingChecked(getId) {
+        let rowPos: number
 
         this.myGlobals.profileSelected.trainings = []
 
-        for(var i=0;i<this.tmpTrainingsMule.length;i++){
+        for (var i = 0; i < this.tmpTrainingsMule.length; i++) {
             console.log('loop....' + i)
-            if(this.tmpTrainingsMule[i].attended) this.myGlobals.profileSelected.trainings.push({trainingId: this.tmpTrainingsMule[i].trainingId,expiresOn:this.tmpTrainingsMule[i].expiresOn})
-            //if(this.tmpTrainingsMule[i].trainingId==getId){
-
-                //rowPos = i
-                //i = this.tmpTrainingsMule.length
-            //}
+            if (this.tmpTrainingsMule[i].attended) this.myGlobals.profileSelected.trainings.push({ trainingId: this.tmpTrainingsMule[i].trainingId, expiresOn: this.tmpTrainingsMule[i].expiresOn })
         }
-        // var index = this.myGlobals.profileSelected.trainings.filter(x => x.trainingId == getId)
-        // var index = this.myGlobals.profileSelected.trainings.filter(function(obj) { return obj.trainingId == getId })[0]
-        // alert('index: ' + JSON.stringify(index) );
-        // if(rowPos >= 0){
-        //     this.myGlobals.profileSelected.trainings.splice(rowPos, 1);
-        // }else{
-        //     this.myGlobals.profileSelected.trainings.push({trainingId:getId,expiresOn:getExpiryDate})
-        // }
-        
+
     }
 
     attached() {
@@ -89,16 +74,15 @@ export class UserPanelTraining {
         });
 
         //alert(JSON.stringify(this.myGlobals.profileSelected.trainings));
-
         this.tmpTrainingsMule = this.myGlobals.myLookups.trainings.map(x => {
 
             var tmpArr = {}
-            if(this.myTrainingArrDynamic.indexOf(x.id) != -1){
+            if (this.myTrainingArrDynamic.indexOf(x.id) != -1) {
                 tmpArr = this.myTrainingArr_init[this.myTrainingArrDynamic.indexOf(x.id)];
                 tmpArr['attended'] = x.expires;
-            }else{
+            } else {
                 tmpArr['attended'] = null;
-                tmpArr['expiresOn'] = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+                tmpArr['expiresOn'] = '';//new Date(new Date().setFullYear(new Date().getFullYear() + 1));//add date one year from now
             }
 
             tmpArr['name'] = x.name;
@@ -106,48 +90,15 @@ export class UserPanelTraining {
             tmpArr['expires'] = x.expires;
 
             return tmpArr;
-
-            // return {
-            //     name: x.name,
-            //     trainingId: x.id,
-            //     expires: x.expires,
-            //     attended: null,
-            //     expiresOn: x.expires ? new Date() : null
-            // }
         });
 
-        //this.populateXXXFilterFromList()
-
-        //alert(JSON.stringify(this.myTrainingArr_init));
     }
 
-    returnTrainingLabel(getId) {//maybeExcess
+    returnTrainingLabel(getId) {
         var tmpIndex = this.myGlobals.myLookups.trainings.filter(x => x.id == getId)[0];
-        console.log('returnTrainingData: ' + getId + ' > ' + JSON.stringify(tmpIndex) + ' | ' + JSON.stringify(this.myTrainingArrDynamic) );
+        console.log('returnTrainingData: ' + getId + ' > ' + JSON.stringify(tmpIndex) + ' | ' + JSON.stringify(this.myTrainingArrDynamic));
         if (tmpIndex) return tmpIndex['name'];//this.myTrainingArr_init.filter(x => x.trainingId == getId)[0].trainingId ? 'Attended' : '';
-        return 'xxx';
+        return '';
     }
-
-    /*
-        populateXXXFilterFromList(){
-    
-            let tmp_rolesArrValues = [];
-            //this.rolesArrLabels=[];
-            this.myTrainingArrDynamic = [];
-    
-            for (let next of this.lkp_trainings) {
-                let nextRole = next.trainingId;
-    
-                if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
-                    tmp_rolesArrValues.push(nextRole);
-                    let nextLabel = this.myTrainingArr_init.filter(x => x.trainingId == nextRole).expiresOn;
-                    //console.log('???' + nextRole + ' | ' + nextLabel);
-                    //this.rolesArrLabels.push(nextLabel);
-                    this.myTrainingArrDynamic.push({ "trainingId": nextRole, "expiresOn": nextLabel });
-                }
-            }
-    
-        }
-        */
 
 }

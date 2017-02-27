@@ -1,5 +1,8 @@
-<template>
-    <div class="panel panel-warning">
-        <div class="panel-heading">You do not have access to this page</div>
+<template class="panel-denied-access_wrap ${custClass ? custClass : 'default'}">
+    <div class="panel panel-warning">        
+        <div class="panel-heading">
+            <h2>${title}</h2>
+            ${message}
+        </div>
     </div>
 </template>

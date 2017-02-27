@@ -9,17 +9,13 @@ import toastr = require('toastr');
 export class UserPanelLanguages {
     public CV = CV;
 
-    profile;
     @bindable isReadOnly;
-    //@bindable myLookups;
-    lkp_languages_limitTo = 5;
 
     myGlobals
     myLookups
 
     constructor(myGlobals: MyGlobals) {
         this.myGlobals = MyGlobals
-        this.profile = this.myGlobals.profileSelected
         this.myLookups = this.myGlobals.myLookups
     }
 
@@ -29,6 +25,6 @@ export class UserPanelLanguages {
 
     remove(getPos) {
         this.myGlobals.profileSelected.languages.splice(getPos, 1);
-        toastr.success('Language Removed');
+        toastr.success(CV.myApiMsg.LanguageRemoved);
     }
 }

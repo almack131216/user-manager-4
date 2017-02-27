@@ -39,6 +39,7 @@ export class App {
     this.http = http;
     this.myGlobals = MyGlobals;
     toastr.options.preventDuplicates = true;
+    toastr.options.closeButton = true;
   }
 
 
@@ -67,9 +68,8 @@ export class App {
       { route: 'users', moduleId: './views/pages/user-no-selection', name: 'user-no-selection', nav: true, title: 'Team', settings: { isReaderOnly: true } },
       { route: 'users/:id', moduleId: './views/pages/user-selected', name: 'users', title: 'Team' },
       { route: 'user/:id/:pageType', moduleId: './views/pages/user-selected', name: 'user-edit', title: 'Edit' },
-      { route: 'user/:id/:pageType', moduleId: './views/pages/user-selected', name: 'user-read', title: 'Read' }
-      // { route: 'users/add', moduleId: './views/pages/user-add', name: 'user-add', nav: true, title: 'Add User' },
-      // { route: 'dialog-demo', name: 'dialog-demo', moduleId: './dialog-demo/dialog-demo', nav: true, title: 'Dialog Demo' }
+      { route: 'user/:id/:pageType', moduleId: './views/pages/user-selected', name: 'user-read', title: 'Read' },
+      { route: 'review/:id', moduleId: './views/pages/user-review', name: 'review', title: 'Review' }
     ]);
 
     this.router = router;

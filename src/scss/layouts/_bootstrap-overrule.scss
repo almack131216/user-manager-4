@@ -1,5 +1,8 @@
 /* _bootstrap-overrule.scss */
 
+.navbar {
+    min-height: 15px;//looks better when nav is not needed
+}
 
 /* update config */
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
@@ -16,10 +19,15 @@
     background-color: #fff !important;
 }
 
+ai-dialog > ai-dialog-footer button:hover:enabled,
 .btn-default:hover,
-.btn-default:active,
 .btn-default:focus {
+    background-color: $table-row-selected-color !important;
     color:$hyperlink-color-hover !important;
+}
+
+.btn-default:active {
+    // color:white !important;
 }
 
 .dropdown-menu {

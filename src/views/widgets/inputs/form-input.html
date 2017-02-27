@@ -6,23 +6,11 @@
     <label if.bind="!inputOnly" class="form-cust-label" for.bind="custName" title.bind="custLabel">
         ${custLabel}
     </label>
-    <!--<span>
-        ? ${custName}
-    </span>-->
-    <!--<div if.bind="model==null" class="${!inputOnly ? 'form-cust-input' : ''}">
-        <input type="text" value="---" class="form-control" name.one-way="custName" placeholder.bind="custPlaceholder" readonly.bind="custReadonly || isReadOnly">
-    </div>-->
-    <!--http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/generic-two-way-binding-support-->
-    <!--https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/435-->
-<!--${model} | ${model | formatDate} | ${model | formatDate: 'YYYY-MM-DD hh:mm:ss' } | ${value.toISOString}-->
-<!--if.bind="model!=null"-->
-    <!--? form-input: ${custName} | ${model} !-->
 
     <div class="${!inputOnly ? 'form-cust-input' : ''}">
         <input if.bind="maskPattern=='telephone'" type="custType" masked="value.bind: model; mask.bind: maskPatternTelephone" class="form-control" name.one-way="custName" placeholder.bind="custPlaceholder" readonly.bind="custReadonly || isReadOnly">
         <input if.bind="maskPattern=='telephone-cc'" type="custType" masked="value.bind: model; mask.bind: maskPatternTelephoneCc" class="form-control" name.one-way="custName" placeholder.bind="custPlaceholder" readonly.bind="custReadonly || isReadOnly">
         <input if.bind="!maskPattern && custType=='text'" type="custType" value.bind="model" class="form-control" name.one-way="custName" placeholder.bind="custPlaceholder" readonly.bind="custReadonly || isReadOnly">
     </div>
-
 
 </template>

@@ -1,0 +1,38 @@
+<template>
+  <require from="../widgets/user-list"></require>
+  <require from="../widgets/user-edit"></require>
+  <require from="./user-add"></require>
+  <require from="../../resources/format/json"></require>
+  <require from="../widgets/panel-denied-access"></require>
+  <require from="../ui/ui-loading"></require>
+  <require from="../widgets/panel-denied-access"></require>
+
+  <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | user.id: ${user.id} | myGlobals.currentUser: ${myGlobals.currentUser & json} !</pre>
+  <pre if.bind="CV.debugShowCurrentUser">? user-selected.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} !</pre>
+  <pre if.bind="CV.debugShowCodeOutput">profile:<br>${profile & json}</pre>
+
+
+  <ui-loading if.bind="isSavingData"></ui-loading>
+  <panel-denied-access if.bind="accessDenied"></panel-denied-access>
+
+  <!--<pre>myGlobals.currentUser: ${myGlobals.currentUser & json}</pre>
+    <pre>myGlobals.currentUser: ${myGlobals.userSelected & json}</pre>-->
+
+  <div if.bind="!accessDenied && myGlobals.userSelected" class="col-xs-12 text-align-center">
+
+    <div class="wrap-review-user">
+      <h1>Review User</h1>
+      <h2>${myGlobals.userSelected.firstName} ${myGlobals.userSelected.lastName}</h2>
+      <p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise
+        design elements over content.</p>
+
+      <div class="btn-row margin-top-g2">
+        <button class="btn btn-lg btn-danger margin-right-1" click.delegate="reviewUser(2)">Decline</button>
+        <button class="btn btn-lg btn-primary" click.delegate="reviewUser(1)">Approve</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</template>

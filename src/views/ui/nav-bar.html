@@ -1,12 +1,16 @@
 <template>
     <require from="./ui-header"></require>
+    <require from="../../resources/format/json"></require>
 
     <ui-header current-user.bind="currentUser"></ui-header>
-    <pre if.bind="CV.debugShowCurrentUser">? nav-bar.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
+    <pre if.bind="CV.debugShowCurrentUser">
+        <span class="debug_filename">nav-bar.html</span>
+        myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | isReader: ${myGlobals.currentUser.isReader} | isEditor: ${myGlobals.currentUser.isEditor}
+    </pre>
 
     <nav id="header" class="navbar navbar-default ${routeName=='welcome' ? 'margin-bottom-0' : ''}" role="navigation">
 
-        <div class="container padding-x-0">
+        <div if.bind="!myGlobals.currentUser.isMember" class="container padding-x-0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle Navigation</span>
@@ -22,7 +26,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li repeat.for="row of router.navigation" if.bind="hasAccess(myGlobals.currentUser, row)" class="${row.isActive ? 'active' : ''}">
+                    <li repeat.for="row of router.navigation" if.bind="hasAccess(myGlobals.currentUser, row)" id="${'nav_li_' + row.title}" class="${row.isActive ? 'active' : ''}">
                         <a href.bind="row.href">
                             ${row.title}
                             <span if.bind="CV.debugShowCurrentUser">? [${myGlobals.currentUser.isMember}, ${row.settings.isMemberOnly}] | [${myGlobals.currentUser.isEditor}, ${row.settings.isEditorOnly}]</span>

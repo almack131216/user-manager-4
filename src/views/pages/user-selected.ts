@@ -1,7 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../../api/web-api-users';
-import { UserUpdated, UserViewed } from '../../resources/messages';
 import { areEqual } from '../../api/utility';
 import * as Constants from '../../resources/constants';
 const CV = Constants
@@ -11,24 +10,14 @@ import 'kendo-ui-core/js/kendo.datepicker';
 import { MyGlobals } from '../../my-globals';
 
 
-interface User {
-  firstName: string;
-  lastName: string;
-  regionId: number;
-  emailAddress: string;
-  personalNumber: string;
-  lkp_regions_selected: number;
-}
-
 @inject(WebAPIUsers, EventAggregator)
 export class UserSelected {
   public CV = CV
   routeConfig;
-  user: User;
+  user;
   profile = {};
   pageType = null;
   isReadOnly = null;
-  originalUser: User;
   title = '';
   myLookups;
   myGlobals;
@@ -39,22 +28,31 @@ export class UserSelected {
     this.myGlobals = MyGlobals;
   }
 
-  canActivate(params, routeConfig) {
+  attached(){
+    $('#nav_li_Team').addClass('active');
+  }
+
+  detached(){
+    $('#nav_li_Team').removeClass('active');
+  }
+
+  activate(params, routeConfig) {
     this.routeConfig = routeConfig;
     console.log('activate: ' + params.id + ' (' + params.pageType + '), readonly: ' + params.isReadOnly);
 
-    // this.user = null;
-    // this.myGlobals.userSelected = null;
-    // this.myGlobals.myLookups = null;
-    // this.myGlobals.profileSelected = null;
-
     //alert(this.myGlobals.currentUser + ' && (' + params.id + '==' + this.myGlobals.currentUser.id + '||' + this.myGlobals.currentUser.isReader + ')');
 
-    if (this.myGlobals.currentUser && (params.id == this.myGlobals.currentUser.id || this.myGlobals.currentUser.isReader)) {
+    if (this.myGlobals.currentUser && (
+      (params.pageType == 'edit' && (this.myGlobals.currentUser.isMember && this.myGlobals.currentUser.id == params.id))
+      || (params.pageType == 'edit' && (this.myGlobals.currentUser.isEditor && this.myGlobals.currentUser.id != params.id))
+      || (params.pageType == 'read' && (this.myGlobals.currentUser.isMember && this.myGlobals.currentUser.id == params.id))
+      || (params.pageType == 'read' && (this.myGlobals.currentUser.isReader))
+    )) {
 
       //reset user selected data to avoid bugs on 'accessDenied' page
       this.user = null;
       this.myGlobals.userSelected = null;
+      this.myGlobals.userSelectedHasProfile = null;
       this.myGlobals.myLookups = null;
       this.myGlobals.profileSelected = null;
       //(END) reset
@@ -68,12 +66,16 @@ export class UserSelected {
 
           this.myGlobals.userSelected = this.user['user'];
 
+          if (this.myGlobals.currentUser.isReader && !this.myGlobals.currentUser.isEditor && !this.user['user'].archiveStatus.isActive) this.accessDenied = true;
+
           //alert(JSON.stringify(this.pageType + ' / ' + this.isReadOnly));
           //console.log(JSON.stringify(this.user));
           //this.user.regionId = this.user['region'].id;
           //this.myLookups = this.user['lookups'];
 
-          if (this.user['profile']) {
+          if (!this.accessDenied && this.user['profile']) {//&& this.user['profile']
+            this.myGlobals.userSelectedHasProfile = true;
+
             this.profile = {
               regionId: this.user['profile']['region'] ? this.user['profile']['region'].id : null,
               hubId: this.user['profile']['hub'] ? this.user['profile']['hub'].id : null,
@@ -154,13 +156,12 @@ export class UserSelected {
             }
 
             //alert(JSON.stringify(this.user['lookups']))
-
             this.myGlobals.myLookups = this.user['lookups'];
             this.myGlobals.profileSelected = this.profile;
+
           }
+
           this.routeConfig.navModel.setTitle(this.user['user'].firstName);
-          // this.originalUser = JSON.parse(JSON.stringify(this.user));
-          // this.ea.publish(new UserViewed(this.user));
         });
 
     } else {
@@ -171,33 +172,12 @@ export class UserSelected {
   }
   // (END) activate()
 
-
   canDeactivate() {
-    // if (!areEqual(this.originalUser, this.user)) {
-    //   let result = confirm('You have unsaved changes. Are you sure you wish to leave?');
 
-    //   if (!result) {
-    //     this.ea.publish(new UserViewed(this.user));
-    //   }
-
-    //   return result;
-    // }
-    // return true;
   }
 
   get canSave() {
     return this.profile['regionId'] && this.profile['hubId'] && !this.api.isRequesting;
   }
-
-  // save() {
-  //   this.api.saveUser(this.user).then(user => {
-  //     console.log('save this.user: ' + JSON.stringify(this.originalUser));
-  //     console.log('save user: ' + JSON.stringify(user));
-  //     this.user = <User>user;
-  //     //this.routeConfig.navModel.setTitle(this.user.firstName);
-  //     this.originalUser = JSON.parse(JSON.stringify(this.user));
-  //     this.ea.publish(new UserUpdated(this.user));
-  //   });
-  // }
 
 }

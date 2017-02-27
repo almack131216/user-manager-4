@@ -20,50 +20,24 @@
             <tbody>
                 <tr repeat.for="row of myGlobals.profileSelected.passports">
                     <td>
-                        <form-select cust-name.bind="['passportType_' + $index]"
-                            cust-label="Passport Type"
-                            prop-arr.bind="['value','name']"
-                            model.two-way="myGlobals.profileSelected.passports[$index].typeValue"
-                            options.bind="myLookups.passportTypes"
-                            autocomplete.bind="true"
-                            init-selected.two-way="myGlobals.profileSelected.passports[$index].typeValue"
-                            cust-mandatory.bind="true"
-                            input-only="true"
-                            cust-readonly.bind="isReadOnly"></form-select>
+                        <form-select cust-name.bind="['passportType_' + $index]" cust-label="Passport Type" prop-arr.bind="['value','name']" model.two-way="myGlobals.profileSelected.passports[$index].typeValue"
+                            options.bind="myLookups.passportTypes" autocomplete.bind="true" init-selected.two-way="myGlobals.profileSelected.passports[$index].typeValue"
+                            cust-mandatory.bind="true" input-only="true" cust-readonly.bind="isReadOnly"></form-select>
                     </td>
                     <td>
-                        <form-input cust-name.bind="['passportNumber_' + $index]"
-                            cust-label="Passport Number"
-                            model.two-way="myGlobals.profileSelected.passports[$index].number"
-                            cust-mandatory.bind="true" input-only="true"
-                            cust-readonly.bind="isReadOnly"></form-input>
+                        <form-input cust-name.bind="['passportNumber_' + $index]" cust-label="Passport Number" model.two-way="myGlobals.profileSelected.passports[$index].number"
+                            cust-mandatory.bind="true" input-only="true" cust-readonly.bind="isReadOnly"></form-input>
                     </td>
                     <td>
-                        <form-select cust-name.bind="['passportNationality_' + $index]"
-                            cust-label="Passport Nationality"
-                            model.two-way="myGlobals.profileSelected.passports[$index].countryId"
-                            options.bind="myLookups.countries"                            
-                            autocomplete.bind="true"
-                            init-selected.two-way="myGlobals.profileSelected.passports[$index].countryId"
-                            cust-mandatory.bind="true"
-                            input-only="true"
-                            cust-readonly.bind="isReadOnly"></form-select>
+                        <form-select cust-name.bind="['passportNationality_' + $index]" cust-label="Passport Nationality" model.two-way="myGlobals.profileSelected.passports[$index].countryId"
+                            options.bind="myLookups.countries" autocomplete.bind="true" init-selected.two-way="myGlobals.profileSelected.passports[$index].countryId"
+                            cust-mandatory.bind="true" input-only="true" cust-readonly.bind="isReadOnly"></form-select>
                     </td>
                     <td>
-                        <!--<form-input cust-name.bind="['passportExpiryDate_' + $index]"
-                            cust-label="Passport Expiry Date"
-                            cust-type="date"
-                            model.two-way="myGlobals.profileSelected.passports[$index].expiresOn"
-                            cust-mandatory.bind="true"
-                            input-only="true"
-                            cust-readonly.bind="isReadOnly"></form-input>-->
-                        <input if.bind="isReadOnly"
-                            type="text"
-                            class="form-control"
-                            value.bind="profileSelected.passports[$index].expiresOn | formatDate:'L'"
+                        <input if.bind="isReadOnly" type="text" class="form-control" value.bind="profileSelected.passports[$index].expiresOn | formatDate:'L'"
                             readonly>
 
-                        <span if.bind="!isReadOnly">
+                            <span if.bind="!isReadOnly">
                             <input class="k_datepicker"
                                 id.bind="['passportExpiryDate_' + $index]"
                                 name.one-way="['passportExpiryDate_' + $index]"
@@ -83,7 +57,6 @@
     </div>
 
     <div if.bind="!isReadOnly" class="col-xs-12 margin-bottom-g1">
-       <!--if.bind="$index+1 == user.myGlobals.profileSelected.languages.length && $index+1<lkp_languages_limitTo"-->
         <button class="btn btn-default btn-sm" click.trigger="add()">
             <i class="fa fa-plus"></i>
             Add Passport

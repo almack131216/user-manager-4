@@ -1,24 +1,14 @@
-//import { noView } from 'aurelia-framework'
-//import { MyClass } from './my-class';
 
-//@inject(MyClass)
-//@noView
 export class MyGlobals {
-    foo = {}
     isReadOnly = null
     currentUser = {}
     
     userSelected = {}
     profileSelected = {}
 
-    isMember
-    isReader
-    isEditor
+    isMember//maybeExcess
+    isReader//maybeExcess
+    isEditor//maybeExcess
 
-    myLookups
-
-    getFoo() { return this.foo }
-    setFoo(bar) {
-        /* do something */
-    }
+    myLookups//to be loaded from profile API
 }

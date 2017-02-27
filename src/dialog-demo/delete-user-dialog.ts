@@ -2,16 +2,7 @@ import { inject, autoinject, bindable } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../api/web-api-users';
-import { UserUpdated, UserViewed } from '../resources/messages';
 import { Lookups } from '../resources/lookups';
-
-interface User {
-    id: number;
-    firstName: string;
-    lastName: string;
-    systemRoles: number;
-    isMember: boolean;
-}
 
 @autoinject
 @inject(DialogController, WebAPIUsers, EventAggregator, Lookups)
@@ -19,7 +10,6 @@ export class DeleteDialog {
     //@bindable user;
     title = 'Delete User?';
     userRole = null;
-    originalUser = null;
     userSelectedId = null;
     systemRoles;
 
@@ -29,7 +19,7 @@ export class DeleteDialog {
 
         this.api.apiCall('user-role',this.userSelectedId,null)
         .then(user => {
-            this.userRole = <User>user;
+            this.userRole = user;
         });
 
         this.systemRoles = lookups.systemRoles;

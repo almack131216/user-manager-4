@@ -62,7 +62,6 @@ lkp_languages: ${lkp_languages} / ${myLookups.languages}-->
     </div>
 
    <div if.bind="!isReadOnly && myGlobals.profileSelected.languages.length < myLookups.languages.length" class="col-xs-12 margin-bottom-g1">
-       <!--if.bind="$index+1 == user.myGlobals.profileSelected.languages.length && $index+1<lkp_languages_limitTo"-->
         <button class="btn btn-default btn-sm" click.trigger="add()">
             <i class="fa fa-plus"></i>
             Add Language

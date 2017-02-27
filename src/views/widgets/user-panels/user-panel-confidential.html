@@ -6,35 +6,23 @@
     <require from="../../../resources/constants"></require>
     <require from="../../../resources/select2"></require>
 
-    <form-select cust-label="Employment Status"
-        model.two-way="myGlobals.profileSelected.confidentialData.employmentStatusValue"
-        options.bind="myLookups.employmentStatuses"
-        prop-arr.bind="['value','name']"        
-        autocomplete.bind="true"
-        init-selected.two-way="myGlobals.profileSelected.confidentialData.employmentStatusValue"
-        cust-mandatory.bind="true"
-        cust-readonly.bind="isReadOnly"></form-select>
+    <form-select cust-label="Employment Status" model.two-way="myGlobals.profileSelected.confidentialData.employmentStatusValue"
+        options.bind="myLookups.employmentStatuses" prop-arr.bind="['value','name']" autocomplete.bind="true" init-selected.two-way="myGlobals.profileSelected.confidentialData.employmentStatusValue"
+        cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
 
-    <form-input cust-type="date" model.two-way="myGlobals.profileSelected.confidentialData.memberSince" cust-label="Member Since" cust-mandatory.bind="true"
-        cust-readonly.bind="isReadOnly"></form-input>
+        <form-input cust-type="date" model.two-way="myGlobals.profileSelected.confidentialData.memberSince" cust-label="Member Since"
+            cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-input>
 
-    <div class="divider"></div>
+            <div class="divider"></div>
 
-    <form-select cust-label="Credentials Level"
-        prop-arr.bind="['value','name']"
-        model.two-way="myGlobals.profileSelected.confidentialData.credentialLevelValue"
-        options.bind="myLookups.credentialLevels"        
-        autocomplete.bind="true"
-        init-selected.two-way="myGlobals.profileSelected.confidentialData.credentialLevelValue"
-        cust-mandatory.bind="true"
-        cust-readonly.bind="isReadOnly"></form-select>
+            <form-select cust-label="Credentials Level" prop-arr.bind="['value','name']" model.two-way="myGlobals.profileSelected.confidentialData.credentialLevelValue"
+                options.bind="myLookups.credentialLevels" autocomplete.bind="true" init-selected.two-way="myGlobals.profileSelected.confidentialData.credentialLevelValue"
+                cust-mandatory.bind="true" cust-readonly.bind="isReadOnly"></form-select>
 
-    <div class="divider"></div>
-    <form-input model.two-way="myGlobals.profileSelected.confidentialData.field1" cust-label="Confidential Field 1"
-        cust-readonly.bind="isReadOnly"></form-input>
+                <div class="divider"></div>
+                <form-input model.two-way="myGlobals.profileSelected.confidentialData.field1" cust-label="Confidential Field 1" cust-readonly.bind="isReadOnly"></form-input>
 
-    <div class="divider"></div>
-    <form-input model.two-way="myGlobals.profileSelected.confidentialData.field2" cust-label="Confidential Field 2"
-        cust-readonly.bind="isReadOnly"></form-input>
+                <div class="divider"></div>
+                <form-input model.two-way="myGlobals.profileSelected.confidentialData.field2" cust-label="Confidential Field 2" cust-readonly.bind="isReadOnly"></form-input>
 
 </template>

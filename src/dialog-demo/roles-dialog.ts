@@ -2,7 +2,6 @@ import { inject, autoinject, bindable } from 'aurelia-framework';
 import { DialogController } from 'aurelia-dialog';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../api/web-api-users';
-import { UserUpdated, UserViewed } from '../resources/messages';
 import { Lookups } from '../resources/lookups';
 
 @autoinject
@@ -11,7 +10,6 @@ export class RolesDialog {
     //@bindable user;
     title = 'Change User Roles';
     userRole = {};
-    originalUser = null;
     userSelectedId = null;
     systemRoles;
 
@@ -21,16 +19,23 @@ export class RolesDialog {
     select_systemRoleInit;
     select_isMember;
     select_systemRole;
+    lookups
+    //hasChanged
 
     constructor(private controller: DialogController, private api: WebAPIUsers, private ea: EventAggregator, private model, lookups:Lookups) {
         //REF: output_controller_settings_roles-dialog.json
         this.userSelectedId = controller.settings.userId;
+        this.lookups = lookups;        
+    }
 
-        this.api.apiCall('user-role',this.userSelectedId,null)
+    //All of the parameters that we passed to the dialog are available through the model
+    activate() {
+        //alert('activate: ' + JSON.stringify(this.userRole.info.id) );
+        //console.log('model: ' + JSON.stringify(model) + ' > ' + this.systemRoles);
+        return this.api.apiCall('user-role',this.userSelectedId,null)
         .then(user => {
-            //this.userRole = <User>user;
             this.userRole = user;
-            this.systemRoles = lookups.systemRoles;
+            this.systemRoles = this.lookups.systemRoles;
             
             this.userId = this.userRole['id'];
             this.uniqueId = this.userRole['loginName'];
@@ -41,20 +46,12 @@ export class RolesDialog {
 
             console.log('RolesDialog > userRole: ' + JSON.stringify(this.userRole));
         });
-
-        
     }
 
-    //All of the parameters that we passed to the dialog are available through the model
-    activate() {
-        //alert('activate: ' + JSON.stringify(this.userRole.info.id) );
-
-        //console.log('model: ' + JSON.stringify(model) + ' > ' + this.systemRoles);
-    }
-
-    get hasChanged(){
-        //console.log('hasChanged? : ' + this.select_isMember + ' | ' + this.userRole['isMember'] + this.select_systemRole + ' | ' + this.userRole['systemRoles'].value);
-        return (this.select_isMember != this.select_isMemberInit) || (this.select_systemRole != this.select_systemRoleInit );
+    hasChanged(){
+        //alert('checkHasChanged');
+        //console.log('checkHasChanged? : select_isMember: ' + this.select_isMember + ' | isMember: ' + this.userRole['isMember'] + ' | select_systemRole: ' + this.select_systemRole + ' | ' + this.userRole['systemRoles'].value);
+        return ((this.select_isMember != this.select_isMemberInit) || (this.select_systemRole != this.select_systemRoleInit)) ? true : false;
     }
 
     //When the user clicks on the 'Yes' button the controller closes the dialog 

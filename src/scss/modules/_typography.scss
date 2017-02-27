@@ -7,7 +7,8 @@ h4 > i {
     margin-right: $offset-1;
 }
 
-h1 {font-size:36px;margin:$offset-g2 0 $offset-g1 0;color:#007f00;}
+h1 {font-size:36px;line-height:36px;margin:$offset-g2 0 $offset-g1 0;color:#000;}
+h2 {font-size:28px;margin:$offset-g2 0 $offset-g1 0;color:$bp_color-gray !important}
 h4 {font-weight:bold;}
 
 div.hdr-wrap {margin-bottom:$offset-1;}

@@ -1,6 +1,5 @@
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { WebAPIUsers } from '../../api/web-api-users';
-import { UserUpdated, UserViewed } from '../../resources/messages';
 import { inject, autoinject, bindable } from 'aurelia-framework';
 import * as Constants from '../../resources/constants';
 const CV = Constants
@@ -11,7 +10,7 @@ import { InfoDialog } from '../../dialog-demo/info-dialog';
 import { RolesDialog } from '../../dialog-demo/roles-dialog';
 import { AddUserDialog } from '../../dialog-demo/add-user-dialog';
 import { DeleteDialog } from '../../dialog-demo/delete-user-dialog';
-import { Lookups } from '../../resources/lookups';//maybeExcess
+import { Lookups } from '../../resources/lookups';
 import { MyGlobals } from '../../my-globals';
 import { MyNav } from '../../my-nav';
 
@@ -56,80 +55,73 @@ export class UserList {
     }
 
     constructor(private api: WebAPIUsers, ea: EventAggregator, public userInfo: UserInfo, private dialogService: DialogService, private lookups: Lookups, myNav: MyNav, myGlobals: MyGlobals) {
-        // ea.subscribe(UserViewed, msg => this.select(msg.user));
-        // ea.subscribe(UserUpdated, msg => {
-        //     let id = msg.user.id;
-        //     let found = this.users.data.find(x => x.id == id);
-        //     Object.assign(found, msg.user);
-        // });
         this.lookups = lookups;
         this.isAllChecked = false;
         this.myNav = myNav;
-        this.myGlobals = myGlobals        
+        this.myGlobals = myGlobals
     }
 
     activate() {
-        alert('this.myGlobals 2.2: ' + JSON.stringify(this.myGlobals) );
+        alert('this.myGlobals 2.2: ' + JSON.stringify(this.myGlobals));
         if (CV.debugConsoleLog) console.log('created: ' + this.title + ' / ' + this.custTitle);
         if (this.custTitle) this.title = this.custTitle;
     }
 
-    attached(){
+    attached() {
         // alert('this.myGlobals 2: ' + JSON.stringify(this.myGlobals) );
         // alert('this.currentUser 2: ' + JSON.stringify(this.currentUser) );
         // if(this.currentUser.isReader) alert('this.myGlobals 2.3: ' + JSON.stringify(this.myGlobals) );
-        if(this.currentUser){
-            var tmpData = this.currentUser.isEditor ? {} : { active: true };
-            this.loadUserList(tmpData); 
+        if (this.currentUser) {
+            this.loadUserList(null);
         }
     }
 
-    deleteMultiple(){
+    deleteMultiple() {
         //alert('deleteMultiple()' + this.checkedItemsArr);
-        this.api.apiCall('delete-multiple-users',null,this.checkedItemsArr)
-        // .then(result => {
-        //         console.log('Deleted ' + this.checkedItemsArr + ' users')
-        //     })
+        this.api.apiCall('delete-multiple-users', null, this.checkedItemsArr)
     }
 
 
-    checkMe(getId){
-        if(this.checkedItemsArr.indexOf(getId) == -1){
+    checkMe(getId) {
+        if (this.checkedItemsArr.indexOf(getId) == -1) {
             this.checkedItemsArr.push(getId)
-        }else{
+        } else {
             var index = this.checkedItemsArr.indexOf(getId);
-            this.checkedItemsArr.splice(index,1);
-            if(this.checkedItemsArr.length==0) this.isAllChecked = false;
+            this.checkedItemsArr.splice(index, 1);
+            if (this.checkedItemsArr.length == 0) this.isAllChecked = false;
         }
     }
 
     checkAll() {
-        //alert('checkAll(): ' + this.isAllChecked);
-        // for(var i=0;i<this.users.length;i++){
-        //     this.users['data'][i].checked = this.isAllChecked;
-        // }
         this.users['data'].forEach(i => {
             i.checked = this.isAllChecked,
-            this.checkedItemsArr.push(i.id)
+                this.checkedItemsArr.push(i.id)
         });
 
-        if(!this.isAllChecked) this.checkedItemsArr = [];
-        
+        if (!this.isAllChecked) this.checkedItemsArr = [];
+
     }
 
 
     loadUserList_prep() {
-        //this.searchFor_userTypeValue = this.searchFor_userTypeValue!=null ? this.searchFor_userTypeValue : null;
         //var data = {active: this.searchFor_active, name: this.searchFor_name, userTypeValue: this.searchFor_userTypeValue};
         var data = {};
         if (this.searchFor_active) data['active'] = this.searchFor_active;
+        if (!this.currentUser.isEditor) data['active'] = true;
         if (this.searchFor_name) data['name'] = this.searchFor_name;
         if (this.searchFor_userTypeValue) data['userTypeValue'] = this.searchFor_userTypeValue;
         //alert('data: ' + JSON.stringify(data));
         this.loadUserList(data);
     }
 
-    loadUserList(data) {
+    loadUserList(getData) {
+        var data
+        if (!getData) {
+            data = this.currentUser.isEditor ? {} : { active: true };
+        } else {
+            data = getData
+        }
+
         // 'SEARCH', {}, 'data/users/query'
         // 'SEARCH', { active: true }, 'data/users/query'
         // 'SEARCH', { active: true, name: 'ds alex' }, 'data/users/query'
@@ -137,32 +129,15 @@ export class UserList {
         // 'SEARCH', { active: true, userTypeValue: 3 }, 'data/users/query'
         // 'SEARCH', { userTypeValue: 1 }, 'data/users/query'
         //alert('loadUserList: ' + JSON.stringify(data) );
-        this.api.apiCall('user-list',null,data)
-            .then(users => this.users = users)            
-            .then(() => this.populateRoleFilterFromList());
-            
-    }
+        this.api.apiCall('user-list', null, data)
+            .then(users => this.users = users);
 
-   
+    }
 
     select(user) {
         this.selectedId = user.id;
-        //alert('select: ' + this.selectedId);
         return true;
     }
-
-    // filterSearch(getType,getUserId){
-    //     //alert('addUserSearch: ' + getUserId);
-    //     if(getType=='ntId') this.searchFor_name = '';
-    //     if(getType=='name') this.searchFor_ntId = '';
-
-    //     this.api.getUserToAddList_search(getType,getUserId)
-    //         .then(selectedUserArr => this.selectedUserArr = selectedUserArr)
-    //         .then(() => {         
-    //             this.selectedId = null;      
-    //             console.log('addUserSearch(): Selected > ' + this.selectedUserArr.length + ' > ' + this.selectedUserArr)
-    //          });
-    // }
 
     addUser(): void {
         this.dialogService.open({
@@ -173,6 +148,7 @@ export class UserList {
                 console.log("The information is invalid");
             } else {
                 console.log("The information is valid");
+                this.loadUserList(null)
             }
         });
     }
@@ -188,12 +164,12 @@ export class UserList {
                 console.log("The information is invalid");
             } else {
                 console.log("The information is valid");
+                this.loadUserList(null)
             }
         });
     }
 
     deleteUser(id): void {
-        //alert('changeUserRoles: ' + id);
         this.dialogService.open({
             userId: id,
             viewModel: DeleteDialog,
@@ -207,45 +183,16 @@ export class UserList {
         });
     }
 
+    /* isEditor */
+    filters = [
+        { value: '', keys: ['loginName', 'firstName', 'lastName', 'emailAddress', 'personalNumber'] }
+    ];
+
+    /* isReader */
     filters_ro = [
         { value: '', keys: ['loginName', 'firstName', 'lastName', 'emailAddress', 'personalNumber'] },
-        { value: 'true', keys: ['isMember'] },
+        { value: '', keys: ['isMember'] },
         { value: 'true', keys: ['isActive'] }
     ];
 
-    returnLabelFromValue(getId) {
-        if (getId) return this.rolesArr.filter(x => x.value == getId)[0].name;
-        return '';
-    }
-
-    populateRoleFilterFromList() {
-        let tmp_rolesArrValues = [];
-        //this.rolesArrLabels=[];
-        this.rolesArrDynamic = [];
-
-        for (let next of this.users.data) {
-            let nextRole = next.systemRoles;
-
-            if (nextRole && tmp_rolesArrValues.indexOf(nextRole) === -1) {
-                tmp_rolesArrValues.push(nextRole);
-                let nextLabel = nextRole;// this.rolesArr.filter(x => x.value == nextRole)[0].name;
-                //console.log('???' + nextRole + ' | ' + nextLabel);
-                //this.rolesArrLabels.push(nextLabel);
-                this.rolesArrDynamic.push({ "value": nextRole, "name": nextLabel });
-            }
-        }
-    }
-
-
-
-    // submit(){
-    //   this.dialogService.open({ viewModel: Prompt, model: 'Good or Bad?'}).then(response => {
-    //     if (!response.wasCancelled) {
-    //       console.log('good');
-    //     } else {
-    //       console.log('bad');
-    //     }
-    //     console.log(response.output);
-    //   });
-    // }
 }

@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <!--<input type="text" value.bind="filters[1].value">-->
-                    <table if.bind="apiData" class="table table-striped margin-top-1" aurelia-table="data.bind: apiData; display-data.bind: $displayData; filters.bind: !currentUser.isEditor ? filters : ''">
+                    <table if.bind="apiData" class="table table-striped margin-top-1" aurelia-table="data.bind: apiData; display-data.bind: $displayData; filters.bind: !currentUser.isEditor ? '' : ''">
                         <thead>
                             <tr>
                                 <th if.bind="custXcId=='xs_recentSubmits'">Submitted</th>
@@ -27,16 +27,21 @@
                             <tr repeat.for="row of $displayData">
                                 <td if.bind="custXcId=='xs_recentSubmits'">${row.submittedOn | formatDate}</td>
                                 <td if.bind="custXcId=='xs_recentReviews'">${row.reviewedOn | formatDate}</td>
-                                <td><a click.delegate="myNav.navigateToUserPage('read',row.id)">${row.displayName}</a></td>
+                                <td>
+                                    <a click.delegate="myNav.navigateToUserPage('read',row.id)">${row.displayName}</a>
+                                </td>
                                 <td>
                                     <div class="btn-group btn-group-xs" role="group" aria-label="User actions">
-                                        <button class="btn btn-default" click.delegate="myNav.navigateToUserPage('edit',row.id)" title="Edit User">
+                                        <button if.bind="currentUser.isEditor" class="btn btn-xs btn-default" click.delegate="myNav.navigateToUserPage('edit',row.id)" title="Edit User">
                                             <i class="fa fa-pencil"></i>
                                         </button>
-                                        <button disabled.bind="row.emailAddress==null" class="btn btn-default" click.delegate="myNav.emailUser(row.emailAddress)" title="Email User">
+                                        <button disabled.bind="row.emailAddress==null" class="btn btn-xs btn-default" click.delegate="myNav.emailUser(row.emailAddress)" title="Email User">
                                             <i class="fa fa-envelope-o"></i>
                                         </button>
-                                        <!--<a class="btn btn-default" href="#"><i class="fa fa-search"></i></a>-->
+                                        <button if.bind="currentUser.isEditor" if.bind="custXcId=='xs_recentReviews'" class="btn btn-xs btn-default" click.delegate="myNav.navigateToUserPage('review',row.id)" title="Review">
+                                            <i class="fa fa-check-square-o"></i>
+                                        </button>
+                                        
                                     </div>
                                 </td>
                             </tr>

@@ -9,10 +9,10 @@ import { MyNav } from '../../my-nav';
 @inject(WebAPIUsers,MyGlobals,MyNav)
 export class Welcome {
   public CV = CV;
-  title = 'Welcome to MRT';
-  message = '<p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>';
-  title_isMember = 'Welcome to MRT';
-  message_isMember = '<p>Lorem ipsum dolor sit amet, utamur prodesset no nec. Duis nihil menandri nec ad, vim animal appareat ex.</p>';
+  title = CV.myHomepage.Title;
+  message = CV.myHomepage.Message;
+  title_isEditor = CV.myHomepage.EditorTitle;
+  message_isEditor = CV.myHomepage.EditorMessage;
 
   pageData;
   imgSrc_splash;

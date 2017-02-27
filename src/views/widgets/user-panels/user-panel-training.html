@@ -17,6 +17,7 @@
         <pre>??? myTrainingArr_init: <br>${myTrainingArr_init & json} !!!</pre>
     </div>
     <pre class="col-xs-4">??? myGlobals.profileSelected.trainings: <br>${myGlobals.profileSelected.trainings & json} !!!</pre>-->
+    
     <pre if.bind="CV.debugShowCodeOutput">${myLookups.trainings & json}</pre>
     <pre if.bind="CV.debugShowCodeOutput">${myTrainingArr_init & json}</pre>
     <pre if.bind="CV.debugShowCodeOutput">${myTrainingArrDynamic & json}</pre>
@@ -28,7 +29,7 @@
         </ul>
     </pre>
 
-    <div class="col-xs-12">
+    <div class="col-xs-12 margin-top-1">
         <span class="display-block padding-bottom-2" if.bind="isReadOnly && !myGlobals.profileSelected.trainings.length"><strong>No Training Attended</strong></span>
 
         <table class="table cols-3 user-panel-table padded-cells" if.bind="(tmpTrainingsMule && !isReadOnly) || (isReadOnly && myGlobals.profileSelected.trainings.length>0)">
@@ -74,6 +75,7 @@
                                 ak-datepicker="k-value.two-way: tmpTrainingsMule[$index].expiresOn;k-format:{0:dd/MM/yyyy}"
                                 k-on-ready.delegate="onReady($event.detail,tmpTrainingsMule[$index].expiresOn)"
                                 k-on-change.delegate="onTrainingChecked(row.id)">
+                            
                         </span>
                     </td>
                 </tr>

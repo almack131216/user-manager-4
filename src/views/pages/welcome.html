@@ -4,31 +4,35 @@
     <require from="../widgets/profile-brief"></require>
     <require from="../../resources/format/json"></require>
 
-    <div if.bind="pageData" class="row margin-bottom-g1">
-        <pre if.bind="CV.debugShowCurrentUser">? welcome.html | myGlobals.isMember: ${myGlobals.currentUser.isMember} | myGlobals.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
-        <div class="col-md-12">
-            <img src="${imgSrc_splash}" class="fit-col">
+    <div if.bind="pageData" class="row banner-img-wrap">
+        <div class="col-xs-12">
+            <pre if.bind="CV.debugShowCurrentUser">
+            <span class="debug_filename">welcome.html</span>
+            myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | isReader: ${myGlobals.currentUser.isReader} | isEditor: ${myGlobals.currentUser.isEditor}
+        </pre>
+
+        <img src="${imgSrc_splash}" class="fit-col">
         </div>
     </div>
 
-    <pre if.bind="CV.debugShowCurrentUser">? welcome.html | myGlobals.currentUser: ${myGlobals.currentUser & json}</pre>
+    <pre if.bind="CV.debugShowCurrentUser"><span class="debug_filename">welcome.html</span>myGlobals.currentUser: ${myGlobals.currentUser & json}</pre>
 
     <div if.bind="myGlobals.currentUser.id && (myGlobals.currentUser.isReader || myGlobals.currentUser.isEditor)" class="row-fluid">
         <div class="col-md-6">
             <!--<img src="src/img/MRT_Letterhead.png" class="fit-col">-->
             <div class="margin-bottom-2">
-                <h1 class="margin-top-0">${title_isMember}</h1>
-                <p innerhtml.bind="message_isMember"></p>
+                <h1 class="margin-top-0">${title_isEditor}</h1>
+                <p innerhtml.bind="message_isEditor"></p>
             </div>
 
-            <div class="row">
-                <div class="col-md-3">
+            <div class="row margin-bottom-2">
+                <div class="col-xs-2">
                     <a click.delegate="myNav.navigateTo('users')"><img src="src/img/MRT_Org.png" class="fit-col"></a>
-                </div>                
-                <div class="col-md-3">
+                </div>
+                <div class="col-xs-2">
                     <a click.delegate="myNav.navigateToUserPage('read',myGlobals.currentUser.id)"><img src="src/img/MRT_Ident.png" class="fit-col"></a>
                 </div>
-                <div class="col-md-3" if.bind="myGlobals.currentUser.isEditor">
+                <div class="col-xs-2" if.bind="myGlobals.currentUser.isEditor">
                     <a click.delegate="myNav.navigateToUserPage('edit',myGlobals.currentUser.id)"><img src="src/img/MRT_Admin.png" class="fit-col"></a>
                 </div>
                 <!--<div class="col-md-2" if.bind="myGlobals.currentUser.isEditor">
@@ -43,8 +47,10 @@
         <div class="col-md-6" if.bind="pageData">
             <!--<user-list cust-title="Users-lite" cust-disable-cells="['firstName','personalNumber','systemRoles']" cust-table-pagination.bind="true"
                 cust-table-page-size.bind="10"></user-list>-->
-            <list-activity title="Recent Changes" cust-xc-id="xs_recentSubmits" current-user.bind="myGlobals.currentUser" cust-xc-expanded="true" api-data.bind="pageData.recentSubmits"></list-activity>
-            <list-activity title="Recent Reviews" cust-xc-id="xs_recentReviews" current-user.bind="myGlobals.currentUser" api-data.bind="pageData.recentReviews"></list-activity>
+            <list-activity if.bind="pageData.recentSubmits.length" title="${CV.myTitles.RecentChanges}" cust-xc-id="xs_recentSubmits"
+                current-user.bind="myGlobals.currentUser" cust-xc-expanded="true" api-data.bind="pageData.recentSubmits"></list-activity>
+                <list-activity if.bind="pageData.recentReviews.length" title="${CV.myTitles.RecentReviews}" cust-xc-id="xs_recentReviews"
+                    current-user.bind="myGlobals.currentUser" api-data.bind="pageData.recentReviews"></list-activity>
         </div>
     </div>
 

@@ -3,6 +3,6 @@
 
     <span class="color-archive" if.bind="!isActive"><i class="fa fa-archive text-after"></i>Archived</span>
     <span class="color-pending" if.bind="isActive && reviewPending"><i class="fa fa-clock-o text-after"></i>Pending</span>
-    <span class="color-good" if.bind="isActive && !reviewPending && reviewResult"><i class="fa fa-check text-after"></i>Approved</span>
-    <span class="color-danger" if.bind="isActive && !reviewPending && !reviewResult"><i class="fa fa-ban text-after"></i>Rejected</span>
+    <span class="color-good" if.bind="isActive && !reviewPending && reviewResult==true"><i class="fa fa-check text-after"></i>Approved</span>
+    <span class="color-danger" if.bind="isActive && !reviewPending && reviewResult==false"><i class="fa fa-ban text-after"></i>Rejected</span>
 </template>

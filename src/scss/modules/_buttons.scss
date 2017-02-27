@@ -80,7 +80,7 @@
     background: #e0e0e0 !important;
 }
 
-.btn {
+.btn:not(.btn-xs) {
     text-align: left;
     font-size: $btn-font-size;
     line-height: $btn-line-height;

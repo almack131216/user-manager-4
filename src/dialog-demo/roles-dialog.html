@@ -13,8 +13,8 @@
             <table class="table border-none half-n-half" if.bind="userRole && systemRoles">
                 <tbody>
                 <tr>
-                    <td><label>Name:</label> ${userId} ${userRole.firstName} ${userRole.lastName}</td>
-                    <td><label>ntId:</label> ${userRole.loginName}</td>
+                    <td><label>Name:</label>${userRole.firstName} ${userRole.lastName}</td>
+                    <td><label>ntId:</label>${userRole.loginName}</td>
                 </tr>
                 <tr>
                     <td>
@@ -25,7 +25,7 @@
                             input-only="true"></form-checkbox>
                     </td>
                     <td class="xxx_wrap-role">
-                        <!--? select_systemRole: ${select_systemRole} | userRole.systemRoles.value: ${userRole.systemRoles & json}-->
+                        <!--? select_systemRole: ${select_systemRole} | hasChanged: ${hasChanged} | userRole.systemRoles.value: ${userRole.systemRoles & json}-->
                         <form-select cust-name="lkp_systemRole"
                             prop-arr.bind="['value','name']"
                             model.two-way="select_systemRole"

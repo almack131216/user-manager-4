@@ -1,29 +1,24 @@
-import { inject,autoinject, bindable } from 'aurelia-framework';
-import {MyGlobals} from '../../../my-globals' 
+import { inject, autoinject, bindable } from 'aurelia-framework';
+import { MyGlobals } from '../../../my-globals'
 import * as Constants from '../../../resources/constants';
 const CV = Constants
 
 @autoinject
 @inject(MyGlobals)
 export class UserPanelDetails {
-    //@bindable user;
-    profile;
-    @bindable isReadOnly;
-    //@bindable myLookups;
 
-    selectedFiles;
+    @bindable isReadOnly;
 
     public CV = CV;
 
     tmpShowLookupsDebug = false;
 
     myGlobals
-    myLookups    
+    myLookups
 
-    constructor(myGlobals:MyGlobals){
+    constructor(myGlobals: MyGlobals) {
         this.myGlobals = MyGlobals
-        this.profile = this.myGlobals.profileSelected
         this.myLookups = this.myGlobals.myLookups
     }
-    
+
 }

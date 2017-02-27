@@ -1,7 +1,10 @@
 <template>
 
     <header class="container">
-        <pre if.bind="CV.debugShowCurrentUser">? ui-header.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
+        <pre if.bind="CV.debugShowCurrentUser">
+            <span class="debug_filename">ui-header.html</span>
+            myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | isReader: ${myGlobals.currentUser.isReader} | isEditor: ${myGlobals.currentUser.isEditor}
+        </pre>
         <div class="row">
             <div class="col-xs-8 logo-wrap">
                 <a class="logo" click.delegate="myNav.navigateTo('welcome')" title="${CV.SITE_NAME}">
@@ -23,13 +26,13 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a click.delegate="myNav.navigateToUserPage('read',myGlobals.currentUser.id)"><i class="fa fa-fw fa-search"></i>View Profile</a></li>
-                            <li><a click.delegate="myNav.navigateToUserPage('edit',myGlobals.currentUser.id)"><i class="fa fa-fw fa-pencil"></i>Edit Profile</a></li>
+                            <li><a click.delegate="myNav.navigateToUserPage('read',myGlobals.currentUser.id)"><i class="fa fa-fw fa-search"></i>${CV.BTN_VIEW_MY_PROFILE}</a></li>
+                            <li><a if.bind="myGlobals.currentUser.isMember" click.delegate="myNav.navigateToUserPage('edit',myGlobals.currentUser.id)"><i class="fa fa-fw fa-pencil"></i>${CV.BTN_EDIT_MY_PROFILE}</a></li>
                             <!--<li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-bell"></i>Notifications</a></li>
                             <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-check-square-o"></i>Validate</a></li>
                             <li if.bind="myGlobals.currentUser.isEditor"><a href="#"><i class="fa fa-fw fa-archive"></i>Toolbox</a></li>-->
-                            <li if.bind="myGlobals.currentUser.isEditor" class="divider"></li>
-                            <li if.bind="myGlobals.currentUser.isEditor"><a click.delegate="myNav.navigateTo('users')"><i class="fa fa-fw fa-users"></i>Team</a></li>
+                            <li if.bind="!myGlobals.currentUser.isMember" class="divider"></li>
+                            <li if.bind="!myGlobals.currentUser.isMember"><a click.delegate="myNav.navigateTo('users')"><i class="fa fa-fw fa-users"></i>${CV.BTN_TEAM}</a></li>
                         </ul>
                     </div>
 

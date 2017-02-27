@@ -21,20 +21,22 @@ const apiUrlsArr = [];
 apiUrlsArr['global'] = { method: 'GET', url: '/views/global', urlLocal: '/api-global.json', data: null }
 apiUrlsArr['welcome'] = { method: 'GET', url: '/views/welcome', urlLocal: '/api-welcome.json', data: null }
 apiUrlsArr['user-selected'] = { method: 'GET', url: '/views/profileform/', urlAppendWithId: true, urlAppendEnd: '?includeLookups=true', urlLocal: '/api-user-with-lookups-', urlLocalAppendEnd: '.json', data: null }
+apiUrlsArr['user-role'] = { method: 'GET', url: '/data/users/', urlAppendWithId: true, urlLocal: '/api-user.json', data: null }
 //apiUrlsArr['lookups'] = { method: 'GET', url: '/views/profileform/', urlAppend: '?includeLookups=true', urlLocal: '/api-user-with-lookups.json', data: null }
 apiUrlsArr['user-list-to-add'] = { method: 'SEARCH', url: '/ldap/query?limit=5', urlLocal: '/api-list-add-users.json', data: {} }
 apiUrlsArr['user-list'] = { method: 'SEARCH', url: '/data/users/query', urlLocal: '/api-all-users.json', data: null }
-apiUrlsArr['user-role'] = { method: 'GET', url: '/data/users/', urlAppendWithId: true, urlLocal: '/api-user.json', data: null }
-apiUrlsArr['delete-user'] = { method: 'DELETE', url: '/data/users/', urlAppendWithId: true, urlLocal: '', data: null }
-apiUrlsArr['delete-multiple-users'] = { method: 'DELETE', url: '/data/users', urlLocal: '', data: null }
-apiUrlsArr['user-list-to-add-add'] = { method: 'POST', url: '/data/users', urlLocal: '', data: null }
-apiUrlsArr['save-user'] = { method: 'POST', url: '/data/users/', urlAppendWithId: true, urlAppendEnd: '/profile', urlLocal: '' }
-apiUrlsArr['save-user-role'] = { method: 'PUT', url: '/data/users/', urlAppendWithId: true, urlLocal: '', data: null }
 
-const data_users_X = path_api + '/data/users/';
-const ldap_query_ntId = path_api + '/ldap/query';
-const delete_users_X = path_api + '/data/users/';
-const delete_multiple = path_api + '/data/users';
+
+apiUrlsArr['delete-user'] = { method: 'DELETE', url: '/data/users/', urlAppendWithId: true, urlLocal: '', data: null, toastrMsg: 'User Archived' }
+apiUrlsArr['delete-multiple-users'] = { method: 'DELETE', url: '/data/users', urlLocal: '', data: null, toastrMsg: 'Users Archived' }
+apiUrlsArr['user-list-to-add-add'] = { method: 'POST', url: '/data/users', urlLocal: '', data: null, toastrMsg: 'User Successfully Added' }
+
+apiUrlsArr['save-user'] = { method: 'POST', url: '/data/users/', urlAppendWithId: true, urlAppendEnd: '/profile', urlLocal: '', toastrMsg: 'Successfully Saved' }
+apiUrlsArr['save-user-role'] = { method: 'PUT', url: '/data/users/', urlAppendWithId: true, urlLocal: '', data: null, toastrMsg: 'User Role Updated' }
+apiUrlsArr['review-user'] = { method: 'PUT', url: '/data/users/', urlAppendWithId: true, urlAppendEnd: '/review', urlLocal: '', data: null, toastrMsg: 'User Approved' }
+
+
+
 
 @autoinject
 export class WebAPIUsers {
@@ -92,12 +94,16 @@ export class WebAPIUsers {
         request.setRequestHeader("TimeZone", new Date().getTimezoneOffset().toString());
       },
       success: function (result) {
-        // console.log('API CALL SUCCESS: ' + result);
+        //console.log('API CALL SUCCESS: ' + result + ' / ' + apiUrlsArr[getId].toastrMsg);
         // let returnData = result;
+        if(apiUrlsArr[getId].toastrMsg) {
+          toastr['success'](apiUrlsArr[getId].toastrMsg);
+        }
       },
       error: function (xhr, ajaxOptions, thrownError) {
-        console.log("Error: " + thrownError);
-        toastr.error("Error: " + thrownError);
+        //console.log("Error: " + thrownError);        
+        console.log("Error: " + xhr.responseJSON.exceptionMessage);
+        toastr.error("Error: " + xhr.responseJSON.exceptionMessage);
       }
     });
 
@@ -106,7 +112,7 @@ export class WebAPIUsers {
 
   deleteMultipleUsersXXX(data) {
     this.isRequesting = true;
-    let tmpUrl = delete_multiple;
+    let tmpUrl = path_api + '/data/users';
     //if (hw_useJson) tmpUrl = 'src/api/api-all-users.json';
     //alert('getUserList');
 
@@ -187,7 +193,7 @@ export class WebAPIUsers {
   deleteUserXXX(id) {
     console.log('saveUserProfile... (' + id + ')');
     this.isRequesting = true;
-    let tmpUrl = delete_users_X + id;
+    let tmpUrl = path_api + '/data/users/' + id;
 
     alert('DELETE > ' + tmpUrl + ' ? ' + 'null');
 

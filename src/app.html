@@ -4,30 +4,21 @@
   <require from="./views/widgets/inputs/form-input"></require>
   <require from="./font-awesome.css"></require>
   <require from="./resources/format/json"></require>
-  <require from="toastr/build/toastr.min.css"></require>
+  <require from="toastr/build/toastr.min.css"></require>  
   
-  <link href="src/css/main.css" rel="stylesheet" />
   <link href="src/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="src/css/main.css" rel="stylesheet" />
 
   <!--<pre>? myGlobals: ${myGlobals.foo} | ${myGlobals.currentUser & json} | ${myGlobals.profileSelected & json} !</pre>-->
 
-
   <div id="container-fixed-footer">
     <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
-    <nav-bar router.bind="router" id="header"></nav-bar>
-    <!--<div class="container">
-      <div class="row">
-      <nav class="breadcrumb">
-        <a class="breadcrumb-item" href="#">Home</a>
-        <a class="breadcrumb-item" href="#">Library</a>
-        <a class="breadcrumb-item" href="#">Data</a>
-        <span class="breadcrumb-item active">Bootstrap</span>
-      </nav>
-      </div>
-    </div>-->
-    
+    <nav-bar router.bind="router" id="header"></nav-bar>    
 
-    <pre if.bind="CV.debugShowCurrentUser">? app.html | myGlobals.currentUser.isMember: ${myGlobals.currentUser.isMember} | myGlobals.currentUser.isEditor: ${myGlobals.currentUser.isEditor} !</pre>
+    <pre if.bind="CV.debugShowCurrentUser">
+      <span class="debug_filename">app.html</span>
+      myGlobals.currentUser: ${myGlobals.currentUser & json}
+    </pre>
     <div class="container" id="body">
       <div class="row">
         <router-view></router-view>
@@ -36,6 +27,5 @@
 
     <ui-footer id="footer"></ui-footer>
   </div>
-
 
 </template>

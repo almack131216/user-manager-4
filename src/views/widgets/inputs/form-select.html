@@ -21,7 +21,7 @@
         <!--<input if.bind="custReadonly" type="text" value.bind="model" class="form-control" placeholder.bind="custPlaceholder" readonly>-->
 <!--if.bind="!custReadonly"-->
 
-        <input if.bind="custReadonly && !initSelected" type="text" class="form-control" value="---" readonly>
+        <input if.bind="custReadonly && !initSelected" type="text" class="form-control" value="" readonly>
 
         <select if.bind="!custReadonly || (custReadonly && initSelected)"
             reaonly.bind="custReadonly"
@@ -38,7 +38,7 @@
                 model.bind="option[propArr[0]]"
                 css="background-color:red"
                 >
-                ${option[propArr[1]]}
+               ${option[propArr[1]]}
             </option>
         </select>
 

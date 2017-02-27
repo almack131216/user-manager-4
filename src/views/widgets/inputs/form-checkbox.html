@@ -1,6 +1,6 @@
 <template class="${inputOnly ? 'form-group-input-only' : 'form-group form-cust-wrap'} ${custMandatory && !custReadonly ? 'cust-mandatory' : ''}">
 
-    <input if.bind="(custReadonly || isReadOnly) && model==null" type="text" class="form-control" value="---" readonly>
+    <input if.bind="(custReadonly || isReadOnly) && model==null" type="text" class="form-control" value="" readonly>
     <input if.bind="(custReadonly || isReadOnly) && model==true" type="text" class="form-control" value="Yes" readonly>
     <input if.bind="(custReadonly || isReadOnly) && model==false" type="text" class="form-control" value="No" readonly>
 

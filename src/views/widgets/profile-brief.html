@@ -18,59 +18,65 @@
 
                 <span if.bind="!custXc" class="panel-title">${title}</span>
 
-                <a if.bind="currentUser.isEditor" click.delegate="myNav.navigateToUserPage('edit',currentUser.id)" class="btn btn-xs btn-i btn-text pull-right" title="Edit profile">
+                <a if.bind="currentUser.isEditor" click.delegate="myNav.navigateToUserPage('edit',currentUser.id)" class="btn btn-xs btn-i btn-text pull-right"
+                    title="Edit profile">
                     <i class="fa fa-pencil"></i>Update
                 </a>
 
                 <a click.delegate="myNav.navigateToUserPage('read',currentUser.id)" class="btn btn-xs btn-i btn-text pull-right" title="View profile">
-                    <i class="fa fa-search"></i>View
+                    <i class="fa fa-search"></i>
+                    <span class="hidden-xs">${CV.BTN_VIEW_USER}</span>
                 </a>
             </div>
 
             <div id="${custXcId}" class="panel-body bg-lightgray ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
 
-                <div class="padding-top-1">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <label>Manager</label>
-                        </div>
-                        <div class="col-xs-6">
-                            <a if.bind="memberArr.manager.emailAddress" click.delegate="myNav.emailUser(memberArr.manager.emailAddress)">
-                                <i class="fa fa-envelope-o text-after"></i> ${memberArr.manager.displayName}
-                            </a>
-                            <span if.bind="!memberArr.manager.emailAddress">${memberArr.manager.displayName}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <label>Function</label>
-                        </div>
-                        <div class="col-xs-6">
-                            <span>${memberArr.profile.function}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <label>Location</label>
-                        </div>
-                        <div class="col-xs-6">
-                            <span>${memberArr.profile.location}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <label>Modified</label>
-                        </div>
-                        <div class="col-xs-6">
-                            ${memberArr.profile.submittedOn | formatDate}
-                        </div>
-                    </div>
-
-                    <!--<div class="row">
-                        <div class="button-bar col-md-12 text-align-right">
-                            <button class="btn btn-success" click.delegate="save()">Update</button>
-                        </div>
-                    </div>-->
+                <div>
+                    <table class="table border-none margin-bottom-0">
+                        <tr>
+                            <td>
+                                <label>Manager</label>
+                            </td>
+                            <td>
+                                <a if.bind="memberArr.manager.emailAddress" click.delegate="myNav.emailUser(memberArr.manager.emailAddress)">
+                                    <i class="fa fa-envelope-o text-after"></i> ${memberArr.manager.displayName}
+                                </a>
+                                <span if.bind="!memberArr.manager.emailAddress">${memberArr.manager.displayName}</span>
+                            </td>
+                        </tr>
+                        <tr if.bind="memberArr.profile.office">
+                            <td>
+                                <label>Office</label>
+                            </td>
+                            <td>
+                                <span>${memberArr.profile.office}</span>
+                            </td>
+                        </tr>
+                        <tr if.bind="memberArr.profile.function">
+                            <td>
+                                <label>Function</label>
+                            </td>
+                            <td>
+                                <span>${memberArr.profile.function}</span>
+                            </td>
+                        </tr>
+                        <tr if.bind="memberArr.profile.location">
+                            <td>
+                                <label>Location</label>
+                            </td>
+                            <td>
+                                <span>${memberArr.profile.location}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Modified</label>
+                            </td>
+                            <td>
+                                ${memberArr.profile.submittedOn | formatDate}
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
             </div>

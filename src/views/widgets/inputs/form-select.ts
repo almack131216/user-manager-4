@@ -47,9 +47,8 @@ export class FormSelect {
     //following method works as expected
     public selectedChanged(newValue: number): void {
         if(CV.debugConsoleLog) console.log('[form-select] selectedChanged: ' + newValue + ' / ' + this.initSelected);
-        this.changed = newValue ? newValue : null;//(<HTMLInputElement>event.currentTarget).value;
-        this.selected = this.changed;
-        
+        this.changed = newValue;// newValue ? newValue : null;//(<HTMLInputElement>event.currentTarget).value;
+        this.selected = this.changed;        
     }
 
     tmpCreateLabel(getStr){
@@ -58,7 +57,7 @@ export class FormSelect {
 
     created(){
         if(CV.debugConsoleLog) console.log('[form-select] created: ' + this.custName );
-        if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : '______________' + this.custName;//.substring(3)
+        if (!this.custLabel) this.custLabel = CV.myLabels[this.custName] ? CV.myLabels[this.custName] : this.custName;//.substring(3)
         if(!this.custPlaceholder) this.custPlaceholder = "> Select " + this.custLabel + " <";// "Enter " + this.custLabel;
     }
 

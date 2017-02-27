@@ -1,1 +1,3596 @@
-@import url(bootstrap.min.css);html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}h1,h2,h3,h4,h5{margin-top:0}html,body{margin:0;padding:0;height:100%;background:white}header .logo-wrap{padding:10px}header .logo-wrap img{float:left;display:inline-block}header .logo-wrap span{display:inline-block;color:#090;font-weight:bold;font-size:20px;line-height:52px}.loading-message{display:block;width:100%;color:#090}.loading-message.sm{text-align:left;padding:10px}.loading-message.sm span{display:inline-block;margin-left:5px}.loading-message.lg{text-align:center;padding:50px 0}.loading-message.lg span{display:block;margin:10px auto}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:1.4em;background:#fff;color:#303030;padding:0;margin:0}body>div.canvas{min-height:100%;position:relative}body>div.canvas main{padding-bottom:100px}body>div.canvas footer{position:absolute;bottom:0;width:100%;height:80px}.print-only{display:none}.breadcrumb{background:#fff;margin-bottom:0}a{color:#090;outline:0}a:hover{color:#067d00;text-decoration:underline;cursor:pointer}a:focus,a:active{color:#999;outline:none}*[ng-click],*[onclick],.cursor-pointer{outline:0;cursor:pointer}ul,li{margin:0;padding:0;list-style:none}input,textarea,button{-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.span-no-data-available{font-weight:bold}.span-info{color:#239F40}.span-good{color:#239F40}.span-date{color:#999;font-style:italic}.color-green-dark{color:#067d00}.color-green-1{color:#090}.color-green-2{color:#97CC00}.color-danger,.span-error{color:red}.span-warning{color:#f90}.color-obsolete{color:#999}.breadcrumbWrap{display:block}.breadcrumbWrap ul{display:block;list-style:none}.breadcrumbWrap ul li{display:inline;list-style:none}.breadcrumbWrap ul li.home a,.breadcrumbWrap ul li .ng-binding{padding:10px;display:inline-block}.breadcrumbWrap ul li:before{content:'/'}.breadcrumbWrap ul li:first-child:before{content:''}.breadcrumbWrap ul li:first-child a,.breadcrumbWrap ul li:first-child span{padding-left:0}.breadcrumbWrap ul li:last-child a,.breadcrumbWrap ul li:last-child span{color:#2d2d2d}.faintOpacity{filter:alpha(opacity=30);opacity:0.30}.semiOpacity{filter:alpha(opacity=50);opacity:0.5}.fullOpacity{filter:alpha(opacity=100);opacity:1.0}.display-block{display:block !important}.display-inline-block{display:inline-block !important}.display-none{display:none !important}.display-block-clear{display:block !important;clear:both}.color-good{color:#a6cf41}.color-good-bg{background:#a6cf41}.color-priority{color:#eb9316}.color-pending{color:#f90}.color-warning{color:#f90}.color-archive{color:red}.flagMe{padding:0px 10px;letter-spacing:2px;font-weight:bold}.emptyString{border:2px solid red;background:#ff9;color:red}.bg-danger{background:red;color:white}.warningBG{background:#f90;color:white}.lightwarningBG{background:#FFC926}.bg-white{background:white}.bg-white-xxx{background:white}.goodBG,.bg-good{background:#a6cf41}.errorBG,.bg-error{background:red}.bg-good-light{background:#dff0d8}.bg-info{background:#d9edf7}.bg-info-strong{background:#5bc0de}.bg-take-action{background:#FFCD04}.bg-lightgray{background:#f9f9f9}.labelBG{background:blue;color:white}.stringGood{background:#5cb85c;color:white}.bg-changed,.bg-provisional{background:#FDF3E4}.bg-warning{background:#f2dede}.bg-priority{background:#eb9316}.bg-loading{display:table;width:100%;height:100%;min-height:100px;text-align:center;color:#C40F11}.bg-loading .wrap-message{display:table-cell;vertical-align:middle;width:inherit;height:100%}.bg-loading .wrap-message span{font-weight:bold;line-height:20px}.bg-secondary-color{background:#C40F11;color:white}.container-page-error{text-align:center;padding-top:50px}.vertical-align-center{display:flex;align-items:center}.k-widget.k-datepicker{width:100%;height:32px}.k-picker-wrap{background:white !important;border-radius:0px;border-color:#ddd !important;height:100%}.k-autocomplete .k-input,.k-dropdown-wrap .k-input,.k-numeric-wrap .k-input,.k-picker-wrap .k-input,.k-selectbox .k-input,.k-textbox>input{height:22px;padding:5px 10px;text-indent:0px;border:0;margin:0}.k-state-default>.k-select{border-color:#fff}.k-state-default>.k-select>.k-icon{color:#090}.main-title-bar{margin-bottom:15px}.main-title-bar h1{float:left;margin:0 15px 0 0;line-height:1.0em}.main-title-bar .btn-group.profile-avater{height:32px}.main-title-bar .btn-group.profile-avater .input-group-addon{padding:0px;width:auto}.main-title-bar .btn-group.profile-avater .input-group-addon img{float:right;height:32px;width:auto;padding:0px}.form-cust-wrap{width:100%;margin:0;padding:0;display:block}.form-cust-wrap .form-cust-label{float:left;display:inline-block;width:50%;padding:0 15px}.form-cust-wrap .form-cust-label.label-with-checkbox,.form-cust-wrap .col-checkboxes label.form-cust-label,.col-checkboxes .form-cust-wrap label.form-cust-label,.form-cust-wrap .row-checkboxes label.form-cust-label,.row-checkboxes .form-cust-wrap label.form-cust-label{text-align:left !important;width:100%}.form-cust-wrap .form-cust-input{float:left;display:inline-block;width:50%;padding:0 15px}tr.tr-row-selected td{background-color:#fcf8e3}select.form-control[disabled],select.form-control[readonly]{background-color:transparent !important;padding:5px 10px !important;border:0px !important;-webkit-appearance:none;-moz-appearance:none;text-indent:1px;text-overflow:''}select.form-control[disabled]::-ms-expand{display:none !important}img.fit-col{width:100%;height:auto}.cursor-hover{cursor:pointer}.strapline{float:left;height:35px;margin:40px 0 0 50px}.form-control[readonly]{background-color:transparent !important;border-color:transparent !important;outline:none !important;opacity:1}.xxx_wrap-role .input-group .input-group-addon{background:transparent;padding-left:0px;font-weight:bold;border:0px}.xxx_wrap-role .input-group .input-group-addon i.fa{display:none}ai-dialog-overlay{background:white;filter:alpha(opacity=50) !important;opacity:0.5 !important}ai-dialog>ai-dialog-footer{padding:15px}table.table-hover tr:hover{cursor:pointer}div.wrap_table-add-user-from-list{display:block;min-height:100px;max-height:250px;overflow-y:scroll;overflow-x:hidden}ai-dialog{width:600px}ai-dialog.wide{width:800px}ai-dialog ai-dialog-header h2{margin:0}.btn-row{clear:both;display:block;width:100%;padding:15px;text-align:center}.btn-row .btn,.btn-row .str-inline-with-btns,.btn-row .pagination-controls .page-number,.pagination-controls .btn-row .page-number{display:inline-block}.select2{width:100% !important}.select2-container .select2-selection--single .select2-selection__rendered{padding-left:15px;padding-right:25px}.select2-container--default .select2-selection--single .select2-selection__clear{padding:0 5px}.select2-container--default .select2-selection--single{background-color:#fff;border:1px solid #ddd;-webkit-border-radius:0px;-moz-border-radius:0px;border-radius:0px}.select2-container .select2-selection--single{box-sizing:border-box;cursor:pointer;display:block;height:28px;user-select:none;-webkit-user-select:none}.panel .panel-heading.strong-heading,.panel.panel-xc .panel-heading{border-bottom:0px;background:#090;color:white;font-weight:bold}.panel .panel-heading.strong-heading .btn-text,.panel.panel-xc .panel-heading .btn-text{color:#ff0}.panel.panel-xc{margin-bottom:15px;border:1px solid #090;-webkit-box-shadow:none;box-shadow:none}.panel.panel-xc .panel-heading .btn.btn-xc_chevron,.panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns,.panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number,.pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number{float:right;background:transparent}.panel.panel-xc .panel-heading .btn.btn-xc_chevron:before,.panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before,.panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before,.pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before{color:#ff0;font-size:14px;line-height:14px;content:"\f077"}.panel.panel-xc .panel-heading.collapsed .btn.btn-xc_chevron:before,.panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before,.panel.panel-xc .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before,.pagination-controls .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.page-number:before{content:"\f078"}.panel.panel-xc .panel-body{padding-top:0px;padding-bottom:0px}.panel.panel-xc .panel-body .wrap-fields{background:#f9f9f9;padding:15px 0 0 0;display:block;float:left;width:100%;height:auto}.panel.panel-xc .panel-body .wrap-fields .form-group label{text-align:right;font-size:13px;line-height:1.4em;padding-top:5px}.border-none{border:0px}.panel-heading{background:#f9f9f9;border:0px}.repeaters{clear:both;display:block;width:100%;height:auto}.panel-body .divider{clear:both;float:left;display:block;width:100%;height:1px;border-top:none;margin:0px}.panel-body .divider.dotted{border-top:1px dotted #ddd;margin-bottom:15px}[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none !important}.highlighted{background:yellow}.hide-border-top{border-top:none}.hide-border-top label{display:none}.color-amber{color:#FFA500}.color-good{color:#1fbb1f}.color-danger{color:#FF0000}.form-group label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:capitalize}.padding-x-0{padding-left:0px !important;padding-right:0px !important}.margin-x-0{margin-left:0px !important;margin-right:0px !important}.html-file-name{margin-left:10px;font-size:0.5em;color:#aaa}.display-none{display:none !important}.display-block{display:block !important}.display-inline-block{display:inline-block !important}section{margin:0 20px}.panel.panel-prompt-cust{border:none;background:#f9f9f9;border-left:5px solid #239F40}.panel.panel-prompt-cust.panel-page-error{display:inline-block;margin:30px auto;text-align:center;border:none;background:transparent;padding:10px 20px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}.panel.panel-prompt-cust.panel-page-error .page-error-code{display:block;font-size:80px;margin:0 0 10px 0}.panel.panel-prompt-cust.panel-border{background:transparent;border:5px solid #f9f9f9}.panel.panel-prompt-cust.panel-warning{background:#fcf8e3;border-color:#FFCD04}.panel.panel-prompt-cust.panel-info{background:#d9edf7;border-color:#5bc0de}.panel.panel-prompt-cust.panel-success{background:#dff0d8;border-color:#a6cf41}.panel.panel-prompt-cust.panel-error,.panel.panel-prompt-cust.panel-danger{background:#F7C6BE;border-color:red}.panel.panel-prompt-cust>p,.panel.panel-prompt-cust>.panel-heading{padding:20px;border:none;height:auto;line-height:normal;background-image:none;background-repeat:unset;background:transparent;color:black}@media all and (min-width: 641px){html,body{margin:0;padding:0;height:100%}#container-fixed-footer{min-height:100%;position:relative}#body{padding-bottom:70px}#footer{position:absolute;bottom:0;width:100%;min-height:40px}}#exTab1 .tab-content{color:white;background-color:#428bca;padding:5px 15px}#exTab2 h3{color:white;background-color:#428bca;padding:5px 15px}#exTab1 .nav-pills>li>a{border-radius:0}#exTab3 .nav-pills>li>a{border-radius:4px 4px 0 0}#exTab3 .tab-content{color:white;background-color:#428bca;padding:5px 15px}h1>i,h2>i,h3>i,h4>i{margin-right:10px}h1{font-size:36px;margin:30px 0 15px 0;color:#007f00}h4{font-weight:bold}div.hdr-wrap{margin-bottom:10px}.hdr-inline{margin:0;display:inline-block}strong,.strong{font-weight:bold}.faint-small{color:#ccc;font-size:0.8em}.fa.text-after{margin-right:5px}.no-wrap{white-space:nowrap}.old-value{filter:alpha(opacity=50);opacity:0.5}.no-wrap{white-space:nowrap}.text-align-left{text-align:left}.text-align-center{text-align:center}.text-align-right{text-align:right}.text-line-through{text-decoration:line-through}.strong-title-accent{font-size:20px;color:#C40F11;font-weight:bold}.trim-string,span.trim-string-with-tooltip,span.trim-string-with-tooltip>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ngbindPlacholder:before{background:transparent url(../images/ajax-loader.gif) no-repeat 0 0;content:"";display:inline-block;width:16px;height:16px}.fa-dummy,.panel.panel-xc .panel-heading .btn.btn-xc_chevron:before,.panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before,.panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before,.pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before,ul.help-list li:before,ul.error-list li:before,.fa-dummy-tooltip,span.trim-string-with-tooltip:after{vertical-align:top;font-family:FontAwesome}.wrap_xc_btns_allXXX{display:inline-block}.wrap_xc_btns_allXXX a{margin:0 10px}.wrap_xc_btns_allXXX .divider{display:inline-block;width:1px;height:10px;border-right:2px solid #ddd}.btn-group.btn-edit-avatar>.btn-group button.btn,.btn-group.btn-edit-avatar>.btn-group button.str-inline-with-btns,.btn-group.btn-edit-avatar>.btn-group .pagination-controls button.page-number,.pagination-controls .btn-group.btn-edit-avatar>.btn-group button.page-number{line-height:50px;padding:0 10px}.btn-group.btn-edit-avatar a.btn.avatar,.btn-group.btn-edit-avatar a.avatar.str-inline-with-btns,.btn-group.btn-edit-avatar .pagination-controls a.avatar.page-number,.pagination-controls .btn-group.btn-edit-avatar a.avatar.page-number{padding:0;border:1px solid #f1f1f1}.btn-group.btn-edit-avatar a.btn.avatar img,.btn-group.btn-edit-avatar a.avatar.str-inline-with-btns img,.btn-group.btn-edit-avatar .pagination-controls a.avatar.page-number img,.pagination-controls .btn-group.btn-edit-avatar a.avatar.page-number img{width:auto;max-height:50px}.btn.btn-debrief,.btn-debrief.str-inline-with-btns,.pagination-controls .btn-debrief.page-number{display:block;text-align:center;height:20px;line-height:20px;padding:0 10px;-webkit-border-radius:0px;-moz-border-radius:0px;border-radius:0px}.btn.btn-debrief.cross,.btn-debrief.cross.str-inline-with-btns,.pagination-controls .btn-debrief.cross.page-number{color:red}.btn.btn-debrief.cross.selected,.btn-debrief.cross.selected.str-inline-with-btns,.pagination-controls .btn-debrief.cross.selected.page-number{border-color:red;background:red;color:white}.btn.btn-debrief.tick,.btn-debrief.tick.str-inline-with-btns,.pagination-controls .btn-debrief.tick.page-number{color:#090}.btn.btn-debrief.tick.selected,.btn-debrief.tick.selected.str-inline-with-btns,.pagination-controls .btn-debrief.tick.selected.page-number{border-color:#090;background:#090;color:white}.btn.disabled,.disabled.str-inline-with-btns,.pagination-controls .disabled.page-number,.btn[disabled],[disabled].str-inline-with-btns,.pagination-controls [disabled].page-number,fieldset[disabled] .btn,fieldset[disabled] .str-inline-with-btns,fieldset[disabled] .pagination-controls .page-number,.pagination-controls fieldset[disabled] .page-number{color:#c8c8c8}.btn-gradient{background-image:-webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);background-image:-o-linear-gradient(top, #fff 0, #e0e0e0 100%);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), to(#e0e0e0));background-image:linear-gradient(to bottom, #fff 0, #e0e0e0 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);background-repeat:repeat-x}.btn-gradient-hover{background:#e0e0e0 !important}.btn,.str-inline-with-btns,.pagination-controls .page-number{text-align:left;font-size:13px;line-height:15px;padding:5px 10px}.str-inline-with-btns{display:inline-block;padding-left:0;padding-right:0}.btn.btn-lg,.btn-lg.str-inline-with-btns,.pagination-controls .btn-lg.page-number{font-size:18px;line-height:1.333;padding:10px 15px;height:28px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;height:auto}label.label-with-radio,label.label-with-checkbox,.col-checkboxes label,.row-checkboxes label{cursor:pointer;color:#090;font-weight:normal}label.label-with-radio.strong,label.label-with-checkbox.strong,.col-checkboxes label.strong,.row-checkboxes label.strong{font-weight:bold}label.label-with-radio input[type="radio"],label.label-with-radio input[type="checkbox"],label.label-with-checkbox input[type="radio"],.col-checkboxes label input[type="radio"],.row-checkboxes label input[type="radio"],label.label-with-checkbox input[type="checkbox"],.col-checkboxes label input[type="checkbox"],.row-checkboxes label input[type="checkbox"]{width:15px;height:15px;margin-right:5px;margin-top:0px;float:left}label.label-with-radio.checkbox-right input[type="radio"],label.label-with-radio.checkbox-right input[type="checkbox"],label.label-with-checkbox.checkbox-right input[type="radio"],.col-checkboxes label.checkbox-right input[type="radio"],.row-checkboxes label.checkbox-right input[type="radio"],label.label-with-checkbox.checkbox-right input[type="checkbox"],.col-checkboxes label.checkbox-right input[type="checkbox"],.row-checkboxes label.checkbox-right input[type="checkbox"]{margin-right:0;margin-left:5px;float:right}label.label-with-radio input[type="radio"]:checked.ng-dirty ~ *,label.label-with-checkbox input[type="radio"]:checked.ng-dirty ~ *,.col-checkboxes label input[type="radio"]:checked.ng-dirty ~ *,.row-checkboxes label input[type="radio"]:checked.ng-dirty ~ *{font-weight:bold;color:#a6cf41 !important}label.label-with-radio input[type="radio"]:checked.ng-untouched ~ *,label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *,.col-checkboxes label input[type="radio"]:checked.ng-untouched ~ *,.row-checkboxes label input[type="radio"]:checked.ng-untouched ~ *{font-weight:bold;color:black}.md-icon-button{background:transparent;color:white !important}.md-icon-button:hover{background:rgba(0,0,0,0.25)}.split-with-search-btn{display:inline-block;width:auto;width:calc(100% - 60px)}.form-control-fill>.multi-select-filter>.btn,.form-control-fill>.multi-select-filter>.str-inline-with-btns,.pagination-controls .form-control-fill>.multi-select-filter>.page-number{width:100%}.btn-a{box-shadow:none !important;padding-left:0;padding-right:0}.btn-add{background:white}.btn.btn-i .fa,.btn-i.str-inline-with-btns .fa,.pagination-controls .btn-i.page-number .fa{margin-right:5px;width:1.28571429em;text-align:center}.btn.btn-i.btn-a .fa,.btn-i.btn-a.str-inline-with-btns .fa,.pagination-controls .btn-i.btn-a.page-number .fa{margin-right:3px}.btn-disc-i{-webkit-border-radius:100%;-moz-border-radius:100%;border-radius:100%;width:auto;position:relative;overflow:hidden;padding:0;font-size:14px;width:28px;height:28px}.btn-disc-i.lg{width:40px;height:40px}.btn-disc-i:before{display:block;padding-top:100%;content:''}.btn-disc-i i.fa{position:absolute;top:50%;left:50%;margin:-7px 0 0 -7px}.btn-disc-i i.fa.fa-user{margin-left:-5px}.btn-disc-i i.fa.fa-download,.btn-disc-i i.fa.fa-pencil,.btn-disc-i i.fa.fa-search,.btn-disc-i i.fa.fa-cog{margin-left:-6px}.btn-disc-i i.fa.fa-chevron-left,.btn-disc-i i.fa.fa-chevron-right{margin-left:-5px}.nav-tabs{border-bottom:none}.nav-tabs>li{margin-bottom:0}.nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus{color:#fff;font-weight:bold;border:none;cursor:default;text-decoration:none}.nav-tabs>li>a{color:#090;background:transparent !important;margin-right:0;border:none;padding:10px 15px;-webkit-border-radius:0px;-moz-border-radius:0px;border-radius:0px}.nav-tabs>li>a:hover{text-decoration:underline;border:none}.nav-tabs>li>a>i{margin-left:10px;position:absolute;top:12px;right:12px}.btn-add{border-color:#a6cf41;background:white;box-shadow:none}.btn-add:hover,.btn-add:focus{background:#dff0d8}.btn-priority{background-image:-webkit-linear-gradient(top, #f0ad4e 0, #eb9316 100%);background-image:-o-linear-gradient(top, #f0ad4e 0, #eb9316 100%);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f0ad4e), to(#eb9316));background-image:linear-gradient(to bottom, #f0ad4e 0, #eb9316 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0ad4e', endColorstr='#ffeb9316', GradientType=0);filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);background-repeat:repeat-x;border-color:#e38d13;color:#fff;text-shadow:none;background-color:#f0ad4e;border-color:#eea236}.btn-priority:hover,.btn-priority:focus{background-color:#eb9316;background-position:0 -15px;color:#fff}.btn-priority:hover{color:#fff;background-color:#ec971f;border-color:#d58512}.pagination-status{font-weight:bold;color:#C40F11}.pagination-controls{width:110px}.pagination-controls .page-number{text-align:center !important;box-shadow:none}.pagination-controls>a{cursor:pointer}.btn-group ul.dropdown-menu{z-index:49;padding:0px}.btn-group ul.dropdown-menu li a,.btn-group ul.dropdown-menu li button{padding:10px;background:transparent;border:none;outline:none;display:block;width:100%;text-align:left;font-size:13px;line-height:15px}.btn-group ul.dropdown-menu li a:hover,.btn-group ul.dropdown-menu li button:hover{background:#f9f9f9}.btn-group ul.dropdown-menu li a i.fa,.btn-group ul.dropdown-menu li button i.fa{margin-right:5px}.fa.fa-ban,.fa.fa-user-times{color:red}btn.active,.btn:active,.str-inline-with-btns:active,.pagination-controls .page-number:active{background-image:none;outline:0;-webkit-box-shadow:none;box-shadow:none}.btn-default.active.focus,.btn-default.active:focus,.btn-default.active:hover,.btn-default:active.focus,.btn-default:active:focus,.btn-default:active:hover,.open>.dropdown-toggle.btn-default.focus,.open>.dropdown-toggle.btn-default:focus,.open>.dropdown-toggle.btn-default:hover,.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{color:white;background-color:#090;border-color:#090}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{background-image:none}.form-group.cust-mandatoryXXX label:after,.form-group-input-only.cust-mandatoryXXX label:after{content:"*";color:red;font-size:1.2em;margin-left:5px}input[type=text]::-ms-clear,input.searchStr::-ms-clear{display:none;width:0;height:0}.changed-field:not(.ng-invalid){border-color:yellow !important;background:yellow !important}ul.help-list,ul.error-list{list-style:none;margin-left:0;padding-left:1em;text-indent:-1em}ul.help-list li,ul.error-list li{list-style-image:none;list-style-type:none;margin:0 0 10px 0}ul.help-list li:last-child,ul.error-list li:last-child{margin-bottom:0px}ul.help-list li:before,ul.error-list li:before{content:"\f054";font-size:10px;margin-right:5px}ul.help-list.error-list li,ul.error-list.error-list li{color:red}ul.help-list.error-list li:before,ul.error-list.error-list li:before{content:"\f069"}input[type="checkbox"],input[type="radio"]{width:15px;height:15px}input[readonly],input.dummy-disabled{background:#eee}textarea{width:100%;min-height:150px;resize:vertical}.inpUpperCase{text-transform:uppercase}.inpFeedback{font-weight:normal}.inpFeedback>div{display:inline-block;padding:0 10px}.inpFeedback.isError div{color:red}.inpFeedback.isGood div{color:#a6cf41}form .form-control{border:1px solid #ddd;background:white;-webkit-box-shadow:none;box-shadow:none;transition:all linear 0.5s;width:100%;font-size:13px;line-height:1.4em;padding:5px 10px}form .form-control[type="text"]{padding-left:10px;font-size:13px}form .form-control.form-control-auto-width{width:auto}form:not(.ignore-validation-styles) .form-control[required].ng-pristine:not(.ng-touched):not(.ignore-style-ng-pristine){background-color:#fcf8e3;border-color:#FFCD04}form:not(.ignore-validation-styles) .form-control.ng-invalid.ng-touched,form:not(.ignore-validation-styles) .form-control.ng-invalid-required.ng-touched{border-color:red;background:#F7C6BE}form:not(.ignore-validation-styles) .form-control.ng-valid.ng-dirty{border-color:#239F40;background:#dff0d8;-webkit-box-shadow:none;box-shadow:none}form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid{border-color:#ddd;background:white}form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-invalid-important{border-color:red;background:#F7C6BE}form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid-important{border-color:#239F40;background:#dff0d8;-webkit-box-shadow:none;box-shadow:none}input[type="number"].inpHideSpinner::-webkit-outer-spin-button,input[type="number"].inpHideSpinner::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type="number"].inpHideSpinner{-moz-appearance:textfield}.col-checkboxes label{display:block}.row-checkboxes label,.row-radios label{margin-right:20px}.col-checkboxes label,.row-checkboxes label{font-weight:normal;cursor:pointer;margin-bottom:10px}.col-checkboxes label input,.row-checkboxes label input{margin-right:5px}label.submit-label-dummy{display:block;visibility:hidden}.fa-dummy-tooltip,span.trim-string-with-tooltip:after{content:" \f059";color:#090}span.trim-string-with-tooltip{display:block}span.trim-string-with-tooltip.is-FreeTextDescription{max-width:250px}span.trim-string-with-tooltip>span{display:inline-block;max-width:calc(100% - 20px)}.tooltip .tooltip-inner{max-width:400px;white-space:pre-wrap;display:inline-block;word-wrap:break-word}.hasTooltips{position:relative;transition:all linear 0.5s;min-height:28px}.hasTooltips .tooltip_cust{position:absolute;z-index:2;top:0px;left:0px;width:100%;height:1px;text-align:center;padding:0;transition:all linear 0.5s}.hasTooltips .tooltip_cust span.detail{cursor:pointer;background:red;position:absolute;top:0px;right:0px;width:40px;height:28px;line-height:28px;font-weight:bold;text-align:center;color:white;font-size:14px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;opacity:1;transition:all linear 0.5s}.hasTooltips .tooltip_cust div.message-wrap{position:absolute;bottom:0px;left:0px;padding:8px 0;width:100%;text-align:center;background:transparent}.hasTooltips .tooltip_cust div.message-wrap span{background:red;color:white;font-size:12px;line-height:12px;font-weight:bold;padding:6px 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;display:inline-block}.hasTooltips .tooltip_cust span.tooltip-arrow{top:-8px;left:50%;margin-left:-6px;border-width:6px 6px 0;border-top-color:red;background:transparent}.hasTooltips.isSelectList .tooltip_cust{display:none}.hasTooltips.tooltip-below .tooltip_cust{top:auto;bottom:0px}.hasTooltips.tooltip-below .tooltip_cust span.detail{top:auto;bottom:0px}.hasTooltips.tooltip-below .tooltip_cust div.message-wrap{top:0px}.hasTooltips.tooltip-below .tooltip_cust span.tooltip-arrow{top:auto;bottom:-10px;border-width:0 6px 6px;border-bottom-color:red}.table-legend-cell{clear:both;display:block;width:auto;float:right;margin:20px 0}.table-legend-cell tr>td{border:1px solid #ddd;padding:5px}.table-legend-cell tr>td:first-child{padding-right:30px}.table-legend-cell tr>td:last-child{padding-left:30px}.cd-bg-color-tender{background:#EAEAEA;color:#999}.cd-bg-color-tender-border{background:#ddd}.cd-bg-color-pending{background:#FFFDD9}.cd-bg-color-pending-border{background:#faebcc}.cd-bg-color-declined{background:#f2dede;color:#a94442}.cd-bg-color-obsolete{background:#f2dede;color:#a94442}.cd-bg-color-approved{background:#dff0d8;color:#090}.cd-bg-color-approved{background:#dff0d8}.cd-bg-color-realised{color:#090}.cd-bg-color-lost{color:red}.cell-txt{display:block;width:100%;height:18px;line-height:18px;padding:0 5px;font-size:11px}.table-row-border{border:none;border-bottom:1px dotted #ddd}.table>tbody+tbody{border-top:1px solid #ddd}.table.border-none>tr th,.table.border-none>tr td,.table.border-none>*>tr th,.table.border-none>*>tr td{border:0px !important}.table tr th{font-weight:bold}.table tr.event-details-open td{background:#c4e3f3 !important;border-bottom:none}.table tr th,.table tr td{padding:5px;vertical-align:middle}.table tr th>label,.table tr td>label{margin-bottom:0px}.table tr th.col-hidden,.table tr td.col-hidden{display:none}.table tr th.col-actions,.table tr th.col-actions-printable,.table tr td.col-actions,.table tr td.col-actions-printable{text-align:right;min-width:100px}.table tr th.col-actions .row-checkboxes label:last-child,.table tr th.col-actions .row-radios label:last-child,.table tr th.col-actions-printable .row-checkboxes label:last-child,.table tr th.col-actions-printable .row-radios label:last-child,.table tr td.col-actions .row-checkboxes label:last-child,.table tr td.col-actions .row-radios label:last-child,.table tr td.col-actions-printable .row-checkboxes label:last-child,.table tr td.col-actions-printable .row-radios label:last-child{margin-right:0px}.table tr th.col-hidden-header,.table tr td.col-hidden-header{color:#239F40;font-size:0px;padding:0px;border-bottom:none !important;height:0px}.table tr:last-child th{border-bottom:1px solid #ddd}.table tr:last-child td{border-bottom:none}table.half-n-half tr>th,table.half-n-half tr>td{width:50%}table.fixed-layout{table-layout:fixed}table.fixed-layout .squeeze-into-cell{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word;display:block}.wrap-longtext{white-space:pre}.aut-sort:before{font-family:FontAwesome;padding-right:0.5em;width:1.28571429em;display:inline-block;text-align:center}.aut-asc:before{content:"\f160"}.aut-desc:before{content:"\f161"}table.table.user-panel-table{margin:0 0 15px 0;border:1px solid #ddd}table.table.user-panel-table tr th{padding:10px 15px;background:#D8EB9A;border:0px;border-bottom:1px solid #ddd}table.table.user-panel-table tr td{background:#f1f1f1;border-bottom:1px dotted #ddd;padding:0px;padding-top:15px}table.table.user-panel-table tr td.padded-cell{padding:15px}table.table.user-panel-table tr:last-child td{padding-bottom:15px;border-bottom:0px}table.table.user-panel-table.cols-2 tr td{width:50%}table.table.user-panel-table.cols-3 tr td{width:33.333333%}table.table.user-panel-table.cols-4 tr td{width:25%}table.table.user-panel-table.padded-cells tr td{padding:15px}#toast-container>div{opacity:1 !important}#toast-container.toast-top-center,#toast-container.toast-bottom-center{left:50%;right:auto;margin-left:-250px;width:500px}#toast-container.toast-top-center>div,#toast-container.toast-bottom-center>div{width:100%}#toast-container.toast-top-center>div button.toast-close-button,#toast-container.toast-bottom-center>div button.toast-close-button{margin-right:5px}#toast-container.toast-top-center{top:20px}#toast-container.toast-bottom-center{bottom:50px}.angular-hovercard{display:inline-block;position:relative}.angular-hovercard-label{position:relative}.angular-hovercard-label.angular-hovercard-active{z-index:99}.angular-hovercard-detail{-webkit-box-shadow:0 6px 12px rgba(0,0,0,0.175);-moz-box-shadow:0px 6px 12px 0px rgba(0,0,0,0.175);box-shadow:0 6px 12px rgba(0,0,0,0.175);background:white;border:1px solid #ddd;opacity:0;padding:0;position:absolute;visibility:hidden;width:auto;min-width:500px;z-index:98}.angular-hovercard-detail.angular-hovercard-active{min-height:200px;opacity:1;visibility:visible}.hoverCardDetailsWrap{font-size:11px}.hoverCardDetailsWrap .content-row{display:block;padding:5px;border-bottom:1px solid #ddd}.hoverCardDetailsWrap .content-row.wrap-overview{padding:10px;font-size:0.9em;color:#303030}.hoverCardDetailsWrap .content-row.wrap-overview table{width:100%}.hoverCardDetailsWrap .content-row.wrap-overview table tr td{border:none;padding:3px}.hoverCardDetailsWrap .content-row.wrap-overview table tr td.border-bottom{border-bottom:1px solid #ddd}.hoverCardDetailsWrap .content-row.wrap-overview table tr td:last-child{text-align:right}.hoverCardDetailsWrap .content-row label{font-weight:bold}.hoverCardDetailsWrap .content-row.wrap-actions{padding:0px;max-height:200px;overflow-y:scroll}.hoverCardDetailsWrap .content-row.wrap-actions table{width:100%}.hoverCardDetailsWrap .content-row.wrap-actions table tr th{color:white}.hoverCardDetailsWrap .content-row.wrap-actions table tr td{border-bottom:1px solid #ddd;font-weight:normal}.hoverCardDetailsWrap .content-row.wrap-actions table tr:last-child td{border-bottom:none}.hoverCardDetailsWrap .content-row:last-child{border-bottom:none}.navbar-default .navbar-toggle{border-color:transparent !important}.navbar-default .navbar-toggle .icon-bar{background-color:#fff !important}.btn-default:hover,.btn-default:active,.btn-default:focus{color:#067d00 !important}.dropdown-menu>li.divider{margin:0}.dropdown-menu>li>a{padding:3px 10px}.wrap-pagination>ul.pagination{margin-top:0px !important;margin-bottom:0px !important}.pagination>li>a,.pagination>li>span{padding:4px 10px;color:#090;text-decoration:none;background-color:#fff;border:1px solid #ddd}.pagination>.disabled>a,.pagination>.disabled>a:focus,.pagination>.disabled>a:hover,.pagination>.disabled>span,.pagination>.disabled>span:focus,.pagination>.disabled>span:hover{color:#c8c8c8;background-color:#fff;border-color:#ddd}.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{color:#000;background-color:#f9f9f9;border-color:#ddd}.input-group-addon{padding:4px 10px;color:#555;background-color:#f9f9f9;border:1px solid #ddd}.btn-default{color:#090;background-color:#fff;border-color:#ddd}header{padding:15px;padding-bottom:0px}header a img{float:left;display:inline-block;max-height:90px}header a h3{float:left;display:inline-block;margin:0;padding:30px 20px;padding-bottom:0px;color:#090 !important;text-decoration:none}header div.user{text-align:right;padding-top:40px}header div.user .btn-group.btn-edit-avatar>.btn-group button.btn,header div.user .btn-group.btn-edit-avatar>.btn-group button.str-inline-with-btns,header div.user .btn-group.btn-edit-avatar>.btn-group .pagination-controls button.page-number,.pagination-controls header div.user .btn-group.btn-edit-avatar>.btn-group button.page-number{border:0px}nav.navbar.navbar-default{background:#fff;border-width:0 0 1px 0;border-color:#ccc;margin-bottom:45px}nav ul.nav.navbar-nav li.active a{background:white !important;color:#067d00}nav ul.nav.navbar-nav li a{color:#067d00}nav ul.nav.navbar-nav li a:hover{background:#eee !important}.navbar-inverse{border-bottom:1px solid #ccc}.navbar-nav li.active:after,.navbar-nav li.active:before{bottom:0%;margin-bottom:-1px;left:50%;border:solid transparent;content:" ";height:0;width:0;position:absolute;pointer-events:none}.navbar-nav li.active:after{border-bottom-color:#fff;border-width:6px;margin-left:-6px;z-index:1}.navbar-nav li.active:before{border-bottom-color:#ccc;border-width:8px;margin-left:-8px;z-index:1}footer{overflow:hidden;background:#eee;border-top:1px solid #999;padding-top:10px}footer ul.ul-inline-piped{display:inline-block;list-style:none;text-align:center}footer ul.ul-inline-piped li{display:inline-block}footer ul.ul-inline-piped li:after{content:"|";margin:0 10px}footer ul.ul-inline-piped li:last-child:after{display:none}.panel{-webkit-box-shadow:none;box-shadow:none}.panel.panel-bp{background:#eee;border:0px;border-bottom:3px solid #090}.panel.has-button-bar{margin-bottom:0px}.float-none{float:none !important}.ltr .float-left{float:left !important}.ltr .float-right{float:right !important}.padding-0{padding:0 !important}.padding-1{padding:10px !important}.padding-g1{padding:15px !important}.padding-1-5{padding:15px !important}.padding-2{padding:20px !important}.padding-x-0{padding-left:0 !important;padding-right:0 !important}.padding-y-0{padding-top:0 !important;padding-bottom:0 !important}.padding-x-1{padding-left:10px !important;padding-right:10px !important}.padding-x-1-5{padding-left:15px !important;padding-right:15px !important}.padding-y-1{padding-top:10px !important;padding-bottom:10px !important}.padding-y-1-5,.tab-content{padding-top:15px !important;padding-bottom:15px !important}.padding-y-g1{padding-top:15px !important;padding-bottom:15px !important}.padding-top-0{padding-top:0 !important}.padding-top-0-5{padding-top:5px !important}.padding-top-1{padding-top:10px !important}.padding-top-1-5{padding-top:15px !important}.padding-top-g1{padding-top:15px !important}.padding-top-2{padding-top:20px !important}.padding-bottom-0{padding-bottom:0 !important}.padding-bottom-1{padding-bottom:10px !important}.padding-bottom-g1{padding-bottom:15px !important}.padding-bottom-1-5{padding-bottom:15px !important}.padding-bottom-2{padding-bottom:20px !important}.padding-left-0{padding-left:0 !important}.padding-left-1{padding-left:10px !important}.padding-left-2{padding-left:20px !important}.padding-left-3{padding-left:30px !important}.padding-right-0{padding-right:0 !important}.padding-right-1{padding-right:10px !important}.padding-right-2{padding-right:20px !important}.margin-0{margin:0 !important}.margin-x-0{margin-left:0 !important;margin-right:0 !important}.margin-x-1{margin-left:10px !important;margin-right:10px !important}.margin-x-g1{margin-left:15px !important;margin-right:15px !important}.margin-y-0{margin-top:0 !important;margin-bottom:0 !important}.margin-y-1{margin-top:10px !important;margin-bottom:10px !important}.margin-y-g1{margin-top:15px !important;margin-bottom:15px !important}.margin-y-g2{margin-top:30px !important;margin-bottom:30px !important}.margin-top-0{margin-top:0 !important}.margin-top-1{margin-top:10px !important}.margin-top-g1{margin-top:15px !important}.margin-top-1-5{margin-top:15px !important}.margin-top-2{margin-top:20px !important}.margin-top-3{margin-top:30px !important}.margin-top-4{margin-top:40px !important}.margin-top-massive{margin-top:100px !important}.margin-bottom-0{margin-bottom:0 !important}.margin-bottom-1{margin-bottom:10px !important}.margin-bottom-g1{margin-bottom:15px !important}.margin-bottom-2{margin-bottom:20px !important}.margin-left-1{margin-left:10px !important}.margin-right-1{margin-right:10px !important}.margin-0-auto{margin:0 auto}.border-0{border:0px !important}.border-top-0{border-top:0px !important}.border-bottom-0{border-bottom:0px !important}.border-left-0{border-left:0px !important}.border-right-0{border-right:0px !important}.min-width-100{min-width:100px !important}.min-width-150{min-width:150px !important}.panel-heading .panel-btn-wrap.ie-hide{display:none\9}@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){.ie-hide{display:none !important}}@media (max-width: 1199px){.fa-textAfter-md:after{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;content:attr(fa-textAfter) !important;margin-left:5px}.rtl .fa-textAfter-md:after{margin-left:0;margin-right:5px}}@media (max-width: 992px){.md-dialog-container md-dialog{min-width:auto;max-width:auto;width:90% !important}.wrap-subsections{padding:20px 5%}.rwd_sm_clear-both{clear:both}}.row-no-padding [class*="col-"]{padding-left:0 !important;padding-right:0 !important}@media all and (min-width: 481px) and (max-width: 640px){.col-xxs-1,.col-xxs-10,.col-xxs-11,.col-xxs-12,.col-xxs-2,.col-xxs-3,.col-xxs-4,.col-xxs-5,.col-xxs-6,.col-xxs-7,.col-xxs-8,.col-xxs-9{position:relative;min-height:1px;padding-right:15px;padding-left:15px}.col-xxs-1,.col-xxs-10,.col-xxs-11,.col-xxs-12,.col-xxs-2,.col-xxs-3,.col-xxs-4,.col-xxs-5,.col-xxs-6,.col-xxs-7,.col-xxs-8,.col-xxs-9{float:left}}@media all and (min-width: 321px) and (max-width: 480px){.col-xxxs-1,.col-xxxs-10,.col-xxxs-11,.col-xxxs-12,.col-xxxs-2,.col-xxxs-3,.col-xxxs-4,.col-xxxs-5,.col-xxxs-6,.col-xxxs-7,.col-xxxs-8,.col-xxxs-9{position:relative;min-height:1px;padding-right:15px;padding-left:15px}.col-xxxs-1,.col-xxxs-10,.col-xxxs-11,.col-xxxs-12,.col-xxxs-2,.col-xxxs-3,.col-xxxs-4,.col-xxxs-5,.col-xxxs-6,.col-xxxs-7,.col-xxxs-8,.col-xxxs-9{float:left}}@media all and (min-width: 481px) and (max-width: 640px){.hidden-xxs{display:none !important}.visible-xxs{display:block !important}.col-xxs-pull-12{right:100%}.col-xxs-pull-11{right:91.66666667%}.col-xxs-pull-10{right:83.33333333%}.col-xxs-pull-9{right:75%}.col-xxs-pull-8{right:66.66666667%}.col-xxs-pull-7{right:58.33333333%}.col-xxs-pull-6{right:50%}.col-xxs-pull-5{right:41.66666667%}.col-xxs-pull-4{right:33.33333333%}.col-xxs-pull-3{right:25%}.col-xxs-pull-2{right:16.66666667%}.col-xxs-pull-1{right:8.33333333%}.col-xxs-pull-0{right:auto}.col-xxs-push-12{left:100%}.col-xxs-push-11{left:91.66666667%}.col-xxs-push-10{left:83.33333333%}.col-xxs-push-9{left:75%}.col-xxs-push-8{left:66.66666667%}.col-xxs-push-7{left:58.33333333%}.col-xxs-push-6{left:50%}.col-xxs-push-5{left:41.66666667%}.col-xxs-push-4{left:33.33333333%}.col-xxs-push-3{left:25%}.col-xxs-push-2{left:16.66666667%}.col-xxs-push-1{left:8.33333333%}.col-xxs-push-0{left:auto}.col-xxs-offset-12{margin-left:100%}.col-xxs-offset-11{margin-left:91.66666667%}.col-xxs-offset-10{margin-left:83.33333333%}.col-xxs-offset-9{margin-left:75%}.col-xxs-offset-8{margin-left:66.66666667%}.col-xxs-offset-7{margin-left:58.33333333%}.col-xxs-offset-6{margin-left:50%}.col-xxs-offset-5{margin-left:41.66666667%}.col-xxs-offset-4{margin-left:33.33333333%}.col-xxs-offset-3{margin-left:25%}.col-xxs-offset-2{margin-left:16.66666667%}.col-xxs-offset-1{margin-left:8.33333333%}.col-xxs-offset-0{margin-left:0}.col-xxs-1{width:8.33333333%}.col-xxs-2{width:16.66666667%}.col-xxs-3{width:25%}.col-xxs-4{width:33.33333333%}.col-xxs-5{width:41.66666667%}.col-xxs-6{width:50%}.col-xxs-7{width:58.33333333%}.col-xxs-8{width:66.66666667%}.col-xxs-9{width:75%}.col-xxs-10{width:83.33333333%}.col-xxs-11{width:91.66666667%}.col-xxs-12{width:100%}.col-xxs-padding-2{background:red;padding:20px !important}}@media all and (min-width: 321px) and (max-width: 480px){.hidden-xxxs{display:none !important}.visible-xxxs{display:block !important}.col-xxxs-pull-12{right:100%}.col-xxxs-pull-11{right:91.66666667%}.col-xxxs-pull-10{right:83.33333333%}.col-xxxs-pull-9{right:75%}.col-xxxs-pull-8{right:66.66666667%}.col-xxxs-pull-7{right:58.33333333%}.col-xxxs-pull-6{right:50%}.col-xxxs-pull-5{right:41.66666667%}.col-xxxs-pull-4{right:33.33333333%}.col-xxxs-pull-3{right:25%}.col-xxxs-pull-2{right:16.66666667%}.col-xxxs-pull-1{right:8.33333333%}.col-xxxs-pull-0{right:auto}.col-xxxs-push-12{left:100%}.col-xxxs-push-11{left:91.66666667%}.col-xxxs-push-10{left:83.33333333%}.col-xxxs-push-9{left:75%}.col-xxxs-push-8{left:66.66666667%}.col-xxxs-push-7{left:58.33333333%}.col-xxxs-push-6{left:50%}.col-xxxs-push-5{left:41.66666667%}.col-xxxs-push-4{left:33.33333333%}.col-xxxs-push-3{left:25%}.col-xxxs-push-2{left:16.66666667%}.col-xxxs-push-1{left:8.33333333%}.col-xxxs-push-0{left:auto}.col-xxxs-offset-12{margin-left:100%}.col-xxxs-offset-11{margin-left:91.66666667%}.col-xxxs-offset-10{margin-left:83.33333333%}.col-xxxs-offset-9{margin-left:75%}.col-xxxs-offset-8{margin-left:66.66666667%}.col-xxxs-offset-7{margin-left:58.33333333%}.col-xxxs-offset-6{margin-left:50%}.col-xxxs-offset-5{margin-left:41.66666667%}.col-xxxs-offset-4{margin-left:33.33333333%}.col-xxxs-offset-3{margin-left:25%}.col-xxxs-offset-2{margin-left:16.66666667%}.col-xxxs-offset-1{margin-left:8.33333333%}.col-xxxs-offset-0{margin-left:0}.col-xxxs-1{width:8.33333333%}.col-xxxs-2{width:16.66666667%}.col-xxxs-3{width:25%}.col-xxxs-4{width:33.33333333%}.col-xxxs-5{width:41.66666667%}.col-xxxs-6{width:50%}.col-xxxs-7{width:58.33333333%}.col-xxxs-8{width:66.66666667%}.col-xxxs-9{width:75%}.col-xxxs-10{width:83.33333333%}.col-xxxs-11{width:91.66666667%}.col-xxxs-12{width:100%}.col-xxxs-text-align-left{text-align:left}.col-xxxs-text-align-right{text-align:left}.col-xxxs-padding-left-0{padding-left:0}.col-xxxs-padding-left-1{padding-left:10px !important}.col-xxxs-padding-right-0{padding-right:0}.col-xxxs-padding-2{background:yellow;padding:20px !important}}
+/* main.scss */
+/* all changes are sent to 'main.css' */
+/*
+CIS CRS Sass Theme
+Author: Alex Mackenzie
+Version: 0.0.1
+*/
+@import url(bootstrap.min.css);
+/* BASE - base styles, variables, mixins etc */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 6, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base-reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base-reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base-reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 34, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base-reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 37, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base-reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 40, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base-reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 45, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base-reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* _variables.scss */
+/* BP Info colors */
+/* General Colors */
+/* status (span) color */
+/* font size and colors */
+/* hyperlink */
+/* status (background) color */
+/* debriefable - realised? */
+/* offset: margins & paddings */
+/* _mixins.scss */
+/* _normalize.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_normalize.scss */
+h1, h2, h3, h4, h5 {
+  margin-top: 0;
+}
+
+/* _base.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: white;
+}
+
+/* line 13, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+header .logo-wrap {
+  padding: 10px;
+}
+
+/* line 16, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+header .logo-wrap img {
+  float: left;
+  display: inline-block;
+}
+
+/* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+header .logo-wrap span {
+  display: inline-block;
+  color: #009900;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 52px;
+}
+
+/* line 31, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.loading-message {
+  display: block;
+  width: 100%;
+  color: #009900;
+}
+
+/* line 36, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.loading-message.sm {
+  text-align: left;
+  padding: 10px;
+}
+
+/* line 40, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.loading-message.sm span {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* line 46, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.loading-message.lg {
+  text-align: center;
+  padding: 50px 0;
+}
+
+/* line 50, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.loading-message.lg span {
+  display: block;
+  margin: 10px auto;
+}
+
+/* line 57, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4em;
+  background: #FFFFFF;
+  color: #303030;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 66, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+body > div.canvas {
+  min-height: 100%;
+  position: relative;
+}
+
+/* line 70, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+body > div.canvas main {
+  padding-bottom: 100px;
+}
+
+/* line 74, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+body > div.canvas footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+}
+
+/* line 83, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.print-only {
+  display: none;
+}
+
+/* line 87, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumb {
+  background: #fff;
+  margin-bottom: 0;
+}
+
+/* line 92, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+a {
+  color: #009900;
+  outline: 0;
+}
+
+/* line 97, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+a:hover {
+  color: #067d00;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* line 103, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+a:focus, a:active {
+  color: #999999;
+  outline: none;
+}
+
+/* line 108, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+*[ng-click], *[onclick],
+.cursor-pointer {
+  outline: 0;
+  cursor: pointer;
+}
+
+/* line 114, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 120, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+input, textarea, button {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 124, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.span-no-data-available {
+  font-weight: bold;
+}
+
+/* line 128, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.span-info {
+  color: #239F40;
+}
+
+/* line 132, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.span-good {
+  color: #239F40;
+}
+
+/* line 136, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.span-date {
+  color: #999999;
+  font-style: italic;
+}
+
+/* line 141, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-green-dark {
+  color: #067d00;
+}
+
+/* line 144, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-green-1 {
+  color: #009900;
+}
+
+/* line 147, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-green-2 {
+  color: #97CC00;
+}
+
+/* line 151, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-danger,
+.span-error {
+  color: #f00;
+}
+
+/* line 156, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.span-warning {
+  color: #f90;
+}
+
+/* line 160, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-obsolete {
+  color: #999999;
+}
+
+/* line 164, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap {
+  display: block;
+}
+
+/* line 167, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap ul {
+  display: block;
+  list-style: none;
+}
+
+/* line 171, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap ul li {
+  display: inline;
+  list-style: none;
+}
+
+/* line 175, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap ul li.home a,
+.breadcrumbWrap ul li .ng-binding {
+  padding: 10px;
+  display: inline-block;
+}
+
+/* line 181, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap ul li:before {
+  content: '/';
+}
+
+/* line 185, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap ul li:first-child:before {
+  content: '';
+}
+
+/* line 189, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap ul li:first-child a,
+.breadcrumbWrap ul li:first-child span {
+  padding-left: 0;
+}
+
+/* line 194, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.breadcrumbWrap ul li:last-child a,
+.breadcrumbWrap ul li:last-child span {
+  color: #2d2d2d;
+}
+
+/* line 202, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.faintOpacity {
+  filter: alpha(opacity=30);
+  opacity: 0.30;
+}
+
+/* line 206, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.semiOpacity {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+/* line 210, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.fullOpacity {
+  filter: alpha(opacity=100);
+  opacity: 1.0;
+}
+
+/* line 214, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.display-block {
+  display: block !important;
+}
+
+/* line 218, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.display-inline-block {
+  display: inline-block !important;
+}
+
+/* line 222, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.display-none {
+  display: none !important;
+}
+
+/* line 226, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.display-block-clear {
+  display: block !important;
+  clear: both;
+}
+
+/* line 231, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-good {
+  color: #a6cf41;
+}
+
+/* line 235, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-good-bg {
+  background: #a6cf41;
+}
+
+/* line 239, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-priority {
+  color: #eb9316;
+}
+
+/* line 243, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-pending {
+  color: #f90;
+}
+
+/* line 247, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-warning {
+  color: #f90;
+}
+
+/* line 251, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.color-archive {
+  color: #f00;
+}
+
+/* lbl tests */
+/* line 256, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.flagMe {
+  padding: 0px 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+/* line 262, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.emptyString {
+  border: 2px solid red;
+  background: #ff9;
+  color: red;
+}
+
+/* line 268, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-danger {
+  background: #f00;
+  color: white;
+}
+
+/* line 273, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.warningBG {
+  background: #f90;
+  color: white;
+}
+
+/* line 278, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.lightwarningBG {
+  background: #FFC926;
+}
+
+/* line 282, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-white {
+  background: white;
+}
+
+/* line 286, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-white-xxx {
+  background: white;
+}
+
+/* line 290, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.goodBG,
+.bg-good {
+  background: #a6cf41;
+}
+
+/* line 295, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.errorBG,
+.bg-error {
+  background: #f00;
+}
+
+/* line 300, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-good-light {
+  background: #dff0d8;
+}
+
+/* line 304, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-info {
+  background: #d9edf7;
+}
+
+/* line 308, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-info-strong {
+  background: #5bc0de;
+}
+
+/* line 312, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-take-action {
+  background: #FFCD04;
+}
+
+/* line 316, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-lightgray {
+  background: #f9f9f9;
+}
+
+/* line 320, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.labelBG {
+  background: blue;
+  color: white;
+}
+
+/* line 325, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.stringGood {
+  background: #5cb85c;
+  color: white;
+}
+
+/* line 330, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-changed,
+.bg-provisional {
+  background: #FDF3E4;
+}
+
+/* line 335, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-warning {
+  background: #f2dede;
+}
+
+/* line 339, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-priority {
+  background: #eb9316;
+}
+
+/* line 343, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-loading {
+  display: table;
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+  text-align: center;
+  color: #C40F11;
+}
+
+/* line 351, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-loading .wrap-message {
+  display: table-cell;
+  vertical-align: middle;
+  width: inherit;
+  height: 100%;
+}
+
+/* line 357, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-loading .wrap-message span {
+  font-weight: bold;
+  line-height: 20px;
+}
+
+/* line 364, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.bg-secondary-color {
+  background: #C40F11;
+  color: white;
+}
+
+/* line 369, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.container-page-error {
+  text-align: center;
+  padding-top: 50px;
+}
+
+/* line 374, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_base.scss */
+.vertical-align-center {
+  display: flex;
+  align-items: center;
+}
+
+/* _recycled.scss */
+/* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.banner-img-wrap {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* line 29, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.banner-img-wrap img {
+  float: left;
+  display: block;
+  width: 100%;
+}
+
+/* line 32, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.debug_filename {
+  display: block;
+  background: yellow;
+}
+
+/* line 36, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-denied-access_wrap:not(.lite) {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-denied-access_wrap:not(.lite) .panel {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* line 47, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-denied-access_wrap:not(.lite) .panel .panel-heading {
+  padding: 30px 50px;
+}
+
+/* line 49, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-denied-access_wrap:not(.lite) .panel .panel-heading h2 {
+  color: black !important;
+  margin-top: 0px;
+}
+
+/* line 57, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-denied-access_wrap.lite .panel .panel-heading h2 {
+  display: none !important;
+}
+
+/* line 63, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.input-group-btn {
+  height: 28px;
+}
+
+/* line 66, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.input-group-btn > .btn, .input-group-btn > .str-inline-with-btns, .pagination-controls .input-group-btn > .page-number {
+  height: 100%;
+}
+
+/* line 71, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.wrap-review-user {
+  width: 600px;
+  margin: 0 auto;
+}
+
+/* line 77, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.k-widget.k-datepicker {
+  width: 100%;
+  height: 28px;
+}
+
+/* line 82, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.k-picker-wrap {
+  background: white !important;
+  border-radius: 0px;
+  border-color: #ddd !important;
+  height: 100%;
+}
+
+/* line 89, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.k-autocomplete .k-input, .k-dropdown-wrap .k-input, .k-numeric-wrap .k-input, .k-picker-wrap .k-input, .k-selectbox .k-input, .k-textbox > input {
+  height: 28px;
+  line-height: 28px;
+  padding: 0 10px;
+  text-indent: 0px;
+  border: 0;
+  margin: 0;
+}
+
+/* line 98, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.k-state-default > .k-select {
+  border-color: #fff;
+}
+
+/* line 100, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.k-state-default > .k-select > .k-icon {
+  color: #009900;
+}
+
+/* line 106, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar {
+  margin-bottom: 15px;
+}
+
+/* line 108, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar h1 {
+  float: left;
+  margin: 0 15px 0 0;
+  line-height: 34px;
+}
+
+/* line 110, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar .btn-group {
+  height: 34px;
+}
+
+/* line 113, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar .btn-group > .btn, .main-title-bar .btn-group > .str-inline-with-btns, .main-title-bar .pagination-controls .btn-group > .page-number, .pagination-controls .main-title-bar .btn-group > .page-number {
+  height: 100%;
+}
+
+/* line 115, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar .btn-group .input-group-addon {
+  padding: 0px;
+  width: auto;
+}
+
+/* line 118, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.main-title-bar .btn-group .input-group-addon img {
+  float: right;
+  height: 32px;
+  width: auto;
+  padding: 0px;
+}
+
+/* line 123, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.form-cust-wrap {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 10px 0;
+  display: block;
+}
+
+/* line 129, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.form-cust-wrap .form-cust-label {
+  float: left;
+  display: inline-block;
+  width: 50%;
+  padding: 0 15px;
+}
+
+/* line 135, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.form-cust-wrap .form-cust-label.label-with-checkbox, .form-cust-wrap .col-checkboxes label.form-cust-label, .col-checkboxes .form-cust-wrap label.form-cust-label, .form-cust-wrap
+.row-checkboxes label.form-cust-label,
+.row-checkboxes .form-cust-wrap label.form-cust-label {
+  text-align: left !important;
+  width: 100%;
+}
+
+/* line 140, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.form-cust-wrap .form-cust-input {
+  float: left;
+  display: inline-block;
+  width: 50%;
+  padding: 0 15px;
+}
+
+/* line 148, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+tr.tr-row-selected td {
+  background-color: #fcf8e3;
+}
+
+/* line 152, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+select.form-control[disabled],
+select.form-control[readonly] {
+  background-color: transparent !important;
+  padding: 5px 10px !important;
+  border: 0px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+/* line 163, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+select.form-control[disabled]::-ms-expand {
+  display: none !important;
+}
+
+/* line 167, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+img.fit-col {
+  width: 100%;
+  height: auto;
+}
+
+/* line 169, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.cursor-hover {
+  cursor: pointer;
+}
+
+/* line 171, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.strapline {
+  float: left;
+  height: 35px;
+  margin: 40px 0 0 50px;
+}
+
+/* line 173, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.form-control[readonly] {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  outline: none !important;
+  opacity: 1;
+}
+
+/* line 182, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.xxx_wrap-role .input-group .input-group-addon {
+  background: transparent;
+  padding-left: 0px;
+  font-weight: bold;
+  border: 0px;
+}
+
+/* line 188, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.xxx_wrap-role .input-group .input-group-addon i.fa {
+  display: none;
+}
+
+/* line 194, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+ai-dialog-overlay {
+  background: white;
+  filter: alpha(opacity=50) !important;
+  opacity: 0.5 !important;
+}
+
+/* line 200, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+ai-dialog {
+  margin-top: -200px;
+}
+
+/* line 202, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+ai-dialog > ai-dialog-footer {
+  padding: 15px;
+}
+
+/* line 209, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+table.table-hover tr:hover {
+  cursor: pointer;
+}
+
+/* line 214, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+div.wrap_table-add-user-from-list {
+  display: block;
+  min-height: 100px;
+  max-height: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* line 222, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+ai-dialog {
+  width: 600px;
+}
+
+/* line 225, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+ai-dialog.wide {
+  width: 800px;
+}
+
+/* line 228, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+ai-dialog ai-dialog-header h2 {
+  margin: 0;
+}
+
+/* line 234, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.btn-row {
+  clear: both;
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}
+
+/* line 237, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.btn-row .btn, .btn-row .str-inline-with-btns, .btn-row .pagination-controls .page-number, .pagination-controls .btn-row .page-number {
+  display: inline-block;
+}
+
+/* line 242, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.select2 {
+  width: 100% !important;
+}
+
+/* line 244, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 15px;
+  padding-right: 25px;
+}
+
+/* line 249, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.select2-container--default .select2-selection--single .select2-selection__clear {
+  padding: 0 5px;
+}
+
+/* line 253, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.select2-container--default .select2-selection--single {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+/* line 259, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.select2-container .select2-selection--single {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: 28px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* line 269, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel .panel-heading.strong-heading, .panel.panel-xc .panel-heading {
+  height: 40px;
+  border-bottom: 0px;
+  background: #009900;
+  color: white;
+  font-weight: bold;
+}
+
+/* line 276, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel .panel-heading.strong-heading .btn-text, .panel.panel-xc .panel-heading .btn-text {
+  color: #FFFF00;
+}
+
+/* line 282, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc {
+  margin-bottom: 15px;
+  border: 1px solid #009900;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 290, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-heading .btn.btn-xc_chevron, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number {
+  float: right;
+  background: transparent;
+}
+
+/* line 294, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before {
+  color: #FFFF00;
+  font-size: 14px;
+  line-height: 14px;
+  content: "\f077";
+}
+
+/* line 304, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-heading.collapsed .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading.collapsed .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading.collapsed .btn-xc_chevron.page-number:before {
+  content: "\f078";
+}
+
+/* line 310, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-body {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* line 314, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-body .wrap-fields {
+  background: #f9f9f9;
+  padding: 15px 0 0 0;
+  display: block;
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+/* line 324, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel.panel-xc .panel-body .wrap-fields .form-group label {
+  text-align: right;
+  font-size: 13px;
+  line-height: 1.4em;
+  padding-top: 5px;
+}
+
+/* line 334, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.border-none {
+  border: 0px;
+}
+
+/* line 343, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-heading {
+  background: #f9f9f9;
+  border: 0px;
+}
+
+/* line 352, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.repeaters {
+  clear: both;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* line 359, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-body .divider {
+  clear: both;
+  float: left;
+  display: block;
+  width: 100%;
+  height: 1px;
+  border-top: none;
+  margin: 0px;
+}
+
+/* line 368, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.panel-body .divider.dotted {
+  border-top: 1px dotted #ddd;
+  margin-bottom: 15px;
+}
+
+/* line 374, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/* line 378, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.highlighted {
+  background: yellow;
+}
+
+/* line 382, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.hide-border-top {
+  border-top: none;
+}
+
+/* line 384, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.hide-border-top label {
+  display: none;
+}
+
+/* line 387, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.color-amber {
+  color: #FFA500;
+}
+
+/* line 391, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.color-good {
+  color: #1fbb1f;
+}
+
+/* line 395, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.color-danger {
+  color: #FF0000;
+}
+
+/* tmp */
+/* forms */
+/* line 405, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.form-group label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+
+/* offsets */
+/* line 408, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.padding-x-0, .banner-img-wrap, .banner-img-wrap > div {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+/* line 409, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.margin-x-0, .banner-img-wrap, .banner-img-wrap > div {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+/* line 411, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.html-file-name {
+  margin-left: 10px;
+  font-size: 0.5em;
+  color: #aaa;
+}
+
+/* line 416, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.display-none {
+  display: none !important;
+}
+
+/* line 417, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.display-block {
+  display: block !important;
+}
+
+/* line 418, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+.display-inline-block {
+  display: inline-block !important;
+}
+
+/* line 420, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+section {
+  margin: 0 20px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 437, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+  .strapline {
+    height: 25px;
+    margin-left: 35px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* line 444, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_recycled.scss */
+  .strapline {
+    height: 20px;
+    margin: 45px 0 0 25px;
+  }
+}
+
+/* _print-and-web.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust {
+  border: none;
+  background: #f9f9f9;
+  border-left: 5px solid #239F40;
+}
+
+/* line 8, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust.panel-page-error {
+  display: inline-block;
+  margin: 30px auto;
+  text-align: center;
+  border: none;
+  background: transparent;
+  padding: 10px 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust.panel-page-error .page-error-code {
+  display: block;
+  font-size: 80px;
+  margin: 0 0 10px 0;
+}
+
+/* line 24, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust.panel-border {
+  background: transparent;
+  border: 5px solid #f9f9f9;
+}
+
+/* line 29, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust.panel-warning {
+  background: #fcf8e3;
+  border-color: #FFCD04;
+}
+
+/* line 33, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust.panel-info {
+  background: #d9edf7;
+  border-color: #5bc0de;
+}
+
+/* line 37, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust.panel-success {
+  background: #dff0d8;
+  border-color: #a6cf41;
+}
+
+/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust.panel-error, .panel.panel-prompt-cust.panel-danger {
+  background: #F7C6BE;
+  border-color: #f00;
+}
+
+/* line 46, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_print-and-web.scss */
+.panel.panel-prompt-cust > p,
+.panel.panel-prompt-cust > .panel-heading {
+  padding: 20px;
+  border: none;
+  height: auto;
+  line-height: normal;
+  background-image: none;
+  background-repeat: unset;
+  background: transparent;
+  color: black;
+}
+
+/* _fixed-footer.scss */
+@media all and (min-width: 641px) {
+  /* line 6, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_fixed-footer.scss */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  /* line 12, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_fixed-footer.scss */
+  #container-fixed-footer {
+    min-height: 100%;
+    position: relative;
+  }
+  /* line 19, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_fixed-footer.scss */
+  #body {
+    padding-bottom: 70px;
+    /* Height of the footer */
+  }
+  /* line 22, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/base/_fixed-footer.scss */
+  #footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 40px;
+    /* Height of the footer */
+    background: #eee;
+  }
+}
+
+/* MODULES - individual site components */
+/* _tabs.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tabs.scss */
+#exTab1 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+/* line 9, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tabs.scss */
+#exTab2 h3 {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+/* remove border radius for the tab */
+/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tabs.scss */
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+/* line 23, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tabs.scss */
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0;
+}
+
+/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tabs.scss */
+#exTab3 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+/* _typography.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+h1 > i,
+h2 > i,
+h3 > i,
+h4 > i {
+  margin-right: 10px;
+}
+
+/* line 10, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+h1 {
+  font-size: 36px;
+  line-height: 36px;
+  margin: 30px 0 15px 0;
+  color: #000;
+}
+
+/* line 11, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+h2 {
+  font-size: 28px;
+  margin: 30px 0 15px 0;
+  color: #999999 !important;
+}
+
+/* line 12, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+h4 {
+  font-weight: bold;
+}
+
+/* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+div.hdr-wrap {
+  margin-bottom: 10px;
+}
+
+/* line 15, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.hdr-inline {
+  margin: 0;
+  display: inline-block;
+}
+
+/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+strong,
+.strong {
+  font-weight: bold;
+}
+
+/* line 22, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.faint-small {
+  color: #ccc;
+  font-size: 0.8em;
+}
+
+/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.fa.text-after {
+  margin-right: 5px;
+}
+
+/* line 31, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.no-wrap {
+  white-space: nowrap;
+}
+
+/* line 35, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.old-value {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+/* line 39, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.no-wrap {
+  white-space: nowrap;
+}
+
+/* line 43, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.text-align-left {
+  text-align: left;
+}
+
+/* line 47, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.text-align-center {
+  text-align: center;
+}
+
+/* line 51, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.text-align-right {
+  text-align: right;
+}
+
+/* line 55, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.text-line-through {
+  text-decoration: line-through;
+}
+
+/* line 59, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.strong-title-accent {
+  font-size: 20px;
+  color: #C40F11;
+  font-weight: bold;
+}
+
+/* line 65, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.trim-string, span.trim-string-with-tooltip, span.trim-string-with-tooltip > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* line 69, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.ngbindPlacholder:before {
+  background: transparent url(../images/ajax-loader.gif) no-repeat 0 0;
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+/* line 77, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_typography.scss */
+.fa-dummy, .panel.panel-xc .panel-heading .btn.btn-xc_chevron:before, .panel.panel-xc .panel-heading .btn-xc_chevron.str-inline-with-btns:before, .panel.panel-xc .panel-heading .pagination-controls .btn-xc_chevron.page-number:before, .pagination-controls .panel.panel-xc .panel-heading .btn-xc_chevron.page-number:before, ul.help-list li:before,
+ul.error-list li:before, .fa-dummy-tooltip, span.trim-string-with-tooltip:after {
+  vertical-align: top;
+  font-family: FontAwesome;
+}
+
+/* _buttons.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.wrap_xc_btns_allXXX {
+  display: inline-block;
+}
+
+/* line 5, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.wrap_xc_btns_allXXX a {
+  margin: 0 10px;
+}
+
+/* line 8, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.wrap_xc_btns_allXXX .divider {
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  border-right: 2px solid #ddd;
+}
+
+/* line 19, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-group.btn-edit-avatar > .btn-group button.btn, .btn-group.btn-edit-avatar > .btn-group button.str-inline-with-btns, .btn-group.btn-edit-avatar > .btn-group .pagination-controls button.page-number, .pagination-controls .btn-group.btn-edit-avatar > .btn-group button.page-number {
+  line-height: 50px;
+  padding: 0 10px;
+}
+
+/* line 25, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-group.btn-edit-avatar a.btn.avatar, .btn-group.btn-edit-avatar a.avatar.str-inline-with-btns, .btn-group.btn-edit-avatar .pagination-controls a.avatar.page-number, .pagination-controls .btn-group.btn-edit-avatar a.avatar.page-number {
+  padding: 0;
+  border: 1px solid #f1f1f1;
+}
+
+/* line 29, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-group.btn-edit-avatar a.btn.avatar img, .btn-group.btn-edit-avatar a.avatar.str-inline-with-btns img, .btn-group.btn-edit-avatar .pagination-controls a.avatar.page-number img, .pagination-controls .btn-group.btn-edit-avatar a.avatar.page-number img {
+  width: auto;
+  max-height: 50px;
+}
+
+/* line 36, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-debrief, .btn-debrief.str-inline-with-btns, .pagination-controls .btn-debrief.page-number {
+  display: block;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 10px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+/* line 44, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-debrief.cross, .btn-debrief.cross.str-inline-with-btns, .pagination-controls .btn-debrief.cross.page-number {
+  color: #f00;
+}
+
+/* line 47, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-debrief.cross.selected, .btn-debrief.cross.selected.str-inline-with-btns, .pagination-controls .btn-debrief.cross.selected.page-number {
+  border-color: #f00;
+  background: #f00;
+  color: white;
+}
+
+/* line 54, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-debrief.tick, .btn-debrief.tick.str-inline-with-btns, .pagination-controls .btn-debrief.tick.page-number {
+  color: #009900;
+}
+
+/* line 57, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-debrief.tick.selected, .btn-debrief.tick.selected.str-inline-with-btns, .pagination-controls .btn-debrief.tick.selected.page-number {
+  border-color: #009900;
+  background: #009900;
+  color: white;
+}
+
+/* line 65, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.disabled, .disabled.str-inline-with-btns, .pagination-controls .disabled.page-number, .btn[disabled], [disabled].str-inline-with-btns, .pagination-controls [disabled].page-number, fieldset[disabled] .btn, fieldset[disabled] .str-inline-with-btns, fieldset[disabled] .pagination-controls .page-number, .pagination-controls fieldset[disabled] .page-number {
+  color: #c8c8c8;
+}
+
+/* line 69, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-gradient {
+  background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
+  background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), to(#e0e0e0));
+  background-image: linear-gradient(to bottom, #fff 0, #e0e0e0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+}
+
+/* line 79, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-gradient-hover {
+  background: #e0e0e0 !important;
+}
+
+/* line 83, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn:not(.btn-xs), .str-inline-with-btns:not(.btn-xs), .pagination-controls .page-number:not(.btn-xs) {
+  text-align: left;
+  font-size: 13px;
+  line-height: 15px;
+  padding: 5px 10px;
+}
+
+/* line 90, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.str-inline-with-btns {
+  display: inline-block;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 97, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-lg, .btn-lg.str-inline-with-btns, .pagination-controls .btn-lg.page-number {
+  font-size: 18px;
+  line-height: 1.333;
+  padding: 10px 15px;
+  height: 28px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  height: auto;
+}
+
+/* line 106, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+label.label-with-radio,
+label.label-with-checkbox,
+.col-checkboxes label,
+.row-checkboxes label {
+  cursor: pointer;
+  color: #009900;
+  font-weight: normal;
+}
+
+/* line 112, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+label.label-with-radio.strong,
+label.label-with-checkbox.strong,
+.col-checkboxes label.strong,
+.row-checkboxes label.strong {
+  font-weight: bold;
+}
+
+/* line 116, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+label.label-with-radio input[type="radio"],
+label.label-with-radio input[type="checkbox"],
+label.label-with-checkbox input[type="radio"], .col-checkboxes label input[type="radio"],
+.row-checkboxes label input[type="radio"],
+label.label-with-checkbox input[type="checkbox"], .col-checkboxes label input[type="checkbox"],
+.row-checkboxes label input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  margin-top: 0px;
+  float: left;
+}
+
+/* line 126, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+label.label-with-radio.checkbox-right input[type="radio"],
+label.label-with-radio.checkbox-right input[type="checkbox"],
+label.label-with-checkbox.checkbox-right input[type="radio"], .col-checkboxes label.checkbox-right input[type="radio"],
+.row-checkboxes label.checkbox-right input[type="radio"],
+label.label-with-checkbox.checkbox-right input[type="checkbox"], .col-checkboxes label.checkbox-right input[type="checkbox"],
+.row-checkboxes label.checkbox-right input[type="checkbox"] {
+  margin-right: 0;
+  margin-left: 5px;
+  float: right;
+}
+
+/* line 134, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+label.label-with-radio input[type="radio"]:checked.ng-dirty ~ *,
+label.label-with-checkbox input[type="radio"]:checked.ng-dirty ~ *, .col-checkboxes label input[type="radio"]:checked.ng-dirty ~ *,
+.row-checkboxes label input[type="radio"]:checked.ng-dirty ~ * {
+  font-weight: bold;
+  color: #a6cf41 !important;
+}
+
+/* line 139, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+label.label-with-radio input[type="radio"]:checked.ng-untouched ~ *,
+label.label-with-checkbox input[type="radio"]:checked.ng-untouched ~ *, .col-checkboxes label input[type="radio"]:checked.ng-untouched ~ *,
+.row-checkboxes label input[type="radio"]:checked.ng-untouched ~ * {
+  font-weight: bold;
+  color: black;
+}
+
+/* line 145, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.md-icon-button {
+  background: transparent;
+  color: white !important;
+}
+
+/* line 149, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.md-icon-button:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* line 154, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.split-with-search-btn {
+  display: inline-block;
+  width: auto;
+  width: calc(100% - 60px);
+}
+
+/* line 161, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.form-control-fill > .multi-select-filter > .btn, .form-control-fill > .multi-select-filter > .str-inline-with-btns, .pagination-controls .form-control-fill > .multi-select-filter > .page-number {
+  width: 100%;
+}
+
+/* line 166, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-a {
+  box-shadow: none !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 172, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-add {
+  background: white;
+}
+
+/* line 177, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-i .fa, .btn-i.str-inline-with-btns .fa, .pagination-controls .btn-i.page-number .fa {
+  margin-right: 5px;
+  width: 1.28571429em;
+  text-align: center;
+}
+
+/* line 183, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn.btn-i.btn-a .fa, .btn-i.btn-a.str-inline-with-btns .fa, .pagination-controls .btn-i.btn-a.page-number .fa {
+  margin-right: 3px;
+}
+
+/* line 188, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-disc-i {
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  width: auto;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+}
+
+/* line 198, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-disc-i.lg {
+  width: 40px;
+  height: 40px;
+}
+
+/* line 204, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-disc-i:before {
+  display: block;
+  padding-top: 100%;
+  content: '';
+}
+
+/* line 210, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-disc-i i.fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -7px 0 0 -7px;
+}
+
+/* line 215, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-disc-i i.fa.fa-user {
+  margin-left: -5px;
+}
+
+/* line 219, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-disc-i i.fa.fa-download, .btn-disc-i i.fa.fa-pencil, .btn-disc-i i.fa.fa-search, .btn-disc-i i.fa.fa-cog {
+  margin-left: -6px;
+}
+
+/* line 226, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-disc-i i.fa.fa-chevron-left, .btn-disc-i i.fa.fa-chevron-right {
+  margin-left: -5px;
+}
+
+/* line 233, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.nav-tabs {
+  border-bottom: none;
+}
+
+/* line 236, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.nav-tabs > li {
+  margin-bottom: 0;
+  /*margin-bottom:-1;*/
+}
+
+/* line 239, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #FFFFFF;
+  font-weight: bold;
+  border: none;
+  cursor: default;
+  text-decoration: none;
+}
+
+/* line 249, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.nav-tabs > li > a {
+  color: #009900;
+  background: transparent !important;
+  margin-right: 0;
+  border: none;
+  padding: 10px 15px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+/* line 257, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.nav-tabs > li > a:hover {
+  text-decoration: underline;
+  border: none;
+}
+
+/* line 262, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.nav-tabs > li > a > i {
+  margin-left: 10px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+/*.nav-tabs.arrow > li.active > a:after {
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    margin-left: -4px;
+    display: block;
+    content: "";
+    @include triangle(10px,top,$bp_color-white);
+}*/
+/* line 286, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-add {
+  border-color: #a6cf41;
+  background: white;
+  box-shadow: none;
+}
+
+/* line 291, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-add:hover, .btn-add:focus {
+  background: #dff0d8;
+}
+
+/* line 299, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-priority {
+  background-image: -webkit-linear-gradient(top, #f0ad4e 0, #eb9316 100%);
+  background-image: -o-linear-gradient(top, #f0ad4e 0, #eb9316 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0ad4e), to(#eb9316));
+  background-image: linear-gradient(to bottom, #f0ad4e 0, #eb9316 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0ad4e', endColorstr='#ffeb9316', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #e38d13;
+  color: #fff;
+  text-shadow: none;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+/* line 313, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-priority:hover, .btn-priority:focus {
+  background-color: #eb9316;
+  background-position: 0 -15px;
+  color: #fff;
+}
+
+/* line 319, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-priority:hover {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+
+/* line 326, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.pagination-status {
+  font-weight: bold;
+  color: #C40F11;
+}
+
+/* line 331, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.pagination-controls {
+  width: 110px;
+}
+
+/* line 334, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.pagination-controls .page-number {
+  text-align: center !important;
+  box-shadow: none;
+}
+
+/* line 340, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.pagination-controls > a {
+  cursor: pointer;
+}
+
+/* line 346, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-group ul.dropdown-menu {
+  z-index: 49;
+  /* because md-dialog starts at 50 dropdown-toggle */
+  padding: 0px;
+}
+
+/* line 351, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-group ul.dropdown-menu li a,
+.btn-group ul.dropdown-menu li button {
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+/* line 363, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-group ul.dropdown-menu li a:hover,
+.btn-group ul.dropdown-menu li button:hover {
+  background: #f9f9f9;
+}
+
+/* line 367, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-group ul.dropdown-menu li a i.fa,
+.btn-group ul.dropdown-menu li button i.fa {
+  margin-right: 5px;
+}
+
+/* fa */
+/* line 377, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.fa.fa-ban, .fa.fa-user-times {
+  color: #f00;
+}
+
+/* overrule bootstrap btn active styles */
+/* line 384, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+btn.active, .btn:active, .str-inline-with-btns:active, .pagination-controls .page-number:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 390, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover,
+.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
+  color: white;
+  background-color: #009900;
+  border-color: #009900;
+}
+
+/* line 397, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_buttons.scss */
+.btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+/* (END) overrule bootstrap btn active styles */
+/* _forms.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+label {
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+/* line 8, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.form-group.cust-mandatoryXXX label:after,
+.form-group-input-only.cust-mandatoryXXX label:after {
+  content: "*";
+  color: #f00;
+  font-size: 1.2em;
+  margin-left: 5px;
+}
+
+/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+input[type=text]::-ms-clear,
+input.searchStr::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* line 24, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.changed-field:not(.ng-invalid) {
+  border-color: yellow !important;
+  background: yellow !important;
+}
+
+/* line 29, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+ul.help-list,
+ul.error-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+/* line 36, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+ul.help-list li,
+ul.error-list li {
+  list-style-image: none;
+  list-style-type: none;
+  margin: 0 0 10px 0;
+}
+
+/* line 40, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+ul.help-list li:last-child,
+ul.error-list li:last-child {
+  margin-bottom: 0px;
+}
+
+/* line 44, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+ul.help-list li:before,
+ul.error-list li:before {
+  content: "\f054";
+  font-size: 10px;
+  margin-right: 5px;
+}
+
+/* line 53, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+ul.help-list.error-list li,
+ul.error-list.error-list li {
+  color: #f00;
+}
+
+/* line 56, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+ul.help-list.error-list li:before,
+ul.error-list.error-list li:before {
+  content: "\f069";
+}
+
+/* line 64, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 15px;
+  height: 15px;
+}
+
+/* line 70, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+input[readonly],
+input.dummy-disabled {
+  background: #eee;
+}
+
+/* line 75, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* search input */
+/* line 82, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.inpUpperCase {
+  text-transform: uppercase;
+}
+
+/* line 86, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.inpFeedback {
+  font-weight: normal;
+}
+
+/* line 89, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.inpFeedback > div {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+/* line 94, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.inpFeedback.isError div {
+  color: #f00;
+}
+
+/* line 98, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.inpFeedback.isGood div {
+  color: #a6cf41;
+}
+
+/* line 104, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form .form-control {
+  border: 1px solid #ddd;
+  background: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: all linear 0.5s;
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  font-size: 13px;
+  line-height: 1.4em;
+  padding: 0 10px;
+}
+
+/* line 116, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form .form-control[type="text"] {
+  padding-left: 10px;
+  font-size: 13px;
+}
+
+/* line 121, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form .form-control.form-control-auto-width {
+  width: auto;
+}
+
+/* line 130, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form:not(.ignore-validation-styles) .form-control[required].ng-pristine:not(.ng-touched):not(.ignore-style-ng-pristine) {
+  background-color: #fcf8e3;
+  border-color: #FFCD04;
+}
+
+/* line 135, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form:not(.ignore-validation-styles) .form-control.ng-invalid.ng-touched, form:not(.ignore-validation-styles) .form-control.ng-invalid-required.ng-touched {
+  border-color: #f00;
+  background: #F7C6BE;
+}
+
+/* line 141, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form:not(.ignore-validation-styles) .form-control.ng-valid.ng-dirty {
+  border-color: #239F40;
+  background: #dff0d8;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 152, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid {
+  border-color: #ddd;
+  background: white;
+}
+
+/* line 157, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-invalid-important {
+  border-color: #f00;
+  background: #F7C6BE;
+}
+
+/* line 162, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+form[novalidate].ignore-validation-styles .form-control.ng-dirty.ng-valid-important {
+  border-color: #239F40;
+  background: #dff0d8;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 171, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+input[type="number"].inpHideSpinner::-webkit-outer-spin-button,
+input[type="number"].inpHideSpinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* line 177, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+input[type="number"].inpHideSpinner {
+  -moz-appearance: textfield;
+}
+
+/* line 183, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.col-checkboxes label {
+  display: block;
+}
+
+/* line 190, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.row-checkboxes label,
+.row-radios label {
+  margin-right: 20px;
+}
+
+/* line 197, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.col-checkboxes label,
+.row-checkboxes label {
+  font-weight: normal;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* line 203, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.col-checkboxes label input,
+.row-checkboxes label input {
+  margin-right: 5px;
+}
+
+/* line 209, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+label.submit-label-dummy {
+  display: block;
+  visibility: hidden;
+}
+
+/* line 214, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.fa-dummy-tooltip, span.trim-string-with-tooltip:after {
+  content: " \f059";
+  color: #009900;
+}
+
+/* line 220, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+span.trim-string-with-tooltip {
+  display: block;
+}
+
+/* line 224, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+span.trim-string-with-tooltip.is-FreeTextDescription {
+  max-width: 250px;
+}
+
+/* line 228, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+span.trim-string-with-tooltip > span {
+  display: inline-block;
+  max-width: calc(100% - 20px);
+}
+
+/* bootstrap tooltip (black background) */
+/* line 241, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.tooltip .tooltip-inner {
+  max-width: 400px;
+  white-space: pre-wrap;
+  /* keep line returns */
+  display: inline-block;
+  word-wrap: break-word;
+  /* force long word (maybe for code) to return instead of strecthing beyond box */
+}
+
+/* custom tooltip (for input validation) */
+/* line 250, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips {
+  position: relative;
+  transition: all linear 0.5s;
+  min-height: 28px;
+}
+
+/* line 255, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips .tooltip_cust {
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  text-align: center;
+  padding: 0;
+  transition: all linear 0.5s;
+}
+
+/* line 266, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips .tooltip_cust span.detail {
+  cursor: pointer;
+  background: #f00;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 40px;
+  height: 28px;
+  line-height: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  opacity: 1;
+  transition: all linear 0.5s;
+}
+
+/* line 284, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips .tooltip_cust div.message-wrap {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 8px 0;
+  width: 100%;
+  text-align: center;
+  background: transparent;
+}
+
+/* line 293, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips .tooltip_cust div.message-wrap span {
+  background: #f00;
+  color: white;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold;
+  padding: 6px 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* line 305, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips .tooltip_cust span.tooltip-arrow {
+  top: -8px;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px 6px 0;
+  border-top-color: #f00;
+  background: transparent;
+}
+
+/* line 315, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips.isSelectList .tooltip_cust {
+  display: none;
+}
+
+/* line 322, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips.tooltip-below .tooltip_cust {
+  top: auto;
+  bottom: 0px;
+}
+
+/* line 326, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips.tooltip-below .tooltip_cust span.detail {
+  top: auto;
+  bottom: 0px;
+}
+
+/* line 331, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips.tooltip-below .tooltip_cust div.message-wrap {
+  top: 0px;
+}
+
+/* line 338, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_forms.scss */
+.hasTooltips.tooltip-below .tooltip_cust span.tooltip-arrow {
+  top: auto;
+  bottom: -10px;
+  border-width: 0 6px 6px;
+  border-bottom-color: #f00;
+}
+
+/* _tables.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.table > tbody + tbody {
+  border-top: 1px solid #ddd;
+}
+
+/* line 9, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.table.border-none > tr th, .table.border-none > tr td,
+.table.border-none > * > tr th,
+.table.border-none > * > tr td {
+  border: 0px !important;
+}
+
+/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.table tr th,
+.table > thead > tr th,
+.table > tbody > tr th,
+.table > tfoot > tr th {
+  font-weight: bold;
+}
+
+/* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.table tr th, .table tr td,
+.table > thead > tr th,
+.table > thead > tr td,
+.table > tbody > tr th,
+.table > tbody > tr td,
+.table > tfoot > tr th,
+.table > tfoot > tr td {
+  padding: 5px;
+  vertical-align: middle;
+}
+
+/* line 26, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.table tr th > label, .table tr td > label,
+.table > thead > tr th > label,
+.table > thead > tr td > label,
+.table > tbody > tr th > label,
+.table > tbody > tr td > label,
+.table > tfoot > tr th > label,
+.table > tfoot > tr td > label {
+  margin-bottom: 0px;
+}
+
+/* line 31, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.table tr:last-child th,
+.table > thead > tr:last-child th,
+.table > tbody > tr:last-child th,
+.table > tfoot > tr:last-child th {
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 35, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.table tr:last-child td,
+.table > thead > tr:last-child td,
+.table > tbody > tr:last-child td,
+.table > tfoot > tr:last-child td {
+  border-bottom: none;
+}
+
+/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.half-n-half tr > th,
+table.half-n-half tr > td {
+  width: 50%;
+}
+
+/* line 47, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.wrap-longtext {
+  white-space: pre;
+}
+
+/* line 51, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.aut-sort:before {
+  font-family: FontAwesome;
+  padding-right: 0.5em;
+  width: 1.28571429em;
+  display: inline-block;
+  text-align: center;
+}
+
+/* line 63, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.aut-asc:before {
+  content: "\f160";
+}
+
+/* line 67, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+.aut-desc:before {
+  content: "\f161";
+}
+
+/* line 71, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table {
+  margin: 0 0 15px 0;
+  border: 1px solid #ddd;
+}
+
+/* line 77, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr th {
+  padding: 10px 15px;
+  background: #D8EB9A;
+  border: 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 84, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr td {
+  height: 50px;
+  background: #f1f1f1;
+  border-bottom: 1px dotted #ddd;
+  padding: 0px;
+  padding-top: 15px;
+}
+
+/* line 91, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr td.padded-cell {
+  padding: 15px;
+}
+
+/* line 97, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table tr:last-child td {
+  padding-bottom: 15px;
+  border-bottom: 0px;
+}
+
+/* line 105, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table.cols-2 tr td {
+  width: 50%;
+}
+
+/* line 113, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table.cols-3 tr td {
+  width: 33.333333%;
+}
+
+/* line 121, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table.cols-4 tr td {
+  width: 25%;
+}
+
+/* line 129, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_tables.scss */
+table.table.user-panel-table.padded-cells tr td {
+  padding: 10px 15px;
+}
+
+/* _toastr.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_toastr.scss */
+#toast-container > div {
+  opacity: 1 !important;
+}
+
+/* line 7, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_toastr.scss */
+#toast-container.toast-top-center, #toast-container.toast-bottom-center {
+  left: 50%;
+  right: auto;
+  margin-left: -250px;
+  width: 500px;
+}
+
+/* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_toastr.scss */
+#toast-container.toast-top-center > div, #toast-container.toast-bottom-center > div {
+  width: 100%;
+}
+
+/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_toastr.scss */
+#toast-container.toast-top-center > div button.toast-close-button, #toast-container.toast-bottom-center > div button.toast-close-button {
+  margin-right: 5px;
+}
+
+/* line 23, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_toastr.scss */
+#toast-container.toast-top-center {
+  top: 20px;
+}
+
+/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_toastr.scss */
+#toast-container.toast-bottom-center {
+  bottom: 50px;
+}
+
+/* hovercard.scss */
+/* line 2, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.angular-hovercard {
+  display: inline-block;
+  position: relative;
+}
+
+/* line 7, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.angular-hovercard-label {
+  position: relative;
+}
+
+/* line 11, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.angular-hovercard-label.angular-hovercard-active {
+  z-index: 99;
+}
+
+/* line 15, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.angular-hovercard-detail {
+  /* http://www.cssmatic.com/box-shadow */
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -moz-box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background: white;
+  border: 1px solid #ddd;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+  width: auto;
+  min-width: 500px;
+  z-index: 98;
+}
+
+/* line 28, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.angular-hovercard-detail.angular-hovercard-active {
+  min-height: 200px;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* line 34, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap {
+  font-size: 11px;
+}
+
+/* line 37, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row {
+  display: block;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 42, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-overview {
+  padding: 10px;
+  font-size: 0.9em;
+  color: #303030;
+}
+
+/* line 47, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-overview table {
+  width: 100%;
+}
+
+/* line 51, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-overview table tr td {
+  border: none;
+  padding: 3px;
+}
+
+/* line 55, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-overview table tr td.border-bottom {
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 59, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-overview table tr td:last-child {
+  text-align: right;
+}
+
+/* line 67, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row label {
+  font-weight: bold;
+}
+
+/* line 71, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-actions {
+  padding: 0px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+/* line 77, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-actions table {
+  width: 100%;
+}
+
+/* line 81, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-actions table tr th {
+  color: white;
+}
+
+/* line 85, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-actions table tr td {
+  border-bottom: 1px solid #ddd;
+  font-weight: normal;
+}
+
+/* line 90, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row.wrap-actions table tr:last-child td {
+  border-bottom: none;
+}
+
+/* line 97, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/modules/_hovercard.scss */
+.hoverCardDetailsWrap .content-row:last-child {
+  border-bottom: none;
+}
+
+/*@import 'modules/_md-dialog.scss';*/
+/* LAYOUTS - page layout styles */
+/* _bootstrap-overrule.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.navbar {
+  min-height: 15px;
+}
+
+/* update config */
+/* (END) update config */
+/* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.navbar-default .navbar-toggle {
+  border-color: transparent !important;
+}
+
+/* line 18, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff !important;
+}
+
+/* line 22, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+ai-dialog > ai-dialog-footer button:hover:enabled,
+.btn-default:hover,
+.btn-default:focus {
+  background-color: #fcf8e3 !important;
+  color: #067d00 !important;
+}
+
+/* line 34, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.dropdown-menu > li.divider {
+  margin: 0;
+}
+
+/* line 36, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.dropdown-menu > li > a {
+  padding: 3px 10px;
+}
+
+/* line 42, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.wrap-pagination > ul.pagination {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/* line 48, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.pagination > li > a,
+.pagination > li > span {
+  padding: 4px 10px;
+  color: #009900;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/* line 57, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.pagination > .disabled > a,
+.pagination > .disabled > a:focus,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > span:hover {
+  color: #c8c8c8;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+/* line 68, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+  color: #000;
+  background-color: #f9f9f9;
+  border-color: #ddd;
+}
+
+/* line 79, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.input-group-addon {
+  padding: 4px 10px;
+  color: #555;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+/* line 86, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_bootstrap-overrule.scss */
+.btn-default {
+  color: #009900;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+/* _header.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_header.scss */
+header {
+  padding: 15px;
+  padding-bottom: 0px;
+}
+
+/* line 8, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_header.scss */
+header a img {
+  float: left;
+  display: inline-block;
+  max-height: 90px;
+}
+
+/* line 13, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_header.scss */
+header a h3 {
+  float: left;
+  display: inline-block;
+  margin: 0;
+  padding: 30px 20px;
+  padding-bottom: 0px;
+  color: #009900 !important;
+  text-decoration: none;
+}
+
+/* line 24, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_header.scss */
+header div.user {
+  text-align: right;
+  padding-top: 40px;
+}
+
+/* line 30, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_header.scss */
+header div.user .btn-group.btn-edit-avatar > .btn-group button.btn, header div.user .btn-group.btn-edit-avatar > .btn-group button.str-inline-with-btns, header div.user .btn-group.btn-edit-avatar > .btn-group .pagination-controls button.page-number, .pagination-controls header div.user .btn-group.btn-edit-avatar > .btn-group button.page-number {
+  border: 0px;
+}
+
+/* _nav-bar.scss */
+/* line 6, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+nav.navbar.navbar-default {
+  background: #fff;
+  border-width: 0 0 1px 0;
+  border-color: #ccc;
+  margin-bottom: 45px;
+}
+
+/* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+nav ul.nav.navbar-nav li.active a {
+  background: white !important;
+  color: #067d00;
+}
+
+/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+nav ul.nav.navbar-nav li a {
+  color: #067d00;
+}
+
+/* line 30, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+nav ul.nav.navbar-nav li a:hover {
+  background: #eee !important;
+}
+
+/* line 38, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+.navbar-inverse {
+  border-bottom: 1px solid #ccc;
+}
+
+/* line 42, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+.navbar-nav li.active:after, .navbar-nav li.active:before {
+  bottom: 0%;
+  margin-bottom: -1px;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* line 54, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+.navbar-nav li.active:after {
+  border-bottom-color: #fff;
+  border-width: 6px;
+  margin-left: -6px;
+  z-index: 1;
+}
+
+/* line 60, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_nav-bar.scss */
+.navbar-nav li.active:before {
+  border-bottom-color: #ccc;
+  border-width: 8px;
+  margin-left: -8px;
+  z-index: 1;
+}
+
+/*@import 'layouts/_header-responsive.scss';*/
+/* _footer.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_footer.scss */
+footer {
+  overflow: hidden;
+  background: #eee;
+  border-top: 1px solid #999;
+  padding-top: 10px;
+}
+
+/* line 9, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_footer.scss */
+footer ul.ul-inline-piped {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+}
+
+/* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_footer.scss */
+footer ul.ul-inline-piped li {
+  display: inline-block;
+}
+
+/* line 16, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_footer.scss */
+footer ul.ul-inline-piped li:after {
+  content: "|";
+  margin: 0 10px;
+}
+
+/* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_footer.scss */
+footer ul.ul-inline-piped li:last-child:after {
+  display: none;
+}
+
+/*@import 'layouts/_img.scss';*/
+/* _panels.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_panels.scss */
+.panel {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 6, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_panels.scss */
+.panel.panel-bp {
+  background: #eee;
+  border: 0px;
+  border-bottom: 3px solid #009900;
+}
+
+/* line 12, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_panels.scss */
+.panel.has-button-bar {
+  margin-bottom: 0px;
+}
+
+/* _offsets.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.float-none {
+  float: none !important;
+}
+
+/* line 4, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.ltr .float-left {
+  float: left !important;
+}
+
+/* line 5, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.ltr .float-right {
+  float: right !important;
+}
+
+/* Padding */
+/* line 8, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-0 {
+  padding: 0 !important;
+}
+
+/* line 9, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-1 {
+  padding: 10px !important;
+}
+
+/* line 10, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-g1 {
+  padding: 15px !important;
+}
+
+/* line 11, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-1-5 {
+  padding: 15px !important;
+}
+
+/* line 12, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-2 {
+  padding: 20px !important;
+}
+
+/* line 13, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-x-0, .banner-img-wrap, .banner-img-wrap > div {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-y-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* line 15, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-x-1 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+/* line 16, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-x-1-5 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+/* line 17, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-y-1 {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* line 18, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-y-1-5, .tab-content {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+/* line 19, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-y-g1 {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+/* line 20, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-top-0 {
+  padding-top: 0 !important;
+}
+
+/* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-top-0-5 {
+  padding-top: 5px !important;
+}
+
+/* line 22, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-top-1 {
+  padding-top: 10px !important;
+}
+
+/* line 23, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-top-1-5 {
+  padding-top: 15px !important;
+}
+
+/* line 24, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-top-g1 {
+  padding-top: 15px !important;
+}
+
+/* line 25, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-top-2 {
+  padding-top: 20px !important;
+}
+
+/* line 26, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-bottom-0 {
+  padding-bottom: 0 !important;
+}
+
+/* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-bottom-1 {
+  padding-bottom: 10px !important;
+}
+
+/* line 28, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-bottom-g1 {
+  padding-bottom: 15px !important;
+}
+
+/* line 29, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-bottom-1-5 {
+  padding-bottom: 15px !important;
+}
+
+/* line 30, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-bottom-2 {
+  padding-bottom: 20px !important;
+}
+
+/* line 31, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-left-0 {
+  padding-left: 0 !important;
+}
+
+/* line 32, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-left-1 {
+  padding-left: 10px !important;
+}
+
+/* line 33, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-left-2 {
+  padding-left: 20px !important;
+}
+
+/* line 34, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-left-3 {
+  padding-left: 30px !important;
+}
+
+/* line 35, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-right-0 {
+  padding-right: 0 !important;
+}
+
+/* line 36, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-right-1 {
+  padding-right: 10px !important;
+}
+
+/* line 37, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.padding-right-2 {
+  padding-right: 20px !important;
+}
+
+/* Margin */
+/* line 40, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-0 {
+  margin: 0 !important;
+}
+
+/* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-x-0, .banner-img-wrap, .banner-img-wrap > div {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* line 42, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-x-1 {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+
+/* line 43, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-x-g1 {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+
+/* line 44, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-y-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* line 45, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-y-1 {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* line 46, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-y-g1 {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+
+/* line 47, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-y-g2 {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+/* line 48, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-0 {
+  margin-top: 0 !important;
+}
+
+/* line 49, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-1 {
+  margin-top: 10px !important;
+}
+
+/* line 50, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-g1 {
+  margin-top: 15px !important;
+}
+
+/* line 51, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-g2 {
+  margin-top: 30px !important;
+}
+
+/* line 52, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-1-5 {
+  margin-top: 15px !important;
+}
+
+/* line 53, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-2 {
+  margin-top: 20px !important;
+}
+
+/* line 54, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-3 {
+  margin-top: 30px !important;
+}
+
+/* line 55, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-4 {
+  margin-top: 40px !important;
+}
+
+/* line 56, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-top-massive {
+  margin-top: 100px !important;
+}
+
+/* line 57, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
+/* line 58, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-bottom-1 {
+  margin-bottom: 10px !important;
+}
+
+/* line 59, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-bottom-g1 {
+  margin-bottom: 15px !important;
+}
+
+/* line 60, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-bottom-2 {
+  margin-bottom: 20px !important;
+}
+
+/* line 61, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-left-1 {
+  margin-left: 10px !important;
+}
+
+/* line 62, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-right-1 {
+  margin-right: 10px !important;
+}
+
+/* line 63, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.margin-0-auto {
+  margin: 0 auto;
+}
+
+/* Border */
+/* line 66, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.border-0 {
+  border: 0px !important;
+}
+
+/* line 67, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.border-top-0 {
+  border-top: 0px !important;
+}
+
+/* line 68, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.border-bottom-0 {
+  border-bottom: 0px !important;
+}
+
+/* line 69, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.border-left-0 {
+  border-left: 0px !important;
+}
+
+/* line 70, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.border-right-0 {
+  border-right: 0px !important;
+}
+
+/* Widths */
+/* line 73, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.min-width-100 {
+  min-width: 100px !important;
+}
+
+/* line 74, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_offsets.scss */
+.min-width-150 {
+  min-width: 150px !important;
+}
+
+/*@import 'layouts/_search.scss';*/
+/*@import 'layouts/_nav-tree.scss';*/
+/* _ie-only.scss */
+/* line 3, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_ie-only.scss */
+.panel-heading .panel-btn-wrap.ie-hide {
+  display: none\9;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS styles go here */
+  /* line 7, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_ie-only.scss */
+  .ie-hide {
+    display: none !important;
+  }
+}
+
+/* _mobile.scss */
+/* lg */
+/* md */
+@media (max-width: 1199px) {
+  /* line 13, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_mobile.scss */
+  .fa-textAfter-md:after {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    content: attr(fa-textAfter) !important;
+    margin-left: 5px;
+  }
+  /* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_mobile.scss */
+  .rtl .fa-textAfter-md:after {
+    margin-left: 0;
+    margin-right: 5px;
+  }
+}
+
+/* sm */
+/* xs */
+@media (max-width: 992px) {
+  /* line 25, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_mobile.scss */
+  .md-dialog-container md-dialog {
+    min-width: auto;
+    max-width: auto;
+    width: 90% !important;
+  }
+  /* line 28, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_mobile.scss */
+  .wrap-subsections {
+    padding: 20px 5%;
+  }
+  /* line 29, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_mobile.scss */
+  .rwd_sm_clear-both {
+    clear: both;
+  }
+}
+
+/* md */
+/* lg */
+/* md */
+/* sm */
+/* xs */
+/* _xxxs.scss */
+/* xxs and xxxs */
+/* amAdded */
+/* line 7, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+.row-no-padding [class*="col-"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media all and (min-width: 481px) and (max-width: 640px) {
+  /* line 14, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-1, .col-xxs-10, .col-xxs-11, .col-xxs-12, .col-xxs-2, .col-xxs-3, .col-xxs-4, .col-xxs-5, .col-xxs-6, .col-xxs-7, .col-xxs-8, .col-xxs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  /* line 21, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-1, .col-xxs-10, .col-xxs-11, .col-xxs-12, .col-xxs-2, .col-xxs-3, .col-xxs-4, .col-xxs-5, .col-xxs-6, .col-xxs-7, .col-xxs-8, .col-xxs-9 {
+    float: left;
+  }
+}
+
+@media all and (min-width: 321px) and (max-width: 480px) {
+  /* line 27, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-1, .col-xxxs-10, .col-xxxs-11, .col-xxxs-12, .col-xxxs-2, .col-xxxs-3, .col-xxxs-4, .col-xxxs-5, .col-xxxs-6, .col-xxxs-7, .col-xxxs-8, .col-xxxs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  /* line 34, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-1, .col-xxxs-10, .col-xxxs-11, .col-xxxs-12, .col-xxxs-2, .col-xxxs-3, .col-xxxs-4, .col-xxxs-5, .col-xxxs-6, .col-xxxs-7, .col-xxxs-8, .col-xxxs-9 {
+    float: left;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 640px) {
+  /* line 41, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .hidden-xxs {
+    display: none !important;
+  }
+  /* line 42, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .visible-xxs {
+    display: block !important;
+  }
+  /* line 44, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-12 {
+    right: 100%;
+  }
+  /* line 45, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-11 {
+    right: 91.66666667%;
+  }
+  /* line 46, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-10 {
+    right: 83.33333333%;
+  }
+  /* line 47, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-9 {
+    right: 75%;
+  }
+  /* line 48, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-8 {
+    right: 66.66666667%;
+  }
+  /* line 49, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-7 {
+    right: 58.33333333%;
+  }
+  /* line 50, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-6 {
+    right: 50%;
+  }
+  /* line 51, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-5 {
+    right: 41.66666667%;
+  }
+  /* line 52, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-4 {
+    right: 33.33333333%;
+  }
+  /* line 53, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-3 {
+    right: 25%;
+  }
+  /* line 54, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-2 {
+    right: 16.66666667%;
+  }
+  /* line 55, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-1 {
+    right: 8.33333333%;
+  }
+  /* line 56, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-pull-0 {
+    right: auto;
+  }
+  /* line 58, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-12 {
+    left: 100%;
+  }
+  /* line 59, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-11 {
+    left: 91.66666667%;
+  }
+  /* line 60, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-10 {
+    left: 83.33333333%;
+  }
+  /* line 61, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-9 {
+    left: 75%;
+  }
+  /* line 62, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-8 {
+    left: 66.66666667%;
+  }
+  /* line 63, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-7 {
+    left: 58.33333333%;
+  }
+  /* line 64, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-6 {
+    left: 50%;
+  }
+  /* line 65, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-5 {
+    left: 41.66666667%;
+  }
+  /* line 66, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-4 {
+    left: 33.33333333%;
+  }
+  /* line 67, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-3 {
+    left: 25%;
+  }
+  /* line 68, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-2 {
+    left: 16.66666667%;
+  }
+  /* line 69, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-1 {
+    left: 8.33333333%;
+  }
+  /* line 70, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-push-0 {
+    left: auto;
+  }
+  /* line 71, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-12 {
+    margin-left: 100%;
+  }
+  /* line 72, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-11 {
+    margin-left: 91.66666667%;
+  }
+  /* line 73, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-10 {
+    margin-left: 83.33333333%;
+  }
+  /* line 74, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-9 {
+    margin-left: 75%;
+  }
+  /* line 75, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-8 {
+    margin-left: 66.66666667%;
+  }
+  /* line 76, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-7 {
+    margin-left: 58.33333333%;
+  }
+  /* line 77, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-6 {
+    margin-left: 50%;
+  }
+  /* line 78, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-5 {
+    margin-left: 41.66666667%;
+  }
+  /* line 79, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-4 {
+    margin-left: 33.33333333%;
+  }
+  /* line 80, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-3 {
+    margin-left: 25%;
+  }
+  /* line 81, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-2 {
+    margin-left: 16.66666667%;
+  }
+  /* line 82, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-1 {
+    margin-left: 8.33333333%;
+  }
+  /* line 83, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-offset-0 {
+    margin-left: 0;
+  }
+  /* line 85, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-1 {
+    width: 8.33333333%;
+  }
+  /* line 86, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-2 {
+    width: 16.66666667%;
+  }
+  /* line 87, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-3 {
+    width: 25%;
+  }
+  /* line 88, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-4 {
+    width: 33.33333333%;
+  }
+  /* line 89, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-5 {
+    width: 41.66666667%;
+  }
+  /* line 90, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-6 {
+    width: 50%;
+  }
+  /* line 91, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-7 {
+    width: 58.33333333%;
+  }
+  /* line 92, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-8 {
+    width: 66.66666667%;
+  }
+  /* line 93, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-9 {
+    width: 75%;
+  }
+  /* line 94, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-10 {
+    width: 83.33333333%;
+  }
+  /* line 95, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-11 {
+    width: 91.66666667%;
+  }
+  /* line 96, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-12 {
+    width: 100%;
+  }
+  /* line 98, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxs-padding-2 {
+    background: red;
+    padding: 20px !important;
+  }
+}
+
+@media all and (min-width: 321px) and (max-width: 480px) {
+  /* line 102, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .hidden-xxxs {
+    display: none !important;
+  }
+  /* line 103, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .visible-xxxs {
+    display: block !important;
+  }
+  /* line 105, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-12 {
+    right: 100%;
+  }
+  /* line 106, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-11 {
+    right: 91.66666667%;
+  }
+  /* line 107, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-10 {
+    right: 83.33333333%;
+  }
+  /* line 108, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-9 {
+    right: 75%;
+  }
+  /* line 109, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-8 {
+    right: 66.66666667%;
+  }
+  /* line 110, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-7 {
+    right: 58.33333333%;
+  }
+  /* line 111, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-6 {
+    right: 50%;
+  }
+  /* line 112, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-5 {
+    right: 41.66666667%;
+  }
+  /* line 113, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-4 {
+    right: 33.33333333%;
+  }
+  /* line 114, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-3 {
+    right: 25%;
+  }
+  /* line 115, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-2 {
+    right: 16.66666667%;
+  }
+  /* line 116, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-1 {
+    right: 8.33333333%;
+  }
+  /* line 117, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-pull-0 {
+    right: auto;
+  }
+  /* line 119, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-12 {
+    left: 100%;
+  }
+  /* line 120, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-11 {
+    left: 91.66666667%;
+  }
+  /* line 121, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-10 {
+    left: 83.33333333%;
+  }
+  /* line 122, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-9 {
+    left: 75%;
+  }
+  /* line 123, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-8 {
+    left: 66.66666667%;
+  }
+  /* line 124, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-7 {
+    left: 58.33333333%;
+  }
+  /* line 125, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-6 {
+    left: 50%;
+  }
+  /* line 126, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-5 {
+    left: 41.66666667%;
+  }
+  /* line 127, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-4 {
+    left: 33.33333333%;
+  }
+  /* line 128, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-3 {
+    left: 25%;
+  }
+  /* line 129, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-2 {
+    left: 16.66666667%;
+  }
+  /* line 130, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-1 {
+    left: 8.33333333%;
+  }
+  /* line 131, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-push-0 {
+    left: auto;
+  }
+  /* line 132, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-12 {
+    margin-left: 100%;
+  }
+  /* line 133, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-11 {
+    margin-left: 91.66666667%;
+  }
+  /* line 134, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-10 {
+    margin-left: 83.33333333%;
+  }
+  /* line 135, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-9 {
+    margin-left: 75%;
+  }
+  /* line 136, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-8 {
+    margin-left: 66.66666667%;
+  }
+  /* line 137, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-7 {
+    margin-left: 58.33333333%;
+  }
+  /* line 138, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-6 {
+    margin-left: 50%;
+  }
+  /* line 139, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-5 {
+    margin-left: 41.66666667%;
+  }
+  /* line 140, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-4 {
+    margin-left: 33.33333333%;
+  }
+  /* line 141, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-3 {
+    margin-left: 25%;
+  }
+  /* line 142, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-2 {
+    margin-left: 16.66666667%;
+  }
+  /* line 143, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-1 {
+    margin-left: 8.33333333%;
+  }
+  /* line 144, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-offset-0 {
+    margin-left: 0;
+  }
+  /* line 146, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-1 {
+    width: 8.33333333%;
+  }
+  /* line 147, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-2 {
+    width: 16.66666667%;
+  }
+  /* line 148, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-3 {
+    width: 25%;
+  }
+  /* line 149, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-4 {
+    width: 33.33333333%;
+  }
+  /* line 150, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-5 {
+    width: 41.66666667%;
+  }
+  /* line 151, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-6 {
+    width: 50%;
+  }
+  /* line 152, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-7 {
+    width: 58.33333333%;
+  }
+  /* line 153, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-8 {
+    width: 66.66666667%;
+  }
+  /* line 154, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-9 {
+    width: 75%;
+  }
+  /* line 155, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-10 {
+    width: 83.33333333%;
+  }
+  /* line 156, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-11 {
+    width: 91.66666667%;
+  }
+  /* line 157, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-12 {
+    width: 100%;
+  }
+  /* amAdded */
+  /* line 160, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-text-align-left {
+    text-align: left;
+  }
+  /* line 161, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-text-align-right {
+    text-align: left;
+  }
+  /* line 162, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-padding-left-0 {
+    padding-left: 0;
+  }
+  /* line 163, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-padding-left-1 {
+    padding-left: 10px !important;
+  }
+  /* line 164, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-padding-right-0 {
+    padding-right: 0;
+  }
+  /* line 165, C:/Users/al_20/Documents/WORK/Agily/MRT/site/user-manager-4/src/scss/layouts/_xxxs.scss */
+  .col-xxxs-padding-2 {
+    background: yellow;
+    padding: 20px !important;
+  }
+}
+
+/* print.css */
+
+/*# sourceMappingURL=../css/main.map */

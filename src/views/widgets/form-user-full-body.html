@@ -25,7 +25,6 @@
 
         <div id="${custXcId}" class="panel-body row ${custXc ? 'collapse' : ''} ${custXcExpanded ? 'in' : ''}">
             <div class="wrap-fields">
-                <!--? ${myLookups.languages}-->
                 <user-panel-details if.bind="custBody=='user-details'" is-read-only.bind="isReadOnly"></user-panel-details>
                 <user-panel-languages if.bind="custBody=='user-languages'" is-read-only.bind="isReadOnly"></user-panel-languages>
                 <user-panel-passport if.bind="custBody=='user-passport'" is-read-only.bind="isReadOnly"></user-panel-passport>

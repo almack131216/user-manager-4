@@ -11507,6 +11507,170 @@ define('aurelia-binding',['exports', 'aurelia-logging', 'aurelia-pal', 'aurelia-
     return deco(targetOrConfig, key, descriptor);
   }
 });
+define('aurelia-event-aggregator',['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.EventAggregator = undefined;
+  exports.includeEventsIn = includeEventsIn;
+  exports.configure = configure;
+
+  var LogManager = _interopRequireWildcard(_aureliaLogging);
+
+  function _interopRequireWildcard(obj) {
+    if (obj && obj.__esModule) {
+      return obj;
+    } else {
+      var newObj = {};
+
+      if (obj != null) {
+        for (var key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+        }
+      }
+
+      newObj.default = obj;
+      return newObj;
+    }
+  }
+
+  
+
+  var logger = LogManager.getLogger('event-aggregator');
+
+  var Handler = function () {
+    function Handler(messageType, callback) {
+      
+
+      this.messageType = messageType;
+      this.callback = callback;
+    }
+
+    Handler.prototype.handle = function handle(message) {
+      if (message instanceof this.messageType) {
+        this.callback.call(null, message);
+      }
+    };
+
+    return Handler;
+  }();
+
+  function invokeCallback(callback, data, event) {
+    try {
+      callback(data, event);
+    } catch (e) {
+      logger.error(e);
+    }
+  }
+
+  function invokeHandler(handler, data) {
+    try {
+      handler.handle(data);
+    } catch (e) {
+      logger.error(e);
+    }
+  }
+
+  var EventAggregator = exports.EventAggregator = function () {
+    function EventAggregator() {
+      
+
+      this.eventLookup = {};
+      this.messageHandlers = [];
+    }
+
+    EventAggregator.prototype.publish = function publish(event, data) {
+      var subscribers = void 0;
+      var i = void 0;
+
+      if (!event) {
+        throw new Error('Event was invalid.');
+      }
+
+      if (typeof event === 'string') {
+        subscribers = this.eventLookup[event];
+        if (subscribers) {
+          subscribers = subscribers.slice();
+          i = subscribers.length;
+
+          while (i--) {
+            invokeCallback(subscribers[i], data, event);
+          }
+        }
+      } else {
+        subscribers = this.messageHandlers.slice();
+        i = subscribers.length;
+
+        while (i--) {
+          invokeHandler(subscribers[i], event);
+        }
+      }
+    };
+
+    EventAggregator.prototype.subscribe = function subscribe(event, callback) {
+      var handler = void 0;
+      var subscribers = void 0;
+
+      if (!event) {
+        throw new Error('Event channel/type was invalid.');
+      }
+
+      if (typeof event === 'string') {
+        handler = callback;
+        subscribers = this.eventLookup[event] || (this.eventLookup[event] = []);
+      } else {
+        handler = new Handler(event, callback);
+        subscribers = this.messageHandlers;
+      }
+
+      subscribers.push(handler);
+
+      return {
+        dispose: function dispose() {
+          var idx = subscribers.indexOf(handler);
+          if (idx !== -1) {
+            subscribers.splice(idx, 1);
+          }
+        }
+      };
+    };
+
+    EventAggregator.prototype.subscribeOnce = function subscribeOnce(event, callback) {
+      var sub = this.subscribe(event, function (a, b) {
+        sub.dispose();
+        return callback(a, b);
+      });
+
+      return sub;
+    };
+
+    return EventAggregator;
+  }();
+
+  function includeEventsIn(obj) {
+    var ea = new EventAggregator();
+
+    obj.subscribeOnce = function (event, callback) {
+      return ea.subscribeOnce(event, callback);
+    };
+
+    obj.subscribe = function (event, callback) {
+      return ea.subscribe(event, callback);
+    };
+
+    obj.publish = function (event, data) {
+      ea.publish(event, data);
+    };
+
+    return ea;
+  }
+
+  function configure(config) {
+    config.instance(EventAggregator, includeEventsIn(config.aurelia));
+  }
+});
 define('aurelia-dependency-injection',['exports', 'aurelia-metadata', 'aurelia-pal'], function (exports, _aureliaMetadata, _aureliaPal) {
   'use strict';
 
@@ -12266,170 +12430,6 @@ define('aurelia-dependency-injection',['exports', 'aurelia-metadata', 'aurelia-p
     };
   }
 });
-define('aurelia-event-aggregator',['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.EventAggregator = undefined;
-  exports.includeEventsIn = includeEventsIn;
-  exports.configure = configure;
-
-  var LogManager = _interopRequireWildcard(_aureliaLogging);
-
-  function _interopRequireWildcard(obj) {
-    if (obj && obj.__esModule) {
-      return obj;
-    } else {
-      var newObj = {};
-
-      if (obj != null) {
-        for (var key in obj) {
-          if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-        }
-      }
-
-      newObj.default = obj;
-      return newObj;
-    }
-  }
-
-  
-
-  var logger = LogManager.getLogger('event-aggregator');
-
-  var Handler = function () {
-    function Handler(messageType, callback) {
-      
-
-      this.messageType = messageType;
-      this.callback = callback;
-    }
-
-    Handler.prototype.handle = function handle(message) {
-      if (message instanceof this.messageType) {
-        this.callback.call(null, message);
-      }
-    };
-
-    return Handler;
-  }();
-
-  function invokeCallback(callback, data, event) {
-    try {
-      callback(data, event);
-    } catch (e) {
-      logger.error(e);
-    }
-  }
-
-  function invokeHandler(handler, data) {
-    try {
-      handler.handle(data);
-    } catch (e) {
-      logger.error(e);
-    }
-  }
-
-  var EventAggregator = exports.EventAggregator = function () {
-    function EventAggregator() {
-      
-
-      this.eventLookup = {};
-      this.messageHandlers = [];
-    }
-
-    EventAggregator.prototype.publish = function publish(event, data) {
-      var subscribers = void 0;
-      var i = void 0;
-
-      if (!event) {
-        throw new Error('Event was invalid.');
-      }
-
-      if (typeof event === 'string') {
-        subscribers = this.eventLookup[event];
-        if (subscribers) {
-          subscribers = subscribers.slice();
-          i = subscribers.length;
-
-          while (i--) {
-            invokeCallback(subscribers[i], data, event);
-          }
-        }
-      } else {
-        subscribers = this.messageHandlers.slice();
-        i = subscribers.length;
-
-        while (i--) {
-          invokeHandler(subscribers[i], event);
-        }
-      }
-    };
-
-    EventAggregator.prototype.subscribe = function subscribe(event, callback) {
-      var handler = void 0;
-      var subscribers = void 0;
-
-      if (!event) {
-        throw new Error('Event channel/type was invalid.');
-      }
-
-      if (typeof event === 'string') {
-        handler = callback;
-        subscribers = this.eventLookup[event] || (this.eventLookup[event] = []);
-      } else {
-        handler = new Handler(event, callback);
-        subscribers = this.messageHandlers;
-      }
-
-      subscribers.push(handler);
-
-      return {
-        dispose: function dispose() {
-          var idx = subscribers.indexOf(handler);
-          if (idx !== -1) {
-            subscribers.splice(idx, 1);
-          }
-        }
-      };
-    };
-
-    EventAggregator.prototype.subscribeOnce = function subscribeOnce(event, callback) {
-      var sub = this.subscribe(event, function (a, b) {
-        sub.dispose();
-        return callback(a, b);
-      });
-
-      return sub;
-    };
-
-    return EventAggregator;
-  }();
-
-  function includeEventsIn(obj) {
-    var ea = new EventAggregator();
-
-    obj.subscribeOnce = function (event, callback) {
-      return ea.subscribeOnce(event, callback);
-    };
-
-    obj.subscribe = function (event, callback) {
-      return ea.subscribe(event, callback);
-    };
-
-    obj.publish = function (event, data) {
-      ea.publish(event, data);
-    };
-
-    return ea;
-  }
-
-  function configure(config) {
-    config.instance(EventAggregator, includeEventsIn(config.aurelia));
-  }
-});
 define('aurelia-framework',['exports', 'aurelia-dependency-injection', 'aurelia-binding', 'aurelia-metadata', 'aurelia-templating', 'aurelia-loader', 'aurelia-task-queue', 'aurelia-path', 'aurelia-pal', 'aurelia-logging'], function (exports, _aureliaDependencyInjection, _aureliaBinding, _aureliaMetadata, _aureliaTemplating, _aureliaLoader, _aureliaTaskQueue, _aureliaPath, _aureliaPal, _aureliaLogging) {
   'use strict';
 
@@ -12979,49 +12979,157 @@ define('aurelia-framework',['exports', 'aurelia-dependency-injection', 'aurelia-
   exports.FrameworkConfiguration = FrameworkConfiguration;
   var LogManager = exports.LogManager = TheLogManager;
 });
-define('aurelia-history',['exports'], function (exports) {
+define('aurelia-loader',['exports', 'aurelia-path', 'aurelia-metadata'], function (exports, _aureliaPath, _aureliaMetadata) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.Loader = exports.TemplateRegistryEntry = exports.TemplateDependency = undefined;
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   
 
-  function mi(name) {
-    throw new Error('History must implement ' + name + '().');
-  }
+  var TemplateDependency = exports.TemplateDependency = function TemplateDependency(src, name) {
+    
 
-  var History = exports.History = function () {
-    function History() {
+    this.src = src;
+    this.name = name;
+  };
+
+  var TemplateRegistryEntry = exports.TemplateRegistryEntry = function () {
+    function TemplateRegistryEntry(address) {
       
+
+      this.templateIsLoaded = false;
+      this.factoryIsReady = false;
+      this.resources = null;
+      this.dependencies = null;
+
+      this.address = address;
+      this.onReady = null;
+      this._template = null;
+      this._factory = null;
     }
 
-    History.prototype.activate = function activate(options) {
-      mi('activate');
+    TemplateRegistryEntry.prototype.addDependency = function addDependency(src, name) {
+      var finalSrc = typeof src === 'string' ? (0, _aureliaPath.relativeToFile)(src, this.address) : _aureliaMetadata.Origin.get(src).moduleId;
+
+      this.dependencies.push(new TemplateDependency(finalSrc, name));
     };
 
-    History.prototype.deactivate = function deactivate() {
-      mi('deactivate');
+    _createClass(TemplateRegistryEntry, [{
+      key: 'template',
+      get: function get() {
+        return this._template;
+      },
+      set: function set(value) {
+        var address = this.address;
+        var requires = void 0;
+        var current = void 0;
+        var src = void 0;
+        var dependencies = void 0;
+
+        this._template = value;
+        this.templateIsLoaded = true;
+
+        requires = value.content.querySelectorAll('require');
+        dependencies = this.dependencies = new Array(requires.length);
+
+        for (var i = 0, ii = requires.length; i < ii; ++i) {
+          current = requires[i];
+          src = current.getAttribute('from');
+
+          if (!src) {
+            throw new Error('<require> element in ' + address + ' has no "from" attribute.');
+          }
+
+          dependencies[i] = new TemplateDependency((0, _aureliaPath.relativeToFile)(src, address), current.getAttribute('as'));
+
+          if (current.parentNode) {
+            current.parentNode.removeChild(current);
+          }
+        }
+      }
+    }, {
+      key: 'factory',
+      get: function get() {
+        return this._factory;
+      },
+      set: function set(value) {
+        this._factory = value;
+        this.factoryIsReady = true;
+      }
+    }]);
+
+    return TemplateRegistryEntry;
+  }();
+
+  var Loader = exports.Loader = function () {
+    function Loader() {
+      
+
+      this.templateRegistry = {};
+    }
+
+    Loader.prototype.map = function map(id, source) {
+      throw new Error('Loaders must implement map(id, source).');
     };
 
-    History.prototype.getAbsoluteRoot = function getAbsoluteRoot() {
-      mi('getAbsoluteRoot');
+    Loader.prototype.normalizeSync = function normalizeSync(moduleId, relativeTo) {
+      throw new Error('Loaders must implement normalizeSync(moduleId, relativeTo).');
     };
 
-    History.prototype.navigate = function navigate(fragment, options) {
-      mi('navigate');
+    Loader.prototype.normalize = function normalize(moduleId, relativeTo) {
+      throw new Error('Loaders must implement normalize(moduleId: string, relativeTo: string): Promise<string>.');
     };
 
-    History.prototype.navigateBack = function navigateBack() {
-      mi('navigateBack');
+    Loader.prototype.loadModule = function loadModule(id) {
+      throw new Error('Loaders must implement loadModule(id).');
     };
 
-    History.prototype.setTitle = function setTitle(title) {
-      mi('setTitle');
+    Loader.prototype.loadAllModules = function loadAllModules(ids) {
+      throw new Error('Loader must implement loadAllModules(ids).');
     };
 
-    return History;
+    Loader.prototype.loadTemplate = function loadTemplate(url) {
+      throw new Error('Loader must implement loadTemplate(url).');
+    };
+
+    Loader.prototype.loadText = function loadText(url) {
+      throw new Error('Loader must implement loadText(url).');
+    };
+
+    Loader.prototype.applyPluginToUrl = function applyPluginToUrl(url, pluginName) {
+      throw new Error('Loader must implement applyPluginToUrl(url, pluginName).');
+    };
+
+    Loader.prototype.addPlugin = function addPlugin(pluginName, implementation) {
+      throw new Error('Loader must implement addPlugin(pluginName, implementation).');
+    };
+
+    Loader.prototype.getOrCreateTemplateRegistryEntry = function getOrCreateTemplateRegistryEntry(address) {
+      return this.templateRegistry[address] || (this.templateRegistry[address] = new TemplateRegistryEntry(address));
+    };
+
+    return Loader;
   }();
 });
 define('aurelia-history-browser',['exports', 'aurelia-pal', 'aurelia-history'], function (exports, _aureliaPal, _aureliaHistory) {
@@ -13350,157 +13458,49 @@ define('aurelia-history-browser',['exports', 'aurelia-pal', 'aurelia-history'], 
     return protocol + '//' + hostname + (port ? ':' + port : '');
   }
 });
-define('aurelia-loader',['exports', 'aurelia-path', 'aurelia-metadata'], function (exports, _aureliaPath, _aureliaMetadata) {
+define('aurelia-history',['exports'], function (exports) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.Loader = exports.TemplateRegistryEntry = exports.TemplateDependency = undefined;
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
 
   
 
-  var TemplateDependency = exports.TemplateDependency = function TemplateDependency(src, name) {
-    
+  function mi(name) {
+    throw new Error('History must implement ' + name + '().');
+  }
 
-    this.src = src;
-    this.name = name;
-  };
-
-  var TemplateRegistryEntry = exports.TemplateRegistryEntry = function () {
-    function TemplateRegistryEntry(address) {
+  var History = exports.History = function () {
+    function History() {
       
-
-      this.templateIsLoaded = false;
-      this.factoryIsReady = false;
-      this.resources = null;
-      this.dependencies = null;
-
-      this.address = address;
-      this.onReady = null;
-      this._template = null;
-      this._factory = null;
     }
 
-    TemplateRegistryEntry.prototype.addDependency = function addDependency(src, name) {
-      var finalSrc = typeof src === 'string' ? (0, _aureliaPath.relativeToFile)(src, this.address) : _aureliaMetadata.Origin.get(src).moduleId;
-
-      this.dependencies.push(new TemplateDependency(finalSrc, name));
+    History.prototype.activate = function activate(options) {
+      mi('activate');
     };
 
-    _createClass(TemplateRegistryEntry, [{
-      key: 'template',
-      get: function get() {
-        return this._template;
-      },
-      set: function set(value) {
-        var address = this.address;
-        var requires = void 0;
-        var current = void 0;
-        var src = void 0;
-        var dependencies = void 0;
-
-        this._template = value;
-        this.templateIsLoaded = true;
-
-        requires = value.content.querySelectorAll('require');
-        dependencies = this.dependencies = new Array(requires.length);
-
-        for (var i = 0, ii = requires.length; i < ii; ++i) {
-          current = requires[i];
-          src = current.getAttribute('from');
-
-          if (!src) {
-            throw new Error('<require> element in ' + address + ' has no "from" attribute.');
-          }
-
-          dependencies[i] = new TemplateDependency((0, _aureliaPath.relativeToFile)(src, address), current.getAttribute('as'));
-
-          if (current.parentNode) {
-            current.parentNode.removeChild(current);
-          }
-        }
-      }
-    }, {
-      key: 'factory',
-      get: function get() {
-        return this._factory;
-      },
-      set: function set(value) {
-        this._factory = value;
-        this.factoryIsReady = true;
-      }
-    }]);
-
-    return TemplateRegistryEntry;
-  }();
-
-  var Loader = exports.Loader = function () {
-    function Loader() {
-      
-
-      this.templateRegistry = {};
-    }
-
-    Loader.prototype.map = function map(id, source) {
-      throw new Error('Loaders must implement map(id, source).');
+    History.prototype.deactivate = function deactivate() {
+      mi('deactivate');
     };
 
-    Loader.prototype.normalizeSync = function normalizeSync(moduleId, relativeTo) {
-      throw new Error('Loaders must implement normalizeSync(moduleId, relativeTo).');
+    History.prototype.getAbsoluteRoot = function getAbsoluteRoot() {
+      mi('getAbsoluteRoot');
     };
 
-    Loader.prototype.normalize = function normalize(moduleId, relativeTo) {
-      throw new Error('Loaders must implement normalize(moduleId: string, relativeTo: string): Promise<string>.');
+    History.prototype.navigate = function navigate(fragment, options) {
+      mi('navigate');
     };
 
-    Loader.prototype.loadModule = function loadModule(id) {
-      throw new Error('Loaders must implement loadModule(id).');
+    History.prototype.navigateBack = function navigateBack() {
+      mi('navigateBack');
     };
 
-    Loader.prototype.loadAllModules = function loadAllModules(ids) {
-      throw new Error('Loader must implement loadAllModules(ids).');
+    History.prototype.setTitle = function setTitle(title) {
+      mi('setTitle');
     };
 
-    Loader.prototype.loadTemplate = function loadTemplate(url) {
-      throw new Error('Loader must implement loadTemplate(url).');
-    };
-
-    Loader.prototype.loadText = function loadText(url) {
-      throw new Error('Loader must implement loadText(url).');
-    };
-
-    Loader.prototype.applyPluginToUrl = function applyPluginToUrl(url, pluginName) {
-      throw new Error('Loader must implement applyPluginToUrl(url, pluginName).');
-    };
-
-    Loader.prototype.addPlugin = function addPlugin(pluginName, implementation) {
-      throw new Error('Loader must implement addPlugin(pluginName, implementation).');
-    };
-
-    Loader.prototype.getOrCreateTemplateRegistryEntry = function getOrCreateTemplateRegistryEntry(address) {
-      return this.templateRegistry[address] || (this.templateRegistry[address] = new TemplateRegistryEntry(address));
-    };
-
-    return Loader;
+    return History;
   }();
 });
 define('aurelia-loader-default',['exports', 'aurelia-loader', 'aurelia-pal', 'aurelia-metadata'], function (exports, _aureliaLoader, _aureliaPal, _aureliaMetadata) {
@@ -45109,4 +45109,4 @@ define('aurelia-task-queue/aurelia-task-queue',['exports', 'aurelia-pal'], funct
 ;define('toastr', ['toastr/toastr'], function (main) { return main; });
 
 define('text!toastr/build/toastr.min.css', ['module'], function(module) { module.exports = ".toast-title{font-weight:700}.toast-message{-ms-word-wrap:break-word;word-wrap:break-word}.toast-message a,.toast-message label{color:#fff}.toast-message a:hover{color:#ccc;text-decoration:none}.toast-close-button{position:relative;right:-.3em;top:-.3em;float:right;font-size:20px;font-weight:700;color:#fff;-webkit-text-shadow:0 1px 0 #fff;text-shadow:0 1px 0 #fff;opacity:.8;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);filter:alpha(opacity=80)}.toast-close-button:focus,.toast-close-button:hover{color:#000;text-decoration:none;cursor:pointer;opacity:.4;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=40);filter:alpha(opacity=40)}button.toast-close-button{padding:0;cursor:pointer;background:0 0;border:0;-webkit-appearance:none}.toast-top-center{top:0;right:0;width:100%}.toast-bottom-center{bottom:0;right:0;width:100%}.toast-top-full-width{top:0;right:0;width:100%}.toast-bottom-full-width{bottom:0;right:0;width:100%}.toast-top-left{top:12px;left:12px}.toast-top-right{top:12px;right:12px}.toast-bottom-right{right:12px;bottom:12px}.toast-bottom-left{bottom:12px;left:12px}#toast-container{position:fixed;z-index:999999;pointer-events:none}#toast-container *{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}#toast-container>div{position:relative;pointer-events:auto;overflow:hidden;margin:0 0 6px;padding:15px 15px 15px 50px;width:300px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;background-position:15px center;background-repeat:no-repeat;-moz-box-shadow:0 0 12px #999;-webkit-box-shadow:0 0 12px #999;box-shadow:0 0 12px #999;color:#fff;opacity:.8;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);filter:alpha(opacity=80)}#toast-container>:hover{-moz-box-shadow:0 0 12px #000;-webkit-box-shadow:0 0 12px #000;box-shadow:0 0 12px #000;opacity:1;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);filter:alpha(opacity=100);cursor:pointer}#toast-container>.toast-info{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=)!important}#toast-container>.toast-error{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=)!important}#toast-container>.toast-success{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==)!important}#toast-container>.toast-warning{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=)!important}#toast-container.toast-bottom-center>div,#toast-container.toast-top-center>div{width:300px;margin-left:auto;margin-right:auto}#toast-container.toast-bottom-full-width>div,#toast-container.toast-top-full-width>div{width:96%;margin-left:auto;margin-right:auto}.toast{background-color:#030303}.toast-success{background-color:#51a351}.toast-error{background-color:#bd362f}.toast-info{background-color:#2f96b4}.toast-warning{background-color:#f89406}.toast-progress{position:absolute;left:0;bottom:0;height:4px;background-color:#000;opacity:.4;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=40);filter:alpha(opacity=40)}@media all and (max-width:240px){#toast-container>div{padding:8px 8px 8px 50px;width:11em}#toast-container .toast-close-button{right:-.2em;top:-.2em}}@media all and (min-width:241px) and (max-width:480px){#toast-container>div{padding:8px 8px 8px 50px;width:18em}#toast-container .toast-close-button{right:-.2em;top:-.2em}}@media all and (min-width:481px) and (max-width:768px){#toast-container>div{padding:15px 15px 15px 50px;width:25em}}"; });
-function _aureliaConfigureModuleLoader(){requirejs.config({"baseUrl":"src/","paths":{"text":"../node_modules\\text\\text","aurelia-bootstrapper":"../node_modules\\aurelia-bootstrapper\\dist\\amd\\aurelia-bootstrapper","aurelia-binding":"../node_modules\\aurelia-binding\\dist\\amd\\aurelia-binding","aurelia-dependency-injection":"../node_modules\\aurelia-dependency-injection\\dist\\amd\\aurelia-dependency-injection","aurelia-event-aggregator":"../node_modules\\aurelia-event-aggregator\\dist\\amd\\aurelia-event-aggregator","aurelia-framework":"../node_modules\\aurelia-framework\\dist\\amd\\aurelia-framework","aurelia-history":"../node_modules\\aurelia-history\\dist\\amd\\aurelia-history","aurelia-history-browser":"../node_modules\\aurelia-history-browser\\dist\\amd\\aurelia-history-browser","aurelia-loader":"../node_modules\\aurelia-loader\\dist\\amd\\aurelia-loader","aurelia-loader-default":"../node_modules\\aurelia-loader-default\\dist\\amd\\aurelia-loader-default","aurelia-logging":"../node_modules\\aurelia-logging\\dist\\amd\\aurelia-logging","aurelia-logging-console":"../node_modules\\aurelia-logging-console\\dist\\amd\\aurelia-logging-console","aurelia-metadata":"../node_modules\\aurelia-metadata\\dist\\amd\\aurelia-metadata","aurelia-pal":"../node_modules\\aurelia-pal\\dist\\amd\\aurelia-pal","aurelia-pal-browser":"../node_modules\\aurelia-pal-browser\\dist\\amd\\aurelia-pal-browser","aurelia-path":"../node_modules\\aurelia-path\\dist\\amd\\aurelia-path","aurelia-polyfills":"../node_modules\\aurelia-polyfills\\dist\\amd\\aurelia-polyfills","aurelia-route-recognizer":"../node_modules\\aurelia-route-recognizer\\dist\\amd\\aurelia-route-recognizer","aurelia-router":"../node_modules\\aurelia-router\\dist\\amd\\aurelia-router","aurelia-task-queue":"../node_modules\\aurelia-task-queue\\dist\\amd\\aurelia-task-queue","aurelia-templating":"../node_modules\\aurelia-templating\\dist\\amd\\aurelia-templating","aurelia-templating-binding":"../node_modules\\aurelia-templating-binding\\dist\\amd\\aurelia-templating-binding","jquery":"../node_modules\\jquery\\dist\\jquery","aurelia-fetch-client":"../node_modules\\aurelia-fetch-client\\dist\\amd\\aurelia-fetch-client","numeral":"../node_modules\\numeral\\numeral","kendo-ui-core":"../node_modules/kendo-ui-core/","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"},{"name":"bootstrap","location":"../node_modules/bootstrap/dist","main":"js/bootstrap.min"},{"name":"nprogress","location":"../node_modules/nprogress","main":"nprogress"},{"name":"aurelia-table","location":"../node_modules/au-table/dist/amd","main":"index"},{"name":"font-awesome","location":"../node_modules/font-awesome/css","main":"font-awesome.css"},{"name":"aurelia-mask","location":"../node_modules/aurelia-mask/dist","main":"masked-input"},{"name":"select2","location":"../node_modules/select2/dist","main":"js/select2.min"},{"name":"aurelia-dialog","location":"../node_modules/aurelia-dialog/dist/amd","main":"aurelia-dialog"},{"name":"aurelia-auth","location":"../node_modules/aurelia-auth/dist/amd","main":"aurelia-auth"},{"name":"aurelia-http-client","location":"../node_modules/aurelia-http-client/dist/amd","main":"aurelia-http-client"},{"name":"moment","location":"../node_modules/moment","main":"moment"},{"name":"aurelia-kendoui-bridge","location":"../node_modules/aurelia-kendoui-bridge/dist/amd","main":"index"},{"name":"aurelia-task-queue","location":"../node_modules/aurelia-task-queue/dist/amd","main":"aurelia-task-queue"},{"name":"toastr","location":"../node_modules/toastr","main":"toastr"}],"stubModules":[],"shim":{"bootstrap":{"deps":["jquery"],"exports":"$"},"toastr":{"deps":["jquery"]}},"bundles":{"app-bundle":["resources/constants","api/web-api-users","my-globals","app","auth-config","auth-service","environment","httpClient","login","main","my-nav","api/utility","api/web-api","resources/messages","resources/lookups","dialog-demo/add-user-dialog","dialog-demo/delete-user-dialog","user-info/user-info","dialog-demo/info-dialog","dialog-demo/dialog-demo","dialog-demo/roles-dialog","resources/functions","resources/globals","resources/index","resources/select2","user-info/set-info","user-info/user-info-role","user-info/view-info","_excess-ref/user-panel-twic","resources/elements/loading-indicator","resources/format/blob-to-url","resources/format/file-list-to-array","resources/format/format-date","resources/format/json","views/pages/login","views/pages/user-add","views/pages/user-no-selection","views/pages/user-selected","views/pages/welcome","views/ui/nav-bar","views/ui/ui-footer","views/ui/ui-header","views/ui/ui-loading","views/widgets/btn-xc-all","views/widgets/filter","views/widgets/form-user-full-body","views/widgets/list-activity","views/widgets/panel-denied-access","views/widgets/profile-brief","views/widgets/prompt","views/widgets/user-edit","views/widgets/user-list","views/widgets/cust-span/span-cust-active-status","views/widgets/cust-span/span-cust-member-status","views/widgets/inputs/form-checkbox","views/widgets/inputs/form-filter-role","views/widgets/inputs/form-filter-text","views/widgets/inputs/form-input","views/widgets/inputs/form-radio","views/widgets/inputs/form-select","views/widgets/user-panels/user-panel-confidential","views/widgets/user-panels/user-panel-details","views/widgets/user-panels/user-panel-languages","views/widgets/user-panels/user-panel-passport","views/widgets/user-panels/user-panel-training","views/widgets/user-panels/user-panel-visa","aurelia-auth/auth-service","aurelia-auth/authentication","aurelia-auth/base-config","aurelia-auth/auth-utilities","aurelia-auth/storage","aurelia-auth/oAuth1","aurelia-auth/popup","aurelia-auth/oAuth2","aurelia-auth/authorize-step","aurelia-auth/auth-fetch-config","aurelia-auth/auth-filter","aurelia-dialog/ai-dialog","aurelia-dialog/ai-dialog-header","aurelia-dialog/dialog-controller","aurelia-dialog/lifecycle","aurelia-dialog/dialog-result","aurelia-dialog/ai-dialog-body","aurelia-dialog/ai-dialog-footer","aurelia-dialog/attach-focus","aurelia-dialog/dialog-configuration","aurelia-dialog/renderer","aurelia-dialog/dialog-renderer","aurelia-dialog/dialog-options","aurelia-dialog/dialog-service","aurelia-templating-resources/compose","aurelia-templating-resources/if","aurelia-templating-resources/with","aurelia-templating-resources/repeat","aurelia-templating-resources/repeat-strategy-locator","aurelia-templating-resources/null-repeat-strategy","aurelia-templating-resources/array-repeat-strategy","aurelia-templating-resources/repeat-utilities","aurelia-templating-resources/map-repeat-strategy","aurelia-templating-resources/set-repeat-strategy","aurelia-templating-resources/number-repeat-strategy","aurelia-templating-resources/analyze-view-factory","aurelia-templating-resources/abstract-repeater","aurelia-templating-resources/show","aurelia-templating-resources/aurelia-hide-style","aurelia-templating-resources/hide","aurelia-templating-resources/sanitize-html","aurelia-templating-resources/html-sanitizer","aurelia-templating-resources/replaceable","aurelia-templating-resources/focus","aurelia-templating-resources/css-resource","aurelia-templating-resources/attr-binding-behavior","aurelia-templating-resources/binding-mode-behaviors","aurelia-templating-resources/throttle-binding-behavior","aurelia-templating-resources/debounce-binding-behavior","aurelia-templating-resources/signal-binding-behavior","aurelia-templating-resources/binding-signaler","aurelia-templating-resources/update-trigger-binding-behavior","aurelia-templating-resources/html-resource-plugin","aurelia-templating-resources/dynamic-element","kendo-ui-core/js/kendo.datepicker","kendo-ui-core/js/kendo.popup","kendo-ui-core/js/kendo.core","kendo-ui-core/js/kendo.calendar","styles","css/bootstrap.min","css/main","css/print","scss/bootstrap.min","_excess-ref/tab-dev","_excess-ref/user-panel-mrt-role","_excess-ref/xxx_dev-inputs"]}})}
+function _aureliaConfigureModuleLoader(){requirejs.config({"baseUrl":"src/","paths":{"text":"../node_modules\\text\\text","aurelia-bootstrapper":"../node_modules\\aurelia-bootstrapper\\dist\\amd\\aurelia-bootstrapper","aurelia-binding":"../node_modules\\aurelia-binding\\dist\\amd\\aurelia-binding","aurelia-event-aggregator":"../node_modules\\aurelia-event-aggregator\\dist\\amd\\aurelia-event-aggregator","aurelia-dependency-injection":"../node_modules\\aurelia-dependency-injection\\dist\\amd\\aurelia-dependency-injection","aurelia-framework":"../node_modules\\aurelia-framework\\dist\\amd\\aurelia-framework","aurelia-loader":"../node_modules\\aurelia-loader\\dist\\amd\\aurelia-loader","aurelia-history-browser":"../node_modules\\aurelia-history-browser\\dist\\amd\\aurelia-history-browser","aurelia-history":"../node_modules\\aurelia-history\\dist\\amd\\aurelia-history","aurelia-loader-default":"../node_modules\\aurelia-loader-default\\dist\\amd\\aurelia-loader-default","aurelia-logging":"../node_modules\\aurelia-logging\\dist\\amd\\aurelia-logging","aurelia-logging-console":"../node_modules\\aurelia-logging-console\\dist\\amd\\aurelia-logging-console","aurelia-metadata":"../node_modules\\aurelia-metadata\\dist\\amd\\aurelia-metadata","aurelia-pal":"../node_modules\\aurelia-pal\\dist\\amd\\aurelia-pal","aurelia-pal-browser":"../node_modules\\aurelia-pal-browser\\dist\\amd\\aurelia-pal-browser","aurelia-path":"../node_modules\\aurelia-path\\dist\\amd\\aurelia-path","aurelia-polyfills":"../node_modules\\aurelia-polyfills\\dist\\amd\\aurelia-polyfills","aurelia-route-recognizer":"../node_modules\\aurelia-route-recognizer\\dist\\amd\\aurelia-route-recognizer","aurelia-router":"../node_modules\\aurelia-router\\dist\\amd\\aurelia-router","aurelia-task-queue":"../node_modules\\aurelia-task-queue\\dist\\amd\\aurelia-task-queue","aurelia-templating":"../node_modules\\aurelia-templating\\dist\\amd\\aurelia-templating","aurelia-templating-binding":"../node_modules\\aurelia-templating-binding\\dist\\amd\\aurelia-templating-binding","jquery":"../node_modules\\jquery\\dist\\jquery","aurelia-fetch-client":"../node_modules\\aurelia-fetch-client\\dist\\amd\\aurelia-fetch-client","numeral":"../node_modules\\numeral\\numeral","kendo-ui-core":"../node_modules/kendo-ui-core/","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"},{"name":"bootstrap","location":"../node_modules/bootstrap/dist","main":"js/bootstrap.min"},{"name":"nprogress","location":"../node_modules/nprogress","main":"nprogress"},{"name":"aurelia-table","location":"../node_modules/au-table/dist/amd","main":"index"},{"name":"font-awesome","location":"../node_modules/font-awesome/css","main":"font-awesome.css"},{"name":"aurelia-mask","location":"../node_modules/aurelia-mask/dist","main":"masked-input"},{"name":"select2","location":"../node_modules/select2/dist","main":"js/select2.min"},{"name":"aurelia-dialog","location":"../node_modules/aurelia-dialog/dist/amd","main":"aurelia-dialog"},{"name":"aurelia-auth","location":"../node_modules/aurelia-auth/dist/amd","main":"aurelia-auth"},{"name":"aurelia-http-client","location":"../node_modules/aurelia-http-client/dist/amd","main":"aurelia-http-client"},{"name":"moment","location":"../node_modules/moment","main":"moment"},{"name":"aurelia-kendoui-bridge","location":"../node_modules/aurelia-kendoui-bridge/dist/amd","main":"index"},{"name":"aurelia-task-queue","location":"../node_modules/aurelia-task-queue/dist/amd","main":"aurelia-task-queue"},{"name":"toastr","location":"../node_modules/toastr","main":"toastr"}],"stubModules":[],"shim":{"bootstrap":{"deps":["jquery"],"exports":"$"},"toastr":{"deps":["jquery"]}},"bundles":{"app-bundle":["resources/constants","api/web-api-users","my-globals","app","environment","login","main","my-nav","api/utility","api/web-api","resources/lookups","dialog-demo/add-user-dialog","dialog-demo/delete-user-dialog","user-info/user-info","dialog-demo/info-dialog","dialog-demo/dialog-demo","dialog-demo/roles-dialog","resources/functions","resources/globals","resources/index","resources/select2","user-info/set-info","user-info/user-info-role","user-info/view-info","_excess-ref/user-panel-twic","resources/elements/loading-indicator","resources/format/blob-to-url","resources/format/file-list-to-array","resources/format/format-date","resources/format/json","views/pages/user-add","views/pages/user-no-selection","views/pages/user-review","views/pages/user-selected","views/pages/welcome","views/ui/nav-bar","views/ui/ui-footer","views/ui/ui-header","views/ui/ui-loading","views/widgets/btn-xc-all","views/widgets/filter","views/widgets/form-user-full-body","views/widgets/list-activity","views/widgets/panel-denied-access","views/widgets/profile-brief","views/widgets/user-edit","views/widgets/user-list","views/widgets/cust-span/span-cust-active-status","views/widgets/cust-span/span-cust-member-status","views/widgets/inputs/form-checkbox","views/widgets/inputs/form-filter-role","views/widgets/inputs/form-filter-text","views/widgets/inputs/form-input","views/widgets/inputs/form-radio","views/widgets/inputs/form-select","views/widgets/user-panels/user-panel-confidential","views/widgets/user-panels/user-panel-details","views/widgets/user-panels/user-panel-languages","views/widgets/user-panels/user-panel-passport","views/widgets/user-panels/user-panel-training","views/widgets/user-panels/user-panel-visa","aurelia-auth/auth-service","aurelia-auth/authentication","aurelia-auth/base-config","aurelia-auth/auth-utilities","aurelia-auth/storage","aurelia-auth/oAuth1","aurelia-auth/popup","aurelia-auth/oAuth2","aurelia-auth/authorize-step","aurelia-auth/auth-fetch-config","aurelia-auth/auth-filter","aurelia-dialog/ai-dialog","aurelia-dialog/ai-dialog-header","aurelia-dialog/dialog-controller","aurelia-dialog/lifecycle","aurelia-dialog/dialog-result","aurelia-dialog/ai-dialog-body","aurelia-dialog/ai-dialog-footer","aurelia-dialog/attach-focus","aurelia-dialog/dialog-configuration","aurelia-dialog/renderer","aurelia-dialog/dialog-renderer","aurelia-dialog/dialog-options","aurelia-dialog/dialog-service","aurelia-templating-resources/compose","aurelia-templating-resources/if","aurelia-templating-resources/with","aurelia-templating-resources/repeat","aurelia-templating-resources/repeat-strategy-locator","aurelia-templating-resources/null-repeat-strategy","aurelia-templating-resources/array-repeat-strategy","aurelia-templating-resources/repeat-utilities","aurelia-templating-resources/map-repeat-strategy","aurelia-templating-resources/set-repeat-strategy","aurelia-templating-resources/number-repeat-strategy","aurelia-templating-resources/analyze-view-factory","aurelia-templating-resources/abstract-repeater","aurelia-templating-resources/show","aurelia-templating-resources/aurelia-hide-style","aurelia-templating-resources/hide","aurelia-templating-resources/sanitize-html","aurelia-templating-resources/html-sanitizer","aurelia-templating-resources/replaceable","aurelia-templating-resources/focus","aurelia-templating-resources/css-resource","aurelia-templating-resources/attr-binding-behavior","aurelia-templating-resources/binding-mode-behaviors","aurelia-templating-resources/throttle-binding-behavior","aurelia-templating-resources/debounce-binding-behavior","aurelia-templating-resources/signal-binding-behavior","aurelia-templating-resources/binding-signaler","aurelia-templating-resources/update-trigger-binding-behavior","aurelia-templating-resources/html-resource-plugin","aurelia-templating-resources/dynamic-element","kendo-ui-core/js/kendo.datepicker","kendo-ui-core/js/kendo.popup","kendo-ui-core/js/kendo.core","kendo-ui-core/js/kendo.calendar","css/bootstrap.min","css/main","css/print","scss/bootstrap.min","_excess-ref/add-user-dialog","_excess-ref/tab-dev","_excess-ref/user-panel-mrt-role","_excess-ref/xxx_dev-inputs"]}})}

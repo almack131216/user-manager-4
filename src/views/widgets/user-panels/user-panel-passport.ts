@@ -5,11 +5,12 @@ import {MyGlobals} from '../../../my-globals'
 import * as Constants from '../../../resources/constants';
 const CV = Constants
 
+import toastr = require('toastr');
+
 @inject(MyGlobals)
 export class UserPanelPassport {
     public CV = CV;
     
-    profile;
     @bindable isReadOnly = null;
 
     myGlobals
@@ -17,7 +18,6 @@ export class UserPanelPassport {
 
     constructor(myGlobals:MyGlobals){
         this.myGlobals = MyGlobals
-        this.profile = this.myGlobals.profileSelected
         this.myLookups = this.myGlobals.myLookups
     }
 
@@ -31,7 +31,6 @@ export class UserPanelPassport {
     }
 
     onChange(newValue, oldValue){
-        //datePicker.value(new Date(1994, 4, 2));
         console.log('onChange() : model: ' + newValue + ' | ' + oldValue);
     }
 
@@ -41,5 +40,6 @@ export class UserPanelPassport {
 
     remove(getPos) {
         this.myGlobals.profileSelected.passports.splice(getPos, 1);
+        toastr.success(CV.myApiMsg.PassportRemoved);
     }
 }
